@@ -1,8 +1,8 @@
 package com.jeecg.qywx.account.web;
 
-import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import org.apache.velocity.VelocityContext;
 import org.jeecgframework.minidao.pojo.MiniDaoPage;
 import org.jeecgframework.p3.core.common.utils.AjaxJson;
@@ -16,8 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import com.jeecg.qywx.account.entity.QywxAccount;
+
 import com.jeecg.qywx.account.dao.QywxAccountDao;
+import com.jeecg.qywx.account.entity.QywxAccount;
 import com.jeecg.qywx.util.SystemUtil;
 
  /**

@@ -41,7 +41,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import weixin.guanjia.account.entity.WeixinAccountEntity;
 import weixin.guanjia.account.service.WeixinAccountServiceI;
-import weixin.guanjia.core.util.WeixinUtil;
 import weixin.p3.linksucai.entity.WeixinLinksucaiEntity;
 import weixin.p3.linksucai.service.WeixinLinksucaiServiceI;
 import weixin.p3.oauth2.rule.RemoteWeixinMethod;

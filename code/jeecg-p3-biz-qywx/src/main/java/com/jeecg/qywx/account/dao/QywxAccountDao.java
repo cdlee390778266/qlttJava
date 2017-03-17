@@ -9,7 +9,6 @@ import org.jeecgframework.minidao.pojo.MiniDaoPage;
 import org.springframework.stereotype.Repository;
 
 import com.jeecg.qywx.account.entity.QywxAccount;
-import com.jeecg.qywx.account.entity.QywxAgent;
 
 /**
  * 描述：</b>QywxAccountDao<br>

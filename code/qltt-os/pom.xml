@@ -1,21 +1,22 @@
-﻿<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+﻿<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.jeecgframework</groupId>
+	<groupId>com.qianlong</groupId>
 	<version>3.0.0</version>
-	<artifactId>jeewx-os</artifactId>
+	<artifactId>qltt-os</artifactId>
 	<packaging>war</packaging>
 	<properties>
-        <codegenerate.version>3.4.7</codegenerate.version>
-        <minidao.version>1.6-SNAPSHOT</minidao.version>
-        <jeewx-api.version>1.1-SNAPSHOT</jeewx-api.version>
+		<codegenerate.version>3.4.7</codegenerate.version>
+		<minidao.version>1.6-SNAPSHOT</minidao.version>
+		<jeewx-api.version>1.1-SNAPSHOT</jeewx-api.version>
+
+		<m2eclipse.wtp.contextRoot>qltt</m2eclipse.wtp.contextRoot>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
 		<!-- 主要依赖库的版本定义 -->
 		<spring.version>3.1.1.RELEASE</spring.version>
 		<hibernate.version>4.1.0.Final</hibernate.version>
 		<hibernate-common-annotations.version>4.0.2.Final</hibernate-common-annotations.version>
 		<hibernate-jpa.version>1.0.1.Final</hibernate-jpa.version>
-
 		<mybatis.version>3.1.1</mybatis.version>
 
 		<!-- 辅助依赖包 -->
@@ -25,15 +26,15 @@
 		<javassist.version>3.15.0-GA</javassist.version>
 		<ant.version>1.6.5</ant.version>
 
-		
+
 		<!-- 工具包 -->
-        <!-- json start -->
+		<!-- json start -->
 		<jackson.version>1.8.4</jackson.version>
-        <jacksonframework.version>1.84</jacksonframework.version>
+		<jacksonframework.version>1.84</jacksonframework.version>
 		<json-lib.version>2.1</json-lib.version>
 		<fastjson-lib.version>1.1.37</fastjson-lib.version>
 		<gson.version>2.2.4</gson.version>
-        <!-- json start -->
+		<!-- json start -->
 		<dom4j.version>1.6.1</dom4j.version>
 		<slf4j.version>1.6.1</slf4j.version>
 		<log4j.version>1.2.16</log4j.version>
@@ -47,7 +48,7 @@
 		<commons-fileupload.version>1.2.1</commons-fileupload.version>
 		<commons-lang.version>2.6</commons-lang.version>
 		<commons-lang3.version>3.1</commons-lang3.version>
-        <commons-email.version>1.2</commons-email.version>
+		<commons-email.version>1.2</commons-email.version>
 		<commons-logging.version>1.0.4</commons-logging.version>
 		<commons-logging-api.version>1.1</commons-logging-api.version>
 		<commons-validator.version>1.3.1</commons-validator.version>
@@ -57,22 +58,22 @@
 		<poi.version>3.9</poi.version>
 		<antlr.version>3.5.2</antlr.version>
 		<openoffice.version>3.2.1</openoffice.version>
-        <jodconverter.version>3.0-beta-4</jodconverter.version>
-        <!-- todo 为什么要引入struts的lib呢？-->
-        <xwork-core.version>2.1.6</xwork-core.version>
+		<jodconverter.version>3.0-beta-4</jodconverter.version>
+		<!-- todo 为什么要引入struts的lib呢？ -->
+		<xwork-core.version>2.1.6</xwork-core.version>
 
 		<!-- 数据库组件包 _start -->
 		<proxool.version>0.9.1</proxool.version>
 		<commons-pool.version>1.6</commons-pool.version>
 		<commons-dbcp.version>1.4</commons-dbcp.version>
 		<druid.version>0.2.9</druid.version>
-        <mysql.version>5.1.27</mysql.version>
+		<mysql.version>5.1.27</mysql.version>
 
 		<!-- 测试依赖包 -->
 		<junit.version>4.7</junit.version>
 		<CKFinder.version>2.4</CKFinder.version>
-        <!-- java生成缩略图 -->
-        <thumbnailator.version>0.4.6</thumbnailator.version>
+		<!-- java生成缩略图 -->
+		<thumbnailator.version>0.4.6</thumbnailator.version>
 		<pinyin4j.version>2.5.0</pinyin4j.version>
 		<org.quartz.version>1.6.2</org.quartz.version>
 		<activation.version>1.1.1</activation.version>
@@ -115,28 +116,28 @@
 			</snapshots>
 		</repository>
 		<repository>
-            <id>jeecg</id>
-            <name>jeecg Repository</name>
-            <url>http://maven.jeecg.org/nexus/content/repositories/jeecg</url>
-            <snapshots>
+			<id>jeecg</id>
+			<name>jeecg Repository</name>
+			<url>http://maven.jeecg.org/nexus/content/repositories/jeecg</url>
+			<snapshots>
 				<enabled>false</enabled>
 			</snapshots>
-        </repository>
-        <repository>
-            <id>jeecg-snapshots</id>
-            <name>jeecg-snapshots Repository</name>
-            <url>http://maven.jeecg.org/nexus/content/repositories/snapshots</url>
-            <snapshots>
+		</repository>
+		<repository>
+			<id>jeecg-snapshots</id>
+			<name>jeecg-snapshots Repository</name>
+			<url>http://maven.jeecg.org/nexus/content/repositories/snapshots</url>
+			<snapshots>
 				<enabled>true</enabled>
 			</snapshots>
-        </repository>
-        <repository>
+		</repository>
+		<repository>
 			<id>nexus</id>
 			<name>Team Nexus Repository</name>
 			<url>http://192.168.1.213:8081/nexus/content/groups/public</url>
 		</repository>
 	</repositories>
-	
+
 	<!-- 插件地址 -->
 	<pluginRepositories>
 		<pluginRepository>
@@ -170,20 +171,20 @@
 			<groupId>org.jeecgframework</groupId>
 			<artifactId>minidao-pe</artifactId>
 			<version>${minidao.version}</version>
-			<exclusions>  
-		        <exclusion>  
-			        <groupId>org.freemarker</groupId>  
-			        <artifactId>freemarker</artifactId>  
-		        </exclusion>  
-		        <exclusion>  
-			        <groupId>org.apache.xmlgraphics</groupId>  
-			        <artifactId>fop</artifactId>  
-		        </exclusion>
-		        <exclusion>  
-			        <groupId>opensymphony</groupId>  
-			        <artifactId>ognl</artifactId>  
-		        </exclusion>
-		    </exclusions>  
+			<exclusions>
+				<exclusion>
+					<groupId>org.freemarker</groupId>
+					<artifactId>freemarker</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.apache.xmlgraphics</groupId>
+					<artifactId>fop</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>opensymphony</groupId>
+					<artifactId>ognl</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<!-- ckfinder start -->
 		<dependency>
@@ -206,9 +207,9 @@
 			<artifactId>CKFinderPlugin-Watermark</artifactId>
 			<version>${CKFinder.version}</version>
 		</dependency>
-        <!-- ckfinder end -->
-        
-        <!-- java生成缩略图-->
+		<!-- ckfinder end -->
+
+		<!-- java生成缩略图 -->
 		<dependency>
 			<groupId>net.coobird</groupId>
 			<artifactId>thumbnailator</artifactId>
@@ -322,28 +323,28 @@
 
 
 		<!-- 数据库相关依赖包 _start -->
-        <!--proxool start -->
-        <dependency>
-            <groupId>com.cloudhopper.proxool</groupId>
-            <artifactId>proxool</artifactId>
-            <version>${proxool.version}</version>
-            <exclusions>
-            	<exclusion>
-            		<artifactId>geronimo-spec-javamail</artifactId>
-            		<groupId>geronimo-spec</groupId>
-            	</exclusion>
-            	<exclusion>
-            		<artifactId>avalon-framework-api</artifactId>
-            		<groupId>avalon-framework</groupId>
-            	</exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>com.cloudhopper.proxool</groupId>
-            <artifactId>proxool-cglib</artifactId>
-            <version>${proxool.version}</version>
-        </dependency>
-        <!-- proxool end-->
+		<!--proxool start -->
+		<dependency>
+			<groupId>com.cloudhopper.proxool</groupId>
+			<artifactId>proxool</artifactId>
+			<version>${proxool.version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>geronimo-spec-javamail</artifactId>
+					<groupId>geronimo-spec</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>avalon-framework-api</artifactId>
+					<groupId>avalon-framework</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.cloudhopper.proxool</groupId>
+			<artifactId>proxool-cglib</artifactId>
+			<version>${proxool.version}</version>
+		</dependency>
+		<!-- proxool end -->
 		<dependency>
 			<groupId>commons-pool</groupId>
 			<artifactId>commons-pool</artifactId>
@@ -370,11 +371,11 @@
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
-		  <groupId>org.jeewx</groupId>
-		  <artifactId>p3-extend</artifactId>
-		  <version>1.0-SNAPSHOT</version>
+			<groupId>org.jeewx</groupId>
+			<artifactId>p3-extend</artifactId>
+			<version>1.0-SNAPSHOT</version>
 		</dependency>
-        <!-- 数据库相关依赖包 _end -->
+		<!-- 数据库相关依赖包 _end -->
 
 		<!-- WEB begin -->
 		<!-- spring mvc -->
@@ -441,7 +442,7 @@
 			<artifactId>ant</artifactId>
 			<version>${ant.version}</version>
 		</dependency>
-        <!-- 辅助依赖包 _end -->
+		<!-- 辅助依赖包 _end -->
 
 		<!-- 工具包 -->
 		<!-- JSON begin -->
@@ -471,11 +472,11 @@
 			<artifactId>fastjson</artifactId>
 			<version>${fastjson-lib.version}</version>
 		</dependency>
-        <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-            <version>${gson.version}</version>
-        </dependency>
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>${gson.version}</version>
+		</dependency>
 		<!-- JSON end -->
 		<!-- dom4j -->
 		<dependency>
@@ -538,11 +539,7 @@
 			<version>${commons-chain.version}</version>
 		</dependency>
 		<!-- commons-codec -->
-		<!-- <dependency>
-			<groupId>commons-codec</groupId>
-			<artifactId>commons-codec</artifactId>
-			<version>${commons-codec.version}</version>
-		</dependency> -->
+		<!-- <dependency> <groupId>commons-codec</groupId> <artifactId>commons-codec</artifactId> <version>${commons-codec.version}</version> </dependency> -->
 		<!-- commons-digester -->
 		<dependency>
 			<groupId>commons-digester</groupId>
@@ -619,55 +616,55 @@
 			<artifactId>hibernate-validator-annotation-processor</artifactId>
 			<version>${hibernate-validator.version}</version>
 		</dependency>
-        <!-- poi start -->
-        <dependency>
-            <groupId>org.apache.poi</groupId>
-            <artifactId>poi</artifactId>
-            <version>${poi.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.poi</groupId>
-            <artifactId>poi-ooxml</artifactId>
-            <version>${poi.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.poi</groupId>
-            <artifactId>poi-ooxml-schemas</artifactId>
-            <version>${poi.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.poi</groupId>
-            <artifactId>poi-scratchpad</artifactId>
-            <version>${poi.version}</version>
-        </dependency>
-        <!-- poi end-->
-        <!-- openoffice start  文档转化-->
+		<!-- poi start -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>${poi.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>${poi.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml-schemas</artifactId>
+			<version>${poi.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-scratchpad</artifactId>
+			<version>${poi.version}</version>
+		</dependency>
+		<!-- poi end -->
+		<!-- openoffice start 文档转化 -->
 		<dependency>
 			<groupId>org.openoffice</groupId>
 			<artifactId>juh</artifactId>
 			<version>${openoffice.version}</version>
 		</dependency>
-        <dependency>
-            <groupId>org.openoffice</groupId>
-            <artifactId>unoil</artifactId>
-            <version>${openoffice.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.openoffice</groupId>
-            <artifactId>jurt</artifactId>
-            <version>${openoffice.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.artofsolving</groupId>
-            <artifactId>jodconverter</artifactId>
-            <version>${jodconverter.version}</version>
-        </dependency>
-        <!-- openoffice end -->
-        <dependency>
-            <groupId>com.opensymphony</groupId>
-            <artifactId>xwork-core</artifactId>
-            <version>${xwork-core.version}</version>
-        </dependency>
+		<dependency>
+			<groupId>org.openoffice</groupId>
+			<artifactId>unoil</artifactId>
+			<version>${openoffice.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.openoffice</groupId>
+			<artifactId>jurt</artifactId>
+			<version>${openoffice.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.artofsolving</groupId>
+			<artifactId>jodconverter</artifactId>
+			<version>${jodconverter.version}</version>
+		</dependency>
+		<!-- openoffice end -->
+		<dependency>
+			<groupId>com.opensymphony</groupId>
+			<artifactId>xwork-core</artifactId>
+			<version>${xwork-core.version}</version>
+		</dependency>
 
 		<!-- TEST begin -->
 		<!-- junit -->
@@ -676,7 +673,7 @@
 			<artifactId>junit</artifactId>
 			<version>${junit.version}</version>
 		</dependency>
-        <!-- hamcrest -->
+		<!-- hamcrest -->
 
 		<!-- spring -->
 		<dependency>
@@ -693,14 +690,14 @@
 		</dependency>
 		<!-- highchart 图片导出 -->
 		<dependency>
-		  <groupId>org.jeecgframework</groupId>
-		  <artifactId>org.jeecgframework.batik-all</artifactId>
-		  <version>1.7</version>
+			<groupId>org.jeecgframework</groupId>
+			<artifactId>org.jeecgframework.batik-all</artifactId>
+			<version>1.7</version>
 		</dependency>
 		<dependency>
-		  <groupId>org.jeecgframework</groupId>
-		  <artifactId>fop</artifactId>
-		  <version>1.0</version>
+			<groupId>org.jeecgframework</groupId>
+			<artifactId>fop</artifactId>
+			<version>1.0</version>
 		</dependency>
 		<dependency>
 			<groupId>xerces</groupId>
@@ -713,19 +710,19 @@
 			<version>1.3.04</version>
 		</dependency>
 		<dependency>
-		<groupId>xml-apis</groupId>
-		  <artifactId>xml-apis</artifactId>
-		  <version>1.3.04</version>
+			<groupId>xml-apis</groupId>
+			<artifactId>xml-apis</artifactId>
+			<version>1.3.04</version>
 		</dependency>
 		<dependency>
-		  <groupId>org.apache.xmlgraphics</groupId>
-		  <artifactId>xmlgraphics-commons</artifactId>
-		  <version>1.4</version>
+			<groupId>org.apache.xmlgraphics</groupId>
+			<artifactId>xmlgraphics-commons</artifactId>
+			<version>1.4</version>
 		</dependency>
 		<dependency>
-		  <groupId>xalan</groupId>
-		  <artifactId>xalan</artifactId>
-		  <version>2.7.0</version>
+			<groupId>xalan</groupId>
+			<artifactId>xalan</artifactId>
+			<version>2.7.0</version>
 		</dependency>
 		<!-- Xml数据导出导入 -->
 		<dependency>
@@ -733,11 +730,11 @@
 			<artifactId>xstream</artifactId>
 			<version>${xstream.version}</version>
 		</dependency>
-		<!-- groovy 脚本-->
+		<!-- groovy 脚本 -->
 		<dependency>
-		    <groupId>org.codehaus.groovy</groupId>
-		    <artifactId>groovy</artifactId>
-		    <version>${groovy.version}</version>
+			<groupId>org.codehaus.groovy</groupId>
+			<artifactId>groovy</artifactId>
+			<version>${groovy.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.baidu.bcs</groupId>
@@ -746,35 +743,35 @@
 		</dependency>
 		<!-- httpclient -->
 		<dependency>
-		  <groupId>commons-httpclient</groupId>
-		  <artifactId>commons-httpclient</artifactId>
-		  <version>3.0.1</version>
+			<groupId>commons-httpclient</groupId>
+			<artifactId>commons-httpclient</artifactId>
+			<version>3.0.1</version>
 		</dependency>
 		<!-- jaxen -->
 		<dependency>
-		  <groupId>jaxen</groupId>
-		  <artifactId>jaxen</artifactId>
-		  <version>1.1.6</version>
+			<groupId>jaxen</groupId>
+			<artifactId>jaxen</artifactId>
+			<version>1.1.6</version>
 		</dependency>
 		<!-- jaxen -->
 		<dependency>
-		  <groupId>commons-codec</groupId>
-		  <artifactId>commons-codec</artifactId>
-		  <version>1.6</version>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.6</version>
 		</dependency>
 		<!-- jeewx-api -->
 		<dependency>
-		  <groupId>org.jeewx</groupId>
-		  <artifactId>jeewx-api</artifactId>
-		  <version>${jeewx-api.version}</version>
-		  <exclusions>
-		  	<exclusion>
-		  		<groupId>org.freemarker</groupId>
-		  		<artifactId>freemarker</artifactId>
-		  	</exclusion>
-		  </exclusions>
+			<groupId>org.jeewx</groupId>
+			<artifactId>jeewx-api</artifactId>
+			<version>${jeewx-api.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.freemarker</groupId>
+					<artifactId>freemarker</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
-		
+
 		<!-- jeecg plugin -->
 		<dependency>
 			<groupId>org.p3framework</groupId>
@@ -821,44 +818,61 @@
 	</dependencies>
 
 	<organization>
-		<name>JeeWx 微信管家平台</name>
-		<url>www.jeewx.com</url>
+		<name>乾隆微信管家平台</name>
+		<url>www.cdqianlong.com</url>
 	</organization>
 	<build>
 		<plugins>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<inherited>true</inherited>
 				<configuration>
 					<source>1.7</source>
 					<target>1.7</target>
 					<encoding>UTF-8</encoding>
+					<compilerArgument>-XDignore.symbol.file</compilerArgument>
 				</configuration>
 			</plugin>
-	       <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>tomcat-maven-plugin</artifactId>
-                <version>1.1</version>
-                <configuration>
-                    <path>/jeewx</path>
-                    <port>80</port>
-                    <uriEncoding>UTF-8</uriEncoding>
-                    <url>http://localhost:8080/manager/html</url>
-                    <server>tomcat6</server>
-                </configuration>
-            </plugin>
-	        <!-- tomcat7插件 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.5</version>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>tomcat-maven-plugin</artifactId>
+				<version>1.1</version>
+				<configuration>
+					<path>/qltt</path>
+					<port>8080</port>
+					<uriEncoding>UTF-8</uriEncoding>
+					<url>http://localhost:8080/manager/html</url>
+					<server>tomcat6</server>
+				</configuration>
+			</plugin>
+			<!-- tomcat7插件 -->
 			<plugin>
 				<groupId>org.apache.tomcat.maven</groupId>
 				<artifactId>tomcat7-maven-plugin</artifactId>
-				<version>2.2</version> 
+				<version>2.2</version>
 				<configuration>
-					<port>80</port>
-					<path>/jeewx</path>
+					<port>8080</port>
+					<path>/qltt</path>
 					<uriEncoding>UTF-8</uriEncoding>
 				</configuration>
 			</plugin>
-	    </plugins>
-		<finalName>jeewx</finalName>
+		</plugins>
+		<finalName>qltt</finalName>
 		<resources>
 			<resource>
 				<directory>src/main/java</directory>
@@ -867,27 +881,41 @@
 					<include>**/*.sql</include>
 					<include>**/*.ftl</include>
 				</includes>
-				<filtering>false</filtering>
 			</resource>
 			<resource>
 				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
 			</resource>
 		</resources>
-
-		<testResources>
-			<testResource>
-				<directory>src/test/java</directory>
-				<includes>
-					<include>**/*.xml</include>
-					<include>**/*.sql</include>
-					<include>**/*.ftl</include>
-				</includes>
-				<filtering>false</filtering>
-			</testResource>
-			<testResource>
-				<directory>src/test/resources</directory>
-			</testResource>
-		</testResources>
 	</build>
-	
+	<profiles>
+		<profile>
+			<id>mysql-dev</id>
+			<properties>
+				<hibernate.dialect>org.hibernate.dialect.MySQLDialect</hibernate.dialect>
+				<validationQuery.sqlserver>SELECT 1</validationQuery.sqlserver>
+				<jdbc.url><![CDATA[ jdbc:mysql://192.168.100.103:3306/jeewx-os?useUnicode=true&amp;characterEncoding=UTF-8 ]]></jdbc.url>
+				<jdbc.username>jeewx</jdbc.username>
+				<jdbc.password>cdyf2008</jdbc.password>
+				<jdbc.dbType>mysql</jdbc.dbType>
+				<hibernate.hbm2ddl.auto>none</hibernate.hbm2ddl.auto>
+				<diver.name>com.mysql.jdbc.Driver</diver.name>
+				<database.name>cnacex</database.name>
+			</properties>
+		</profile>
+		<profile>
+			<id>oracle-dev</id>
+			<properties>
+				<hibernate.dialect>org.hibernate.dialect.Oracle10gDialect</hibernate.dialect>
+				<validationQuery.sqlserver>SELECT 1</validationQuery.sqlserver>
+				<jdbc.url>jdbc:oracle:thin:@192.168.100.107:1521:cnacex</jdbc.url>
+				<jdbc.username>qltt</jdbc.username>
+				<jdbc.password>123456</jdbc.password>
+				<jdbc.dbType>oracle</jdbc.dbType>
+				<hibernate.hbm2ddl.auto>none</hibernate.hbm2ddl.auto>
+				<diver.name>oracle.jdbc.driver.OracleDriver</diver.name>
+				<database.name>cnacex</database.name>
+			</properties>
+		</profile>
+	</profiles>
 </project>

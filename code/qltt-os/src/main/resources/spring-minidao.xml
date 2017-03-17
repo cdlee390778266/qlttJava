@@ -20,7 +20,7 @@
 		<!-- 输出sql -->
 		<property name="showSql" value="false"></property>
 		<!-- 数据库类型 -->
-		<property name="dbType" value="mysql"></property>
+		<property name="dbType" value="${jdbc.dbType}"></property>
 		<!-- dao地址,配置符合spring方式 -->
 		<property name="basePackage" value="org.jeecgframework.web.*.dao*,weixin.cms.*,weixin.shop.*,weixin.guanjia.*,com.jeecg.*"></property>
 		<!-- 使用的注解,默认是Minidao,推荐 Repository-->

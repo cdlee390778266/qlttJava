@@ -3,7 +3,6 @@ package com.jeecg.qywx.account.entity;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-import java.math.BigDecimal;
 
 /**
  * 描述：</b>QywxAccount:账号信息表<br>

@@ -2,11 +2,14 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
-	
-	<groupId>org.p3framework</groupId>
+
 	<artifactId>jeecg-p3-biz-alipay-single</artifactId>
 	<version>1.0.0</version>
 	<packaging>jar</packaging>
+	
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
 	
 	<parent>
 		<groupId>org.p3framework</groupId>

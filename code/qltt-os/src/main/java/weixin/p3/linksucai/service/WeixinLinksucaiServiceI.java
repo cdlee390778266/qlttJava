@@ -1,13 +1,10 @@
 package weixin.p3.linksucai.service;
-import weixin.p3.linksucai.entity.WeixinLinksucaiEntity;
-
-import org.jeecgframework.core.common.service.CommonService;
-import org.jeecgframework.core.util.ResourceUtil;
-
 import java.io.Serializable;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
+import org.jeecgframework.core.common.service.CommonService;
+
+import weixin.p3.linksucai.entity.WeixinLinksucaiEntity;
 
 public interface WeixinLinksucaiServiceI extends CommonService{
 	
