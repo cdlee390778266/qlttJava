@@ -9,10 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.velocity.VelocityContext;
-import org.jeecgframework.minidao.pojo.MiniDaoPage;
 import org.jeecgframework.p3.core.common.utils.AjaxJson;
 import org.jeecgframework.p3.core.common.utils.StringUtil;
-import org.jeecgframework.p3.core.page.SystemTools;
 import org.jeecgframework.p3.core.util.plugin.ViewVelocity;
 import org.jeecgframework.p3.core.web.BaseController;
 import org.springframework.beans.factory.annotation.Autowired;
