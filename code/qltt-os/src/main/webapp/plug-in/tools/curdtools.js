@@ -8,7 +8,7 @@
 var iframe;// iframe操作对象
 var win;//窗口对象
 var gridname="";//操作datagrid对象名称
-var windowapi = frameElement.api, W = windowapi.opener;//内容页中调用窗口实例对象接口
+var windowapi = frameElement ? frameElement.api : undefined, W = windowapi ? windowapi.opener : undefined;//内容页中调用窗口实例对象接口
 
 /**
  * 设置 window的 zIndex
