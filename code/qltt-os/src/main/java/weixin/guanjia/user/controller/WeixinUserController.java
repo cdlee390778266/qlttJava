@@ -31,9 +31,9 @@ import weixin.guanjia.user.service.IUserService;
  */
 @Controller
 @RequestMapping("/weixinUserController")
-public class UserController extends BaseController {
+public class WeixinUserController extends BaseController {
 
-	private static final Logger logger = Logger.getLogger(UserController.class);
+	private static final Logger logger = Logger.getLogger(WeixinUserController.class);
 
 	@Autowired
 	private SystemService systemService;
