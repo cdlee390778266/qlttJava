@@ -3,9 +3,9 @@
 <t:base type="jquery,easyui,tools,DatePicker"></t:base>
 <div class="easyui-layout" fit="true">
   <div region="center" style="padding:1px;">
-  <t:datagrid name="weixinAccountList" checkbox="true" fitColumns="true" title="微信公众帐号信息" actionUrl="weixinAccountController.do?datagrid" idField="id" fit="true" queryMode="group">
-   <t:dgCol title="主键"  field="id"  hidden="false"  queryMode="single"  width="0"></t:dgCol>
-   <t:dgCol title="公众帐号名称"  field="accountname"  hidden="true"  queryMode="single"  width="120"></t:dgCol>
+  <t:datagrid name="weixinAccountList" checkbox="true" fitColumns="true" title="微信标签" actionUrl="weixinUserTagController.do?datagrid" idField="id" fit="true" queryMode="group">
+   <t:dgCol title="标签编号"  field="id"  hidden="false"  queryMode="single"  width="0"></t:dgCol>
+   <t:dgCol title="标签名称"  field="accountname"  hidden="true"  queryMode="single"  width="120"></t:dgCol>
    <t:dgCol title="公众帐号TOKEN"  field="accounttoken"  hidden="true"  queryMode="single"  width="120"></t:dgCol>
    <t:dgCol title="公众微信号"  field="accountnumber"  hidden="true"  queryMode="single"  width="120"></t:dgCol>
    <t:dgCol title="原始ID"  field="weixin_accountid"  hidden="false"  queryMode="single"  width="120"></t:dgCol>

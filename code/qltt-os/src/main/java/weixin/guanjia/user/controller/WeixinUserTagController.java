@@ -25,10 +25,10 @@ import weixin.guanjia.user.service.IUserTagService;
  * 微信用户标签管理：		
  */
 @Controller
-@RequestMapping("/userTagController")
-public class UserTagController extends BaseController {
+@RequestMapping("/weixinUserTagController")
+public class WeixinUserTagController extends BaseController {
 
-	private static final Logger logger = Logger.getLogger(UserTagController.class);
+	private static final Logger logger = Logger.getLogger(WeixinUserTagController.class);
 
 	@Autowired
 	private SystemService systemService;

@@ -2,13 +2,10 @@ package weixin.guanjia.user.entity;
 
 import java.util.Date;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
-
 import org.jeewx.api.wxuser.tag.model.WxTag;
 
-@Entity
-@Table(name="weixin_tag")
+//@Entity
+//@Table(name="weixin_tag")
 public class WeixinTag extends WxTag{
 	private String accountid;
 	private Integer id;
