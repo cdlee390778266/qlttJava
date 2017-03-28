@@ -15,14 +15,14 @@
 		<property name="numberFormat" value="0"></property>
 	</bean>
 
-	<!-- Template Context -->
+	<!-- Template Context
 	<bean id="templetContext" class="org.jeecgframework.web.cgform.engine.TempletContext">
 		<property name="tags">
 			<map>
 				<entry key="DictData" value-ref="dictDataTag" />
 			</map>
 		</property>
-	</bean>
+	</bean> -->
 
 	<!-- 拦截器 -->
 	<mvc:interceptors>
