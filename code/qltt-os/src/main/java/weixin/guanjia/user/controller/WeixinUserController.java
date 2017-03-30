@@ -5,14 +5,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 import org.jeecgframework.core.common.controller.BaseController;
-import org.jeecgframework.core.common.exception.BusinessException;
 import org.jeecgframework.core.common.hibernate.qbc.CriteriaQuery;
 import org.jeecgframework.core.common.model.json.AjaxJson;
 import org.jeecgframework.core.common.model.json.DataGrid;
 import org.jeecgframework.core.util.ResourceUtil;
 import org.jeecgframework.tag.core.easyui.TagUtil;
 import org.jeecgframework.web.system.service.SystemService;
-import org.jeewx.api.wxuser.user.model.Wxuser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,14 +18,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import weixin.guanjia.account.entity.WeixinAccountEntity;
+import weixin.guanjia.user.entity.WeixinUser;
 import weixin.guanjia.user.service.IUserService;
 /**
- * 
- * @ClassName:     WeixinUserController.java 
- * @Description:   微信用户管理：	
- * @author         sunchao/Email:sunchao@qianlong2.net
- * @version        V1.0   
- * @Date           2017年3月20日 下午4:10:02
+ * 微信用户管理：	
  */
 @Controller
 @RequestMapping("/weixinUserController")
@@ -38,8 +32,8 @@ public class WeixinUserController extends BaseController {
 	@Autowired
 	private SystemService systemService;
 	
-	//@Autowired
-	private IUserService weixinUserService;
+	@Autowired
+	private IUserService userService;
 	
 	private String message;
 
@@ -54,9 +48,10 @@ public class WeixinUserController extends BaseController {
 	/**
 	 * 页面跳转-->用户标签列表
 	 */
-	@RequestMapping(params = "users")
-	public ModelAndView weixinAccount(HttpServletRequest request){
-		return new ModelAndView("weixin/guanjia/user/users");
+	@RequestMapping(params = "list")
+	public ModelAndView weixinUser(HttpServletRequest request){
+		logger.debug("进入用户页面----------------------------------");
+		return new ModelAndView("weixin/guanjia/user/userlist");
 	}
 
 	/**
@@ -67,22 +62,18 @@ public class WeixinUserController extends BaseController {
 	 * @param user
 	 */
 	@RequestMapping(params = "datagrid")
-	public void datagrid(Wxuser wxuser,
+	public void datagrid(WeixinUser weixinUser,
 			HttpServletRequest request, HttpServletResponse response,
 			DataGrid dataGrid){
-		CriteriaQuery cq = new CriteriaQuery(Wxuser.class,
+		CriteriaQuery cq = new CriteriaQuery(WeixinUser.class,
 				dataGrid);
 		// 查询条件组装器
+		weixinUser.setAccountid(ResourceUtil.getWeiXinAccountId());
 		org.jeecgframework.core.extend.hqlsearch.HqlGenerateUtil.installHql(cq,
-				wxuser, request.getParameterMap());
-		cq.eq("userName", ResourceUtil.getSessionUserName().getUserName());
-		try {
-			// 自定义追加查询条件
-		} catch (Exception e) {
-			throw new BusinessException(e.getMessage());
-		}
+				weixinUser, request.getParameterMap());
+		cq.eq("accountid", ResourceUtil.getWeiXinAccountId());
 		cq.add();
-		this.weixinUserService.getDataGridReturn(cq, true);
+		userService.getDataGridReturn(cq, true);
 		TagUtil.datagrid(response, dataGrid);
 	}
 	

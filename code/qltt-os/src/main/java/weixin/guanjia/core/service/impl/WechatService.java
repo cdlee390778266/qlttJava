@@ -15,7 +15,7 @@ import org.jeecgframework.web.cgform.engine.FreemarkerHelper;
 import org.jeecgframework.web.system.service.SystemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import weixin.guanjia.account.entity.WeixinAccountEntity;
 import weixin.guanjia.account.service.WeixinAccountServiceI;
 import weixin.guanjia.base.entity.Subscribe;
 import weixin.guanjia.base.entity.WeixinExpandconfigEntity;
@@ -37,6 +37,7 @@ import weixin.guanjia.message.service.NewsItemServiceI;
 import weixin.guanjia.message.service.NewsTemplateServiceI;
 import weixin.guanjia.message.service.ReceiveTextServiceI;
 import weixin.guanjia.message.service.TextTemplateServiceI;
+import weixin.guanjia.user.service.IUserService;
 import weixin.idea.extend.function.KeyServiceI;
 import weixin.util.DateUtils;
 
@@ -62,6 +63,8 @@ public class WechatService {
 	private WeixinExpandconfigServiceI weixinExpandconfigService;
 	@Autowired
 	private WeixinAccountServiceI weixinAccountService;
+	@Autowired
+	private IUserService userService;
 
 	public String coreService(HttpServletRequest request) {
 		String respMessage = null;
@@ -79,10 +82,13 @@ public class WechatService {
 			String msgId = requestMap.get("MsgId");
 			//消息内容
 			String content = requestMap.get("Content");
+			
 			LogUtil.info("------------微信客户端发送请求---------------------   |   fromUserName:"+fromUserName+"   |   ToUserName:"+toUserName+"   |   msgType:"+msgType+"   |   msgId:"+msgId+"   |   content:"+content);
 			//根据微信ID,获取配置的全局的数据权限ID
 			LogUtil.info("-toUserName--------"+toUserName);
-			String sys_accountId = weixinAccountService.findByToUsername(toUserName).getId();
+			WeixinAccountEntity accountEntity = weixinAccountService.findByToUsername(toUserName);
+			String sys_accountId = accountEntity.getId();
+			
 			LogUtil.info("-sys_accountId--------"+sys_accountId);
 			ResourceBundle bundler = ResourceBundle.getBundle("sysConfig");
 			// 默认回复此文本消息
@@ -124,10 +130,11 @@ public class WechatService {
 				// 订阅
 				if (eventType.equals(MessageUtil.EVENT_TYPE_SUBSCRIBE)) {
 					respMessage = doDingYueEventResponse(requestMap, textMessage, bundler, respMessage, toUserName, fromUserName, respContent, sys_accountId);
+					userService.subscribe(toUserName,fromUserName);
 				}
 				// 取消订阅
 				else if (eventType.equals(MessageUtil.EVENT_TYPE_UNSUBSCRIBE)) {
-					// TODO 取消订阅后用户再收不到公众号发送的消息，因此不需要回复消息
+					userService.unSubscribe(sys_accountId,fromUserName);
 				}
 				// 自定义菜单点击事件
 				else if (eventType.equals(MessageUtil.EVENT_TYPE_CLICK)) {

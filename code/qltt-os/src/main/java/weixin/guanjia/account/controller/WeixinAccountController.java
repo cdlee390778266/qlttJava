@@ -66,6 +66,7 @@ public class WeixinAccountController extends BaseController {
 	 */
 	@RequestMapping(params = "weixinAccount")
 	public ModelAndView weixinAccount(HttpServletRequest request) {
+		logger.debug("进入账号界面----------------------------");
 		return new ModelAndView("weixin/guanjia/account/weixinAccountList");
 	}
 
