@@ -172,7 +172,5 @@ public class WeixinTag extends WxTag implements java.io.Serializable{
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
-	}
-	
-	
+	}	
 }

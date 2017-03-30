@@ -196,6 +196,39 @@ public class WeixinUser implements java.io.Serializable{
 	public void setTagid_list(List<Integer> tagid_list) {
 		this.tagid_list = tagid_list;
 	}
+	
+	
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((accountid == null) ? 0 : accountid.hashCode());
+		result = prime * result + ((openid == null) ? 0 : openid.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		WeixinUser other = (WeixinUser) obj;
+		if (accountid == null) {
+			if (other.accountid != null)
+				return false;
+		} else if (!accountid.equals(other.accountid))
+			return false;
+		if (openid == null) {
+			if (other.openid != null)
+				return false;
+		} else if (!openid.equals(other.openid))
+			return false;
+		return true;
+	}
 
 	@Override
 	public String toString() {
