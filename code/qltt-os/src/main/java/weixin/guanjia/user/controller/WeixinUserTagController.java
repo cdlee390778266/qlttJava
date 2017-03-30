@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import weixin.guanjia.user.entity.WeixinTag;
+import weixin.guanjia.user.json.ErrorJson;
 import weixin.guanjia.user.service.IUserTagService;
 /**
  * 微信用户标签管理：		
@@ -50,8 +51,31 @@ public class WeixinUserTagController extends BaseController {
 	 * 页面跳转-->用户标签列表
 	 */
 	@RequestMapping(params = "list")
-	public ModelAndView weixinAccount(HttpServletRequest request) {
+	public ModelAndView weixinUserTag(HttpServletRequest request) {
+		logger.debug("进入标签列表界面----------------------------");
 		return new ModelAndView("weixin/guanjia/user/userTaglist");
+	}
+	
+	/**
+	 * 页面跳转-->打开新增页面
+	 */
+	@RequestMapping(params = "goAdd")
+	public ModelAndView goAdd() {
+		return new ModelAndView("weixin/guanjia/user/usertag-add");
+	}
+	
+	/**
+	 * 页面跳转-->打开编辑页面
+	 */
+	@RequestMapping(params = "goUpdate")
+	public ModelAndView goUpdate(WeixinTag weixinTag,
+			HttpServletRequest req){
+		weixinTag.setAccountid(ResourceUtil.getWeiXinAccountId());
+		if(weixinTag.getId() != null) {
+			weixinTag = userTagService.getEntity(WeixinTag.class,weixinTag);
+			req.setAttribute("usertag", weixinTag);
+		}
+		return new ModelAndView("weixin/guanjia/user/usertag-update");
 	}
 
 	/**
@@ -71,6 +95,7 @@ public class WeixinUserTagController extends BaseController {
 		org.jeecgframework.core.extend.hqlsearch.HqlGenerateUtil.installHql(cq,
 				weixinTag, request.getParameterMap());
 		cq.eq("accountid", ResourceUtil.getWeiXinAccountId());
+		cq.eq("status", 1);
 		try {
 			// 自定义追加查询条件
 		} catch (Exception e) {
@@ -96,15 +121,43 @@ public class WeixinUserTagController extends BaseController {
 		return j;
 	}
 
+	private ErrorJson doDel(WeixinTag weixinTag) {
+		ErrorJson rsp = userTagService.delWeixinTag(weixinTag);
+		systemService.addLog(rsp.getErrmsg(), Globals.Log_Type_DEL,
+				Globals.Log_Leavel_INFO);
+		return rsp;
+	}
+	
 	/**
-	 * Ajax:删除一个标签
+	 * 批量删除标签
 	 */
-	@RequestMapping(params = "doDel")
+	@RequestMapping(params = "doBatchDel")
 	@ResponseBody
-	public AjaxJson doDel(WeixinTag weixinTag,
-			HttpServletRequest request) {
+	public AjaxJson doBatchDel(String ids, HttpServletRequest request) {
 		AjaxJson j = new AjaxJson();
-		String message = userTagService.delWeixinTag(weixinTag);
+		message = "删除信息数据成功";
+		int succeed = 0;
+		int error = 0;
+		try {
+			WeixinTag weixinTag = new WeixinTag();
+			weixinTag.setAccountid(ResourceUtil.getWeiXinAccountId());
+			for (String id : ids.split(",")) {
+				if(id!=null && id.trim().length()!=0){
+					weixinTag.setId(Integer.parseInt(id.trim()));
+					ErrorJson rsp = doDel(weixinTag);
+					if(rsp.getErrcode()==0)
+						succeed += 1;
+					else
+						error += 1;
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			error += 1;
+			message = "删除信息数据失败";
+			throw new BusinessException(e.getMessage());
+		}
+		message="删除信息数据成功"+succeed+"条，失败"+error+"条";
 		j.setMsg(message);
 		return j;
 	}
@@ -117,7 +170,26 @@ public class WeixinUserTagController extends BaseController {
 	public AjaxJson doUpdate(WeixinTag weixinTag,
 			HttpServletRequest request) {
 		AjaxJson j = new AjaxJson();
+		weixinTag.setAccountid(ResourceUtil.getWeiXinAccountId());//设置微信账号
 		String message = userTagService.updateWeixinTag(weixinTag);
+		systemService.addLog(message, Globals.Log_Type_DEL,
+				Globals.Log_Leavel_INFO);
+		j.setMsg(message);
+		return j;
+	}
+	
+
+	/**
+	 * Ajax：将微信上的标签和本地数据库同步
+	 */
+	@RequestMapping(params = "doSame")
+	@ResponseBody
+	public AjaxJson doSame(WeixinTag weixinTag) {
+		AjaxJson j = new AjaxJson();
+		weixinTag.setAccountid(ResourceUtil.getWeiXinAccountId());//设置微信账号
+		String message = userTagService.doSameWeixinTag(weixinTag);
+		systemService.addLog(message, Globals.Log_Type_DEL,
+				Globals.Log_Leavel_INFO);
 		j.setMsg(message);
 		return j;
 	}

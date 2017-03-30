@@ -8,7 +8,6 @@ import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.hibernate.validator.util.privilegedactions.GetAnnotationParameter;
 import org.jeecgframework.web.system.manager.ClientManager;
 import org.jeecgframework.web.system.pojo.base.TSRoleFunction;
 import org.jeecgframework.web.system.pojo.base.TSUser;
@@ -251,6 +250,5 @@ public class ResourceUtil {
 	public static void main(String[] args) {
 		org.jeecgframework.core.util.LogUtil.info(getPorjectPath());
 		org.jeecgframework.core.util.LogUtil.info(getSysPath());
-
 	}
 }

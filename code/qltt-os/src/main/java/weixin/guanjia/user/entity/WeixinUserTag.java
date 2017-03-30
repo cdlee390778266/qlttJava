@@ -7,21 +7,19 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.jeewx.api.wxuser.tag.model.WxTag;
-
 @Entity
-@Table(name="weixin_tag")
+@Table(name="weixin_user_tags")
 @SuppressWarnings("serial")
-public class WeixinTag extends WxTag implements java.io.Serializable{
+public class WeixinUserTag implements java.io.Serializable{
 	
 	/**微信账号*/
 	private String accountid;
 	
+	/**用户的标识*/
+	private String openid;
+	
 	/**标签编号*/
 	private Integer id;
-	
-	/**标签名称*/
-	private String name;
 	
 	/**标签状态*/
 	private Integer status;
@@ -55,6 +53,16 @@ public class WeixinTag extends WxTag implements java.io.Serializable{
 	}
 	
 	@Id
+	@Column(name ="OPENID",nullable=false,length=30)
+	public String getOpenid() {
+		return openid;
+	}
+	
+	public void setOpenid(String openid) {
+		this.openid = openid;
+	}
+	
+	@Id
 	@Column(name ="ID",nullable=false)
 	public Integer getId() {
 		return id;
@@ -62,15 +70,6 @@ public class WeixinTag extends WxTag implements java.io.Serializable{
 	
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	@Column(name ="NAME",nullable=false,length=20)
-	public String getName() {
-		return name;
-	}
-	
-	public void setName(String name) {
-		this.name = name;
 	}
 	
 	@Column(name ="STATUS",nullable=false)
@@ -135,44 +134,4 @@ public class WeixinTag extends WxTag implements java.io.Serializable{
 	public void setUpdate_date(Date update_date) {
 		this.update_date = update_date;
 	}
-
-	@Override
-	public String toString() {
-		return "WeixinTag [accountid=" + accountid + ", id=" + id + ", name=" + name + ", status=" + status
-				+ ", create_name=" + create_name + ", create_by=" + create_by + ", create_date=" + create_date
-				+ ", update_name=" + update_name + ", update_by=" + update_by + ", update_date=" + update_date + "]";
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((accountid == null) ? 0 : accountid.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		WeixinTag other = (WeixinTag) obj;
-		if (accountid == null) {
-			if (other.accountid != null)
-				return false;
-		} else if (!accountid.equals(other.accountid))
-			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		return true;
-	}
-	
-	
 }
