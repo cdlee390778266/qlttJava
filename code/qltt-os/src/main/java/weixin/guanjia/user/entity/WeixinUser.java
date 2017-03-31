@@ -9,8 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import weixin.guanjia.user.json.JSONUtil;
-
 @Entity
 @Table(name="weixin_user")
 @SuppressWarnings("serial")
@@ -46,7 +44,7 @@ public class WeixinUser implements java.io.Serializable{
 	private String headimgurl;
 	
 	/**用户关注时间*/
-	private Integer subscribeTime;
+	private Integer subscribe_time;
 	
 	/**公众号*/
 	private String unionid;
@@ -56,6 +54,9 @@ public class WeixinUser implements java.io.Serializable{
 	
 	/**分组*/
 	private Integer groupid;
+	
+	/**是否被拉黑*/
+	private Integer isblack;
 	
 	/**标签*/
 	private List<Integer> tagid_list = new ArrayList<Integer>();
@@ -153,12 +154,12 @@ public class WeixinUser implements java.io.Serializable{
 	}
 
 	@Column(name ="SUBSCRIBE_TIME",nullable=false)
-	public Integer getSubscribeTime() {
-		return subscribeTime;
+	public Integer getSubscribe_time() {
+		return subscribe_time;
 	}
 
-	public void setSubscribeTime(Integer subscribeTime) {
-		this.subscribeTime = subscribeTime;
+	public void setSubscribe_time(Integer subscribe_time) {
+		this.subscribe_time = subscribe_time;
 	}
 
 	@Column(name ="UNIONID",nullable=true,length=30)
@@ -198,6 +199,14 @@ public class WeixinUser implements java.io.Serializable{
 	}
 	
 	
+	@Column(name ="ISBLACK",nullable=true)
+	public Integer getIsblack() {
+		return isblack;
+	}
+
+	public void setIsblack(Integer isblack) {
+		this.isblack = isblack;
+	}
 
 	@Override
 	public int hashCode() {
@@ -234,13 +243,28 @@ public class WeixinUser implements java.io.Serializable{
 	public String toString() {
 		return "WeixinUser [accountid=" + accountid + ", subscribe=" + subscribe + ", openid=" + openid + ", nickname="
 				+ nickname + ", sex=" + sex + ", city=" + city + ", country=" + country + ", province=" + province
-				+ ", language=" + language + ", headimgurl=" + headimgurl + ", subscribeTime=" + subscribeTime
+				+ ", language=" + language + ", headimgurl=" + headimgurl + ", subscribe_time=" + subscribe_time
 				+ ", unionid=" + unionid + ", remark=" + remark + ", groupid=" + groupid + ", tagid_list=" + tagid_list+"]";
 	}
 
 	public static void main(String[] args) {
-		String json = "{\"subscribe\": 1,\"openid\": \"otvxTs4dckWG7imySrJd6jSi0CWE\",\"nickname\": \"iWithery\", \"sex\": 1, \"language\": \"zh_CN\", \"city\":\"Jieyang\",\"province\": \"Guangdong\",\"country\": \"China\",  \"headimgurl\": \"http://wx.qlogo.cn/mmopen/xbIQx1GRqdvyqkMMhEaGOX802l1CyqMJNgUzKP8MeAeHFicRDSnZH7FY4XB7p8XHXIf6uJA2SCunTPicGKezDC4saKISzRj3nz/0\",\"subscribeTime\": 1434093047, \"unionid\": \"oR5GjjgEhCMJFyzaVZdrxZ2zRRF4\",\"remark\": \"\", \"groupid\": 0, \"tagid_list\":[128,2]}";
+		/*String json = "{\"subscribe\": 1,\"openid\": \"otvxTs4dckWG7imySrJd6jSi0CWE\",\"nickname\": \"iWithery\", \"sex\": 1, \"language\": \"zh_CN\", \"city\":\"Jieyang\",\"province\": \"Guangdong\",\"country\": \"China\",  \"headimgurl\": \"http://wx.qlogo.cn/mmopen/xbIQx1GRqdvyqkMMhEaGOX802l1CyqMJNgUzKP8MeAeHFicRDSnZH7FY4XB7p8XHXIf6uJA2SCunTPicGKezDC4saKISzRj3nz/0\",\"subscribe_time\": 1434093047, \"unionid\": \"oR5GjjgEhCMJFyzaVZdrxZ2zRRF4\",\"remark\": \"\", \"groupid\": 0, \"tagid_list\":[128,2]}";
 		WeixinUser weixinUser = JSONUtil.toBean(json, WeixinUser.class);
-		System.out.println(weixinUser);
+		System.out.println(weixinUser);*/
+		
+		WeixinUser user1 = new WeixinUser();
+		user1.setAccountid("Accountid");
+		user1.setOpenid("Openid");
+		
+		WeixinUser user2= new WeixinUser();
+		user2.setAccountid("Accountid");
+		user2.setOpenid("1111");
+		
+		List<WeixinUser> list = new ArrayList<WeixinUser>();
+		list.add(user1);
+		
+		int index = list.indexOf(user2);
+		
+		System.out.println(index);
 	}
 }

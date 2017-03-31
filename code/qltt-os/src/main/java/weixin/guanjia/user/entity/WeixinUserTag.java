@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="weixin_user_tags")
+@Table(name="weixin_user_tag")
 @SuppressWarnings("serial")
 public class WeixinUserTag implements java.io.Serializable{
 	

@@ -27,12 +27,12 @@
  function myupdate(title,url,gname,width,height){
 	 gridname = gname;//datagrid的名字
 	 var getData = $('#'+gridname).datagrid('getSelections');//获取选中的记录
-	 console.log(getData)
+	 //console.log(getData)
 	 if(getData.length != 1){
 		tip('请选择一个标签进行编辑');
 		return;
 	}
-	 console.log(getData[0])
+	 //console.log(getData[0])
 	 url += '&id=' + getData[0].id;
 	 console.log(url);
 	createwindow(title, url,width,height);

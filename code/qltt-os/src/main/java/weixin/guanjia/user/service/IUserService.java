@@ -28,4 +28,15 @@ public interface IUserService extends CommonService{
 	 * 当用户关注该公账号，调用该函数
 	 */
 	WeixinUser subscribe(String accountid, String openid);
+
+	/**
+	 * 微信用户同步
+	 */
+	String doSameWeixinUser(String accountid);
+
+	String doModifyRemark(WeixinUser user);
+
+	String doSameBlack(String accountid);
+
+	String blackList(String accountid, String[] openids, Integer black);
 }
