@@ -25,12 +25,15 @@
  <script type="text/javascript">
 //将微信和本地数据库的信息同步
  function doSameUser(title,url,gname){
+	var $mask = masking(null);
+	//console.log("gname:"+gname)
 	$.ajax({
 		url : url,
 		type : 'post',
 		data : null,
 		cache : false,
 		success : function(data) {
+			unmasking($mask);
 			var d = $.parseJSON(data);
 			if (d.success) {
 				var msg = d.msg;
@@ -43,6 +46,7 @@
 
 //更改用户备注名
 function modifyRemark(title,addurl,gname,width,height){
+	//console.log("gname:"+gname)
 	var getData = $('#'+gname).datagrid('getSelections');//获取选中的记录
 	if(getData.length==1){
 		addurl += '&openid=' + getData[0].openid;
@@ -55,12 +59,14 @@ function modifyRemark(title,addurl,gname,width,height){
  
  //用户黑名单同步
  function doSameBlack(title,url,gname){
+	var $mask = masking(null);
 	$.ajax({
 		url : url,
 		type : 'post',
 		data : null,
 		cache : false,
 		success : function(data) {
+			unmasking($mask);
 			var d = $.parseJSON(data);
 			if (d.success) {
 				var msg = d.msg;
@@ -78,6 +84,7 @@ function modifyRemark(title,addurl,gname,width,height){
     if(rows.length > 0) {
     	$.dialog.setting.zIndex = getzIndex(true);
     	$.dialog.confirm('你确认要拉黑这些用户?', function(r) {
+    	  
 		   if(r){
 			   var openids = [];
 			   var index = 0;
@@ -92,7 +99,8 @@ function modifyRemark(title,addurl,gname,width,height){
 				var data ={};
 				data.openids = openids;
 				data.black = 1;
-				console.log(data);
+				//console.log(data);
+				var $mask = masking(null);
 				$.ajax({
 					url : url,
 					type : 'post',
@@ -101,6 +109,7 @@ function modifyRemark(title,addurl,gname,width,height){
 					success : function(data) {
 						var d = $.parseJSON(data);
 						if (d.success) {
+							unmasking($mask);
 							var msg = d.msg;
 							tip(msg);
 							reloadTable();
@@ -136,12 +145,14 @@ function modifyRemark(title,addurl,gname,width,height){
 				var data ={};
 				data.openids = openids;
 				data.black = 0;
+				var $mask = masking(null);
 				$.ajax({
 					url : url,
 					type : 'post',
 					data : data,
 					cache : false,
 					success : function(data) {
+						unmasking($mask);
 						var d = $.parseJSON(data);
 						if (d.success) {
 							var msg = d.msg;

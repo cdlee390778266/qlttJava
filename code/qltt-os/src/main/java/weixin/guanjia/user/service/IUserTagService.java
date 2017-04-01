@@ -37,4 +37,9 @@ public interface IUserTagService extends CommonService{
 	 * 将微信服务器和本地数据库中的标签进行同步，以微信为基础
 	 */
 	public String doSameWeixinTag(WeixinTag weixinTag);
+
+	/**
+	 * 设置用户标签
+	 */
+	public String doTagUsersSet(String accountid, Integer tagid, String[] openids);
 }

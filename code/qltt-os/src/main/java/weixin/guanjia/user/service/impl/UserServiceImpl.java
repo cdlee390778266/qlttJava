@@ -16,7 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import weixin.guanjia.account.entity.WeixinAccountEntity;
 import weixin.guanjia.account.service.WeixinAccountServiceI;
-import weixin.guanjia.user.api.JwUserAPI;
+import weixin.guanjia.api.JwUserAPI;
 import weixin.guanjia.user.entity.WeixinUser;
 import weixin.guanjia.user.entity.WeixinUserTag;
 import weixin.guanjia.user.json.ErrorJson;

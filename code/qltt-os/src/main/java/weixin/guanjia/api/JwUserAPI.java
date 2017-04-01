@@ -1,4 +1,4 @@
-package weixin.guanjia.user.api;
+package weixin.guanjia.api;
 
 import java.util.ArrayList;
 import java.util.HashMap;
