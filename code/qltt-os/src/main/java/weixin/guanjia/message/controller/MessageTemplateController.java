@@ -1,7 +1,5 @@
 package weixin.guanjia.message.controller;
 
-import java.io.IOException;
-import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
@@ -16,10 +14,8 @@ import org.jeecgframework.core.common.model.json.DataGrid;
 import org.jeecgframework.core.constant.Globals;
 import org.jeecgframework.core.util.StringUtil;
 import org.jeecgframework.tag.core.easyui.TagUtil;
-import org.jeecgframework.web.system.pojo.base.TSRole;
 import org.jeecgframework.web.system.service.SystemService;
 import org.jeewx.api.core.exception.WexinReqException;
-import org.jeewx.api.wxsendmsg.JwSendMessageAPI;
 import org.jeewx.api.wxsendmsg.JwSendTemplateMsgAPI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,16 +23,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.google.gson.JsonArray;
-
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
-import weixin.guanjia.account.entity.WeixinAccountEntity;
 import weixin.guanjia.account.service.WeixinAccountServiceI;
 import weixin.guanjia.message.entity.MessageTemplate;
 import weixin.guanjia.message.service.MessageTemplateService;
-import weixin.util.StringTypeUtil;
 import weixin.util.MessageTemplateApiUtil;
+import weixin.util.StringTypeUtil;
 
 /**
  * 自动回复关键字

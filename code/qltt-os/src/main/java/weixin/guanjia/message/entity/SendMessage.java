@@ -5,13 +5,15 @@ import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.jeecgframework.core.common.entity.IdEntity;
 
 @Entity
 @Table(name="WEIXIN_SEND_TEMPLATE_MESSAGE")
-public class SendMessage extends IdEntity {
+public class SendMessage {
+	@Id
 	@Column(name="id")
 	private String id;
 	@Column(name="template_id")
