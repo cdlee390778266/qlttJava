@@ -14,16 +14,9 @@ import javax.servlet.jsp.JspTagException;
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.TagSupport;
 
-import org.jeecgframework.web.system.pojo.base.TSType;
-import org.jeecgframework.web.system.pojo.base.TSTypegroup;
-import org.jeecgframework.web.system.service.SystemService;
-
-import net.sf.json.JSONObject;
-
 import org.apache.commons.lang.StringUtils;
 import org.jeecgframework.core.constant.Globals;
 import org.jeecgframework.core.util.ApplicationContextUtil;
-import org.jeecgframework.core.util.DataUtils;
 import org.jeecgframework.core.util.ResourceUtil;
 import org.jeecgframework.core.util.StringUtil;
 import org.jeecgframework.core.util.oConvertUtils;
@@ -31,7 +24,12 @@ import org.jeecgframework.tag.vo.easyui.ColumnValue;
 import org.jeecgframework.tag.vo.easyui.DataGridColumn;
 import org.jeecgframework.tag.vo.easyui.DataGridUrl;
 import org.jeecgframework.tag.vo.easyui.OptTypeDirection;
+import org.jeecgframework.web.system.pojo.base.TSType;
+import org.jeecgframework.web.system.pojo.base.TSTypegroup;
+import org.jeecgframework.web.system.service.SystemService;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import net.sf.json.JSONObject;
 
 
 /**
@@ -814,7 +812,8 @@ public class DataGridTag extends TagSupport {
 	 */
 	protected void getOptUrl(StringBuffer sb) {
 		//注：操作列表会带入合计列中去，故加此判断
-		sb.append("if(!rec.id){return '';}");
+		//sb.append("if(!rec.id){return '';}");
+		//TODO
 		List<DataGridUrl> list = urlList;
 		sb.append("var href='';");
 		for (DataGridUrl dataGridUrl : list) {

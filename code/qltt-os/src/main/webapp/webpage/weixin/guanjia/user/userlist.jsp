@@ -15,10 +15,11 @@
    <!-- <t:dgCol title="关注时间"   field="subscribeTime"  hidden="false"  formatter="yyyy-MM-dd hh:mm:ss"  width="120"></t:dgCol> --> 
    <t:dgCol title="是否拉黑"   field="isblack"         dictionary="isblack" hidden="true"    width="120"  query="true" queryMode="single" ></t:dgCol>
    <t:dgCol title="备注"       field="remark"         hidden="true"    width="120"></t:dgCol>
-   <t:dgToolBar title="更新备注"  icon="icon-edit" width="450" height="150" url="weixinUserController.do?goModifyRemark" funname="modifyRemark"></t:dgToolBar>
+   <t:dgCol title="操作" field="opt" width="100"></t:dgCol>
+   <t:dgFunOpt title="更新备注" funname="goModifyRemark(openid)"></t:dgFunOpt>
    <t:dgToolBar title="用户同步"  icon="icon-reload" url="weixinUserController.do?doSameUser" funname="doSameUser"></t:dgToolBar>
-   <t:dgToolBar title="拉黑用户"  icon="icon-redo" url="weixinUserController.do?blackList" funname="batchBlackList"></t:dgToolBar>
-   <t:dgToolBar title="取消拉黑"  icon="icon-undo" url="weixinUserController.do?blackList" funname="batchUnBlackList"></t:dgToolBar>
+   <t:dgToolBar title="批量拉黑用户"  icon="icon-redo" url="weixinUserController.do?blackList" funname="batchBlackList"></t:dgToolBar>
+   <t:dgToolBar title="批量取消拉黑"  icon="icon-undo" url="weixinUserController.do?blackList" funname="batchUnBlackList"></t:dgToolBar>
   </t:datagrid>
   </div>
  </div>
@@ -43,7 +44,12 @@
 		}
 	});
 }
-
+//更新一个标签
+ function goModifyRemark(id){
+	var url = "weixinUserController.do?goModifyRemark&openid="+id;
+	createwindow("更改备注", url,450,150);
+ }
+ 
 //更改用户备注名
 function modifyRemark(title,addurl,gname,width,height){
 	//console.log("gname:"+gname)

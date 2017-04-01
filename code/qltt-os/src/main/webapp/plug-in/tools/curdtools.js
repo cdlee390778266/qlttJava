@@ -1087,4 +1087,3 @@ function masking(name) {
 function unmasking($mask) {
 	$mask.remove();
 }
-
