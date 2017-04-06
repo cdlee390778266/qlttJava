@@ -127,6 +127,18 @@ public class ResourceUtil {
 	}
 	
 	/**
+	 * 获得不带请求参数的请求路径
+	 * 
+	 * @param request
+	 * @return
+	 */
+	public static String getJustRequestPath(HttpServletRequest request) {
+		String requestPath = request.getRequestURI();
+		requestPath = requestPath.substring(request.getContextPath().length() + 1);   //去掉项目路径
+		return requestPath;
+	}
+	
+	/**
 	 * 没有登录，跳转到登陆界面，获得登录前的url
 	 * @param request
 	 * @return
