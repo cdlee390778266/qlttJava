@@ -1,4 +1,5 @@
-﻿<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+﻿<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.qianlong</groupId>
 	<version>3.0.0</version>
@@ -80,6 +81,9 @@
 		<aopalliance.version>1.0</aopalliance.version>
 		<xstream.version>1.4.4</xstream.version>
 		<groovy.version>2.3.3</groovy.version>
+
+		<!-- JZMQ Client -->
+		<jeromq.version>0.3.4</jeromq.version>
 	</properties>
 
 	<repositories>
@@ -148,6 +152,23 @@
 	</pluginRepositories>
 
 	<dependencies>
+	
+
+
+		<!-- https://mvnrepository.com/artifact/com.google.protobuf/protobuf-java -->
+		<dependency>
+			<groupId>com.google.protobuf</groupId>
+			<artifactId>protobuf-java</artifactId>
+			<version>3.2.0</version>
+		</dependency>
+
+
+		<!-- https://mvnrepository.com/artifact/org.zeromq/jeromq -->
+		<dependency>
+			<groupId>org.zeromq</groupId>
+			<artifactId>jeromq</artifactId>
+			<version>${jeromq.version}</version>
+		</dependency>
 		<!-- activation -->
 		<dependency>
 			<groupId>javax.activation</groupId>
@@ -539,7 +560,8 @@
 			<version>${commons-chain.version}</version>
 		</dependency>
 		<!-- commons-codec -->
-		<!-- <dependency> <groupId>commons-codec</groupId> <artifactId>commons-codec</artifactId> <version>${commons-codec.version}</version> </dependency> -->
+		<!-- <dependency> <groupId>commons-codec</groupId> <artifactId>commons-codec</artifactId> 
+			<version>${commons-codec.version}</version> </dependency> -->
 		<!-- commons-digester -->
 		<dependency>
 			<groupId>commons-digester</groupId>
