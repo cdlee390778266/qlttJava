@@ -1070,3 +1070,20 @@ function doAjaxSubmit(url,callback){
 	});
 }
 
+//加载遮罩
+function masking(name) {
+	if(!name){
+		name="请稍后"
+	}
+	var $mask = $('<div id="overlay"></div><div id="preloader">' + name + '..</div>');
+	$('body').append($mask);
+	$('#overlay').css('opacity', 0.1).fadeIn(function() {
+		$('#preloader').fadeIn();
+	});
+	return $mask;
+}
+
+
+function unmasking($mask) {
+	$mask.remove();
+}

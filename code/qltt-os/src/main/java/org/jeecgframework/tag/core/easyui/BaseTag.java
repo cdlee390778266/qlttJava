@@ -144,6 +144,7 @@ public class BaseTag extends TagSupport {
 				}else{
 					sb.append("<link rel=\"stylesheet\" href=\"plug-in/tools/css/common.css\" type=\"text/css\"></link>");
 				}
+				sb.append("<link rel=\"stylesheet\" href=\"plug-in/login/css/zice.style.css\" type=\"text/css\"></link>");
 				sb.append("<script type=\"text/javascript\" src=\"plug-in/lhgDialog/lhgdialog.min.js\"></script>");
 				sb.append("<script type=\"text/javascript\" src=\"plug-in/tools/curdtools.js\"></script>");
 				sb.append("<script type=\"text/javascript\" src=\"plug-in/tools/easyuiextend.js\"></script>");

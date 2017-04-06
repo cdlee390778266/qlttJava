@@ -812,7 +812,7 @@ public class DataGridTag extends TagSupport {
 	 */
 	protected void getOptUrl(StringBuffer sb) {
 		//注：操作列表会带入合计列中去，故加此判断
-		sb.append("if(!rec.id){return '';}");
+		//sb.append("if(!rec.id){return '';}");
 		List<DataGridUrl> list = urlList;
 		sb.append("var href='';");
 		for (DataGridUrl dataGridUrl : list) {

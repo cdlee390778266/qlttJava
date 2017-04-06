@@ -8,16 +8,17 @@ import org.jeecgframework.core.common.controller.BaseController;
 import org.jeecgframework.core.common.hibernate.qbc.CriteriaQuery;
 import org.jeecgframework.core.common.model.json.AjaxJson;
 import org.jeecgframework.core.common.model.json.DataGrid;
+import org.jeecgframework.core.constant.Globals;
 import org.jeecgframework.core.util.ResourceUtil;
 import org.jeecgframework.tag.core.easyui.TagUtil;
 import org.jeecgframework.web.system.service.SystemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import weixin.guanjia.account.entity.WeixinAccountEntity;
 import weixin.guanjia.user.entity.WeixinUser;
 import weixin.guanjia.user.service.IUserService;
 /**
@@ -53,6 +54,17 @@ public class WeixinUserController extends BaseController {
 		logger.debug("进入用户页面----------------------------------");
 		return new ModelAndView("weixin/guanjia/user/userlist");
 	}
+	
+	/**
+	 * 页面跳转-->更改用户备注
+	 */
+	@RequestMapping(params = "goModifyRemark")
+	public ModelAndView goModifyRemark(WeixinUser user,HttpServletRequest request) {
+		user.setAccountid( ResourceUtil.getWeiXinAccountId());
+		user = userService.getEntity(WeixinUser.class,user);
+		request.setAttribute("user", user);
+		return new ModelAndView("weixin/guanjia/user/modifyRemark");
+	}
 
 	/**
 	 * easyui AJAX请求数据
@@ -80,37 +92,60 @@ public class WeixinUserController extends BaseController {
 	/**
 	 * Ajax:用户同步
 	 */
-	@RequestMapping(params = "doSame")
+	@RequestMapping(params = "doModifyRemark")
 	@ResponseBody
-	public AjaxJson doSame(WeixinAccountEntity weixinAccount,
-			HttpServletRequest request) {
+	public AjaxJson doSame(WeixinUser user) {
 		AjaxJson j = new AjaxJson();
-		//TODO
-//		message = "微信公众帐号信息添加成功";
-//		try {
-//			// 判断当前帐号是否已经添加微信公众账户
-//			int f = weixinAccountService.findByUsername(
-//					ResourceUtil.getSessionUserName().getUserName()).size();
-//			if (f == 0) {
-//				weixinAccount.setUserName(ResourceUtil.getSessionUserName()
-//						.getUserName());
-//				weixinAccountService.save(weixinAccount);
-//				systemService.addLog(message, Globals.Log_Type_INSERT,
-//						Globals.Log_Leavel_INFO);
-//				//重置session中的微信公众帐号ID
-//				List<WeixinAccountEntity> acclst = weixinAccountService.findByProperty(WeixinAccountEntity.class, "accountnumber", weixinAccount.getAccountnumber());
-//				request.getSession().setAttribute(WeiXinConstants.WEIXIN_ACCOUNT, acclst.get(0));
-//			} else {
-//				message = "微信公众帐号信息添加失败,每个用户只能添加一个微信公众帐号";
-//			}
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//			message = "微信公众帐号信息添加失败";
-//			throw new BusinessException(e.getMessage());
-//		}
-//
-//		j.setMsg(message);
+		String message = userService.doModifyRemark(user);
+		systemService.addLog(message, Globals.Log_Type_DEL,
+				Globals.Log_Leavel_INFO);
+		j.setMsg(message);
 		return j;
 	}
 	
+
+	/**
+	 * Ajax:用户同步
+	 */
+	@RequestMapping(params = "doSameUser")
+	@ResponseBody
+	public AjaxJson doSameUser() {
+		AjaxJson j = new AjaxJson();
+		String accountid = ResourceUtil.getWeiXinAccountId();//设置微信账号
+		String message = userService.doSameWeixinUser(accountid);
+		systemService.addLog(message, Globals.Log_Type_DEL,
+				Globals.Log_Leavel_INFO);
+		j.setMsg(message);
+		return j;
+	}
+	
+	/**
+	 * Ajax:用户同步
+	 */
+	@RequestMapping(params = "doSameBlack")
+	@ResponseBody
+	public AjaxJson doSameBlack(){
+		AjaxJson j = new AjaxJson();
+		String accountid = ResourceUtil.getWeiXinAccountId();//设置微信账号
+		String message = userService.doSameBlack(accountid);
+		systemService.addLog(message, Globals.Log_Type_DEL,
+				Globals.Log_Leavel_INFO);
+		j.setMsg(message);
+		return j;
+	}
+
+	/**
+	 * Ajax:移除黑名单
+	 */
+	@RequestMapping(params = "blackList")
+	@ResponseBody
+	public AjaxJson batchUnBlackList(@RequestParam(value="openids[]") String[] openids,Integer black){
+		AjaxJson j = new AjaxJson();
+		String accountid = ResourceUtil.getWeiXinAccountId();//设置微信账号
+		String message = userService.blackList(accountid,openids,black);
+		systemService.addLog(message, Globals.Log_Type_DEL,
+				Globals.Log_Leavel_INFO);
+		j.setMsg(message);
+		return j;
+	}	
 }

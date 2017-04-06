@@ -2,6 +2,7 @@ package weixin.guanjia.user.service.impl;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -21,6 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
 import net.sf.json.JSONObject;
 import weixin.guanjia.account.service.WeixinAccountServiceI;
 import weixin.guanjia.user.entity.WeixinTag;
+import weixin.guanjia.user.entity.WeixinUserTag;
 import weixin.guanjia.user.json.ErrorJson;
 import weixin.guanjia.user.json.JSONUtil;
 import weixin.guanjia.user.service.IUserTagService;
@@ -127,7 +129,10 @@ public class UserTagServiceImpl extends CommonServiceImpl implements
 		if(0==errorRspJson.getErrcode()){
 			this.getEntity(WeixinTag.class,weixinTag);
 			weixinTag.setName(newName);
-			fillUpdateUserInfo(weixinTag);
+			TSUser user = ResourceUtil.getSessionUserName();
+			weixinTag.setUpdate_name(user.getUserName());
+			weixinTag.setUpdate_by(user.getId());
+			weixinTag.setUpdate_date(new Date());
 			saveOrUpdate(weixinTag);
 		}else{
 			rspMessage = errorRspJson.getErrmsg();
@@ -148,61 +153,23 @@ public class UserTagServiceImpl extends CommonServiceImpl implements
 		query.eq("accountid", weixinTag.getAccountid());
 		query.add();
 		List<WeixinTag> dbTags = getListByCriteriaQuery(query, false);
-		
-		
-		List<WeixinTag> weixinTags = null;
-		//数据库存在，微信服务器不存在，删除
-		if(dbTags!=null){
-			weixinTags = new ArrayList<WeixinTag>();
-			for (WeixinTag dbTag: dbTags) {
-				boolean isExist = false;//本地不存在
-				if(wxTags!=null){//微信上存在，本地数据库不存在
-					for (WxTag wxtag:wxTags) {
-						if(dbTag.getId().equals(wxtag.getId())){//如果存在
-							isExist = true;
-							continue;
-						}
-					}
-				}
-				if(!isExist){
-					weixinTags.add(dbTag);
-				}
-			}
-			if(!weixinTags.isEmpty()){
-				deleteAllEntitie(weixinTags);//批量删除
-			}
+		if(dbTags!=null && !dbTags.isEmpty()){//将原来的全部删除
+			deleteAllEntitie(dbTags);
 		}
 		
-		//微信服务器上存在，本地数据库不存在
 		if(wxTags!=null){
-			weixinTags = new ArrayList<WeixinTag>();
-			for (WxTag wxtag:wxTags) {
-				boolean isExist = false;//本地不存在
-				if(dbTags!=null){
-					for (WeixinTag dbTag: dbTags) {
-						if(dbTag.getId().equals(wxtag.getId())){//如果存在
-							if(!dbTag.getName().equals(wxtag.getName())){//检验两个的名字是否一样
-								dbTag.setName(wxtag.getName());//同步名字
-								fillUpdateUserInfo(dbTag);
-								saveOrUpdate(dbTag);
-							}
-							isExist = true;
-							continue;	
-						}
-					}
-				}
-				
-				if(!isExist){//插入数据库
-					WeixinTag newTag = new WeixinTag();
-					newTag.setAccountid(weixinTag.getAccountid());
-					newTag.setId(wxtag.getId());//由微信返回的id
-					newTag.setName(wxtag.getName());
-					fillCreateUserInfo(newTag);
-					weixinTags.add(newTag);
-				}
+			List<WeixinTag> tags = new ArrayList<WeixinTag>();
+			for (WxTag wxTag: wxTags) {
+				WeixinTag newTag = new WeixinTag();
+				newTag.setAccountid(weixinTag.getAccountid());
+				newTag.setId(wxTag.getId());//由微信返回的id
+				newTag.setName(wxTag.getName());
+				fillCreateUserInfo(newTag);
+				tags.add(newTag);
+				doTagUserSame(weixinTag.getAccountid(),wxTag.getId());//同步标签下的用户
 			}
-			if(!weixinTags.isEmpty()){
-				batchSave(weixinTags);//批量插入
+			if(!tags.isEmpty()){//往本地数据库存
+				batchSave(tags);
 			}
 		}
 		return rspMessage;
@@ -216,14 +183,95 @@ public class UserTagServiceImpl extends CommonServiceImpl implements
 		tag.setCreate_by(user.getId());
 		tag.setCreate_date(createDate);
 		tag.setStatus(1);
-		fillUpdateUserInfo(tag);
-	}
-	
-	private void fillUpdateUserInfo(WeixinTag tag){
-		TSUser user = ResourceUtil.getSessionUserName();
-		Date createDate = new Date();
 		tag.setUpdate_name(user.getUserName());
 		tag.setUpdate_by(user.getId());
 		tag.setUpdate_date(createDate);
+	}
+
+	private String doTagUserSame(String accountid, Integer tagid) {
+		String rspMessage = "操作成功";
+		//从微信上获取所有的标签用户数据
+		String accessToken = weixinAccountService.getAccessToken();//acessTaoken
+		try {
+			List<String> openids = weixin.guanjia.api.JwTagAPI.getTagUsers(accessToken, tagid, null);
+			updateTagUsers(accountid,tagid,openids);
+		} catch (WexinReqException e) {
+			rspMessage = "获取微信服务器数据失败";
+		}
+		return rspMessage;
+	}
+
+	private void updateTagUsers(String accountid, Integer tagid,List<String> openids){
+		CriteriaQuery query = new CriteriaQuery(WeixinUserTag.class);
+		query.eq("accountid", accountid);
+		query.eq("id", tagid);
+		query.add();
+		List<WeixinUserTag> dbUserTags = getListByCriteriaQuery(query, false);//将数据库中的删除
+		if(dbUserTags!=null && !dbUserTags.isEmpty()){
+			deleteAllEntitie(dbUserTags);
+		}
+			
+		List<WeixinUserTag> doAddUserTags = new ArrayList<WeixinUserTag>();//保存新增的
+		WeixinUserTag doAddUserTag = null;
+		if(openids != null && !openids.isEmpty()){
+			for(String openid: openids){//这一个for循环处理本地数据库不存在的
+				doAddUserTag = getWeixinUserTagObject(accountid,openid,tagid);	
+				doAddUserTags.add(doAddUserTag);
+			}
+		}
+		if(!doAddUserTags.isEmpty()){
+			batchSave(doAddUserTags);//批量新增
+		}
+	}
+	
+	private WeixinUserTag getWeixinUserTagObject(String accountid, String openid, Integer tagid) {
+		WeixinUserTag userTag = new WeixinUserTag();
+		userTag.setAccountid(accountid);
+		userTag.setOpenid(openid);
+		userTag.setId(tagid);
+		userTag.setStatus(1);
+		Date create_date = new Date();
+		TSUser user = ResourceUtil.getSessionUserName();
+		userTag.setUpdate_name(user.getUserName());
+		userTag.setUpdate_by(user.getId());
+		userTag.setUpdate_date(create_date);
+		userTag.setCreate_by(user.getId());
+		userTag.setCreate_name(user.getUserName());
+		userTag.setCreate_date(create_date);
+		return userTag;
+	}
+
+	@Override
+	public String doTagUsersSet(String accountid, Integer tagid, String[] openidStrs) {
+		String message = "操作成功";
+		// 将微信上原来的标签删除
+		String accessToken = weixinAccountService.getAccessToken();//acessTaoken
+		List<String> openids = (openidStrs==null||openidStrs.length==0)?null:Arrays.asList(openidStrs);
+		try {
+			//现将微信上所有用户移除
+			List<String> openidsFromWx = weixin.guanjia.api.JwTagAPI.getTagUsers(accessToken, tagid, null);
+			if(openidsFromWx!=null){
+				JSONObject rspJsonObject = JwTagAPI.batchuntagging(accessToken, openidsFromWx, tagid);//将原来的移除标签
+				ErrorJson json = JSONUtil.toBean(rspJsonObject, ErrorJson.class);
+				if(json.getErrcode()!=0){
+					message = json.getErrmsg();
+					return message;
+				}
+			}
+			
+			//将现在设置的用户加上
+			if(openids!=null){
+				JSONObject rspJsonObject = JwTagAPI.batchtagging(accessToken, openids, tagid);//将原来的移除标签
+				ErrorJson json = JSONUtil.toBean(rspJsonObject, ErrorJson.class);
+				if(json.getErrcode()!=0){
+					message = json.getErrmsg();
+					return message;
+				}
+			}
+			updateTagUsers(accountid,tagid,openids);//更新本地数据库
+		} catch (WexinReqException e) {
+			message = "连接微信服务器失败";
+		}
+		return message;
 	}
 }

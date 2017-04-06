@@ -1,5 +1,7 @@
 package weixin.guanjia.user.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -16,11 +18,15 @@ import org.jeecgframework.web.system.service.SystemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import weixin.guanjia.user.entity.WeixinTag;
+import weixin.guanjia.user.entity.WeixinUser;
+import weixin.guanjia.user.entity.WeixinUserTag;
 import weixin.guanjia.user.json.ErrorJson;
+import weixin.guanjia.user.service.IUserService;
 import weixin.guanjia.user.service.IUserTagService;
 /**
  * 微信用户标签管理：		
@@ -36,6 +42,9 @@ public class WeixinUserTagController extends BaseController {
 	
 	@Autowired
 	private IUserTagService userTagService;
+	
+	@Autowired
+	private IUserService userService;
 	
 	private String message;
 
@@ -77,6 +86,16 @@ public class WeixinUserTagController extends BaseController {
 		}
 		return new ModelAndView("weixin/guanjia/user/usertag-update");
 	}
+	
+	/**
+	 * 页面跳转-->标签用户管理页面
+	 */
+	@RequestMapping(params = "goTagUserManage")
+	public ModelAndView goTagUserManage(Integer tagid,
+		HttpServletRequest req){
+		req.setAttribute("tagid", tagid);
+		return new ModelAndView("weixin/guanjia/user/userTagManage");
+	}
 
 	/**
 	 * easyui AJAX请求数据
@@ -107,6 +126,27 @@ public class WeixinUserTagController extends BaseController {
 	}
 	
 	/**
+	 * easyui AJAX请求数据
+	 * @param request
+	 * @param response
+	 * @param dataGrid
+	 * @param user
+	 */
+	@RequestMapping(params = "getAllUsers")
+	public void getAllUsers(WeixinUser weixinUser,
+			HttpServletRequest request, HttpServletResponse response,DataGrid dataGrid){
+		CriteriaQuery cq = new CriteriaQuery(WeixinUser.class,dataGrid);
+		org.jeecgframework.core.extend.hqlsearch.HqlGenerateUtil.installHql(cq,weixinUser, request.getParameterMap());
+		cq.eq("accountid", ResourceUtil.getWeiXinAccountId());
+		cq.eq("subscribe", 1);
+		cq.add();
+		List<WeixinUser> users = userTagService.getListByCriteriaQuery(cq,false);
+		dataGrid.setResults(users);
+		dataGrid.setTotal(users==null?0:users.size());
+		TagUtil.datagrid(response, dataGrid);
+	}
+	
+	/**
 	 * Ajax：新增一个标签
 	 */
 	@RequestMapping(params = "doAdd")
@@ -120,6 +160,25 @@ public class WeixinUserTagController extends BaseController {
 		j.setMsg(message);
 		return j;
 	}
+	
+	
+	/**
+	 * Ajax：获取标签下的用户列表
+	 */
+	@RequestMapping(params = "getTagUsers")
+	@ResponseBody
+	public AjaxJson getTagUsers(Integer tagid) {
+		AjaxJson j = new AjaxJson();
+		CriteriaQuery query = new CriteriaQuery(WeixinUserTag.class);
+		query.eq("accountid", ResourceUtil.getWeiXinAccountId());
+		query.eq("id", tagid);
+		query.eq("status", 1);
+		query.add();
+		List<WeixinUserTag> tagusers = userTagService.getListByCriteriaQuery(query, false);
+		j.setObj(tagusers);
+		return j;
+	}
+
 
 	private ErrorJson doDel(WeixinTag weixinTag) {
 		ErrorJson rsp = userTagService.delWeixinTag(weixinTag);
@@ -171,7 +230,7 @@ public class WeixinUserTagController extends BaseController {
 			HttpServletRequest request) {
 		AjaxJson j = new AjaxJson();
 		weixinTag.setAccountid(ResourceUtil.getWeiXinAccountId());//设置微信账号
-		String message = userTagService.updateWeixinTag(weixinTag);
+		message = userTagService.updateWeixinTag(weixinTag);
 		systemService.addLog(message, Globals.Log_Type_DEL,
 				Globals.Log_Leavel_INFO);
 		j.setMsg(message);
@@ -182,12 +241,27 @@ public class WeixinUserTagController extends BaseController {
 	/**
 	 * Ajax：将微信上的标签和本地数据库同步
 	 */
-	@RequestMapping(params = "doSame")
+	@RequestMapping(params = "doTagSame")
 	@ResponseBody
-	public AjaxJson doSame(WeixinTag weixinTag) {
+	public AjaxJson doTagSame(WeixinTag weixinTag) {
 		AjaxJson j = new AjaxJson();
 		weixinTag.setAccountid(ResourceUtil.getWeiXinAccountId());//设置微信账号
-		String message = userTagService.doSameWeixinTag(weixinTag);
+		message = userTagService.doSameWeixinTag(weixinTag);
+		systemService.addLog(message, Globals.Log_Type_DEL,
+				Globals.Log_Leavel_INFO);
+		j.setMsg(message);
+		return j;
+	}
+	
+	/**
+	 * Ajax：设置标签下的用户
+	 */
+	@RequestMapping(params = "batchTagUser")
+	@ResponseBody
+	public AjaxJson batchTagUser(Integer tagid,@RequestParam(value="openids[]",required=false) String[] openids) {
+		AjaxJson j = new AjaxJson();
+		String accountid = ResourceUtil.getWeiXinAccountId();//设置微信账号
+		message = userTagService.doTagUsersSet(accountid,tagid,openids);
 		systemService.addLog(message, Globals.Log_Type_DEL,
 				Globals.Log_Leavel_INFO);
 		j.setMsg(message);
