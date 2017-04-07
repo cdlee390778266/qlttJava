@@ -20,12 +20,18 @@ public class SendMessage {
 	private String templateId;
 	@Column(name="open_id")
 	private String openId;
+	@Column(name="ttacct")
+	private String ttacct;
+	@Column(name="svcchnl")
+	private Integer svcchnl;
+	@Column(name="devtype")
+	private Integer devtype;
 	@Column(name="content")
 	private Clob content;
 	@Column(name="createtime")
 	private Timestamp createtime;
 	@Column(name="send_status")
-	private String sendStatus;
+	private Integer sendStatus;
 	public String getId() {
 		return id;
 	}
@@ -56,10 +62,28 @@ public class SendMessage {
 	public void setCreatetime(Timestamp createtime) {
 		this.createtime = createtime;
 	}
-	public String getSendStatus() {
+	public Integer getSendStatus() {
 		return sendStatus;
 	}
-	public void setSendStatus(String sendStatus) {
+	public void setSendStatus(Integer sendStatus) {
 		this.sendStatus = sendStatus;
+	}
+	public String getTtacct() {
+		return ttacct;
+	}
+	public void setTtacct(String ttacct) {
+		this.ttacct = ttacct;
+	}
+	public Integer getSvcchnl() {
+		return svcchnl;
+	}
+	public void setSvcchnl(Integer svcchnl) {
+		this.svcchnl = svcchnl;
+	}
+	public Integer getDevtype() {
+		return devtype;
+	}
+	public void setDevtype(Integer devtype) {
+		this.devtype = devtype;
 	}
 }
