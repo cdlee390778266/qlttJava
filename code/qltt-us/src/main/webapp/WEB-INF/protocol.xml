@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xml>
+  <protocols>
+    <protocol>
+      <protocolNo>00000001</protocolNo>
+      <reqURL>/token/getAccessToken</reqURL>
+      <maxCallNo>1000</maxCallNo>
+      <des>获取AcessToken</des>
+    </protocol>
+  </protocols>
+</xml>
