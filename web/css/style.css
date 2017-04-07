@@ -312,6 +312,14 @@ a {
   border-radius: 4px;
 }
 
+#error {
+  height: 4rem;
+  line-height: 4rem;
+  text-align: center;
+  color: #dc3c38;
+  display: none;
+}
+
 /******   login   ******/
 .search {
   position: absolute;
