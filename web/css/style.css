@@ -39,6 +39,10 @@ abbr, acronym {
   border: 0;
 }
 
+input[type="button"], input[type="submit"], input[type="reset"] {
+  -webkit-appearance: none;
+}
+
 html {
   font-size: 10px;
 }
@@ -247,6 +251,8 @@ a {
 }
 
 .login-input-box {
+  display: -webkit-flex;
+  /* Safari */
   display: flex;
   margin-top: 25px;
 }
@@ -307,6 +313,14 @@ a {
   border-color: #ddd;
 }
 
+@media screen and (max-width: 360px) {
+  .btn-code {
+    width: 100px;
+  }
+  .btn-code span {
+    width: 100px;
+  }
+}
 .login-tip {
   margin-top: 2em;
   line-height: 2.2rem;

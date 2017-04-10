@@ -24,6 +24,10 @@ q:before, q:after{content:' '}
 
 abbr,acronym{border:0;}
 
+input[type="button"], input[type="submit"], input[type="reset"] {
+  -webkit-appearance: none;
+}
+
 html{
     font-size: 10px;
 }
@@ -227,7 +231,9 @@ a{
     padding-bottom: 7rem;
 }
 .login-input-box{
+    display: -webkit-flex; /* Safari */
     display: flex;
+
     margin-top: 25px;
     .login-input{
         flex : 1;
@@ -287,6 +293,20 @@ a{
         }
     }
 }
+
+
+
+@media screen and (max-width: 360px){
+  .btn-code{
+      width: 100px;
+      span{
+        width: 100px;
+      }
+  }
+}
+
+
+
 
 .login-tip{
     margin-top: 2em;
