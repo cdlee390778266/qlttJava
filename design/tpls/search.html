@@ -5,6 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
+  <link rel="stylesheet" href="../css/swiper.min.css" />
   <link rel="stylesheet" href="../css/animate.min.css" />
   <link href="../css/style.css" rel="stylesheet">
   
@@ -18,13 +19,22 @@
               <li class="active" >组合指标</li>
               <li>实时指标</li>
               <li>K线指标</li>
+              <li>K线指标</li>
               <li>数据指标</li>
           </ul>
       </div>
     </div>
 
     <!-- 查询内容 -->
-    <div class="search container"></div>
+    <div class="search container swiper-container">
+        <div class="swiper-wrapper"></div>
+    </div>
+    
+    <!-- 加载中 -->
+    <div class="qltt-toast">
+        <i class="qltt-loading qltt-icon_toast"></i>
+        <p class="qltt-toast_content">数据加载中</p>
+    </div>
 
     <!-- 页脚菜单 -->
     <div class="footer">
@@ -49,7 +59,9 @@
     <script src="../js/zepto.min.js"></script>
     <script src="../js/zepto.touch.js"></script>
     <script type="text/javascript" src="../js/iscroll.js" ></script>
+    <script src="../js/swiper.min.js"></script>
     <script src="../js/headerISroll.js"></script>
+    <script src="../js/footer.js"></script>
     <script src="../js/search.js"></script>
   </body>
 </html>
