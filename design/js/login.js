@@ -1,7 +1,7 @@
 /* 
 * @Author: lee
 * @Date:   2017-04-07 15:15:54
-* @Last Modified time: 2017-04-10 09:58:07
+* @Last Modified time: 2017-04-10 17:04:16
 */
 
 $(document).ready(function(){
@@ -19,7 +19,7 @@ $(document).ready(function(){
         var sMobile = $mobile.val();
         if(!(/^1[3|4|5|8][0-9]\d{4,8}$/.test(sMobile))){
             // alert("不是完整的11位手机号或者正确的手机号前七位");
-            $mobile.focus();
+            // $mobile.focus();
             return false;
         }
         return true;
@@ -54,20 +54,28 @@ $(document).ready(function(){
 
         if( !checkMobile($('#phone')) ){
 
-            $errorEle.text('输入的手机号码错误！');
-            $errorEle.show();
+            $errorEle.find('span').text('输入的手机号码错误！');
+            $errorEle.removeClass('fadeOut');
+            $errorEle.addClass('fadeIn');
+            $errorEle.css('display','block');
             return false;
         }
 
         if( $('#code').val().length !=4 ){
-            $errorEle.text('验证码长度不正确！');
-            $errorEle.show();
+            $errorEle.find('span').text('验证码长度不正确！');
+            $errorEle.removeClass('fadeOut');
+            $errorEle.addClass('fadeIn');
+            $errorEle.css('display','block');
             return false;
         }
 
-        
-        
+    });
 
+    $('#error').tap(function(e){
+        e.stopPropagation();
+        $errorEle.removeClass('fadeIn');
+        $errorEle.addClass('fadeOut');
+        $errorEle.css('display','none');
     })    
 
 
