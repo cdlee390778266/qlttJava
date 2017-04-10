@@ -208,7 +208,7 @@ a {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
-  color: #cecece;
+  color: #999;
   text-align: center;
 }
 .footer a .icon {
@@ -287,7 +287,7 @@ a {
   background-position: -145px -432px;
 }
 .login-input-box .login-input .icon.icon-phone:focus {
-  border-bottom: 0.3rem solid #dc3c38;
+  border-bottom: 0.1rem solid #dc3c38;
   transition: all .2s;
 }
 .login-input-box .login-input .icon.icon-code {
@@ -299,7 +299,7 @@ a {
   background-position: -145px -467px;
 }
 .login-input-box .login-input .icon.icon-code:focus {
-  border-bottom: 0.3rem solid #dc3c38;
+  border-bottom: 0.1rem solid #dc3c38;
   transition: all .2s;
 }
 .login-input-box .btn-code {
@@ -360,10 +360,11 @@ a {
   left: 0;
   right: 0;
   top: 0;
-  height: 3rem;
-  line-height: 3rem;
+  height: 4rem;
+  line-height: 4rem;
   text-align: center;
   color: #dc3c38;
+  font-size: 1.6rem;
   display: none;
   z-index: 99;
 }
@@ -435,7 +436,7 @@ a {
 .search .search-item .search-foot > span.active {
   padding-right: 5px;
   background-position: -145px -73px;
-  background-color: #cecece;
+  background-color: #999;
   transition: all .4s;
 }
 .search .div-button {
@@ -445,6 +446,22 @@ a {
   color: #f7b703;
   border: 1px solid #f7b703;
   border-radius: 4px;
+}
+
+/***contract***/
+.ttxieyi {
+  padding: 2rem;
+}
+.ttxieyi h2 {
+  font-size: 1.6rem;
+  color: #333;
+  text-align: center;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+.ttxieyi p {
+  line-height: 2.2rem;
+  color: #666;
 }
 
 /******   loading   ******/
