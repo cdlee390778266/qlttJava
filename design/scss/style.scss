@@ -2,7 +2,9 @@
 
 $red : #dc3c38;
 $red-active:#BB322F;
-$gray : #cecece;
+$black :#333;
+$darkgray :#666;
+$gray : #999;
 $yellow : #f7b703;
 $bgSize : 250px 700px;
 
@@ -265,7 +267,7 @@ a{
                 background-repeat:no-repeat;
                 background-position: -145px -432px;
                 &:focus{
-                  border-bottom:0.3rem solid $red;
+                  border-bottom:0.1rem solid $red;
                   transition: all .2s;
                 }
             }
@@ -278,7 +280,7 @@ a{
                 background-repeat:no-repeat;
                 background-position: -145px -467px;
               &:focus{
-                border-bottom:0.3rem solid $red;
+                border-bottom:0.1rem solid $red;
                 transition: all .2s;
               }
             }
@@ -362,6 +364,7 @@ a{
         width:166px;
         height:50px;
         padding : 10px 0;
+        font-size:1.4rem;
         margin-left: -84px;
         margin-top: -25px;
         text-align: center;
@@ -445,6 +448,23 @@ a{
         border : 1px solid $yellow;
         border-radius: 4px;
     }
+}
+/***contract***/
+.ttxieyi{
+    padding: 2rem;
+    h2{
+      font-size: 1.6rem;
+      color:$black;
+      text-align: center;
+      margin-bottom: 1rem;
+      margin-top: 1rem;
+
+    }
+    p{
+      line-height:2.2rem;
+      color:$darkgray;
+    }
+
 }
 
 /******   loading   ******/
