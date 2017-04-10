@@ -1,7 +1,7 @@
 /* 
 * @Author: lee
 * @Date:   2017-04-07 15:15:54
-* @Last Modified time: 2017-04-07 16:58:24
+* @Last Modified time: 2017-04-10 09:58:07
 */
 
 $(document).ready(function(){
@@ -29,12 +29,13 @@ $(document).ready(function(){
     var changeTime = function(){
         codeTime--;
         if(codeTime>=0){
-            $codeEle.text(codeTime);
+            $codeEle.text(codeTime+'秒后重新发送');
         }else{
             $codeEle.text(codeText);
             clearInterval(interVal);
             codeFlag = true;
             codeTime = codeSrcTime;
+            $codeEle.removeClass('disabled');
         }
         
     }
@@ -43,7 +44,8 @@ $(document).ready(function(){
         if(codeFlag){
             codeText = $(this).text();
             codeFlag = false;
-            $codeEle.text(codeTime);
+            $codeEle.text(codeTime+'秒后重新发送');
+            $codeEle.addClass('disabled');
             interVal = setInterval(changeTime, 1000);
         }
     });

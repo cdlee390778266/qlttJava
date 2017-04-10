@@ -1,7 +1,7 @@
 /* 
 * @Author: lee
 * @Date:   2017-04-07 17:02:56
-* @Last Modified time: 2017-04-07 18:18:01
+* @Last Modified time: 2017-04-10 10:13:36
 */
 
 
@@ -14,7 +14,7 @@ $(document).ready(function(){
             url: '../data/search.json',
             type: 'post',
             success: function(resData){
-                    html += '<div class="search-box" id="' + childId + '" >';
+                    html += '<div class="search-box animated fadeIn" id="' + childId + '" >';
                     for(var i in resData){
                         html += '<div class="search-item " >'
                              +      '<div class="search-head">' + resData[i].searchHead + '</div>'

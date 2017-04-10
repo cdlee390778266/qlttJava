@@ -292,6 +292,11 @@ a {
   border-radius: 4px;
   cursor: pointer;
 }
+.login-input-box .btn-code span.disabled {
+  color: #000;
+  background: #ddd;
+  border-color: #ddd;
+}
 
 .login-tip {
   margin-top: 2em;
