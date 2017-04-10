@@ -1,7 +1,7 @@
 /* 
 * @Author: lee
 * @Date:   2017-04-07 17:02:56
-* @Last Modified time: 2017-04-10 14:18:07
+* @Last Modified time: 2017-04-10 17:57:34
 */
 
 
@@ -59,7 +59,14 @@ $(document).ready(function(){
         createHtml($('.swiper-wrapper'),'search-bod-0');
         Searchswiper = new Swiper('.swiper-container',{
             spaceBetween: 30,
-            observer:true
+            observer:true,
+            onSlideChangeStart: function(){
+                $(document).scrollTop(0);
+            },
+            onSlideChangeEnd: function(){
+                $('#header li').removeClass('active');
+                $('#header li').eq(Searchswiper.activeIndex).addClass('active');
+            }
         });
     }
 
@@ -80,9 +87,7 @@ $(document).ready(function(){
             createHtml($('.swiper-wrapper'),searchBoxId);
         }
 
-        Searchswiper.params.initialSlide = $(this).index();
-        Searchswiper.update();
-
+        Searchswiper.activeIndex = $(this).index();
     });
 
     $('body').delegate('span', 'tap', function(event) {
