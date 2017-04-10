@@ -565,6 +565,9 @@ a {
   right: -6px;
 }
 .tag-check .check-btn {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
   padding: 0 8px;
   margin-top: 15px;
@@ -572,6 +575,9 @@ a {
 .tag-check .check-btn a {
   display: block;
   color: #fff;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
   flex: 1;
   font-size: 1.4rem;
   text-align: center;
@@ -609,6 +615,9 @@ a {
 }
 .srceen .screen-main .screen-item {
   color: #000;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
   line-height: 4rem;
 }
@@ -616,6 +625,9 @@ a {
   background: #fff0ea;
 }
 .srceen .screen-main .screen-item > div {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
   flex: 1;
 }
 .srceen .screen-main .screen-item > div.item-col-1 {
