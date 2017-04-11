@@ -35,6 +35,19 @@
 		<property name="keepAliveSeconds" value="${task.keep_alive_seconds}" />
 	</bean>
 	
+	<!-- 代理线程池 -->
+	<bean id="ataskExecutor"
+		class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+		<!-- 核心线程数 -->
+		<property name="corePoolSize" value="${agent.task.core_pool_size}" />
+		<!-- 最大线程数 -->
+		<property name="maxPoolSize" value="${agent.task.max_pool_size}" />
+		<!-- 队列最大长度 -->
+		<property name="queueCapacity" value="${agent.task.queue_capacity}" />
+		<!-- 线程池维护线程所允许的空闲时间，默认为60s -->
+		<property name="keepAliveSeconds" value="${agent.task.keep_alive_seconds}" />
+	</bean>
+	
 	<!-- 配置数据源1 -->
 	<bean name="dataSource_jeecg" class="com.alibaba.druid.pool.DruidDataSource"
 		init-method="init" destroy-method="close">
