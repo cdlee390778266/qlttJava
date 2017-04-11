@@ -1,50 +1,56 @@
 package weixin.guanjia.message.task;
 
+import java.lang.reflect.InvocationHandler;
 import java.util.concurrent.PriorityBlockingQueue;
 
+import javax.annotation.Resource;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.task.TaskExecutor;
 import org.springframework.stereotype.Service;
-import org.zeromq.ZMQ;
-import org.zeromq.ZMQ.Context;
-import org.zeromq.ZMQ.Socket;
+
+import com.qlcd.util.IBusProcess;
+import com.qlcd.util.ToZMQProxyHandler;
+import com.qlcd.util.ZMQToProxy;
 
 @Service
 public class InitQueue {
 
 	public static PriorityBlockingQueue q = new PriorityBlockingQueue();
+	
+	@Autowired
+	IBusProcess busProcess;
+	
+	@Autowired
+	private ZMQToProxy zmqToProxy;
+	
+	@Resource(name = "ataskExecutor")
+	private TaskExecutor ataskExecutor;
 
 	public InitQueue() throws Exception {
-
 		Thread thr = new Thread(new Runnable() {
-
 			@Override
 			public void run() {
-
+				
 				try {
-
-					Context context = ZMQ.context(1);
-					Socket clients = context.socket(ZMQ.ROUTER);
-					clients.bind("tcp://*:5559");
-
-					Socket workers = context.socket(ZMQ.DEALER);
-					workers.bind("inproc://workers");
-
-					for (int thread_nbr = 0; thread_nbr < 5; thread_nbr++) {
-						Thread worker = new Worker(context, thread_nbr);
-						worker.start();
+					Thread.sleep(3000);
+					while(true){
+						ataskExecutor.execute(new Runnable() {
+							public void run() {
+								try {
+									InvocationHandler handler = new ToZMQProxyHandler(busProcess);
+									zmqToProxy.InBound(handler, busProcess);
+								} catch (Exception e) {
+									e.printStackTrace();
+								}
+							}
+						});
+						Thread.sleep(1000);
 					}
-					// Connect work threads to client threads via a queue
-					ZMQ.proxy(clients, workers, null);
-
-					// We never get here but clean up anyhow
-					clients.close();
-					workers.close();
-					context.term();
-
 				} catch (Exception e) {
-
+					
 				}
 			}
-
 		});
 		thr.start();
 
