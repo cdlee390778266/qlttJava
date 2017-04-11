@@ -3,7 +3,7 @@
 <!DOCTYPE html >
 <html>
 <head>
-<title>JeeWx 开源微信管家平台</title>
+<title>钱龙推推微信管理平台</title>
 <t:base type="jquery,easyui,tools,DatePicker,autocomplete"></t:base>
 <link rel="shortcut icon" href="images/favicon.ico">
 <style type="text/css">
@@ -147,10 +147,12 @@ a:hover {
 					<div onclick="openwindow('用户信息','userController.do?userinfo')">个人信息</div>
 					<div class="menu-sep"></div>
 					<div onclick="add('修改密码','userController.do?changepassword')">修改密码</div>
-					<div class="menu-sep"></div>	
+					<div class="menu-sep"></div>
+					<!--  
 					<div onclick="add('修改首页风格','userController.do?changestyle')">首页风格</div>
 					<div class="menu-sep"></div>	
 					<div onclick="javascript:window.open('http://yun.jeecg.org')">云插件中心</div>
+					-->	
 				</div>
 				<div id="layout_north_zxMenu" style="width: 100px; display: none;">
 					<div onclick="exit('loginController.do?logout','确定退出该系统吗 ?',1);">退出系统</div>
@@ -201,7 +203,8 @@ a:hover {
 </div>
 <!-- 底部 -->
 <div region="south" border="false" style="height: 25px; overflow: hidden;">
-<div align="center" style="color: #CC99FF; padding-top: 2px">&copy; 版权所有 <span class="tip"><a href="http://www.jeewx.com" title="Jeewx 捷微管家系统" target="_blank">JEEWX_3.0.0捷微官网</a> (推荐谷歌浏览器，获得更快响应速度) &nbsp;&nbsp;技术支持: <a href="http://www.jeecg.org" title="Jeecg论坛" target="_blank">JEECG技术论坛</a> </span></div>
+<div align="center" style="color: #CC99FF; padding-top: 2px">&copy; 版权所有 <span class="tip"><a href="http://www.cdqianlong.com" title="钱龙推推微信管理平台">钱龙推推微信管理平台</a> (推荐谷歌浏览器，获得更快响应速度) 技术支持:成都乾隆 </span></div>
+
 </div>
 <div id="mm" class="easyui-menu" style="width: 150px;">
 <div id="mm-tabupdate">刷新</div>

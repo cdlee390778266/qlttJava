@@ -4,7 +4,7 @@
 <html>
 <head>
 <title></title>
-<link rel="shortcut icon" href="resources/fc/images/icon/favicon.ico">
+<link rel="shortcut icon" href="images/favicon.ico">
 <!--[if lt IE 9]>
    <script src="plug-in/login/js/html5.js"></script>
   <![endif]-->
@@ -104,11 +104,13 @@ label.iPhoneCheckLabelOn span {
                         <div class="clear"></div>
                     </div>
                      <div>
+                     	<!-- 
                         <div style="float: right; margin-left:-220px; margin-right: 40px;">
                            	  版本号：<font color="red">jeewx_3.0.0</font>  &nbsp;&nbsp;&nbsp;  
                            	   论坛：<a href="http://www.jeecg.org" target="_blank"><font color="red">www.jeecg.org</font></a> &nbsp;&nbsp;&nbsp; 
                            	   商业支持: <a href="http://www.jeewx.com" target="_blank"> <font color="red">www.jeewx.com</font></a> &nbsp;&nbsp;&nbsp; 
                         </div>
+                         -->
                     </div>
                 </form>
             </div>
@@ -118,7 +120,8 @@ label.iPhoneCheckLabelOn span {
     <!--Login div-->
     <div class="clear"></div>
     <div id="versionBar">
-        <div class="copyright">&copy; 版权所有 <span class="tip"><a href="http://www.jeewx.com" title="Jeewx_3.0.0 捷微管家平台" target="_blank">JeeWx_3.0.0 捷微管家平台</a> (推荐使用IE8+,谷歌浏览器可以获得更快,更安全的页面响应速度)   &nbsp;&nbsp;&nbsp;技术支持: <a href="http://www.jeecg.org" title="Jeecg 开源社区" target="_blank">Jeecg 开源社区</a></span></div>
+      
+        <div class="copyright">&copy; 版权所有 <span class="tip"><a href="http://www.cdqianlong.com" title="成都乾隆" target="_blank">钱龙推推微信管理平台</a> (推荐使用IE8+,谷歌浏览器可以获得更快,更安全的页面响应速度)   &nbsp;&nbsp;&nbsp;技术支持: 成都乾隆</span></div>    	
     </div>
     <!-- Link JScript-->
     <script type="text/javascript" src="plug-in/jquery/jquery-1.8.3.min.js"></script>

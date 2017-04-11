@@ -14,10 +14,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit">
 
-    <title>捷微  开源微信管家系统</title>
+    <title>钱龙推推微信管理平台</title>
 
-    <meta name="keywords" content="捷微  开源微信管家系统">
-    <meta name="description" content="捷微  开源微信管家系统">
+    <meta name="keywords" content="钱龙推推微信管理平台">
+    <meta name="description" content="钱龙推推微信管理平台">
 
     <link rel="shortcut icon" href="images/favicon.ico">
     <link href="plug-in-ui/hplus/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
@@ -67,7 +67,7 @@
                          //update-end--Author: chenj Date:20160726 for: TASK #1207 [改造]h+风格下，去掉logo下面的内容，迁移位置到右上角，主题位置 --%>
                          
                     </div>
-                    <div class="logo-element">捷微
+                    <div class="logo-element">钱龙推推
                     </div>
                 </li>
 
@@ -84,7 +84,7 @@
                 <div class="navbar-header" style="width: 40%;height: 60px;"><a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
                     <form role="search" class="navbar-form-custom" method="post" action="search_results.html">
                         <div class="form-group" >
-                            <input type="text" placeholder="捷微  开源微信管家系统" class="form-control" name="top-search" id="top-search">
+                            <input type="text" placeholder="钱龙推推微信管理平台" class="form-control" name="top-search" id="top-search">
                         </div>
                     </form>
                 </div>
@@ -161,8 +161,11 @@
                                     	修改密码
                                 </a>
                             </li>
+                            <!--  
                             <li><a href="javascript:add('风格切换','userController.do?changestyle','',550,250)">首页风格</a></li>
+                            
                             <li><a href="javascript:window.open('http://yun.jeecg.org')">云插件中心</a></li>
+                            -->
                         </ul>
                     </li>
                     <!-- //update-end--Author: chenj Date:20160726 for: TASK #1207 [改造]h+风格下，去掉logo下面的内容，迁移位置到右上角，主题位置 -->
