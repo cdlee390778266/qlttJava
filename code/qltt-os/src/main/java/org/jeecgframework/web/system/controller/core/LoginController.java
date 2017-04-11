@@ -183,6 +183,9 @@ public class LoginController extends BaseController {
 			if (roles.length() > 0) {
 				roles = roles.substring(0, roles.length() - 1);
 			}
+			
+			System.out.println(request.getHeader("user-agent"));
+			
 			modelMap.put("roleName", roles);
 			modelMap.put("userName", user.getUserName());
 			request.getSession().setAttribute("CKFinder_UserRole", "admin");

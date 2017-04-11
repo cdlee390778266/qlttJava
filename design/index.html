@@ -2,8 +2,9 @@
 <html lang="zh-CN" ng-app="qlttApp">
   <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="always">
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+  <meta http-equiv="x-dns-prefetch-control" content="on">
   
   <link rel="stylesheet" href="css/animate.min.css" />
   <link href="css/style.css" rel="stylesheet">
@@ -32,12 +33,12 @@
           </div>
         </div>
         <div class="login-tip">
-            <p><span>选择【手机验证】</span><span class="fred" >代表你已阅读并同意钱龙推推协议>></span></p>
-            <p >验证成功你将获得钱龙推推应用全部功能</p>
+            <p><span>选择【手机验证】</span><a class="fred"  href="tpls/ttxieyi.html" >代表你已阅读并同意钱龙推推协议>></a>验证成功你将获得钱龙推推应用全部功能</p>
+
         </div>
-        <input type="submit" value="确定" class="login-submit" />
-        <div id="error" class="animated fadeIn"></div>  
+        <input type="submit" value="确定" class="login-submit" />  
     </form>
+    <div id="error" class="animated"><span></span></div>
 
   </body>
 </html>
