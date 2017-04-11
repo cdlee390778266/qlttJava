@@ -6,48 +6,54 @@ package com.qlcd.qltt.head;
 public final class Hpprot {
   private Hpprot() {}
   public static void registerAllExtensions(
+      com.google.protobuf.ExtensionRegistryLite registry) {
+  }
+
+  public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
+    registerAllExtensions(
+        (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   public interface _reqOrBuilder extends
       // @@protoc_insertion_point(interface_extends:com.qlcd.qltt.head.Hpprot._req)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 trdcode = 1;</code>
+     * <code>int32 trdcode = 1;</code>
      */
     int getTrdcode();
 
     /**
-     * <code>optional int32 reqsys = 2;</code>
+     * <code>int32 reqsys = 2;</code>
      */
     int getReqsys();
 
     /**
-     * <code>optional int32 reqnode = 3;</code>
+     * <code>int32 reqnode = 3;</code>
      */
     int getReqnode();
 
     /**
-     * <code>optional int32 reqno = 4;</code>
+     * <code>int32 reqno = 4;</code>
      */
     int getReqno();
 
     /**
-     * <code>optional int32 token = 5;</code>
+     * <code>int32 token = 5;</code>
      */
     int getToken();
 
     /**
-     * <code>optional int32 mac = 6;</code>
+     * <code>int32 mac = 6;</code>
      */
     int getMac();
 
     /**
-     * <code>optional string bodyclass = 7;</code>
+     * <code>string bodyclass = 7;</code>
      */
     java.lang.String getBodyclass();
     /**
-     * <code>optional string bodyclass = 7;</code>
+     * <code>string bodyclass = 7;</code>
      */
     com.google.protobuf.ByteString
         getBodyclassBytes();
@@ -56,11 +62,11 @@ public final class Hpprot {
    * Protobuf type {@code com.qlcd.qltt.head.Hpprot._req}
    */
   public  static final class _req extends
-      com.google.protobuf.GeneratedMessage implements
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:com.qlcd.qltt.head.Hpprot._req)
       _reqOrBuilder {
     // Use _req.newBuilder() to construct.
-    private _req(com.google.protobuf.GeneratedMessage.Builder builder) {
+    private _req(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private _req() {
@@ -129,9 +135,9 @@ public final class Hpprot {
               break;
             }
             case 58: {
-              com.google.protobuf.ByteString bs = input.readBytes();
+              java.lang.String s = input.readStringRequireUtf8();
 
-              bodyclass_ = bs;
+              bodyclass_ = s;
               break;
             }
           }
@@ -140,7 +146,7 @@ public final class Hpprot {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
+            e).setUnfinishedMessage(this);
       } finally {
         makeExtensionsImmutable();
       }
@@ -150,32 +156,17 @@ public final class Hpprot {
       return com.qlcd.qltt.head.Hpprot.internal_static_com_qlcd_qltt_head_Hpprot__req_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return com.qlcd.qltt.head.Hpprot.internal_static_com_qlcd_qltt_head_Hpprot__req_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               com.qlcd.qltt.head.Hpprot._req.class, com.qlcd.qltt.head.Hpprot._req.Builder.class);
     }
 
-    public static final com.google.protobuf.Parser<_req> PARSER =
-        new com.google.protobuf.AbstractParser<_req>() {
-      public _req parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new _req(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<_req> getParserForType() {
-      return PARSER;
-    }
-
     public static final int TRDCODE_FIELD_NUMBER = 1;
     private int trdcode_;
     /**
-     * <code>optional int32 trdcode = 1;</code>
+     * <code>int32 trdcode = 1;</code>
      */
     public int getTrdcode() {
       return trdcode_;
@@ -184,7 +175,7 @@ public final class Hpprot {
     public static final int REQSYS_FIELD_NUMBER = 2;
     private int reqsys_;
     /**
-     * <code>optional int32 reqsys = 2;</code>
+     * <code>int32 reqsys = 2;</code>
      */
     public int getReqsys() {
       return reqsys_;
@@ -193,7 +184,7 @@ public final class Hpprot {
     public static final int REQNODE_FIELD_NUMBER = 3;
     private int reqnode_;
     /**
-     * <code>optional int32 reqnode = 3;</code>
+     * <code>int32 reqnode = 3;</code>
      */
     public int getReqnode() {
       return reqnode_;
@@ -202,7 +193,7 @@ public final class Hpprot {
     public static final int REQNO_FIELD_NUMBER = 4;
     private int reqno_;
     /**
-     * <code>optional int32 reqno = 4;</code>
+     * <code>int32 reqno = 4;</code>
      */
     public int getReqno() {
       return reqno_;
@@ -211,7 +202,7 @@ public final class Hpprot {
     public static final int TOKEN_FIELD_NUMBER = 5;
     private int token_;
     /**
-     * <code>optional int32 token = 5;</code>
+     * <code>int32 token = 5;</code>
      */
     public int getToken() {
       return token_;
@@ -220,16 +211,16 @@ public final class Hpprot {
     public static final int MAC_FIELD_NUMBER = 6;
     private int mac_;
     /**
-     * <code>optional int32 mac = 6;</code>
+     * <code>int32 mac = 6;</code>
      */
     public int getMac() {
       return mac_;
     }
 
     public static final int BODYCLASS_FIELD_NUMBER = 7;
-    private java.lang.Object bodyclass_;
+    private volatile java.lang.Object bodyclass_;
     /**
-     * <code>optional string bodyclass = 7;</code>
+     * <code>string bodyclass = 7;</code>
      */
     public java.lang.String getBodyclass() {
       java.lang.Object ref = bodyclass_;
@@ -239,14 +230,12 @@ public final class Hpprot {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          bodyclass_ = s;
-        }
+        bodyclass_ = s;
         return s;
       }
     }
     /**
-     * <code>optional string bodyclass = 7;</code>
+     * <code>string bodyclass = 7;</code>
      */
     public com.google.protobuf.ByteString
         getBodyclassBytes() {
@@ -274,7 +263,6 @@ public final class Hpprot {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      getSerializedSize();
       if (trdcode_ != 0) {
         output.writeInt32(1, trdcode_);
       }
@@ -294,13 +282,12 @@ public final class Hpprot {
         output.writeInt32(6, mac_);
       }
       if (!getBodyclassBytes().isEmpty()) {
-        output.writeBytes(7, getBodyclassBytes());
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 7, bodyclass_);
       }
     }
 
-    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSerializedSize;
+      int size = memoizedSize;
       if (size != -1) return size;
 
       size = 0;
@@ -329,14 +316,67 @@ public final class Hpprot {
           .computeInt32Size(6, mac_);
       }
       if (!getBodyclassBytes().isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(7, getBodyclassBytes());
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, bodyclass_);
       }
-      memoizedSerializedSize = size;
+      memoizedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.qlcd.qltt.head.Hpprot._req)) {
+        return super.equals(obj);
+      }
+      com.qlcd.qltt.head.Hpprot._req other = (com.qlcd.qltt.head.Hpprot._req) obj;
+
+      boolean result = true;
+      result = result && (getTrdcode()
+          == other.getTrdcode());
+      result = result && (getReqsys()
+          == other.getReqsys());
+      result = result && (getReqnode()
+          == other.getReqnode());
+      result = result && (getReqno()
+          == other.getReqno());
+      result = result && (getToken()
+          == other.getToken());
+      result = result && (getMac()
+          == other.getMac());
+      result = result && getBodyclass()
+          .equals(other.getBodyclass());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + TRDCODE_FIELD_NUMBER;
+      hash = (53 * hash) + getTrdcode();
+      hash = (37 * hash) + REQSYS_FIELD_NUMBER;
+      hash = (53 * hash) + getReqsys();
+      hash = (37 * hash) + REQNODE_FIELD_NUMBER;
+      hash = (53 * hash) + getReqnode();
+      hash = (37 * hash) + REQNO_FIELD_NUMBER;
+      hash = (53 * hash) + getReqno();
+      hash = (37 * hash) + TOKEN_FIELD_NUMBER;
+      hash = (53 * hash) + getToken();
+      hash = (37 * hash) + MAC_FIELD_NUMBER;
+      hash = (53 * hash) + getMac();
+      hash = (37 * hash) + BODYCLASS_FIELD_NUMBER;
+      hash = (53 * hash) + getBodyclass().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static com.qlcd.qltt.head.Hpprot._req parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -360,46 +400,57 @@ public final class Hpprot {
     }
     public static com.qlcd.qltt.head.Hpprot._req parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
     }
     public static com.qlcd.qltt.head.Hpprot._req parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.qlcd.qltt.head.Hpprot._req parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
     }
     public static com.qlcd.qltt.head.Hpprot._req parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.qlcd.qltt.head.Hpprot._req parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
     }
     public static com.qlcd.qltt.head.Hpprot._req parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static Builder newBuilder() { return new Builder(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.qlcd.qltt.head.Hpprot._req prototype) {
-      return newBuilder().mergeFrom(prototype);
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
     }
-    public Builder toBuilder() { return newBuilder(this); }
+    public static Builder newBuilder(com.qlcd.qltt.head.Hpprot._req prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -407,7 +458,7 @@ public final class Hpprot {
      * Protobuf type {@code com.qlcd.qltt.head.Hpprot._req}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:com.qlcd.qltt.head.Hpprot._req)
         com.qlcd.qltt.head.Hpprot._reqOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -415,7 +466,7 @@ public final class Hpprot {
         return com.qlcd.qltt.head.Hpprot.internal_static_com_qlcd_qltt_head_Hpprot__req_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return com.qlcd.qltt.head.Hpprot.internal_static_com_qlcd_qltt_head_Hpprot__req_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -428,12 +479,13 @@ public final class Hpprot {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
         }
       }
       public Builder clear() {
@@ -485,6 +537,32 @@ public final class Hpprot {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.qlcd.qltt.head.Hpprot._req) {
           return mergeFrom((com.qlcd.qltt.head.Hpprot._req)other);
@@ -535,7 +613,7 @@ public final class Hpprot {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (com.qlcd.qltt.head.Hpprot._req) e.getUnfinishedMessage();
-          throw e;
+          throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -546,13 +624,13 @@ public final class Hpprot {
 
       private int trdcode_ ;
       /**
-       * <code>optional int32 trdcode = 1;</code>
+       * <code>int32 trdcode = 1;</code>
        */
       public int getTrdcode() {
         return trdcode_;
       }
       /**
-       * <code>optional int32 trdcode = 1;</code>
+       * <code>int32 trdcode = 1;</code>
        */
       public Builder setTrdcode(int value) {
         
@@ -561,7 +639,7 @@ public final class Hpprot {
         return this;
       }
       /**
-       * <code>optional int32 trdcode = 1;</code>
+       * <code>int32 trdcode = 1;</code>
        */
       public Builder clearTrdcode() {
         
@@ -572,13 +650,13 @@ public final class Hpprot {
 
       private int reqsys_ ;
       /**
-       * <code>optional int32 reqsys = 2;</code>
+       * <code>int32 reqsys = 2;</code>
        */
       public int getReqsys() {
         return reqsys_;
       }
       /**
-       * <code>optional int32 reqsys = 2;</code>
+       * <code>int32 reqsys = 2;</code>
        */
       public Builder setReqsys(int value) {
         
@@ -587,7 +665,7 @@ public final class Hpprot {
         return this;
       }
       /**
-       * <code>optional int32 reqsys = 2;</code>
+       * <code>int32 reqsys = 2;</code>
        */
       public Builder clearReqsys() {
         
@@ -598,13 +676,13 @@ public final class Hpprot {
 
       private int reqnode_ ;
       /**
-       * <code>optional int32 reqnode = 3;</code>
+       * <code>int32 reqnode = 3;</code>
        */
       public int getReqnode() {
         return reqnode_;
       }
       /**
-       * <code>optional int32 reqnode = 3;</code>
+       * <code>int32 reqnode = 3;</code>
        */
       public Builder setReqnode(int value) {
         
@@ -613,7 +691,7 @@ public final class Hpprot {
         return this;
       }
       /**
-       * <code>optional int32 reqnode = 3;</code>
+       * <code>int32 reqnode = 3;</code>
        */
       public Builder clearReqnode() {
         
@@ -624,13 +702,13 @@ public final class Hpprot {
 
       private int reqno_ ;
       /**
-       * <code>optional int32 reqno = 4;</code>
+       * <code>int32 reqno = 4;</code>
        */
       public int getReqno() {
         return reqno_;
       }
       /**
-       * <code>optional int32 reqno = 4;</code>
+       * <code>int32 reqno = 4;</code>
        */
       public Builder setReqno(int value) {
         
@@ -639,7 +717,7 @@ public final class Hpprot {
         return this;
       }
       /**
-       * <code>optional int32 reqno = 4;</code>
+       * <code>int32 reqno = 4;</code>
        */
       public Builder clearReqno() {
         
@@ -650,13 +728,13 @@ public final class Hpprot {
 
       private int token_ ;
       /**
-       * <code>optional int32 token = 5;</code>
+       * <code>int32 token = 5;</code>
        */
       public int getToken() {
         return token_;
       }
       /**
-       * <code>optional int32 token = 5;</code>
+       * <code>int32 token = 5;</code>
        */
       public Builder setToken(int value) {
         
@@ -665,7 +743,7 @@ public final class Hpprot {
         return this;
       }
       /**
-       * <code>optional int32 token = 5;</code>
+       * <code>int32 token = 5;</code>
        */
       public Builder clearToken() {
         
@@ -676,13 +754,13 @@ public final class Hpprot {
 
       private int mac_ ;
       /**
-       * <code>optional int32 mac = 6;</code>
+       * <code>int32 mac = 6;</code>
        */
       public int getMac() {
         return mac_;
       }
       /**
-       * <code>optional int32 mac = 6;</code>
+       * <code>int32 mac = 6;</code>
        */
       public Builder setMac(int value) {
         
@@ -691,7 +769,7 @@ public final class Hpprot {
         return this;
       }
       /**
-       * <code>optional int32 mac = 6;</code>
+       * <code>int32 mac = 6;</code>
        */
       public Builder clearMac() {
         
@@ -702,7 +780,7 @@ public final class Hpprot {
 
       private java.lang.Object bodyclass_ = "";
       /**
-       * <code>optional string bodyclass = 7;</code>
+       * <code>string bodyclass = 7;</code>
        */
       public java.lang.String getBodyclass() {
         java.lang.Object ref = bodyclass_;
@@ -710,16 +788,14 @@ public final class Hpprot {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            bodyclass_ = s;
-          }
+          bodyclass_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>optional string bodyclass = 7;</code>
+       * <code>string bodyclass = 7;</code>
        */
       public com.google.protobuf.ByteString
           getBodyclassBytes() {
@@ -735,7 +811,7 @@ public final class Hpprot {
         }
       }
       /**
-       * <code>optional string bodyclass = 7;</code>
+       * <code>string bodyclass = 7;</code>
        */
       public Builder setBodyclass(
           java.lang.String value) {
@@ -748,7 +824,7 @@ public final class Hpprot {
         return this;
       }
       /**
-       * <code>optional string bodyclass = 7;</code>
+       * <code>string bodyclass = 7;</code>
        */
       public Builder clearBodyclass() {
         
@@ -757,14 +833,15 @@ public final class Hpprot {
         return this;
       }
       /**
-       * <code>optional string bodyclass = 7;</code>
+       * <code>string bodyclass = 7;</code>
        */
       public Builder setBodyclassBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  checkByteStringIsUtf8(value);
+        
         bodyclass_ = value;
         onChanged();
         return this;
@@ -784,16 +861,36 @@ public final class Hpprot {
     }
 
     // @@protoc_insertion_point(class_scope:com.qlcd.qltt.head.Hpprot._req)
-    private static final com.qlcd.qltt.head.Hpprot._req defaultInstance;static {
-      defaultInstance = new com.qlcd.qltt.head.Hpprot._req();
+    private static final com.qlcd.qltt.head.Hpprot._req DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.qlcd.qltt.head.Hpprot._req();
     }
 
     public static com.qlcd.qltt.head.Hpprot._req getDefaultInstance() {
-      return defaultInstance;
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<_req>
+        PARSER = new com.google.protobuf.AbstractParser<_req>() {
+      public _req parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new _req(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<_req> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<_req> getParserForType() {
+      return PARSER;
     }
 
     public com.qlcd.qltt.head.Hpprot._req getDefaultInstanceForType() {
-      return defaultInstance;
+      return DEFAULT_INSTANCE;
     }
 
   }
@@ -803,50 +900,50 @@ public final class Hpprot {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 trdcode = 1;</code>
+     * <code>int32 trdcode = 1;</code>
      */
     int getTrdcode();
 
     /**
-     * <code>optional int32 rspsys = 2;</code>
+     * <code>int32 rspsys = 2;</code>
      */
     int getRspsys();
 
     /**
-     * <code>optional int32 rspnode = 3;</code>
+     * <code>int32 rspnode = 3;</code>
      */
     int getRspnode();
 
     /**
-     * <code>optional int32 reqno = 4;</code>
+     * <code>int32 reqno = 4;</code>
      */
     int getReqno();
 
     /**
-     * <code>optional int32 token = 5;</code>
+     * <code>int32 token = 5;</code>
      */
     int getToken();
 
     /**
-     * <code>optional int32 mac = 6;</code>
+     * <code>int32 mac = 6;</code>
      */
     int getMac();
 
     /**
-     * <code>optional .com.qlcd.qltt.head.Hpem.PEH_RSPSTATUS rspstatus = 7;</code>
+     * <code>.com.qlcd.qltt.head.Hpem.PEH_RSPSTATUS rspstatus = 7;</code>
      */
     int getRspstatusValue();
     /**
-     * <code>optional .com.qlcd.qltt.head.Hpem.PEH_RSPSTATUS rspstatus = 7;</code>
+     * <code>.com.qlcd.qltt.head.Hpem.PEH_RSPSTATUS rspstatus = 7;</code>
      */
     com.qlcd.qltt.head.Hpem.PEH_RSPSTATUS getRspstatus();
 
     /**
-     * <code>optional string bodyclass = 8;</code>
+     * <code>string bodyclass = 8;</code>
      */
     java.lang.String getBodyclass();
     /**
-     * <code>optional string bodyclass = 8;</code>
+     * <code>string bodyclass = 8;</code>
      */
     com.google.protobuf.ByteString
         getBodyclassBytes();
@@ -855,11 +952,11 @@ public final class Hpprot {
    * Protobuf type {@code com.qlcd.qltt.head.Hpprot._rsp}
    */
   public  static final class _rsp extends
-      com.google.protobuf.GeneratedMessage implements
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:com.qlcd.qltt.head.Hpprot._rsp)
       _rspOrBuilder {
     // Use _rsp.newBuilder() to construct.
-    private _rsp(com.google.protobuf.GeneratedMessage.Builder builder) {
+    private _rsp(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private _rsp() {
@@ -935,9 +1032,9 @@ public final class Hpprot {
               break;
             }
             case 66: {
-              com.google.protobuf.ByteString bs = input.readBytes();
+              java.lang.String s = input.readStringRequireUtf8();
 
-              bodyclass_ = bs;
+              bodyclass_ = s;
               break;
             }
           }
@@ -946,7 +1043,7 @@ public final class Hpprot {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
+            e).setUnfinishedMessage(this);
       } finally {
         makeExtensionsImmutable();
       }
@@ -956,32 +1053,17 @@ public final class Hpprot {
       return com.qlcd.qltt.head.Hpprot.internal_static_com_qlcd_qltt_head_Hpprot__rsp_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return com.qlcd.qltt.head.Hpprot.internal_static_com_qlcd_qltt_head_Hpprot__rsp_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               com.qlcd.qltt.head.Hpprot._rsp.class, com.qlcd.qltt.head.Hpprot._rsp.Builder.class);
     }
 
-    public static final com.google.protobuf.Parser<_rsp> PARSER =
-        new com.google.protobuf.AbstractParser<_rsp>() {
-      public _rsp parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new _rsp(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<_rsp> getParserForType() {
-      return PARSER;
-    }
-
     public static final int TRDCODE_FIELD_NUMBER = 1;
     private int trdcode_;
     /**
-     * <code>optional int32 trdcode = 1;</code>
+     * <code>int32 trdcode = 1;</code>
      */
     public int getTrdcode() {
       return trdcode_;
@@ -990,7 +1072,7 @@ public final class Hpprot {
     public static final int RSPSYS_FIELD_NUMBER = 2;
     private int rspsys_;
     /**
-     * <code>optional int32 rspsys = 2;</code>
+     * <code>int32 rspsys = 2;</code>
      */
     public int getRspsys() {
       return rspsys_;
@@ -999,7 +1081,7 @@ public final class Hpprot {
     public static final int RSPNODE_FIELD_NUMBER = 3;
     private int rspnode_;
     /**
-     * <code>optional int32 rspnode = 3;</code>
+     * <code>int32 rspnode = 3;</code>
      */
     public int getRspnode() {
       return rspnode_;
@@ -1008,7 +1090,7 @@ public final class Hpprot {
     public static final int REQNO_FIELD_NUMBER = 4;
     private int reqno_;
     /**
-     * <code>optional int32 reqno = 4;</code>
+     * <code>int32 reqno = 4;</code>
      */
     public int getReqno() {
       return reqno_;
@@ -1017,7 +1099,7 @@ public final class Hpprot {
     public static final int TOKEN_FIELD_NUMBER = 5;
     private int token_;
     /**
-     * <code>optional int32 token = 5;</code>
+     * <code>int32 token = 5;</code>
      */
     public int getToken() {
       return token_;
@@ -1026,7 +1108,7 @@ public final class Hpprot {
     public static final int MAC_FIELD_NUMBER = 6;
     private int mac_;
     /**
-     * <code>optional int32 mac = 6;</code>
+     * <code>int32 mac = 6;</code>
      */
     public int getMac() {
       return mac_;
@@ -1035,13 +1117,13 @@ public final class Hpprot {
     public static final int RSPSTATUS_FIELD_NUMBER = 7;
     private int rspstatus_;
     /**
-     * <code>optional .com.qlcd.qltt.head.Hpem.PEH_RSPSTATUS rspstatus = 7;</code>
+     * <code>.com.qlcd.qltt.head.Hpem.PEH_RSPSTATUS rspstatus = 7;</code>
      */
     public int getRspstatusValue() {
       return rspstatus_;
     }
     /**
-     * <code>optional .com.qlcd.qltt.head.Hpem.PEH_RSPSTATUS rspstatus = 7;</code>
+     * <code>.com.qlcd.qltt.head.Hpem.PEH_RSPSTATUS rspstatus = 7;</code>
      */
     public com.qlcd.qltt.head.Hpem.PEH_RSPSTATUS getRspstatus() {
       com.qlcd.qltt.head.Hpem.PEH_RSPSTATUS result = com.qlcd.qltt.head.Hpem.PEH_RSPSTATUS.valueOf(rspstatus_);
@@ -1049,9 +1131,9 @@ public final class Hpprot {
     }
 
     public static final int BODYCLASS_FIELD_NUMBER = 8;
-    private java.lang.Object bodyclass_;
+    private volatile java.lang.Object bodyclass_;
     /**
-     * <code>optional string bodyclass = 8;</code>
+     * <code>string bodyclass = 8;</code>
      */
     public java.lang.String getBodyclass() {
       java.lang.Object ref = bodyclass_;
@@ -1061,14 +1143,12 @@ public final class Hpprot {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          bodyclass_ = s;
-        }
+        bodyclass_ = s;
         return s;
       }
     }
     /**
-     * <code>optional string bodyclass = 8;</code>
+     * <code>string bodyclass = 8;</code>
      */
     public com.google.protobuf.ByteString
         getBodyclassBytes() {
@@ -1096,7 +1176,6 @@ public final class Hpprot {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      getSerializedSize();
       if (trdcode_ != 0) {
         output.writeInt32(1, trdcode_);
       }
@@ -1119,13 +1198,12 @@ public final class Hpprot {
         output.writeEnum(7, rspstatus_);
       }
       if (!getBodyclassBytes().isEmpty()) {
-        output.writeBytes(8, getBodyclassBytes());
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 8, bodyclass_);
       }
     }
 
-    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSerializedSize;
+      int size = memoizedSize;
       if (size != -1) return size;
 
       size = 0;
@@ -1158,14 +1236,70 @@ public final class Hpprot {
           .computeEnumSize(7, rspstatus_);
       }
       if (!getBodyclassBytes().isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(8, getBodyclassBytes());
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, bodyclass_);
       }
-      memoizedSerializedSize = size;
+      memoizedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.qlcd.qltt.head.Hpprot._rsp)) {
+        return super.equals(obj);
+      }
+      com.qlcd.qltt.head.Hpprot._rsp other = (com.qlcd.qltt.head.Hpprot._rsp) obj;
+
+      boolean result = true;
+      result = result && (getTrdcode()
+          == other.getTrdcode());
+      result = result && (getRspsys()
+          == other.getRspsys());
+      result = result && (getRspnode()
+          == other.getRspnode());
+      result = result && (getReqno()
+          == other.getReqno());
+      result = result && (getToken()
+          == other.getToken());
+      result = result && (getMac()
+          == other.getMac());
+      result = result && rspstatus_ == other.rspstatus_;
+      result = result && getBodyclass()
+          .equals(other.getBodyclass());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + TRDCODE_FIELD_NUMBER;
+      hash = (53 * hash) + getTrdcode();
+      hash = (37 * hash) + RSPSYS_FIELD_NUMBER;
+      hash = (53 * hash) + getRspsys();
+      hash = (37 * hash) + RSPNODE_FIELD_NUMBER;
+      hash = (53 * hash) + getRspnode();
+      hash = (37 * hash) + REQNO_FIELD_NUMBER;
+      hash = (53 * hash) + getReqno();
+      hash = (37 * hash) + TOKEN_FIELD_NUMBER;
+      hash = (53 * hash) + getToken();
+      hash = (37 * hash) + MAC_FIELD_NUMBER;
+      hash = (53 * hash) + getMac();
+      hash = (37 * hash) + RSPSTATUS_FIELD_NUMBER;
+      hash = (53 * hash) + rspstatus_;
+      hash = (37 * hash) + BODYCLASS_FIELD_NUMBER;
+      hash = (53 * hash) + getBodyclass().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static com.qlcd.qltt.head.Hpprot._rsp parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1189,46 +1323,57 @@ public final class Hpprot {
     }
     public static com.qlcd.qltt.head.Hpprot._rsp parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
     }
     public static com.qlcd.qltt.head.Hpprot._rsp parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.qlcd.qltt.head.Hpprot._rsp parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
     }
     public static com.qlcd.qltt.head.Hpprot._rsp parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.qlcd.qltt.head.Hpprot._rsp parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
     }
     public static com.qlcd.qltt.head.Hpprot._rsp parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static Builder newBuilder() { return new Builder(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.qlcd.qltt.head.Hpprot._rsp prototype) {
-      return newBuilder().mergeFrom(prototype);
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
     }
-    public Builder toBuilder() { return newBuilder(this); }
+    public static Builder newBuilder(com.qlcd.qltt.head.Hpprot._rsp prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -1236,7 +1381,7 @@ public final class Hpprot {
      * Protobuf type {@code com.qlcd.qltt.head.Hpprot._rsp}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:com.qlcd.qltt.head.Hpprot._rsp)
         com.qlcd.qltt.head.Hpprot._rspOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -1244,7 +1389,7 @@ public final class Hpprot {
         return com.qlcd.qltt.head.Hpprot.internal_static_com_qlcd_qltt_head_Hpprot__rsp_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return com.qlcd.qltt.head.Hpprot.internal_static_com_qlcd_qltt_head_Hpprot__rsp_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -1257,12 +1402,13 @@ public final class Hpprot {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
         }
       }
       public Builder clear() {
@@ -1317,6 +1463,32 @@ public final class Hpprot {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.qlcd.qltt.head.Hpprot._rsp) {
           return mergeFrom((com.qlcd.qltt.head.Hpprot._rsp)other);
@@ -1370,7 +1542,7 @@ public final class Hpprot {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (com.qlcd.qltt.head.Hpprot._rsp) e.getUnfinishedMessage();
-          throw e;
+          throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -1381,13 +1553,13 @@ public final class Hpprot {
 
       private int trdcode_ ;
       /**
-       * <code>optional int32 trdcode = 1;</code>
+       * <code>int32 trdcode = 1;</code>
        */
       public int getTrdcode() {
         return trdcode_;
       }
       /**
-       * <code>optional int32 trdcode = 1;</code>
+       * <code>int32 trdcode = 1;</code>
        */
       public Builder setTrdcode(int value) {
         
@@ -1396,7 +1568,7 @@ public final class Hpprot {
         return this;
       }
       /**
-       * <code>optional int32 trdcode = 1;</code>
+       * <code>int32 trdcode = 1;</code>
        */
       public Builder clearTrdcode() {
         
@@ -1407,13 +1579,13 @@ public final class Hpprot {
 
       private int rspsys_ ;
       /**
-       * <code>optional int32 rspsys = 2;</code>
+       * <code>int32 rspsys = 2;</code>
        */
       public int getRspsys() {
         return rspsys_;
       }
       /**
-       * <code>optional int32 rspsys = 2;</code>
+       * <code>int32 rspsys = 2;</code>
        */
       public Builder setRspsys(int value) {
         
@@ -1422,7 +1594,7 @@ public final class Hpprot {
         return this;
       }
       /**
-       * <code>optional int32 rspsys = 2;</code>
+       * <code>int32 rspsys = 2;</code>
        */
       public Builder clearRspsys() {
         
@@ -1433,13 +1605,13 @@ public final class Hpprot {
 
       private int rspnode_ ;
       /**
-       * <code>optional int32 rspnode = 3;</code>
+       * <code>int32 rspnode = 3;</code>
        */
       public int getRspnode() {
         return rspnode_;
       }
       /**
-       * <code>optional int32 rspnode = 3;</code>
+       * <code>int32 rspnode = 3;</code>
        */
       public Builder setRspnode(int value) {
         
@@ -1448,7 +1620,7 @@ public final class Hpprot {
         return this;
       }
       /**
-       * <code>optional int32 rspnode = 3;</code>
+       * <code>int32 rspnode = 3;</code>
        */
       public Builder clearRspnode() {
         
@@ -1459,13 +1631,13 @@ public final class Hpprot {
 
       private int reqno_ ;
       /**
-       * <code>optional int32 reqno = 4;</code>
+       * <code>int32 reqno = 4;</code>
        */
       public int getReqno() {
         return reqno_;
       }
       /**
-       * <code>optional int32 reqno = 4;</code>
+       * <code>int32 reqno = 4;</code>
        */
       public Builder setReqno(int value) {
         
@@ -1474,7 +1646,7 @@ public final class Hpprot {
         return this;
       }
       /**
-       * <code>optional int32 reqno = 4;</code>
+       * <code>int32 reqno = 4;</code>
        */
       public Builder clearReqno() {
         
@@ -1485,13 +1657,13 @@ public final class Hpprot {
 
       private int token_ ;
       /**
-       * <code>optional int32 token = 5;</code>
+       * <code>int32 token = 5;</code>
        */
       public int getToken() {
         return token_;
       }
       /**
-       * <code>optional int32 token = 5;</code>
+       * <code>int32 token = 5;</code>
        */
       public Builder setToken(int value) {
         
@@ -1500,7 +1672,7 @@ public final class Hpprot {
         return this;
       }
       /**
-       * <code>optional int32 token = 5;</code>
+       * <code>int32 token = 5;</code>
        */
       public Builder clearToken() {
         
@@ -1511,13 +1683,13 @@ public final class Hpprot {
 
       private int mac_ ;
       /**
-       * <code>optional int32 mac = 6;</code>
+       * <code>int32 mac = 6;</code>
        */
       public int getMac() {
         return mac_;
       }
       /**
-       * <code>optional int32 mac = 6;</code>
+       * <code>int32 mac = 6;</code>
        */
       public Builder setMac(int value) {
         
@@ -1526,7 +1698,7 @@ public final class Hpprot {
         return this;
       }
       /**
-       * <code>optional int32 mac = 6;</code>
+       * <code>int32 mac = 6;</code>
        */
       public Builder clearMac() {
         
@@ -1537,13 +1709,13 @@ public final class Hpprot {
 
       private int rspstatus_ = 0;
       /**
-       * <code>optional .com.qlcd.qltt.head.Hpem.PEH_RSPSTATUS rspstatus = 7;</code>
+       * <code>.com.qlcd.qltt.head.Hpem.PEH_RSPSTATUS rspstatus = 7;</code>
        */
       public int getRspstatusValue() {
         return rspstatus_;
       }
       /**
-       * <code>optional .com.qlcd.qltt.head.Hpem.PEH_RSPSTATUS rspstatus = 7;</code>
+       * <code>.com.qlcd.qltt.head.Hpem.PEH_RSPSTATUS rspstatus = 7;</code>
        */
       public Builder setRspstatusValue(int value) {
         rspstatus_ = value;
@@ -1551,14 +1723,14 @@ public final class Hpprot {
         return this;
       }
       /**
-       * <code>optional .com.qlcd.qltt.head.Hpem.PEH_RSPSTATUS rspstatus = 7;</code>
+       * <code>.com.qlcd.qltt.head.Hpem.PEH_RSPSTATUS rspstatus = 7;</code>
        */
       public com.qlcd.qltt.head.Hpem.PEH_RSPSTATUS getRspstatus() {
         com.qlcd.qltt.head.Hpem.PEH_RSPSTATUS result = com.qlcd.qltt.head.Hpem.PEH_RSPSTATUS.valueOf(rspstatus_);
         return result == null ? com.qlcd.qltt.head.Hpem.PEH_RSPSTATUS.UNRECOGNIZED : result;
       }
       /**
-       * <code>optional .com.qlcd.qltt.head.Hpem.PEH_RSPSTATUS rspstatus = 7;</code>
+       * <code>.com.qlcd.qltt.head.Hpem.PEH_RSPSTATUS rspstatus = 7;</code>
        */
       public Builder setRspstatus(com.qlcd.qltt.head.Hpem.PEH_RSPSTATUS value) {
         if (value == null) {
@@ -1570,7 +1742,7 @@ public final class Hpprot {
         return this;
       }
       /**
-       * <code>optional .com.qlcd.qltt.head.Hpem.PEH_RSPSTATUS rspstatus = 7;</code>
+       * <code>.com.qlcd.qltt.head.Hpem.PEH_RSPSTATUS rspstatus = 7;</code>
        */
       public Builder clearRspstatus() {
         
@@ -1581,7 +1753,7 @@ public final class Hpprot {
 
       private java.lang.Object bodyclass_ = "";
       /**
-       * <code>optional string bodyclass = 8;</code>
+       * <code>string bodyclass = 8;</code>
        */
       public java.lang.String getBodyclass() {
         java.lang.Object ref = bodyclass_;
@@ -1589,16 +1761,14 @@ public final class Hpprot {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            bodyclass_ = s;
-          }
+          bodyclass_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>optional string bodyclass = 8;</code>
+       * <code>string bodyclass = 8;</code>
        */
       public com.google.protobuf.ByteString
           getBodyclassBytes() {
@@ -1614,7 +1784,7 @@ public final class Hpprot {
         }
       }
       /**
-       * <code>optional string bodyclass = 8;</code>
+       * <code>string bodyclass = 8;</code>
        */
       public Builder setBodyclass(
           java.lang.String value) {
@@ -1627,7 +1797,7 @@ public final class Hpprot {
         return this;
       }
       /**
-       * <code>optional string bodyclass = 8;</code>
+       * <code>string bodyclass = 8;</code>
        */
       public Builder clearBodyclass() {
         
@@ -1636,14 +1806,15 @@ public final class Hpprot {
         return this;
       }
       /**
-       * <code>optional string bodyclass = 8;</code>
+       * <code>string bodyclass = 8;</code>
        */
       public Builder setBodyclassBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  checkByteStringIsUtf8(value);
+        
         bodyclass_ = value;
         onChanged();
         return this;
@@ -1663,36 +1834,56 @@ public final class Hpprot {
     }
 
     // @@protoc_insertion_point(class_scope:com.qlcd.qltt.head.Hpprot._rsp)
-    private static final com.qlcd.qltt.head.Hpprot._rsp defaultInstance;static {
-      defaultInstance = new com.qlcd.qltt.head.Hpprot._rsp();
+    private static final com.qlcd.qltt.head.Hpprot._rsp DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.qlcd.qltt.head.Hpprot._rsp();
     }
 
     public static com.qlcd.qltt.head.Hpprot._rsp getDefaultInstance() {
-      return defaultInstance;
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<_rsp>
+        PARSER = new com.google.protobuf.AbstractParser<_rsp>() {
+      public _rsp parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new _rsp(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<_rsp> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<_rsp> getParserForType() {
+      return PARSER;
     }
 
     public com.qlcd.qltt.head.Hpprot._rsp getDefaultInstanceForType() {
-      return defaultInstance;
+      return DEFAULT_INSTANCE;
     }
 
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_com_qlcd_qltt_head_Hpprot__req_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_qlcd_qltt_head_Hpprot__req_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_com_qlcd_qltt_head_Hpprot__rsp_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_qlcd_qltt_head_Hpprot__rsp_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
     return descriptor;
   }
-  private static com.google.protobuf.Descriptors.FileDescriptor
+  private static  com.google.protobuf.Descriptors.FileDescriptor
       descriptor;
   static {
     java.lang.String[] descriptorData = {
@@ -1723,13 +1914,13 @@ public final class Hpprot {
     internal_static_com_qlcd_qltt_head_Hpprot__req_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_com_qlcd_qltt_head_Hpprot__req_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_qlcd_qltt_head_Hpprot__req_descriptor,
         new java.lang.String[] { "Trdcode", "Reqsys", "Reqnode", "Reqno", "Token", "Mac", "Bodyclass", });
     internal_static_com_qlcd_qltt_head_Hpprot__rsp_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_com_qlcd_qltt_head_Hpprot__rsp_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_qlcd_qltt_head_Hpprot__rsp_descriptor,
         new java.lang.String[] { "Trdcode", "Rspsys", "Rspnode", "Reqno", "Token", "Mac", "Rspstatus", "Bodyclass", });
     com.qlcd.qltt.head.Hpem.getDescriptor();

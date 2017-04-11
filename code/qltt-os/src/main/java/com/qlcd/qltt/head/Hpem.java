@@ -6,7 +6,13 @@ package com.qlcd.qltt.head;
 public final class Hpem {
   private Hpem() {}
   public static void registerAllExtensions(
+      com.google.protobuf.ExtensionRegistryLite registry) {
+  }
+
+  public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
+    registerAllExtensions(
+        (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   /**
    * Protobuf enum {@code com.qlcd.qltt.head.Hpem.PEH_RSPSTATUS}
@@ -16,16 +22,16 @@ public final class Hpem {
     /**
      * <code>EV_SUCCESS = 0;</code>
      */
-    EV_SUCCESS(0, 0),
+    EV_SUCCESS(0),
     /**
      * <code>EV_FAILURE = 1;</code>
      */
-    EV_FAILURE(1, 1),
+    EV_FAILURE(1),
     /**
      * <code>EV_EXCEPTION = 2;</code>
      */
-    EV_EXCEPTION(2, 2),
-    UNRECOGNIZED(-1, -1),
+    EV_EXCEPTION(2),
+    UNRECOGNIZED(-1),
     ;
 
     /**
@@ -43,14 +49,22 @@ public final class Hpem {
 
 
     public final int getNumber() {
-      if (index == -1) {
+      if (this == UNRECOGNIZED) {
         throw new java.lang.IllegalArgumentException(
             "Can't get the number of an unknown enum value.");
       }
       return value;
     }
 
+    /**
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
     public static PEH_RSPSTATUS valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static PEH_RSPSTATUS forNumber(int value) {
       switch (value) {
         case 0: return EV_SUCCESS;
         case 1: return EV_FAILURE;
@@ -63,17 +77,17 @@ public final class Hpem {
         internalGetValueMap() {
       return internalValueMap;
     }
-    private static com.google.protobuf.Internal.EnumLiteMap<PEH_RSPSTATUS>
-        internalValueMap =
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        PEH_RSPSTATUS> internalValueMap =
           new com.google.protobuf.Internal.EnumLiteMap<PEH_RSPSTATUS>() {
             public PEH_RSPSTATUS findValueByNumber(int number) {
-              return PEH_RSPSTATUS.valueOf(number);
+              return PEH_RSPSTATUS.forNumber(number);
             }
           };
 
     public final com.google.protobuf.Descriptors.EnumValueDescriptor
         getValueDescriptor() {
-      return getDescriptor().getValues().get(index);
+      return getDescriptor().getValues().get(ordinal());
     }
     public final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptorForType() {
@@ -98,11 +112,9 @@ public final class Hpem {
       return VALUES[desc.getIndex()];
     }
 
-    private final int index;
     private final int value;
 
-    private PEH_RSPSTATUS(int index, int value) {
-      this.index = index;
+    private PEH_RSPSTATUS(int value) {
       this.value = value;
     }
 
@@ -114,7 +126,7 @@ public final class Hpem {
       getDescriptor() {
     return descriptor;
   }
-  private static com.google.protobuf.Descriptors.FileDescriptor
+  private static  com.google.protobuf.Descriptors.FileDescriptor
       descriptor;
   static {
     java.lang.String[] descriptorData = {

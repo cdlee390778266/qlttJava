@@ -6,59 +6,65 @@ package com.qlcd.qltt.body.prt;
 public final class T03001001 {
   private T03001001() {}
   public static void registerAllExtensions(
+      com.google.protobuf.ExtensionRegistryLite registry) {
+  }
+
+  public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
+    registerAllExtensions(
+        (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   public interface _eventpushOrBuilder extends
       // @@protoc_insertion_point(interface_extends:com.qlcd.qltt.body.prt.T03001001._eventpush)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string eventdate = 1;</code>
+     * <code>string eventdate = 1;</code>
      */
     java.lang.String getEventdate();
     /**
-     * <code>optional string eventdate = 1;</code>
+     * <code>string eventdate = 1;</code>
      */
     com.google.protobuf.ByteString
         getEventdateBytes();
 
     /**
-     * <code>optional int32 eventno = 2;</code>
+     * <code>int32 eventno = 2;</code>
      */
     int getEventno();
 
     /**
-     * <code>optional int32 eventtype = 3;</code>
+     * <code>int32 eventtype = 3;</code>
      */
     int getEventtype();
 
     /**
-     * <code>optional string occtime = 4;</code>
+     * <code>string occtime = 4;</code>
      */
     java.lang.String getOcctime();
     /**
-     * <code>optional string occtime = 4;</code>
+     * <code>string occtime = 4;</code>
      */
     com.google.protobuf.ByteString
         getOcctimeBytes();
 
     /**
-     * <code>optional int32 mxdlyval = 5;</code>
+     * <code>int32 mxdlyval = 5;</code>
      */
     int getMxdlyval();
 
     /**
-     * <code>optional string tactic = 6;</code>
+     * <code>string tactic = 6;</code>
      */
     java.lang.String getTactic();
     /**
-     * <code>optional string tactic = 6;</code>
+     * <code>string tactic = 6;</code>
      */
     com.google.protobuf.ByteString
         getTacticBytes();
 
     /**
-     * <code>optional int32 tacprm = 7;</code>
+     * <code>int32 tacprm = 7;</code>
      */
     int getTacprm();
   }
@@ -66,11 +72,11 @@ public final class T03001001 {
    * Protobuf type {@code com.qlcd.qltt.body.prt.T03001001._eventpush}
    */
   public  static final class _eventpush extends
-      com.google.protobuf.GeneratedMessage implements
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:com.qlcd.qltt.body.prt.T03001001._eventpush)
       _eventpushOrBuilder {
     // Use _eventpush.newBuilder() to construct.
-    private _eventpush(com.google.protobuf.GeneratedMessage.Builder builder) {
+    private _eventpush(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private _eventpush() {
@@ -109,9 +115,9 @@ public final class T03001001 {
               break;
             }
             case 10: {
-              com.google.protobuf.ByteString bs = input.readBytes();
+              java.lang.String s = input.readStringRequireUtf8();
 
-              eventdate_ = bs;
+              eventdate_ = s;
               break;
             }
             case 16: {
@@ -125,9 +131,9 @@ public final class T03001001 {
               break;
             }
             case 34: {
-              com.google.protobuf.ByteString bs = input.readBytes();
+              java.lang.String s = input.readStringRequireUtf8();
 
-              occtime_ = bs;
+              occtime_ = s;
               break;
             }
             case 40: {
@@ -136,9 +142,9 @@ public final class T03001001 {
               break;
             }
             case 50: {
-              com.google.protobuf.ByteString bs = input.readBytes();
+              java.lang.String s = input.readStringRequireUtf8();
 
-              tactic_ = bs;
+              tactic_ = s;
               break;
             }
             case 56: {
@@ -152,7 +158,7 @@ public final class T03001001 {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
+            e).setUnfinishedMessage(this);
       } finally {
         makeExtensionsImmutable();
       }
@@ -162,32 +168,17 @@ public final class T03001001 {
       return com.qlcd.qltt.body.prt.T03001001.internal_static_com_qlcd_qltt_body_prt_T03001001__eventpush_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return com.qlcd.qltt.body.prt.T03001001.internal_static_com_qlcd_qltt_body_prt_T03001001__eventpush_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               com.qlcd.qltt.body.prt.T03001001._eventpush.class, com.qlcd.qltt.body.prt.T03001001._eventpush.Builder.class);
     }
 
-    public static final com.google.protobuf.Parser<_eventpush> PARSER =
-        new com.google.protobuf.AbstractParser<_eventpush>() {
-      public _eventpush parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new _eventpush(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<_eventpush> getParserForType() {
-      return PARSER;
-    }
-
     public static final int EVENTDATE_FIELD_NUMBER = 1;
-    private java.lang.Object eventdate_;
+    private volatile java.lang.Object eventdate_;
     /**
-     * <code>optional string eventdate = 1;</code>
+     * <code>string eventdate = 1;</code>
      */
     public java.lang.String getEventdate() {
       java.lang.Object ref = eventdate_;
@@ -197,14 +188,12 @@ public final class T03001001 {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          eventdate_ = s;
-        }
+        eventdate_ = s;
         return s;
       }
     }
     /**
-     * <code>optional string eventdate = 1;</code>
+     * <code>string eventdate = 1;</code>
      */
     public com.google.protobuf.ByteString
         getEventdateBytes() {
@@ -223,7 +212,7 @@ public final class T03001001 {
     public static final int EVENTNO_FIELD_NUMBER = 2;
     private int eventno_;
     /**
-     * <code>optional int32 eventno = 2;</code>
+     * <code>int32 eventno = 2;</code>
      */
     public int getEventno() {
       return eventno_;
@@ -232,16 +221,16 @@ public final class T03001001 {
     public static final int EVENTTYPE_FIELD_NUMBER = 3;
     private int eventtype_;
     /**
-     * <code>optional int32 eventtype = 3;</code>
+     * <code>int32 eventtype = 3;</code>
      */
     public int getEventtype() {
       return eventtype_;
     }
 
     public static final int OCCTIME_FIELD_NUMBER = 4;
-    private java.lang.Object occtime_;
+    private volatile java.lang.Object occtime_;
     /**
-     * <code>optional string occtime = 4;</code>
+     * <code>string occtime = 4;</code>
      */
     public java.lang.String getOcctime() {
       java.lang.Object ref = occtime_;
@@ -251,14 +240,12 @@ public final class T03001001 {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          occtime_ = s;
-        }
+        occtime_ = s;
         return s;
       }
     }
     /**
-     * <code>optional string occtime = 4;</code>
+     * <code>string occtime = 4;</code>
      */
     public com.google.protobuf.ByteString
         getOcctimeBytes() {
@@ -277,16 +264,16 @@ public final class T03001001 {
     public static final int MXDLYVAL_FIELD_NUMBER = 5;
     private int mxdlyval_;
     /**
-     * <code>optional int32 mxdlyval = 5;</code>
+     * <code>int32 mxdlyval = 5;</code>
      */
     public int getMxdlyval() {
       return mxdlyval_;
     }
 
     public static final int TACTIC_FIELD_NUMBER = 6;
-    private java.lang.Object tactic_;
+    private volatile java.lang.Object tactic_;
     /**
-     * <code>optional string tactic = 6;</code>
+     * <code>string tactic = 6;</code>
      */
     public java.lang.String getTactic() {
       java.lang.Object ref = tactic_;
@@ -296,14 +283,12 @@ public final class T03001001 {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          tactic_ = s;
-        }
+        tactic_ = s;
         return s;
       }
     }
     /**
-     * <code>optional string tactic = 6;</code>
+     * <code>string tactic = 6;</code>
      */
     public com.google.protobuf.ByteString
         getTacticBytes() {
@@ -322,7 +307,7 @@ public final class T03001001 {
     public static final int TACPRM_FIELD_NUMBER = 7;
     private int tacprm_;
     /**
-     * <code>optional int32 tacprm = 7;</code>
+     * <code>int32 tacprm = 7;</code>
      */
     public int getTacprm() {
       return tacprm_;
@@ -340,9 +325,8 @@ public final class T03001001 {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      getSerializedSize();
       if (!getEventdateBytes().isEmpty()) {
-        output.writeBytes(1, getEventdateBytes());
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, eventdate_);
       }
       if (eventno_ != 0) {
         output.writeInt32(2, eventno_);
@@ -351,28 +335,26 @@ public final class T03001001 {
         output.writeInt32(3, eventtype_);
       }
       if (!getOcctimeBytes().isEmpty()) {
-        output.writeBytes(4, getOcctimeBytes());
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, occtime_);
       }
       if (mxdlyval_ != 0) {
         output.writeInt32(5, mxdlyval_);
       }
       if (!getTacticBytes().isEmpty()) {
-        output.writeBytes(6, getTacticBytes());
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 6, tactic_);
       }
       if (tacprm_ != 0) {
         output.writeInt32(7, tacprm_);
       }
     }
 
-    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSerializedSize;
+      int size = memoizedSize;
       if (size != -1) return size;
 
       size = 0;
       if (!getEventdateBytes().isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, getEventdateBytes());
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, eventdate_);
       }
       if (eventno_ != 0) {
         size += com.google.protobuf.CodedOutputStream
@@ -383,26 +365,78 @@ public final class T03001001 {
           .computeInt32Size(3, eventtype_);
       }
       if (!getOcctimeBytes().isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(4, getOcctimeBytes());
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, occtime_);
       }
       if (mxdlyval_ != 0) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(5, mxdlyval_);
       }
       if (!getTacticBytes().isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(6, getTacticBytes());
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, tactic_);
       }
       if (tacprm_ != 0) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(7, tacprm_);
       }
-      memoizedSerializedSize = size;
+      memoizedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.qlcd.qltt.body.prt.T03001001._eventpush)) {
+        return super.equals(obj);
+      }
+      com.qlcd.qltt.body.prt.T03001001._eventpush other = (com.qlcd.qltt.body.prt.T03001001._eventpush) obj;
+
+      boolean result = true;
+      result = result && getEventdate()
+          .equals(other.getEventdate());
+      result = result && (getEventno()
+          == other.getEventno());
+      result = result && (getEventtype()
+          == other.getEventtype());
+      result = result && getOcctime()
+          .equals(other.getOcctime());
+      result = result && (getMxdlyval()
+          == other.getMxdlyval());
+      result = result && getTactic()
+          .equals(other.getTactic());
+      result = result && (getTacprm()
+          == other.getTacprm());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + EVENTDATE_FIELD_NUMBER;
+      hash = (53 * hash) + getEventdate().hashCode();
+      hash = (37 * hash) + EVENTNO_FIELD_NUMBER;
+      hash = (53 * hash) + getEventno();
+      hash = (37 * hash) + EVENTTYPE_FIELD_NUMBER;
+      hash = (53 * hash) + getEventtype();
+      hash = (37 * hash) + OCCTIME_FIELD_NUMBER;
+      hash = (53 * hash) + getOcctime().hashCode();
+      hash = (37 * hash) + MXDLYVAL_FIELD_NUMBER;
+      hash = (53 * hash) + getMxdlyval();
+      hash = (37 * hash) + TACTIC_FIELD_NUMBER;
+      hash = (53 * hash) + getTactic().hashCode();
+      hash = (37 * hash) + TACPRM_FIELD_NUMBER;
+      hash = (53 * hash) + getTacprm();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static com.qlcd.qltt.body.prt.T03001001._eventpush parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -426,46 +460,57 @@ public final class T03001001 {
     }
     public static com.qlcd.qltt.body.prt.T03001001._eventpush parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
     }
     public static com.qlcd.qltt.body.prt.T03001001._eventpush parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.qlcd.qltt.body.prt.T03001001._eventpush parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
     }
     public static com.qlcd.qltt.body.prt.T03001001._eventpush parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.qlcd.qltt.body.prt.T03001001._eventpush parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
     }
     public static com.qlcd.qltt.body.prt.T03001001._eventpush parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static Builder newBuilder() { return new Builder(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.qlcd.qltt.body.prt.T03001001._eventpush prototype) {
-      return newBuilder().mergeFrom(prototype);
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
     }
-    public Builder toBuilder() { return newBuilder(this); }
+    public static Builder newBuilder(com.qlcd.qltt.body.prt.T03001001._eventpush prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -473,7 +518,7 @@ public final class T03001001 {
      * Protobuf type {@code com.qlcd.qltt.body.prt.T03001001._eventpush}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:com.qlcd.qltt.body.prt.T03001001._eventpush)
         com.qlcd.qltt.body.prt.T03001001._eventpushOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -481,7 +526,7 @@ public final class T03001001 {
         return com.qlcd.qltt.body.prt.T03001001.internal_static_com_qlcd_qltt_body_prt_T03001001__eventpush_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return com.qlcd.qltt.body.prt.T03001001.internal_static_com_qlcd_qltt_body_prt_T03001001__eventpush_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -494,12 +539,13 @@ public final class T03001001 {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
         }
       }
       public Builder clear() {
@@ -551,6 +597,32 @@ public final class T03001001 {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.qlcd.qltt.body.prt.T03001001._eventpush) {
           return mergeFrom((com.qlcd.qltt.body.prt.T03001001._eventpush)other);
@@ -603,7 +675,7 @@ public final class T03001001 {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (com.qlcd.qltt.body.prt.T03001001._eventpush) e.getUnfinishedMessage();
-          throw e;
+          throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -614,7 +686,7 @@ public final class T03001001 {
 
       private java.lang.Object eventdate_ = "";
       /**
-       * <code>optional string eventdate = 1;</code>
+       * <code>string eventdate = 1;</code>
        */
       public java.lang.String getEventdate() {
         java.lang.Object ref = eventdate_;
@@ -622,16 +694,14 @@ public final class T03001001 {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            eventdate_ = s;
-          }
+          eventdate_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>optional string eventdate = 1;</code>
+       * <code>string eventdate = 1;</code>
        */
       public com.google.protobuf.ByteString
           getEventdateBytes() {
@@ -647,7 +717,7 @@ public final class T03001001 {
         }
       }
       /**
-       * <code>optional string eventdate = 1;</code>
+       * <code>string eventdate = 1;</code>
        */
       public Builder setEventdate(
           java.lang.String value) {
@@ -660,7 +730,7 @@ public final class T03001001 {
         return this;
       }
       /**
-       * <code>optional string eventdate = 1;</code>
+       * <code>string eventdate = 1;</code>
        */
       public Builder clearEventdate() {
         
@@ -669,14 +739,15 @@ public final class T03001001 {
         return this;
       }
       /**
-       * <code>optional string eventdate = 1;</code>
+       * <code>string eventdate = 1;</code>
        */
       public Builder setEventdateBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  checkByteStringIsUtf8(value);
+        
         eventdate_ = value;
         onChanged();
         return this;
@@ -684,13 +755,13 @@ public final class T03001001 {
 
       private int eventno_ ;
       /**
-       * <code>optional int32 eventno = 2;</code>
+       * <code>int32 eventno = 2;</code>
        */
       public int getEventno() {
         return eventno_;
       }
       /**
-       * <code>optional int32 eventno = 2;</code>
+       * <code>int32 eventno = 2;</code>
        */
       public Builder setEventno(int value) {
         
@@ -699,7 +770,7 @@ public final class T03001001 {
         return this;
       }
       /**
-       * <code>optional int32 eventno = 2;</code>
+       * <code>int32 eventno = 2;</code>
        */
       public Builder clearEventno() {
         
@@ -710,13 +781,13 @@ public final class T03001001 {
 
       private int eventtype_ ;
       /**
-       * <code>optional int32 eventtype = 3;</code>
+       * <code>int32 eventtype = 3;</code>
        */
       public int getEventtype() {
         return eventtype_;
       }
       /**
-       * <code>optional int32 eventtype = 3;</code>
+       * <code>int32 eventtype = 3;</code>
        */
       public Builder setEventtype(int value) {
         
@@ -725,7 +796,7 @@ public final class T03001001 {
         return this;
       }
       /**
-       * <code>optional int32 eventtype = 3;</code>
+       * <code>int32 eventtype = 3;</code>
        */
       public Builder clearEventtype() {
         
@@ -736,7 +807,7 @@ public final class T03001001 {
 
       private java.lang.Object occtime_ = "";
       /**
-       * <code>optional string occtime = 4;</code>
+       * <code>string occtime = 4;</code>
        */
       public java.lang.String getOcctime() {
         java.lang.Object ref = occtime_;
@@ -744,16 +815,14 @@ public final class T03001001 {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            occtime_ = s;
-          }
+          occtime_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>optional string occtime = 4;</code>
+       * <code>string occtime = 4;</code>
        */
       public com.google.protobuf.ByteString
           getOcctimeBytes() {
@@ -769,7 +838,7 @@ public final class T03001001 {
         }
       }
       /**
-       * <code>optional string occtime = 4;</code>
+       * <code>string occtime = 4;</code>
        */
       public Builder setOcctime(
           java.lang.String value) {
@@ -782,7 +851,7 @@ public final class T03001001 {
         return this;
       }
       /**
-       * <code>optional string occtime = 4;</code>
+       * <code>string occtime = 4;</code>
        */
       public Builder clearOcctime() {
         
@@ -791,14 +860,15 @@ public final class T03001001 {
         return this;
       }
       /**
-       * <code>optional string occtime = 4;</code>
+       * <code>string occtime = 4;</code>
        */
       public Builder setOcctimeBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  checkByteStringIsUtf8(value);
+        
         occtime_ = value;
         onChanged();
         return this;
@@ -806,13 +876,13 @@ public final class T03001001 {
 
       private int mxdlyval_ ;
       /**
-       * <code>optional int32 mxdlyval = 5;</code>
+       * <code>int32 mxdlyval = 5;</code>
        */
       public int getMxdlyval() {
         return mxdlyval_;
       }
       /**
-       * <code>optional int32 mxdlyval = 5;</code>
+       * <code>int32 mxdlyval = 5;</code>
        */
       public Builder setMxdlyval(int value) {
         
@@ -821,7 +891,7 @@ public final class T03001001 {
         return this;
       }
       /**
-       * <code>optional int32 mxdlyval = 5;</code>
+       * <code>int32 mxdlyval = 5;</code>
        */
       public Builder clearMxdlyval() {
         
@@ -832,7 +902,7 @@ public final class T03001001 {
 
       private java.lang.Object tactic_ = "";
       /**
-       * <code>optional string tactic = 6;</code>
+       * <code>string tactic = 6;</code>
        */
       public java.lang.String getTactic() {
         java.lang.Object ref = tactic_;
@@ -840,16 +910,14 @@ public final class T03001001 {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            tactic_ = s;
-          }
+          tactic_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>optional string tactic = 6;</code>
+       * <code>string tactic = 6;</code>
        */
       public com.google.protobuf.ByteString
           getTacticBytes() {
@@ -865,7 +933,7 @@ public final class T03001001 {
         }
       }
       /**
-       * <code>optional string tactic = 6;</code>
+       * <code>string tactic = 6;</code>
        */
       public Builder setTactic(
           java.lang.String value) {
@@ -878,7 +946,7 @@ public final class T03001001 {
         return this;
       }
       /**
-       * <code>optional string tactic = 6;</code>
+       * <code>string tactic = 6;</code>
        */
       public Builder clearTactic() {
         
@@ -887,14 +955,15 @@ public final class T03001001 {
         return this;
       }
       /**
-       * <code>optional string tactic = 6;</code>
+       * <code>string tactic = 6;</code>
        */
       public Builder setTacticBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  checkByteStringIsUtf8(value);
+        
         tactic_ = value;
         onChanged();
         return this;
@@ -902,13 +971,13 @@ public final class T03001001 {
 
       private int tacprm_ ;
       /**
-       * <code>optional int32 tacprm = 7;</code>
+       * <code>int32 tacprm = 7;</code>
        */
       public int getTacprm() {
         return tacprm_;
       }
       /**
-       * <code>optional int32 tacprm = 7;</code>
+       * <code>int32 tacprm = 7;</code>
        */
       public Builder setTacprm(int value) {
         
@@ -917,7 +986,7 @@ public final class T03001001 {
         return this;
       }
       /**
-       * <code>optional int32 tacprm = 7;</code>
+       * <code>int32 tacprm = 7;</code>
        */
       public Builder clearTacprm() {
         
@@ -940,16 +1009,36 @@ public final class T03001001 {
     }
 
     // @@protoc_insertion_point(class_scope:com.qlcd.qltt.body.prt.T03001001._eventpush)
-    private static final com.qlcd.qltt.body.prt.T03001001._eventpush defaultInstance;static {
-      defaultInstance = new com.qlcd.qltt.body.prt.T03001001._eventpush();
+    private static final com.qlcd.qltt.body.prt.T03001001._eventpush DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.qlcd.qltt.body.prt.T03001001._eventpush();
     }
 
     public static com.qlcd.qltt.body.prt.T03001001._eventpush getDefaultInstance() {
-      return defaultInstance;
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<_eventpush>
+        PARSER = new com.google.protobuf.AbstractParser<_eventpush>() {
+      public _eventpush parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new _eventpush(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<_eventpush> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<_eventpush> getParserForType() {
+      return PARSER;
     }
 
     public com.qlcd.qltt.body.prt.T03001001._eventpush getDefaultInstanceForType() {
-      return defaultInstance;
+      return DEFAULT_INSTANCE;
     }
 
   }
@@ -959,50 +1048,50 @@ public final class T03001001 {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string ttacct = 1;</code>
+     * <code>string ttacct = 1;</code>
      */
     java.lang.String getTtacct();
     /**
-     * <code>optional string ttacct = 1;</code>
+     * <code>string ttacct = 1;</code>
      */
     com.google.protobuf.ByteString
         getTtacctBytes();
 
     /**
-     * <code>optional string content = 2;</code>
+     * <code>string content = 2;</code>
      */
     java.lang.String getContent();
     /**
-     * <code>optional string content = 2;</code>
+     * <code>string content = 2;</code>
      */
     com.google.protobuf.ByteString
         getContentBytes();
 
     /**
-     * <code>optional .com.qlcd.qltt.body.Bpem.PEB_SVCCHNL svcchnl = 3;</code>
+     * <code>.com.qlcd.qltt.body.Bpem.PEB_SVCCHNL svcchnl = 3;</code>
      */
     int getSvcchnlValue();
     /**
-     * <code>optional .com.qlcd.qltt.body.Bpem.PEB_SVCCHNL svcchnl = 3;</code>
+     * <code>.com.qlcd.qltt.body.Bpem.PEB_SVCCHNL svcchnl = 3;</code>
      */
     com.qlcd.qltt.body.Bpem.PEB_SVCCHNL getSvcchnl();
 
     /**
-     * <code>optional string devno = 4;</code>
+     * <code>string devno = 4;</code>
      */
     java.lang.String getDevno();
     /**
-     * <code>optional string devno = 4;</code>
+     * <code>string devno = 4;</code>
      */
     com.google.protobuf.ByteString
         getDevnoBytes();
 
     /**
-     * <code>optional .com.qlcd.qltt.body.Bpem.PEB_DEVTYPE devtype = 5;</code>
+     * <code>.com.qlcd.qltt.body.Bpem.PEB_DEVTYPE devtype = 5;</code>
      */
     int getDevtypeValue();
     /**
-     * <code>optional .com.qlcd.qltt.body.Bpem.PEB_DEVTYPE devtype = 5;</code>
+     * <code>.com.qlcd.qltt.body.Bpem.PEB_DEVTYPE devtype = 5;</code>
      */
     com.qlcd.qltt.body.Bpem.PEB_DEVTYPE getDevtype();
   }
@@ -1010,11 +1099,11 @@ public final class T03001001 {
    * Protobuf type {@code com.qlcd.qltt.body.prt.T03001001._evacctpush}
    */
   public  static final class _evacctpush extends
-      com.google.protobuf.GeneratedMessage implements
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:com.qlcd.qltt.body.prt.T03001001._evacctpush)
       _evacctpushOrBuilder {
     // Use _evacctpush.newBuilder() to construct.
-    private _evacctpush(com.google.protobuf.GeneratedMessage.Builder builder) {
+    private _evacctpush(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private _evacctpush() {
@@ -1051,15 +1140,15 @@ public final class T03001001 {
               break;
             }
             case 10: {
-              com.google.protobuf.ByteString bs = input.readBytes();
+              java.lang.String s = input.readStringRequireUtf8();
 
-              ttacct_ = bs;
+              ttacct_ = s;
               break;
             }
             case 18: {
-              com.google.protobuf.ByteString bs = input.readBytes();
+              java.lang.String s = input.readStringRequireUtf8();
 
-              content_ = bs;
+              content_ = s;
               break;
             }
             case 24: {
@@ -1069,9 +1158,9 @@ public final class T03001001 {
               break;
             }
             case 34: {
-              com.google.protobuf.ByteString bs = input.readBytes();
+              java.lang.String s = input.readStringRequireUtf8();
 
-              devno_ = bs;
+              devno_ = s;
               break;
             }
             case 40: {
@@ -1086,7 +1175,7 @@ public final class T03001001 {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
+            e).setUnfinishedMessage(this);
       } finally {
         makeExtensionsImmutable();
       }
@@ -1096,32 +1185,17 @@ public final class T03001001 {
       return com.qlcd.qltt.body.prt.T03001001.internal_static_com_qlcd_qltt_body_prt_T03001001__evacctpush_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return com.qlcd.qltt.body.prt.T03001001.internal_static_com_qlcd_qltt_body_prt_T03001001__evacctpush_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               com.qlcd.qltt.body.prt.T03001001._evacctpush.class, com.qlcd.qltt.body.prt.T03001001._evacctpush.Builder.class);
     }
 
-    public static final com.google.protobuf.Parser<_evacctpush> PARSER =
-        new com.google.protobuf.AbstractParser<_evacctpush>() {
-      public _evacctpush parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new _evacctpush(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<_evacctpush> getParserForType() {
-      return PARSER;
-    }
-
     public static final int TTACCT_FIELD_NUMBER = 1;
-    private java.lang.Object ttacct_;
+    private volatile java.lang.Object ttacct_;
     /**
-     * <code>optional string ttacct = 1;</code>
+     * <code>string ttacct = 1;</code>
      */
     public java.lang.String getTtacct() {
       java.lang.Object ref = ttacct_;
@@ -1131,14 +1205,12 @@ public final class T03001001 {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          ttacct_ = s;
-        }
+        ttacct_ = s;
         return s;
       }
     }
     /**
-     * <code>optional string ttacct = 1;</code>
+     * <code>string ttacct = 1;</code>
      */
     public com.google.protobuf.ByteString
         getTtacctBytes() {
@@ -1155,9 +1227,9 @@ public final class T03001001 {
     }
 
     public static final int CONTENT_FIELD_NUMBER = 2;
-    private java.lang.Object content_;
+    private volatile java.lang.Object content_;
     /**
-     * <code>optional string content = 2;</code>
+     * <code>string content = 2;</code>
      */
     public java.lang.String getContent() {
       java.lang.Object ref = content_;
@@ -1167,14 +1239,12 @@ public final class T03001001 {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          content_ = s;
-        }
+        content_ = s;
         return s;
       }
     }
     /**
-     * <code>optional string content = 2;</code>
+     * <code>string content = 2;</code>
      */
     public com.google.protobuf.ByteString
         getContentBytes() {
@@ -1193,13 +1263,13 @@ public final class T03001001 {
     public static final int SVCCHNL_FIELD_NUMBER = 3;
     private int svcchnl_;
     /**
-     * <code>optional .com.qlcd.qltt.body.Bpem.PEB_SVCCHNL svcchnl = 3;</code>
+     * <code>.com.qlcd.qltt.body.Bpem.PEB_SVCCHNL svcchnl = 3;</code>
      */
     public int getSvcchnlValue() {
       return svcchnl_;
     }
     /**
-     * <code>optional .com.qlcd.qltt.body.Bpem.PEB_SVCCHNL svcchnl = 3;</code>
+     * <code>.com.qlcd.qltt.body.Bpem.PEB_SVCCHNL svcchnl = 3;</code>
      */
     public com.qlcd.qltt.body.Bpem.PEB_SVCCHNL getSvcchnl() {
       com.qlcd.qltt.body.Bpem.PEB_SVCCHNL result = com.qlcd.qltt.body.Bpem.PEB_SVCCHNL.valueOf(svcchnl_);
@@ -1207,9 +1277,9 @@ public final class T03001001 {
     }
 
     public static final int DEVNO_FIELD_NUMBER = 4;
-    private java.lang.Object devno_;
+    private volatile java.lang.Object devno_;
     /**
-     * <code>optional string devno = 4;</code>
+     * <code>string devno = 4;</code>
      */
     public java.lang.String getDevno() {
       java.lang.Object ref = devno_;
@@ -1219,14 +1289,12 @@ public final class T03001001 {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          devno_ = s;
-        }
+        devno_ = s;
         return s;
       }
     }
     /**
-     * <code>optional string devno = 4;</code>
+     * <code>string devno = 4;</code>
      */
     public com.google.protobuf.ByteString
         getDevnoBytes() {
@@ -1245,13 +1313,13 @@ public final class T03001001 {
     public static final int DEVTYPE_FIELD_NUMBER = 5;
     private int devtype_;
     /**
-     * <code>optional .com.qlcd.qltt.body.Bpem.PEB_DEVTYPE devtype = 5;</code>
+     * <code>.com.qlcd.qltt.body.Bpem.PEB_DEVTYPE devtype = 5;</code>
      */
     public int getDevtypeValue() {
       return devtype_;
     }
     /**
-     * <code>optional .com.qlcd.qltt.body.Bpem.PEB_DEVTYPE devtype = 5;</code>
+     * <code>.com.qlcd.qltt.body.Bpem.PEB_DEVTYPE devtype = 5;</code>
      */
     public com.qlcd.qltt.body.Bpem.PEB_DEVTYPE getDevtype() {
       com.qlcd.qltt.body.Bpem.PEB_DEVTYPE result = com.qlcd.qltt.body.Bpem.PEB_DEVTYPE.valueOf(devtype_);
@@ -1270,55 +1338,94 @@ public final class T03001001 {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      getSerializedSize();
       if (!getTtacctBytes().isEmpty()) {
-        output.writeBytes(1, getTtacctBytes());
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, ttacct_);
       }
       if (!getContentBytes().isEmpty()) {
-        output.writeBytes(2, getContentBytes());
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, content_);
       }
       if (svcchnl_ != com.qlcd.qltt.body.Bpem.PEB_SVCCHNL.EV_UNKNOWN.getNumber()) {
         output.writeEnum(3, svcchnl_);
       }
       if (!getDevnoBytes().isEmpty()) {
-        output.writeBytes(4, getDevnoBytes());
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, devno_);
       }
       if (devtype_ != com.qlcd.qltt.body.Bpem.PEB_DEVTYPE.EV_NODEV.getNumber()) {
         output.writeEnum(5, devtype_);
       }
     }
 
-    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSerializedSize;
+      int size = memoizedSize;
       if (size != -1) return size;
 
       size = 0;
       if (!getTtacctBytes().isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, getTtacctBytes());
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, ttacct_);
       }
       if (!getContentBytes().isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, getContentBytes());
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, content_);
       }
       if (svcchnl_ != com.qlcd.qltt.body.Bpem.PEB_SVCCHNL.EV_UNKNOWN.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(3, svcchnl_);
       }
       if (!getDevnoBytes().isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(4, getDevnoBytes());
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, devno_);
       }
       if (devtype_ != com.qlcd.qltt.body.Bpem.PEB_DEVTYPE.EV_NODEV.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(5, devtype_);
       }
-      memoizedSerializedSize = size;
+      memoizedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.qlcd.qltt.body.prt.T03001001._evacctpush)) {
+        return super.equals(obj);
+      }
+      com.qlcd.qltt.body.prt.T03001001._evacctpush other = (com.qlcd.qltt.body.prt.T03001001._evacctpush) obj;
+
+      boolean result = true;
+      result = result && getTtacct()
+          .equals(other.getTtacct());
+      result = result && getContent()
+          .equals(other.getContent());
+      result = result && svcchnl_ == other.svcchnl_;
+      result = result && getDevno()
+          .equals(other.getDevno());
+      result = result && devtype_ == other.devtype_;
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + TTACCT_FIELD_NUMBER;
+      hash = (53 * hash) + getTtacct().hashCode();
+      hash = (37 * hash) + CONTENT_FIELD_NUMBER;
+      hash = (53 * hash) + getContent().hashCode();
+      hash = (37 * hash) + SVCCHNL_FIELD_NUMBER;
+      hash = (53 * hash) + svcchnl_;
+      hash = (37 * hash) + DEVNO_FIELD_NUMBER;
+      hash = (53 * hash) + getDevno().hashCode();
+      hash = (37 * hash) + DEVTYPE_FIELD_NUMBER;
+      hash = (53 * hash) + devtype_;
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static com.qlcd.qltt.body.prt.T03001001._evacctpush parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1342,46 +1449,57 @@ public final class T03001001 {
     }
     public static com.qlcd.qltt.body.prt.T03001001._evacctpush parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
     }
     public static com.qlcd.qltt.body.prt.T03001001._evacctpush parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.qlcd.qltt.body.prt.T03001001._evacctpush parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
     }
     public static com.qlcd.qltt.body.prt.T03001001._evacctpush parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.qlcd.qltt.body.prt.T03001001._evacctpush parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
     }
     public static com.qlcd.qltt.body.prt.T03001001._evacctpush parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static Builder newBuilder() { return new Builder(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.qlcd.qltt.body.prt.T03001001._evacctpush prototype) {
-      return newBuilder().mergeFrom(prototype);
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
     }
-    public Builder toBuilder() { return newBuilder(this); }
+    public static Builder newBuilder(com.qlcd.qltt.body.prt.T03001001._evacctpush prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -1389,7 +1507,7 @@ public final class T03001001 {
      * Protobuf type {@code com.qlcd.qltt.body.prt.T03001001._evacctpush}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:com.qlcd.qltt.body.prt.T03001001._evacctpush)
         com.qlcd.qltt.body.prt.T03001001._evacctpushOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -1397,7 +1515,7 @@ public final class T03001001 {
         return com.qlcd.qltt.body.prt.T03001001.internal_static_com_qlcd_qltt_body_prt_T03001001__evacctpush_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return com.qlcd.qltt.body.prt.T03001001.internal_static_com_qlcd_qltt_body_prt_T03001001__evacctpush_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -1410,12 +1528,13 @@ public final class T03001001 {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
         }
       }
       public Builder clear() {
@@ -1461,6 +1580,32 @@ public final class T03001001 {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.qlcd.qltt.body.prt.T03001001._evacctpush) {
           return mergeFrom((com.qlcd.qltt.body.prt.T03001001._evacctpush)other);
@@ -1507,7 +1652,7 @@ public final class T03001001 {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (com.qlcd.qltt.body.prt.T03001001._evacctpush) e.getUnfinishedMessage();
-          throw e;
+          throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -1518,7 +1663,7 @@ public final class T03001001 {
 
       private java.lang.Object ttacct_ = "";
       /**
-       * <code>optional string ttacct = 1;</code>
+       * <code>string ttacct = 1;</code>
        */
       public java.lang.String getTtacct() {
         java.lang.Object ref = ttacct_;
@@ -1526,16 +1671,14 @@ public final class T03001001 {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            ttacct_ = s;
-          }
+          ttacct_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>optional string ttacct = 1;</code>
+       * <code>string ttacct = 1;</code>
        */
       public com.google.protobuf.ByteString
           getTtacctBytes() {
@@ -1551,7 +1694,7 @@ public final class T03001001 {
         }
       }
       /**
-       * <code>optional string ttacct = 1;</code>
+       * <code>string ttacct = 1;</code>
        */
       public Builder setTtacct(
           java.lang.String value) {
@@ -1564,7 +1707,7 @@ public final class T03001001 {
         return this;
       }
       /**
-       * <code>optional string ttacct = 1;</code>
+       * <code>string ttacct = 1;</code>
        */
       public Builder clearTtacct() {
         
@@ -1573,14 +1716,15 @@ public final class T03001001 {
         return this;
       }
       /**
-       * <code>optional string ttacct = 1;</code>
+       * <code>string ttacct = 1;</code>
        */
       public Builder setTtacctBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  checkByteStringIsUtf8(value);
+        
         ttacct_ = value;
         onChanged();
         return this;
@@ -1588,7 +1732,7 @@ public final class T03001001 {
 
       private java.lang.Object content_ = "";
       /**
-       * <code>optional string content = 2;</code>
+       * <code>string content = 2;</code>
        */
       public java.lang.String getContent() {
         java.lang.Object ref = content_;
@@ -1596,16 +1740,14 @@ public final class T03001001 {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            content_ = s;
-          }
+          content_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>optional string content = 2;</code>
+       * <code>string content = 2;</code>
        */
       public com.google.protobuf.ByteString
           getContentBytes() {
@@ -1621,7 +1763,7 @@ public final class T03001001 {
         }
       }
       /**
-       * <code>optional string content = 2;</code>
+       * <code>string content = 2;</code>
        */
       public Builder setContent(
           java.lang.String value) {
@@ -1634,7 +1776,7 @@ public final class T03001001 {
         return this;
       }
       /**
-       * <code>optional string content = 2;</code>
+       * <code>string content = 2;</code>
        */
       public Builder clearContent() {
         
@@ -1643,14 +1785,15 @@ public final class T03001001 {
         return this;
       }
       /**
-       * <code>optional string content = 2;</code>
+       * <code>string content = 2;</code>
        */
       public Builder setContentBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  checkByteStringIsUtf8(value);
+        
         content_ = value;
         onChanged();
         return this;
@@ -1658,13 +1801,13 @@ public final class T03001001 {
 
       private int svcchnl_ = 0;
       /**
-       * <code>optional .com.qlcd.qltt.body.Bpem.PEB_SVCCHNL svcchnl = 3;</code>
+       * <code>.com.qlcd.qltt.body.Bpem.PEB_SVCCHNL svcchnl = 3;</code>
        */
       public int getSvcchnlValue() {
         return svcchnl_;
       }
       /**
-       * <code>optional .com.qlcd.qltt.body.Bpem.PEB_SVCCHNL svcchnl = 3;</code>
+       * <code>.com.qlcd.qltt.body.Bpem.PEB_SVCCHNL svcchnl = 3;</code>
        */
       public Builder setSvcchnlValue(int value) {
         svcchnl_ = value;
@@ -1672,14 +1815,14 @@ public final class T03001001 {
         return this;
       }
       /**
-       * <code>optional .com.qlcd.qltt.body.Bpem.PEB_SVCCHNL svcchnl = 3;</code>
+       * <code>.com.qlcd.qltt.body.Bpem.PEB_SVCCHNL svcchnl = 3;</code>
        */
       public com.qlcd.qltt.body.Bpem.PEB_SVCCHNL getSvcchnl() {
         com.qlcd.qltt.body.Bpem.PEB_SVCCHNL result = com.qlcd.qltt.body.Bpem.PEB_SVCCHNL.valueOf(svcchnl_);
         return result == null ? com.qlcd.qltt.body.Bpem.PEB_SVCCHNL.UNRECOGNIZED : result;
       }
       /**
-       * <code>optional .com.qlcd.qltt.body.Bpem.PEB_SVCCHNL svcchnl = 3;</code>
+       * <code>.com.qlcd.qltt.body.Bpem.PEB_SVCCHNL svcchnl = 3;</code>
        */
       public Builder setSvcchnl(com.qlcd.qltt.body.Bpem.PEB_SVCCHNL value) {
         if (value == null) {
@@ -1691,7 +1834,7 @@ public final class T03001001 {
         return this;
       }
       /**
-       * <code>optional .com.qlcd.qltt.body.Bpem.PEB_SVCCHNL svcchnl = 3;</code>
+       * <code>.com.qlcd.qltt.body.Bpem.PEB_SVCCHNL svcchnl = 3;</code>
        */
       public Builder clearSvcchnl() {
         
@@ -1702,7 +1845,7 @@ public final class T03001001 {
 
       private java.lang.Object devno_ = "";
       /**
-       * <code>optional string devno = 4;</code>
+       * <code>string devno = 4;</code>
        */
       public java.lang.String getDevno() {
         java.lang.Object ref = devno_;
@@ -1710,16 +1853,14 @@ public final class T03001001 {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            devno_ = s;
-          }
+          devno_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>optional string devno = 4;</code>
+       * <code>string devno = 4;</code>
        */
       public com.google.protobuf.ByteString
           getDevnoBytes() {
@@ -1735,7 +1876,7 @@ public final class T03001001 {
         }
       }
       /**
-       * <code>optional string devno = 4;</code>
+       * <code>string devno = 4;</code>
        */
       public Builder setDevno(
           java.lang.String value) {
@@ -1748,7 +1889,7 @@ public final class T03001001 {
         return this;
       }
       /**
-       * <code>optional string devno = 4;</code>
+       * <code>string devno = 4;</code>
        */
       public Builder clearDevno() {
         
@@ -1757,14 +1898,15 @@ public final class T03001001 {
         return this;
       }
       /**
-       * <code>optional string devno = 4;</code>
+       * <code>string devno = 4;</code>
        */
       public Builder setDevnoBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  checkByteStringIsUtf8(value);
+        
         devno_ = value;
         onChanged();
         return this;
@@ -1772,13 +1914,13 @@ public final class T03001001 {
 
       private int devtype_ = 0;
       /**
-       * <code>optional .com.qlcd.qltt.body.Bpem.PEB_DEVTYPE devtype = 5;</code>
+       * <code>.com.qlcd.qltt.body.Bpem.PEB_DEVTYPE devtype = 5;</code>
        */
       public int getDevtypeValue() {
         return devtype_;
       }
       /**
-       * <code>optional .com.qlcd.qltt.body.Bpem.PEB_DEVTYPE devtype = 5;</code>
+       * <code>.com.qlcd.qltt.body.Bpem.PEB_DEVTYPE devtype = 5;</code>
        */
       public Builder setDevtypeValue(int value) {
         devtype_ = value;
@@ -1786,14 +1928,14 @@ public final class T03001001 {
         return this;
       }
       /**
-       * <code>optional .com.qlcd.qltt.body.Bpem.PEB_DEVTYPE devtype = 5;</code>
+       * <code>.com.qlcd.qltt.body.Bpem.PEB_DEVTYPE devtype = 5;</code>
        */
       public com.qlcd.qltt.body.Bpem.PEB_DEVTYPE getDevtype() {
         com.qlcd.qltt.body.Bpem.PEB_DEVTYPE result = com.qlcd.qltt.body.Bpem.PEB_DEVTYPE.valueOf(devtype_);
         return result == null ? com.qlcd.qltt.body.Bpem.PEB_DEVTYPE.UNRECOGNIZED : result;
       }
       /**
-       * <code>optional .com.qlcd.qltt.body.Bpem.PEB_DEVTYPE devtype = 5;</code>
+       * <code>.com.qlcd.qltt.body.Bpem.PEB_DEVTYPE devtype = 5;</code>
        */
       public Builder setDevtype(com.qlcd.qltt.body.Bpem.PEB_DEVTYPE value) {
         if (value == null) {
@@ -1805,7 +1947,7 @@ public final class T03001001 {
         return this;
       }
       /**
-       * <code>optional .com.qlcd.qltt.body.Bpem.PEB_DEVTYPE devtype = 5;</code>
+       * <code>.com.qlcd.qltt.body.Bpem.PEB_DEVTYPE devtype = 5;</code>
        */
       public Builder clearDevtype() {
         
@@ -1828,16 +1970,36 @@ public final class T03001001 {
     }
 
     // @@protoc_insertion_point(class_scope:com.qlcd.qltt.body.prt.T03001001._evacctpush)
-    private static final com.qlcd.qltt.body.prt.T03001001._evacctpush defaultInstance;static {
-      defaultInstance = new com.qlcd.qltt.body.prt.T03001001._evacctpush();
+    private static final com.qlcd.qltt.body.prt.T03001001._evacctpush DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.qlcd.qltt.body.prt.T03001001._evacctpush();
     }
 
     public static com.qlcd.qltt.body.prt.T03001001._evacctpush getDefaultInstance() {
-      return defaultInstance;
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<_evacctpush>
+        PARSER = new com.google.protobuf.AbstractParser<_evacctpush>() {
+      public _evacctpush parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new _evacctpush(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<_evacctpush> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<_evacctpush> getParserForType() {
+      return PARSER;
     }
 
     public com.qlcd.qltt.body.prt.T03001001._evacctpush getDefaultInstanceForType() {
-      return defaultInstance;
+      return DEFAULT_INSTANCE;
     }
 
   }
@@ -1847,15 +2009,15 @@ public final class T03001001 {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional .com.qlcd.qltt.body.prt.T03001001._eventpush ep = 1;</code>
+     * <code>.com.qlcd.qltt.body.prt.T03001001._eventpush ep = 1;</code>
      */
     boolean hasEp();
     /**
-     * <code>optional .com.qlcd.qltt.body.prt.T03001001._eventpush ep = 1;</code>
+     * <code>.com.qlcd.qltt.body.prt.T03001001._eventpush ep = 1;</code>
      */
     com.qlcd.qltt.body.prt.T03001001._eventpush getEp();
     /**
-     * <code>optional .com.qlcd.qltt.body.prt.T03001001._eventpush ep = 1;</code>
+     * <code>.com.qlcd.qltt.body.prt.T03001001._eventpush ep = 1;</code>
      */
     com.qlcd.qltt.body.prt.T03001001._eventpushOrBuilder getEpOrBuilder();
 
@@ -1887,11 +2049,11 @@ public final class T03001001 {
    * Protobuf type {@code com.qlcd.qltt.body.prt.T03001001._req}
    */
   public  static final class _req extends
-      com.google.protobuf.GeneratedMessage implements
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:com.qlcd.qltt.body.prt.T03001001._req)
       _reqOrBuilder {
     // Use _req.newBuilder() to construct.
-    private _req(com.google.protobuf.GeneratedMessage.Builder builder) {
+    private _req(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private _req() {
@@ -1928,7 +2090,7 @@ public final class T03001001 {
               if (ep_ != null) {
                 subBuilder = ep_.toBuilder();
               }
-              ep_ = input.readMessage(com.qlcd.qltt.body.prt.T03001001._eventpush.PARSER, extensionRegistry);
+              ep_ = input.readMessage(com.qlcd.qltt.body.prt.T03001001._eventpush.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(ep_);
                 ep_ = subBuilder.buildPartial();
@@ -1941,7 +2103,8 @@ public final class T03001001 {
                 eaplist_ = new java.util.ArrayList<com.qlcd.qltt.body.prt.T03001001._evacctpush>();
                 mutable_bitField0_ |= 0x00000002;
               }
-              eaplist_.add(input.readMessage(com.qlcd.qltt.body.prt.T03001001._evacctpush.PARSER, extensionRegistry));
+              eaplist_.add(
+                  input.readMessage(com.qlcd.qltt.body.prt.T03001001._evacctpush.parser(), extensionRegistry));
               break;
             }
           }
@@ -1950,7 +2113,7 @@ public final class T03001001 {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
+            e).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
           eaplist_ = java.util.Collections.unmodifiableList(eaplist_);
@@ -1963,45 +2126,30 @@ public final class T03001001 {
       return com.qlcd.qltt.body.prt.T03001001.internal_static_com_qlcd_qltt_body_prt_T03001001__req_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return com.qlcd.qltt.body.prt.T03001001.internal_static_com_qlcd_qltt_body_prt_T03001001__req_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               com.qlcd.qltt.body.prt.T03001001._req.class, com.qlcd.qltt.body.prt.T03001001._req.Builder.class);
     }
 
-    public static final com.google.protobuf.Parser<_req> PARSER =
-        new com.google.protobuf.AbstractParser<_req>() {
-      public _req parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new _req(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<_req> getParserForType() {
-      return PARSER;
-    }
-
     private int bitField0_;
     public static final int EP_FIELD_NUMBER = 1;
     private com.qlcd.qltt.body.prt.T03001001._eventpush ep_;
     /**
-     * <code>optional .com.qlcd.qltt.body.prt.T03001001._eventpush ep = 1;</code>
+     * <code>.com.qlcd.qltt.body.prt.T03001001._eventpush ep = 1;</code>
      */
     public boolean hasEp() {
       return ep_ != null;
     }
     /**
-     * <code>optional .com.qlcd.qltt.body.prt.T03001001._eventpush ep = 1;</code>
+     * <code>.com.qlcd.qltt.body.prt.T03001001._eventpush ep = 1;</code>
      */
     public com.qlcd.qltt.body.prt.T03001001._eventpush getEp() {
       return ep_ == null ? com.qlcd.qltt.body.prt.T03001001._eventpush.getDefaultInstance() : ep_;
     }
     /**
-     * <code>optional .com.qlcd.qltt.body.prt.T03001001._eventpush ep = 1;</code>
+     * <code>.com.qlcd.qltt.body.prt.T03001001._eventpush ep = 1;</code>
      */
     public com.qlcd.qltt.body.prt.T03001001._eventpushOrBuilder getEpOrBuilder() {
       return getEp();
@@ -2054,7 +2202,6 @@ public final class T03001001 {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      getSerializedSize();
       if (ep_ != null) {
         output.writeMessage(1, getEp());
       }
@@ -2063,9 +2210,8 @@ public final class T03001001 {
       }
     }
 
-    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSerializedSize;
+      int size = memoizedSize;
       if (size != -1) return size;
 
       size = 0;
@@ -2077,11 +2223,52 @@ public final class T03001001 {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(2, eaplist_.get(i));
       }
-      memoizedSerializedSize = size;
+      memoizedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.qlcd.qltt.body.prt.T03001001._req)) {
+        return super.equals(obj);
+      }
+      com.qlcd.qltt.body.prt.T03001001._req other = (com.qlcd.qltt.body.prt.T03001001._req) obj;
+
+      boolean result = true;
+      result = result && (hasEp() == other.hasEp());
+      if (hasEp()) {
+        result = result && getEp()
+            .equals(other.getEp());
+      }
+      result = result && getEaplistList()
+          .equals(other.getEaplistList());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasEp()) {
+        hash = (37 * hash) + EP_FIELD_NUMBER;
+        hash = (53 * hash) + getEp().hashCode();
+      }
+      if (getEaplistCount() > 0) {
+        hash = (37 * hash) + EAPLIST_FIELD_NUMBER;
+        hash = (53 * hash) + getEaplistList().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static com.qlcd.qltt.body.prt.T03001001._req parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -2105,46 +2292,57 @@ public final class T03001001 {
     }
     public static com.qlcd.qltt.body.prt.T03001001._req parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
     }
     public static com.qlcd.qltt.body.prt.T03001001._req parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.qlcd.qltt.body.prt.T03001001._req parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
     }
     public static com.qlcd.qltt.body.prt.T03001001._req parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.qlcd.qltt.body.prt.T03001001._req parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
     }
     public static com.qlcd.qltt.body.prt.T03001001._req parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static Builder newBuilder() { return new Builder(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.qlcd.qltt.body.prt.T03001001._req prototype) {
-      return newBuilder().mergeFrom(prototype);
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
     }
-    public Builder toBuilder() { return newBuilder(this); }
+    public static Builder newBuilder(com.qlcd.qltt.body.prt.T03001001._req prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -2152,7 +2350,7 @@ public final class T03001001 {
      * Protobuf type {@code com.qlcd.qltt.body.prt.T03001001._req}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:com.qlcd.qltt.body.prt.T03001001._req)
         com.qlcd.qltt.body.prt.T03001001._reqOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -2160,7 +2358,7 @@ public final class T03001001 {
         return com.qlcd.qltt.body.prt.T03001001.internal_static_com_qlcd_qltt_body_prt_T03001001__req_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return com.qlcd.qltt.body.prt.T03001001.internal_static_com_qlcd_qltt_body_prt_T03001001__req_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -2173,12 +2371,13 @@ public final class T03001001 {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
           getEaplistFieldBuilder();
         }
       }
@@ -2239,6 +2438,32 @@ public final class T03001001 {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.qlcd.qltt.body.prt.T03001001._req) {
           return mergeFrom((com.qlcd.qltt.body.prt.T03001001._req)other);
@@ -2272,7 +2497,7 @@ public final class T03001001 {
               eaplist_ = other.eaplist_;
               bitField0_ = (bitField0_ & ~0x00000002);
               eaplistBuilder_ = 
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getEaplistFieldBuilder() : null;
             } else {
               eaplistBuilder_.addAllMessages(other.eaplist_);
@@ -2296,7 +2521,7 @@ public final class T03001001 {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (com.qlcd.qltt.body.prt.T03001001._req) e.getUnfinishedMessage();
-          throw e;
+          throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -2307,16 +2532,16 @@ public final class T03001001 {
       private int bitField0_;
 
       private com.qlcd.qltt.body.prt.T03001001._eventpush ep_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           com.qlcd.qltt.body.prt.T03001001._eventpush, com.qlcd.qltt.body.prt.T03001001._eventpush.Builder, com.qlcd.qltt.body.prt.T03001001._eventpushOrBuilder> epBuilder_;
       /**
-       * <code>optional .com.qlcd.qltt.body.prt.T03001001._eventpush ep = 1;</code>
+       * <code>.com.qlcd.qltt.body.prt.T03001001._eventpush ep = 1;</code>
        */
       public boolean hasEp() {
         return epBuilder_ != null || ep_ != null;
       }
       /**
-       * <code>optional .com.qlcd.qltt.body.prt.T03001001._eventpush ep = 1;</code>
+       * <code>.com.qlcd.qltt.body.prt.T03001001._eventpush ep = 1;</code>
        */
       public com.qlcd.qltt.body.prt.T03001001._eventpush getEp() {
         if (epBuilder_ == null) {
@@ -2326,7 +2551,7 @@ public final class T03001001 {
         }
       }
       /**
-       * <code>optional .com.qlcd.qltt.body.prt.T03001001._eventpush ep = 1;</code>
+       * <code>.com.qlcd.qltt.body.prt.T03001001._eventpush ep = 1;</code>
        */
       public Builder setEp(com.qlcd.qltt.body.prt.T03001001._eventpush value) {
         if (epBuilder_ == null) {
@@ -2342,7 +2567,7 @@ public final class T03001001 {
         return this;
       }
       /**
-       * <code>optional .com.qlcd.qltt.body.prt.T03001001._eventpush ep = 1;</code>
+       * <code>.com.qlcd.qltt.body.prt.T03001001._eventpush ep = 1;</code>
        */
       public Builder setEp(
           com.qlcd.qltt.body.prt.T03001001._eventpush.Builder builderForValue) {
@@ -2356,7 +2581,7 @@ public final class T03001001 {
         return this;
       }
       /**
-       * <code>optional .com.qlcd.qltt.body.prt.T03001001._eventpush ep = 1;</code>
+       * <code>.com.qlcd.qltt.body.prt.T03001001._eventpush ep = 1;</code>
        */
       public Builder mergeEp(com.qlcd.qltt.body.prt.T03001001._eventpush value) {
         if (epBuilder_ == null) {
@@ -2374,7 +2599,7 @@ public final class T03001001 {
         return this;
       }
       /**
-       * <code>optional .com.qlcd.qltt.body.prt.T03001001._eventpush ep = 1;</code>
+       * <code>.com.qlcd.qltt.body.prt.T03001001._eventpush ep = 1;</code>
        */
       public Builder clearEp() {
         if (epBuilder_ == null) {
@@ -2388,7 +2613,7 @@ public final class T03001001 {
         return this;
       }
       /**
-       * <code>optional .com.qlcd.qltt.body.prt.T03001001._eventpush ep = 1;</code>
+       * <code>.com.qlcd.qltt.body.prt.T03001001._eventpush ep = 1;</code>
        */
       public com.qlcd.qltt.body.prt.T03001001._eventpush.Builder getEpBuilder() {
         
@@ -2396,7 +2621,7 @@ public final class T03001001 {
         return getEpFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .com.qlcd.qltt.body.prt.T03001001._eventpush ep = 1;</code>
+       * <code>.com.qlcd.qltt.body.prt.T03001001._eventpush ep = 1;</code>
        */
       public com.qlcd.qltt.body.prt.T03001001._eventpushOrBuilder getEpOrBuilder() {
         if (epBuilder_ != null) {
@@ -2407,13 +2632,13 @@ public final class T03001001 {
         }
       }
       /**
-       * <code>optional .com.qlcd.qltt.body.prt.T03001001._eventpush ep = 1;</code>
+       * <code>.com.qlcd.qltt.body.prt.T03001001._eventpush ep = 1;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           com.qlcd.qltt.body.prt.T03001001._eventpush, com.qlcd.qltt.body.prt.T03001001._eventpush.Builder, com.qlcd.qltt.body.prt.T03001001._eventpushOrBuilder> 
           getEpFieldBuilder() {
         if (epBuilder_ == null) {
-          epBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          epBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               com.qlcd.qltt.body.prt.T03001001._eventpush, com.qlcd.qltt.body.prt.T03001001._eventpush.Builder, com.qlcd.qltt.body.prt.T03001001._eventpushOrBuilder>(
                   getEp(),
                   getParentForChildren(),
@@ -2432,7 +2657,7 @@ public final class T03001001 {
          }
       }
 
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           com.qlcd.qltt.body.prt.T03001001._evacctpush, com.qlcd.qltt.body.prt.T03001001._evacctpush.Builder, com.qlcd.qltt.body.prt.T03001001._evacctpushOrBuilder> eaplistBuilder_;
 
       /**
@@ -2648,11 +2873,11 @@ public final class T03001001 {
            getEaplistBuilderList() {
         return getEaplistFieldBuilder().getBuilderList();
       }
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           com.qlcd.qltt.body.prt.T03001001._evacctpush, com.qlcd.qltt.body.prt.T03001001._evacctpush.Builder, com.qlcd.qltt.body.prt.T03001001._evacctpushOrBuilder> 
           getEaplistFieldBuilder() {
         if (eaplistBuilder_ == null) {
-          eaplistBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          eaplistBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               com.qlcd.qltt.body.prt.T03001001._evacctpush, com.qlcd.qltt.body.prt.T03001001._evacctpush.Builder, com.qlcd.qltt.body.prt.T03001001._evacctpushOrBuilder>(
                   eaplist_,
                   ((bitField0_ & 0x00000002) == 0x00000002),
@@ -2677,16 +2902,36 @@ public final class T03001001 {
     }
 
     // @@protoc_insertion_point(class_scope:com.qlcd.qltt.body.prt.T03001001._req)
-    private static final com.qlcd.qltt.body.prt.T03001001._req defaultInstance;static {
-      defaultInstance = new com.qlcd.qltt.body.prt.T03001001._req();
+    private static final com.qlcd.qltt.body.prt.T03001001._req DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.qlcd.qltt.body.prt.T03001001._req();
     }
 
     public static com.qlcd.qltt.body.prt.T03001001._req getDefaultInstance() {
-      return defaultInstance;
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<_req>
+        PARSER = new com.google.protobuf.AbstractParser<_req>() {
+      public _req parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new _req(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<_req> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<_req> getParserForType() {
+      return PARSER;
     }
 
     public com.qlcd.qltt.body.prt.T03001001._req getDefaultInstanceForType() {
-      return defaultInstance;
+      return DEFAULT_INSTANCE;
     }
 
   }
@@ -2696,15 +2941,15 @@ public final class T03001001 {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional .com.qlcd.qltt.body.BppSys._rsp_succhead rsh = 1;</code>
+     * <code>.com.qlcd.qltt.body.BppSys._rsp_succhead rsh = 1;</code>
      */
     boolean hasRsh();
     /**
-     * <code>optional .com.qlcd.qltt.body.BppSys._rsp_succhead rsh = 1;</code>
+     * <code>.com.qlcd.qltt.body.BppSys._rsp_succhead rsh = 1;</code>
      */
     com.qlcd.qltt.body.BppSys._rsp_succhead getRsh();
     /**
-     * <code>optional .com.qlcd.qltt.body.BppSys._rsp_succhead rsh = 1;</code>
+     * <code>.com.qlcd.qltt.body.BppSys._rsp_succhead rsh = 1;</code>
      */
     com.qlcd.qltt.body.BppSys._rsp_succheadOrBuilder getRshOrBuilder();
   }
@@ -2712,11 +2957,11 @@ public final class T03001001 {
    * Protobuf type {@code com.qlcd.qltt.body.prt.T03001001._rsp}
    */
   public  static final class _rsp extends
-      com.google.protobuf.GeneratedMessage implements
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:com.qlcd.qltt.body.prt.T03001001._rsp)
       _rspOrBuilder {
     // Use _rsp.newBuilder() to construct.
-    private _rsp(com.google.protobuf.GeneratedMessage.Builder builder) {
+    private _rsp(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private _rsp() {
@@ -2752,7 +2997,7 @@ public final class T03001001 {
               if (rsh_ != null) {
                 subBuilder = rsh_.toBuilder();
               }
-              rsh_ = input.readMessage(com.qlcd.qltt.body.BppSys._rsp_succhead.PARSER, extensionRegistry);
+              rsh_ = input.readMessage(com.qlcd.qltt.body.BppSys._rsp_succhead.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(rsh_);
                 rsh_ = subBuilder.buildPartial();
@@ -2766,7 +3011,7 @@ public final class T03001001 {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
+            e).setUnfinishedMessage(this);
       } finally {
         makeExtensionsImmutable();
       }
@@ -2776,44 +3021,29 @@ public final class T03001001 {
       return com.qlcd.qltt.body.prt.T03001001.internal_static_com_qlcd_qltt_body_prt_T03001001__rsp_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return com.qlcd.qltt.body.prt.T03001001.internal_static_com_qlcd_qltt_body_prt_T03001001__rsp_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               com.qlcd.qltt.body.prt.T03001001._rsp.class, com.qlcd.qltt.body.prt.T03001001._rsp.Builder.class);
     }
 
-    public static final com.google.protobuf.Parser<_rsp> PARSER =
-        new com.google.protobuf.AbstractParser<_rsp>() {
-      public _rsp parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new _rsp(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<_rsp> getParserForType() {
-      return PARSER;
-    }
-
     public static final int RSH_FIELD_NUMBER = 1;
     private com.qlcd.qltt.body.BppSys._rsp_succhead rsh_;
     /**
-     * <code>optional .com.qlcd.qltt.body.BppSys._rsp_succhead rsh = 1;</code>
+     * <code>.com.qlcd.qltt.body.BppSys._rsp_succhead rsh = 1;</code>
      */
     public boolean hasRsh() {
       return rsh_ != null;
     }
     /**
-     * <code>optional .com.qlcd.qltt.body.BppSys._rsp_succhead rsh = 1;</code>
+     * <code>.com.qlcd.qltt.body.BppSys._rsp_succhead rsh = 1;</code>
      */
     public com.qlcd.qltt.body.BppSys._rsp_succhead getRsh() {
       return rsh_ == null ? com.qlcd.qltt.body.BppSys._rsp_succhead.getDefaultInstance() : rsh_;
     }
     /**
-     * <code>optional .com.qlcd.qltt.body.BppSys._rsp_succhead rsh = 1;</code>
+     * <code>.com.qlcd.qltt.body.BppSys._rsp_succhead rsh = 1;</code>
      */
     public com.qlcd.qltt.body.BppSys._rsp_succheadOrBuilder getRshOrBuilder() {
       return getRsh();
@@ -2831,15 +3061,13 @@ public final class T03001001 {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      getSerializedSize();
       if (rsh_ != null) {
         output.writeMessage(1, getRsh());
       }
     }
 
-    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSerializedSize;
+      int size = memoizedSize;
       if (size != -1) return size;
 
       size = 0;
@@ -2847,11 +3075,46 @@ public final class T03001001 {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, getRsh());
       }
-      memoizedSerializedSize = size;
+      memoizedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.qlcd.qltt.body.prt.T03001001._rsp)) {
+        return super.equals(obj);
+      }
+      com.qlcd.qltt.body.prt.T03001001._rsp other = (com.qlcd.qltt.body.prt.T03001001._rsp) obj;
+
+      boolean result = true;
+      result = result && (hasRsh() == other.hasRsh());
+      if (hasRsh()) {
+        result = result && getRsh()
+            .equals(other.getRsh());
+      }
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasRsh()) {
+        hash = (37 * hash) + RSH_FIELD_NUMBER;
+        hash = (53 * hash) + getRsh().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static com.qlcd.qltt.body.prt.T03001001._rsp parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -2875,46 +3138,57 @@ public final class T03001001 {
     }
     public static com.qlcd.qltt.body.prt.T03001001._rsp parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
     }
     public static com.qlcd.qltt.body.prt.T03001001._rsp parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.qlcd.qltt.body.prt.T03001001._rsp parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
     }
     public static com.qlcd.qltt.body.prt.T03001001._rsp parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.qlcd.qltt.body.prt.T03001001._rsp parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
     }
     public static com.qlcd.qltt.body.prt.T03001001._rsp parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static Builder newBuilder() { return new Builder(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.qlcd.qltt.body.prt.T03001001._rsp prototype) {
-      return newBuilder().mergeFrom(prototype);
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
     }
-    public Builder toBuilder() { return newBuilder(this); }
+    public static Builder newBuilder(com.qlcd.qltt.body.prt.T03001001._rsp prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -2922,7 +3196,7 @@ public final class T03001001 {
      * Protobuf type {@code com.qlcd.qltt.body.prt.T03001001._rsp}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:com.qlcd.qltt.body.prt.T03001001._rsp)
         com.qlcd.qltt.body.prt.T03001001._rspOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -2930,7 +3204,7 @@ public final class T03001001 {
         return com.qlcd.qltt.body.prt.T03001001.internal_static_com_qlcd_qltt_body_prt_T03001001__rsp_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return com.qlcd.qltt.body.prt.T03001001.internal_static_com_qlcd_qltt_body_prt_T03001001__rsp_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -2943,12 +3217,13 @@ public final class T03001001 {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
         }
       }
       public Builder clear() {
@@ -2990,6 +3265,32 @@ public final class T03001001 {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.qlcd.qltt.body.prt.T03001001._rsp) {
           return mergeFrom((com.qlcd.qltt.body.prt.T03001001._rsp)other);
@@ -3021,7 +3322,7 @@ public final class T03001001 {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (com.qlcd.qltt.body.prt.T03001001._rsp) e.getUnfinishedMessage();
-          throw e;
+          throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -3031,16 +3332,16 @@ public final class T03001001 {
       }
 
       private com.qlcd.qltt.body.BppSys._rsp_succhead rsh_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           com.qlcd.qltt.body.BppSys._rsp_succhead, com.qlcd.qltt.body.BppSys._rsp_succhead.Builder, com.qlcd.qltt.body.BppSys._rsp_succheadOrBuilder> rshBuilder_;
       /**
-       * <code>optional .com.qlcd.qltt.body.BppSys._rsp_succhead rsh = 1;</code>
+       * <code>.com.qlcd.qltt.body.BppSys._rsp_succhead rsh = 1;</code>
        */
       public boolean hasRsh() {
         return rshBuilder_ != null || rsh_ != null;
       }
       /**
-       * <code>optional .com.qlcd.qltt.body.BppSys._rsp_succhead rsh = 1;</code>
+       * <code>.com.qlcd.qltt.body.BppSys._rsp_succhead rsh = 1;</code>
        */
       public com.qlcd.qltt.body.BppSys._rsp_succhead getRsh() {
         if (rshBuilder_ == null) {
@@ -3050,7 +3351,7 @@ public final class T03001001 {
         }
       }
       /**
-       * <code>optional .com.qlcd.qltt.body.BppSys._rsp_succhead rsh = 1;</code>
+       * <code>.com.qlcd.qltt.body.BppSys._rsp_succhead rsh = 1;</code>
        */
       public Builder setRsh(com.qlcd.qltt.body.BppSys._rsp_succhead value) {
         if (rshBuilder_ == null) {
@@ -3066,7 +3367,7 @@ public final class T03001001 {
         return this;
       }
       /**
-       * <code>optional .com.qlcd.qltt.body.BppSys._rsp_succhead rsh = 1;</code>
+       * <code>.com.qlcd.qltt.body.BppSys._rsp_succhead rsh = 1;</code>
        */
       public Builder setRsh(
           com.qlcd.qltt.body.BppSys._rsp_succhead.Builder builderForValue) {
@@ -3080,7 +3381,7 @@ public final class T03001001 {
         return this;
       }
       /**
-       * <code>optional .com.qlcd.qltt.body.BppSys._rsp_succhead rsh = 1;</code>
+       * <code>.com.qlcd.qltt.body.BppSys._rsp_succhead rsh = 1;</code>
        */
       public Builder mergeRsh(com.qlcd.qltt.body.BppSys._rsp_succhead value) {
         if (rshBuilder_ == null) {
@@ -3098,7 +3399,7 @@ public final class T03001001 {
         return this;
       }
       /**
-       * <code>optional .com.qlcd.qltt.body.BppSys._rsp_succhead rsh = 1;</code>
+       * <code>.com.qlcd.qltt.body.BppSys._rsp_succhead rsh = 1;</code>
        */
       public Builder clearRsh() {
         if (rshBuilder_ == null) {
@@ -3112,7 +3413,7 @@ public final class T03001001 {
         return this;
       }
       /**
-       * <code>optional .com.qlcd.qltt.body.BppSys._rsp_succhead rsh = 1;</code>
+       * <code>.com.qlcd.qltt.body.BppSys._rsp_succhead rsh = 1;</code>
        */
       public com.qlcd.qltt.body.BppSys._rsp_succhead.Builder getRshBuilder() {
         
@@ -3120,7 +3421,7 @@ public final class T03001001 {
         return getRshFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .com.qlcd.qltt.body.BppSys._rsp_succhead rsh = 1;</code>
+       * <code>.com.qlcd.qltt.body.BppSys._rsp_succhead rsh = 1;</code>
        */
       public com.qlcd.qltt.body.BppSys._rsp_succheadOrBuilder getRshOrBuilder() {
         if (rshBuilder_ != null) {
@@ -3131,13 +3432,13 @@ public final class T03001001 {
         }
       }
       /**
-       * <code>optional .com.qlcd.qltt.body.BppSys._rsp_succhead rsh = 1;</code>
+       * <code>.com.qlcd.qltt.body.BppSys._rsp_succhead rsh = 1;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           com.qlcd.qltt.body.BppSys._rsp_succhead, com.qlcd.qltt.body.BppSys._rsp_succhead.Builder, com.qlcd.qltt.body.BppSys._rsp_succheadOrBuilder> 
           getRshFieldBuilder() {
         if (rshBuilder_ == null) {
-          rshBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          rshBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               com.qlcd.qltt.body.BppSys._rsp_succhead, com.qlcd.qltt.body.BppSys._rsp_succhead.Builder, com.qlcd.qltt.body.BppSys._rsp_succheadOrBuilder>(
                   getRsh(),
                   getParentForChildren(),
@@ -3161,46 +3462,66 @@ public final class T03001001 {
     }
 
     // @@protoc_insertion_point(class_scope:com.qlcd.qltt.body.prt.T03001001._rsp)
-    private static final com.qlcd.qltt.body.prt.T03001001._rsp defaultInstance;static {
-      defaultInstance = new com.qlcd.qltt.body.prt.T03001001._rsp();
+    private static final com.qlcd.qltt.body.prt.T03001001._rsp DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.qlcd.qltt.body.prt.T03001001._rsp();
     }
 
     public static com.qlcd.qltt.body.prt.T03001001._rsp getDefaultInstance() {
-      return defaultInstance;
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<_rsp>
+        PARSER = new com.google.protobuf.AbstractParser<_rsp>() {
+      public _rsp parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new _rsp(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<_rsp> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<_rsp> getParserForType() {
+      return PARSER;
     }
 
     public com.qlcd.qltt.body.prt.T03001001._rsp getDefaultInstanceForType() {
-      return defaultInstance;
+      return DEFAULT_INSTANCE;
     }
 
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_com_qlcd_qltt_body_prt_T03001001__eventpush_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_qlcd_qltt_body_prt_T03001001__eventpush_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_com_qlcd_qltt_body_prt_T03001001__evacctpush_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_qlcd_qltt_body_prt_T03001001__evacctpush_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_com_qlcd_qltt_body_prt_T03001001__req_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_qlcd_qltt_body_prt_T03001001__req_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_com_qlcd_qltt_body_prt_T03001001__rsp_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_qlcd_qltt_body_prt_T03001001__rsp_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
     return descriptor;
   }
-  private static com.google.protobuf.Descriptors.FileDescriptor
+  private static  com.google.protobuf.Descriptors.FileDescriptor
       descriptor;
   static {
     java.lang.String[] descriptorData = {
@@ -3238,25 +3559,25 @@ public final class T03001001 {
     internal_static_com_qlcd_qltt_body_prt_T03001001__eventpush_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_com_qlcd_qltt_body_prt_T03001001__eventpush_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_qlcd_qltt_body_prt_T03001001__eventpush_descriptor,
         new java.lang.String[] { "Eventdate", "Eventno", "Eventtype", "Occtime", "Mxdlyval", "Tactic", "Tacprm", });
     internal_static_com_qlcd_qltt_body_prt_T03001001__evacctpush_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_com_qlcd_qltt_body_prt_T03001001__evacctpush_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_qlcd_qltt_body_prt_T03001001__evacctpush_descriptor,
         new java.lang.String[] { "Ttacct", "Content", "Svcchnl", "Devno", "Devtype", });
     internal_static_com_qlcd_qltt_body_prt_T03001001__req_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_com_qlcd_qltt_body_prt_T03001001__req_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_qlcd_qltt_body_prt_T03001001__req_descriptor,
         new java.lang.String[] { "Ep", "Eaplist", });
     internal_static_com_qlcd_qltt_body_prt_T03001001__rsp_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_com_qlcd_qltt_body_prt_T03001001__rsp_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_qlcd_qltt_body_prt_T03001001__rsp_descriptor,
         new java.lang.String[] { "Rsh", });
     com.qlcd.qltt.body.Bpem.getDescriptor();

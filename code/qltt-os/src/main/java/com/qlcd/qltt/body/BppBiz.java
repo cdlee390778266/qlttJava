@@ -6,19 +6,25 @@ package com.qlcd.qltt.body;
 public final class BppBiz {
   private BppBiz() {}
   public static void registerAllExtensions(
+      com.google.protobuf.ExtensionRegistryLite registry) {
+  }
+
+  public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
+    registerAllExtensions(
+        (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   public interface _page_reqOrBuilder extends
       // @@protoc_insertion_point(interface_extends:com.qlcd.qltt.body.BppBiz._page_req)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 reqstart = 1;</code>
+     * <code>int32 reqstart = 1;</code>
      */
     int getReqstart();
 
     /**
-     * <code>optional int32 reqnum = 2;</code>
+     * <code>int32 reqnum = 2;</code>
      */
     int getReqnum();
   }
@@ -26,11 +32,11 @@ public final class BppBiz {
    * Protobuf type {@code com.qlcd.qltt.body.BppBiz._page_req}
    */
   public  static final class _page_req extends
-      com.google.protobuf.GeneratedMessage implements
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:com.qlcd.qltt.body.BppBiz._page_req)
       _page_reqOrBuilder {
     // Use _page_req.newBuilder() to construct.
-    private _page_req(com.google.protobuf.GeneratedMessage.Builder builder) {
+    private _page_req(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private _page_req() {
@@ -79,7 +85,7 @@ public final class BppBiz {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
+            e).setUnfinishedMessage(this);
       } finally {
         makeExtensionsImmutable();
       }
@@ -89,32 +95,17 @@ public final class BppBiz {
       return com.qlcd.qltt.body.BppBiz.internal_static_com_qlcd_qltt_body_BppBiz__page_req_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return com.qlcd.qltt.body.BppBiz.internal_static_com_qlcd_qltt_body_BppBiz__page_req_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               com.qlcd.qltt.body.BppBiz._page_req.class, com.qlcd.qltt.body.BppBiz._page_req.Builder.class);
     }
 
-    public static final com.google.protobuf.Parser<_page_req> PARSER =
-        new com.google.protobuf.AbstractParser<_page_req>() {
-      public _page_req parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new _page_req(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<_page_req> getParserForType() {
-      return PARSER;
-    }
-
     public static final int REQSTART_FIELD_NUMBER = 1;
     private int reqstart_;
     /**
-     * <code>optional int32 reqstart = 1;</code>
+     * <code>int32 reqstart = 1;</code>
      */
     public int getReqstart() {
       return reqstart_;
@@ -123,7 +114,7 @@ public final class BppBiz {
     public static final int REQNUM_FIELD_NUMBER = 2;
     private int reqnum_;
     /**
-     * <code>optional int32 reqnum = 2;</code>
+     * <code>int32 reqnum = 2;</code>
      */
     public int getReqnum() {
       return reqnum_;
@@ -141,7 +132,6 @@ public final class BppBiz {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      getSerializedSize();
       if (reqstart_ != 0) {
         output.writeInt32(1, reqstart_);
       }
@@ -150,9 +140,8 @@ public final class BppBiz {
       }
     }
 
-    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSerializedSize;
+      int size = memoizedSize;
       if (size != -1) return size;
 
       size = 0;
@@ -164,11 +153,45 @@ public final class BppBiz {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(2, reqnum_);
       }
-      memoizedSerializedSize = size;
+      memoizedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.qlcd.qltt.body.BppBiz._page_req)) {
+        return super.equals(obj);
+      }
+      com.qlcd.qltt.body.BppBiz._page_req other = (com.qlcd.qltt.body.BppBiz._page_req) obj;
+
+      boolean result = true;
+      result = result && (getReqstart()
+          == other.getReqstart());
+      result = result && (getReqnum()
+          == other.getReqnum());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + REQSTART_FIELD_NUMBER;
+      hash = (53 * hash) + getReqstart();
+      hash = (37 * hash) + REQNUM_FIELD_NUMBER;
+      hash = (53 * hash) + getReqnum();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static com.qlcd.qltt.body.BppBiz._page_req parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -192,46 +215,57 @@ public final class BppBiz {
     }
     public static com.qlcd.qltt.body.BppBiz._page_req parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
     }
     public static com.qlcd.qltt.body.BppBiz._page_req parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.qlcd.qltt.body.BppBiz._page_req parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
     }
     public static com.qlcd.qltt.body.BppBiz._page_req parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.qlcd.qltt.body.BppBiz._page_req parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
     }
     public static com.qlcd.qltt.body.BppBiz._page_req parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static Builder newBuilder() { return new Builder(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.qlcd.qltt.body.BppBiz._page_req prototype) {
-      return newBuilder().mergeFrom(prototype);
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
     }
-    public Builder toBuilder() { return newBuilder(this); }
+    public static Builder newBuilder(com.qlcd.qltt.body.BppBiz._page_req prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -239,7 +273,7 @@ public final class BppBiz {
      * Protobuf type {@code com.qlcd.qltt.body.BppBiz._page_req}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:com.qlcd.qltt.body.BppBiz._page_req)
         com.qlcd.qltt.body.BppBiz._page_reqOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -247,7 +281,7 @@ public final class BppBiz {
         return com.qlcd.qltt.body.BppBiz.internal_static_com_qlcd_qltt_body_BppBiz__page_req_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return com.qlcd.qltt.body.BppBiz.internal_static_com_qlcd_qltt_body_BppBiz__page_req_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -260,12 +294,13 @@ public final class BppBiz {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
         }
       }
       public Builder clear() {
@@ -302,6 +337,32 @@ public final class BppBiz {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.qlcd.qltt.body.BppBiz._page_req) {
           return mergeFrom((com.qlcd.qltt.body.BppBiz._page_req)other);
@@ -336,7 +397,7 @@ public final class BppBiz {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (com.qlcd.qltt.body.BppBiz._page_req) e.getUnfinishedMessage();
-          throw e;
+          throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -347,13 +408,13 @@ public final class BppBiz {
 
       private int reqstart_ ;
       /**
-       * <code>optional int32 reqstart = 1;</code>
+       * <code>int32 reqstart = 1;</code>
        */
       public int getReqstart() {
         return reqstart_;
       }
       /**
-       * <code>optional int32 reqstart = 1;</code>
+       * <code>int32 reqstart = 1;</code>
        */
       public Builder setReqstart(int value) {
         
@@ -362,7 +423,7 @@ public final class BppBiz {
         return this;
       }
       /**
-       * <code>optional int32 reqstart = 1;</code>
+       * <code>int32 reqstart = 1;</code>
        */
       public Builder clearReqstart() {
         
@@ -373,13 +434,13 @@ public final class BppBiz {
 
       private int reqnum_ ;
       /**
-       * <code>optional int32 reqnum = 2;</code>
+       * <code>int32 reqnum = 2;</code>
        */
       public int getReqnum() {
         return reqnum_;
       }
       /**
-       * <code>optional int32 reqnum = 2;</code>
+       * <code>int32 reqnum = 2;</code>
        */
       public Builder setReqnum(int value) {
         
@@ -388,7 +449,7 @@ public final class BppBiz {
         return this;
       }
       /**
-       * <code>optional int32 reqnum = 2;</code>
+       * <code>int32 reqnum = 2;</code>
        */
       public Builder clearReqnum() {
         
@@ -411,16 +472,36 @@ public final class BppBiz {
     }
 
     // @@protoc_insertion_point(class_scope:com.qlcd.qltt.body.BppBiz._page_req)
-    private static final com.qlcd.qltt.body.BppBiz._page_req defaultInstance;static {
-      defaultInstance = new com.qlcd.qltt.body.BppBiz._page_req();
+    private static final com.qlcd.qltt.body.BppBiz._page_req DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.qlcd.qltt.body.BppBiz._page_req();
     }
 
     public static com.qlcd.qltt.body.BppBiz._page_req getDefaultInstance() {
-      return defaultInstance;
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<_page_req>
+        PARSER = new com.google.protobuf.AbstractParser<_page_req>() {
+      public _page_req parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new _page_req(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<_page_req> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<_page_req> getParserForType() {
+      return PARSER;
     }
 
     public com.qlcd.qltt.body.BppBiz._page_req getDefaultInstanceForType() {
-      return defaultInstance;
+      return DEFAULT_INSTANCE;
     }
 
   }
@@ -430,7 +511,7 @@ public final class BppBiz {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 rspnum = 1;</code>
+     * <code>int32 rspnum = 1;</code>
      */
     int getRspnum();
   }
@@ -438,11 +519,11 @@ public final class BppBiz {
    * Protobuf type {@code com.qlcd.qltt.body.BppBiz._page_rsp}
    */
   public  static final class _page_rsp extends
-      com.google.protobuf.GeneratedMessage implements
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:com.qlcd.qltt.body.BppBiz._page_rsp)
       _page_rspOrBuilder {
     // Use _page_rsp.newBuilder() to construct.
-    private _page_rsp(com.google.protobuf.GeneratedMessage.Builder builder) {
+    private _page_rsp(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private _page_rsp() {
@@ -485,7 +566,7 @@ public final class BppBiz {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
+            e).setUnfinishedMessage(this);
       } finally {
         makeExtensionsImmutable();
       }
@@ -495,32 +576,17 @@ public final class BppBiz {
       return com.qlcd.qltt.body.BppBiz.internal_static_com_qlcd_qltt_body_BppBiz__page_rsp_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return com.qlcd.qltt.body.BppBiz.internal_static_com_qlcd_qltt_body_BppBiz__page_rsp_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               com.qlcd.qltt.body.BppBiz._page_rsp.class, com.qlcd.qltt.body.BppBiz._page_rsp.Builder.class);
     }
 
-    public static final com.google.protobuf.Parser<_page_rsp> PARSER =
-        new com.google.protobuf.AbstractParser<_page_rsp>() {
-      public _page_rsp parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new _page_rsp(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<_page_rsp> getParserForType() {
-      return PARSER;
-    }
-
     public static final int RSPNUM_FIELD_NUMBER = 1;
     private int rspnum_;
     /**
-     * <code>optional int32 rspnum = 1;</code>
+     * <code>int32 rspnum = 1;</code>
      */
     public int getRspnum() {
       return rspnum_;
@@ -538,15 +604,13 @@ public final class BppBiz {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      getSerializedSize();
       if (rspnum_ != 0) {
         output.writeInt32(1, rspnum_);
       }
     }
 
-    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSerializedSize;
+      int size = memoizedSize;
       if (size != -1) return size;
 
       size = 0;
@@ -554,11 +618,41 @@ public final class BppBiz {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(1, rspnum_);
       }
-      memoizedSerializedSize = size;
+      memoizedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.qlcd.qltt.body.BppBiz._page_rsp)) {
+        return super.equals(obj);
+      }
+      com.qlcd.qltt.body.BppBiz._page_rsp other = (com.qlcd.qltt.body.BppBiz._page_rsp) obj;
+
+      boolean result = true;
+      result = result && (getRspnum()
+          == other.getRspnum());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + RSPNUM_FIELD_NUMBER;
+      hash = (53 * hash) + getRspnum();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static com.qlcd.qltt.body.BppBiz._page_rsp parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -582,46 +676,57 @@ public final class BppBiz {
     }
     public static com.qlcd.qltt.body.BppBiz._page_rsp parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
     }
     public static com.qlcd.qltt.body.BppBiz._page_rsp parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.qlcd.qltt.body.BppBiz._page_rsp parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
     }
     public static com.qlcd.qltt.body.BppBiz._page_rsp parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.qlcd.qltt.body.BppBiz._page_rsp parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
     }
     public static com.qlcd.qltt.body.BppBiz._page_rsp parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static Builder newBuilder() { return new Builder(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.qlcd.qltt.body.BppBiz._page_rsp prototype) {
-      return newBuilder().mergeFrom(prototype);
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
     }
-    public Builder toBuilder() { return newBuilder(this); }
+    public static Builder newBuilder(com.qlcd.qltt.body.BppBiz._page_rsp prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -629,7 +734,7 @@ public final class BppBiz {
      * Protobuf type {@code com.qlcd.qltt.body.BppBiz._page_rsp}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:com.qlcd.qltt.body.BppBiz._page_rsp)
         com.qlcd.qltt.body.BppBiz._page_rspOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -637,7 +742,7 @@ public final class BppBiz {
         return com.qlcd.qltt.body.BppBiz.internal_static_com_qlcd_qltt_body_BppBiz__page_rsp_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return com.qlcd.qltt.body.BppBiz.internal_static_com_qlcd_qltt_body_BppBiz__page_rsp_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -650,12 +755,13 @@ public final class BppBiz {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
         }
       }
       public Builder clear() {
@@ -689,6 +795,32 @@ public final class BppBiz {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.qlcd.qltt.body.BppBiz._page_rsp) {
           return mergeFrom((com.qlcd.qltt.body.BppBiz._page_rsp)other);
@@ -720,7 +852,7 @@ public final class BppBiz {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (com.qlcd.qltt.body.BppBiz._page_rsp) e.getUnfinishedMessage();
-          throw e;
+          throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -731,13 +863,13 @@ public final class BppBiz {
 
       private int rspnum_ ;
       /**
-       * <code>optional int32 rspnum = 1;</code>
+       * <code>int32 rspnum = 1;</code>
        */
       public int getRspnum() {
         return rspnum_;
       }
       /**
-       * <code>optional int32 rspnum = 1;</code>
+       * <code>int32 rspnum = 1;</code>
        */
       public Builder setRspnum(int value) {
         
@@ -746,7 +878,7 @@ public final class BppBiz {
         return this;
       }
       /**
-       * <code>optional int32 rspnum = 1;</code>
+       * <code>int32 rspnum = 1;</code>
        */
       public Builder clearRspnum() {
         
@@ -769,36 +901,56 @@ public final class BppBiz {
     }
 
     // @@protoc_insertion_point(class_scope:com.qlcd.qltt.body.BppBiz._page_rsp)
-    private static final com.qlcd.qltt.body.BppBiz._page_rsp defaultInstance;static {
-      defaultInstance = new com.qlcd.qltt.body.BppBiz._page_rsp();
+    private static final com.qlcd.qltt.body.BppBiz._page_rsp DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.qlcd.qltt.body.BppBiz._page_rsp();
     }
 
     public static com.qlcd.qltt.body.BppBiz._page_rsp getDefaultInstance() {
-      return defaultInstance;
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<_page_rsp>
+        PARSER = new com.google.protobuf.AbstractParser<_page_rsp>() {
+      public _page_rsp parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new _page_rsp(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<_page_rsp> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<_page_rsp> getParserForType() {
+      return PARSER;
     }
 
     public com.qlcd.qltt.body.BppBiz._page_rsp getDefaultInstanceForType() {
-      return defaultInstance;
+      return DEFAULT_INSTANCE;
     }
 
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_com_qlcd_qltt_body_BppBiz__page_req_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_qlcd_qltt_body_BppBiz__page_req_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_com_qlcd_qltt_body_BppBiz__page_rsp_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_qlcd_qltt_body_BppBiz__page_rsp_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
     return descriptor;
   }
-  private static com.google.protobuf.Descriptors.FileDescriptor
+  private static  com.google.protobuf.Descriptors.FileDescriptor
       descriptor;
   static {
     java.lang.String[] descriptorData = {
@@ -822,13 +974,13 @@ public final class BppBiz {
     internal_static_com_qlcd_qltt_body_BppBiz__page_req_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_com_qlcd_qltt_body_BppBiz__page_req_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_qlcd_qltt_body_BppBiz__page_req_descriptor,
         new java.lang.String[] { "Reqstart", "Reqnum", });
     internal_static_com_qlcd_qltt_body_BppBiz__page_rsp_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_com_qlcd_qltt_body_BppBiz__page_rsp_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_qlcd_qltt_body_BppBiz__page_rsp_descriptor,
         new java.lang.String[] { "Rspnum", });
   }

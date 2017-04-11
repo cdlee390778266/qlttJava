@@ -6,37 +6,43 @@ package com.qlcd.qltt.body.prt;
 public final class T02003001 {
   private T02003001() {}
   public static void registerAllExtensions(
+      com.google.protobuf.ExtensionRegistryLite registry) {
+  }
+
+  public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
+    registerAllExtensions(
+        (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   public interface _reqOrBuilder extends
       // @@protoc_insertion_point(interface_extends:com.qlcd.qltt.body.prt.T02003001._req)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional .com.qlcd.qltt.body.BppBiz._page_req pgreq = 1;</code>
+     * <code>.com.qlcd.qltt.body.BppBiz._page_req pgreq = 1;</code>
      */
     boolean hasPgreq();
     /**
-     * <code>optional .com.qlcd.qltt.body.BppBiz._page_req pgreq = 1;</code>
+     * <code>.com.qlcd.qltt.body.BppBiz._page_req pgreq = 1;</code>
      */
     com.qlcd.qltt.body.BppBiz._page_req getPgreq();
     /**
-     * <code>optional .com.qlcd.qltt.body.BppBiz._page_req pgreq = 1;</code>
+     * <code>.com.qlcd.qltt.body.BppBiz._page_req pgreq = 1;</code>
      */
     com.qlcd.qltt.body.BppBiz._page_reqOrBuilder getPgreqOrBuilder();
 
     /**
-     * <code>optional string tactic = 2;</code>
+     * <code>string tactic = 2;</code>
      */
     java.lang.String getTactic();
     /**
-     * <code>optional string tactic = 2;</code>
+     * <code>string tactic = 2;</code>
      */
     com.google.protobuf.ByteString
         getTacticBytes();
 
     /**
-     * <code>optional int32 tacprm = 3;</code>
+     * <code>int32 tacprm = 3;</code>
      */
     int getTacprm();
   }
@@ -44,11 +50,11 @@ public final class T02003001 {
    * Protobuf type {@code com.qlcd.qltt.body.prt.T02003001._req}
    */
   public  static final class _req extends
-      com.google.protobuf.GeneratedMessage implements
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:com.qlcd.qltt.body.prt.T02003001._req)
       _reqOrBuilder {
     // Use _req.newBuilder() to construct.
-    private _req(com.google.protobuf.GeneratedMessage.Builder builder) {
+    private _req(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private _req() {
@@ -86,7 +92,7 @@ public final class T02003001 {
               if (pgreq_ != null) {
                 subBuilder = pgreq_.toBuilder();
               }
-              pgreq_ = input.readMessage(com.qlcd.qltt.body.BppBiz._page_req.PARSER, extensionRegistry);
+              pgreq_ = input.readMessage(com.qlcd.qltt.body.BppBiz._page_req.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(pgreq_);
                 pgreq_ = subBuilder.buildPartial();
@@ -95,9 +101,9 @@ public final class T02003001 {
               break;
             }
             case 18: {
-              com.google.protobuf.ByteString bs = input.readBytes();
+              java.lang.String s = input.readStringRequireUtf8();
 
-              tactic_ = bs;
+              tactic_ = s;
               break;
             }
             case 24: {
@@ -111,7 +117,7 @@ public final class T02003001 {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
+            e).setUnfinishedMessage(this);
       } finally {
         makeExtensionsImmutable();
       }
@@ -121,53 +127,38 @@ public final class T02003001 {
       return com.qlcd.qltt.body.prt.T02003001.internal_static_com_qlcd_qltt_body_prt_T02003001__req_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return com.qlcd.qltt.body.prt.T02003001.internal_static_com_qlcd_qltt_body_prt_T02003001__req_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               com.qlcd.qltt.body.prt.T02003001._req.class, com.qlcd.qltt.body.prt.T02003001._req.Builder.class);
     }
 
-    public static final com.google.protobuf.Parser<_req> PARSER =
-        new com.google.protobuf.AbstractParser<_req>() {
-      public _req parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new _req(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<_req> getParserForType() {
-      return PARSER;
-    }
-
     public static final int PGREQ_FIELD_NUMBER = 1;
     private com.qlcd.qltt.body.BppBiz._page_req pgreq_;
     /**
-     * <code>optional .com.qlcd.qltt.body.BppBiz._page_req pgreq = 1;</code>
+     * <code>.com.qlcd.qltt.body.BppBiz._page_req pgreq = 1;</code>
      */
     public boolean hasPgreq() {
       return pgreq_ != null;
     }
     /**
-     * <code>optional .com.qlcd.qltt.body.BppBiz._page_req pgreq = 1;</code>
+     * <code>.com.qlcd.qltt.body.BppBiz._page_req pgreq = 1;</code>
      */
     public com.qlcd.qltt.body.BppBiz._page_req getPgreq() {
       return pgreq_ == null ? com.qlcd.qltt.body.BppBiz._page_req.getDefaultInstance() : pgreq_;
     }
     /**
-     * <code>optional .com.qlcd.qltt.body.BppBiz._page_req pgreq = 1;</code>
+     * <code>.com.qlcd.qltt.body.BppBiz._page_req pgreq = 1;</code>
      */
     public com.qlcd.qltt.body.BppBiz._page_reqOrBuilder getPgreqOrBuilder() {
       return getPgreq();
     }
 
     public static final int TACTIC_FIELD_NUMBER = 2;
-    private java.lang.Object tactic_;
+    private volatile java.lang.Object tactic_;
     /**
-     * <code>optional string tactic = 2;</code>
+     * <code>string tactic = 2;</code>
      */
     public java.lang.String getTactic() {
       java.lang.Object ref = tactic_;
@@ -177,14 +168,12 @@ public final class T02003001 {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          tactic_ = s;
-        }
+        tactic_ = s;
         return s;
       }
     }
     /**
-     * <code>optional string tactic = 2;</code>
+     * <code>string tactic = 2;</code>
      */
     public com.google.protobuf.ByteString
         getTacticBytes() {
@@ -203,7 +192,7 @@ public final class T02003001 {
     public static final int TACPRM_FIELD_NUMBER = 3;
     private int tacprm_;
     /**
-     * <code>optional int32 tacprm = 3;</code>
+     * <code>int32 tacprm = 3;</code>
      */
     public int getTacprm() {
       return tacprm_;
@@ -221,21 +210,19 @@ public final class T02003001 {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      getSerializedSize();
       if (pgreq_ != null) {
         output.writeMessage(1, getPgreq());
       }
       if (!getTacticBytes().isEmpty()) {
-        output.writeBytes(2, getTacticBytes());
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, tactic_);
       }
       if (tacprm_ != 0) {
         output.writeInt32(3, tacprm_);
       }
     }
 
-    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSerializedSize;
+      int size = memoizedSize;
       if (size != -1) return size;
 
       size = 0;
@@ -244,18 +231,60 @@ public final class T02003001 {
           .computeMessageSize(1, getPgreq());
       }
       if (!getTacticBytes().isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, getTacticBytes());
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, tactic_);
       }
       if (tacprm_ != 0) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(3, tacprm_);
       }
-      memoizedSerializedSize = size;
+      memoizedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.qlcd.qltt.body.prt.T02003001._req)) {
+        return super.equals(obj);
+      }
+      com.qlcd.qltt.body.prt.T02003001._req other = (com.qlcd.qltt.body.prt.T02003001._req) obj;
+
+      boolean result = true;
+      result = result && (hasPgreq() == other.hasPgreq());
+      if (hasPgreq()) {
+        result = result && getPgreq()
+            .equals(other.getPgreq());
+      }
+      result = result && getTactic()
+          .equals(other.getTactic());
+      result = result && (getTacprm()
+          == other.getTacprm());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasPgreq()) {
+        hash = (37 * hash) + PGREQ_FIELD_NUMBER;
+        hash = (53 * hash) + getPgreq().hashCode();
+      }
+      hash = (37 * hash) + TACTIC_FIELD_NUMBER;
+      hash = (53 * hash) + getTactic().hashCode();
+      hash = (37 * hash) + TACPRM_FIELD_NUMBER;
+      hash = (53 * hash) + getTacprm();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static com.qlcd.qltt.body.prt.T02003001._req parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -279,46 +308,57 @@ public final class T02003001 {
     }
     public static com.qlcd.qltt.body.prt.T02003001._req parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
     }
     public static com.qlcd.qltt.body.prt.T02003001._req parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.qlcd.qltt.body.prt.T02003001._req parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
     }
     public static com.qlcd.qltt.body.prt.T02003001._req parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.qlcd.qltt.body.prt.T02003001._req parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
     }
     public static com.qlcd.qltt.body.prt.T02003001._req parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static Builder newBuilder() { return new Builder(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.qlcd.qltt.body.prt.T02003001._req prototype) {
-      return newBuilder().mergeFrom(prototype);
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
     }
-    public Builder toBuilder() { return newBuilder(this); }
+    public static Builder newBuilder(com.qlcd.qltt.body.prt.T02003001._req prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -326,7 +366,7 @@ public final class T02003001 {
      * Protobuf type {@code com.qlcd.qltt.body.prt.T02003001._req}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:com.qlcd.qltt.body.prt.T02003001._req)
         com.qlcd.qltt.body.prt.T02003001._reqOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -334,7 +374,7 @@ public final class T02003001 {
         return com.qlcd.qltt.body.prt.T02003001.internal_static_com_qlcd_qltt_body_prt_T02003001__req_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return com.qlcd.qltt.body.prt.T02003001.internal_static_com_qlcd_qltt_body_prt_T02003001__req_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -347,12 +387,13 @@ public final class T02003001 {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
         }
       }
       public Builder clear() {
@@ -400,6 +441,32 @@ public final class T02003001 {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.qlcd.qltt.body.prt.T02003001._req) {
           return mergeFrom((com.qlcd.qltt.body.prt.T02003001._req)other);
@@ -438,7 +505,7 @@ public final class T02003001 {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (com.qlcd.qltt.body.prt.T02003001._req) e.getUnfinishedMessage();
-          throw e;
+          throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -448,16 +515,16 @@ public final class T02003001 {
       }
 
       private com.qlcd.qltt.body.BppBiz._page_req pgreq_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           com.qlcd.qltt.body.BppBiz._page_req, com.qlcd.qltt.body.BppBiz._page_req.Builder, com.qlcd.qltt.body.BppBiz._page_reqOrBuilder> pgreqBuilder_;
       /**
-       * <code>optional .com.qlcd.qltt.body.BppBiz._page_req pgreq = 1;</code>
+       * <code>.com.qlcd.qltt.body.BppBiz._page_req pgreq = 1;</code>
        */
       public boolean hasPgreq() {
         return pgreqBuilder_ != null || pgreq_ != null;
       }
       /**
-       * <code>optional .com.qlcd.qltt.body.BppBiz._page_req pgreq = 1;</code>
+       * <code>.com.qlcd.qltt.body.BppBiz._page_req pgreq = 1;</code>
        */
       public com.qlcd.qltt.body.BppBiz._page_req getPgreq() {
         if (pgreqBuilder_ == null) {
@@ -467,7 +534,7 @@ public final class T02003001 {
         }
       }
       /**
-       * <code>optional .com.qlcd.qltt.body.BppBiz._page_req pgreq = 1;</code>
+       * <code>.com.qlcd.qltt.body.BppBiz._page_req pgreq = 1;</code>
        */
       public Builder setPgreq(com.qlcd.qltt.body.BppBiz._page_req value) {
         if (pgreqBuilder_ == null) {
@@ -483,7 +550,7 @@ public final class T02003001 {
         return this;
       }
       /**
-       * <code>optional .com.qlcd.qltt.body.BppBiz._page_req pgreq = 1;</code>
+       * <code>.com.qlcd.qltt.body.BppBiz._page_req pgreq = 1;</code>
        */
       public Builder setPgreq(
           com.qlcd.qltt.body.BppBiz._page_req.Builder builderForValue) {
@@ -497,7 +564,7 @@ public final class T02003001 {
         return this;
       }
       /**
-       * <code>optional .com.qlcd.qltt.body.BppBiz._page_req pgreq = 1;</code>
+       * <code>.com.qlcd.qltt.body.BppBiz._page_req pgreq = 1;</code>
        */
       public Builder mergePgreq(com.qlcd.qltt.body.BppBiz._page_req value) {
         if (pgreqBuilder_ == null) {
@@ -515,7 +582,7 @@ public final class T02003001 {
         return this;
       }
       /**
-       * <code>optional .com.qlcd.qltt.body.BppBiz._page_req pgreq = 1;</code>
+       * <code>.com.qlcd.qltt.body.BppBiz._page_req pgreq = 1;</code>
        */
       public Builder clearPgreq() {
         if (pgreqBuilder_ == null) {
@@ -529,7 +596,7 @@ public final class T02003001 {
         return this;
       }
       /**
-       * <code>optional .com.qlcd.qltt.body.BppBiz._page_req pgreq = 1;</code>
+       * <code>.com.qlcd.qltt.body.BppBiz._page_req pgreq = 1;</code>
        */
       public com.qlcd.qltt.body.BppBiz._page_req.Builder getPgreqBuilder() {
         
@@ -537,7 +604,7 @@ public final class T02003001 {
         return getPgreqFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .com.qlcd.qltt.body.BppBiz._page_req pgreq = 1;</code>
+       * <code>.com.qlcd.qltt.body.BppBiz._page_req pgreq = 1;</code>
        */
       public com.qlcd.qltt.body.BppBiz._page_reqOrBuilder getPgreqOrBuilder() {
         if (pgreqBuilder_ != null) {
@@ -548,13 +615,13 @@ public final class T02003001 {
         }
       }
       /**
-       * <code>optional .com.qlcd.qltt.body.BppBiz._page_req pgreq = 1;</code>
+       * <code>.com.qlcd.qltt.body.BppBiz._page_req pgreq = 1;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           com.qlcd.qltt.body.BppBiz._page_req, com.qlcd.qltt.body.BppBiz._page_req.Builder, com.qlcd.qltt.body.BppBiz._page_reqOrBuilder> 
           getPgreqFieldBuilder() {
         if (pgreqBuilder_ == null) {
-          pgreqBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          pgreqBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               com.qlcd.qltt.body.BppBiz._page_req, com.qlcd.qltt.body.BppBiz._page_req.Builder, com.qlcd.qltt.body.BppBiz._page_reqOrBuilder>(
                   getPgreq(),
                   getParentForChildren(),
@@ -566,7 +633,7 @@ public final class T02003001 {
 
       private java.lang.Object tactic_ = "";
       /**
-       * <code>optional string tactic = 2;</code>
+       * <code>string tactic = 2;</code>
        */
       public java.lang.String getTactic() {
         java.lang.Object ref = tactic_;
@@ -574,16 +641,14 @@ public final class T02003001 {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            tactic_ = s;
-          }
+          tactic_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>optional string tactic = 2;</code>
+       * <code>string tactic = 2;</code>
        */
       public com.google.protobuf.ByteString
           getTacticBytes() {
@@ -599,7 +664,7 @@ public final class T02003001 {
         }
       }
       /**
-       * <code>optional string tactic = 2;</code>
+       * <code>string tactic = 2;</code>
        */
       public Builder setTactic(
           java.lang.String value) {
@@ -612,7 +677,7 @@ public final class T02003001 {
         return this;
       }
       /**
-       * <code>optional string tactic = 2;</code>
+       * <code>string tactic = 2;</code>
        */
       public Builder clearTactic() {
         
@@ -621,14 +686,15 @@ public final class T02003001 {
         return this;
       }
       /**
-       * <code>optional string tactic = 2;</code>
+       * <code>string tactic = 2;</code>
        */
       public Builder setTacticBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  checkByteStringIsUtf8(value);
+        
         tactic_ = value;
         onChanged();
         return this;
@@ -636,13 +702,13 @@ public final class T02003001 {
 
       private int tacprm_ ;
       /**
-       * <code>optional int32 tacprm = 3;</code>
+       * <code>int32 tacprm = 3;</code>
        */
       public int getTacprm() {
         return tacprm_;
       }
       /**
-       * <code>optional int32 tacprm = 3;</code>
+       * <code>int32 tacprm = 3;</code>
        */
       public Builder setTacprm(int value) {
         
@@ -651,7 +717,7 @@ public final class T02003001 {
         return this;
       }
       /**
-       * <code>optional int32 tacprm = 3;</code>
+       * <code>int32 tacprm = 3;</code>
        */
       public Builder clearTacprm() {
         
@@ -674,16 +740,36 @@ public final class T02003001 {
     }
 
     // @@protoc_insertion_point(class_scope:com.qlcd.qltt.body.prt.T02003001._req)
-    private static final com.qlcd.qltt.body.prt.T02003001._req defaultInstance;static {
-      defaultInstance = new com.qlcd.qltt.body.prt.T02003001._req();
+    private static final com.qlcd.qltt.body.prt.T02003001._req DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.qlcd.qltt.body.prt.T02003001._req();
     }
 
     public static com.qlcd.qltt.body.prt.T02003001._req getDefaultInstance() {
-      return defaultInstance;
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<_req>
+        PARSER = new com.google.protobuf.AbstractParser<_req>() {
+      public _req parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new _req(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<_req> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<_req> getParserForType() {
+      return PARSER;
     }
 
     public com.qlcd.qltt.body.prt.T02003001._req getDefaultInstanceForType() {
-      return defaultInstance;
+      return DEFAULT_INSTANCE;
     }
 
   }
@@ -693,67 +779,67 @@ public final class T02003001 {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string tactic = 1;</code>
+     * <code>string tactic = 1;</code>
      */
     java.lang.String getTactic();
     /**
-     * <code>optional string tactic = 1;</code>
+     * <code>string tactic = 1;</code>
      */
     com.google.protobuf.ByteString
         getTacticBytes();
 
     /**
-     * <code>optional int32 tacprm = 2;</code>
+     * <code>int32 tacprm = 2;</code>
      */
     int getTacprm();
 
     /**
-     * <code>optional int32 index = 3;</code>
+     * <code>int32 index = 3;</code>
      */
     int getIndex();
 
     /**
-     * <code>optional string stockcode = 4;</code>
+     * <code>string stockcode = 4;</code>
      */
     java.lang.String getStockcode();
     /**
-     * <code>optional string stockcode = 4;</code>
+     * <code>string stockcode = 4;</code>
      */
     com.google.protobuf.ByteString
         getStockcodeBytes();
 
     /**
-     * <code>optional string occval = 5;</code>
+     * <code>string occval = 5;</code>
      */
     java.lang.String getOccval();
     /**
-     * <code>optional string occval = 5;</code>
+     * <code>string occval = 5;</code>
      */
     com.google.protobuf.ByteString
         getOccvalBytes();
 
     /**
-     * <code>optional string remarks = 6;</code>
+     * <code>string remarks = 6;</code>
      */
     java.lang.String getRemarks();
     /**
-     * <code>optional string remarks = 6;</code>
+     * <code>string remarks = 6;</code>
      */
     com.google.protobuf.ByteString
         getRemarksBytes();
 
     /**
-     * <code>optional string efftime = 7;</code>
+     * <code>string efftime = 7;</code>
      */
     java.lang.String getEfftime();
     /**
-     * <code>optional string efftime = 7;</code>
+     * <code>string efftime = 7;</code>
      */
     com.google.protobuf.ByteString
         getEfftimeBytes();
 
     /**
-     * <code>optional int32 count = 8;</code>
+     * <code>int32 count = 8;</code>
      */
     int getCount();
   }
@@ -761,11 +847,11 @@ public final class T02003001 {
    * Protobuf type {@code com.qlcd.qltt.body.prt.T02003001._dprealtime}
    */
   public  static final class _dprealtime extends
-      com.google.protobuf.GeneratedMessage implements
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:com.qlcd.qltt.body.prt.T02003001._dprealtime)
       _dprealtimeOrBuilder {
     // Use _dprealtime.newBuilder() to construct.
-    private _dprealtime(com.google.protobuf.GeneratedMessage.Builder builder) {
+    private _dprealtime(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private _dprealtime() {
@@ -805,9 +891,9 @@ public final class T02003001 {
               break;
             }
             case 10: {
-              com.google.protobuf.ByteString bs = input.readBytes();
+              java.lang.String s = input.readStringRequireUtf8();
 
-              tactic_ = bs;
+              tactic_ = s;
               break;
             }
             case 16: {
@@ -821,27 +907,27 @@ public final class T02003001 {
               break;
             }
             case 34: {
-              com.google.protobuf.ByteString bs = input.readBytes();
+              java.lang.String s = input.readStringRequireUtf8();
 
-              stockcode_ = bs;
+              stockcode_ = s;
               break;
             }
             case 42: {
-              com.google.protobuf.ByteString bs = input.readBytes();
+              java.lang.String s = input.readStringRequireUtf8();
 
-              occval_ = bs;
+              occval_ = s;
               break;
             }
             case 50: {
-              com.google.protobuf.ByteString bs = input.readBytes();
+              java.lang.String s = input.readStringRequireUtf8();
 
-              remarks_ = bs;
+              remarks_ = s;
               break;
             }
             case 58: {
-              com.google.protobuf.ByteString bs = input.readBytes();
+              java.lang.String s = input.readStringRequireUtf8();
 
-              efftime_ = bs;
+              efftime_ = s;
               break;
             }
             case 64: {
@@ -855,7 +941,7 @@ public final class T02003001 {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
+            e).setUnfinishedMessage(this);
       } finally {
         makeExtensionsImmutable();
       }
@@ -865,32 +951,17 @@ public final class T02003001 {
       return com.qlcd.qltt.body.prt.T02003001.internal_static_com_qlcd_qltt_body_prt_T02003001__dprealtime_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return com.qlcd.qltt.body.prt.T02003001.internal_static_com_qlcd_qltt_body_prt_T02003001__dprealtime_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               com.qlcd.qltt.body.prt.T02003001._dprealtime.class, com.qlcd.qltt.body.prt.T02003001._dprealtime.Builder.class);
     }
 
-    public static final com.google.protobuf.Parser<_dprealtime> PARSER =
-        new com.google.protobuf.AbstractParser<_dprealtime>() {
-      public _dprealtime parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new _dprealtime(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<_dprealtime> getParserForType() {
-      return PARSER;
-    }
-
     public static final int TACTIC_FIELD_NUMBER = 1;
-    private java.lang.Object tactic_;
+    private volatile java.lang.Object tactic_;
     /**
-     * <code>optional string tactic = 1;</code>
+     * <code>string tactic = 1;</code>
      */
     public java.lang.String getTactic() {
       java.lang.Object ref = tactic_;
@@ -900,14 +971,12 @@ public final class T02003001 {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          tactic_ = s;
-        }
+        tactic_ = s;
         return s;
       }
     }
     /**
-     * <code>optional string tactic = 1;</code>
+     * <code>string tactic = 1;</code>
      */
     public com.google.protobuf.ByteString
         getTacticBytes() {
@@ -926,7 +995,7 @@ public final class T02003001 {
     public static final int TACPRM_FIELD_NUMBER = 2;
     private int tacprm_;
     /**
-     * <code>optional int32 tacprm = 2;</code>
+     * <code>int32 tacprm = 2;</code>
      */
     public int getTacprm() {
       return tacprm_;
@@ -935,16 +1004,16 @@ public final class T02003001 {
     public static final int INDEX_FIELD_NUMBER = 3;
     private int index_;
     /**
-     * <code>optional int32 index = 3;</code>
+     * <code>int32 index = 3;</code>
      */
     public int getIndex() {
       return index_;
     }
 
     public static final int STOCKCODE_FIELD_NUMBER = 4;
-    private java.lang.Object stockcode_;
+    private volatile java.lang.Object stockcode_;
     /**
-     * <code>optional string stockcode = 4;</code>
+     * <code>string stockcode = 4;</code>
      */
     public java.lang.String getStockcode() {
       java.lang.Object ref = stockcode_;
@@ -954,14 +1023,12 @@ public final class T02003001 {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          stockcode_ = s;
-        }
+        stockcode_ = s;
         return s;
       }
     }
     /**
-     * <code>optional string stockcode = 4;</code>
+     * <code>string stockcode = 4;</code>
      */
     public com.google.protobuf.ByteString
         getStockcodeBytes() {
@@ -978,9 +1045,9 @@ public final class T02003001 {
     }
 
     public static final int OCCVAL_FIELD_NUMBER = 5;
-    private java.lang.Object occval_;
+    private volatile java.lang.Object occval_;
     /**
-     * <code>optional string occval = 5;</code>
+     * <code>string occval = 5;</code>
      */
     public java.lang.String getOccval() {
       java.lang.Object ref = occval_;
@@ -990,14 +1057,12 @@ public final class T02003001 {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          occval_ = s;
-        }
+        occval_ = s;
         return s;
       }
     }
     /**
-     * <code>optional string occval = 5;</code>
+     * <code>string occval = 5;</code>
      */
     public com.google.protobuf.ByteString
         getOccvalBytes() {
@@ -1014,9 +1079,9 @@ public final class T02003001 {
     }
 
     public static final int REMARKS_FIELD_NUMBER = 6;
-    private java.lang.Object remarks_;
+    private volatile java.lang.Object remarks_;
     /**
-     * <code>optional string remarks = 6;</code>
+     * <code>string remarks = 6;</code>
      */
     public java.lang.String getRemarks() {
       java.lang.Object ref = remarks_;
@@ -1026,14 +1091,12 @@ public final class T02003001 {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          remarks_ = s;
-        }
+        remarks_ = s;
         return s;
       }
     }
     /**
-     * <code>optional string remarks = 6;</code>
+     * <code>string remarks = 6;</code>
      */
     public com.google.protobuf.ByteString
         getRemarksBytes() {
@@ -1050,9 +1113,9 @@ public final class T02003001 {
     }
 
     public static final int EFFTIME_FIELD_NUMBER = 7;
-    private java.lang.Object efftime_;
+    private volatile java.lang.Object efftime_;
     /**
-     * <code>optional string efftime = 7;</code>
+     * <code>string efftime = 7;</code>
      */
     public java.lang.String getEfftime() {
       java.lang.Object ref = efftime_;
@@ -1062,14 +1125,12 @@ public final class T02003001 {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          efftime_ = s;
-        }
+        efftime_ = s;
         return s;
       }
     }
     /**
-     * <code>optional string efftime = 7;</code>
+     * <code>string efftime = 7;</code>
      */
     public com.google.protobuf.ByteString
         getEfftimeBytes() {
@@ -1088,7 +1149,7 @@ public final class T02003001 {
     public static final int COUNT_FIELD_NUMBER = 8;
     private int count_;
     /**
-     * <code>optional int32 count = 8;</code>
+     * <code>int32 count = 8;</code>
      */
     public int getCount() {
       return count_;
@@ -1106,9 +1167,8 @@ public final class T02003001 {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      getSerializedSize();
       if (!getTacticBytes().isEmpty()) {
-        output.writeBytes(1, getTacticBytes());
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, tactic_);
       }
       if (tacprm_ != 0) {
         output.writeInt32(2, tacprm_);
@@ -1117,31 +1177,29 @@ public final class T02003001 {
         output.writeInt32(3, index_);
       }
       if (!getStockcodeBytes().isEmpty()) {
-        output.writeBytes(4, getStockcodeBytes());
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, stockcode_);
       }
       if (!getOccvalBytes().isEmpty()) {
-        output.writeBytes(5, getOccvalBytes());
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, occval_);
       }
       if (!getRemarksBytes().isEmpty()) {
-        output.writeBytes(6, getRemarksBytes());
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 6, remarks_);
       }
       if (!getEfftimeBytes().isEmpty()) {
-        output.writeBytes(7, getEfftimeBytes());
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 7, efftime_);
       }
       if (count_ != 0) {
         output.writeInt32(8, count_);
       }
     }
 
-    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSerializedSize;
+      int size = memoizedSize;
       if (size != -1) return size;
 
       size = 0;
       if (!getTacticBytes().isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, getTacticBytes());
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, tactic_);
       }
       if (tacprm_ != 0) {
         size += com.google.protobuf.CodedOutputStream
@@ -1152,30 +1210,84 @@ public final class T02003001 {
           .computeInt32Size(3, index_);
       }
       if (!getStockcodeBytes().isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(4, getStockcodeBytes());
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, stockcode_);
       }
       if (!getOccvalBytes().isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(5, getOccvalBytes());
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, occval_);
       }
       if (!getRemarksBytes().isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(6, getRemarksBytes());
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, remarks_);
       }
       if (!getEfftimeBytes().isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(7, getEfftimeBytes());
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, efftime_);
       }
       if (count_ != 0) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(8, count_);
       }
-      memoizedSerializedSize = size;
+      memoizedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.qlcd.qltt.body.prt.T02003001._dprealtime)) {
+        return super.equals(obj);
+      }
+      com.qlcd.qltt.body.prt.T02003001._dprealtime other = (com.qlcd.qltt.body.prt.T02003001._dprealtime) obj;
+
+      boolean result = true;
+      result = result && getTactic()
+          .equals(other.getTactic());
+      result = result && (getTacprm()
+          == other.getTacprm());
+      result = result && (getIndex()
+          == other.getIndex());
+      result = result && getStockcode()
+          .equals(other.getStockcode());
+      result = result && getOccval()
+          .equals(other.getOccval());
+      result = result && getRemarks()
+          .equals(other.getRemarks());
+      result = result && getEfftime()
+          .equals(other.getEfftime());
+      result = result && (getCount()
+          == other.getCount());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + TACTIC_FIELD_NUMBER;
+      hash = (53 * hash) + getTactic().hashCode();
+      hash = (37 * hash) + TACPRM_FIELD_NUMBER;
+      hash = (53 * hash) + getTacprm();
+      hash = (37 * hash) + INDEX_FIELD_NUMBER;
+      hash = (53 * hash) + getIndex();
+      hash = (37 * hash) + STOCKCODE_FIELD_NUMBER;
+      hash = (53 * hash) + getStockcode().hashCode();
+      hash = (37 * hash) + OCCVAL_FIELD_NUMBER;
+      hash = (53 * hash) + getOccval().hashCode();
+      hash = (37 * hash) + REMARKS_FIELD_NUMBER;
+      hash = (53 * hash) + getRemarks().hashCode();
+      hash = (37 * hash) + EFFTIME_FIELD_NUMBER;
+      hash = (53 * hash) + getEfftime().hashCode();
+      hash = (37 * hash) + COUNT_FIELD_NUMBER;
+      hash = (53 * hash) + getCount();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static com.qlcd.qltt.body.prt.T02003001._dprealtime parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1199,46 +1311,57 @@ public final class T02003001 {
     }
     public static com.qlcd.qltt.body.prt.T02003001._dprealtime parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
     }
     public static com.qlcd.qltt.body.prt.T02003001._dprealtime parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.qlcd.qltt.body.prt.T02003001._dprealtime parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
     }
     public static com.qlcd.qltt.body.prt.T02003001._dprealtime parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.qlcd.qltt.body.prt.T02003001._dprealtime parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
     }
     public static com.qlcd.qltt.body.prt.T02003001._dprealtime parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static Builder newBuilder() { return new Builder(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.qlcd.qltt.body.prt.T02003001._dprealtime prototype) {
-      return newBuilder().mergeFrom(prototype);
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
     }
-    public Builder toBuilder() { return newBuilder(this); }
+    public static Builder newBuilder(com.qlcd.qltt.body.prt.T02003001._dprealtime prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -1246,7 +1369,7 @@ public final class T02003001 {
      * Protobuf type {@code com.qlcd.qltt.body.prt.T02003001._dprealtime}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:com.qlcd.qltt.body.prt.T02003001._dprealtime)
         com.qlcd.qltt.body.prt.T02003001._dprealtimeOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -1254,7 +1377,7 @@ public final class T02003001 {
         return com.qlcd.qltt.body.prt.T02003001.internal_static_com_qlcd_qltt_body_prt_T02003001__dprealtime_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return com.qlcd.qltt.body.prt.T02003001.internal_static_com_qlcd_qltt_body_prt_T02003001__dprealtime_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -1267,12 +1390,13 @@ public final class T02003001 {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
         }
       }
       public Builder clear() {
@@ -1327,6 +1451,32 @@ public final class T02003001 {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.qlcd.qltt.body.prt.T02003001._dprealtime) {
           return mergeFrom((com.qlcd.qltt.body.prt.T02003001._dprealtime)other);
@@ -1384,7 +1534,7 @@ public final class T02003001 {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (com.qlcd.qltt.body.prt.T02003001._dprealtime) e.getUnfinishedMessage();
-          throw e;
+          throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -1395,7 +1545,7 @@ public final class T02003001 {
 
       private java.lang.Object tactic_ = "";
       /**
-       * <code>optional string tactic = 1;</code>
+       * <code>string tactic = 1;</code>
        */
       public java.lang.String getTactic() {
         java.lang.Object ref = tactic_;
@@ -1403,16 +1553,14 @@ public final class T02003001 {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            tactic_ = s;
-          }
+          tactic_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>optional string tactic = 1;</code>
+       * <code>string tactic = 1;</code>
        */
       public com.google.protobuf.ByteString
           getTacticBytes() {
@@ -1428,7 +1576,7 @@ public final class T02003001 {
         }
       }
       /**
-       * <code>optional string tactic = 1;</code>
+       * <code>string tactic = 1;</code>
        */
       public Builder setTactic(
           java.lang.String value) {
@@ -1441,7 +1589,7 @@ public final class T02003001 {
         return this;
       }
       /**
-       * <code>optional string tactic = 1;</code>
+       * <code>string tactic = 1;</code>
        */
       public Builder clearTactic() {
         
@@ -1450,14 +1598,15 @@ public final class T02003001 {
         return this;
       }
       /**
-       * <code>optional string tactic = 1;</code>
+       * <code>string tactic = 1;</code>
        */
       public Builder setTacticBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  checkByteStringIsUtf8(value);
+        
         tactic_ = value;
         onChanged();
         return this;
@@ -1465,13 +1614,13 @@ public final class T02003001 {
 
       private int tacprm_ ;
       /**
-       * <code>optional int32 tacprm = 2;</code>
+       * <code>int32 tacprm = 2;</code>
        */
       public int getTacprm() {
         return tacprm_;
       }
       /**
-       * <code>optional int32 tacprm = 2;</code>
+       * <code>int32 tacprm = 2;</code>
        */
       public Builder setTacprm(int value) {
         
@@ -1480,7 +1629,7 @@ public final class T02003001 {
         return this;
       }
       /**
-       * <code>optional int32 tacprm = 2;</code>
+       * <code>int32 tacprm = 2;</code>
        */
       public Builder clearTacprm() {
         
@@ -1491,13 +1640,13 @@ public final class T02003001 {
 
       private int index_ ;
       /**
-       * <code>optional int32 index = 3;</code>
+       * <code>int32 index = 3;</code>
        */
       public int getIndex() {
         return index_;
       }
       /**
-       * <code>optional int32 index = 3;</code>
+       * <code>int32 index = 3;</code>
        */
       public Builder setIndex(int value) {
         
@@ -1506,7 +1655,7 @@ public final class T02003001 {
         return this;
       }
       /**
-       * <code>optional int32 index = 3;</code>
+       * <code>int32 index = 3;</code>
        */
       public Builder clearIndex() {
         
@@ -1517,7 +1666,7 @@ public final class T02003001 {
 
       private java.lang.Object stockcode_ = "";
       /**
-       * <code>optional string stockcode = 4;</code>
+       * <code>string stockcode = 4;</code>
        */
       public java.lang.String getStockcode() {
         java.lang.Object ref = stockcode_;
@@ -1525,16 +1674,14 @@ public final class T02003001 {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            stockcode_ = s;
-          }
+          stockcode_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>optional string stockcode = 4;</code>
+       * <code>string stockcode = 4;</code>
        */
       public com.google.protobuf.ByteString
           getStockcodeBytes() {
@@ -1550,7 +1697,7 @@ public final class T02003001 {
         }
       }
       /**
-       * <code>optional string stockcode = 4;</code>
+       * <code>string stockcode = 4;</code>
        */
       public Builder setStockcode(
           java.lang.String value) {
@@ -1563,7 +1710,7 @@ public final class T02003001 {
         return this;
       }
       /**
-       * <code>optional string stockcode = 4;</code>
+       * <code>string stockcode = 4;</code>
        */
       public Builder clearStockcode() {
         
@@ -1572,14 +1719,15 @@ public final class T02003001 {
         return this;
       }
       /**
-       * <code>optional string stockcode = 4;</code>
+       * <code>string stockcode = 4;</code>
        */
       public Builder setStockcodeBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  checkByteStringIsUtf8(value);
+        
         stockcode_ = value;
         onChanged();
         return this;
@@ -1587,7 +1735,7 @@ public final class T02003001 {
 
       private java.lang.Object occval_ = "";
       /**
-       * <code>optional string occval = 5;</code>
+       * <code>string occval = 5;</code>
        */
       public java.lang.String getOccval() {
         java.lang.Object ref = occval_;
@@ -1595,16 +1743,14 @@ public final class T02003001 {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            occval_ = s;
-          }
+          occval_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>optional string occval = 5;</code>
+       * <code>string occval = 5;</code>
        */
       public com.google.protobuf.ByteString
           getOccvalBytes() {
@@ -1620,7 +1766,7 @@ public final class T02003001 {
         }
       }
       /**
-       * <code>optional string occval = 5;</code>
+       * <code>string occval = 5;</code>
        */
       public Builder setOccval(
           java.lang.String value) {
@@ -1633,7 +1779,7 @@ public final class T02003001 {
         return this;
       }
       /**
-       * <code>optional string occval = 5;</code>
+       * <code>string occval = 5;</code>
        */
       public Builder clearOccval() {
         
@@ -1642,14 +1788,15 @@ public final class T02003001 {
         return this;
       }
       /**
-       * <code>optional string occval = 5;</code>
+       * <code>string occval = 5;</code>
        */
       public Builder setOccvalBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  checkByteStringIsUtf8(value);
+        
         occval_ = value;
         onChanged();
         return this;
@@ -1657,7 +1804,7 @@ public final class T02003001 {
 
       private java.lang.Object remarks_ = "";
       /**
-       * <code>optional string remarks = 6;</code>
+       * <code>string remarks = 6;</code>
        */
       public java.lang.String getRemarks() {
         java.lang.Object ref = remarks_;
@@ -1665,16 +1812,14 @@ public final class T02003001 {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            remarks_ = s;
-          }
+          remarks_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>optional string remarks = 6;</code>
+       * <code>string remarks = 6;</code>
        */
       public com.google.protobuf.ByteString
           getRemarksBytes() {
@@ -1690,7 +1835,7 @@ public final class T02003001 {
         }
       }
       /**
-       * <code>optional string remarks = 6;</code>
+       * <code>string remarks = 6;</code>
        */
       public Builder setRemarks(
           java.lang.String value) {
@@ -1703,7 +1848,7 @@ public final class T02003001 {
         return this;
       }
       /**
-       * <code>optional string remarks = 6;</code>
+       * <code>string remarks = 6;</code>
        */
       public Builder clearRemarks() {
         
@@ -1712,14 +1857,15 @@ public final class T02003001 {
         return this;
       }
       /**
-       * <code>optional string remarks = 6;</code>
+       * <code>string remarks = 6;</code>
        */
       public Builder setRemarksBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  checkByteStringIsUtf8(value);
+        
         remarks_ = value;
         onChanged();
         return this;
@@ -1727,7 +1873,7 @@ public final class T02003001 {
 
       private java.lang.Object efftime_ = "";
       /**
-       * <code>optional string efftime = 7;</code>
+       * <code>string efftime = 7;</code>
        */
       public java.lang.String getEfftime() {
         java.lang.Object ref = efftime_;
@@ -1735,16 +1881,14 @@ public final class T02003001 {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            efftime_ = s;
-          }
+          efftime_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>optional string efftime = 7;</code>
+       * <code>string efftime = 7;</code>
        */
       public com.google.protobuf.ByteString
           getEfftimeBytes() {
@@ -1760,7 +1904,7 @@ public final class T02003001 {
         }
       }
       /**
-       * <code>optional string efftime = 7;</code>
+       * <code>string efftime = 7;</code>
        */
       public Builder setEfftime(
           java.lang.String value) {
@@ -1773,7 +1917,7 @@ public final class T02003001 {
         return this;
       }
       /**
-       * <code>optional string efftime = 7;</code>
+       * <code>string efftime = 7;</code>
        */
       public Builder clearEfftime() {
         
@@ -1782,14 +1926,15 @@ public final class T02003001 {
         return this;
       }
       /**
-       * <code>optional string efftime = 7;</code>
+       * <code>string efftime = 7;</code>
        */
       public Builder setEfftimeBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  checkByteStringIsUtf8(value);
+        
         efftime_ = value;
         onChanged();
         return this;
@@ -1797,13 +1942,13 @@ public final class T02003001 {
 
       private int count_ ;
       /**
-       * <code>optional int32 count = 8;</code>
+       * <code>int32 count = 8;</code>
        */
       public int getCount() {
         return count_;
       }
       /**
-       * <code>optional int32 count = 8;</code>
+       * <code>int32 count = 8;</code>
        */
       public Builder setCount(int value) {
         
@@ -1812,7 +1957,7 @@ public final class T02003001 {
         return this;
       }
       /**
-       * <code>optional int32 count = 8;</code>
+       * <code>int32 count = 8;</code>
        */
       public Builder clearCount() {
         
@@ -1835,16 +1980,36 @@ public final class T02003001 {
     }
 
     // @@protoc_insertion_point(class_scope:com.qlcd.qltt.body.prt.T02003001._dprealtime)
-    private static final com.qlcd.qltt.body.prt.T02003001._dprealtime defaultInstance;static {
-      defaultInstance = new com.qlcd.qltt.body.prt.T02003001._dprealtime();
+    private static final com.qlcd.qltt.body.prt.T02003001._dprealtime DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.qlcd.qltt.body.prt.T02003001._dprealtime();
     }
 
     public static com.qlcd.qltt.body.prt.T02003001._dprealtime getDefaultInstance() {
-      return defaultInstance;
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<_dprealtime>
+        PARSER = new com.google.protobuf.AbstractParser<_dprealtime>() {
+      public _dprealtime parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new _dprealtime(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<_dprealtime> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<_dprealtime> getParserForType() {
+      return PARSER;
     }
 
     public com.qlcd.qltt.body.prt.T02003001._dprealtime getDefaultInstanceForType() {
-      return defaultInstance;
+      return DEFAULT_INSTANCE;
     }
 
   }
@@ -1854,28 +2019,28 @@ public final class T02003001 {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional .com.qlcd.qltt.body.BppSys._rsp_succhead rsh = 1;</code>
+     * <code>.com.qlcd.qltt.body.BppSys._rsp_succhead rsh = 1;</code>
      */
     boolean hasRsh();
     /**
-     * <code>optional .com.qlcd.qltt.body.BppSys._rsp_succhead rsh = 1;</code>
+     * <code>.com.qlcd.qltt.body.BppSys._rsp_succhead rsh = 1;</code>
      */
     com.qlcd.qltt.body.BppSys._rsp_succhead getRsh();
     /**
-     * <code>optional .com.qlcd.qltt.body.BppSys._rsp_succhead rsh = 1;</code>
+     * <code>.com.qlcd.qltt.body.BppSys._rsp_succhead rsh = 1;</code>
      */
     com.qlcd.qltt.body.BppSys._rsp_succheadOrBuilder getRshOrBuilder();
 
     /**
-     * <code>optional .com.qlcd.qltt.body.BppBiz._page_rsp pgrsp = 2;</code>
+     * <code>.com.qlcd.qltt.body.BppBiz._page_rsp pgrsp = 2;</code>
      */
     boolean hasPgrsp();
     /**
-     * <code>optional .com.qlcd.qltt.body.BppBiz._page_rsp pgrsp = 2;</code>
+     * <code>.com.qlcd.qltt.body.BppBiz._page_rsp pgrsp = 2;</code>
      */
     com.qlcd.qltt.body.BppBiz._page_rsp getPgrsp();
     /**
-     * <code>optional .com.qlcd.qltt.body.BppBiz._page_rsp pgrsp = 2;</code>
+     * <code>.com.qlcd.qltt.body.BppBiz._page_rsp pgrsp = 2;</code>
      */
     com.qlcd.qltt.body.BppBiz._page_rspOrBuilder getPgrspOrBuilder();
 
@@ -1907,11 +2072,11 @@ public final class T02003001 {
    * Protobuf type {@code com.qlcd.qltt.body.prt.T02003001._rsp}
    */
   public  static final class _rsp extends
-      com.google.protobuf.GeneratedMessage implements
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:com.qlcd.qltt.body.prt.T02003001._rsp)
       _rspOrBuilder {
     // Use _rsp.newBuilder() to construct.
-    private _rsp(com.google.protobuf.GeneratedMessage.Builder builder) {
+    private _rsp(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private _rsp() {
@@ -1948,7 +2113,7 @@ public final class T02003001 {
               if (rsh_ != null) {
                 subBuilder = rsh_.toBuilder();
               }
-              rsh_ = input.readMessage(com.qlcd.qltt.body.BppSys._rsp_succhead.PARSER, extensionRegistry);
+              rsh_ = input.readMessage(com.qlcd.qltt.body.BppSys._rsp_succhead.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(rsh_);
                 rsh_ = subBuilder.buildPartial();
@@ -1961,7 +2126,7 @@ public final class T02003001 {
               if (pgrsp_ != null) {
                 subBuilder = pgrsp_.toBuilder();
               }
-              pgrsp_ = input.readMessage(com.qlcd.qltt.body.BppBiz._page_rsp.PARSER, extensionRegistry);
+              pgrsp_ = input.readMessage(com.qlcd.qltt.body.BppBiz._page_rsp.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(pgrsp_);
                 pgrsp_ = subBuilder.buildPartial();
@@ -1974,7 +2139,8 @@ public final class T02003001 {
                 dprtlist_ = new java.util.ArrayList<com.qlcd.qltt.body.prt.T02003001._dprealtime>();
                 mutable_bitField0_ |= 0x00000004;
               }
-              dprtlist_.add(input.readMessage(com.qlcd.qltt.body.prt.T02003001._dprealtime.PARSER, extensionRegistry));
+              dprtlist_.add(
+                  input.readMessage(com.qlcd.qltt.body.prt.T02003001._dprealtime.parser(), extensionRegistry));
               break;
             }
           }
@@ -1983,7 +2149,7 @@ public final class T02003001 {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
+            e).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
           dprtlist_ = java.util.Collections.unmodifiableList(dprtlist_);
@@ -1996,45 +2162,30 @@ public final class T02003001 {
       return com.qlcd.qltt.body.prt.T02003001.internal_static_com_qlcd_qltt_body_prt_T02003001__rsp_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return com.qlcd.qltt.body.prt.T02003001.internal_static_com_qlcd_qltt_body_prt_T02003001__rsp_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               com.qlcd.qltt.body.prt.T02003001._rsp.class, com.qlcd.qltt.body.prt.T02003001._rsp.Builder.class);
     }
 
-    public static final com.google.protobuf.Parser<_rsp> PARSER =
-        new com.google.protobuf.AbstractParser<_rsp>() {
-      public _rsp parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new _rsp(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<_rsp> getParserForType() {
-      return PARSER;
-    }
-
     private int bitField0_;
     public static final int RSH_FIELD_NUMBER = 1;
     private com.qlcd.qltt.body.BppSys._rsp_succhead rsh_;
     /**
-     * <code>optional .com.qlcd.qltt.body.BppSys._rsp_succhead rsh = 1;</code>
+     * <code>.com.qlcd.qltt.body.BppSys._rsp_succhead rsh = 1;</code>
      */
     public boolean hasRsh() {
       return rsh_ != null;
     }
     /**
-     * <code>optional .com.qlcd.qltt.body.BppSys._rsp_succhead rsh = 1;</code>
+     * <code>.com.qlcd.qltt.body.BppSys._rsp_succhead rsh = 1;</code>
      */
     public com.qlcd.qltt.body.BppSys._rsp_succhead getRsh() {
       return rsh_ == null ? com.qlcd.qltt.body.BppSys._rsp_succhead.getDefaultInstance() : rsh_;
     }
     /**
-     * <code>optional .com.qlcd.qltt.body.BppSys._rsp_succhead rsh = 1;</code>
+     * <code>.com.qlcd.qltt.body.BppSys._rsp_succhead rsh = 1;</code>
      */
     public com.qlcd.qltt.body.BppSys._rsp_succheadOrBuilder getRshOrBuilder() {
       return getRsh();
@@ -2043,19 +2194,19 @@ public final class T02003001 {
     public static final int PGRSP_FIELD_NUMBER = 2;
     private com.qlcd.qltt.body.BppBiz._page_rsp pgrsp_;
     /**
-     * <code>optional .com.qlcd.qltt.body.BppBiz._page_rsp pgrsp = 2;</code>
+     * <code>.com.qlcd.qltt.body.BppBiz._page_rsp pgrsp = 2;</code>
      */
     public boolean hasPgrsp() {
       return pgrsp_ != null;
     }
     /**
-     * <code>optional .com.qlcd.qltt.body.BppBiz._page_rsp pgrsp = 2;</code>
+     * <code>.com.qlcd.qltt.body.BppBiz._page_rsp pgrsp = 2;</code>
      */
     public com.qlcd.qltt.body.BppBiz._page_rsp getPgrsp() {
       return pgrsp_ == null ? com.qlcd.qltt.body.BppBiz._page_rsp.getDefaultInstance() : pgrsp_;
     }
     /**
-     * <code>optional .com.qlcd.qltt.body.BppBiz._page_rsp pgrsp = 2;</code>
+     * <code>.com.qlcd.qltt.body.BppBiz._page_rsp pgrsp = 2;</code>
      */
     public com.qlcd.qltt.body.BppBiz._page_rspOrBuilder getPgrspOrBuilder() {
       return getPgrsp();
@@ -2108,7 +2259,6 @@ public final class T02003001 {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      getSerializedSize();
       if (rsh_ != null) {
         output.writeMessage(1, getRsh());
       }
@@ -2120,9 +2270,8 @@ public final class T02003001 {
       }
     }
 
-    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSerializedSize;
+      int size = memoizedSize;
       if (size != -1) return size;
 
       size = 0;
@@ -2138,11 +2287,61 @@ public final class T02003001 {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(3, dprtlist_.get(i));
       }
-      memoizedSerializedSize = size;
+      memoizedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.qlcd.qltt.body.prt.T02003001._rsp)) {
+        return super.equals(obj);
+      }
+      com.qlcd.qltt.body.prt.T02003001._rsp other = (com.qlcd.qltt.body.prt.T02003001._rsp) obj;
+
+      boolean result = true;
+      result = result && (hasRsh() == other.hasRsh());
+      if (hasRsh()) {
+        result = result && getRsh()
+            .equals(other.getRsh());
+      }
+      result = result && (hasPgrsp() == other.hasPgrsp());
+      if (hasPgrsp()) {
+        result = result && getPgrsp()
+            .equals(other.getPgrsp());
+      }
+      result = result && getDprtlistList()
+          .equals(other.getDprtlistList());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasRsh()) {
+        hash = (37 * hash) + RSH_FIELD_NUMBER;
+        hash = (53 * hash) + getRsh().hashCode();
+      }
+      if (hasPgrsp()) {
+        hash = (37 * hash) + PGRSP_FIELD_NUMBER;
+        hash = (53 * hash) + getPgrsp().hashCode();
+      }
+      if (getDprtlistCount() > 0) {
+        hash = (37 * hash) + DPRTLIST_FIELD_NUMBER;
+        hash = (53 * hash) + getDprtlistList().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
     public static com.qlcd.qltt.body.prt.T02003001._rsp parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -2166,46 +2365,57 @@ public final class T02003001 {
     }
     public static com.qlcd.qltt.body.prt.T02003001._rsp parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
     }
     public static com.qlcd.qltt.body.prt.T02003001._rsp parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.qlcd.qltt.body.prt.T02003001._rsp parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
     }
     public static com.qlcd.qltt.body.prt.T02003001._rsp parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.qlcd.qltt.body.prt.T02003001._rsp parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
     }
     public static com.qlcd.qltt.body.prt.T02003001._rsp parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static Builder newBuilder() { return new Builder(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.qlcd.qltt.body.prt.T02003001._rsp prototype) {
-      return newBuilder().mergeFrom(prototype);
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
     }
-    public Builder toBuilder() { return newBuilder(this); }
+    public static Builder newBuilder(com.qlcd.qltt.body.prt.T02003001._rsp prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -2213,7 +2423,7 @@ public final class T02003001 {
      * Protobuf type {@code com.qlcd.qltt.body.prt.T02003001._rsp}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:com.qlcd.qltt.body.prt.T02003001._rsp)
         com.qlcd.qltt.body.prt.T02003001._rspOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -2221,7 +2431,7 @@ public final class T02003001 {
         return com.qlcd.qltt.body.prt.T02003001.internal_static_com_qlcd_qltt_body_prt_T02003001__rsp_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return com.qlcd.qltt.body.prt.T02003001.internal_static_com_qlcd_qltt_body_prt_T02003001__rsp_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -2234,12 +2444,13 @@ public final class T02003001 {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
           getDprtlistFieldBuilder();
         }
       }
@@ -2311,6 +2522,32 @@ public final class T02003001 {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.qlcd.qltt.body.prt.T02003001._rsp) {
           return mergeFrom((com.qlcd.qltt.body.prt.T02003001._rsp)other);
@@ -2347,7 +2584,7 @@ public final class T02003001 {
               dprtlist_ = other.dprtlist_;
               bitField0_ = (bitField0_ & ~0x00000004);
               dprtlistBuilder_ = 
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getDprtlistFieldBuilder() : null;
             } else {
               dprtlistBuilder_.addAllMessages(other.dprtlist_);
@@ -2371,7 +2608,7 @@ public final class T02003001 {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (com.qlcd.qltt.body.prt.T02003001._rsp) e.getUnfinishedMessage();
-          throw e;
+          throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -2382,16 +2619,16 @@ public final class T02003001 {
       private int bitField0_;
 
       private com.qlcd.qltt.body.BppSys._rsp_succhead rsh_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           com.qlcd.qltt.body.BppSys._rsp_succhead, com.qlcd.qltt.body.BppSys._rsp_succhead.Builder, com.qlcd.qltt.body.BppSys._rsp_succheadOrBuilder> rshBuilder_;
       /**
-       * <code>optional .com.qlcd.qltt.body.BppSys._rsp_succhead rsh = 1;</code>
+       * <code>.com.qlcd.qltt.body.BppSys._rsp_succhead rsh = 1;</code>
        */
       public boolean hasRsh() {
         return rshBuilder_ != null || rsh_ != null;
       }
       /**
-       * <code>optional .com.qlcd.qltt.body.BppSys._rsp_succhead rsh = 1;</code>
+       * <code>.com.qlcd.qltt.body.BppSys._rsp_succhead rsh = 1;</code>
        */
       public com.qlcd.qltt.body.BppSys._rsp_succhead getRsh() {
         if (rshBuilder_ == null) {
@@ -2401,7 +2638,7 @@ public final class T02003001 {
         }
       }
       /**
-       * <code>optional .com.qlcd.qltt.body.BppSys._rsp_succhead rsh = 1;</code>
+       * <code>.com.qlcd.qltt.body.BppSys._rsp_succhead rsh = 1;</code>
        */
       public Builder setRsh(com.qlcd.qltt.body.BppSys._rsp_succhead value) {
         if (rshBuilder_ == null) {
@@ -2417,7 +2654,7 @@ public final class T02003001 {
         return this;
       }
       /**
-       * <code>optional .com.qlcd.qltt.body.BppSys._rsp_succhead rsh = 1;</code>
+       * <code>.com.qlcd.qltt.body.BppSys._rsp_succhead rsh = 1;</code>
        */
       public Builder setRsh(
           com.qlcd.qltt.body.BppSys._rsp_succhead.Builder builderForValue) {
@@ -2431,7 +2668,7 @@ public final class T02003001 {
         return this;
       }
       /**
-       * <code>optional .com.qlcd.qltt.body.BppSys._rsp_succhead rsh = 1;</code>
+       * <code>.com.qlcd.qltt.body.BppSys._rsp_succhead rsh = 1;</code>
        */
       public Builder mergeRsh(com.qlcd.qltt.body.BppSys._rsp_succhead value) {
         if (rshBuilder_ == null) {
@@ -2449,7 +2686,7 @@ public final class T02003001 {
         return this;
       }
       /**
-       * <code>optional .com.qlcd.qltt.body.BppSys._rsp_succhead rsh = 1;</code>
+       * <code>.com.qlcd.qltt.body.BppSys._rsp_succhead rsh = 1;</code>
        */
       public Builder clearRsh() {
         if (rshBuilder_ == null) {
@@ -2463,7 +2700,7 @@ public final class T02003001 {
         return this;
       }
       /**
-       * <code>optional .com.qlcd.qltt.body.BppSys._rsp_succhead rsh = 1;</code>
+       * <code>.com.qlcd.qltt.body.BppSys._rsp_succhead rsh = 1;</code>
        */
       public com.qlcd.qltt.body.BppSys._rsp_succhead.Builder getRshBuilder() {
         
@@ -2471,7 +2708,7 @@ public final class T02003001 {
         return getRshFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .com.qlcd.qltt.body.BppSys._rsp_succhead rsh = 1;</code>
+       * <code>.com.qlcd.qltt.body.BppSys._rsp_succhead rsh = 1;</code>
        */
       public com.qlcd.qltt.body.BppSys._rsp_succheadOrBuilder getRshOrBuilder() {
         if (rshBuilder_ != null) {
@@ -2482,13 +2719,13 @@ public final class T02003001 {
         }
       }
       /**
-       * <code>optional .com.qlcd.qltt.body.BppSys._rsp_succhead rsh = 1;</code>
+       * <code>.com.qlcd.qltt.body.BppSys._rsp_succhead rsh = 1;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           com.qlcd.qltt.body.BppSys._rsp_succhead, com.qlcd.qltt.body.BppSys._rsp_succhead.Builder, com.qlcd.qltt.body.BppSys._rsp_succheadOrBuilder> 
           getRshFieldBuilder() {
         if (rshBuilder_ == null) {
-          rshBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          rshBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               com.qlcd.qltt.body.BppSys._rsp_succhead, com.qlcd.qltt.body.BppSys._rsp_succhead.Builder, com.qlcd.qltt.body.BppSys._rsp_succheadOrBuilder>(
                   getRsh(),
                   getParentForChildren(),
@@ -2499,16 +2736,16 @@ public final class T02003001 {
       }
 
       private com.qlcd.qltt.body.BppBiz._page_rsp pgrsp_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           com.qlcd.qltt.body.BppBiz._page_rsp, com.qlcd.qltt.body.BppBiz._page_rsp.Builder, com.qlcd.qltt.body.BppBiz._page_rspOrBuilder> pgrspBuilder_;
       /**
-       * <code>optional .com.qlcd.qltt.body.BppBiz._page_rsp pgrsp = 2;</code>
+       * <code>.com.qlcd.qltt.body.BppBiz._page_rsp pgrsp = 2;</code>
        */
       public boolean hasPgrsp() {
         return pgrspBuilder_ != null || pgrsp_ != null;
       }
       /**
-       * <code>optional .com.qlcd.qltt.body.BppBiz._page_rsp pgrsp = 2;</code>
+       * <code>.com.qlcd.qltt.body.BppBiz._page_rsp pgrsp = 2;</code>
        */
       public com.qlcd.qltt.body.BppBiz._page_rsp getPgrsp() {
         if (pgrspBuilder_ == null) {
@@ -2518,7 +2755,7 @@ public final class T02003001 {
         }
       }
       /**
-       * <code>optional .com.qlcd.qltt.body.BppBiz._page_rsp pgrsp = 2;</code>
+       * <code>.com.qlcd.qltt.body.BppBiz._page_rsp pgrsp = 2;</code>
        */
       public Builder setPgrsp(com.qlcd.qltt.body.BppBiz._page_rsp value) {
         if (pgrspBuilder_ == null) {
@@ -2534,7 +2771,7 @@ public final class T02003001 {
         return this;
       }
       /**
-       * <code>optional .com.qlcd.qltt.body.BppBiz._page_rsp pgrsp = 2;</code>
+       * <code>.com.qlcd.qltt.body.BppBiz._page_rsp pgrsp = 2;</code>
        */
       public Builder setPgrsp(
           com.qlcd.qltt.body.BppBiz._page_rsp.Builder builderForValue) {
@@ -2548,7 +2785,7 @@ public final class T02003001 {
         return this;
       }
       /**
-       * <code>optional .com.qlcd.qltt.body.BppBiz._page_rsp pgrsp = 2;</code>
+       * <code>.com.qlcd.qltt.body.BppBiz._page_rsp pgrsp = 2;</code>
        */
       public Builder mergePgrsp(com.qlcd.qltt.body.BppBiz._page_rsp value) {
         if (pgrspBuilder_ == null) {
@@ -2566,7 +2803,7 @@ public final class T02003001 {
         return this;
       }
       /**
-       * <code>optional .com.qlcd.qltt.body.BppBiz._page_rsp pgrsp = 2;</code>
+       * <code>.com.qlcd.qltt.body.BppBiz._page_rsp pgrsp = 2;</code>
        */
       public Builder clearPgrsp() {
         if (pgrspBuilder_ == null) {
@@ -2580,7 +2817,7 @@ public final class T02003001 {
         return this;
       }
       /**
-       * <code>optional .com.qlcd.qltt.body.BppBiz._page_rsp pgrsp = 2;</code>
+       * <code>.com.qlcd.qltt.body.BppBiz._page_rsp pgrsp = 2;</code>
        */
       public com.qlcd.qltt.body.BppBiz._page_rsp.Builder getPgrspBuilder() {
         
@@ -2588,7 +2825,7 @@ public final class T02003001 {
         return getPgrspFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .com.qlcd.qltt.body.BppBiz._page_rsp pgrsp = 2;</code>
+       * <code>.com.qlcd.qltt.body.BppBiz._page_rsp pgrsp = 2;</code>
        */
       public com.qlcd.qltt.body.BppBiz._page_rspOrBuilder getPgrspOrBuilder() {
         if (pgrspBuilder_ != null) {
@@ -2599,13 +2836,13 @@ public final class T02003001 {
         }
       }
       /**
-       * <code>optional .com.qlcd.qltt.body.BppBiz._page_rsp pgrsp = 2;</code>
+       * <code>.com.qlcd.qltt.body.BppBiz._page_rsp pgrsp = 2;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           com.qlcd.qltt.body.BppBiz._page_rsp, com.qlcd.qltt.body.BppBiz._page_rsp.Builder, com.qlcd.qltt.body.BppBiz._page_rspOrBuilder> 
           getPgrspFieldBuilder() {
         if (pgrspBuilder_ == null) {
-          pgrspBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          pgrspBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               com.qlcd.qltt.body.BppBiz._page_rsp, com.qlcd.qltt.body.BppBiz._page_rsp.Builder, com.qlcd.qltt.body.BppBiz._page_rspOrBuilder>(
                   getPgrsp(),
                   getParentForChildren(),
@@ -2624,7 +2861,7 @@ public final class T02003001 {
          }
       }
 
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           com.qlcd.qltt.body.prt.T02003001._dprealtime, com.qlcd.qltt.body.prt.T02003001._dprealtime.Builder, com.qlcd.qltt.body.prt.T02003001._dprealtimeOrBuilder> dprtlistBuilder_;
 
       /**
@@ -2840,11 +3077,11 @@ public final class T02003001 {
            getDprtlistBuilderList() {
         return getDprtlistFieldBuilder().getBuilderList();
       }
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           com.qlcd.qltt.body.prt.T02003001._dprealtime, com.qlcd.qltt.body.prt.T02003001._dprealtime.Builder, com.qlcd.qltt.body.prt.T02003001._dprealtimeOrBuilder> 
           getDprtlistFieldBuilder() {
         if (dprtlistBuilder_ == null) {
-          dprtlistBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          dprtlistBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               com.qlcd.qltt.body.prt.T02003001._dprealtime, com.qlcd.qltt.body.prt.T02003001._dprealtime.Builder, com.qlcd.qltt.body.prt.T02003001._dprealtimeOrBuilder>(
                   dprtlist_,
                   ((bitField0_ & 0x00000004) == 0x00000004),
@@ -2869,41 +3106,61 @@ public final class T02003001 {
     }
 
     // @@protoc_insertion_point(class_scope:com.qlcd.qltt.body.prt.T02003001._rsp)
-    private static final com.qlcd.qltt.body.prt.T02003001._rsp defaultInstance;static {
-      defaultInstance = new com.qlcd.qltt.body.prt.T02003001._rsp();
+    private static final com.qlcd.qltt.body.prt.T02003001._rsp DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.qlcd.qltt.body.prt.T02003001._rsp();
     }
 
     public static com.qlcd.qltt.body.prt.T02003001._rsp getDefaultInstance() {
-      return defaultInstance;
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<_rsp>
+        PARSER = new com.google.protobuf.AbstractParser<_rsp>() {
+      public _rsp parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new _rsp(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<_rsp> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<_rsp> getParserForType() {
+      return PARSER;
     }
 
     public com.qlcd.qltt.body.prt.T02003001._rsp getDefaultInstanceForType() {
-      return defaultInstance;
+      return DEFAULT_INSTANCE;
     }
 
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_com_qlcd_qltt_body_prt_T02003001__req_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_qlcd_qltt_body_prt_T02003001__req_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_com_qlcd_qltt_body_prt_T02003001__dprealtime_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_qlcd_qltt_body_prt_T02003001__dprealtime_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_com_qlcd_qltt_body_prt_T02003001__rsp_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_qlcd_qltt_body_prt_T02003001__rsp_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
     return descriptor;
   }
-  private static com.google.protobuf.Descriptors.FileDescriptor
+  private static  com.google.protobuf.Descriptors.FileDescriptor
       descriptor;
   static {
     java.lang.String[] descriptorData = {
@@ -2939,19 +3196,19 @@ public final class T02003001 {
     internal_static_com_qlcd_qltt_body_prt_T02003001__req_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_com_qlcd_qltt_body_prt_T02003001__req_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_qlcd_qltt_body_prt_T02003001__req_descriptor,
         new java.lang.String[] { "Pgreq", "Tactic", "Tacprm", });
     internal_static_com_qlcd_qltt_body_prt_T02003001__dprealtime_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_com_qlcd_qltt_body_prt_T02003001__dprealtime_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_qlcd_qltt_body_prt_T02003001__dprealtime_descriptor,
         new java.lang.String[] { "Tactic", "Tacprm", "Index", "Stockcode", "Occval", "Remarks", "Efftime", "Count", });
     internal_static_com_qlcd_qltt_body_prt_T02003001__rsp_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_com_qlcd_qltt_body_prt_T02003001__rsp_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_qlcd_qltt_body_prt_T02003001__rsp_descriptor,
         new java.lang.String[] { "Rsh", "Pgrsp", "Dprtlist", });
     com.qlcd.qltt.body.BppSys.getDescriptor();

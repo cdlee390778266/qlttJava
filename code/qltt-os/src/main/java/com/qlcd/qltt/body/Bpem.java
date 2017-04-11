@@ -6,7 +6,13 @@ package com.qlcd.qltt.body;
 public final class Bpem {
   private Bpem() {}
   public static void registerAllExtensions(
+      com.google.protobuf.ExtensionRegistryLite registry) {
+  }
+
+  public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
+    registerAllExtensions(
+        (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   /**
    * Protobuf enum {@code com.qlcd.qltt.body.Bpem.PEB_TTACCTSTAT}
@@ -16,16 +22,16 @@ public final class Bpem {
     /**
      * <code>EV_NORMAL = 0;</code>
      */
-    EV_NORMAL(0, 0),
+    EV_NORMAL(0),
     /**
      * <code>EV_FREEZE = 1;</code>
      */
-    EV_FREEZE(1, 1),
+    EV_FREEZE(1),
     /**
      * <code>EV_CANCEL = 2;</code>
      */
-    EV_CANCEL(2, 2),
-    UNRECOGNIZED(-1, -1),
+    EV_CANCEL(2),
+    UNRECOGNIZED(-1),
     ;
 
     /**
@@ -43,14 +49,22 @@ public final class Bpem {
 
 
     public final int getNumber() {
-      if (index == -1) {
+      if (this == UNRECOGNIZED) {
         throw new java.lang.IllegalArgumentException(
             "Can't get the number of an unknown enum value.");
       }
       return value;
     }
 
+    /**
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
     public static PEB_TTACCTSTAT valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static PEB_TTACCTSTAT forNumber(int value) {
       switch (value) {
         case 0: return EV_NORMAL;
         case 1: return EV_FREEZE;
@@ -63,17 +77,17 @@ public final class Bpem {
         internalGetValueMap() {
       return internalValueMap;
     }
-    private static com.google.protobuf.Internal.EnumLiteMap<PEB_TTACCTSTAT>
-        internalValueMap =
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        PEB_TTACCTSTAT> internalValueMap =
           new com.google.protobuf.Internal.EnumLiteMap<PEB_TTACCTSTAT>() {
             public PEB_TTACCTSTAT findValueByNumber(int number) {
-              return PEB_TTACCTSTAT.valueOf(number);
+              return PEB_TTACCTSTAT.forNumber(number);
             }
           };
 
     public final com.google.protobuf.Descriptors.EnumValueDescriptor
         getValueDescriptor() {
-      return getDescriptor().getValues().get(index);
+      return getDescriptor().getValues().get(ordinal());
     }
     public final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptorForType() {
@@ -98,11 +112,9 @@ public final class Bpem {
       return VALUES[desc.getIndex()];
     }
 
-    private final int index;
     private final int value;
 
-    private PEB_TTACCTSTAT(int index, int value) {
-      this.index = index;
+    private PEB_TTACCTSTAT(int value) {
       this.value = value;
     }
 
@@ -117,16 +129,16 @@ public final class Bpem {
     /**
      * <code>EV_UNKNOWN = 0;</code>
      */
-    EV_UNKNOWN(0, 0),
+    EV_UNKNOWN(0),
     /**
      * <code>EV_WXCHNL = 1;</code>
      */
-    EV_WXCHNL(1, 1),
+    EV_WXCHNL(1),
     /**
      * <code>EV_CPCHNL = 2;</code>
      */
-    EV_CPCHNL(2, 2),
-    UNRECOGNIZED(-1, -1),
+    EV_CPCHNL(2),
+    UNRECOGNIZED(-1),
     ;
 
     /**
@@ -144,14 +156,22 @@ public final class Bpem {
 
 
     public final int getNumber() {
-      if (index == -1) {
+      if (this == UNRECOGNIZED) {
         throw new java.lang.IllegalArgumentException(
             "Can't get the number of an unknown enum value.");
       }
       return value;
     }
 
+    /**
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
     public static PEB_SVCCHNL valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static PEB_SVCCHNL forNumber(int value) {
       switch (value) {
         case 0: return EV_UNKNOWN;
         case 1: return EV_WXCHNL;
@@ -164,17 +184,17 @@ public final class Bpem {
         internalGetValueMap() {
       return internalValueMap;
     }
-    private static com.google.protobuf.Internal.EnumLiteMap<PEB_SVCCHNL>
-        internalValueMap =
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        PEB_SVCCHNL> internalValueMap =
           new com.google.protobuf.Internal.EnumLiteMap<PEB_SVCCHNL>() {
             public PEB_SVCCHNL findValueByNumber(int number) {
-              return PEB_SVCCHNL.valueOf(number);
+              return PEB_SVCCHNL.forNumber(number);
             }
           };
 
     public final com.google.protobuf.Descriptors.EnumValueDescriptor
         getValueDescriptor() {
-      return getDescriptor().getValues().get(index);
+      return getDescriptor().getValues().get(ordinal());
     }
     public final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptorForType() {
@@ -199,11 +219,9 @@ public final class Bpem {
       return VALUES[desc.getIndex()];
     }
 
-    private final int index;
     private final int value;
 
-    private PEB_SVCCHNL(int index, int value) {
-      this.index = index;
+    private PEB_SVCCHNL(int value) {
       this.value = value;
     }
 
@@ -218,16 +236,16 @@ public final class Bpem {
     /**
      * <code>EV_NODEV = 0;</code>
      */
-    EV_NODEV(0, 0),
+    EV_NODEV(0),
     /**
      * <code>EV_IOS = 1;</code>
      */
-    EV_IOS(1, 1),
+    EV_IOS(1),
     /**
      * <code>EV_ANDROID = 2;</code>
      */
-    EV_ANDROID(2, 2),
-    UNRECOGNIZED(-1, -1),
+    EV_ANDROID(2),
+    UNRECOGNIZED(-1),
     ;
 
     /**
@@ -245,14 +263,22 @@ public final class Bpem {
 
 
     public final int getNumber() {
-      if (index == -1) {
+      if (this == UNRECOGNIZED) {
         throw new java.lang.IllegalArgumentException(
             "Can't get the number of an unknown enum value.");
       }
       return value;
     }
 
+    /**
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
     public static PEB_DEVTYPE valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static PEB_DEVTYPE forNumber(int value) {
       switch (value) {
         case 0: return EV_NODEV;
         case 1: return EV_IOS;
@@ -265,17 +291,17 @@ public final class Bpem {
         internalGetValueMap() {
       return internalValueMap;
     }
-    private static com.google.protobuf.Internal.EnumLiteMap<PEB_DEVTYPE>
-        internalValueMap =
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        PEB_DEVTYPE> internalValueMap =
           new com.google.protobuf.Internal.EnumLiteMap<PEB_DEVTYPE>() {
             public PEB_DEVTYPE findValueByNumber(int number) {
-              return PEB_DEVTYPE.valueOf(number);
+              return PEB_DEVTYPE.forNumber(number);
             }
           };
 
     public final com.google.protobuf.Descriptors.EnumValueDescriptor
         getValueDescriptor() {
-      return getDescriptor().getValues().get(index);
+      return getDescriptor().getValues().get(ordinal());
     }
     public final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptorForType() {
@@ -300,11 +326,9 @@ public final class Bpem {
       return VALUES[desc.getIndex()];
     }
 
-    private final int index;
     private final int value;
 
-    private PEB_DEVTYPE(int index, int value) {
-      this.index = index;
+    private PEB_DEVTYPE(int value) {
       this.value = value;
     }
 
@@ -316,7 +340,7 @@ public final class Bpem {
       getDescriptor() {
     return descriptor;
   }
-  private static com.google.protobuf.Descriptors.FileDescriptor
+  private static  com.google.protobuf.Descriptors.FileDescriptor
       descriptor;
   static {
     java.lang.String[] descriptorData = {
