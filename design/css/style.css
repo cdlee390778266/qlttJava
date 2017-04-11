@@ -45,6 +45,8 @@ input[type="button"], input[type="submit"], input[type="reset"] {
 
 html {
   font-size: 10px;
+  font-family: "微软雅黑";
+  height: 100%;
 }
 
 * {
@@ -57,6 +59,7 @@ body {
   line-height: 2.4em;
   color: #a3a3a3;
   background: #fff;
+  height: 100%;
 }
 
 input {
@@ -113,13 +116,13 @@ a {
   left: 0;
   top: 0;
   z-index: 1;
-  height: 4.4rem;
+  height: 5rem;
   width: 100%;
   background: #dc3c38;
   overflow: hidden;
   -ms-touch-action: none;
   z-index: 99;
-  box-shadow: 0 2px 15px 1px rgba(255, 255, 255, 0.8);
+  box-shadow: 0 2px 6px 1px rgba(176, 176, 176, 0.8);
 }
 
 #scroller, #scrollerPool {
@@ -155,14 +158,14 @@ a {
 
 #scroller li, #scrollerPool li {
   width: 90px;
-  height: 4.4rem;
+  height: 5rem;
   float: left;
-  line-height: 4.4rem;
+  line-height: 5rem;
   background-color: #dc3c38;
   font-size: 1.4rem;
   overflow: hidden;
   text-align: center;
-  color: #fff;
+  color: #fcfcfc;
   transition: all .4s;
 }
 #scroller li.active, #scrollerPool li.active {
@@ -196,7 +199,7 @@ a {
   left: 0;
   right: 0;
   z-index: 99;
-  line-height: 12px;
+  line-height: 1.8rem;
   border-top: 1px solid #e5e5e5;
   border-bottom: 1px solid #e5e5e5;
   box-shadow: 0 0px 6px 2px #e5e5e5;
@@ -214,7 +217,7 @@ a {
 }
 .footer a .icon {
   display: inline-block;
-  width: 2.4rem;
+  width: 2.8rem;
   height: 2.4rem;
   background-image: url("../images/icon.png");
   background-size: 250px 700px;
@@ -236,7 +239,7 @@ a {
   color: #f7b703;
 }
 .footer a.active .icon.icon-searchd {
-  background-position: -75px -39px;
+  background-position: -75px -40px;
 }
 .footer a.active .icon.icon-care {
   background-position: -75px -76px;
@@ -402,12 +405,14 @@ a {
   border-bottom: 1px solid #e5e5e5;
   padding-bottom: 10px;
   margin-bottom: 5px;
+  padding: 1rem;
 }
 .search .search-item:last-child {
   border-bottom: none;
 }
 .search .search-item .search-head {
   color: #dc3c38;
+  font-size: 1.4rem;
   margin-bottom: 4px;
 }
 .search .search-item .search-head i {
@@ -437,7 +442,7 @@ a {
   line-height: 26px;
   color: #fff;
   text-align: right;
-  padding-right: 10px;
+  padding-right: 1rem;
   border-radius: 4px;
   background-image: url("../images/icon.png");
   background-size: 250px 700px;
@@ -447,9 +452,9 @@ a {
   transition: all .4s;
 }
 .search .search-item .search-foot > span.active {
-  padding-right: 5px;
+  padding-right: 1.1rem;
   background-position: -145px -73px;
-  background-color: #999;
+  background-color: #ddd;
   transition: all .4s;
 }
 .search .div-button {
@@ -463,7 +468,7 @@ a {
 
 /***contract***/
 .ttxieyi {
-  padding: 2rem;
+  padding: 1rem;
 }
 .ttxieyi h2 {
   font-size: 1.6rem;
@@ -475,6 +480,39 @@ a {
 .ttxieyi p {
   line-height: 2.2rem;
   color: #666;
+}
+
+/***register success***/
+.zhucecg {
+  height: 100%;
+  text-align: center;
+}
+.zhucecg button {
+  width: 13rem;
+  height: 4rem;
+  background-color: #fcfcfc;
+  border: 0.1rem solid #f7b703;
+  border-radius: 0.4rem;
+  font-size: 1.2rem;
+  color: #f7b703;
+}
+.zhucecg .sucucess-icon {
+  width: 8rem;
+  height: 8rem;
+  margin: 10rem auto;
+  margin-bottom: 0;
+  background-image: url("../images/sucucess-icon.png");
+  background-size: 6rem 6rem;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.zhucecg span {
+  display: inline-block;
+  padding: 4rem;
+  padding-top: 0;
+}
+.zhucecg span strong {
+  color: #dc3c38;
 }
 
 /******   loading   ******/

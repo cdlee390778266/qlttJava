@@ -5,6 +5,7 @@ $red-active:#BB322F;
 $black :#333;
 $darkgray :#666;
 $gray : #999;
+$lightgray:#ddd;
 $yellow : #f7b703;
 $bgSize : 250px 700px;
 
@@ -46,6 +47,8 @@ input[type="button"], input[type="submit"], input[type="reset"] {
 
 html{
     font-size: 10px;
+    font-family: "微软雅黑";
+    height: 100%;
 }
 *{
     box-sizing : border-box;
@@ -56,6 +59,7 @@ body{
     line-height: 2.4em;
     color: #a3a3a3;
     background: #fff;
+    height: 100%;
 }
 
 input{
@@ -108,13 +112,13 @@ a{
     left: 0;
     top: 0;
     z-index: 1;
-    height: 4.4rem;
+    height: 5rem;
     width: 100%;
     background: $red;
     overflow: hidden;
     -ms-touch-action: none;
     z-index: 99;
-    box-shadow: 0 2px 15px 1px rgba(255,255,255,0.8);
+    box-shadow: 0 2px 6px 1px rgba(176, 176, 176, 0.8);
 }
 
 #scroller,#scrollerPool {
@@ -150,14 +154,14 @@ a{
 
 #scroller li,#scrollerPool li {
     width: 90px;
-    height: 4.4rem;
+    height: 5rem;
     float: left;
-    line-height: 4.4rem;
+    line-height: 5rem;
     background-color: $red;
     font-size: 1.4rem;
     overflow: hidden;
     text-align: center;
-    color: #fff;
+    color: #fcfcfc;
     transition: all .4s;
     &.active{
         background: #c9312d;
@@ -188,7 +192,7 @@ a{
     left: 0;
     right: 0;
     z-index: 99;
-    line-height: 12px;
+    line-height: 1.8rem;
     border-top: 1px solid #e5e5e5;
     border-bottom: 1px solid #e5e5e5;
     box-shadow: 0 0px 6px 2px #e5e5e5;
@@ -201,7 +205,7 @@ a{
         text-align: center;
         .icon{
             display: inline-block;
-            width: 2.4rem;
+            width: 2.8rem;
             height: 2.4rem;
             background-image:url('../images/icon.png') ;
             background-size : $bgSize;
@@ -223,7 +227,7 @@ a{
             color: $yellow;
             .icon{
                 &.icon-searchd{
-                    background-position: -75px -39px;
+                    background-position: -75px -40px;
                 }
                 &.icon-care{
                     background-position: -75px -76px;
@@ -392,11 +396,13 @@ a{
         border-bottom: 1px solid #e5e5e5;
         padding-bottom: 10px;
         margin-bottom: 5px;
+        padding: 1rem;
         &:last-child{
             border-bottom:none;
         }
         .search-head{
             color: $red;
+            font-size: 1.4rem;
             margin-bottom: 4px;
             i{
                 display:block;
@@ -425,7 +431,7 @@ a{
                 line-height : 26px;
                 color: #fff;
                 text-align: right;
-                padding-right: 10px;
+                padding-right: 1rem;
                 border-radius: 4px;
                 background-image:url('../images/icon.png') ;
                 background-size : $bgSize;
@@ -434,9 +440,9 @@ a{
                 background-position: -145px -41px;
                 transition: all .4s;
                 &.active{
-                    padding-right: 5px;
+                    padding-right: 1.1rem;
                     background-position: -145px -73px;
-                    background-color: $gray;
+                    background-color:$lightgray;
                     transition: all .4s;
                 }
             }
@@ -453,7 +459,7 @@ a{
 }
 /***contract***/
 .ttxieyi{
-    padding: 2rem;
+    padding: 1rem;
     h2{
       font-size: 1.6rem;
       color:$black;
@@ -467,6 +473,40 @@ a{
       color:$darkgray;
     }
 
+}
+/***register success***/
+.zhucecg{
+   height: 100%;
+  text-align: center;
+  button{
+    width: 13rem;
+    height: 4rem;
+    background-color: #fcfcfc;
+    border:0.1rem solid #f7b703;
+    border-radius:0.4rem;
+    font-size: 1.2rem;
+    color:#f7b703
+  }
+  .sucucess-icon{
+    width:8rem;
+    height: 8rem;
+    margin: 10rem auto;
+    margin-bottom: 0;
+    background-image: url("../images/sucucess-icon.png");
+    background-size: 6rem 6rem;
+    background-position: center center;
+    background-repeat: no-repeat;
+
+  }
+  span{
+    display: inline-block;
+    padding: 4rem;
+    padding-top: 0;
+   strong{
+     color:$red;
+
+   }
+  }
 }
 
 /******   loading   ******/
@@ -555,7 +595,9 @@ a{
     }
     .swiper-wrapper{
         height: 100px;
+
     }
+
     .swiper-mes{
         line-height: 40px;
         text-align: center;
