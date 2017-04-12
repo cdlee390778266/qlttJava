@@ -8,22 +8,13 @@ public  class QlttUSException extends RuntimeException {
 	
 	private Object source;
 	
-	private Exception exception;
 
-	public QlttUSException(String exceptionCode){
-		super(ErrorCodeMaster.getMessage(exceptionCode));
-		this.exceptionCode = exceptionCode;
-		
-	}
-	
-	public QlttUSException(String exceptionCode,Object source) {
-		this(exceptionCode);
-		this.source = source;
+	public QlttUSException() {
+		super();
 	}
 
-	public QlttUSException(String exceptionCode,Object source ,Exception e) {
-		this(exceptionCode, source);
-		this.exception = e;
+	public QlttUSException(final String msg) {
+		super(msg);
 	}
 
 	public String getExceptionCode() {
@@ -32,9 +23,5 @@ public  class QlttUSException extends RuntimeException {
 
 	public Object getSource() {
 		return source;
-	}
-
-	public Exception getException() {
-		return exception;
 	}
 }

@@ -42,10 +42,12 @@
   </bean>
 
   <!-- 业务拦截器 -->
+  
   <mvc:interceptors>
     <bean class="com.qianlong.qltt.us.web.interceptor.AccessTokenInterceptor">
       <property name="excludeMapping" value="/token/getAccessToken" />
     </bean>
     <bean class="com.qianlong.qltt.us.web.interceptor.InterfaceCallInfoInterceptor"></bean>
   </mvc:interceptors>
+ 
 </beans>

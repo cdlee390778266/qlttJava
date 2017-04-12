@@ -1,4 +1,4 @@
-package com.qianlong.qltt.us.domain.token;
+package com.qianlong.qltt.us.protocol.commom;
 
 import javax.validation.constraints.NotNull;
 /**
@@ -6,13 +6,13 @@ import javax.validation.constraints.NotNull;
  */
 public class GetAccessTokenReq {
 	
-	@NotNull(message = "appid不能为空")
+	@NotNull
 	private String appid;
 	
-	@NotNull(message = "plaintext不能为空")
+	@NotNull
 	private String plaintext;
 	
-	@NotNull(message = "secret不能为空")
+	@NotNull
 	private String secret;
 
 	public String getAppid() {

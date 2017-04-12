@@ -1,4 +1,4 @@
-package com.qianlong.qltt.us.domain.token;
+package com.qianlong.qltt.us.domain.comm;
 
 import java.util.Date;
 
