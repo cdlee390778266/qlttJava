@@ -299,7 +299,7 @@ a {
   outline: none;
   border-radius: 0.4rem; }
   .login-submit:hover {
-    background-color: #BB322F;
+    background-color: #dc3c38;
     transition: all .4s;
     font-size: 1.6rem;
     color: #fff; }
