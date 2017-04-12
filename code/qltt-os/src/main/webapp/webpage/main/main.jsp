@@ -3,7 +3,7 @@
 <!DOCTYPE html >
 <html>
 <head>
-<title>捷微 jeewx：免费开源微信公众账号开发平台</title>
+<title>钱龙推推微信管理平台</title>
 <t:base type="jquery,easyui,tools,DatePicker,autocomplete"></t:base>
 <link rel="shortcut icon" href="images/favicon.ico">
 <style type="text/css">
@@ -126,7 +126,7 @@ a:hover {
 </head>
 <body class="easyui-layout" style="overflow-y: hidden" scroll="no">
 <!-- 顶部-->
-<div region="north" border="false" title="JEEWX 捷微：敏捷微信开发" style="BACKGROUND: #E6E6FA; height: 85px; padding: 1px; overflow: hidden;">
+<div region="north" border="false" title="钱龙推推微信管理平台" style="BACKGROUND: #E6E6FA; height: 85px; padding: 1px; overflow: hidden;">
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
 		<td align="left" style="vertical-align: text-bottom;"><img src="plug-in/weixin/logo/logo_weixin.png"></td>
@@ -145,7 +145,9 @@ a:hover {
 				<div onclick="add('修改密码','userController.do?changepassword')">修改密码</div>
 	
 				<div class="menu-sep"></div>
+				<!-- 
 				<div onclick="add('修改首页风格','userController.do?changestyle')">首页风格</div>
+				 -->
 			</div>
 			<div id="layout_north_zxMenu" style="width: 100px; display: none;">
 				<div class="menu-sep"></div>
@@ -184,7 +186,7 @@ a:hover {
 </div>
 <!-- 底部 -->
 <div region="south" border="false" style="height: 25px; overflow: hidden;">
-<div align="center" style="color: #CC99FF; padding-top: 2px">&copy; 版权所有 <span class="tip"><a href="http://www.jeewx.com" title="捷微 JeeWx：免费开源微信公众账号开发平台">捷微JeeWx</a> (推荐谷歌浏览器，获得更快响应速度) 技术支持:<a href="http://www.jeecg.org" title="JEECG开源社区">JEECG开源社区</a> </span></div>
+	<div align="center" style="color: #CC99FF; padding-top: 2px">&copy; 版权所有 <span class="tip"><a href="http://www.cdqianlong.com" title="钱龙推推微信管理平台">钱龙推推微信管理平台</a> (推荐谷歌浏览器，获得更快响应速度) 技术支持:成都乾隆 </span></div>
 </div>
 <div id="mm" class="easyui-menu" style="width: 150px;">
 <div id="mm-tabupdate">刷新</div>

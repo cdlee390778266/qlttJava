@@ -2,9 +2,9 @@ package com.qianlong.qltt.us.service;
 
 import javax.servlet.ServletContext;
 
-import com.qianlong.qltt.us.domain.token.AccessToken;
-import com.qianlong.qltt.us.domain.token.GetAccessTokenReq;
-import com.qianlong.qltt.us.domain.token.GetAccessTokenRsp;
+import com.qianlong.qltt.us.domain.comm.AccessToken;
+import com.qianlong.qltt.us.protocol.commom.GetAccessTokenReq;
+import com.qianlong.qltt.us.protocol.commom.GetAccessTokenRsp;
 
 public interface IAccessTokenService extends ICommService{
 	/**

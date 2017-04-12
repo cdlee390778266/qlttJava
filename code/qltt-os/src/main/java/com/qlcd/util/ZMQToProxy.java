@@ -89,7 +89,7 @@ public class ZMQToProxy {
 		try {
 			clazzs = Class.forName(requestBody.getClass().getName());
 			Method toByteArray = clazzs.getMethod("toByteArray", null);
-			reqBodyByte = (byte[]) toByteArray.invoke(clazzs, reqBodyByte);
+			reqBodyByte = (byte[]) toByteArray.invoke(requestBody);
 
 			requester.send(reqHeadByte, org.zeromq.ZMQ.SNDMORE);
 			requester.send(reqBodyByte, 0);
@@ -157,8 +157,8 @@ public class ZMQToProxy {
 
 		Socket responder = rcontext.socket(ZMQ.REP);
 		responder.connect(proxyAddr);
-		responder.setReceiveTimeOut(rcvTimeOut * 1000);
-		responder.setSendTimeOut(sndTimeOut * 1000);
+//		responder.setReceiveTimeOut(rcvTimeOut * 1000);
+//		responder.setSendTimeOut(sndTimeOut * 1000);
 		byte[] reqHeadByte = null;
 		byte[] reqBodyByte = null;
 		byte[] rspHeadByte = null;
@@ -170,7 +170,7 @@ public class ZMQToProxy {
 		while (!Thread.currentThread().isInterrupted()) {
 			try {
 				reqHeadByte = responder.recv(0);
-				System.err.println("Received reply--   ["
+				System.err.println(Thread.currentThread().getName()+"Received reply--   ["
 						+ new String(reqHeadByte) + "]");
 				int recvCnt = 0;
 				while (responder.hasReceiveMore()) {
@@ -199,7 +199,7 @@ public class ZMQToProxy {
 					requestBody = parseFrom.invoke(clazzr, reqBodyByte);
 
 					// 执行业务处理
-					responBody = busProcessProxy.active(requestBody);
+					responBody = busProcessProxy.active(reqHead.getTrdcode(),requestBody);
 
 				}
 				// 生成响应头
@@ -213,7 +213,7 @@ public class ZMQToProxy {
 				Class<?> clazzs = Class
 						.forName(responBody.getClass().getName());
 				Method toByteArray = clazzs.getMethod("toByteArray", null);
-				rspBodyByte = (byte[]) toByteArray.invoke(clazzs, reqBodyByte);
+				rspBodyByte = (byte[]) toByteArray.invoke(responBody);
 
 				// 发送响应
 				responder.send(rspHeadByte, org.zeromq.ZMQ.SNDMORE);

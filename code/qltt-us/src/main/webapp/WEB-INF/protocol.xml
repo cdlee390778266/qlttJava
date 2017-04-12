@@ -2,10 +2,77 @@
 <xml>
   <protocols>
     <protocol>
-      <protocolNo>00000001</protocolNo>
-      <reqURL>/token/getAccessToken</reqURL>
-      <maxCallNo>1000</maxCallNo>
-      <des>获取AcessToken</des>
+      <interface-num></interface-num>
+      <interface-name>获取accessToken</interface-name>
+      <interface-des>根据appid,plaintext,secret获取accessoken</interface-des>
+      <interface-remark></interface-remark>
+      <protocol-num>0000001</protocol-num>
+      <protocol-mode>请求-应答</protocol-mode>
+      <req-url>/token/getAccessToken</req-url>
+      <req-call-max>1000</req-call-max>
+      <protocol-num>00000001</protocol-num>
     </protocol>
+    
+    <!-- 渠道开户管理 start -->
+    <protocol>
+      <interface-num>IFC_UserAcctOpen001</interface-num>
+      <interface-name>账号开通(手机号识别)</interface-name>
+      <interface-des>根据手机号开通唯一用户账号</interface-des>
+      <interface-remark>账号开通采用手机认证模式，渠道认证服务器上认证通过过后才上送本协议</interface-remark>
+      <protocol-num>1001001</protocol-num>
+      <protocol-mode>请求-应答</protocol-mode>
+      <req-url>/acctopen/open001</req-url>
+      <req-call-max>1000</req-call-max>
+    </protocol>
+    <!-- 渠道开户管理 end -->
+    
+    <!-- 登陆管理 start -->
+    <protocol>
+      <interface-num>IFC_UserAcctLogin001</interface-num>
+      <interface-name>账号登录(手机号登录)</interface-name>
+      <interface-des>根据手机号登录</interface-des>
+      <interface-remark></interface-remark>
+      <protocol-num>1002001</protocol-num>
+      <protocol-mode>请求-应答</protocol-mode>
+      <req-url>/acctlogin/login001</req-url>
+      <req-call-max>1000</req-call-max>
+    </protocol>
+    
+    <protocol>
+      <interface-num>IFC_UserAcctLogin002</interface-num>
+      <interface-name>账号登录(第三方验证授信登录)</interface-name>
+      <interface-des>根据第三方授信账号登录</interface-des>
+      <interface-remark></interface-remark>
+      <protocol-num>1002002</protocol-num>
+      <protocol-mode>请求-应答</protocol-mode>
+      <req-url>/acctlogin/login002</req-url>
+      <req-call-max>1000</req-call-max>
+    </protocol>
+    <!-- 登陆管理 end -->
+    
+    
+    <!-- 信息维护管理 start -->
+    <protocol>
+      <interface-num>IFC_UserAcctInfo001</interface-num>
+      <interface-name>账号基本信息修改</interface-name>
+      <interface-des>根据手机号登录</interface-des>
+      <interface-remark></interface-remark>
+      <protocol-num>1003001</protocol-num>
+      <protocol-mode>请求-应答</protocol-mode>
+      <req-url>/acctinfo/info001</req-url>
+      <req-call-max>1000</req-call-max>
+    </protocol>
+    
+    <protocol>
+      <interface-num>IFC_UserAcctInfo002</interface-num>
+      <interface-name>手机设备号更新</interface-name>
+      <interface-des>针对手机App适用</interface-des>
+      <interface-remark>账号在手机App上登录成功后紧接发送该协议</interface-remark>
+      <protocol-num>1003002</protocol-num>
+      <protocol-mode>请求-应答</protocol-mode>
+      <req-url>/acctinfo/info002</req-url>
+      <req-call-max>1000</req-call-max>
+    </protocol>
+    <!-- 信息维护管理  end -->
   </protocols>
 </xml>

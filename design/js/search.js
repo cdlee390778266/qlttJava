@@ -1,19 +1,42 @@
 /* 
 * @Author: lee
 * @Date:   2017-04-07 17:02:56
-* @Last Modified time: 2017-04-10 17:57:34
+* @Last Modified time: 2017-04-11 14:33:38
 */
 
 
 $(document).ready(function(){
 
-    var Searchswiper ;
+    var searchSwiper ;
+    var scrollTopArr = {};
 
     var loadingShow = function($showEle){
         $showEle.css({
             'opacity' : 1,
             'display' : 'block'
         });
+    }
+
+    var scrollTop = function(pos){
+        window.pageYOffset = pos;
+        document.documentElement.scrollTop = pos;
+        document.body.scrollTop = pos;
+    }
+
+    var scrollTop = function(pos){
+        window.pageYOffset = pos;
+        document.documentElement.scrollTop = pos;
+        document.body.scrollTop = pos;
+    }
+
+    var getScrollTop = function(){
+        var pos = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop;
+        return pos;
+    }
+
+    var refreshScrollTop = function(prevKey,currentKey){
+        scrollTopArr[prevKey] = getScrollTop(); 
+        scrollTop(scrollTopArr[currentKey]);
     }
 
     var loadingHide = function($showEle){
@@ -23,71 +46,86 @@ $(document).ready(function(){
         });
     }
 
-    var createHtml = function($parent,childId){
+    var createSearchBox = function($parent){
+        var html = '';
+        $('#scroller li').each(function(index, val) {
+            var searchBoxId = 'search-box-'+ index;
+            html += '<div class="search-box swiper-slide" id="' + searchBoxId + '" ></div>';
+            scrollTopArr[searchBoxId] = 0;
+        });
+        $parent.append(html);
+    }
+
+    var createHtml = function($parent){
         var html = '';
 
         $.ajax({
             url: '../data/search.json',
             type: 'post',
             success: function(resData){
-                    html += '<div class="search-box swiper-slide animated fadeIn" id="' + childId + '" >';
                     for(var i in resData){
-                        html += '<div class="search-item " >'
+                        html += '<div class="search-item ani" swiper-animate-effect="fadeIn" swiper-animate-duration="1s" swiper-animate-delay="0s" >'
                              +      '<div class="search-head">' + resData[i].searchHead + '</div>'
                              +      '<div class="search-body">' + resData[i].searchBody + '</div>'
                              +      '<div class="search-foot">'
                              +          '<span >关注</span>'
-                             +      '</div>'         
+                             +      '</div>'  
+                             +   '</div>'         
                     }
-                    html += '<div class="loadMore">下拉加载更多</div>';
-                    html += '</div>';
-
+                    // html += '<div class="loadMore">下拉加载更多</div>';
+    
                     $parent.append(html);
                     loadingHide($('.qltt-toast'));
 
             },
             error: function(xhr, type){
-                alert('Ajax error!')
+                alert('获取数据失败!');
             }
         })
         
-        html += '</div>';
     }
 
     var init = function(){
         loadingShow($('.qltt-toast'));
-        createHtml($('.swiper-wrapper'),'search-bod-0');
-        Searchswiper = new Swiper('.swiper-container',{
+        createSearchBox($('.swiper-wrapper'));
+        createHtml($('#search-box-0'));
+        searchSwiper = new Swiper('.swiper-container',{
             spaceBetween: 30,
             observer:true,
+            onInit: function(swiper){ 
+                swiperAnimateCache(swiper); //隐藏动画元素 
+                swiperAnimate(swiper); //初始化完成开始动画
+            }, 
             onSlideChangeStart: function(){
-                $(document).scrollTop(0);
+                
+                refreshScrollTop('search-box-'+searchSwiper.previousIndex,'search-box-'+searchSwiper.activeIndex);
+                if($('#search-box-'+ searchSwiper.activeIndex).find('.search-item ').length<=0){
+                    loadingShow($('.qltt-toast'));
+                    createHtml($('#search-box-'+ searchSwiper.activeIndex));
+                }
+
+                headIScroll.scrollToElement($('#header li').get(searchSwiper.activeIndex),30);
+
             },
-            onSlideChangeEnd: function(){
+            onSlideChangeEnd: function(swiper){
                 $('#header li').removeClass('active');
-                $('#header li').eq(Searchswiper.activeIndex).addClass('active');
+                $('#header li').eq(searchSwiper.activeIndex).addClass('active');
+                swiperAnimate(swiper); //每个slide切换结束时也运行当前slide动画
             }
         });
+
     }
 
 
     $('#header').delegate('li', 'tap', function(event) {
 
-        var searchBoxId = 'search-bod-'+$(this).index();
+        var searchBoxId = 'search-box-'+$(this).index();
 
         $('#header li').removeClass('active');
         $(this).addClass('active');
-        if($('#'+searchBoxId).length>0){
-            // $('.search-box').hide();
-            // $('#'+searchBoxId).show();
-        }else{
-            loadingShow($('.qltt-toast'));
-            // $('.search-box').hide();
-            // $('#'+searchBoxId).show();
-            createHtml($('.swiper-wrapper'),searchBoxId);
-        }
-
-        Searchswiper.activeIndex = $(this).index();
+        
+        searchSwiper.slideTo($(this).index());
+        
     });
 
     $('body').delegate('span', 'tap', function(event) {
