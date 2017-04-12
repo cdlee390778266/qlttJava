@@ -14,8 +14,12 @@
   <script src="js/waves.min.js"></script>
   <script src="js/footer.js"></script>
   <script src="js/login.js"></script>
+  <script src="js/jquery-1.10.2.js" ></script>
 
   <title>手机验证</title>
+
+
+
   </head>
   <body>
     <div class="login-bg"><img src="images/login_bg.png" class="img-responsive" /></div>
@@ -36,11 +40,15 @@
         </div>
         <div class="login-tip">
             <p><span>选择【手机验证】</span>代表你已阅读并同意<a class="fred"  href="tpls/ttxieyi.html" >《钱龙推推用户协议》</a>，验证成功你将获得钱龙推推应用全部功能。</p>
-
         </div>
-        <input type="submit" value="确定" class="login-submit waves-effect waves-button waves-float" />  
+        <input class="login-submit" type="submit" value="确定" >
     </form>
     <div id="error" class="animated"><span></span></div>
-
+    <script type="text/javascript">
+        Waves.attach('.flat-buttons', ['waves-button']);
+        Waves.attach('.float-buttons', ['waves-button', 'waves-float']);
+        Waves.attach('.float-button-light', ['waves-button', 'waves-float', 'waves-light']);
+    </script>
+    <script src="js/wavadd.js"></script>
   </body>
 </html>

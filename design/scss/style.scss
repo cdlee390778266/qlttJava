@@ -161,7 +161,7 @@ a{
     font-size: 1.4rem;
     overflow: hidden;
     text-align: center;
-    color: #fcfcfc;
+    color: #FFCFCF;
     transition: all .4s;
     &.active{
         background: #c9312d;
@@ -227,8 +227,10 @@ a{
                 background-position: -41px -145px;
             }
         }
+
         &.active{
             color: $yellow;
+
             .icon{
                 &.icon-searchd{
                     background-position: -75px -40px;
@@ -350,8 +352,10 @@ a{
     outline: none;
     border-radius: 0.4rem;
   &:hover{
-    background-color:#BB322F;
+    background-color:#dc3c38;
     transition: all .4s;
+    font-size:1.6rem;
+    color: #fff;
   }
 }
 
@@ -406,7 +410,7 @@ a{
         }
         .search-head{
             color: $red;
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             margin-bottom: 4px;
             i{
                 display:block;
@@ -424,6 +428,7 @@ a{
         }
         .search-body{
             line-height: 2.2rem;
+            color:$darkgray;
         }
         .search-foot{
             text-align: right;
@@ -436,7 +441,7 @@ a{
                 color: #fff;
                 text-align: right;
                 padding-right: 1rem;
-                border-radius: 4px;
+                border-radius: 2px;
                 background-image:url('../images/icon.png') ;
                 background-size : $bgSize;
                 background-repeat:no-repeat;
@@ -505,9 +510,11 @@ a{
   span{
     display: inline-block;
     padding: 4rem;
+    font-size: 1.2rem;
     padding-top: 0;
    strong{
      color:$red;
+     font-size: 1.2rem;
 
    }
   }
@@ -522,7 +529,7 @@ a{
     top: 180px;
     left: 50%;
     margin-left: -3.8em;
-    background: rgba(17, 17, 17, 0.7);
+   /* background: rgba(17, 17, 17, 0.7);*/
     text-align: center;
     border-radius: 5px;
     color: #FFFFFF;
@@ -674,27 +681,31 @@ a{
     color: #999;
     .srceen-txt{
         padding: 0 15px;
-        margin-bottom: 10px;
-        margin-top: 15px;
+        margin-bottom: 1rem;
+        margin-top: 1.5rem;
         color : #333;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid #DCDCDC;
     }
     .screen-main{
         .screen-item{
-            padding: 0 15px;
-            color: rgba(0,0,0,0.6);
+            padding: 0 0.5rem;
+            color:$darkgray;
             @include flexBox();
             line-height: 4rem;
             &:nth-child(odd){
-                background:#fff0ea;
+                background:#FAFAFA;
             }
             &>div{
                 @include flex(1);
                 &.item-col-1{
-                    color: rgba(0,0,0,0.8);
+                    color: $darkgray;
                     line-height: 1.8rem;
                     padding-top: 0.2rem;
                     &>span{
                         display: block;
+                      font-size: 1.4rem;
+                      text-align: left;
                     }
                 }
                 &.item-col-4{
@@ -785,9 +796,10 @@ a{
                     span{
                         display:inline-block;
                         line-height: 20px;
-                        padding: 2px 5px;
-                        border:1px solid #ddd;
-                        color:#fff;
+                        padding: 0.2rem 0.5rem;
+                        font-size: 1.4rem;
+                        border:1px solid #FFCDCD;
+                        color:#FFCDCD;
                         border-radius: 4px;
                         background:rgba(255,255,255,0.23);
                         margin:5px 10px;
@@ -798,7 +810,7 @@ a{
                 @include flex(1);
                 padding:0 40px;
                 line-height: 20px;
-                color:#fff;
+                color:#FFCDCD;
             }
        }
        
@@ -820,12 +832,14 @@ a{
             transition : all .2s;
             &.result-btn-care{
                 background-position: -145px -73px;
+                font-size: 1.4rem;
                 &.active{
                     background-color: #e5e5e5;
                 }
             }
             &.result-btn-clc{
                 background-position: -145px -646px;
+                font-size: 1.4rem;
                 &.active{
                     background-color: #e5e5e5;
                 }
@@ -839,4 +853,20 @@ a{
     .result-tags-box span{
         margin:5px 5px !important;
     }
+}
+/*各个尺寸字体大小设置***/
+@media screen and (min-width:320px) and (max-width:360px){
+  html{
+    font-size: 10px;
+  }
+}
+@media screen and (min-width:360px) and (max-width:375px){
+  html{
+    font-size: 11px;
+  }
+}
+@media screen and (min-width:375px){
+  html{
+    font-size: 12px;
+  }
 }
