@@ -34,7 +34,9 @@ input[type="button"], input[type="submit"], input[type="reset"] {
   -webkit-appearance: none; }
 
 html {
-  font-size: 10px; }
+  font-size: 10px;
+  font-family: "微软雅黑";
+  height: 100%; }
 
 * {
   box-sizing: border-box; }
@@ -44,7 +46,8 @@ body {
   font-size: 1.2rem;
   line-height: 2.4em;
   color: #a3a3a3;
-  background: #fff; }
+  background: #FAFAFA;
+  height: 100%; }
 
 input {
   outline: none;
@@ -91,12 +94,13 @@ a {
   left: 0;
   top: 0;
   z-index: 1;
-  height: 4.4rem;
+  height: 5rem;
   width: 100%;
   background: #dc3c38;
   overflow: hidden;
   -ms-touch-action: none;
-  z-index: 99; }
+  z-index: 99;
+  box-shadow: 0 2px 6px 1px rgba(176, 176, 176, 0.8); }
 
 #scroller, #scrollerPool {
   position: absolute;
@@ -129,14 +133,14 @@ a {
 
 #scroller li, #scrollerPool li {
   width: 90px;
-  height: 4.4rem;
+  height: 5rem;
   float: left;
-  line-height: 4.4rem;
+  line-height: 5rem;
   background-color: #dc3c38;
   font-size: 1.4rem;
   overflow: hidden;
   text-align: center;
-  color: #fff;
+  color: #FFCFCF;
   transition: all .4s; }
   #scroller li.active, #scrollerPool li.active {
     background: #c9312d;
@@ -165,7 +169,7 @@ a {
   left: 0;
   right: 0;
   z-index: 99;
-  line-height: 12px;
+  line-height: 1.8rem;
   border-top: 1px solid #e5e5e5;
   border-bottom: 1px solid #e5e5e5;
   box-shadow: 0 0px 6px 2px #e5e5e5;
@@ -177,11 +181,15 @@ a {
     -webkit-flex: 1;
     -ms-flex: 1;
     flex: 1;
-    color: #999;
+    color: #666;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
     text-align: center; }
     .footer a .icon {
       display: inline-block;
-      width: 2.4rem;
+      width: 2.8rem;
       height: 2.4rem;
       background-image: url("../images/icon.png");
       background-size: 250px 700px;
@@ -197,7 +205,7 @@ a {
     .footer a.active {
       color: #f7b703; }
       .footer a.active .icon.icon-searchd {
-        background-position: -75px -39px; }
+        background-position: -75px -40px; }
       .footer a.active .icon.icon-care {
         background-position: -75px -76px; }
       .footer a.active .icon.icon-pool {
@@ -291,8 +299,10 @@ a {
   outline: none;
   border-radius: 0.4rem; }
   .login-submit:hover {
-    background-color: #BB322F;
-    transition: all .4s; }
+    background-color: #dc3c38;
+    transition: all .4s;
+    font-size: 1.6rem;
+    color: #fff; }
 
 #error {
   position: fixed;
@@ -335,11 +345,16 @@ a {
   .search .search-item {
     border-bottom: 1px solid #e5e5e5;
     padding-bottom: 10px;
-    margin-bottom: 5px; }
+    margin-bottom: 5px;
+    padding: 1rem;
+    background-color: #fff; }
     .search .search-item:last-child {
       border-bottom: none; }
+    .search .search-item:active {
+      background-color: #EEE; }
     .search .search-item .search-head {
       color: #dc3c38;
+      font-size: 1.5rem;
       margin-bottom: 4px; }
       .search .search-item .search-head i {
         display: block;
@@ -354,7 +369,8 @@ a {
         margin-right: 10px;
         cursor: pointer; }
     .search .search-item .search-body {
-      line-height: 2.2rem; }
+      line-height: 2.2rem;
+      color: #666; }
     .search .search-item .search-foot {
       text-align: right;
       margin-top: -5px; }
@@ -365,8 +381,8 @@ a {
         line-height: 26px;
         color: #fff;
         text-align: right;
-        padding-right: 10px;
-        border-radius: 4px;
+        padding-right: 1rem;
+        border-radius: 2px;
         background-image: url("../images/icon.png");
         background-size: 250px 700px;
         background-repeat: no-repeat;
@@ -374,9 +390,9 @@ a {
         background-position: -145px -41px;
         transition: all .4s; }
         .search .search-item .search-foot > span.active {
-          padding-right: 5px;
+          padding-right: 1.1rem;
           background-position: -145px -73px;
-          background-color: #999;
+          background-color: #ddd;
           transition: all .4s; }
   .search .div-button {
     height: 4rem;
@@ -388,7 +404,7 @@ a {
 
 /***contract***/
 .ttxieyi {
-  padding: 2rem; }
+  padding: 1rem; }
   .ttxieyi h2 {
     font-size: 1.6rem;
     color: #333;
@@ -399,6 +415,36 @@ a {
     line-height: 2.2rem;
     color: #666; }
 
+/***register success***/
+.zhucecg {
+  height: 100%;
+  text-align: center; }
+  .zhucecg button {
+    width: 13rem;
+    height: 4rem;
+    background-color: #fcfcfc;
+    border: 0.1rem solid #f7b703;
+    border-radius: 0.4rem;
+    font-size: 1.2rem;
+    color: #f7b703; }
+  .zhucecg .sucucess-icon {
+    width: 8rem;
+    height: 8rem;
+    margin: 10rem auto;
+    margin-bottom: 0;
+    background-image: url("../images/sucucess-icon.png");
+    background-size: 6rem 6rem;
+    background-position: center center;
+    background-repeat: no-repeat; }
+  .zhucecg span {
+    display: inline-block;
+    padding: 4rem;
+    font-size: 1.2rem;
+    padding-top: 0; }
+    .zhucecg span strong {
+      color: #dc3c38;
+      font-size: 1.2rem; }
+
 /******   loading   ******/
 .qltt-toast {
   position: fixed;
@@ -408,7 +454,7 @@ a {
   top: 180px;
   left: 50%;
   margin-left: -3.8em;
-  background: rgba(17, 17, 17, 0.7);
+  /* background: rgba(17, 17, 17, 0.7);*/
   text-align: center;
   border-radius: 5px;
   color: #FFFFFF;
@@ -529,31 +575,39 @@ a {
 
 /******   screen   ******/
 .srceen {
-  padding: 0 15px;
   padding-bottom: 6rem;
   text-align: center;
   color: #999; }
   .srceen .srceen-txt {
-    margin-bottom: 5px; }
+    padding: 0 15px;
+    margin-bottom: 1rem;
+    margin-top: 1.5rem;
+    color: #333;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #DCDCDC; }
   .srceen .screen-main .screen-item {
-    color: #000;
+    padding: 0 0.5rem;
+    color: #666;
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
     line-height: 4rem; }
     .srceen .screen-main .screen-item:nth-child(odd) {
-      background: #fff0ea; }
+      background: #FAFAFA; }
     .srceen .screen-main .screen-item > div {
       -webkit-box-flex: 1;
       -webkit-flex: 1;
       -ms-flex: 1;
       flex: 1; }
       .srceen .screen-main .screen-item > div.item-col-1 {
+        color: #666;
         line-height: 1.8rem;
         padding-top: 0.2rem; }
         .srceen .screen-main .screen-item > div.item-col-1 > span {
-          display: block; }
+          display: block;
+          font-size: 1.4rem;
+          text-align: left; }
       .srceen .screen-main .screen-item > div.item-col-4 a {
         display: inline-block;
         width: 17px;
@@ -562,7 +616,7 @@ a {
         background-size: 250px 700px;
         background-image: url(../images/icon.png);
         position: relative;
-        top: 2px; }
+        top: 5px; }
         .srceen .screen-main .screen-item > div.item-col-4 a:first-child {
           background-position: -150px -186px; }
         .srceen .screen-main .screen-item > div.item-col-4 a:last-child {
@@ -572,13 +626,109 @@ a {
     color: #999999; }
     .srceen .load-more i {
       display: inline-block;
-      width: 20px;
-      height: 20px;
-      background-size: 250px 700px;
-      background-image: url(../images/icon.png);
-      background-position: -149px -613px;
+      width: 18px;
+      height: 18px;
+      background: url(../images/loading.png) no-repeat;
+      background-size: cover;
       position: relative;
       top: 5px;
-      right: 5px; }
+      right: 5px;
+      transform-origin: center center; }
+      .srceen .load-more i.active {
+        animation: loading 1s linear infinite; }
+
+@-webkit-keyframes loading {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }
+@keyframes loading {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }
+/******   result   ******/
+.result .result-box > img {
+  width: 100% !important; }
+.result .result-box .result-main {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: column; }
+  .result .result-box .result-main .result-tags {
+    -webkit-box-flex: 2;
+    -webkit-flex: 2;
+    -ms-flex: 2;
+    flex: 2;
+    padding: 0 40px;
+    text-align: center; }
+    .result .result-box .result-main .result-tags:before {
+      display: table; }
+    .result .result-box .result-main .result-tags .result-tags-box {
+      display: table-cell;
+      height: 100%;
+      vertical-align: middle; }
+      .result .result-box .result-main .result-tags .result-tags-box span {
+        display: inline-block;
+        line-height: 20px;
+        padding: 0.2rem 0.5rem;
+        font-size: 1.4rem;
+        border: 1px solid #FFCDCD;
+        color: #FFCDCD;
+        border-radius: 4px;
+        background: rgba(255, 255, 255, 0.23);
+        margin: 5px 10px; }
+  .result .result-box .result-main .result-txt {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    padding: 0 40px;
+    line-height: 20px;
+    color: #FFCDCD; }
+.result .result-btns {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  text-align: center; }
+  .result .result-btns span {
+    line-height: 20px;
+    padding: 4px 5px 4px 25px;
+    background: #dc3c38;
+    color: #fff;
+    border-radius: 4px;
+    margin: 0 15px;
+    background-image: url("../images/icon.png");
+    background-size: 250px 700px;
+    background-repeat: no-repeat;
+    transition: all .2s; }
+    .result .result-btns span.result-btn-care {
+      background-position: -145px -73px;
+      font-size: 1.4rem; }
+      .result .result-btns span.result-btn-care.active {
+        background-color: #e5e5e5; }
+    .result .result-btns span.result-btn-clc {
+      background-position: -145px -646px;
+      font-size: 1.4rem; }
+      .result .result-btns span.result-btn-clc.active {
+        background-color: #e5e5e5; }
+
+@media screen and (max-width: 340px) {
+  .result-tags-box span {
+    margin: 5px 5px !important; } }
+/*各个尺寸字体大小设置***/
+@media screen and (min-width: 320px) and (max-width: 360px) {
+  html {
+    font-size: 10px; } }
+@media screen and (min-width: 360px) and (max-width: 375px) {
+  html {
+    font-size: 11px; } }
+@media screen and (min-width: 375px) {
+  html {
+    font-size: 12px; } }
 
 /*# sourceMappingURL=style.css.map */

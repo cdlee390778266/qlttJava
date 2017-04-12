@@ -28,9 +28,6 @@ public class ExceptionHandler implements HandlerExceptionResolver {
 		if (e instanceof QlttUSException){
 			rsp.setErrorCode(((QlttUSException) e).getExceptionCode());
 			rsp.setErrorMsg(e.getMessage());
-		}else if(e instanceof QlttReqValidException){
-			rsp.setErrorCode(((QlttReqValidException)e).getExceptionCode());
-			rsp.setErrorMsg(e.getMessage());
 		}else{
 			e.printStackTrace();
 		}

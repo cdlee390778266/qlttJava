@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.qianlong.qltt.us.exception.ErrorCodeMaster;
-import com.qianlong.qltt.us.exception.QlttUSException;
+import com.qianlong.qltt.us.exception.QlttUSBusinessException;
 import com.qianlong.qltt.us.service.IAccessTokenService;
 import com.qianlong.qltt.us.util.StringUtil;
 /**
@@ -45,7 +45,7 @@ public class AccessTokenInterceptor extends BaseInterceptor{
 				ServletContext context = request.getSession().getServletContext();
 				accessTokenService.isAccessTokenLegal(context,access_token,uri);
 			}else{//如果access_token不存在，抛出异常
-				throw new QlttUSException(ErrorCodeMaster.TOKEN_NOT_EXIST);
+				throw new QlttUSBusinessException(ErrorCodeMaster.TOKEN_NOT_EXIST);
 			}
 		}
 		return super.preHandle(request, response, handler);

@@ -57,7 +57,9 @@
 	<ul class="dropdown-menu">
 		<li onclick="openwindow('用户信息','userController.do?userinfo')"><a href="javascript:;"><i class="icon-user"></i> 个人信息</a></li>
 		<li onclick="add('修改密码','userController.do?changepassword')"><a href="javascript:;"><i class="icon-pencil"></i> 修改密码</a></li>
+		<!--  
 		<li onclick="add('修改首页风格','userController.do?changestyle')"><a href="javascript:;"><i class="icon-retweet"></i> 首页风格</a></li>
+		-->
 	</ul>
 	</li>
 	<li class="dropdown"><a href="#" class="dropdown-toggle avatar" data-toggle="dropdown"> <i class="icon-arrow-left"></i> <span class="txt">注销</span> <b class="caret"></b> </a>

@@ -64,14 +64,21 @@ public class ErrorCodeMaster {
 	/**请求参数的格式不正确*/
 	public static final String REQ_PARAMETER_FORMAT_NOT_CORRCT = "00030001";
 
-	
+	//business
+	/**该手机号已存在*/
+	public static final String CN_IS_EXIST = "00040001";
 
+	/**该账号不存在或状态异常*/
+	public static final String ACCT_NOT_CORRECT = "00040002";
 
+	//runtime exception
+	public static final String RUNTIME_EXCEPTION = "00050001";
+	
+	//app
+	/**app不存在*/
+	public static final String APP_IS_NOT_EXIST = "00060001";
 
-	
-	
-	
-	public static void main(String[] args) {
-		System.out.println(getMessage(ErrorCodeMaster.CONFIG_PRPTOCOL_FILE_NOT_CORRECT));
-	}
+	/**appid状态异常*/
+	public static final String APP_STATUS_IS_NOT_NORMAL = "00060002";
+
 }

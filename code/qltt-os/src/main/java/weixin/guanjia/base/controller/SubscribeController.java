@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import weixin.guanjia.account.service.WeixinAccountServiceI;
 import weixin.guanjia.base.entity.Subscribe;
 import weixin.guanjia.base.service.SubscribeServiceI;
 import weixin.guanjia.message.entity.NewsTemplate;
@@ -51,10 +50,10 @@ public class SubscribeController {
 	@ResponseBody
 	public void datagrid(Subscribe subscribe, HttpServletRequest request,
 			HttpServletResponse response, DataGrid dataGrid) {
+		
 		CriteriaQuery cq = new CriteriaQuery(Subscribe.class, dataGrid);
 		cq.eq("accountid", ResourceUtil.getWeiXinAccountId());
-		org.jeecgframework.core.extend.hqlsearch.HqlGenerateUtil.installHql(cq,
-				subscribe);
+		org.jeecgframework.core.extend.hqlsearch.HqlGenerateUtil.installHql(cq, subscribe);
 		this.subscribeService.getDataGridReturn(cq, true);
 		TagUtil.datagrid(response, dataGrid);
 	}
@@ -63,14 +62,12 @@ public class SubscribeController {
 	@ResponseBody
 	public AjaxJson deleteSmsGroup(Subscribe subscribe, HttpServletRequest req) {
 		AjaxJson j = new AjaxJson();
-		subscribe = this.subscribeService.getEntity(Subscribe.class, subscribe
-				.getId());
+		subscribe = this.subscribeService.getEntity(Subscribe.class, subscribe.getId());
 
 		this.subscribeService.delete(subscribe);
 
 		message = "删除信息数据成功！";
-		systemService.addLog(message, Globals.Log_Type_DEL,
-				Globals.Log_Leavel_INFO);
+		systemService.addLog(message, Globals.Log_Type_DEL, Globals.Log_Leavel_INFO);
 		j.setMsg(this.message);
 		return j;
 	}
@@ -80,17 +77,12 @@ public class SubscribeController {
 		String id = req.getParameter("id");
 		org.jeecgframework.core.util.LogUtil.info("...id..." + id);
 		req.setAttribute("id", id);
-		List<TextTemplate> textList = this.subscribeService
-				.findByQueryString("from TextTemplate t where t.accountId = '"
-						+ ResourceUtil.getWeiXinAccountId() + "'");
-		List<NewsTemplate> newsList = this.subscribeService
-				.findByQueryString("from NewsTemplate t where t.accountId = '"
-						+ ResourceUtil.getWeiXinAccountId() + "'");
+		List<TextTemplate> textList = this.subscribeService.findByQueryString("from TextTemplate t where t.accountId = '" + ResourceUtil.getWeiXinAccountId() + "'");
+		List<NewsTemplate> newsList = this.subscribeService.findByQueryString("from NewsTemplate t where t.accountId = '"+ ResourceUtil.getWeiXinAccountId() + "'");
 		req.setAttribute("textList", textList);
 		req.setAttribute("newsList", newsList);
 		if (StringUtil.isNotEmpty(id)) {
-			Subscribe subscribe = this.subscribeService.getEntity(
-					Subscribe.class, id);
+			Subscribe subscribe = this.subscribeService.getEntity(Subscribe.class, id);
 			String lx = subscribe.getMsgType();
 			String templateId = subscribe.getTemplateId();
 			req.setAttribute("lx", lx);
@@ -108,14 +100,12 @@ public class SubscribeController {
 		String id = subscribe.getId();
 		if (StringUtil.isNotEmpty(id)) {
 
-			Subscribe tempAutoResponse = this.subscribeService.getEntity(
-					Subscribe.class, subscribe.getId());
+			Subscribe tempAutoResponse = this.subscribeService.getEntity(Subscribe.class, subscribe.getId());
 			this.message = "修改关文本模板成功！";
 			try {
 				MyBeanUtils.copyBeanNotNull2Bean(subscribe, tempAutoResponse);
 				this.subscribeService.saveOrUpdate(tempAutoResponse);
-				systemService.addLog(message, Globals.Log_Type_UPDATE,
-						Globals.Log_Leavel_INFO);
+				systemService.addLog(message, Globals.Log_Type_UPDATE, Globals.Log_Leavel_INFO);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
