@@ -9,6 +9,20 @@ $lightgray:#ddd;
 $yellow : #f7b703;
 $bgSize : 250px 700px;
 
+@mixin flexBox () {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+@mixin flex ($sizing) {
+    -webkit-box-flex: $sizing;
+        -webkit-flex: $sizing;
+            -ms-flex: $sizing;
+                flex: $sizing; 
+}
+
 body, div, dl, dt, dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td{margin:0;padding:0;}
 
 table{border-collapse:collapse;border-spacing:0;}
@@ -172,10 +186,7 @@ a{
 
 /******   footer   ******/
 .footer{
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
+    @include flexBox();
     position: fixed;
     bottom: 0;
     left: 0;
@@ -194,6 +205,7 @@ a{
         -ms-flex: 1;
         flex: 1;
         color:$darkgray;
+        @include flex(1);
         text-align: center;
         .icon{
             display: inline-block;
@@ -244,17 +256,11 @@ a{
     padding-bottom: 7rem;
 }
 .login-input-box{
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
+    @include flexBox();
 
     margin-top: 25px;
     .login-input{
-        -webkit-box-flex: 1;
-        -webkit-flex: 1;
-        -ms-flex: 1;
-        flex: 1;
+        @include flex(1);
         input{
             width: 100%;
             padding-right: 10px;
@@ -628,19 +634,13 @@ a{
         }
     }  
     .check-btn{
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -ms-flexbox;
-        display: flex;
+        @include flexBox();
         padding:0 8px;
         margin-top: 15px;
         a{
             display: block;
             color: #fff;
-            -webkit-box-flex: 1;
-            -webkit-flex: 1;
-            -ms-flex: 1;
-            flex: 1;
+            @include flex(1);
             font-size: 1.4rem;
             text-align: center;
             &:first-child{
@@ -669,30 +669,28 @@ a{
 
 /******   screen   ******/
 .srceen{
-    padding: 0 15px;
     padding-bottom: 6rem;
     text-align: center;
     color: #999;
     .srceen-txt{
-        margin-bottom: 5px;
+        padding: 0 15px;
+        margin-bottom: 10px;
+        margin-top: 15px;
+        color : #333;
     }
     .screen-main{
         .screen-item{
-            color: #000;
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: -ms-flexbox;
-            display: flex;
+            padding: 0 15px;
+            color: rgba(0,0,0,0.6);
+            @include flexBox();
             line-height: 4rem;
             &:nth-child(odd){
                 background:#fff0ea;
             }
             &>div{
-                -webkit-box-flex: 1;
-                -webkit-flex: 1;
-                -ms-flex: 1;
-                flex: 1;
+                @include flex(1);
                 &.item-col-1{
+                    color: rgba(0,0,0,0.8);
                     line-height: 1.8rem;
                     padding-top: 0.2rem;
                     &>span{
@@ -708,7 +706,7 @@ a{
                         background-size: $bgSize;
                         background-image: url(../images/icon.png);
                         position: relative;
-                        top: 2px;
+                        top: 5px;
                         &:first-child{
                             background-position:-150px -186px;
                         }
@@ -725,14 +723,120 @@ a{
         color: #999999;
         i{
             display: inline-block;
-            width: 20px;
-            height: 20px;
-            background-size: $bgSize;
-            background-image: url(../images/icon.png);
-            background-position: -149px -613px;
+            width: 18px;
+            height: 18px;
+            background:url(../images/loading.png) no-repeat;
+            background-size : cover;
             position: relative;
             top: 5px;
             right: 5px;
+            transform-origin:center center;
+            &.active{
+                animation:loading 1s linear infinite;
+            }
         }
+    }
+}
+
+@-webkit-keyframes loading {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes loading {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/******   result   ******/
+.result{
+    .result-box{
+        &>img{
+            width:100% !important;
+        }
+       .result-main{
+            position:absolute;
+            top:0;
+            left:0;
+            right:0;
+            @include flexBox();
+            flex-direction: column;
+            .result-tags{
+                @include flex(2);
+                padding: 0 40px;
+                text-align: center;
+                &:before{
+                    display:table;
+                }
+                .result-tags-box{
+                    display:table-cell;
+                    height:100%;
+                    vertical-align: middle;
+                    span{
+                        display:inline-block;
+                        line-height: 20px;
+                        padding: 2px 5px;
+                        border:1px solid #ddd;
+                        color:#fff;
+                        border-radius: 4px;
+                        background:rgba(255,255,255,0.23);
+                        margin:5px 10px;
+                    }
+                }
+            }
+            .result-txt{
+                @include flex(1);
+                padding:0 40px;
+                line-height: 20px;
+                color:#fff;
+            }
+       }
+       
+    }
+    .result-btns{
+        margin-top: 20px;
+        margin-bottom: 10px;
+        text-align: center;
+        span{
+            line-height: 20px;
+            padding: 4px 5px 4px 25px;
+            background:$red;
+            color:#fff;
+            border-radius: 4px;
+            margin:0 15px;
+            background-image:url('../images/icon.png') ;
+            background-size : $bgSize;
+            background-repeat:no-repeat;
+            transition : all .2s;
+            &.result-btn-care{
+                background-position: -145px -73px;
+                &.active{
+                    background-color: #e5e5e5;
+                }
+            }
+            &.result-btn-clc{
+                background-position: -145px -646px;
+                &.active{
+                    background-color: #e5e5e5;
+                }
+            }
+
+        }
+    }
+}
+
+@media screen and (max-width: 340px){
+    .result-tags-box span{
+        margin:5px 5px !important;
     }
 }

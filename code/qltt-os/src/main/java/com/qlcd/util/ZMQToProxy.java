@@ -89,7 +89,7 @@ public class ZMQToProxy {
 		try {
 			clazzs = Class.forName(requestBody.getClass().getName());
 			Method toByteArray = clazzs.getMethod("toByteArray", null);
-			reqBodyByte = (byte[]) toByteArray.invoke(clazzs, reqBodyByte);
+			reqBodyByte = (byte[]) toByteArray.invoke(requestBody);
 
 			requester.send(reqHeadByte, org.zeromq.ZMQ.SNDMORE);
 			requester.send(reqBodyByte, 0);
@@ -213,7 +213,7 @@ public class ZMQToProxy {
 				Class<?> clazzs = Class
 						.forName(responBody.getClass().getName());
 				Method toByteArray = clazzs.getMethod("toByteArray", null);
-				rspBodyByte = (byte[]) toByteArray.invoke(clazzs, reqBodyByte);
+				rspBodyByte = (byte[]) toByteArray.invoke(responBody);
 
 				// 发送响应
 				responder.send(rspHeadByte, org.zeromq.ZMQ.SNDMORE);
