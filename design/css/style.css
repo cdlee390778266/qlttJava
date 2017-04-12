@@ -58,7 +58,7 @@ body {
   font-size: 1.2rem;
   line-height: 2.4em;
   color: #a3a3a3;
-  background: #fff;
+  background: #FAFAFA;
   height: 100%;
 }
 
@@ -359,7 +359,7 @@ a {
   border-radius: 0.4rem;
 }
 .login-submit:hover {
-  background-color: #C73935;
+  background-color: #dc3c38;
   transition: all .4s;
   font-size: 1.6rem;
   color: #fff;
@@ -412,9 +412,13 @@ a {
   padding-bottom: 10px;
   margin-bottom: 5px;
   padding: 1rem;
+  background-color: #fff;
 }
 .search .search-item:last-child {
   border-bottom: none;
+}
+.search .search-item:active {
+  background-color: #EEE;
 }
 .search .search-item .search-head {
   color: #dc3c38;
