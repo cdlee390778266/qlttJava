@@ -1,16 +1,37 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <xml>
   <protocols>
+     <protocol>
+      <interface-num>IFC_UserAppCreate001</interface-num>
+      <interface-name>生成一个app</interface-name>
+      <interface-des></interface-des>
+      <interface-remark></interface-remark>
+      <protocol-num>1000001</protocol-num>
+      <protocol-mode>请求-应答</protocol-mode>
+      <req-url>/app/createApp</req-url>
+      <req-call-max>1000</req-call-max>
+    </protocol>
+    
     <protocol>
-      <interface-num></interface-num>
+      <interface-num>IFC_UserTokenReset001</interface-num>
+      <interface-name>重置Token</interface-name>
+      <interface-des>根据appid,plaintext,secret重置Token</interface-des>
+      <interface-remark></interface-remark>
+      <protocol-num>1000002</protocol-num>
+      <protocol-mode>请求-应答</protocol-mode>
+      <req-url>/app/resetAppToken</req-url>
+      <req-call-max>1000</req-call-max>
+    </protocol>
+    
+    <protocol>
+      <interface-num>IFC_UserAccessTokenGet001</interface-num>
       <interface-name>获取accessToken</interface-name>
       <interface-des>根据appid,plaintext,secret获取accessoken</interface-des>
       <interface-remark></interface-remark>
-      <protocol-num>0000001</protocol-num>
+      <protocol-num>1000003</protocol-num>
       <protocol-mode>请求-应答</protocol-mode>
       <req-url>/token/getAccessToken</req-url>
       <req-call-max>1000</req-call-max>
-      <protocol-num>00000001</protocol-num>
     </protocol>
     
     <!-- 渠道开户管理 start -->

@@ -13,14 +13,17 @@ import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.qianlong.qltt.us.common.Constants;
+import com.qianlong.qltt.us.domain.app.TUSSysPltDailyCall;
 import com.qianlong.qltt.us.domain.comm.AccessToken;
 import com.qianlong.qltt.us.domain.comm.InterfaceCallInfo;
 import com.qianlong.qltt.us.exception.ErrorCodeMaster;
 import com.qianlong.qltt.us.exception.QlttRuntimeException;
 import com.qianlong.qltt.us.exception.QlttUSBusinessException;
+import com.qianlong.qltt.us.mapper.app.TUSSysPltDailyCallMapper;
 import com.qianlong.qltt.us.service.IInterfaceCallInfoService;
 import com.qianlong.qltt.us.util.DateUtil;
 
@@ -29,6 +32,9 @@ import com.qianlong.qltt.us.util.DateUtil;
 public class InterfaceCallInfoServiceImpl extends CommServiceImpl implements IInterfaceCallInfoService{
 	
 	private static final Logger logger = LoggerFactory.getLogger(InterfaceCallInfoServiceImpl.class);
+	
+	@Autowired
+	private TUSSysPltDailyCallMapper tUSSysPltDailyCallMapper;
 	/**
 	 * 检查接口调用是否超出限定次数
 	 */
@@ -47,7 +53,13 @@ public class InterfaceCallInfoServiceImpl extends CommServiceImpl implements IIn
 				}
 			}	
 		}else{//如果不是同一天
-			//TODO 将该对像持久化到数据库
+			//将该对像持久化到数据库
+			TUSSysPltDailyCall pltDailyCall = new TUSSysPltDailyCall();
+			pltDailyCall.setFsAppid(interfaceCallInfo.getAppID());
+			pltDailyCall.setFsPtlno(interfaceCallInfo.getProtocolNo());
+			pltDailyCall.setFtPtllastcalltime(interfaceCallInfo.getLastCallTime());
+			pltDailyCall.setFiPtlcallnum(callNo);
+			tUSSysPltDailyCallMapper.insert(pltDailyCall);
 			callNo = 1 ;
 		}
 		lastCallTime = now ;

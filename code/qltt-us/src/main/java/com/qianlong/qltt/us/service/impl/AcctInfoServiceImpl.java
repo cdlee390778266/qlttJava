@@ -33,7 +33,6 @@ public class AcctInfoServiceImpl extends CommServiceImpl implements IAcctInfoSer
 		TUSAcctBaseInfo tusAcctBaseInfo = new TUSAcctBaseInfo();
 		tusAcctBaseInfo.setFsTtacct(req.getTtacct());
 		tusAcctBaseInfo.setFsName(req.getName());
-		//TODO 如果名称为空的时候，是不是将表中的Name置空
 		tUSAcctBaseInfoMapper.updateByPrimaryKey(tusAcctBaseInfo);
 		return new CommRsp();
 	}
