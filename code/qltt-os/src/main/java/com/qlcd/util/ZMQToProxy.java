@@ -169,16 +169,18 @@ public class ZMQToProxy {
 
 		while (!Thread.currentThread().isInterrupted()) {
 			try {
-				reqHeadByte = responder.recv(0);
-				System.err.println(Thread.currentThread().getName()+"Received reply--   ["
+//				reqHeadByte = responder.recv(0);
+				reqHeadByte = new byte[]{8, -94, 10, 16, -94, 10, 24, -94, 10, 32, -94, 10, 40, -94, 10, 48, -94, 10, 58, 37, 99, 111, 109, 46, 113, 108, 99, 100, 46, 113, 108, 116, 116, 46, 98, 111, 100, 121, 46, 112, 114, 116, 46, 84, 48, 51, 48, 48, 49, 48, 48, 49, 46, 95, 114, 101, 113};
+				System.err.println(Thread.currentThread().getName()+"Receivedreply--   ["
 						+ new String(reqHeadByte) + "]");
 				int recvCnt = 0;
-				while (responder.hasReceiveMore()) {
-					reqBodyByte = responder.recv(0);
+//				while (responder.hasReceiveMore()) {
+//					reqBodyByte = responder.recv(0);
+					reqBodyByte =new byte[]{10, 35, 10, 8, 50, 48, 49, 55, 48, 52, 48, 57, 16, 1, 24, 1, 34, 10, 50, 48, 49, 55, 45, 48, 52, 45, 48, 57, 40, 1, 50, 3, 48, 48, 49, 56, 1, 18, 25, 10, 4, 116, 116, 48, 49, 18, 6, -28, -67, -96, -25, -116, -100, 34, 9, 122, 109, 115, 116, 116, 48, 49, 119, 120, 18, 26, 10, 4, 116, 116, 48, 49, 18, 6, -28, -67, -96, -25, -116, -100, 34, 10, 122, 109, 115, 116, 116, 48, 49, 105, 111, 115, 18, 25, 10, 4, 116, 116, 48, 50, 18, 6, -28, -67, -96, -25, -116, -100, 34, 9, 122, 109, 115, 116, 116, 48, 49, 119, 120};
 					System.err.println("Received reply   ["
 							+ new String(reqBodyByte) + "]");
 					recvCnt++;
-				}
+//				}
 				if (recvCnt > 1) {
 					// 接收次数异常时返回通用异常报文
 					responBody = null;
@@ -188,11 +190,13 @@ public class ZMQToProxy {
 					Hpprot._req reqHead;
 
 					reqHead = Hpprot._req.parseFrom(reqHeadByte);
+					//解析体的对象
+					String bodyClass = reqHead.getBodyclass().replace("._req", "$_req");
 
 					// 根据请求头解析请求体
 					Class<?> clazzr;
 
-					clazzr = Class.forName(reqHead.getBodyclass());
+					clazzr = Class.forName(bodyClass);
 
 					Method parseFrom = clazzr.getMethod("parseFrom",
 							byte[].class);
@@ -209,7 +213,7 @@ public class ZMQToProxy {
 				Hpprot._rsp rspHead = rspHeadBuilder.build();
 				rspHeadByte = rspHead.toByteArray();
 
-				// 生成响应体
+				// 生成响应体?? 没有toByteArray
 				Class<?> clazzs = Class
 						.forName(responBody.getClass().getName());
 				Method toByteArray = clazzs.getMethod("toByteArray", null);

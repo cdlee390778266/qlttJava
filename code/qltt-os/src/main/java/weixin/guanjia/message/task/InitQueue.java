@@ -38,8 +38,8 @@ public class InitQueue {
 						ataskExecutor.execute(new Runnable() {
 							public void run() {
 								try {
-									InvocationHandler handler = new ToZMQProxyHandler(busProcess);
-									zmqToProxy.InBound(handler, busProcess);
+//									InvocationHandler handler = new ToZMQProxyHandler(busProcess);
+//									zmqToProxy.InBound(handler, busProcess);
 								} catch (Exception e) {
 									e.printStackTrace();
 								}
