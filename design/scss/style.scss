@@ -433,14 +433,11 @@ a{
         }
         .search-body{
             line-height: 2.2rem;
-<<<<<<< HEAD
             a{
                 color:$gray;
+                -webkit-user-select: none;/*禁用手机浏览器的用户选择功能 */
+                -moz-user-select: none;
             }
-=======
-            color:$darkgray;
->>>>>>> 07dc0c113fcc14af64adfd759865de2913c166d6
-        }
         .search-foot{
             text-align: right;
             margin-top: -5px;
@@ -476,6 +473,7 @@ a{
         border : 1px solid $yellow;
         border-radius: 4px;
     }
+}
 }
 /***contract***/
 .ttxieyi{
@@ -865,7 +863,6 @@ a{
         margin:5px 5px !important;
     }
 }
-<<<<<<< HEAD
 
 /******   dialog   ******/
 .dialog{
@@ -1001,8 +998,8 @@ a{
             }
         }
     }
-    
-=======
+}    
+
 /*各个尺寸字体大小设置***/
 @media screen and (min-width:320px) and (max-width:360px){
   html{
@@ -1018,5 +1015,4 @@ a{
   html{
     font-size: 12px;
   }
->>>>>>> 07dc0c113fcc14af64adfd759865de2913c166d6
 }
