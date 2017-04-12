@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.qianlong.qltt.us.exception.ErrorCodeMaster;
-import com.qianlong.qltt.us.exception.QlttUSException;
+import com.qianlong.qltt.us.exception.QlttUSBusinessException;
 import com.qianlong.qltt.us.service.IInterfaceCallInfoService;
 import com.qianlong.qltt.us.util.StringUtil;
 /**
@@ -50,7 +50,7 @@ public class InterfaceCallInfoInterceptor extends BaseInterceptor{
 					interfaceCallInfoService.callInterfaceValidByAppid(context,appid,uri);
 				}else{
 					logger.debug("参数中没有没有appid,也没有access_token");
-					throw new QlttUSException(ErrorCodeMaster.CAN_NOT_TELL_REQUETER);
+					throw new QlttUSBusinessException(ErrorCodeMaster.CAN_NOT_TELL_REQUETER);
 				}	
 			}
 				

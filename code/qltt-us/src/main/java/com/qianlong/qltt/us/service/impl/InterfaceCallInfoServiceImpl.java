@@ -2,7 +2,7 @@ package com.qianlong.qltt.us.service.impl;
 
 import java.net.URL;
 import java.util.Date;
-import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
 
@@ -13,13 +13,17 @@ import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.qianlong.qltt.us.common.Constants;
-import com.qianlong.qltt.us.domain.token.AccessToken;
-import com.qianlong.qltt.us.domain.token.InterfaceCallInfo;
+import com.qianlong.qltt.us.domain.app.TUSSysPltDailyCall;
+import com.qianlong.qltt.us.domain.comm.AccessToken;
+import com.qianlong.qltt.us.domain.comm.InterfaceCallInfo;
 import com.qianlong.qltt.us.exception.ErrorCodeMaster;
-import com.qianlong.qltt.us.exception.QlttUSException;
+import com.qianlong.qltt.us.exception.QlttRuntimeException;
+import com.qianlong.qltt.us.exception.QlttUSBusinessException;
+import com.qianlong.qltt.us.mapper.app.TUSSysPltDailyCallMapper;
 import com.qianlong.qltt.us.service.IInterfaceCallInfoService;
 import com.qianlong.qltt.us.util.DateUtil;
 
@@ -28,6 +32,9 @@ import com.qianlong.qltt.us.util.DateUtil;
 public class InterfaceCallInfoServiceImpl extends CommServiceImpl implements IInterfaceCallInfoService{
 	
 	private static final Logger logger = LoggerFactory.getLogger(InterfaceCallInfoServiceImpl.class);
+	
+	@Autowired
+	private TUSSysPltDailyCallMapper tUSSysPltDailyCallMapper;
 	/**
 	 * 检查接口调用是否超出限定次数
 	 */
@@ -46,7 +53,13 @@ public class InterfaceCallInfoServiceImpl extends CommServiceImpl implements IIn
 				}
 			}	
 		}else{//如果不是同一天
-			//TODO 将该对像持久化到数据库
+			//将该对像持久化到数据库
+			TUSSysPltDailyCall pltDailyCall = new TUSSysPltDailyCall();
+			pltDailyCall.setFsAppid(interfaceCallInfo.getAppID());
+			pltDailyCall.setFsPtlno(interfaceCallInfo.getProtocolNo());
+			pltDailyCall.setFtPtllastcalltime(interfaceCallInfo.getLastCallTime());
+			pltDailyCall.setFiPtlcallnum(callNo);
+			tUSSysPltDailyCallMapper.insert(pltDailyCall);
 			callNo = 1 ;
 		}
 		lastCallTime = now ;
@@ -68,7 +81,7 @@ public class InterfaceCallInfoServiceImpl extends CommServiceImpl implements IIn
 	public void callInterfaceValidByAppid(ServletContext context, String appid, String uri){
 		Map<String, AccessToken> tokenMap = (Map<String,AccessToken>)context.getAttribute(Constants.SYS_ACCESSTOKENS);
 		if(tokenMap == null){
-			tokenMap = new HashMap<String, AccessToken>();
+			tokenMap = new Hashtable<String, AccessToken>();
 			context.setAttribute(Constants.SYS_ACCESSTOKENS, tokenMap);
 		}
 		AccessToken token = tokenMap.get(appid);
@@ -77,7 +90,7 @@ public class InterfaceCallInfoServiceImpl extends CommServiceImpl implements IIn
 			token = new AccessToken();
 			tokenMap.put(appid, token);//往内存中放一个Token
 			token.setAppID(appid);
-			interfaceCallInfoMap = new HashMap<String, InterfaceCallInfo>();
+			interfaceCallInfoMap = new Hashtable<String, InterfaceCallInfo>();
 			token.setInterfaceCallInfoMap(interfaceCallInfoMap);
 		}else{
 			interfaceCallInfoMap = token.getInterfaceCallInfoMap();
@@ -104,7 +117,7 @@ public class InterfaceCallInfoServiceImpl extends CommServiceImpl implements IIn
 		}else{//如果该渠道已经调用过了该接口
 			boolean validFlag = validInterfaceCallLimit(interfaceCallInfo);
 			if(!validFlag){//验证不通过，报超出最大限制的异常
-				throw new QlttUSException(ErrorCodeMaster.INTERFACE_CALL_OUT_OF_LIMIT);
+				throw new QlttUSBusinessException(ErrorCodeMaster.INTERFACE_CALL_OUT_OF_LIMIT);
 			}
 		}
 	}
@@ -120,8 +133,8 @@ public class InterfaceCallInfoServiceImpl extends CommServiceImpl implements IIn
 			Element root = document.getRootElement();
 			Element protocolMaster = root.element("protocols");//加载协议字典
 			List<Element> protocols = (List<Element>) protocolMaster.elements("protocol");
-			Map<String, String> url_pn_map = new HashMap<String, String>();
-			Map<String, InterfaceCallInfo> protocolMap = new HashMap<String, InterfaceCallInfo>();
+			Map<String, String> url_pn_map = new Hashtable<String, String>();
+			Map<String, InterfaceCallInfo> protocolMap = new Hashtable<String, InterfaceCallInfo>();
 			
 			servletContext.setAttribute(Constants.SYS_URL_PN_MAP, url_pn_map);
 			servletContext.setAttribute(Constants.SYS_PN_INTERFACECALLINFO_MAP, protocolMap);
@@ -130,15 +143,15 @@ public class InterfaceCallInfoServiceImpl extends CommServiceImpl implements IIn
 				InterfaceCallInfo info = null;
 				for (Element item : protocols) {
 					info = new InterfaceCallInfo();
-					Element protocolNoElment = item.element("protocolNo");
+					Element protocolNoElment = item.element("protocol-num");
 					String protocolNo = protocolNoElment.getTextTrim();
 					info.setProtocolNo(protocolNo);
 					
-					Element protocolURLElment = item.element("reqURL");
+					Element protocolURLElment = item.element("req-url");
 					String protocolUrl = protocolURLElment.getTextTrim();
 					info.setUrl(protocolUrl);
 					
-					Element protocolMaxCallNo = item.element("maxCallNo");
+					Element protocolMaxCallNo = item.element("req-call-max");
 					if(protocolMaxCallNo != null){
 						info.setMaxCallNo(Integer.parseInt(protocolMaxCallNo.getTextTrim()));
 					}
@@ -152,7 +165,7 @@ public class InterfaceCallInfoServiceImpl extends CommServiceImpl implements IIn
 			logger.debug(protocolMap.toString());
 		} catch (Exception e){
 			e.printStackTrace();
-			throw new QlttUSException(ErrorCodeMaster.CONFIG_PRPTOCOL_FILE_NOT_CORRECT, this, e);
+			throw new QlttRuntimeException(this, e);
 		}
 	}
 }

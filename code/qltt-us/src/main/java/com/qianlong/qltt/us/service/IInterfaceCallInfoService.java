@@ -21,7 +21,4 @@ public interface IInterfaceCallInfoService extends ICommService{
 	 * 加载所有接口信息
 	 */
 	void loadAllInterfaceMap(ServletContext servletContext);
-
-	
-
 }
