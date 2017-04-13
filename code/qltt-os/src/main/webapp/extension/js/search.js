@@ -1,7 +1,7 @@
 /* 
 * @Author: lee
 * @Date:   2017-04-07 17:02:56
-* @Last Modified time: 2017-04-11 14:33:38
+* @Last Modified time: 2017-04-13 11:00:30
 */
 
 
@@ -10,42 +10,10 @@ $(document).ready(function(){
     var searchSwiper ;
     var scrollTopArr = {};
 
-    var loadingShow = function($showEle){
-        $showEle.css({
-            'opacity' : 1,
-            'display' : 'block'
-        });
-    }
-
-    var scrollTop = function(pos){
-        window.pageYOffset = pos;
-        document.documentElement.scrollTop = pos;
-        document.body.scrollTop = pos;
-    }
-
-    var scrollTop = function(pos){
-        window.pageYOffset = pos;
-        document.documentElement.scrollTop = pos;
-        document.body.scrollTop = pos;
-    }
-
-    var getScrollTop = function(){
-        var pos = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop;
-        return pos;
-    }
-
     var refreshScrollTop = function(prevKey,currentKey){
         scrollTopArr[prevKey] = getScrollTop(); 
         scrollTop(scrollTopArr[currentKey]);
     }
-
-    var loadingHide = function($showEle){
-        $showEle.css({
-            'opacity' : 0,
-            'display' : 'none'
-        });
-    }
-
     var createSearchBox = function($parent){
         var html = '';
         $('#scroller li').each(function(index, val) {
@@ -66,10 +34,7 @@ $(document).ready(function(){
                     for(var i in resData){
                         html += '<div class="search-item ani" swiper-animate-effect="fadeIn" swiper-animate-duration="1s" swiper-animate-delay="0s" >'
                              +      '<div class="search-head">' + resData[i].searchHead + '</div>'
-                             +      '<div class="search-body">' + resData[i].searchBody + '</div>'
-                             +      '<div class="search-foot">'
-                             +          '<span >关注</span>'
-                             +      '</div>'  
+                             +      '<div class="search-body"><a href="result.html">' + resData[i].searchBody + '</a></div>'
                              +   '</div>'         
                     }
     
@@ -127,15 +92,7 @@ $(document).ready(function(){
         
     });
 
-    $('body').delegate('span', 'tap', function(event) {
-        if($(this).hasClass('active')){
-            $(this).removeClass('active');
-        }else{
-            $(this).addClass('active');
-        }
-    
-        
-    });
+   
 
 
     init();

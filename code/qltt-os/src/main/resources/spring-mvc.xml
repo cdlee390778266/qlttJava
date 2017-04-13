@@ -152,6 +152,7 @@
 						<value>webapp/register/validate.do</value>
 						<value>webapp/search/index.do</value>
 						<value>webapp/register/index.do</value>
+						<value>webapp/register/agreement.do</value>
 					</list>
 				</property>
 			</bean>
