@@ -9,22 +9,28 @@ import java.util.Map.Entry;
 
 import javax.servlet.ServletContext;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.qianlong.qltt.us.common.Constants;
+import com.qianlong.qltt.us.domain.app.TUSSysApp;
 import com.qianlong.qltt.us.domain.comm.AccessToken;
 import com.qianlong.qltt.us.exception.ErrorCodeMaster;
 import com.qianlong.qltt.us.exception.QlttUSBusinessException;
 import com.qianlong.qltt.us.protocol.commom.GetAccessTokenReq;
 import com.qianlong.qltt.us.protocol.commom.GetAccessTokenRsp;
 import com.qianlong.qltt.us.service.IAccessTokenService;
+import com.qianlong.qltt.us.service.IAppAdminService;
 import com.qianlong.qltt.us.util.StringUtil;
 import com.qianlong.qltt.us.util.token.AccessTokenGenerater;
-import com.qianlong.qltt.us.util.token.SignProvider;
 
 
 @Service("accessTokenService")
 public class AccessTokenServiceImpl extends CommServiceImpl implements IAccessTokenService{
+	
+	@Autowired
+	private IAppAdminService appAdminService;
 
 	@SuppressWarnings("unchecked")
 	public void isAccessTokenLegal(ServletContext context, String accees_token, String uri) {
@@ -58,23 +64,13 @@ public class AccessTokenServiceImpl extends CommServiceImpl implements IAccessTo
 
 	@Override
 	@SuppressWarnings("unchecked")
+	@Transactional(readOnly=true)
 	public GetAccessTokenRsp getAccessToken(ServletContext servletContext, GetAccessTokenReq req) {
 		//验证私钥的正确性
 		String appid = req.getAppid();
-		String plaintText = req.getPlaintext();
-		//TODO 以后可以从数据库中取
-		String pubKey = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQClboG5rbQ3k2p0Hy1pUy6O3oidGMIR5YTx1C4j2Y2t1RI52zRt0TXzORF0qWR0gWBjRkSevpzWMBPdUdIIfKEDlKTljKofqnizgQwFvf8vm0aMGb4/i/PezA0bY4YvTzBTeMxz2HLMGbSPOPDhE1d1Qca4buryZYlv2m2lncuNNQIDAQAB";
-		//String seceret = "CLlTNP394PISXMTPIcYNRvgkIPb9j/DRZ+M7sUp9gCL92t5sIDpprHHeOWoaZnL3C3qXeF1FOYybseLvxohcWqnw2QrIN8VzXFe9TBuF3sdY1wMqxtXKb/i61EJHwsjERYGTY/iI7y1Zl3VwavbNC02IXL+0vPIGosnyQ12tw0M=";
-		String sign = req.getSecret();
-		plaintText+=appid;
-		try {
-			boolean verifyFlag = SignProvider.verify(pubKey.getBytes("utf-8"), plaintText, sign.getBytes("utf-8"));
-			if(!verifyFlag){
-				throw new QlttUSBusinessException(ErrorCodeMaster.SIGN_IS_NOT_CORRECT);
-			}
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
+		String plaintext = req.getPlaintext();
+		String secret = req.getSecret();
+		TUSSysApp app = appAdminService.validAppSecret(appid, plaintext, secret);
 		
 		//从上下文中获取accesstoken_appid_map;
 		Map<String,String> at_appid_map = (Map<String,String>)servletContext.getAttribute(Constants.ACCESSTOKEN_APPID_MAP);
@@ -94,7 +90,7 @@ public class AccessTokenServiceImpl extends CommServiceImpl implements IAccessTo
 		//生成Token
 		String access_token;
 		try {
-			access_token = AccessTokenGenerater.generater(pubKey+plaintText);
+			access_token = AccessTokenGenerater.generater(app.getFsAppsecret()+plaintext);
 		} catch (UnsupportedEncodingException | NoSuchAlgorithmException e) {
 			throw new QlttUSBusinessException(ErrorCodeMaster.GENERATE_ACCESS_TOKEN_FAILED);
 		}

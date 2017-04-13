@@ -90,7 +90,6 @@ public class AcctOpenServiceImpl extends CommServiceImpl implements IAcctOpenSer
 				tusChnlDevInfo.setFiDevtype(0);
 				tusChnlDevInfo.setFiSwitch(1);
 			}
-			// TODO 如果服务渠道不为1怎么办
 			tUSChnlDevInfoMapper.insert(tusChnlDevInfo);
 		}
 

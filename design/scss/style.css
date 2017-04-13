@@ -140,7 +140,7 @@ a {
   font-size: 1.4rem;
   overflow: hidden;
   text-align: center;
-  color: #fcfcfc;
+  color: #FFCFCF;
   transition: all .4s; }
   #scroller li.active, #scrollerPool li.active {
     background: #c9312d;
@@ -299,8 +299,10 @@ a {
   outline: none;
   border-radius: 0.4rem; }
   .login-submit:hover {
-    background-color: #BB322F;
-    transition: all .4s; }
+    background-color: #dc3c38;
+    transition: all .4s;
+    font-size: 1.6rem;
+    color: #fff; }
 
 #error {
   position: fixed;
@@ -339,17 +341,21 @@ a {
   top: 4.4rem;
   left: 0;
   right: 0;
+  background-color: #FAFAFA;
   padding-bottom: 5.4rem; }
   .search .search-item {
     border-bottom: 1px solid #e5e5e5;
     padding-bottom: 10px;
     margin-bottom: 5px;
-    padding: 1rem; }
+    padding: 1rem;
+    background-color: #fff; }
     .search .search-item:last-child {
       border-bottom: none; }
+    .search .search-item:active {
+      background-color: #EEE; }
     .search .search-item .search-head {
       color: #dc3c38;
-      font-size: 1.4rem;
+      font-size: 1.5rem;
       margin-bottom: 4px; }
       .search .search-item .search-head i {
         display: block;
@@ -365,36 +371,41 @@ a {
         cursor: pointer; }
     .search .search-item .search-body {
       line-height: 2.2rem; }
-    .search .search-item .search-foot {
-      text-align: right;
-      margin-top: -5px; }
-      .search .search-item .search-foot > span {
-        display: inline-block;
-        width: 62px;
-        height: 26px;
-        line-height: 26px;
-        color: #fff;
+      .search .search-item .search-body a {
+        color: #999;
+        -webkit-user-select: none;
+        /*禁用手机浏览器的用户选择功能 */
+        -moz-user-select: none; }
+      .search .search-item .search-body .search-foot {
         text-align: right;
-        padding-right: 1rem;
-        border-radius: 4px;
-        background-image: url("../images/icon.png");
-        background-size: 250px 700px;
-        background-repeat: no-repeat;
-        background-color: #dc3c38;
-        background-position: -145px -41px;
-        transition: all .4s; }
-        .search .search-item .search-foot > span.active {
-          padding-right: 1.1rem;
-          background-position: -145px -73px;
-          background-color: #ddd;
+        margin-top: -5px; }
+        .search .search-item .search-body .search-foot > span {
+          display: inline-block;
+          width: 62px;
+          height: 26px;
+          line-height: 26px;
+          color: #fff;
+          text-align: right;
+          padding-right: 1rem;
+          border-radius: 2px;
+          background-image: url("../images/icon.png");
+          background-size: 250px 700px;
+          background-repeat: no-repeat;
+          background-color: #dc3c38;
+          background-position: -145px -41px;
           transition: all .4s; }
-  .search .div-button {
-    height: 4rem;
-    line-height: 4rem;
-    text-align: center;
-    color: #f7b703;
-    border: 1px solid #f7b703;
-    border-radius: 4px; }
+          .search .search-item .search-body .search-foot > span.active {
+            padding-right: 1.1rem;
+            background-position: -145px -73px;
+            background-color: #ddd;
+            transition: all .4s; }
+    .search .search-item .div-button {
+      height: 4rem;
+      line-height: 4rem;
+      text-align: center;
+      color: #f7b703;
+      border: 1px solid #f7b703;
+      border-radius: 4px; }
 
 /***contract***/
 .ttxieyi {
@@ -433,9 +444,11 @@ a {
   .zhucecg span {
     display: inline-block;
     padding: 4rem;
+    font-size: 1.2rem;
     padding-top: 0; }
     .zhucecg span strong {
-      color: #dc3c38; }
+      color: #dc3c38;
+      font-size: 1.2rem; }
 
 /******   loading   ******/
 .qltt-toast {
@@ -446,7 +459,7 @@ a {
   top: 180px;
   left: 50%;
   margin-left: -3.8em;
-  background: rgba(17, 17, 17, 0.7);
+  /* background: rgba(17, 17, 17, 0.7);*/
   text-align: center;
   border-radius: 5px;
   color: #FFFFFF;
@@ -572,30 +585,34 @@ a {
   color: #999; }
   .srceen .srceen-txt {
     padding: 0 15px;
-    margin-bottom: 10px;
-    margin-top: 15px;
-    color: #333; }
+    margin-bottom: 1rem;
+    margin-top: 1.5rem;
+    color: #333;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #DCDCDC; }
   .srceen .screen-main .screen-item {
-    padding: 0 15px;
-    color: rgba(0, 0, 0, 0.6);
+    padding: 0 0.5rem;
+    color: #666;
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
     line-height: 4rem; }
     .srceen .screen-main .screen-item:nth-child(odd) {
-      background: #fff0ea; }
+      background: #FAFAFA; }
     .srceen .screen-main .screen-item > div {
       -webkit-box-flex: 1;
       -webkit-flex: 1;
       -ms-flex: 1;
       flex: 1; }
       .srceen .screen-main .screen-item > div.item-col-1 {
-        color: rgba(0, 0, 0, 0.8);
+        color: #666;
         line-height: 1.8rem;
         padding-top: 0.2rem; }
         .srceen .screen-main .screen-item > div.item-col-1 > span {
-          display: block; }
+          display: block;
+          font-size: 1.4rem;
+          text-align: left; }
       .srceen .screen-main .screen-item > div.item-col-4 a {
         display: inline-block;
         width: 17px;
@@ -664,10 +681,11 @@ a {
       .result .result-box .result-main .result-tags .result-tags-box span {
         display: inline-block;
         line-height: 20px;
-        padding: 2px 5px;
-        border: 1px solid #ddd;
-        color: #fff;
-        border-radius: 4px;
+        padding: 0.6rem 1.4rem;
+        font-size: 1.4rem;
+        border: 1px solid #ff9797;
+        color: #FFCDCD;
+        border-radius: 26px;
         background: rgba(255, 255, 255, 0.23);
         margin: 5px 10px; }
   .result .result-box .result-main .result-txt {
@@ -677,14 +695,14 @@ a {
     flex: 1;
     padding: 0 40px;
     line-height: 20px;
-    color: #fff; }
+    color: #FFCDCD; }
 .result .result-btns {
   margin-top: 20px;
   margin-bottom: 10px;
   text-align: center; }
   .result .result-btns span {
     line-height: 20px;
-    padding: 4px 5px 4px 25px;
+    padding: 7px 17px 9px 36px;
     background: #dc3c38;
     color: #fff;
     border-radius: 4px;
@@ -694,7 +712,7 @@ a {
     background-repeat: no-repeat;
     transition: all .2s; }
     .result .result-btns span.result-btn-care {
-      background-position: -145px -73px; }
+      background-position: -138px -38px; }
       .result .result-btns span.result-btn-care.active {
         background-color: #e5e5e5; }
     .result .result-btns span.result-btn-clc {
@@ -705,5 +723,138 @@ a {
 @media screen and (max-width: 340px) {
   .result-tags-box span {
     margin: 5px 5px !important; } }
+/******   dialog   ******/
+.dialog {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 9999;
+  background: transparent;
+  display: none; }
+  .dialog .dialog-mask {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 9998;
+    opacity: 0.2;
+    background-color: #333;
+    display: block; }
+  .dialog .dialog-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 310px;
+    height: 260px;
+    margin-top: -130px;
+    margin-left: -155px;
+    background-color: #fff;
+    box-shadow: 0 0 30px 0px #aaa;
+    display: block;
+    z-index: 9999; }
+    .dialog .dialog-box.dialog-box-bg {
+      background: url(../images/dialog_bg.png) center bottom no-repeat #fff;
+      background-size: 312px 98px; }
+    .dialog .dialog-box .dialog-head {
+      position: relative;
+      height: 60px;
+      background: #dc3c38;
+      color: #ffc4c3;
+      padding: 0 15px;
+      padding-top: 30px; }
+      .dialog .dialog-box .dialog-head:before {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 74px;
+        background: url(../images/cow.png) center center no-repeat;
+        background-size: 63px 74px;
+        position: absolute;
+        top: -40px;
+        left: 0; }
+      .dialog .dialog-box .dialog-head.dialog-head-bg:after {
+        content: '';
+        display: block;
+        width: 130px;
+        height: 60px;
+        background: url(../images/dialog.png) 37px -163px no-repeat;
+        position: absolute;
+        top: 0px;
+        right: 0; }
+    .dialog .dialog-box .dialog-body {
+      height: 150px;
+      padding: 0 10px; }
+      .dialog .dialog-box .dialog-body input {
+        border: none;
+        outline: none;
+        border-bottom: 1px solid #ffb296;
+        padding: 10px 0;
+        margin-top: 50px;
+        width: 100%; }
+      .dialog .dialog-box .dialog-body .select-box {
+        position: relative;
+        height: 50px;
+        line-height: 50px;
+        top: 30px; }
+        .dialog .dialog-box .dialog-body .select-box .select-mask {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 50px;
+          line-height: 50px;
+          z-index: 1;
+          border: 1px solid #eee;
+          text-align: center; }
+        .dialog .dialog-box .dialog-body .select-box select {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 50px;
+          line-height: 50px;
+          opacity: 0;
+          z-index: 2; }
+    .dialog .dialog-box .dialog-foot {
+      text-align: right;
+      padding: 0 10px;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex; }
+      .dialog .dialog-box .dialog-foot .dialog-foot-left {
+        width: 94px; }
+        .dialog .dialog-box .dialog-foot .dialog-foot-left span {
+          border: 1px solid #dc3c38;
+          display: block;
+          width: 90px;
+          height: 30px;
+          line-height: 30px;
+          text-align: center; }
+      .dialog .dialog-box .dialog-foot .dialog-foot-right {
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+        -ms-flex: 1;
+        flex: 1; }
+        .dialog .dialog-box .dialog-foot .dialog-foot-right span {
+          margin: 0 20px; }
+          .dialog .dialog-box .dialog-foot .dialog-foot-right span.dialog-btn-close {
+            color: #f7b703; }
+          .dialog .dialog-box .dialog-foot .dialog-foot-right span.dialog-btn-confirm {
+            color: #dc3c38; }
+
+/*各个尺寸字体大小设置***/
+@media screen and (min-width: 320px) and (max-width: 360px) {
+  html {
+    font-size: 10px; } }
+@media screen and (min-width: 360px) and (max-width: 375px) {
+  html {
+    font-size: 11px; } }
+@media screen and (min-width: 375px) {
+  html {
+    font-size: 12px; } }
 
 /*# sourceMappingURL=style.css.map */

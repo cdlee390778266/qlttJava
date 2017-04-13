@@ -22,7 +22,7 @@ public class InterfaceCallInfo{
 	private Integer maxCallNo;
 	
 	//今日已调用的次数
-	private Integer callNo;
+	private Integer callNo = 0;
 
 	public String getAppID() {
 		return appID;

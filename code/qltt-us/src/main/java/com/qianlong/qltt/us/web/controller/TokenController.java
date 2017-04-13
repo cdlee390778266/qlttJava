@@ -35,13 +35,13 @@ public class TokenController extends BaseController{
 	 * 		 	"secret":"secret"//签名
 	 * 		}
 	 * 接口响应JSon数据格式：
-	 * 	  正确的响应格式：
+	 * 	    正确的响应格式：
 	 * 		{
 	 * 			"access_token":"ACCESS_TOKEN",//系统生成的临时访问凭证
 	 * 			"product_time":1491805115296,//凭证生成的服务器时间
 	 * 			"expires_in":2,//临时访问凭证的有效时间(按小时计算)
 	 * 		}
-	 *   错误的响应格式：
+	 *    错误的响应格式：
 	 *   	{
 	 * 			"errorCode":"00010001",
 	 * 			"errorMsg":"请求参数格式不正确"

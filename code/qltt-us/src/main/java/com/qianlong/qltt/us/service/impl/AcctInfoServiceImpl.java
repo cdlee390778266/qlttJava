@@ -2,6 +2,7 @@ package com.qianlong.qltt.us.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.qianlong.qltt.us.domain.acct.TUSAcctBaseInfo;
 import com.qianlong.qltt.us.domain.comm.CommRsp;
@@ -28,17 +29,18 @@ public class AcctInfoServiceImpl extends CommServiceImpl implements IAcctInfoSer
 	private TUSChnlDevInfoMapper tUSChnlDevInfoMapper;
 
 	@Override
+	@Transactional
 	public CommRsp info001(AcctInfo001Req req) {
 		//向tusacctbaseinfo表更新指定ttacct的信息，ttacct本身禁止修改
 		TUSAcctBaseInfo tusAcctBaseInfo = new TUSAcctBaseInfo();
 		tusAcctBaseInfo.setFsTtacct(req.getTtacct());
 		tusAcctBaseInfo.setFsName(req.getName());
-		//TODO 如果名称为空的时候，是不是将表中的Name置空
 		tUSAcctBaseInfoMapper.updateByPrimaryKey(tusAcctBaseInfo);
 		return new CommRsp();
 	}
 
 	@Override
+	@Transactional
 	public CommRsp info002(AcctInfo002Req req) {
 		//向tuschnldevinfo表更新指定ttacct、Fi_svcchnl=2（手机App）的渠道设备信息，包括设备号和设备类型。
 		TUSChnlDevInfo tusChnlDevInfo = new TUSChnlDevInfo();

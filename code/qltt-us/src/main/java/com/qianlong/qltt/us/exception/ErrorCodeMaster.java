@@ -73,6 +73,12 @@ public class ErrorCodeMaster {
 
 	//runtime exception
 	public static final String RUNTIME_EXCEPTION = "00050001";
-
 	
+	//app
+	/**app不存在*/
+	public static final String APP_IS_NOT_EXIST = "00060001";
+
+	/**appid状态异常*/
+	public static final String APP_STATUS_IS_NOT_NORMAL = "00060002";
+
 }

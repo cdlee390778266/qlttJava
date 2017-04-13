@@ -45,9 +45,11 @@
   
   <mvc:interceptors>
     <bean class="com.qianlong.qltt.us.web.interceptor.AccessTokenInterceptor">
-      <property name="excludeMapping" value="/token/getAccessToken" />
+      <property name="excludeMapping" value="/token/getAccessToken,/app/createApp,resetAppToken" />
     </bean>
-    <bean class="com.qianlong.qltt.us.web.interceptor.InterfaceCallInfoInterceptor"></bean>
+    <bean class="com.qianlong.qltt.us.web.interceptor.InterfaceCallInfoInterceptor">
+       <property name="excludeMapping" value="/app/createApp" />
+    </bean>
   </mvc:interceptors>
  
 </beans>

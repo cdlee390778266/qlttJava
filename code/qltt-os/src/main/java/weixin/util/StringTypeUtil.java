@@ -2,6 +2,7 @@ package weixin.util;
 
 import java.io.Reader;
 import java.sql.Clob;
+import java.util.UUID;
 import java.util.zip.CRC32;
 
 public class StringTypeUtil {
@@ -60,6 +61,12 @@ public class StringTypeUtil {
 		CRC32 crc32 = new CRC32();
 		crc32.update(str.getBytes());
 		return (int) (crc32.getValue() & 0x7FFFFFFF);
+	}
+	
+	public static String getUUid(){
+		String s = UUID.randomUUID().toString(); 
+        //去掉“-”符号 
+        return s.substring(0,8)+s.substring(9,13)+s.substring(14,18)+s.substring(19,23)+s.substring(24); 
 	}
 
 }

@@ -5,8 +5,9 @@
   <meta name="referrer" content="always">
   <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
   <meta http-equiv="x-dns-prefetch-control" content="on">
-
+  
   <link rel="stylesheet" href="../css/swiper.min.css" />
+  <link rel="stylesheet" href="../css/animate.min.css" />
   <link href="../css/style.css" rel="stylesheet">
 
   <title>我的选股结果</title>
@@ -20,70 +21,78 @@
             <div class="result-main">
                 <div class="result-tags">
                     <div class="result-tags-box">
-                        <span>早晨之星</span>
-                        <span>早晨之星</span>
-                        <span>早晨之星</span>
-                        <span>早晨之星</span>
-                        <span>早晨之星</span>
+
+                        <span>红三兵</span>
+                        <span>红三兵</span>
+                        <span>红三兵</span>
+                      
+
                     </div>
                 </div>
-                <div class="result-txt">
+               <!-- <div class="result-txt">
                     我有一只小毛驴，我从来也不骑!我有一只小毛驴，我从来也不骑!
-                </div>
+                </div>-->
             </div>
         </div>
         <div class="result-btns">
-            <span class="result-btn-care">已关注</span>
-            <span class="result-btn-clc">设为组合</span>
+            <span class="result-btn-care">关注</span>
+           <!-- <span class="result-btn-clc">设为组合</span>-->
         </div>
     </div>
 
     <!-- 详细内容 -->    
     <div class="srceen ">
       <div class="srceen-txt">
-          <span>根据您的指标组合共计筛选出</span><span class="red ">120</span><span >支股票</span>
+          <span>该指标共计筛选出</span><span class="red ">120</span><span >支股票</span>
+
       </div>
-      <div class="screen-main">
-          <div class="screen-item ">
-              <div class="item-col-1">
-                  <span  class="">上海电影</span>
-                  <span class="red ">328370</span>
-              </div>
-              <div class="item-col-2 ">03-01 12:35</div>
-              <div class="item-col-3 ">潜力股</div>
-              <div class="item-col-4">
-                  <a href="javascript:void(0);"></a>
-                  <a href="javascript:void(0);"></a>
-              </div>
-          </div>
-          <div class="screen-item ">
-              <div class="item-col-1">
-                  <span  class="">上海电影</span>
-                  <span class="red ">328370</span>
-              </div>
-              <div class="item-col-2 ">03-01 12:35</div>
-              <div class="item-col-3 ">潜力股</div>
-              <div class="item-col-4">
-                  <a href="javascript:void(0);"></a>
-                  <a href="javascript:void(0);"></a>
-              </div>
-          </div>
-          <div class="screen-item ">
-              <div class="item-col-1">
-                  <span  class="">上海电影</span>
-                  <span class="red ">328370</span>
-              </div>
-              <div class="item-col-2 ">03-01 12:35</div>
-              <div class="item-col-3 ">潜力股</div>
-              <div class="item-col-4">
-                  <a href="javascript:void(0);"></a>
-                  <a href="javascript:void(0);"></a>
-              </div>
-          </div>
-      </div>  
+      <div class="screen-main"></div>
       <div class="load-more">
-          <i class="active"></i><span>加载更多</span>
+          <i ></i><span>加载更多</span>
       </div>
+    </div>
+    
+    <div class="dialog animated" id="recommend">
+        <div class="dialog-mask"></div>
+        <div class="dialog-box">
+            <div class="dialog-head">推荐到我的荐股</div>
+            <div class="dialog-body">
+                <input type="text" placeholder="推荐理由" />
+            </div>
+            <div class="dialog-foot">
+                <div class="dialog-foot-right">
+                    <span class="dialog-btn-close">取消</span>
+                    <span class="dialog-btn-confirm">确定</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="dialog animated" id="choose">
+        <div class="dialog-mask"></div>
+        <div class="dialog-box dialog-box-bg">
+            <div class="dialog-head">加入选股池</div>
+            <div class="dialog-body">
+                <div class="select-box">
+                    <div class="select-mask">选股池A</div>
+                    <select name="" id="choosePool">
+                        <option value="选股池A">选股池A</option>
+                        <option value="选股池B">选股池B</option>
+                        <option value="选股池C">选股池C</option>
+                        <option value="选股池D">选股池D</option>
+                        <option value="选股池E">选股池E</option>
+                        <option value="选股池F">选股池F</option>
+                        <option value="选股池G">选股池G</option>
+                    </select>
+                </div>
+            </div>
+            <div class="dialog-foot">
+                <div class="dialog-foot-right">
+                    <span class="dialog-btn-close">取消</span>
+                    <span class="dialog-btn-confirm">确定</span>
+                </div>
+            </div>
+        </div>
     </div>
     
     <script src="../js/zepto.min.js"></script>

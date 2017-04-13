@@ -40,9 +40,15 @@ public class UserAcctLoginController extends BaseController {
 	 * 			"cn":"13730894567"//手机号码
 	 * 		}
 	 * 接口响应JSon数据格式：
+	 * 	  正确的响应格式
 	 * 		{
 	 * 			"cn":"13735263215",//推推账号
 	 * 			"ttacct":"qltt00000001"//手机号
+	 * 		}
+	 * 	 错误的响应格式：
+	 * 		{
+	 * 			"errorCode":"00010001",
+	 * 			"errorMsg":"请求参数格式不正确"
 	 * 		}
 	 */
 	@RequestMapping(value="login001")
@@ -73,9 +79,15 @@ public class UserAcctLoginController extends BaseController {
 	 * 			"bindacct":"01234567890123456789012345678"//渠道绑定账号
 	 * 		}
 	 * 接口响应JSon数据格式：
+	 *  正确的响应格式：
 	 * 		{
 	 * 			"cn":"13735263215",//推推账号
 	 * 			"ttacct":"qltt00000001"//手机号
+	 * 		}
+	 * 	 错误的响应格式：
+	 * 		{
+	 * 			"errorCode":"00010001",
+	 * 			"errorMsg":"请求参数格式不正确"
 	 * 		}
 	 */
 	@RequestMapping(value="login002")
