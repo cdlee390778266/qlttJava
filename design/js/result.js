@@ -25,7 +25,7 @@ $(document).ready(function(){
                         html += '<div class="screen-item"  >'
                              +      '<div class="item-col-1">' 
                              +          '<span>' + resData[i].name + '</span>'
-                             +          '<span class="red">' + resData[i].nums + '</span>'
+                             +          '<span class="blue">' + resData[i].nums + '</span>'
                              +      '</div>'
                              +      '<div class="item-col-2">' + resData[i].date + '</div>'
                              +      '<div class="item-col-3">' + resData[i].type + '</div>'

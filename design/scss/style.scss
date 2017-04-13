@@ -1,6 +1,7 @@
 @charset "UTF-8";
 
 $red : #dc3c38;
+$blue : #1e7fe0;
 $red-active:#BB322F;
 $black :#333;
 $darkgray :#666;
@@ -102,10 +103,12 @@ a{
   transform: scaleY(0.5);
 }
 
-.red{
-    color: $red;
+.blue{
+    color: $blue;
 }
-
+.red{
+  color:$red;
+}
 /******   header   ******/
 #header,#headerPool {
     position: fixed;
@@ -713,9 +716,14 @@ a{
                     line-height: 1.8rem;
                     padding-top: 0.2rem;
                     &>span{
-                        display: block;
+                      display: block;
                       font-size: 1.4rem;
                       text-align: left;
+                      &.blue{
+                        font-size: 1.2rem;
+                        text-indent: 0.6rem;
+                        color:#1e7fe0;
+                      }
                     }
                 }
                 &.item-col-4{
@@ -723,16 +731,17 @@ a{
                         display: inline-block;
                         width: 17px;
                         height: 17px;
-                        margin:0 5px;
+                        margin:0 10px;
+                        display: inline-block;
                         background-size: $bgSize;
                         background-image: url(../images/icon.png);
                         position: relative;
-                        top: 5px;
+                        top: 4px;
                         &:first-child{
-                            background-position:-150px -186px;
+                            background-position:-151px -186px;
                         }
                         &:last-child{
-                            background-position:-150px -221px;
+                            background-position:-151px -222px;
                         }
                     }
                 }
@@ -832,7 +841,7 @@ a{
         span{
             line-height: 20px;
             padding:  7px 17px 9px 36px;
-            background:$red;
+            background:#1e7fe0;
             color:#fff;
             border-radius: 4px;
             margin:0 15px;
@@ -844,7 +853,7 @@ a{
                 background-position: -138px -38px;
 
                 &.active{
-                    background-color: #e5e5e5;
+                    background-color: #d2ebff;
                 }
             }
             &.result-btn-clc{
@@ -937,7 +946,7 @@ a{
             input{
                 border:none;
                 outline:none;
-                border-bottom: 1px solid #ffb296;
+                border-bottom: 1px solid $lightgray;
                 padding:10px 0;
                 margin-top: 50px;
                 width:100%;
@@ -990,6 +999,12 @@ a{
                  @include flex(1);
                  span{
                     margin:0 20px;
+                    display: inline-block;
+                    padding:4px 15px;
+                    &:active{
+
+                      background-color: #eee;
+                    }
                     &.dialog-btn-close{
                         color:$yellow;
                     }

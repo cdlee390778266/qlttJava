@@ -106,6 +106,10 @@ a {
   transform: scaleY(0.5);
 }
 
+.blue {
+  color: #1e7fe0;
+}
+
 .red {
   color: #dc3c38;
 }
@@ -732,21 +736,27 @@ a {
   font-size: 1.4rem;
   text-align: left;
 }
+.srceen .screen-main .screen-item > div.item-col-1 > span.blue {
+  font-size: 1.2rem;
+  text-indent: 0.6rem;
+  color: #1e7fe0;
+}
 .srceen .screen-main .screen-item > div.item-col-4 a {
   display: inline-block;
   width: 17px;
   height: 17px;
-  margin: 0 5px;
+  margin: 0 10px;
+  display: inline-block;
   background-size: 250px 700px;
   background-image: url(../images/icon.png);
   position: relative;
-  top: 5px;
+  top: 4px;
 }
 .srceen .screen-main .screen-item > div.item-col-4 a:first-child {
-  background-position: -150px -186px;
+  background-position: -151px -186px;
 }
 .srceen .screen-main .screen-item > div.item-col-4 a:last-child {
-  background-position: -150px -221px;
+  background-position: -151px -222px;
 }
 .srceen .load-more {
   margin-top: 5px;
@@ -842,7 +852,7 @@ a {
 .result .result-btns span {
   line-height: 20px;
   padding: 7px 17px 9px 36px;
-  background: #dc3c38;
+  background: #1e7fe0;
   color: #fff;
   border-radius: 4px;
   margin: 0 15px;
@@ -855,7 +865,7 @@ a {
   background-position: -138px -38px;
 }
 .result .result-btns span.result-btn-care.active {
-  background-color: #e5e5e5;
+  background-color: #d2ebff;
 }
 .result .result-btns span.result-btn-clc {
   background-position: -145px -646px;
@@ -944,7 +954,7 @@ a {
 .dialog .dialog-box .dialog-body input {
   border: none;
   outline: none;
-  border-bottom: 1px solid #ffb296;
+  border-bottom: 1px solid #ddd;
   padding: 10px 0;
   margin-top: 50px;
   width: 100%;
@@ -1003,6 +1013,11 @@ a {
 }
 .dialog .dialog-box .dialog-foot .dialog-foot-right span {
   margin: 0 20px;
+  display: inline-block;
+  padding: 4px 15px;
+}
+.dialog .dialog-box .dialog-foot .dialog-foot-right span:active {
+  background-color: #eee;
 }
 .dialog .dialog-box .dialog-foot .dialog-foot-right span.dialog-btn-close {
   color: #f7b703;
