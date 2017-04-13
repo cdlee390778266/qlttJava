@@ -14,8 +14,8 @@ import org.jeecgframework.core.common.entity.IdEntity;
 @Table(name="WEIXIN_SEND_TEMPLATE_MESSAGE")
 public class SendMessage {
 	@Id
-	@Column(name="id")
-	private String id;
+	@Column(name="msgid")
+	private String msgid;
 	@Column(name="template_id")
 	private String templateId;
 	@Column(name="open_id")
@@ -31,13 +31,8 @@ public class SendMessage {
 	@Column(name="createtime")
 	private Timestamp createtime;
 	@Column(name="send_status")
-	private Integer sendStatus;
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
+	private String sendStatus;
+	
 	public String getTemplateId() {
 		return templateId;
 	}
@@ -62,10 +57,10 @@ public class SendMessage {
 	public void setCreatetime(Timestamp createtime) {
 		this.createtime = createtime;
 	}
-	public Integer getSendStatus() {
+	public String getSendStatus() {
 		return sendStatus;
 	}
-	public void setSendStatus(Integer sendStatus) {
+	public void setSendStatus(String sendStatus) {
 		this.sendStatus = sendStatus;
 	}
 	public String getTtacct() {
@@ -86,4 +81,11 @@ public class SendMessage {
 	public void setDevtype(Integer devtype) {
 		this.devtype = devtype;
 	}
+	public String getMsgid() {
+		return msgid;
+	}
+	public void setMsgid(String msgid) {
+		this.msgid = msgid;
+	}
+	
 }

@@ -9,12 +9,15 @@ import java.util.ResourceBundle;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.jeecgframework.core.common.service.CommonService;
 import org.jeecgframework.core.util.LogUtil;
 import org.jeecgframework.core.util.oConvertUtils;
 import org.jeecgframework.web.cgform.engine.FreemarkerHelper;
 import org.jeecgframework.web.system.service.SystemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import net.sf.json.JSONObject;
 import weixin.guanjia.account.entity.WeixinAccountEntity;
 import weixin.guanjia.account.service.WeixinAccountServiceI;
 import weixin.guanjia.base.entity.Subscribe;
@@ -31,6 +34,7 @@ import weixin.guanjia.message.entity.AutoResponse;
 import weixin.guanjia.message.entity.NewsItem;
 import weixin.guanjia.message.entity.NewsTemplate;
 import weixin.guanjia.message.entity.ReceiveText;
+import weixin.guanjia.message.entity.SendMessage;
 import weixin.guanjia.message.entity.TextTemplate;
 import weixin.guanjia.message.service.AutoResponseServiceI;
 import weixin.guanjia.message.service.NewsItemServiceI;
@@ -65,6 +69,8 @@ public class WechatService {
 	private WeixinAccountServiceI weixinAccountService;
 	@Autowired
 	private IUserService userService;
+	@Autowired
+	private CommonService commonService;
 
 	public String coreService(HttpServletRequest request) {
 		String respMessage = null;
@@ -79,7 +85,7 @@ public class WechatService {
 			String toUserName = requestMap.get("ToUserName");
 			// 消息类型
 			String msgType = requestMap.get("MsgType");
-			String msgId = requestMap.get("MsgId");
+			String msgId = requestMap.get("MsgID");
 			//消息内容
 			String content = requestMap.get("Content");
 			
@@ -139,6 +145,23 @@ public class WechatService {
 				// 自定义菜单点击事件
 				else if (eventType.equals(MessageUtil.EVENT_TYPE_CLICK)) {
 					respMessage = doMyMenuEvent(requestMap, textMessage, bundler, respMessage, toUserName, fromUserName, respContent, sys_accountId, request);
+				}
+				//模板消息发送
+				else if(eventType.equals(MessageUtil.EVENT_TYPE_TEMPLATESENDJOBFINISH)){
+					//根据消息ID查询数据
+					SendMessage message = commonService.findUniqueByProperty(SendMessage.class,"msgid",msgId);
+					if(message == null){
+						message = new SendMessage();
+						message.setMsgid(msgId);
+						message.setSendStatus(requestMap.get("Status"));
+						
+						commonService.save(message);
+					}else{
+						
+						message.setSendStatus(requestMap.get("Status"));
+						commonService.updateEntitie(message);
+					}
+					
 				}
 			}
 		} catch (Exception e) {

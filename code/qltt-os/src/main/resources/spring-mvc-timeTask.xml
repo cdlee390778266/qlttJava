@@ -15,13 +15,17 @@
 	<context:component-scan base-package="org.jeecgframework.core.timer" />
 	<task:executor id="executor" pool-size="5" />
 	<task:scheduler id="scheduler" pool-size="10" />
-	<task:annotation-driven executor="executor"
-		scheduler="scheduler" />
+	<task:annotation-driven executor="executor" scheduler="scheduler" />
 	
 	<!-- 自动重置微信Token -->
-	<bean id="autoResetWeixinTokenJob"
-		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+	<bean id="autoResetWeixinTokenJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
 		<property name="targetObject" ref="weixinAccountTokenTask" />
+		<property name="targetMethod" value="autoResetToken" />
+		<property name="concurrent" value="false" />
+	</bean>
+	
+	<bean id="autoResetUserServTokenJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="userServTokenTask" />
 		<property name="targetMethod" value="autoResetToken" />
 		<property name="concurrent" value="false" />
 	</bean>
@@ -30,14 +34,19 @@
 		<property name="jobDetail" ref="autoResetWeixinTokenJob" />
 		<property name="cronExpression" value="0 0/1 * * * ?" />
 	</bean>
+	
+	<bean id="autoResetUserServTokenCronTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="autoResetUserServTokenJob" />
+		<property name="cronExpression" value="0 0/1 * * * ?" />
+	</bean>
 
 	<!-- 定时任务调度器 -->
-	<bean id="schedulerFactory" lazy-init="false" autowire="no"
-		class="org.jeecgframework.core.timer.DataBaseSchedulerFactoryBean">
+	<bean id="schedulerFactory" lazy-init="false" autowire="no" class="org.jeecgframework.core.timer.DataBaseSchedulerFactoryBean">
 		<property name="triggers">
 			<list>
 				 <!-- 重置Token -->
 				 <ref bean="autoResetWeixinTokenCronTrigger" />
+				 <ref bean="autoResetUserServTokenCronTrigger" />
 			</list>
 		</property>
 	</bean>

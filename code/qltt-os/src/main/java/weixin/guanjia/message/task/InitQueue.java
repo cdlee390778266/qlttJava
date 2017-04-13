@@ -38,8 +38,22 @@ public class InitQueue {
 						ataskExecutor.execute(new Runnable() {
 							public void run() {
 								try {
-//									InvocationHandler handler = new ToZMQProxyHandler(busProcess);
-//									zmqToProxy.InBound(handler, busProcess);
+									InvocationHandler handler = new ToZMQProxyHandler(busProcess);
+									zmqToProxy.InBound(handler, busProcess);
+									
+//									SendMessageTep tep = new SendMessageTep();
+//									tep.setId(StringTypeUtil.getUUid());
+//									tep.setCreatetime(new Timestamp(new Date().getTime()));
+//									
+//									tep.setOpenId("onO6V0r6r3fYUrTDGpY5EwKS4AQo");
+//									tep.setSvcchnl(1);
+//									
+//									tep.setDevtype(0);
+//									tep.setTtacct("tto1");
+//									tep.setContent(StringTypeUtil.stringToClob("你才"+1));
+//									tep.setWeight(1);
+//									InitQueue.q.add(tep);
+									
 								} catch (Exception e) {
 									e.printStackTrace();
 								}

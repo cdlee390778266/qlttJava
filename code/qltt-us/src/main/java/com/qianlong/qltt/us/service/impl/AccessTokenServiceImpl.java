@@ -11,6 +11,7 @@ import javax.servlet.ServletContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.qianlong.qltt.us.common.Constants;
 import com.qianlong.qltt.us.domain.app.TUSSysApp;
@@ -63,6 +64,7 @@ public class AccessTokenServiceImpl extends CommServiceImpl implements IAccessTo
 
 	@Override
 	@SuppressWarnings("unchecked")
+	@Transactional(readOnly=true)
 	public GetAccessTokenRsp getAccessToken(ServletContext servletContext, GetAccessTokenReq req) {
 		//验证私钥的正确性
 		String appid = req.getAppid();

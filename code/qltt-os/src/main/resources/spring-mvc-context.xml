@@ -10,7 +10,7 @@
 		http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 	<!-- 使用annotation 自动注册bean, 并保证@Required、@Autowired的属性被注入 -->
 	<context:component-scan base-package="org.jeecgframework.core.aop" />
-	<bean id="initGetMessage" class="weixin.guanjia.message.task.InitGetMessage" />
+	<bean id="initGetMessage" class="weixin.guanjia.message.task.InitGetMessage" /> 
 	<bean id="initQueue" class="weixin.guanjia.message.task.InitQueue" />
 	
 	<bean id="zmqToProxy" class="com.qlcd.util.ZMQToProxy" >

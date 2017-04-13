@@ -17,13 +17,18 @@ import com.qianlong.webapp.utils.SMSSend;
 
 @Controller
 @RequestMapping("webapp/register")
-public class RegisterController {
+public class UserRegisterController {
 	
-	private Logger logger = Logger.getLogger(RegisterController.class);
+	private Logger logger = Logger.getLogger(UserRegisterController.class);
 
-	@RequestMapping("display")
-	public ModelAndView display() {
-		return new ModelAndView("qianlong/validate");
+	@RequestMapping("index")
+	public ModelAndView index() {
+		return new ModelAndView("qianlong/register");
+	}
+	
+	@RequestMapping("agreement")
+	public ModelAndView agreement() {
+		return new ModelAndView("qianlong/agreement");
 	}
 	
 	@RequestMapping("validate")

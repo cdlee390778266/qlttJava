@@ -21,4 +21,14 @@ public interface IInterfaceCallInfoService extends ICommService{
 	 * 加载所有接口信息
 	 */
 	void loadAllInterfaceMap(ServletContext servletContext);
+
+	/**
+	 * 将临时表中的数据加载到内存中，数据加载完后，清空临时表中数据
+	 */
+	void loadAcessTokenData(ServletContext sc);
+
+	/**
+	 * 把accessToken相关数据存放到临时表中
+	 */
+	void saveAcessTokenData(ServletContext servletContext);
 }
