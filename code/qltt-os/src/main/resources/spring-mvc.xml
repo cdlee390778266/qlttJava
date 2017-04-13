@@ -9,7 +9,7 @@
          http://www.springframework.org/schema/mvc
 		http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd ">
 	<!-- 自动扫描controller包下的所有类，使其认为spring mvc的控制器 -->
-	<!-- 加载controller的时候,不加载service,因为此时事物并未生效,若此时加载了service,那么事物无法对service进行拦截 -->
+	<!-- 加载controller的时候,不加载service,因为此时事务并未生效,若此时加载了service,那么事务无法对service进行拦截 -->
 	<context:component-scan base-package="org.jeecgframework.web.*,weixin.*,com.jeecg.*,com.qianlong.webapp.*">
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service" />
 	</context:component-scan>
@@ -150,6 +150,8 @@
 						<value>webapp/register/display.do</value>
 						<value>webapp/register/obtainAuthCode.do</value>
 						<value>webapp/register/validate.do</value>
+						<value>webapp/search/index.do</value>
+						<value>webapp/register/index.do</value>
 					</list>
 				</property>
 			</bean>

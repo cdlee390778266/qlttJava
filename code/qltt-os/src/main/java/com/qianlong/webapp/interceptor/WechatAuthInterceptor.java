@@ -1,5 +1,6 @@
 package com.qianlong.webapp.interceptor;
 
+import java.util.Enumeration;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -28,9 +29,22 @@ public class WechatAuthInterceptor implements HandlerInterceptor {
 			throws Exception {
 		String requestPath  = ResourceUtil.getJustRequestPath(request);   //用户访问的资源地址
 		logger.debug(String.format("本次请求的URL:%s", requestPath));
+		
+		Enumeration<?> headerNames = request.getHeaderNames();
+		while (headerNames.hasMoreElements()) {
+			String headerName = (String)headerNames.nextElement();
+			Enumeration<?> headers = request.getHeaders(headerName);
+			int idx = 0;
+			while (headers.hasMoreElements()) {
+				logger.debug(String.format("header[%s][%d]={%s}", headerName, idx, headers.nextElement()));
+				idx ++;
+			}
+		}
+		
 		if (excludeUrls.contains(requestPath)) {
 			return true;
 		}
+		
 		return false;
 	}
 
