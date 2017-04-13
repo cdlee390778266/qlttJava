@@ -17,13 +17,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.qianlong.qltt.us.common.Constants;
-import com.qianlong.qltt.us.domain.app.TUSSysPltDailyCall;
+import com.qianlong.qltt.us.domain.app.TUSSysPtcDailyCall;
 import com.qianlong.qltt.us.domain.comm.AccessToken;
 import com.qianlong.qltt.us.domain.comm.InterfaceCallInfo;
 import com.qianlong.qltt.us.exception.ErrorCodeMaster;
 import com.qianlong.qltt.us.exception.QlttRuntimeException;
 import com.qianlong.qltt.us.exception.QlttUSBusinessException;
-import com.qianlong.qltt.us.mapper.app.TUSSysPltDailyCallMapper;
+import com.qianlong.qltt.us.mapper.app.TUSSysPtcDailyCallMapper;
 import com.qianlong.qltt.us.service.IInterfaceCallInfoService;
 import com.qianlong.qltt.us.util.DateUtil;
 
@@ -34,7 +34,7 @@ public class InterfaceCallInfoServiceImpl extends CommServiceImpl implements IIn
 	private static final Logger logger = LoggerFactory.getLogger(InterfaceCallInfoServiceImpl.class);
 	
 	@Autowired
-	private TUSSysPltDailyCallMapper tUSSysPltDailyCallMapper;
+	private TUSSysPtcDailyCallMapper tUSSysPltDailyCallMapper;
 	/**
 	 * 检查接口调用是否超出限定次数
 	 */
@@ -54,7 +54,7 @@ public class InterfaceCallInfoServiceImpl extends CommServiceImpl implements IIn
 			}	
 		}else{//如果不是同一天
 			//将该对像持久化到数据库
-			TUSSysPltDailyCall pltDailyCall = new TUSSysPltDailyCall();
+			TUSSysPtcDailyCall pltDailyCall = new TUSSysPtcDailyCall();
 			pltDailyCall.setFsAppid(interfaceCallInfo.getAppID());
 			pltDailyCall.setFsPtlno(interfaceCallInfo.getProtocolNo());
 			pltDailyCall.setFtPtllastcalltime(interfaceCallInfo.getLastCallTime());

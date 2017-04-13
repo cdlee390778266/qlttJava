@@ -1,6 +1,6 @@
 package com.qianlong.qltt.us.domain.app;
 
-public class TUSSysPltDailyCall extends TUSSysPltDailyCallKey {
+public class TUSSysPtcDailyCall extends TUSSysPtcDailyCallKey {
     private Integer fiPtlcallnum;
 
     public Integer getFiPtlcallnum() {

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.qianlong.qltt.us.mapper.app.TUSSysPltDailyCallMapper" >
-  <resultMap id="BaseResultMap" type="com.qianlong.qltt.us.domain.app.TUSSysPltDailyCall" >
+<mapper namespace="com.qianlong.qltt.us.mapper.app.TUSSysPtcDailyCallMapper" >
+  <resultMap id="BaseResultMap" type="com.qianlong.qltt.us.domain.app.TUSSysPtcDailyCall" >
     <id column="Fs_appid" property="fsAppid" jdbcType="VARCHAR" />
     <id column="Fs_ptlno" property="fsPtlno" jdbcType="VARCHAR" />
     <id column="Ft_ptllastcalltime" property="ftPtllastcalltime" jdbcType="DATE" />
@@ -68,13 +68,13 @@
   <sql id="Base_Column_List" >
     Fs_appid, Fs_ptlno, Ft_ptllastcalltime, Fi_ptlcallnum
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.qianlong.qltt.us.domain.app.TUSSysPltDailyCallExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.qianlong.qltt.us.domain.app.TUSSysPtcDailyCallExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from tussyspltdailycall
+    from tussysptcdailycall
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -82,34 +82,34 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.qianlong.qltt.us.domain.app.TUSSysPltDailyCallKey" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.qianlong.qltt.us.domain.app.TUSSysPtcDailyCallKey" >
     select 
     <include refid="Base_Column_List" />
-    from tussyspltdailycall
+    from tussysptcdailycall
     where Fs_appid = #{fsAppid,jdbcType=VARCHAR}
       and Fs_ptlno = #{fsPtlno,jdbcType=VARCHAR}
       and Ft_ptllastcalltime = #{ftPtllastcalltime,jdbcType=DATE}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="com.qianlong.qltt.us.domain.app.TUSSysPltDailyCallKey" >
-    delete from tussyspltdailycall
+  <delete id="deleteByPrimaryKey" parameterType="com.qianlong.qltt.us.domain.app.TUSSysPtcDailyCallKey" >
+    delete from tussysptcdailycall
     where Fs_appid = #{fsAppid,jdbcType=VARCHAR}
       and Fs_ptlno = #{fsPtlno,jdbcType=VARCHAR}
       and Ft_ptllastcalltime = #{ftPtllastcalltime,jdbcType=DATE}
   </delete>
-  <delete id="deleteByExample" parameterType="com.qianlong.qltt.us.domain.app.TUSSysPltDailyCallExample" >
-    delete from tussyspltdailycall
+  <delete id="deleteByExample" parameterType="com.qianlong.qltt.us.domain.app.TUSSysPtcDailyCallExample" >
+    delete from tussysptcdailycall
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.qianlong.qltt.us.domain.app.TUSSysPltDailyCall" >
-    insert into tussyspltdailycall (Fs_appid, Fs_ptlno, Ft_ptllastcalltime, 
+  <insert id="insert" parameterType="com.qianlong.qltt.us.domain.app.TUSSysPtcDailyCall" >
+    insert into tussysptcdailycall (Fs_appid, Fs_ptlno, Ft_ptllastcalltime, 
       Fi_ptlcallnum)
     values (#{fsAppid,jdbcType=VARCHAR}, #{fsPtlno,jdbcType=VARCHAR}, #{ftPtllastcalltime,jdbcType=DATE}, 
       #{fiPtlcallnum,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.qianlong.qltt.us.domain.app.TUSSysPltDailyCall" >
-    insert into tussyspltdailycall
+  <insert id="insertSelective" parameterType="com.qianlong.qltt.us.domain.app.TUSSysPtcDailyCall" >
+    insert into tussysptcdailycall
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="fsAppid != null" >
         Fs_appid,
@@ -139,14 +139,14 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.qianlong.qltt.us.domain.app.TUSSysPltDailyCallExample" resultType="java.lang.Integer" >
-    select count(*) from tussyspltdailycall
+  <select id="countByExample" parameterType="com.qianlong.qltt.us.domain.app.TUSSysPtcDailyCallExample" resultType="java.lang.Integer" >
+    select count(*) from tussysptcdailycall
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update tussyspltdailycall
+    update tussysptcdailycall
     <set >
       <if test="record.fsAppid != null" >
         Fs_appid = #{record.fsAppid,jdbcType=VARCHAR},
@@ -166,7 +166,7 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update tussyspltdailycall
+    update tussysptcdailycall
     set Fs_appid = #{record.fsAppid,jdbcType=VARCHAR},
       Fs_ptlno = #{record.fsPtlno,jdbcType=VARCHAR},
       Ft_ptllastcalltime = #{record.ftPtllastcalltime,jdbcType=DATE},
@@ -175,8 +175,8 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.qianlong.qltt.us.domain.app.TUSSysPltDailyCall" >
-    update tussyspltdailycall
+  <update id="updateByPrimaryKeySelective" parameterType="com.qianlong.qltt.us.domain.app.TUSSysPtcDailyCall" >
+    update tussysptcdailycall
     <set >
       <if test="fiPtlcallnum != null" >
         Fi_ptlcallnum = #{fiPtlcallnum,jdbcType=INTEGER},
@@ -186,8 +186,8 @@
       and Fs_ptlno = #{fsPtlno,jdbcType=VARCHAR}
       and Ft_ptllastcalltime = #{ftPtllastcalltime,jdbcType=DATE}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.qianlong.qltt.us.domain.app.TUSSysPltDailyCall" >
-    update tussyspltdailycall
+  <update id="updateByPrimaryKey" parameterType="com.qianlong.qltt.us.domain.app.TUSSysPtcDailyCall" >
+    update tussysptcdailycall
     set Fi_ptlcallnum = #{fiPtlcallnum,jdbcType=INTEGER}
     where Fs_appid = #{fsAppid,jdbcType=VARCHAR}
       and Fs_ptlno = #{fsPtlno,jdbcType=VARCHAR}
