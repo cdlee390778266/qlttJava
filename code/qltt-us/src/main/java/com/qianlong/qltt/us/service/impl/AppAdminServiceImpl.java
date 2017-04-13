@@ -5,6 +5,7 @@ import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.qianlong.qltt.us.domain.app.TUSSysApp;
 import com.qianlong.qltt.us.domain.app.TUSSysAppKey;
@@ -32,21 +33,22 @@ public class AppAdminServiceImpl extends CommServiceImpl implements IAppAdminSer
 	}
 
 	@Override
+	@Transactional
 	public AppCreate001Rsp createApp() {
 		try {
+			Date now = getSystemDate();
 			TUSSysApp app = new TUSSysApp();
 			String appid = generateAppid();
 			app.setFiStatus(1);
 			app.setFsAppid(appid);
 			KeyGenerater keyGenerater = new KeyGenerater();
-			keyGenerater.generater(appid + new Date().getTime());
+			keyGenerater.generater(appid + now.getTime());
 
 			String publickey = new String(keyGenerater.getPubKey(), "utf-8");
 			app.setFsAppsecret(publickey);
 
 			String token = appid;
 			app.setFsApptoken(token);
-			Date now = getSystemDate();
 			app.setFtRegtime(now);
 			app.setFtUpdtime(now);
 			
@@ -64,18 +66,20 @@ public class AppAdminServiceImpl extends CommServiceImpl implements IAppAdminSer
 	}
 
 	@Override
+	@Transactional
 	public TokenReset001 resetAppToken(TokenReset001 req) {
 		//验证私钥的正确性
 		String appid = req.getAppid();
 		TUSSysApp app =  validAppSecret(appid, req.getOld_token(),req.getSecret());
 		try {
+			Date now = getSystemDate();
 			KeyGenerater keyGenerater = new KeyGenerater();
-			keyGenerater.generater(appid + new Date().getTime());
+			keyGenerater.generater(appid + now.getTime());
 
 			String publickey = new String(keyGenerater.getPubKey(), "utf-8");
 			app.setFsAppsecret(publickey);
 			app.setFsApptoken(req.getNew_token());
-			app.setFtUpdtime(getSystemDate());
+			app.setFtUpdtime(now);
 			tUSSysAppMapper.updateByPrimaryKey(app);
 			byte signbytes[] = Signaturer.sign(keyGenerater.getPriKey(), appid + req.getNew_token());
 			
@@ -87,6 +91,7 @@ public class AppAdminServiceImpl extends CommServiceImpl implements IAppAdminSer
 	}
 
 	@Override
+	@Transactional(readOnly=true)
 	public TUSSysApp validAppSecret(String appid,String plaintext, String secret) {
 		TUSSysAppKey key = new TUSSysAppKey();
 		key.setFsAppid(appid);

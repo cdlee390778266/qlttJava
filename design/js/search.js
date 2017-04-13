@@ -1,7 +1,7 @@
 /* 
 * @Author: lee
 * @Date:   2017-04-07 17:02:56
-* @Last Modified time: 2017-04-13 10:23:49
+* @Last Modified time: 2017-04-13 11:00:30
 */
 
 
@@ -10,42 +10,10 @@ $(document).ready(function(){
     var searchSwiper ;
     var scrollTopArr = {};
 
-    var loadingShow = function($showEle){
-        $showEle.css({
-            'opacity' : 1,
-            'display' : 'block'
-        });
-    }
-
-    var scrollTop = function(pos){
-        window.pageYOffset = pos;
-        document.documentElement.scrollTop = pos;
-        document.body.scrollTop = pos;
-    }
-
-    var scrollTop = function(pos){
-        window.pageYOffset = pos;
-        document.documentElement.scrollTop = pos;
-        document.body.scrollTop = pos;
-    }
-
-    var getScrollTop = function(){
-        var pos = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop;
-        return pos;
-    }
-
     var refreshScrollTop = function(prevKey,currentKey){
         scrollTopArr[prevKey] = getScrollTop(); 
         scrollTop(scrollTopArr[currentKey]);
     }
-
-    var loadingHide = function($showEle){
-        $showEle.css({
-            'opacity' : 0,
-            'display' : 'none'
-        });
-    }
-
     var createSearchBox = function($parent){
         var html = '';
         $('#scroller li').each(function(index, val) {
@@ -128,14 +96,7 @@ $(document).ready(function(){
         
     });
 
-    $('body').delegate('span', 'tap', function(event) {
-        if($(this).hasClass('active')){
-            $(this).removeClass('active');
-        }else{
-            $(this).addClass('active');
-        }
-        
-    });
+   
 
 
     init();

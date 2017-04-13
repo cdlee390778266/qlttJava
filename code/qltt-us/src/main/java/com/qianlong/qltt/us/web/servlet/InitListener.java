@@ -19,18 +19,18 @@ public class InitListener implements ServletContextListener {
 	private static final Logger logger = LoggerFactory.getLogger(InitListener.class);
 	
 	private IInterfaceCallInfoService interfaceCallInfoService;
-	
-
-	public void contextDestroyed(ServletContextEvent arg0) {
-		//TODO 是否将协议调用数据实例化到数据库
-	}
 
 	public void contextInitialized(ServletContextEvent context) {
 		ServletContext sc = context.getServletContext();
 		setInterfaceCallInfoService(sc);
 		initConfig(sc);
 	}
-
+	
+	public void contextDestroyed(ServletContextEvent context) {
+		destroy(context.getServletContext());
+	}
+	
+	
 	private void setInterfaceCallInfoService(ServletContext sc) {
 		IInterfaceCallInfoService interfaceCallInfoService = WebApplicationContextUtils.getWebApplicationContext(sc).getBean(IInterfaceCallInfoService.class);
 		this.interfaceCallInfoService = interfaceCallInfoService;
@@ -41,9 +41,14 @@ public class InitListener implements ServletContextListener {
 	 */
 	private void initConfig(ServletContext sc) {
 		logger.debug("InitListener启动");
-		//TODO 是否加载接口调用数据
 		loadInterface(sc);
 		loadConfig(sc);
+		loadAcessTokenData(sc);
+	}
+
+	//往上下文环境中加载AccessToken相关数据
+	private void loadAcessTokenData(ServletContext sc) {
+		interfaceCallInfoService.loadAcessTokenData(sc);	
 	}
 
 	/**往上下文环境中加载config文件*/
@@ -69,5 +74,15 @@ public class InitListener implements ServletContextListener {
 	 */
 	private void loadInterface(ServletContext servletContext) {
 		interfaceCallInfoService.loadAllInterfaceMap(servletContext);
+	}
+	
+
+	//应用停的时候调用该方法
+	private void destroy(ServletContext servletContext) {
+		saveAcessTokenData(servletContext);	
+	}
+
+	private void saveAcessTokenData(ServletContext servletContext) {
+		interfaceCallInfoService.saveAcessTokenData(servletContext);
 	}
 }
