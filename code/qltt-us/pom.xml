@@ -263,14 +263,9 @@
 
   <profiles>
     <profile>
-      <id>com-dev</id>
+      <id>com-localhost</id>
       <properties>
         <jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
-<<<<<<< HEAD
-        <jdbc.url><![CDATA[jdbc:mysql://192.168.100.103:3306/qltt-us?useUnicode=true&amp;characterEncoding=UTF-8 ]]></jdbc.url>
-		<jdbc.username>qltt-us</jdbc.username>
-		<jdbc.password>cdyf2008</jdbc.password>
-=======
         <jdbc.url><![CDATA[jdbc:mysql://localhost:3306/qltt-us?useUnicode=true&amp;characterEncoding=UTF-8 ]]></jdbc.url>
         <jdbc.username>qltt-us</jdbc.username>
         <jdbc.password>cdyf2008</jdbc.password>
@@ -288,7 +283,6 @@
         <jdbc.url><![CDATA[jdbc:mysql://192.168.100.103:3306/qltt-us?useUnicode=true&amp;characterEncoding=UTF-8 ]]></jdbc.url>
         <jdbc.username>qltt-us</jdbc.username>
         <jdbc.password>cdyf2008</jdbc.password>
->>>>>>> origin/master
         <jdbc.maxActive>50</jdbc.maxActive>
         <jdbc.maxIdle>10</jdbc.maxIdle>
         <jdbc.minIdle>5</jdbc.minIdle>
