@@ -16,10 +16,10 @@ CREATE TABLE `tussysapp` (
 # 接口调用日频率表
 # Structure for table "Tussyspltdailycall"
 #
-CREATE TABLE `Tussyspltdailycall` (
+CREATE TABLE `Tussysptcdailycall` (
   `Fs_appid` varchar(16) NOT NULL  COMMENT '应用接入id',
   `Fs_ptlno` varchar(8) NOT NULL  COMMENT '协议编号',
   `Ft_ptllastcalltime` date NOT NULL  COMMENT '最后调用该协议的时间',
   `Fi_ptlcallnum` integer NOT NULL  COMMENT '协议日调用次数',
-  PRIMARY KEY pk_Tussyspltdailycall(`Fs_appid`,`Fs_ptlno`,`Ft_ptllastcalltime`)
+  PRIMARY KEY pk_tussysptcdailycall(`Fs_appid`,`Fs_ptlno`,`Ft_ptllastcalltime`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='接口调用日频率表';

@@ -1,16 +1,10 @@
 package com.qianlong.qltt.us.protocol.app;
 
-import javax.validation.constraints.NotNull;
-
 public class AppCreate001Rsp {
-
-	@NotNull
-	private String appid;	
+	private String appid;
 	
-	@NotNull
 	private String token;
 	
-	@NotNull
 	private String secret;
 
 	public String getAppid() {
@@ -35,6 +29,5 @@ public class AppCreate001Rsp {
 
 	public void setSecret(String secret) {
 		this.secret = secret;
-	}
+	}	
 }
-

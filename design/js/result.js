@@ -1,7 +1,7 @@
 /* 
 * @Author: lee
 * @Date:   2017-04-11 16:23:54
-* @Last Modified time: 2017-04-12 17:37:42
+* @Last Modified time: 2017-04-12 18:19:49
 */
 
 $(document).ready(function(){
@@ -87,6 +87,7 @@ $(document).ready(function(){
 
     //荐股池弹窗
     $('body').delegate('.recommend', 'tap', function(){
+       
         showDialog($('#recommend'));
     });
          

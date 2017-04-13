@@ -2,7 +2,7 @@ package com.qianlong.qltt.us.domain.app;
 
 import java.util.Date;
 
-public class TUSSysPltDailyCallKey {
+public class TUSSysPtcDailyCallKey {
     private String fsAppid;
 
     private String fsPtlno;

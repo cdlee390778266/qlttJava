@@ -5,14 +5,14 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
-public class TUSSysPltDailyCallExample {
+public class TUSSysPtcDailyCallExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public TUSSysPltDailyCallExample() {
+    public TUSSysPtcDailyCallExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 

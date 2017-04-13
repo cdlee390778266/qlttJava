@@ -440,16 +440,18 @@ a {
 }
 .search .search-item .search-body {
   line-height: 2.2rem;
-  color: #666;
 }
 .search .search-item .search-body a {
   color: #999;
+  -webkit-user-select: none;
+  /*禁用手机浏览器的用户选择功能 */
+  -moz-user-select: none;
 }
-.search .search-item .search-foot {
+.search .search-item .search-body .search-foot {
   text-align: right;
   margin-top: -5px;
 }
-.search .search-item .search-foot > span {
+.search .search-item .search-body .search-foot > span {
   display: inline-block;
   width: 62px;
   height: 26px;
@@ -465,13 +467,13 @@ a {
   background-position: -145px -41px;
   transition: all .4s;
 }
-.search .search-item .search-foot > span.active {
+.search .search-item .search-body .search-foot > span.active {
   padding-right: 1.1rem;
   background-position: -145px -73px;
   background-color: #ddd;
   transition: all .4s;
 }
-.search .div-button {
+.search .search-item .div-button {
   height: 4rem;
   line-height: 4rem;
   text-align: center;
@@ -868,7 +870,6 @@ a {
     margin: 5px 5px !important;
   }
 }
-<<<<<<< HEAD
 /******   dialog   ******/
 .dialog {
   position: fixed;
@@ -1008,7 +1009,8 @@ a {
 }
 .dialog .dialog-box .dialog-foot .dialog-foot-right span.dialog-btn-confirm {
   color: #dc3c38;
-=======
+}
+
 /*各个尺寸字体大小设置***/
 @media screen and (min-width: 320px) and (max-width: 360px) {
   html {
@@ -1024,5 +1026,4 @@ a {
   html {
     font-size: 12px;
   }
->>>>>>> 07dc0c113fcc14af64adfd759865de2913c166d6
 }
