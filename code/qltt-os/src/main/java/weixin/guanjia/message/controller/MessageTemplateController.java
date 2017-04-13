@@ -94,7 +94,7 @@ public class MessageTemplateController {
 		AjaxJson j = new AjaxJson();
 		MessageTemplate tm = this.messageTemplateService.get(MessageTemplate.class, id);
 		//向微信发送消息
-		String msg = JwSendTemplateMsgAPI.delTemplate(token, id);
+		String msg = MessageTemplateApiUtil.delTemplate(token, id);
 		//{"errmsg":"ok","errcode":0}
 		JSONObject mb = JSONObject.fromObject(msg);
 		if("0".equals(mb.getString("errcode"))){

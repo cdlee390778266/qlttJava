@@ -1,7 +1,7 @@
 /* 
 * @Author: lee
 * @Date:   2017-04-07 17:02:56
-* @Last Modified time: 2017-04-11 14:33:38
+* @Last Modified time: 2017-04-12 17:45:16
 */
 
 
@@ -66,10 +66,10 @@ $(document).ready(function(){
                     for(var i in resData){
                         html += '<div class="search-item ani" swiper-animate-effect="fadeIn" swiper-animate-duration="1s" swiper-animate-delay="0s" >'
                              +      '<div class="search-head">' + resData[i].searchHead + '</div>'
-                             +      '<div class="search-body">' + resData[i].searchBody + '</div>'
-                             +      '<div class="search-foot">'
-                             +          '<span >关注</span>'
-                             +      '</div>'  
+                             +      '<div class="search-body"><a href="result.html">' + resData[i].searchBody + '</a></div>'
+                             // +      '<div class="search-foot">'
+                             // +          '<span >关注</span>'
+                             // +      '</div>'  
                              +   '</div>'         
                     }
                     // html += '<div class="loadMore">下拉加载更多</div>';
@@ -134,7 +134,6 @@ $(document).ready(function(){
         }else{
             $(this).addClass('active');
         }
-    
         
     });
 

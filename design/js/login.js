@@ -1,7 +1,7 @@
 /* 
 * @Author: lee
 * @Date:   2017-04-07 15:15:54
-* @Last Modified time: 2017-04-10 17:04:16
+* @Last Modified time: 2017-04-12 09:34:42
 */
 
 $(document).ready(function(){
@@ -68,6 +68,9 @@ $(document).ready(function(){
             $errorEle.css('display','block');
             return false;
         }
+
+        location.href = 'tpls/search.html';
+        return false;
 
     });
 
