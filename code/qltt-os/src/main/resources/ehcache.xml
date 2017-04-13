@@ -6,7 +6,7 @@
 	<!-- Cluster localhost setting -->
 	<cacheManagerPeerListenerFactory
 		class="net.sf.ehcache.distribution.RMICacheManagerPeerListenerFactory"
-		properties="hostName=localhost, port=40001,socketTimeoutMillis=2000" />
+		properties="hostName=localhost, port=40005,socketTimeoutMillis=2000" />
 
 
 	<cache name="dictCache" maxElementsInMemory="500" overflowToDisk="true"
