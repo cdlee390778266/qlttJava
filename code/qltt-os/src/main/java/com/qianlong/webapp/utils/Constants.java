@@ -1,6 +1,6 @@
 package com.qianlong.webapp.utils;
 
-public class UserServConstant {
+public class Constants {
 
 	public static final String SCHEME_HTTP = "http";
 	

@@ -21,7 +21,7 @@ import com.qianlong.webapp.domain.UserServAccessToken;
 import com.qianlong.webapp.domain.UserServAccessTokenReqBody;
 import com.qianlong.webapp.service.IHttpService;
 import com.qianlong.webapp.service.IUserServCoreService;
-import com.qianlong.webapp.utils.UserServConstant;
+import com.qianlong.webapp.utils.Constants;
 
 @Service("userServCoreService")
 public class UserServCoreServiceImpl extends CommonServiceImpl implements IUserServCoreService, CommonService {
@@ -38,9 +38,9 @@ public class UserServCoreServiceImpl extends CommonServiceImpl implements IUserS
 
 		UserServAccessToken token = null;
 		try {
-			token = httpService.httpPost(UserServConstant.SCHEME_HTTP, ResourceUtil.getConfigByName("user.serv.host"),
+			token = httpService.httpPost(Constants.SCHEME_HTTP, ResourceUtil.getConfigByName("user.serv.host"),
 					Integer.valueOf(ResourceUtil.getConfigByName("user.serv.port")),
-					UserServConstant.USER_SERV_OBTAINACCESSTOKEN_PATH, nvps, (JSONObject) JSONObject.toJSON(body),
+					Constants.USER_SERV_OBTAINACCESSTOKEN_PATH, nvps, (JSONObject) JSONObject.toJSON(body),
 					UserServAccessToken.class);
 			
 			executeSql("DELETE FROM user_serv_accesstoken");

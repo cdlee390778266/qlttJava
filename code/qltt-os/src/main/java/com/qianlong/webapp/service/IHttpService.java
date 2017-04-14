@@ -11,6 +11,21 @@ import org.apache.http.client.methods.HttpRequestBase;
 import com.alibaba.fastjson.JSONObject;
 
 public interface IHttpService {
+	
+	/**
+	 * 
+	 * @param scheme
+	 * @param host
+	 * @param path
+	 * @param nvps
+	 * @param clazz
+	 * @return
+	 * @throws URISyntaxException
+	 * @throws ClientProtocolException
+	 * @throws IOException
+	 */
+	public <T> T httpGet(String scheme, String host, String path, List<NameValuePair> nvps, Class<T> clazz)
+			throws URISyntaxException, ClientProtocolException, IOException;
 
 	/**
 	 * 
@@ -27,6 +42,22 @@ public interface IHttpService {
 	 */
 	<T> T httpGet(String scheme, String host, int port, String path, List<NameValuePair> nvps, Class<T> clazz)
 			throws URISyntaxException, ClientProtocolException, IOException;
+	
+	/**
+	 * 
+	 * @param scheme
+	 * @param host
+	 * @param path
+	 * @param nvps
+	 * @param json
+	 * @param clazz
+	 * @return
+	 * @throws URISyntaxException
+	 * @throws ClientProtocolException
+	 * @throws IOException
+	 */
+	public <T> T httpPost(String scheme, String host, String path, List<NameValuePair> nvps, JSONObject json,
+			Class<T> clazz) throws URISyntaxException, ClientProtocolException, IOException;
 
 	/**
 	 * 
