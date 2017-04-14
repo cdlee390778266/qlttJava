@@ -20,6 +20,8 @@ public class ZMQToProxy {
 	private int rcvTimeOut = 6;
 
 	private int sndTimeOut = 6;
+	
+	private int num =0;
 
 	public String getProxyIp() {
 		return proxyIp;
@@ -244,11 +246,22 @@ public class ZMQToProxy {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			if(num == 50){
+				try {
+					Thread.currentThread().sleep(100);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				num =0;
+			}
+			num++;
 		}
 
 		// We never get here but clean up anyhow
 		responder.close();
 		rcontext.term();
+		
 	}
 
 	public static void main(String[] args) {
