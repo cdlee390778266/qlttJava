@@ -1,7 +1,7 @@
 /* 
 * @Author: lee
 * @Date:   2017-04-07 17:02:56
-* @Last Modified time: 2017-04-13 11:00:30
+* @Last Modified time: 2017-04-13 11:02:20
 */
 
 
@@ -97,7 +97,5 @@ $(document).ready(function(){
     });
 
    
-
-
     init();
 });

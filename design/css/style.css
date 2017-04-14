@@ -601,16 +601,15 @@ a {
 /******   tag   ******/
 .tag {
   padding: 5rem 30px 10px 30px;
-  height: 180px;
 }
 .tag span {
   border: 1px solid #ddd;
   display: inline-block;
-  width: 62px;
-  height: 24px;
-  line-height: 24px;
+  width: 6.2rem;
+  height: 2.4rem;
+  line-height: 2.4rem;
   text-align: center;
-  margin: 5px 8px;
+  margin: 0.5rem 0.8rem;
   border-radius: 4px;
 }
 .tag .swiper-button-next {
@@ -622,9 +621,6 @@ a {
   background-size: 250px 700px;
   background-image: url(../images/icon.png);
   background-position: -109px -242px;
-}
-.tag .swiper-wrapper {
-  height: 100px;
 }
 .tag .swiper-mes {
   line-height: 40px;
@@ -1024,6 +1020,108 @@ a {
 }
 .dialog .dialog-box .dialog-foot .dialog-foot-right span.dialog-btn-confirm {
   color: #dc3c38;
+}
+
+/******   section   ******/
+.section {
+  padding: 0 10px;
+}
+.section .section-item {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 4.4rem;
+  line-height: 4.4rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+.section .section-item .section-item-txt {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  color: #999;
+}
+.section .section-item .section-item-btn {
+  width: 66px;
+  text-align: right;
+}
+.section .section-item .section-item-btn label {
+  position: relative;
+  top: 9px;
+  display: inline-block;
+}
+
+.section-cells_form .section-cell__ft {
+  font-size: 0;
+}
+
+.section-switch-cp__input {
+  position: absolute;
+  left: -9999px;
+}
+
+.section-switch, .section-switch-cp__box {
+  position: relative;
+  width: 52px;
+  height: 28px;
+  border: 1px solid #DFDFDF;
+  outline: 0;
+  border-radius: 16px;
+  box-sizing: border-box;
+  background-color: #DFDFDF;
+  -webkit-transition: background-color 0.1s, border 0.1s;
+  transition: background-color 0.1s, border 0.1s;
+}
+
+.section-switch-cp__box {
+  display: block;
+}
+
+.section-switch:checked, .section-switch-cp__input:checked ~ .section-switch-cp__box {
+  border-color: #04BE02;
+  background-color: #04BE02;
+}
+
+.section-switch::before, .section-switch-cp__box::before {
+  content: " ";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50px;
+  height: 26px;
+  border-radius: 15px;
+  background-color: #FDFDFD;
+  -webkit-transition: -webkit-transform 0.35s cubic-bezier(0.45, 1, 0.4, 1);
+  transition: -webkit-transform 0.35s cubic-bezier(0.45, 1, 0.4, 1);
+  transition: transform 0.35s cubic-bezier(0.45, 1, 0.4, 1);
+  transition: transform 0.35s cubic-bezier(0.45, 1, 0.4, 1), -webkit-transform 0.35s cubic-bezier(0.45, 1, 0.4, 1);
+}
+
+.section-switch:checked::before, .section-switch-cp__input:checked ~ .section-switch-cp__box::before {
+  -webkit-transform: scale(0);
+  transform: scale(0);
+}
+
+.section-switch::after, .section-switch-cp__box::after {
+  content: " ";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 15px;
+  background-color: #FFFFFF;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  -webkit-transition: -webkit-transform 0.35s cubic-bezier(0.4, 0.4, 0.25, 1.35);
+  transition: -webkit-transform 0.35s cubic-bezier(0.4, 0.4, 0.25, 1.35);
+  transition: transform 0.35s cubic-bezier(0.4, 0.4, 0.25, 1.35);
+  transition: transform 0.35s cubic-bezier(0.4, 0.4, 0.25, 1.35), -webkit-transform 0.35s cubic-bezier(0.4, 0.4, 0.25, 1.35);
+}
+
+.section-switch:checked::after, .section-switch-cp__input:checked ~ .section-switch-cp__box::after {
+  -webkit-transform: translateX(23px);
+  transform: translateX(23px);
 }
 
 /*各个尺寸字体大小设置***/

@@ -1,8 +1,6 @@
 package weixin.guanjia.message.task;
 
 import java.lang.reflect.InvocationHandler;
-import java.sql.Timestamp;
-import java.util.Date;
 import java.util.concurrent.PriorityBlockingQueue;
 
 import javax.annotation.Resource;
@@ -14,9 +12,6 @@ import org.springframework.stereotype.Service;
 import com.qlcd.util.IBusProcess;
 import com.qlcd.util.ToZMQProxyHandler;
 import com.qlcd.util.ZMQToProxy;
-
-import weixin.guanjia.message.model.SendMessageTep;
-import weixin.util.StringTypeUtil;
 
 @Service
 public class InitQueue {
