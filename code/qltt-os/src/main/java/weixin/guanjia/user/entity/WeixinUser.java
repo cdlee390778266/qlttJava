@@ -25,6 +25,8 @@ public class WeixinUser implements java.io.Serializable{
 	/**用户的昵称*/
 	private String nickname;
 	
+	private byte[] nicknamebytes;
+	
 	/**性别*/
 	private Integer sex;
 	
@@ -90,13 +92,25 @@ public class WeixinUser implements java.io.Serializable{
 		this.openid = openid;
 	}
 
-	@Column(name ="NICKNAME",nullable=false,length=64)
+	@Transient
 	public String getNickname() {
 		return nickname;
 	}
 
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
+		this.nicknamebytes = (nickname == null?null:nickname.getBytes());
+	}
+
+	
+	@Column(name ="NICKNAME",nullable=false)
+	public byte[] getNicknamebytes() {
+		return nicknamebytes;
+	}
+
+	public void setNicknamebytes(byte[] nicknamebytes) {
+		this.nicknamebytes = nicknamebytes;
+		this.nickname = (nicknamebytes == null?null:new String(nicknamebytes));
 	}
 
 	@Column(name ="SEX",nullable=false)

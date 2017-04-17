@@ -1,5 +1,7 @@
 package weixin.guanjia.user.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -86,6 +88,7 @@ public class WeixinUserController extends BaseController {
 		cq.eq("accountid", ResourceUtil.getWeiXinAccountId());
 		cq.add();
 		userService.getDataGridReturn(cq, true);
+		List users = dataGrid.getResults();
 		TagUtil.datagrid(response, dataGrid);
 	}
 	

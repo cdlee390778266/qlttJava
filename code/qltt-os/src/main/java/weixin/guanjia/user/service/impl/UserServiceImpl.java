@@ -26,7 +26,7 @@ import weixin.guanjia.user.service.IUserService;
 @Transactional
 public class UserServiceImpl extends CommonServiceImpl implements
 		IUserService {
-	
+	private static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(UserServiceImpl.class);
 	@Autowired
 	private WeixinAccountServiceI weixinAccountService;
 	
@@ -137,6 +137,7 @@ public class UserServiceImpl extends CommonServiceImpl implements
 				updateUsers = new ArrayList<WeixinUser>();
 				WeixinUser dbUser = null;
 				for(WeixinUser wxUser:wxUsers){
+					wxUser.setIsblack(0);
 					wxUser.setAccountid(accountid);
 					if(dbUsers != null){
 						int index = dbUsers.indexOf(wxUser);
@@ -154,10 +155,14 @@ public class UserServiceImpl extends CommonServiceImpl implements
 				}
 			}
 			
+			
 			//本地数据库没有的添加上
 			if(saveUsers !=null && !saveUsers.isEmpty()){
-				batchSave(saveUsers);
 				for(WeixinUser user: saveUsers){
+//					logger.error(user.toString());
+//					logger.error(user.getNickname());
+//					logger.error(String.valueOf(user.getNickname().length()));
+					save(user);
 					checkWeixinUserTag(user);
 				}
 				rspMessage	+= ",添加了"+saveUsers.size()+"位用户";
