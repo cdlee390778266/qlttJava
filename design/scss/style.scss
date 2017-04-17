@@ -110,7 +110,7 @@ a{
   color:$red;
 }
 /******   header   ******/
-#header,#headerPool {
+#header {
     position: fixed;
     left: 0;
     top: 0;
@@ -122,6 +122,9 @@ a{
     -ms-touch-action: none;
     z-index: 99;
     box-shadow: 0 2px 6px 1px rgba(176, 176, 176, 0.8);
+}
+#headerPool{
+    box-shadow: none;
 }
 
 #scroller,#scrollerPool {
@@ -184,6 +187,154 @@ a{
     span{
         border-bottom: 2px solid $red;
         padding-bottom: 5px;
+    }
+}
+
+.pool-head-wrapper{
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+    background: $red;
+    overflow: hidden;
+    -ms-touch-action: none;
+    z-index: 99;
+    
+}
+
+.pool-add-menu{
+    position:absolute;
+    top:0;
+    right:0;
+    background:#fff;
+    z-index: 999;
+    color:#333333;
+    .pam-icon{
+        position:fixed;
+        right:0;
+        top:0;
+        width:4rem;
+        height:3.6rem;
+        line-height: 3.6rem;
+        z-index: 99;
+        background:#fff;
+        box-shadow: 0 -6px 11px 2px #ddd;
+        text-align: center;
+        i{
+            display:inline-block;
+            font-style: normal;
+            font-size: 20px;
+            float: right;
+            margin-right: 15px;
+            transition:all .4s;
+        }
+    }
+    .menu-box{
+        display:none;
+        margin-top: 50px;
+        padding:0 10px;
+        .menu-head{
+            line-height: 3rem;
+            padding:0 8px;
+            @include flexBox();
+            .menu-head-left{
+                @include flex(1);
+            }
+            .menu-head-right{
+                width:86px;
+                span{
+                    display:inline-block;
+                    width:86px;
+                    height:3rem;
+                    text-align: center;
+                    border:1px solid $red;
+                    border-radius: 17px;
+                }
+            }
+        }
+        .menu-body{
+            margin-top: 2rem;
+            line-height: 3rem;
+                span{
+                    display:inline-block;
+                    width:76px;
+                    height:26px;
+                    line-height: 26px;
+                    text-align: center;
+                    border:1px solid $red;
+                    margin:8px;
+                    position:relative;
+                    &.active{
+                        background:$red;
+                        color:#fff;
+                    }
+                    i{
+                        display:block;
+                        width:14px;
+                        height:14px;
+                        background-size: $bgSize;
+                        background-image: url(../images/icon.png);
+                        background-position: -153px -153px;
+                        position:absolute;
+                        right:-6px;
+                        top:-6px;
+                        display:none;
+                    }
+                }
+                
+        }
+        .menu-foot{
+            padding:0 8px;
+            .menu-input{
+                margin-top: 5rem;
+                input{
+                    line-height: 3rem;
+                    outline:none;
+                    border-bottom: 1px solid #ddd; 
+                    width:100%;
+                    padding:0 10px;
+                }
+            }
+            .menu-btns{
+                @include flexBox();
+                &>div{
+                    @include flex(1);
+                    padding:4rem 0; 
+                    span{
+                        display:inline-block;
+                        width:130px;
+                        height:46px;
+                        line-height: 46px;
+                        text-align: center;
+                        background:$red;
+                        color:#fff;
+                    }
+                    &.menu-btns-add{
+                        text-align: right;
+                    }
+                }
+            }
+
+        }
+    }
+    &.active{
+        left:0;
+        .pam-icon{
+            box-shadow: none;
+            position:fixed;
+            left:0;
+            right:0;
+            top:0;
+            width:100%;
+            border-bottom: 1px solid #ddd;
+            i{
+                transform:rotate(135deg);
+            }
+        }
+        .menu-box{
+            display:block;
+        }
     }
 }
 
@@ -962,7 +1113,7 @@ a{
                 display:block;
                 width : 130px;
                 height:60px;
-                background:url(../images/dialog.png) 37px -163px no-repeat;
+                background:url(../images/dialog.png) 19px -180px no-repeat;
                 position:absolute;
                 top:0px;
                 right:0;
@@ -1021,6 +1172,8 @@ a{
                     height:30px;
                     line-height: 30px;
                     text-align: center;
+                    color:$red;
+                    margin-top: 5px;
                 }
             }
             .dialog-foot-right{
@@ -1041,18 +1194,27 @@ a{
                     }
                 }
             }
+            &.pool-dialog-foot{
+                .dialog-foot-right{
+                    width:100px;
+                    span{
+                        margin:0 5px;
+                    }
+                }
+            }
         }
     }
 }   
 
 /******   section   ******/
 .section{
-    padding:0 10px;
+    background:#fff;
     .section-item{
         @include flexBox();
         height:4.4rem;
         line-height: 4.4rem;
         border-bottom: 1px solid #f0f0f0;
+        padding:0 10px;
         .section-item-txt{
             @include flex(1);
             color:#999;
@@ -1151,6 +1313,161 @@ a{
 
 
 }
+
+/******   pushSet   ******/
+.push{
+    background:#fff;
+    .push-box{
+        position:relative;
+        select{
+            width:100%;
+            height:4.4rem;
+            position:absolute;
+            top:0;
+            left:0;
+            opacity:0;
+        }
+         .push-item{
+            @include flexBox();
+            padding: 0 10px;
+            height:4.4rem;
+            line-height: 4.4rem;
+            position:relative;
+            border-bottom: 1px solid #f0f0f0;
+            .push-item-left{
+                @include flex(1);
+                overflow: hidden;
+                text-overflow:ellipsis;
+                white-space: nowrap;
+            }
+            .push-item-right{
+                width:100px;
+                .section-switch-cp{
+                    float:right;
+                    margin-right: 5px;
+                    margin-top: 10px;
+                }
+            }
+            &.push-set-go:after{
+                content:'';
+                display:block;
+                width:11px;
+                height:20px;
+                background-size: $bgSize;
+                background-image: url(../images/icon.png) ;
+                background-position: -153px -256px;
+                position:absolute;
+                right:15px;
+                top:11px;
+            }
+
+            
+
+         }
+         .push-head{
+            padding: 0 10px;
+            height:4.4rem;
+            line-height: 4.4rem;
+            border-bottom: 1px solid #f0f0f0;
+            background:#f0f0f0;
+         }
+    }
+}
+
+/******   pool  ******/
+.pool-head{
+    @include flexBox();
+    height:4.4rem;
+    line-height: 4.4rem;
+    color:#fff;
+    text-align: center;
+    background:$red;
+    .pHead-th{
+        @include flex(1);
+        position:relative;
+        &:after{
+            content:'';
+            width:3px;
+            height:4.4rem;
+            background-size: $bgSize;
+            background-image: url(../images/icon.png);
+            background-position: -158px -348px;
+            position:absolute;
+            right:0;
+            top:0;
+        }
+        &:last-child:after{
+            background:none;
+        }
+    }
+    
+    
+}
+
+.pool-container{
+    padding-top: 9rem;
+    padding-bottom: 13rem;
+    .pool-item{
+        @include flexBox();
+        height:4rem;
+        line-height: 4rem;
+        color:#000;
+        .poolItem-td{
+            @include flex(1);
+            text-align: center;
+            span{
+                display:inline-block;
+                width:32px;
+                height:4rem;
+                background-size: $bgSize;
+                background-image: url(../images/icon.png);
+                &.poolItem-icon-cmd{
+                    background-position: -144px -176px;
+                }
+                &.poolItem-icon-cancle{
+                    background-position: -144px -105px;
+                }
+            }
+            
+        }
+    }
+    .pool-empty{
+        padding-top: 66px;
+        text-align: center;
+    }
+}
+
+
+
+.pool-footer{
+    position:fixed;
+    background:#fff;
+    bottom:0;
+    left:0;
+    right:0;
+    .pFooter-btn{
+        padding:10px;
+        span{
+            display:block;
+            width:100%;
+            height:4.6rem;
+            line-height: 4.6rem;
+            border:1px solid #27b5ff;
+            color:#27b5ff;
+            text-align: center;
+            border-radius: 4px;
+            i{
+                font-style: normal;  
+            }
+        }
+    }
+    .footer{
+        position:static;
+        box-shadow: none;
+    }
+}
+
+
 /*各个尺寸字体大小设置***/
 
 @media screen and (min-width:320px) and (max-width:359px){
