@@ -4,6 +4,18 @@ import java.text.ParseException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.jeecgframework.core.common.controller.BaseController;
+import org.jeecgframework.core.common.hibernate.qbc.CriteriaQuery;
+import org.jeecgframework.core.common.model.json.AjaxJson;
+import org.jeecgframework.core.common.model.json.DataGrid;
+import org.jeecgframework.core.constant.Globals;
+import org.jeecgframework.core.timer.DynamicTask;
+import org.jeecgframework.core.util.MyBeanUtils;
+import org.jeecgframework.core.util.StringUtil;
+import org.jeecgframework.tag.core.easyui.TagUtil;
+import org.jeecgframework.web.system.pojo.base.TSTimeTaskEntity;
+import org.jeecgframework.web.system.service.SystemService;
+import org.jeecgframework.web.system.service.TimeTaskServiceI;
 import org.quartz.CronTrigger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -11,20 +23,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-
-import org.jeecgframework.core.common.controller.BaseController;
-import org.jeecgframework.core.common.hibernate.qbc.CriteriaQuery;
-import org.jeecgframework.core.common.model.json.AjaxJson;
-import org.jeecgframework.core.common.model.json.DataGrid;
-import org.jeecgframework.core.constant.Globals;
-import org.jeecgframework.core.timer.DynamicTask;
-import org.jeecgframework.core.util.StringUtil;
-import org.jeecgframework.tag.core.easyui.TagUtil;
-import org.jeecgframework.web.system.pojo.base.TSTimeTaskEntity;
-import org.jeecgframework.web.system.service.SystemService;
-import org.jeecgframework.web.system.service.TimeTaskServiceI;
-
-import org.jeecgframework.core.util.MyBeanUtils;
 
 
 /**   
@@ -136,6 +134,7 @@ public class TimeTaskController extends BaseController {
 			}
 		} else {
 			message = "定时任务管理添加成功";
+			timeTask.setIsEffect("0");
 			timeTaskService.save(timeTask);
 			systemService.addLog(message, Globals.Log_Type_INSERT, Globals.Log_Leavel_INFO);
 		}
