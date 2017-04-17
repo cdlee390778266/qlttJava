@@ -74,7 +74,7 @@ public class HttpServiceImpl implements IHttpService {
 			builder.setHost(host);
 		}
 		if (port > 0) {
-			builder.setHost(host);
+			builder.setPort(port);
 		}
 		if (!StringUtils.isEmpty(path)) {
 			builder.setPath(path);

@@ -5,7 +5,6 @@ import java.util.Calendar;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,13 +13,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.qianlong.webapp.domain.OAuthCallbackEntity;
+import com.qianlong.webapp.domain.AuthResultEntity;
+import com.qianlong.webapp.domain.RegisterEntity;
+import com.qianlong.webapp.domain.TrenchInfoEnity;
 import com.qianlong.webapp.exception.HttpRequestException;
-import com.qianlong.webapp.service.IWechatCoreService;
+import com.qianlong.webapp.service.IUserServCoreService;
 import com.qianlong.webapp.utils.AuthCodeGenerator;
 import com.qianlong.webapp.utils.SMSSend;
-
-import weixin.guanjia.account.entity.WeixinAccountEntity;
 
 @Controller
 @RequestMapping("webapp/register")
@@ -29,34 +28,17 @@ public class UserRegisterController {
 	private Logger logger = Logger.getLogger(UserRegisterController.class);
 	
 	@Autowired
-	private IWechatCoreService wechatCoreService;
+	private IUserServCoreService userServCoreService;
 
 	@RequestMapping("index")
 	public ModelAndView index(HttpServletRequest request) {
-		String code = request.getParameter("code");
-		String state = request.getParameter("state");
-		logger.debug(String.format("获取到的回调参数:code=[%s],state=[%s]", code, state));
-
-		if (!StringUtils.isEmpty(code) && !StringUtils.isEmpty(state)) {
-			//微信端访问
-			WeixinAccountEntity account = new WeixinAccountEntity();
-			account.setAccountappid("wx5d31a5be817a1b47");
-			account.setAccountappsecret("32be6a017915bd351104e214e28e184c");
-			OAuthCallbackEntity oauthCallbackEntity = null;
-			try {
-				oauthCallbackEntity = wechatCoreService.getOpenidByOAuth(account, code, state);
-			} catch (HttpRequestException e) {
-				logger.error(e.getMessage(), e);
-			}
-			
-			logger.debug(String.format("OAuthCallbackEntity = %s", oauthCallbackEntity));
-		} else {
-			//非微信端访问
-		}
-		
 		return new ModelAndView("qianlong/register");
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	@RequestMapping("agreement")
 	public ModelAndView agreement() {
 		return new ModelAndView("qianlong/agreement");
@@ -85,6 +67,20 @@ public class UserRegisterController {
 			if (duration > 180) {
 				throw new RuntimeException("该验证码已失效，请重新获取！");
 			}
+		}
+
+		RegisterEntity regInfo = new RegisterEntity();
+		regInfo.setCn(phone);
+		TrenchInfoEnity acctBindInfo = new TrenchInfoEnity();
+		acctBindInfo.setBindacct("1");   //需要获取微信openid
+		acctBindInfo.setSvcchnl("1");
+		regInfo.setAcctBindInfo(acctBindInfo);
+		
+		AuthResultEntity result = null;
+		try {
+			result = userServCoreService.userAcctOpen(regInfo);
+		} catch (HttpRequestException e) {
+			e.printStackTrace();
 		}
 		return new ModelAndView("qianlong/validate");
 	}
