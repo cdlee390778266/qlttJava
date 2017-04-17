@@ -15,41 +15,32 @@
 	<context:component-scan base-package="org.jeecgframework.core.common.service.*" />
 
 	<!-- 加载service,此时要排除要controller,因为controller已经spring-mvc中加载过了 -->
-	<context:component-scan base-package="org.jeecgframework.web.*,weixin.*,com.jeecg.*,com.qianlong.webapp.*">
+	<context:component-scan
+		base-package="org.jeecgframework.web.*,weixin.*,com.jeecg.*,com.qianlong.webapp.*">
 		<context:exclude-filter type="annotation"
 			expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
 
 	<!-- 引入属性文件 -->
-	<context:property-placeholder location="classpath:dbconfig.properties" ignore-unresolvable="true" order="1"/>
+	<context:property-placeholder location="classpath:dbconfig.properties"
+		ignore-unresolvable="true" order="1" />
 	<!-- 引入线程池文件 -->
-	<context:property-placeholder location="classpath:zmqTask.properties" ignore-unresolvable="false" order="2"/>
-	<!-- 线程池 -->
-	<bean id="taskExecutor"
-		class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
-		<!-- 核心线程数 -->
-		<property name="corePoolSize" value="${task.core_pool_size}" />
-		<!-- 最大线程数 -->
-		<property name="maxPoolSize" value="${task.max_pool_size}" />
-		<!-- 队列最大长度 -->
-		<property name="queueCapacity" value="${task.queue_capacity}" />
-		<!-- 线程池维护线程所允许的空闲时间，默认为60s -->
-		<property name="keepAliveSeconds" value="${task.keep_alive_seconds}" />
+	<context:property-placeholder location="classpath:zmqTask.properties"
+		ignore-unresolvable="false" order="2" />
+
+	<bean id="busProcess" class="weixin.guanjia.message.task.MyBusProcess" />
+  	<bean id="initGetMessage" class="weixin.guanjia.message.task.InitGetMessage">
+		<constructor-arg ref="commonService"></constructor-arg>
+ 		<constructor-arg ref="weixinAccountService"></constructor-arg>
 	</bean>
-	
-	<!-- 代理线程池 -->
-	<bean id="ataskExecutor"
-		class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
-		<!-- 核心线程数 -->
-		<property name="corePoolSize" value="${agent.task.core_pool_size}" />
-		<!-- 最大线程数 -->
-		<property name="maxPoolSize" value="${agent.task.max_pool_size}" />
-		<!-- 队列最大长度 -->
-		<property name="queueCapacity" value="${agent.task.queue_capacity}" />
-		<!-- 线程池维护线程所允许的空闲时间，默认为60s -->
-		<property name="keepAliveSeconds" value="${agent.task.keep_alive_seconds}" />
+	<bean id="zmqToProxy" class="com.qlcd.util.ZMQToProxy" scope="prototype">
+		<property name="proxyIp" value="${zmqproxy.ip}"></property>
+		<property name="proxyPort" value="${zmqproxy.port}"></property>
 	</bean>
-	
+	<bean id="initQueue" class="weixin.guanjia.message.task.InitQueue">
+		<constructor-arg ref="busProcess"></constructor-arg>
+		<constructor-arg ref="zmqToProxy"></constructor-arg>
+	</bean>
 	<!-- 配置数据源1 -->
 	<bean name="dataSource_jeecg" class="com.alibaba.druid.pool.DruidDataSource"
 		init-method="init" destroy-method="close">

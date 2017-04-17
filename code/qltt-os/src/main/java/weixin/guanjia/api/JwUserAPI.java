@@ -81,6 +81,7 @@ public class JwUserAPI {
 			userInfoListGet.setAccess_token(accesstoken);
 			userInfoListGet.setNext_openid(next_openid);
 			JSONObject result = WeiXinReqService.getInstance().doWeinxinReqJson(userInfoListGet);
+			//logger.error(result.toString());
 			Object error = result.get("errcode");
 			List<WeixinUser> lstUser = null;
 			WeixinUser mxuser = null;

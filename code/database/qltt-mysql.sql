@@ -1971,7 +1971,7 @@ CREATE TABLE `weixin_user` (
   `accountid` varchar(100) NOT NULL COMMENT '微信账号',
   `subscribe` int(11) NOT NULL DEFAULT '1' COMMENT '用户是否订阅该公众号标识：0，用户未订阅；1、用户已订阅',
   `openid` varchar(30) NOT NULL COMMENT '用户的标识，对当前公众号唯一',
-  `nickname` varchar(64) NOT NULL COMMENT '用户的昵称',
+  `nickname` varbinary(64) NOT NULL COMMENT '用户的昵称',
   `sex` int(11) NOT NULL DEFAULT '2' COMMENT '用户的性别，值为1时是男性，值为2时是女性，值为0时是未知',
   `city` varchar(255) DEFAULT NULL COMMENT '用户所在城市',
   `country` varchar(255) DEFAULT NULL COMMENT '用户所在国家',

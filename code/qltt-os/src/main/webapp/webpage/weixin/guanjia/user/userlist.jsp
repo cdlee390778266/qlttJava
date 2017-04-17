@@ -6,7 +6,7 @@
   <t:datagrid name="weixinUserList"  actionUrl="weixinUserController.do?datagrid" checkbox="true" fitColumns="true"   title="用户列表"  idField="openid" fit="true" queryMode="group">
    <t:dgCol title="微信账号"  field="accountid"   hidden="false"   width="0"></t:dgCol>
    <t:dgCol title="微信号"    field="openid"      hidden="true"   width="120"></t:dgCol>
-   <t:dgCol title="昵称"      field="nickname"    hidden="true"   query="true" queryMode="single" width="120"></t:dgCol>
+   <t:dgCol title="昵称"      field="nickname"    hidden="true"   width="120"></t:dgCol>
    <t:dgCol title="是否关注"   field="subscribe"   hidden="true"  dictionary="subscribe"   width="120"></t:dgCol>
    <t:dgCol title="性别"      field="sex"         hidden="true"   dictionary="sex"  width="120"></t:dgCol>
    <t:dgCol title="国家"      field="country"     hidden="true"   width="120"></t:dgCol>
