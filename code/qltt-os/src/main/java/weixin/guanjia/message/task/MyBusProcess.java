@@ -16,6 +16,7 @@ public class MyBusProcess implements IBusProcess {
 	@SuppressWarnings("unchecked")
 	@Override
 	public Object active(int trdcode,Object requestBody) {
+		int i = 0;
 		try{
 			//模板消息推送
 			if(trdcode == 3001001){

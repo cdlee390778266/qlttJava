@@ -22,8 +22,13 @@ public class UserRegisterController {
 	private Logger logger = Logger.getLogger(UserRegisterController.class);
 
 	@RequestMapping("index")
-	public ModelAndView display() {
+	public ModelAndView index() {
 		return new ModelAndView("qianlong/register");
+	}
+	
+	@RequestMapping("agreement")
+	public ModelAndView agreement() {
+		return new ModelAndView("qianlong/agreement");
 	}
 	
 	@RequestMapping("validate")

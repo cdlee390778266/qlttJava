@@ -4,7 +4,15 @@
 <!DOCTYPE html >
 <html lang="zh-CN" ng-app="qlttApp">
 <head>
-<%@ include file="head.jsp"%>
+<meta charset="utf-8">
+<meta name="referrer" content="always">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta http-equiv="x-dns-prefetch-control" content="on">
+<link rel="stylesheet" href="<c:url value='/extension/css/animate.min.css' />" />
+<link rel="stylesheet" href="<c:url value='/extension/css/style.css' />" />
+<script type="text/javascript" src="<c:url value='/extension/js/zepto.min.js' />"></script>
+<script type="text/javascript" src="<c:url value='/extension/js/zepto.touch.js' />"></script>
+<script type="text/javascript" src="<c:url value='/extension/js/footer.js' />"></script>
 <script type="text/javascript" src="<c:url value='/extension/js/login.js' />"></script>
 <title>手机验证</title>
 </head>
@@ -12,7 +20,6 @@
 	<div class="login-bg">
 		<img src="<c:url value='/extension/images/login_bg.png' />" class="img-responsive" />
 	</div>
-
 	<form action="" class="container login">
 		<div class="login-input-box">
 			<div class="login-input borb">
@@ -29,11 +36,10 @@
 		</div>
 		<div class="login-tip">
 			<p>
-				<span>选择【手机验证】</span>代表你已阅读并同意<a class="fred" href="tpls/ttxieyi.html">《钱龙推推用户协议》</a>，验证成功你将获得钱龙推推应用全部功能。
+				<span>选择【手机验证】</span>代表你已阅读并同意<a class="blue" href="<c:url value='agreement.do' />">《钱龙推推用户协议》</a>，验证成功你将获得钱龙推推应用全部功能。
 			</p>
-
 		</div>
-		<input type="submit" value="确定" class="login-submit waves-effect waves-button waves-float" />
+		<input class="login-submit" type="submit" value="确定">
 	</form>
 	<div id="error" class="animated">
 		<span></span>
