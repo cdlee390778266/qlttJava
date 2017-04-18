@@ -6,10 +6,14 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.jeecgframework.core.util.ResourceUtil;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.qianlong.webapp.domain.AuthResultEntity;
+import com.qianlong.webapp.utils.Constants;
 
 /**
  * 微网站访问权限过滤
@@ -45,19 +49,25 @@ public class WechatAuthInterceptor implements HandlerInterceptor {
 			return true;
 		}
 		
-		return false;
+		AuthResultEntity user = (AuthResultEntity)request.getSession().getAttribute(Constants.LOGIN_USER_ACCOUNT);
+		if (user == null || StringUtils.isEmpty(user.getTtacct())) {
+			response.sendRedirect("../register/index.do");
+			return false;
+		} else {
+			return true;
+		}
 	}
 
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
-
+		logger.debug("WechatAuthInterceptor.postHandle方法通过");
 	}
 
 	@Override
 	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
 			throws Exception {
-
+		logger.debug("WechatAuthInterceptor.afterCompletion方法通过");
 	}
 
 	public List<String> getExcludeUrls() {

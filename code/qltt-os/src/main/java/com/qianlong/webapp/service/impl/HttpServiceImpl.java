@@ -26,7 +26,9 @@ import org.springframework.util.CollectionUtils;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.qianlong.webapp.domain.HttpContent;
 import com.qianlong.webapp.service.IHttpService;
+import com.qianlong.webapp.utils.Constants;
 
 @Service("httpService")
 public class HttpServiceImpl implements IHttpService {
@@ -34,36 +36,36 @@ public class HttpServiceImpl implements IHttpService {
 	private Logger logger = LoggerFactory.getLogger(HttpServiceImpl.class);
 	
 	@Override
-	public <T> T httpGet(String scheme, String host, String path, List<NameValuePair> nvps, Class<T> clazz)
+	public <T, E> HttpContent<T, E> httpGet(String scheme, String host, String path, List<NameValuePair> nvps, Class<T> content, Class<E> message)
 			throws URISyntaxException, ClientProtocolException, IOException {
-		return httpGet(scheme, host, -1, path, nvps, clazz);
+		return httpGet(scheme, host, -1, path, nvps, content, message);
 	}
 
 	@Override
-	public <T> T httpGet(String scheme, String host, int port, String path, List<NameValuePair> nvps, Class<T> clazz)
+	public <T, E> HttpContent<T, E> httpGet(String scheme, String host, int port, String path, List<NameValuePair> nvps, Class<T> content, Class<E> message)
 			throws URISyntaxException, ClientProtocolException, IOException {
-		return httpRequest(new HttpGet(), scheme, host, port, path, nvps, clazz);
+		return httpRequest(new HttpGet(), scheme, host, port, path, nvps, content, message);
 	}
 	
 	@Override
-	public <T> T httpPost(String scheme, String host, String path, List<NameValuePair> nvps, JSONObject json,
-			Class<T> clazz) throws URISyntaxException, ClientProtocolException, IOException {
-		return httpPost(scheme, host, -1, path, nvps, json, clazz);
+	public <T, E> HttpContent<T, E> httpPost(String scheme, String host, String path, List<NameValuePair> nvps, JSONObject json,
+			Class<T> content, Class<E> message) throws URISyntaxException, ClientProtocolException, IOException {
+		return httpPost(scheme, host, -1, path, nvps, json, content, message);
 	}
 
 	@Override
-	public <T> T httpPost(String scheme, String host, int port, String path, List<NameValuePair> nvps, JSONObject json,
-			Class<T> clazz) throws URISyntaxException, ClientProtocolException, IOException {
+	public <T, E> HttpContent<T, E> httpPost(String scheme, String host, int port, String path, List<NameValuePair> nvps, JSONObject json,
+			Class<T> content, Class<E> message) throws URISyntaxException, ClientProtocolException, IOException {
 		HttpPost httpPost = new HttpPost();
 		logger.debug(String.format("传入的json为:%s", json.toJSONString()));
 		HttpEntity entity = EntityBuilder.create().setText(json.toJSONString()).setContentType(ContentType.APPLICATION_JSON).setContentEncoding("utf-8").build();
 		httpPost.setEntity(entity);
-		return httpRequest(httpPost, scheme, host, port, path, nvps, clazz);
+		return httpRequest(httpPost, scheme, host, port, path, nvps, content, message);
 	}
 
 	@Override
-	public <T> T httpRequest(HttpRequestBase requestBase, String scheme, String host, int port, String path,
-			List<NameValuePair> nvps, Class<T> clazz) throws URISyntaxException, ClientProtocolException, IOException {
+	public <T, E> HttpContent<T, E> httpRequest(HttpRequestBase requestBase, String scheme, String host, int port, String path,
+			List<NameValuePair> nvps, Class<T> content, Class<E> message) throws URISyntaxException, ClientProtocolException, IOException {
 		CloseableHttpClient client = HttpClients.createDefault();
 		URIBuilder builder = new URIBuilder();
 		
@@ -91,9 +93,18 @@ public class HttpServiceImpl implements IHttpService {
 		ByteArrayOutputStream bi = new ByteArrayOutputStream();
 		entity.writeTo(bi);
 		
-		T object = JSON.parseObject(bi.toByteArray(), clazz);
+		JSONObject result = JSON.parseObject(bi.toString());
 		bi.close();
-		return object;
+		
+		HttpContent<T, E> httpContent = new HttpContent<>();
+		if (result.containsKey(Constants.USER_SERV_IDENTIFICATION_CODE) || result.containsKey(Constants.WECHAT_IDENTIFICATION_CODE)) {
+			E e = JSON.parseObject(result.toJSONString(), message);
+			httpContent.setMessage(e);
+		} else {
+			T t = JSON.parseObject(result.toJSONString(), content);
+			httpContent.setContent(t);
+		}
+		return httpContent;
 	}
 
 }

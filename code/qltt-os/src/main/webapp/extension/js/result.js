@@ -3,10 +3,8 @@
 * @Date:   2017-04-11 16:23:54
 * @Last Modified time: 2017-04-12 18:19:49
 */
-
 $(document).ready(function(){
-
-    var url = '../data/result.json';
+    var url = '../../extension/data/result.json';
     var refreshFlag = true;
 
     var refreshHeight = function (){

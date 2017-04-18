@@ -4,9 +4,15 @@ import com.alibaba.fastjson.annotation.JSONField;
 
 public class AuthResultEntity {
 
+	/**
+	 * 手机号码
+	 */
 	@JSONField(name = "cn")
 	private String cn;
 	
+	/**
+	 * 推推账号
+	 */
 	@JSONField(name = "ttacct")
 	private String ttacct;
 

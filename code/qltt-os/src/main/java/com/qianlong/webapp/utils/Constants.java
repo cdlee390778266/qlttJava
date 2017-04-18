@@ -22,4 +22,14 @@ public class Constants {
 	public static final String USER_SERV_ACCT_OPEN = "/acctopen/open001";
 	
 	public static final String LOGIN_USER_ACCOUNT = "login.user.account";
+	
+	public static final String USER_SERV_IDENTIFICATION_CODE = "errorCode";
+	
+	public static final String USER_SERV_IDENTIFICATION_MSG = "errorMsg";
+	
+	public static final String USER_SERV_CODE_OK = "1";
+	
+	public static final String WECHAT_IDENTIFICATION_CODE = "errcode";
+	
+	public static final String WECHAT_IDENTIFICATION_MSG = "errmsg";
 }

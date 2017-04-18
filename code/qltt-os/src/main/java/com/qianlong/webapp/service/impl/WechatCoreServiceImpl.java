@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.qianlong.webapp.domain.OAuthCallbackEntity;
+import com.qianlong.webapp.domain.HttpContent;
+import com.qianlong.webapp.domain.WechatMessage;
 import com.qianlong.webapp.exception.HttpRequestException;
 import com.qianlong.webapp.service.IHttpService;
 import com.qianlong.webapp.service.IWechatCoreService;
@@ -36,14 +38,14 @@ public class WechatCoreServiceImpl implements IWechatCoreService {
 		nvps.add(new BasicNameValuePair("code", code));
 		nvps.add(new BasicNameValuePair("grant_type", "authorization_code"));
 		
-		OAuthCallbackEntity oauthCallbackEntity = null;
+		HttpContent<OAuthCallbackEntity, WechatMessage> content = null;
 		try {
-			oauthCallbackEntity = httpService.httpGet(Constants.SCHEME_HTTPS, "api.weixin.qq.com", "/sns/oauth2/access_token", nvps, OAuthCallbackEntity.class);
+			content = httpService.httpGet(Constants.SCHEME_HTTPS, "api.weixin.qq.com", "/sns/oauth2/access_token", nvps, OAuthCallbackEntity.class, WechatMessage.class);
 		} catch (URISyntaxException | IOException e) {
 			logger.error(e.getMessage(), e);
 			throw new HttpRequestException("HTTP请求发生错误，请检查URI是否正确，网络是否畅通", e);
 		}
-		return oauthCallbackEntity;
+		return content.getContent();
 	}
 
 }

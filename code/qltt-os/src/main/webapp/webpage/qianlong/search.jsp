@@ -37,7 +37,7 @@
 	</div>
 
 	<!-- 查询内容 -->
-	<div class="search  swiper-container">
+	<div class="search swiper-container">
 		<div class="swiper-wrapper"></div>
 	</div>
 
@@ -48,7 +48,7 @@
 
 	<!-- 页脚菜单 -->
 	<div class="footer">
-		<a href="" class="active"><i class="icon icon-searchd "></i><br><span>指标查询</span></a>
+		<a href="" class="active"><i class="icon icon-searchd"></i><br><span>指标查询</span></a>
 		<a href=""><i class="icon icon-care"></i><br> <span>我的关注</span></a>
 		<a href=""><i class="icon icon-pool"></i><br> <span>选股池</span></a>
 		<a href=""><i class="icon icon-rmd"></i><br> <span>荐股池</span></a>
