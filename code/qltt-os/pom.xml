@@ -904,5 +904,19 @@
 				<database.name>cnacex</database.name>
 			</properties>
 		</profile>
+		<profile>
+			<id>zmq-useless</id>
+			<properties>
+				<zmqproxy.ip>192.168.16.22</zmqproxy.ip>
+				<zmqproxy.port>9111</zmqproxy.port>
+			</properties>
+		</profile>
+		<profile>
+			<id>zmq-inuse</id>
+			<properties>
+				<zmqproxy.ip>192.168.16.22</zmqproxy.ip>
+				<zmqproxy.port>7022</zmqproxy.port>
+			</properties>
+		</profile>
 	</profiles>
 </project>
