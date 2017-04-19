@@ -33,9 +33,13 @@
 		<constructor-arg ref="commonService"></constructor-arg>
  		<constructor-arg ref="weixinAccountService"></constructor-arg>
 	</bean>
+	<bean id="zmqProxyClient" class="com.qlcd.util.ZMQProxyClient">
+		<property name="proxyIp" value="${zmqproxy.ip}"></property>
+		<property name="proxyPort" value="${zmqproxy.req.port}"></property>
+	</bean>
 	<bean id="zmqToProxy" class="com.qlcd.util.ZMQToProxy" scope="prototype">
 		<property name="proxyIp" value="${zmqproxy.ip}"></property>
-		<property name="proxyPort" value="${zmqproxy.port}"></property>
+		<property name="proxyPort" value="${zmqproxy.rsp.port}"></property>
 	</bean>
 	<bean id="initQueue" class="weixin.guanjia.message.task.InitQueue">
 		<constructor-arg ref="busProcess"></constructor-arg>

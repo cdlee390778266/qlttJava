@@ -17,11 +17,18 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import com.alibaba.fastjson.JSONObject;
+import com.qianlong.webapp.domain.AuthResultEntity;
+import com.qianlong.webapp.domain.HttpContent;
+import com.qianlong.webapp.domain.RegisterEntity;
+import com.qianlong.webapp.domain.TrenchInfoEnity;
 import com.qianlong.webapp.domain.UserServAccessToken;
 import com.qianlong.webapp.domain.UserServAccessTokenReqBody;
+import com.qianlong.webapp.domain.UserServMessage;
+import com.qianlong.webapp.exception.HttpBusinessException;
+import com.qianlong.webapp.exception.HttpRequestException;
 import com.qianlong.webapp.service.IHttpService;
 import com.qianlong.webapp.service.IUserServCoreService;
-import com.qianlong.webapp.utils.UserServConstant;
+import com.qianlong.webapp.utils.Constants;
 
 @Service("userServCoreService")
 public class UserServCoreServiceImpl extends CommonServiceImpl implements IUserServCoreService, CommonService {
@@ -32,23 +39,28 @@ public class UserServCoreServiceImpl extends CommonServiceImpl implements IUserS
 	IHttpService httpService;
 
 	@Override
-	public UserServAccessToken obtainAccessToken(UserServAccessTokenReqBody body) {
+	public UserServAccessToken obtainAccessToken(UserServAccessTokenReqBody body) throws HttpRequestException {
 		List<NameValuePair> nvps = new ArrayList<>();
 		nvps.add(new BasicNameValuePair("appid", body.getAppid()));
 
-		UserServAccessToken token = null;
+		HttpContent<UserServAccessToken, UserServMessage> content = null;
 		try {
-			token = httpService.httpPost(UserServConstant.SCHEME_HTTP, ResourceUtil.getConfigByName("user.serv.host"),
+			content = httpService.httpPost(Constants.SCHEME_HTTP, ResourceUtil.getConfigByName("user.serv.host"),
 					Integer.valueOf(ResourceUtil.getConfigByName("user.serv.port")),
-					UserServConstant.USER_SERV_OBTAINACCESSTOKEN_PATH, nvps, (JSONObject) JSONObject.toJSON(body),
-					UserServAccessToken.class);
-			
+					Constants.USER_SERV_OBTAINACCESSTOKEN_PATH, nvps, (JSONObject) JSONObject.toJSON(body),
+					UserServAccessToken.class, UserServMessage.class);
+
 			executeSql("DELETE FROM user_serv_accesstoken");
-			save(token);
+			save(content.getContent());
 		} catch (URISyntaxException | IOException e) {
 			logger.error(e.getMessage(), e);
+			throw new HttpRequestException("HTTP请求发生错误，请检查URI是否正确，网络是否畅通", e);
 		}
-		return token;
+		
+		if (content.getMessage() != null && !Constants.USER_SERV_CODE_OK.equals(content.getMessage().getErrorCode()))
+			throw new HttpBusinessException(content.getMessage().getErrorMsg());
+		
+		return content.getContent();
 	}
 
 	@Override
@@ -57,4 +69,48 @@ public class UserServCoreServiceImpl extends CommonServiceImpl implements IUserS
 		return CollectionUtils.isEmpty(list) ? null : list.get(0);
 	}
 
+	@Override
+	public AuthResultEntity tdPartAuthLogin(TrenchInfoEnity user) throws HttpRequestException {
+		UserServAccessToken accessToken = getCurrentAccessToken();
+		List<NameValuePair> nvps = new ArrayList<>();
+		nvps.add(new BasicNameValuePair("access_token", accessToken.getAccessToken()));
+
+		HttpContent<AuthResultEntity, UserServMessage> content = null;
+		try {
+			content = httpService.httpPost(Constants.SCHEME_HTTP, ResourceUtil.getConfigByName("user.serv.host"),
+					Integer.valueOf(ResourceUtil.getConfigByName("user.serv.port")),
+					Constants.USER_SERV_TDPART_AUTH_LOGIN, nvps, (JSONObject) JSONObject.toJSON(user),
+					AuthResultEntity.class, UserServMessage.class);
+		} catch (URISyntaxException | IOException e) {
+			logger.error(e.getMessage(), e);
+			throw new HttpRequestException("微信授权登录时由于网络原因导致失败", e);
+		}
+		
+		if (content.getMessage() != null && !Constants.USER_SERV_CODE_OK.equals(content.getMessage().getErrorCode()))
+			throw new HttpBusinessException(content.getMessage().getErrorMsg());
+		
+		return content.getContent();
+	}
+
+	@Override
+	public AuthResultEntity userAcctOpen(RegisterEntity regInfo) throws HttpRequestException {
+		UserServAccessToken accessToken = getCurrentAccessToken();
+		List<NameValuePair> nvps = new ArrayList<>();
+		nvps.add(new BasicNameValuePair("access_token", accessToken.getAccessToken()));
+		
+		HttpContent<AuthResultEntity, UserServMessage> content = null;
+		try {
+			content = httpService.httpPost(Constants.SCHEME_HTTP, ResourceUtil.getConfigByName("user.serv.host"),
+					Integer.valueOf(ResourceUtil.getConfigByName("user.serv.port")), Constants.USER_SERV_ACCT_OPEN,
+					nvps, (JSONObject) JSONObject.toJSON(regInfo), AuthResultEntity.class, UserServMessage.class);
+		} catch (URISyntaxException | IOException e) {
+			logger.error(e.getMessage(), e);
+			throw new HttpRequestException("开通用户账号时由于网络原因导致失败", e);
+		}
+		
+		if (content.getMessage() != null && !Constants.USER_SERV_CODE_OK.equals(content.getMessage().getErrorCode()))
+			throw new HttpBusinessException(content.getMessage().getErrorMsg());
+		
+		return content.getContent();
+	}
 }

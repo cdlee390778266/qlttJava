@@ -256,30 +256,36 @@ a{
         .menu-body{
             margin-top: 2rem;
             line-height: 3rem;
-                span{
+            overflow:hidden;
+                &>div{
                     display:inline-block;
-                    width:76px;
+                    width:25%;
+                    float: left;
+                    overflow:hidden;
+                    padding:8px;
+                    span{
+                    display:block;
                     height:26px;
                     line-height: 26px;
                     text-align: center;
                     border:1px solid $red;
-                    margin:8px;
                     position:relative;
-                    &.active{
-                        background:$red;
-                        color:#fff;
-                    }
-                    i{
-                        display:block;
-                        width:14px;
-                        height:14px;
-                        background-size: $bgSize;
-                        background-image: url(../images/icon.png);
-                        background-position: -153px -153px;
-                        position:absolute;
-                        right:-6px;
-                        top:-6px;
-                        display:none;
+                        &.active{
+                            background:$red;
+                            color:#fff;
+                        }
+                        i{
+                            display:block;
+                            width:14px;
+                            height:14px;
+                            background-size: $bgSize;
+                            background-image: url(../images/icon.png);
+                            background-position: -153px -153px;
+                            position:absolute;
+                            right:-6px;
+                            top:-6px;
+                            display:none;
+                        }
                     }
                 }
                 
@@ -521,7 +527,7 @@ a{
     right:0;
     text-align: center;
     display:none;
-    z-index: 999;
+    z-index: 9999;
     background-color: rgba(0,0,0,0);
     color:#fff;
     span{
@@ -1361,8 +1367,6 @@ a{
                 top:11px;
             }
 
-            
-
          }
          .push-head{
             padding: 0 10px;
@@ -1407,6 +1411,11 @@ a{
 .pool-container{
     padding-top: 9rem;
     padding-bottom: 13rem;
+    .pool-main{
+        .pool-item:nth-child(2n){
+            background:#FAFAFA;
+        }
+    }
     .pool-item{
         @include flexBox();
         height:4rem;

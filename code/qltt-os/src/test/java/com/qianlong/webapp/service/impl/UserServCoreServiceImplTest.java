@@ -12,6 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.qianlong.webapp.domain.UserServAccessToken;
 import com.qianlong.webapp.domain.UserServAccessTokenReqBody;
+import com.qianlong.webapp.exception.HttpRequestException;
 import com.qianlong.webapp.service.IUserServCoreService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -31,7 +32,12 @@ public class UserServCoreServiceImplTest {
 		body.setAppid("wx_000001");
 		body.setSecret("OuIEqeoVdaKG9K4vrUqBd2UsFJouRamdSZdnEKFh3dOuL0t1zzbaI8VF/ZKSbyFRckd/vsihXVfFqSOC8anZANVlCcDQ1uHi2AEdQdsN/UYl/09XCJVRPl2M3295g/l3kdGgnWxWJc5iAr4HYNu7DEKw53k4bbXWLzPReU42YcE=");
 		body.setPlaintext("AhQ");
-		UserServAccessToken token = userServCoreService.obtainAccessToken(body);
+		UserServAccessToken token = null;
+		try {
+			token = userServCoreService.obtainAccessToken(body);
+		} catch (HttpRequestException e) {
+			logger.error(e.getMessage(), e);
+		}
 		logger.debug(token);
 		assertTrue("testProduceAuthCode", token != null && !StringUtils.isEmpty(token.getAccessToken()));
 	}

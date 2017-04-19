@@ -19,11 +19,11 @@
       <div id="headerPool">
         <div id="scrollerPool" >
           <ul>
-            <li class="active" ><span >选股池A</span></li>
-            <li class="" ><span>选股池B</span></li>
-            <li class="" ><span>选股池C</span></li>
-            <li class="" ><span>选股池D</span></li>
-            <li class="" ><span>选股池E</span></li>
+            <li class="active" data-href="pool-main-0" ><span >选股池A</span></li>
+            <li class="" data-href="pool-main-1" ><span>选股池B</span></li>
+            <li class="" data-href="pool-main-2" ><span>选股池C</span></li>
+            <li class="" data-href="pool-main-3" ><span>选股池D</span></li>
+            <li class="" data-href="pool-main-4" ><span>选股池E</span></li>
           </ul>
         </div>
       </div>
@@ -127,32 +127,23 @@
               </div>
             </div>
             <div class="menu-body">
-                <span>选股池B <i></i></span>
-                <span>选股池B <i></i></span>
-                <span>选股池B <i></i></span>
-                <span>选股池B <i></i></span>
-                <span>选股池B <i></i></span>
-                <span>选股池B <i></i></span>
-                <span>选股池B <i></i></span>
-                <span>选股池B <i></i></span>
-                <span>选股池B <i></i></span>
-                <span>选股池B <i></i></span>
-                <span>选股池B <i></i></span>
-                <span>选股池B <i></i></span>
-                <span>选股池B <i></i></span>
-                <span>选股池B <i></i></span>
-                <span>选股池B <i></i></span>
-                <span>选股池B <i></i></span>
+                <!-- <div><span><strong>选股池A</strong> <i></i></span></div>
+                <div><span><strong>选股池B</strong> <i></i></span></div>
+                <div><span><strong>选股池C</strong> <i></i></span></div>
+                <div><span><strong>选股池D</strong> <i></i></span></div>
+                <div><span><strong>选股池E</strong> <i></i></span></div> -->
             </div>
             <div class="menu-foot">
-                <div class="menu-input"><input type="text" placeholder="输入选股池名称" /></div>
+                <div class="menu-input"><input type="text" placeholder="输入选股池名称" name="poolName" id="poolName" /></div>
                 <div class="menu-btns">
                    <div class="menu-btns-edit"><span >修改名称</span></div>
-                   <div class="menu-btns-add"><span >修改名称</span></div>
+                   <div class="menu-btns-add"><span >新增菜单</span></div>
                 </div>
             </div>
         </div>
     </div>
+
+    <div id="error" class="animated"><span></span></div>
 
     <script src="../js/zepto.min.js"></script>
     <script src="../js/swiper.min.js"></script>

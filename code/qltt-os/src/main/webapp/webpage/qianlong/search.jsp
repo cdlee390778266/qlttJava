@@ -19,6 +19,9 @@
 <script type="text/javascript" src="<c:url value='/extension/js/headerISroll.js' />"></script>
 <script type="text/javascript" src="<c:url value='/extension/js/footer.js' />"></script>
 <script type="text/javascript" src="<c:url value='/extension/js/common.js' />"></script>
+<script type="text/javascript">
+	var contextPath = '${pageContext.request.contextPath}';
+</script>
 <script type="text/javascript" src="<c:url value='/extension/js/search.js' />"></script>
 <title>指标查询</title>
 </head>
@@ -37,7 +40,7 @@
 	</div>
 
 	<!-- 查询内容 -->
-	<div class="search  swiper-container">
+	<div class="search swiper-container">
 		<div class="swiper-wrapper"></div>
 	</div>
 
@@ -48,7 +51,7 @@
 
 	<!-- 页脚菜单 -->
 	<div class="footer">
-		<a href="" class="active"><i class="icon icon-searchd "></i><br><span>指标查询</span></a>
+		<a href="" class="active"><i class="icon icon-searchd"></i><br><span>指标查询</span></a>
 		<a href=""><i class="icon icon-care"></i><br> <span>我的关注</span></a>
 		<a href=""><i class="icon icon-pool"></i><br> <span>选股池</span></a>
 		<a href=""><i class="icon icon-rmd"></i><br> <span>荐股池</span></a>

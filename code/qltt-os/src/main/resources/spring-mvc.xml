@@ -147,12 +147,12 @@
 			<bean class="com.qianlong.webapp.interceptor.WechatAuthInterceptor">
 				<property name="excludeUrls">
 					<list>
-						<value>webapp/register/display.do</value>
-						<value>webapp/register/obtainAuthCode.do</value>
-						<value>webapp/register/validate.do</value>
-						<value>webapp/search/index.do</value>
+						<value>webapp/register/code.do</value>
 						<value>webapp/register/index.do</value>
 						<value>webapp/register/agreement.do</value>
+						<value>webapp/register/register.do</value>
+						<value>webapp/logon/index.do</value>
+						<value>webapp/logon/login.do</value>
 					</list>
 				</property>
 			</bean>
