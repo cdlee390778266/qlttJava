@@ -4,8 +4,9 @@ import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
-import com.qlcd.qltt.body.prt.T03001001;
-import com.qlcd.qltt.body.prt.T03001001._evacctpush;
+import com.qlcd.qltt.body.pvt.T03001001;
+import com.qlcd.qltt.body.pvt.T03001001._evacctpush;
+import com.qlcd.qltt.body.pvt.T03001001._eventpush;
 import com.qlcd.util.IBusProcess;
 
 import weixin.guanjia.message.model.SendMessageTep;
@@ -22,17 +23,23 @@ public class MyBusProcess implements IBusProcess {
 			if(trdcode == 3001001){
 				SimpleDateFormat data = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 				T03001001._req content = (T03001001._req) requestBody;
+				_eventpush eventpush = content.getEp();
 				List<_evacctpush> e =content.getEaplistList();
 				for (_evacctpush epush : e) {
 					SendMessageTep tep = new SendMessageTep();
-					tep.setCreatetime(new Timestamp(data.parse(content.getEp().getOcctime()).getTime()));
-					tep.setOpenId(epush.getDevno());
-					tep.setSvcchnl(epush.getSvcchnlValue());
-					
+					tep.setCreatetime(new Timestamp(data.parse(content.getEp().getOcctime()).getTime()));//创建时间
+					tep.setOpenId(epush.getDevno());//设备id
+					tep.setSvcchnl(epush.getSvcchnlValue());//渠道标识
 					tep.setDevtype(epush.getDevtypeValue());
-					tep.setTtacct(epush.getTtacct());
-					tep.setContent(StringTypeUtil.stringToClob(epush.getContent()));
-					tep.setWeight(content.getEp().getMxdlyval());
+					tep.setTtacct(epush.getTtacct());//推推账号
+					
+					tep.setTitle1(eventpush.getTitle1());//标题
+					tep.setKeyword1("尊敬的客户"+epush.getCN());//keyword1
+					tep.setKeyword2(eventpush.getTacname());//keyword2
+					String remark = eventpush.getEvdetail()+epush.getContent();//remark
+					
+					tep.setContent(StringTypeUtil.stringToClob(remark));//内容
+					tep.setWeight(content.getEp().getMxdlyval());//权重
 					InitQueue.q.add(tep);
 				
 				}
@@ -66,7 +73,4 @@ public class MyBusProcess implements IBusProcess {
 			return rsp;
 		}	
 	}
-	
-
-
 }

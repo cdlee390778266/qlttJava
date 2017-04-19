@@ -7,21 +7,28 @@ public class SendMessageTep implements Comparable<SendMessageTep>{
 
 	private String id;
 
-	private String templateId;
-
-	private String openId;
-
-	private String ttacct;
-
-	private Integer svcchnl;
-
-	private Integer devtype;
-
-	private Clob content;
-
-	private Timestamp createtime;
 	
-	private Integer weight;
+	private String templateId;//模板id
+
+	private String openId;//设备id
+
+	private String ttacct;//推推账号
+
+	private Integer svcchnl;//渠道标识
+
+	private Integer devtype;//设备类型
+	
+	private String title1;//标题
+	
+	private String keyword1;//
+	
+	private String keyword2;
+	
+	private Clob content;//内容
+
+	private Timestamp createtime;//创建时间
+	
+	private Integer weight;//权重
 
 	private Integer sendStatus;
 	public String getId() {
@@ -83,6 +90,26 @@ public class SendMessageTep implements Comparable<SendMessageTep>{
 	}
 	public void setWeight(Integer weight) {
 		this.weight = weight;
+	}
+	
+	public String getTitle1() {
+		return title1;
+	}
+	public void setTitle1(String title1) {
+		this.title1 = title1;
+	}
+
+	public String getKeyword1() {
+		return keyword1;
+	}
+	public void setKeyword1(String keyword1) {
+		this.keyword1 = keyword1;
+	}
+	public String getKeyword2() {
+		return keyword2;
+	}
+	public void setKeyword2(String keyword2) {
+		this.keyword2 = keyword2;
 	}
 	@Override
 	public int compareTo(SendMessageTep o) {

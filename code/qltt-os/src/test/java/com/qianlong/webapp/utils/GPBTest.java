@@ -3,9 +3,8 @@ package com.qianlong.webapp.utils;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-
 import com.qlcd.qltt.body.Bpem.PEB_SVCCHNL;
-import com.qlcd.qltt.body.prt.T01001001;
+import com.qlcd.qltt.body.pvt.T01001001;
 
 
 public class GPBTest {
