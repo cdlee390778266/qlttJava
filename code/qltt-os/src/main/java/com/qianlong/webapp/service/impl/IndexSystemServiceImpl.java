@@ -20,7 +20,7 @@ public class IndexSystemServiceImpl implements IIndexSystemService {
 	public Object queryIdxGroup() {
 		logger.debug("原生指标组清单查询");
 		T02001002._protacgroup.Builder builder = T02001002._protacgroup.newBuilder();
-		Object obj = zmqProxyClient.OutBound("2001002", builder.build());
+		Object obj = zmqProxyClient.outBound("2001002", builder.build());
 		return obj;
 	}
 

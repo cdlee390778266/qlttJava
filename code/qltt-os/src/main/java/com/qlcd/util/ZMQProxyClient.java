@@ -19,6 +19,12 @@ public class ZMQProxyClient {
 	private int rcvTimeOut = 6;
 
 	private int sndTimeOut = 6;
+	
+	private ZMQ.Context context;
+	
+	public ZMQProxyClient() {
+		context = ZMQ.context(1);
+	}
 
 	public String getProxyIp() {
 		return proxyIp;
@@ -52,9 +58,7 @@ public class ZMQProxyClient {
 		this.sndTimeOut = sndTimeOut;
 	}
 
-	static ZMQ.Context scontext = ZMQ.context(1);
-
-	public Object OutBound(String trdCode, Object requestBody) {
+	public Object outBound(String trdCode, Object requestBody) {
 		if (StringUtils.isBlank(trdCode))
 			throw new CommZMQException("交易码为空");
 
@@ -73,9 +77,14 @@ public class ZMQProxyClient {
 		// 生成请求头
 		Hpprot._req.Builder reqHeadBuilder = Hpprot._req.newBuilder();
 		reqHeadBuilder.setTrdcode(Integer.parseInt(trdCode));
-		reqHeadBuilder.setReqno(ProtocolUtil.BuildTxSN());
-		reqHeadBuilder.setReqsys(ProtocolUtil.getSystemNo());
-		reqHeadBuilder.setReqnode(ProtocolUtil.getNodeNo());
+		//reqHeadBuilder.setReqno(ProtocolUtil.BuildTxSN());
+		//reqHeadBuilder.setReqsys(ProtocolUtil.getSystemNo());
+		//reqHeadBuilder.setReqnode(ProtocolUtil.getNodeNo());
+		
+		reqHeadBuilder.setReqno(0);
+		reqHeadBuilder.setReqsys(0);
+		reqHeadBuilder.setReqnode(0);
+		
 		reqHeadBuilder.setBodyclass(requestBody.getClass().getName());
 
 		try {
@@ -96,13 +105,15 @@ public class ZMQProxyClient {
 		Socket requester = null;
 		int recvTimes = 0;
 		try {
-			requester = scontext.socket(ZMQ.REQ);
+			requester = context.socket(ZMQ.REQ);
 			requester.connect(proxyAddr);
-			requester.setReceiveTimeOut(rcvTimeOut * 1000);
-			requester.setSendTimeOut(sndTimeOut * 1000);
+			//requester.setReceiveTimeOut(rcvTimeOut * 1000);
+			//requester.setSendTimeOut(sndTimeOut * 1000);
 
-			requester.send(reqHeadByte, org.zeromq.ZMQ.SNDMORE);
-			requester.send(reqBodyByte, 0);
+			if (!requester.send(reqHeadByte, org.zeromq.ZMQ.SNDMORE))
+				throw new RuntimeException("请求交易头部未发送成功");
+			if (!requester.send(reqBodyByte, 0))
+				throw new RuntimeException("请求交易体未发送成功");
 			rspHeadByte = requester.recv(0);
 
 			org.jeecgframework.core.util.LogUtil.info("Response Head:[" + new String(rspHeadByte) + "]");
