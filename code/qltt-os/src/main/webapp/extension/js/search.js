@@ -33,7 +33,7 @@ $(document).ready(function() {
 						+ '<div class="search-head">'
 						+ resData[i].searchHead
 						+ '</div>'
-						+ '<div class="search-body"><a href="result.html">'
+						+ '<div class="search-body"><a href="' + contextPath + '/webapp/search/result.do">'
 						+ resData[i].searchBody
 						+ '</a></div>' + '</div>'
 				}

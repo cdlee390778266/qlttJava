@@ -19,6 +19,9 @@
 <script type="text/javascript" src="<c:url value='/extension/js/headerISroll.js' />"></script>
 <script type="text/javascript" src="<c:url value='/extension/js/footer.js' />"></script>
 <script type="text/javascript" src="<c:url value='/extension/js/common.js' />"></script>
+<script type="text/javascript">
+	var contextPath = '${pageContext.request.contextPath}';
+</script>
 <script type="text/javascript" src="<c:url value='/extension/js/search.js' />"></script>
 <title>指标查询</title>
 </head>
