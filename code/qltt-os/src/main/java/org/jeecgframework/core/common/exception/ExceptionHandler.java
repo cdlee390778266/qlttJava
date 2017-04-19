@@ -1,5 +1,7 @@
 package org.jeecgframework.core.common.exception;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,16 +19,31 @@ import org.springframework.web.servlet.ModelAndView;
  * 
  */
 @Component
-public class MyExceptionHandler implements HandlerExceptionResolver {
+public class ExceptionHandler implements HandlerExceptionResolver {
 
-	private static final Logger logger = Logger.getLogger(MyExceptionHandler.class);
+	private static final Logger logger = Logger.getLogger(ExceptionHandler.class);
 
 	public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) {
 		String exceptionMessage = ExceptionUtil.getExceptionMessage(ex);
-		logger.error(exceptionMessage);
+		logger.error(String.format("全局异常统一处理 - 异常信息: %s", exceptionMessage));
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("exceptionMessage", exceptionMessage);
 		model.put("ex", ex);
-		return new ModelAndView("common/error", model);
+		
+		if(!(request.getHeader("accept").indexOf("application/json") > -1 
+				|| (request.getHeader("X-Requested-With") != null && request.getHeader("X-Requested-With").indexOf("XMLHttpRequest") > -1))) {
+			
+			return new ModelAndView("common/error", model);
+		} else {
+			try {
+				PrintWriter out = response.getWriter();
+				out.print(ex.getMessage());
+				out.flush();
+				out.close();
+			} catch (IOException e) {
+				logger.error(e.getMessage());
+			}
+			return null;
+		}
 	}
 }

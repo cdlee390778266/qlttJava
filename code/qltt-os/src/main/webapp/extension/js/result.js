@@ -14,9 +14,13 @@ $(document).ready(function() {
 	}
 
 	var refreshData = function(url, $parent) {
+		var page = $parent.data('page');
+		var size = $parent.data('size');
+		
 		$.ajax({
 			url : url,
 			type : 'post',
+			data : {'page' : page, "size" : size},
 			success : function(resData) {
 				var html = '';
 				for ( var i in resData) {
@@ -45,9 +49,11 @@ $(document).ready(function() {
 				$('.load-more i').removeClass('active');
 				refreshFlag = true;
 
+				//分页页码加1
+				$parent.data('page', parseInt(page) + 1);
 			},
 			error : function(xhr, type) {
-				alert('获取数据失败!');
+				alert('获取数据失败！');
 			}
 		});
 	}

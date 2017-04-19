@@ -51,7 +51,7 @@ public class WechatAuthInterceptor implements HandlerInterceptor {
 		
 		AuthResultEntity user = (AuthResultEntity)request.getSession().getAttribute(Constants.LOGIN_USER_ACCOUNT);
 		if (user == null || StringUtils.isEmpty(user.getTtacct())) {
-			response.sendRedirect("../register/index.do");
+			response.sendRedirect("../register/home.do");
 			return false;
 		} else {
 			return true;

@@ -16,7 +16,7 @@ $(document).ready(function() {
 		var html = '';
 		$('#scroller li').each(function(index, val) {
 			var searchBoxId = 'search-box-' + index;
-			html += '<div class="search-box swiper-slide" id="' + searchBoxId + '" ></div>';
+			html += '<div class="search-box swiper-slide" data-group="' + $(this).data('group') + '" id="' + searchBoxId + '" ></div>';
 			scrollTopArr[searchBoxId] = 0;
 		});
 		$parent.append(html);
@@ -25,7 +25,9 @@ $(document).ready(function() {
 	var createHtml = function($parent) {
 		var html = '';
 		$.ajax({
-			url : '../../extension/data/search.json',
+			url : 'index.do',
+			data : {"tacgroup" : $parent.data("group")},
+			dataType : 'json',
 			type : 'post',
 			success : function(resData) {
 				for ( var i in resData) {
@@ -33,7 +35,7 @@ $(document).ready(function() {
 						+ '<div class="search-head">'
 						+ resData[i].searchHead
 						+ '</div>'
-						+ '<div class="search-body"><a href="' + contextPath + '/webapp/search/result.do">'
+						+ '<div class="search-body"><a href="' + contextPath + '/webapp/search/result.do?">'
 						+ resData[i].searchBody
 						+ '</a></div>' + '</div>'
 				}
@@ -41,8 +43,8 @@ $(document).ready(function() {
 				$parent.append(html);
 				loadingHide($('.qltt-toast'));
 			},
-			error : function(xhr, type) {
-				alert('获取数据失败!');
+			error : function(jqXHR, textStatus, errorThrown ) {
+				alert('获取数据失败！');
 			}
 		});
 
@@ -51,7 +53,7 @@ $(document).ready(function() {
 	var init = function() {
 		loadingShow($('.qltt-toast'));
 		createSearchBox($('.swiper-wrapper'));
-		createHtml($('#search-box-0'));
+		createHtml($('.search-box ').first());
 		searchSwiper = new Swiper(
 			'.swiper-container',
 			{

@@ -32,14 +32,14 @@ public class UserLoginController {
 	@Autowired
 	private IWechatCoreService wechatCoreService;
 	
-	@RequestMapping("index")
-	public ModelAndView index() {
+	@RequestMapping("home")
+	public ModelAndView home() {
 		logger.debug("进入用户登录首页");
 		return new ModelAndView("qianlong/logon");
 	}
 	
 	@RequestMapping("login")
-	public String login(HttpServletRequest request) {
+	public ModelAndView login(HttpServletRequest request) {
 		String code = request.getParameter("code");
 		String state = request.getParameter("state");
 		logger.debug(String.format("获取到的回调参数:code=[%s],state=[%s]", code, state));
@@ -72,15 +72,17 @@ public class UserLoginController {
 				//未找到注册信息，跳转到注册界面
 				if (authResult == null || StringUtils.isEmpty(authResult.getCn())) {
 					session.setAttribute("user.openid", oauthCallbackEntity.getOpenId());
-					return "redirect:/webapp/register/index.do";
+					return new ModelAndView("redirect:/webapp/register/home.do");
 				} else {
 					session.setAttribute(Constants.LOGIN_USER_ACCOUNT, authResult);
+					return new ModelAndView("redirect:/webapp/search/home.do");
 				}
+			} else {
+				return new ModelAndView("redirect:/webapp/register/home.do");
 			}
 		} else {
 			//非微信端访问
-			return "redirect:/webapp/register/index.do";
+			return new ModelAndView("redirect:/webapp/register/home.do");
 		}
-		return "qianlong/search";
 	}
 }

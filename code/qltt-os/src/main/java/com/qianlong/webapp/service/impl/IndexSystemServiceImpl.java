@@ -5,8 +5,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.qianlong.webapp.service.IIndexSystemService;
-import com.qlcd.qltt.body.prt.T02001002;
+import com.qlcd.qltt.body.pvt.T02001001;
+import com.qlcd.qltt.body.pvt.T02001002;
+import com.qlcd.qltt.body.pvt.T02001003;
+import com.qlcd.qltt.body.pvt.T02003001;
 import com.qlcd.util.ZMQProxyClient;
+import com.qlcd.qltt.body.BppBiz;
 
 @Service
 public class IndexSystemServiceImpl implements IIndexSystemService {
@@ -17,11 +21,41 @@ public class IndexSystemServiceImpl implements IIndexSystemService {
 	private ZMQProxyClient zmqProxyClient;
 
 	@Override
-	public Object queryIdxGroup() {
+	public T02001002._rsp queryIdxGroup() {
 		logger.debug("原生指标组清单查询");
-		T02001002._protacgroup.Builder builder = T02001002._protacgroup.newBuilder();
-		Object obj = zmqProxyClient.outBound("2001002", builder.build());
-		return obj;
+		T02001002._req.Builder builder = T02001002._req.newBuilder();
+		T02001002._rsp rsp = zmqProxyClient.outBound("2001002", builder.build());
+		return rsp;
 	}
 
+	@Override
+	public T02001003._rsp queryIdxByGroup(String tacGroup) {
+		logger.debug("指定原生指标组成员清单查询");
+		T02001003._req.Builder builder = T02001003._req.newBuilder();
+		builder.setTacgroup(tacGroup);
+		T02001003._rsp rsp = zmqProxyClient.outBound("2001003", builder.build());
+		return rsp;
+	}
+	
+	@Override
+	public T02001001._rsp queryAllIdx() {
+		logger.debug("原生指标清单查询");
+		T02001001._req.Builder builder = T02001001._req.newBuilder();
+		T02001001._rsp rsp = zmqProxyClient.outBound("2001001", builder.build());
+		return rsp;
+	}
+	
+	@Override
+	public T02003001._rsp queryTacDataPool(Integer start, Integer size, String tacTic, Integer tacPrm) {
+		logger.debug("最新实时行情指标数据池查询[分页]");
+		T02003001._req.Builder builder = T02003001._req.newBuilder();
+		builder.setTactic(tacTic);
+		builder.setTacprm(tacPrm);
+		BppBiz._page_req.Builder pageBuilder = BppBiz._page_req.newBuilder();
+		pageBuilder.setReqstart(start);
+		pageBuilder.setReqnum(size);
+		builder.setPgreq(pageBuilder.build());
+		T02003001._rsp rsp = zmqProxyClient.outBound("2003001", builder.build());
+		return rsp;
+	}
 }

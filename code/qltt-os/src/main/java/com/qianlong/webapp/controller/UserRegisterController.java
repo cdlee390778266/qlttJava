@@ -5,6 +5,7 @@ import java.util.Calendar;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,8 +31,8 @@ public class UserRegisterController {
 	@Autowired
 	private IUserServCoreService userServCoreService;
 
-	@RequestMapping("index")
-	public ModelAndView index(HttpServletRequest request) {
+	@RequestMapping("home")
+	public ModelAndView home(HttpServletRequest request) {
 		logger.debug("进入用户注册首页");
 		return new ModelAndView("qianlong/register");
 	}
@@ -68,6 +69,10 @@ public class UserRegisterController {
 		}
 
 		String openId = (String)session.getAttribute("user.openid");
+		if (StringUtils.isEmpty(openId)) {
+			throw new RuntimeException("微信账号不能为空！");
+		}
+		
 		session.removeAttribute("user.openid");
 		RegisterEntity regInfo = new RegisterEntity();
 		regInfo.setCn(phone);
@@ -85,7 +90,7 @@ public class UserRegisterController {
 		}
 		
 		session.setAttribute(Constants.LOGIN_USER_ACCOUNT, result);
-		return new ModelAndView("qianlong/search");
+		return new ModelAndView("redirect:/webapp/search/home.do");
 	}
 	
 	@RequestMapping("code")

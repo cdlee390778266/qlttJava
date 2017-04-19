@@ -30,11 +30,16 @@
 	<div id="header">
 		<div id="scroller">
 			<ul>
-				<li class="active">组合指标</li>
-				<li>实时指标</li>
-				<li>K线指标</li>
-				<li>K线指标</li>
-				<li>数据指标</li>
+				<c:forEach items="${idxGroups}" var="idxGroup" varStatus="status">
+					<c:choose>
+						<c:when test="${status.index == 0}">
+							<li data-group="${idxGroup.tacgroup}" class="active">${idxGroup.grpname}</li>
+						</c:when>
+						<c:otherwise>
+							<li>${idxGroup.grpname}</li>
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
 			</ul>
 		</div>
 	</div>
@@ -51,10 +56,10 @@
 
 	<!-- 页脚菜单 -->
 	<div class="footer">
-		<a href="" class="active"><i class="icon icon-searchd"></i><br><span>指标查询</span></a>
-		<a href=""><i class="icon icon-care"></i><br> <span>我的关注</span></a>
-		<a href=""><i class="icon icon-pool"></i><br> <span>选股池</span></a>
-		<a href=""><i class="icon icon-rmd"></i><br> <span>荐股池</span></a>
+		<a href="javascript:void(0);" class="active"><i class="icon icon-searchd"></i><br><span>指标查询</span></a>
+		<a href="javascript:void(0);"><i class="icon icon-care"></i><br><span>我的关注</span></a>
+		<a href="javascript:void(0);"><i class="icon icon-pool"></i><br><span>选股池</span></a>
+		<a href="javascript:void(0);"><i class="icon icon-rmd"></i><br><span>荐股池</span></a>
 	</div>
 </body>
 </html>

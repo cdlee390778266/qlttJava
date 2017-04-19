@@ -20,6 +20,8 @@ public class ZMQProxyClient {
 
 	private int sndTimeOut = 6;
 	
+	boolean validCRC = true;
+	
 	private ZMQ.Context context;
 	
 	public ZMQProxyClient() {
@@ -58,7 +60,16 @@ public class ZMQProxyClient {
 		this.sndTimeOut = sndTimeOut;
 	}
 
-	public Object outBound(String trdCode, Object requestBody) {
+	public boolean isValidCRC() {
+		return validCRC;
+	}
+
+	public void setValidCRC(boolean validCRC) {
+		this.validCRC = validCRC;
+	}
+
+	@SuppressWarnings("unchecked")
+	public <T> T outBound(String trdCode, Object requestBody) {
 		if (StringUtils.isBlank(trdCode))
 			throw new CommZMQException("交易码为空");
 
@@ -72,24 +83,18 @@ public class ZMQProxyClient {
 		byte[] reqBodyByte = null;
 		byte[] rspHeadByte = null;
 		byte[] rspBodyByte = null;
-		Object responBody = null;
+		T responBody = null;
 
 		// 生成请求头
 		Hpprot._req.Builder reqHeadBuilder = Hpprot._req.newBuilder();
 		reqHeadBuilder.setTrdcode(Integer.parseInt(trdCode));
-		//reqHeadBuilder.setReqno(ProtocolUtil.BuildTxSN());
-		//reqHeadBuilder.setReqsys(ProtocolUtil.getSystemNo());
-		//reqHeadBuilder.setReqnode(ProtocolUtil.getNodeNo());
-		
-		reqHeadBuilder.setReqno(0);
-		reqHeadBuilder.setReqsys(0);
-		reqHeadBuilder.setReqnode(0);
-		
-		reqHeadBuilder.setBodyclass(requestBody.getClass().getName());
+		reqHeadBuilder.setReqno(ProtocolUtil.BuildTxSN());
+		reqHeadBuilder.setReqsys(ProtocolUtil.getSystemNo());
+		reqHeadBuilder.setReqnode(ProtocolUtil.getNodeNo());
+		reqHeadBuilder.setBodyclass(requestBody.getClass().getName().replace("$_req", "._req"));
 
 		try {
-			Class<?> clazzs = Class.forName(requestBody.getClass().getName().replace("$_req", "._req"));
-			Method toByteArray = clazzs.getMethod("toByteArray");
+			Method toByteArray = requestBody.getClass().getMethod("toByteArray");
 			reqBodyByte = (byte[]) toByteArray.invoke(requestBody);
 		} catch (Exception e) {
 			throw new CommZMQException(e.getMessage());
@@ -107,8 +112,8 @@ public class ZMQProxyClient {
 		try {
 			requester = context.socket(ZMQ.REQ);
 			requester.connect(proxyAddr);
-			//requester.setReceiveTimeOut(rcvTimeOut * 1000);
-			//requester.setSendTimeOut(sndTimeOut * 1000);
+			requester.setReceiveTimeOut(rcvTimeOut * 1000);
+			requester.setSendTimeOut(sndTimeOut * 1000);
 
 			if (!requester.send(reqHeadByte, org.zeromq.ZMQ.SNDMORE))
 				throw new RuntimeException("请求交易头部未发送成功");
@@ -116,12 +121,8 @@ public class ZMQProxyClient {
 				throw new RuntimeException("请求交易体未发送成功");
 			rspHeadByte = requester.recv(0);
 
-			org.jeecgframework.core.util.LogUtil.info("Response Head:[" + new String(rspHeadByte) + "]");
-
 			while (requester.hasReceiveMore()) {
 				rspBodyByte = requester.recv(0);
-				if (rspBodyByte != null && rspBodyByte.length > 0)
-					org.jeecgframework.core.util.LogUtil.info("Response Body:[" + new String(rspBodyByte) + "]");
 				recvTimes ++;
 			}
 		} catch (Exception e) {
@@ -152,7 +153,7 @@ public class ZMQProxyClient {
 			throw new CommZMQException("请求流水号与响应流水号不一致");
 		}
 
-		if (!ProtocolUtil.checkCRC32(rspHead.getMac(), rspBodyByte)) {
+		if (validCRC && !ProtocolUtil.checkCRC32(rspHead.getMac(), rspBodyByte)) {
 			throw new CommZMQException("协议CRC校验错误");
 		}
 
@@ -182,7 +183,7 @@ public class ZMQProxyClient {
 		try {
 			Class<?> clazz = Class.forName(rspHead.getBodyclass().replace("._rsp", "$_rsp"));
 			Method parseFrom = clazz.getMethod("parseFrom", byte[].class);
-			responBody = parseFrom.invoke(clazz, rspBodyByte);
+			responBody = (T)parseFrom.invoke(null, rspBodyByte);
 		} catch (Exception e) {
 			throw new CommZMQException("响应报文体反序列号出现错误:" + e.getMessage());
 		}
