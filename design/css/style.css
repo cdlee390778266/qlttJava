@@ -269,22 +269,28 @@ a {
 .pool-add-menu .menu-box .menu-body {
   margin-top: 2rem;
   line-height: 3rem;
+  overflow: hidden;
 }
-.pool-add-menu .menu-box .menu-body span {
+.pool-add-menu .menu-box .menu-body > div {
   display: inline-block;
-  width: 76px;
+  width: 25%;
+  float: left;
+  overflow: hidden;
+  padding: 8px;
+}
+.pool-add-menu .menu-box .menu-body > div span {
+  display: block;
   height: 26px;
   line-height: 26px;
   text-align: center;
   border: 1px solid #dc3c38;
-  margin: 8px;
   position: relative;
 }
-.pool-add-menu .menu-box .menu-body span.active {
+.pool-add-menu .menu-box .menu-body > div span.active {
   background: #dc3c38;
   color: #fff;
 }
-.pool-add-menu .menu-box .menu-body span i {
+.pool-add-menu .menu-box .menu-body > div span i {
   display: block;
   width: 14px;
   height: 14px;
@@ -538,7 +544,7 @@ a {
   right: 0;
   text-align: center;
   display: none;
-  z-index: 999;
+  z-index: 9999;
   background-color: transparent;
   color: #fff;
 }
@@ -1435,6 +1441,9 @@ a {
 .pool-container {
   padding-top: 9rem;
   padding-bottom: 13rem;
+}
+.pool-container .pool-main .pool-item:nth-child(2n) {
+  background: #FAFAFA;
 }
 .pool-container .pool-item {
   display: -webkit-box;
