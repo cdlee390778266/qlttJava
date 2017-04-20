@@ -109,14 +109,14 @@ public final class T03001001 {
         getEvdetailBytes();
 
     /**
-     * <code>string remark = 12;</code>
+     * <code>string remarks = 12;</code>
      */
-    java.lang.String getRemark();
+    java.lang.String getRemarks();
     /**
-     * <code>string remark = 12;</code>
+     * <code>string remarks = 12;</code>
      */
     com.google.protobuf.ByteString
-        getRemarkBytes();
+        getRemarksBytes();
   }
   /**
    * Protobuf type {@code com.qlcd.qltt.body.pvt.T03001001._eventpush}
@@ -141,7 +141,7 @@ public final class T03001001 {
       title1_ = "";
       title2_ = "";
       evdetail_ = "";
-      remark_ = "";
+      remarks_ = "";
     }
 
     @java.lang.Override
@@ -234,7 +234,7 @@ public final class T03001001 {
             case 98: {
               java.lang.String s = input.readStringRequireUtf8();
 
-              remark_ = s;
+              remarks_ = s;
               break;
             }
           }
@@ -534,34 +534,34 @@ public final class T03001001 {
       }
     }
 
-    public static final int REMARK_FIELD_NUMBER = 12;
-    private volatile java.lang.Object remark_;
+    public static final int REMARKS_FIELD_NUMBER = 12;
+    private volatile java.lang.Object remarks_;
     /**
-     * <code>string remark = 12;</code>
+     * <code>string remarks = 12;</code>
      */
-    public java.lang.String getRemark() {
-      java.lang.Object ref = remark_;
+    public java.lang.String getRemarks() {
+      java.lang.Object ref = remarks_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        remark_ = s;
+        remarks_ = s;
         return s;
       }
     }
     /**
-     * <code>string remark = 12;</code>
+     * <code>string remarks = 12;</code>
      */
     public com.google.protobuf.ByteString
-        getRemarkBytes() {
-      java.lang.Object ref = remark_;
+        getRemarksBytes() {
+      java.lang.Object ref = remarks_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        remark_ = b;
+        remarks_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -613,8 +613,8 @@ public final class T03001001 {
       if (!getEvdetailBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 11, evdetail_);
       }
-      if (!getRemarkBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 12, remark_);
+      if (!getRemarksBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 12, remarks_);
       }
     }
 
@@ -660,8 +660,8 @@ public final class T03001001 {
       if (!getEvdetailBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(11, evdetail_);
       }
-      if (!getRemarkBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(12, remark_);
+      if (!getRemarksBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(12, remarks_);
       }
       memoizedSize = size;
       return size;
@@ -701,8 +701,8 @@ public final class T03001001 {
           .equals(other.getTitle2());
       result = result && getEvdetail()
           .equals(other.getEvdetail());
-      result = result && getRemark()
-          .equals(other.getRemark());
+      result = result && getRemarks()
+          .equals(other.getRemarks());
       return result;
     }
 
@@ -735,8 +735,8 @@ public final class T03001001 {
       hash = (53 * hash) + getTitle2().hashCode();
       hash = (37 * hash) + EVDETAIL_FIELD_NUMBER;
       hash = (53 * hash) + getEvdetail().hashCode();
-      hash = (37 * hash) + REMARK_FIELD_NUMBER;
-      hash = (53 * hash) + getRemark().hashCode();
+      hash = (37 * hash) + REMARKS_FIELD_NUMBER;
+      hash = (53 * hash) + getRemarks().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -877,7 +877,7 @@ public final class T03001001 {
 
         evdetail_ = "";
 
-        remark_ = "";
+        remarks_ = "";
 
         return this;
       }
@@ -912,7 +912,7 @@ public final class T03001001 {
         result.title1_ = title1_;
         result.title2_ = title2_;
         result.evdetail_ = evdetail_;
-        result.remark_ = remark_;
+        result.remarks_ = remarks_;
         onBuilt();
         return result;
       }
@@ -994,8 +994,8 @@ public final class T03001001 {
           evdetail_ = other.evdetail_;
           onChanged();
         }
-        if (!other.getRemark().isEmpty()) {
-          remark_ = other.remark_;
+        if (!other.getRemarks().isEmpty()) {
+          remarks_ = other.remarks_;
           onChanged();
         }
         onChanged();
@@ -1611,71 +1611,71 @@ public final class T03001001 {
         return this;
       }
 
-      private java.lang.Object remark_ = "";
+      private java.lang.Object remarks_ = "";
       /**
-       * <code>string remark = 12;</code>
+       * <code>string remarks = 12;</code>
        */
-      public java.lang.String getRemark() {
-        java.lang.Object ref = remark_;
+      public java.lang.String getRemarks() {
+        java.lang.Object ref = remarks_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          remark_ = s;
+          remarks_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string remark = 12;</code>
+       * <code>string remarks = 12;</code>
        */
       public com.google.protobuf.ByteString
-          getRemarkBytes() {
-        java.lang.Object ref = remark_;
+          getRemarksBytes() {
+        java.lang.Object ref = remarks_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          remark_ = b;
+          remarks_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>string remark = 12;</code>
+       * <code>string remarks = 12;</code>
        */
-      public Builder setRemark(
+      public Builder setRemarks(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
   
-        remark_ = value;
+        remarks_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string remark = 12;</code>
+       * <code>string remarks = 12;</code>
        */
-      public Builder clearRemark() {
+      public Builder clearRemarks() {
         
-        remark_ = getDefaultInstance().getRemark();
+        remarks_ = getDefaultInstance().getRemarks();
         onChanged();
         return this;
       }
       /**
-       * <code>string remark = 12;</code>
+       * <code>string remarks = 12;</code>
        */
-      public Builder setRemarkBytes(
+      public Builder setRemarksBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
         
-        remark_ = value;
+        remarks_ = value;
         onChanged();
         return this;
       }
@@ -4486,23 +4486,23 @@ public final class T03001001 {
     java.lang.String[] descriptorData = {
       "\n\030body/pvt/T03001001.proto\022 com.qlcd.qlt" +
       "t.body.pvt.T03001001\032\017body/Bpem.proto\032\021b" +
-      "ody/BppSys.proto\"\331\001\n\n_eventpush\022\021\n\tevent" +
+      "ody/BppSys.proto\"\332\001\n\n_eventpush\022\021\n\tevent" +
       "date\030\001 \001(\t\022\017\n\007eventno\030\002 \001(\005\022\021\n\teventtype" +
       "\030\003 \001(\005\022\017\n\007occtime\030\004 \001(\t\022\020\n\010mxdlyval\030\005 \001(" +
       "\005\022\016\n\006tactic\030\006 \001(\t\022\017\n\007tacname\030\007 \001(\t\022\016\n\006ta" +
       "cprm\030\010 \001(\005\022\016\n\006title1\030\t \001(\t\022\016\n\006title2\030\n \001" +
-      "(\t\022\020\n\010evdetail\030\013 \001(\t\022\016\n\006remark\030\014 \001(\t\"\310\001\n" +
-      "\013_evacctpush\022\016\n\006ttacct\030\001 \001(\t\022\n\n\002CN\030\002 \001(\t" +
-      "\022\017\n\007summary\030\003 \001(\t\022\017\n\007content\030\004 \001(\t\0225\n\007sv",
-      "cchnl\030\005 \001(\0162$.com.qlcd.qltt.body.Bpem.PE" +
-      "B_SVCCHNL\022\r\n\005devno\030\006 \001(\t\0225\n\007devtype\030\007 \001(" +
-      "\0162$.com.qlcd.qltt.body.Bpem.PEB_DEVTYPE\"" +
-      "\200\001\n\004_req\0228\n\002ep\030\001 \001(\0132,.com.qlcd.qltt.bod" +
-      "y.pvt.T03001001._eventpush\022>\n\007eaplist\030\002 " +
-      "\003(\0132-.com.qlcd.qltt.body.pvt.T03001001._" +
-      "evacctpush\"=\n\004_rsp\0225\n\003rsh\030\001 \001(\0132(.com.ql" +
-      "cd.qltt.body.BppSys._rsp_succheadB\030\n\026com" +
-      ".qlcd.qltt.body.pvtb\006proto3"
+      "(\t\022\020\n\010evdetail\030\013 \001(\t\022\017\n\007remarks\030\014 \001(\t\"\310\001" +
+      "\n\013_evacctpush\022\016\n\006ttacct\030\001 \001(\t\022\n\n\002CN\030\002 \001(" +
+      "\t\022\017\n\007summary\030\003 \001(\t\022\017\n\007content\030\004 \001(\t\0225\n\007s",
+      "vcchnl\030\005 \001(\0162$.com.qlcd.qltt.body.Bpem.P" +
+      "EB_SVCCHNL\022\r\n\005devno\030\006 \001(\t\0225\n\007devtype\030\007 \001" +
+      "(\0162$.com.qlcd.qltt.body.Bpem.PEB_DEVTYPE" +
+      "\"\200\001\n\004_req\0228\n\002ep\030\001 \001(\0132,.com.qlcd.qltt.bo" +
+      "dy.pvt.T03001001._eventpush\022>\n\007eaplist\030\002" +
+      " \003(\0132-.com.qlcd.qltt.body.pvt.T03001001." +
+      "_evacctpush\"=\n\004_rsp\0225\n\003rsh\030\001 \001(\0132(.com.q" +
+      "lcd.qltt.body.BppSys._rsp_succheadB\030\n\026co" +
+      "m.qlcd.qltt.body.pvtb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -4523,7 +4523,7 @@ public final class T03001001 {
     internal_static_com_qlcd_qltt_body_pvt_T03001001__eventpush_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_qlcd_qltt_body_pvt_T03001001__eventpush_descriptor,
-        new java.lang.String[] { "Eventdate", "Eventno", "Eventtype", "Occtime", "Mxdlyval", "Tactic", "Tacname", "Tacprm", "Title1", "Title2", "Evdetail", "Remark", });
+        new java.lang.String[] { "Eventdate", "Eventno", "Eventtype", "Occtime", "Mxdlyval", "Tactic", "Tacname", "Tacprm", "Title1", "Title2", "Evdetail", "Remarks", });
     internal_static_com_qlcd_qltt_body_pvt_T03001001__evacctpush_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_com_qlcd_qltt_body_pvt_T03001001__evacctpush_fieldAccessorTable = new
