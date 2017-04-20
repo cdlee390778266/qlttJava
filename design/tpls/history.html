@@ -15,60 +15,31 @@
   <body>
 
     <!-- 头部菜单 -->
-    <div id="header" class="zbset">
-      <div id="scroller">
-        <ul>
-              <li class="active" >组合指标</li>
-              <li>实时指标</li>
-              <li>K线指标</li>
-              <li>K线指标</li>
-              <li>数据指标</li>
-          </ul>
-      </div>
+    <div class="history-header">
+        <form action="">
+            <input type="text" placeholder="输入股票或者股票代码" />
+        </form>
+        <div id="header" >
+          <div id="scroller">
+            <ul>
+                <li class="active" >热门推荐</li>
+                <li>我的荐股</li>
+                <li>大咖荐股</li>
+                <li tplType="history">历史成功率</li>
+            </ul>
+          </div>
+        </div>
+        <div class="history-type">
+            <div>今日荐股</div>
+            <div>历史荐股</div>
+        </div>
     </div>
     
     <!-- 页面主体 -->
-    <div class="page-main " id="diy-container">
-      <div id="diy-wrapper">
-      </div>
-      <div class="tag-check tag ">
-          <div class="check-txt ">我的组合</div>
-          <div class="check-tags">
-              <span><i></i><strong>红三兵</strong></span>
-              <span><i></i><strong>红三兵</strong></span>
-              <span><i></i><strong>红三兵</strong></span>
-              <span><i></i><strong>红三兵</strong></span>
-              <span><i></i><strong>红三兵</strong></span>
-          </div>
-          <div class="check-btn">
-              <a href="javascript:void(0);"><strong ng-bind="btnCare" class="">关注组合指标</strong></a>
-              <a href="javascript:void(0);"><strong ng-bind="btnClc" class="">收藏组合指标</strong></a>
-          </div>
-      </div>
-
-      <div class="srceen ">
-          <div class="srceen-txt">
-              <span>根据您的指标组合共计筛选出</span><span class="red ">120</span><span >支股票</span>
-          </div>
-          
-          <div class="screen-main">
-             <div class="screen-item ">
-                 <div class="item-col-1">
-                     <span  class="">上海电影</span>
-                     <span class="blue">328370</span>
-                 </div>
-                 <div class="item-col-2 ">03-01 12:35</div>
-                 <div class="item-col-3 ">潜力股</div>
-                 <div class="item-col-4">
-                     <a href="javascript:void(0);" class="recommend"></a>
-                     <a href="javascript:void(0);" class="choose"></a>
-                 </div>
-             </div>
-         </div>
-         <div class="load-more">
-              <i></i><span>加载更多</span>
-          </div>
-        </div> 
+    <div class="page-main " id="history-container">
+        <div  id="history-wrapper" class="history-wrapper">
+                
+        </div>
     </div>
     
     <!-- 加载中 -->
@@ -78,12 +49,12 @@
     </div>
 
     <!-- 页脚菜单 -->
-   <!-- <div class="footer">
-      <a href="" class="active">
+   <div class="footer">
+      <a href="" >
         <i class="icon icon-searchd "></i><br>
         <span >指标查询</span>
       </a>
-      <a href="">
+      <a href="" class="active">
         <i class="icon icon-care"></i><br>
         <span  >我的关注</span>
       </a>
@@ -93,10 +64,10 @@
       </a>
       <a href="">
         <i class="icon icon-rmd"></i><br>
-        <span  >荐股池</span>
+        <span >荐股池</span>
       </a>
     </div>
-    -->
+   
 
     <!-- 荐股池弹窗 -->
     <div class="dialog animated" id="recommend">
@@ -147,9 +118,8 @@
     <script src="../js/swiper.min.js"></script>
     <script src="../js/zepto.touch.js"></script>
     <script type="text/javascript" src="../js/iscroll.js" ></script>
-    <script src="../js/headerISroll.js"></script>
     <script src="../js/swiper.animate1.0.2.min.js"></script>
     <script src="../js/common.js"></script>
-    <script src="../js/diy.js"></script>
+    <script src="../js/history.js"></script>
   </body>
 </html>

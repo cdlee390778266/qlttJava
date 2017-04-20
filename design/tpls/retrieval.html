@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html >
+<html lang="zh-CN" ng-app="qlttApp">
+  <head>
+  <meta charset="utf-8">
+  <meta name="referrer" content="always">
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  
+  <link rel="stylesheet" href="../css/swiper.min.css" />
+  <link rel="stylesheet" href="../css/animate.min.css" />
+  <link href="../css/style.css" rel="stylesheet">
+  
+  <title>股票搜索</title>
+  </head>
+  <body style="background:#f0f0f0;">
+    
+
+    <form action="" class="retrieval-form">
+        <input type="text" placeholder="在此搜索股票代码/名称" />
+    </form>
+    <div class="retrieval">
+        <div class="retrieval-item">
+            <div class="retrievalItemL"><span>上海电影</span>323870</div>
+            <div class="retrievalItemR"><span class="addPoolDialog">加入选股池</span></div>
+        </div>
+        <div class="retrieval-item">
+            <div class="retrievalItemL"><span>上海电影</span>323870</div>
+            <div class="retrievalItemR"><span class="addPoolDialog">加入选股池</span></div>
+        </div>
+        <div class="retrieval-item">
+            <div class="retrievalItemL"><span>上海电影</span>323870</div>
+            <div class="retrievalItemR"><span class="addPoolDialog">加入选股池</span></div>
+        </div>
+        <div class="retrieval-item">
+            <div class="retrievalItemL"><span>上海电影</span>323870</div>
+            <div class="retrievalItemR"><span class="addPoolDialog">加入选股池</span></div>
+        </div>
+    </div> 
+   
+   <!-- 加载中 -->
+    <div class="qltt-toast">
+        <i class="qltt-loading qltt-icon_toast"></i>
+        <!--<p class="qltt-toast_content">数据加载中</p>-->
+    </div>
+    
+    <!-- 弹窗 -->
+    <div class="dialog animated" id="addPoolDialog">
+        <div class="dialog-mask"></div>
+        <div class="dialog-box dialog-box-bg">
+            <div class="dialog-head">加入选股池</div>
+            <div class="dialog-body">
+                <div class="select-box">
+                    <div class="select-mask">选股池A</div>
+                    <select name="" id="addPool">
+                        <option value="选股池A">选股池A</option>
+                        <option value="选股池B">选股池B</option>
+                        <option value="选股池C">选股池C</option>
+                        <option value="选股池D">选股池D</option>
+                        <option value="选股池E">选股池E</option>
+                        <option value="选股池F">选股池F</option>
+                        <option value="选股池G">选股池G</option>
+                    </select>
+                </div>
+            </div>
+            <div class="dialog-foot">
+                <div class="dialog-foot-right">
+                    <span class="dialog-btn-close">取消</span>
+                    <span class="dialog-btn-confirm">确定</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/zepto.min.js"></script>
+    <script src="../js/zepto.touch.js"></script>
+    <script src="../js/common.js"></script>
+    <script src="../js/retrieval.js"></script>
+  </body>
+</html>
