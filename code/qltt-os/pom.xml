@@ -913,8 +913,8 @@
 				<database.name>ttwechat</database.name>
 				<zmqproxy.valid.crc>false</zmqproxy.valid.crc>
 				<zmqproxy.ip>127.0.0.1</zmqproxy.ip>
-				<zmqproxy.rsp.port>7702</zmqproxy.rsp.port>
-				<zmqproxy.req.port>7703</zmqproxy.req.port>
+				<zmqproxy.rsp.port>9143</zmqproxy.rsp.port>
+				<zmqproxy.req.port>9141</zmqproxy.req.port>
 			</properties>
 		</profile>
 	</profiles>
