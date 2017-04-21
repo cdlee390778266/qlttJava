@@ -607,7 +607,7 @@ a {
   left: 0;
   right: 0;
   background-color: #FAFAFA;
-  padding-bottom: 5.4rem;
+  padding-bottom: 14.4rem;
 }
 .search .search-item {
   padding-bottom: 10px;
@@ -1543,7 +1543,8 @@ a {
 .pool-container .pool-item .poolItem-td span.poolItem-icon-cancle {
   background-position: -144px -102px;
 }
-.pool-container .pool-empty {
+
+.pool-empty {
   padding-top: 66px;
   text-align: center;
 }
@@ -1554,6 +1555,7 @@ a {
   bottom: 0;
   left: 0;
   right: 0;
+  z-index: 999;
 }
 .pool-footer .pFooter-btn {
   padding: 10px;
@@ -1579,6 +1581,17 @@ a {
 /******   care  ******/
 .care {
   position: static;
+  min-height: 100%;
+}
+.care .pool-empty {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 11rem;
+  height: 17rem;
+  margin-left: -5.5rem;
+  margin-top: -8.5rem;
+  padding-top: 0px;
 }
 
 /******   retrieval  ******/
@@ -1914,6 +1927,10 @@ a {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
+}
+
+.history-search .history-wrapper {
+  margin-top: 5rem;
 }
 
 /******   error  ******/

@@ -135,6 +135,8 @@ a{
 .red{
   color:$red;
 }
+
+
 /******   header   ******/
 #header {
     position: fixed;
@@ -589,7 +591,7 @@ a{
     left: 0;
     right: 0;
     background-color: #FAFAFA;
-    padding-bottom: 5.4rem;
+    padding-bottom: 14.4rem;
     .search-item{
         padding-bottom: 10px;
         margin-bottom: 5px;
@@ -1482,13 +1484,12 @@ a{
             
         }
     }
-    .pool-empty{
-        padding-top: 66px;
-        text-align: center;
-    }
 }
 
-
+.pool-empty{
+    padding-top: 66px;
+    text-align: center;
+}
 
 .pool-footer{
     position:fixed;
@@ -1496,6 +1497,7 @@ a{
     bottom:0;
     left:0;
     right:0;
+    z-index: 999;
     .pFooter-btn{
         padding:10px;
         span{
@@ -1521,6 +1523,17 @@ a{
 /******   care  ******/
 .care{
     position:static;
+    min-height: 100%;
+    .pool-empty{
+        position:absolute;
+        top:50%;
+        left:50%;
+        width:11rem;
+        height:17rem;
+        margin-left: -5.5rem;
+        margin-top: -8.5rem;
+        padding-top: 0px;
+    }
 }
 
 /******   retrieval  ******/
@@ -1828,6 +1841,10 @@ a{
     }
     
 
+}
+
+.history-search .history-wrapper{
+    margin-top: 5rem;
 }
 
 /******   error  ******/

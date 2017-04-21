@@ -1,7 +1,7 @@
 /* 
 * @Author: lee
 * @Date:   2017-04-07 17:02:56
-* @Last Modified time: 2017-04-19 09:55:09
+* @Last Modified time: 2017-04-21 15:52:11
 */
 
 
@@ -67,6 +67,11 @@ $(document).ready(function(){
             onSlideChangeStart: function(){
                 
                 refreshScrollTop('search-box-'+searchSwiper.previousIndex,'search-box-'+searchSwiper.activeIndex);
+                if(searchSwiper.activeIndex == 0){
+                    $('.pFooter-btn').show();
+                }else{
+                    $('.pFooter-btn').hide();
+                }
                 if($('#search-box-'+ searchSwiper.activeIndex).find('.search-item ').length<=0){
                     loadingShow($('.qltt-toast'));
                     createHtml($('#search-box-'+ searchSwiper.activeIndex));

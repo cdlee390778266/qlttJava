@@ -1,7 +1,7 @@
 /* 
 * @Author: lee
 * @Date:   2017-04-07 15:15:54
-* @Last Modified time: 2017-04-12 09:34:42
+* @Last Modified time: 2017-04-21 14:38:46
 */
 
 $(document).ready(function(){
@@ -52,6 +52,9 @@ $(document).ready(function(){
 
     $('.login').submit(function(){
 
+        location.href = 'tpls/zcsusucucess.html';
+        return false;
+
         if( !checkMobile($('#phone')) ){
 
             $errorEle.find('span').text('输入的手机号码错误！');
@@ -69,8 +72,8 @@ $(document).ready(function(){
             return false;
         }
 
-        location.href = 'tpls/search.html';
-        return false;
+        
+        
 
     });
 

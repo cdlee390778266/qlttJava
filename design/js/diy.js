@@ -1,7 +1,7 @@
 /* 
 * @Author: lee
 * @Date:   2017-04-07 14:10:42
-* @Last Modified time: 2017-04-20 16:12:59
+* @Last Modified time: 2017-04-21 10:40:40
 */
 
 $(function(){
@@ -87,6 +87,7 @@ $(function(){
             type: 'post',
             success: function(resData){
                     var html = '';
+                    
                     for(var i in resData){
                         html += '<div class="screen-item"  >'
                              +      '<div class="item-col-1">' 
@@ -109,6 +110,7 @@ $(function(){
             },
             error: function(xhr, type){
                 alert('获取数据失败!');
+                
             }
         })
         

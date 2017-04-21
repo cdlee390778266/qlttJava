@@ -17,15 +17,32 @@
 
        </div>
         <span>恭喜您，手机验证成功
-            <strong>5s</strong>后自动 返回初始页面.</span>
+            <strong id="time"></strong>后自动 返回初始页面.</span>
        <button>返回初始页</button>
     </div>
 
     <script src="../js/zepto.min.js"></script>
-    <script src="../js/swiper.min.js"></script>
     <script src="../js/zepto.touch.js"></script>
-    <script type="text/javascript" src="../js/iscroll.js" ></script>
-    <script src="../js/headerISroll.js"></script>
-    <script src="../js/diy.js"></script>
+    <script>
+        $(function(){
+            var time = 5;
+            $('#time').text(time+'s');
+
+            setInterval(function(){
+              time--;
+              if(time>=0){
+                $('#time').text(time+'s');
+              }else{
+                location.href = 'search.html';
+              }
+            }, 1000);
+
+            $('button').tap(function(){
+                location.href = 'search.html';
+            })
+
+        })
+    </script>
+    
   </body>
 </html>
