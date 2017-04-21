@@ -1,24 +1,17 @@
 /* 
 * @Author: lee
 * @Date:   2017-04-07 14:10:42
-* @Last Modified time: 2017-04-13 16:26:45
+* @Last Modified time: 2017-04-20 16:12:59
 */
 
 $(function(){
 
-    var diySwiper ;
-    var scrollTopArr = {};
-
-    var refreshScrollTop = function(prevKey,currentKey){
-        scrollTopArr[prevKey] = getScrollTop(); 
-        scrollTop(scrollTopArr[currentKey]);
-    }
+    
     var createSearchBox = function($parent){
         var html = '';
         $('#scroller li').each(function(index, val) {
             var searchBoxId = 'diy-main-'+ index;
-            html += '<div class="diy-main swiper-slide" id="' + searchBoxId + '" ></div>';
-            scrollTopArr[searchBoxId] = 0;
+            html += '<div class="diy-main animated" id="' + searchBoxId + '" ></div>';
         });
         $parent.append(html);
     }
@@ -63,90 +56,14 @@ $(function(){
              +       '<div class="swiper-mes" id="' + paginationId + '"></div>'
              +    '</div>'
   
-        html += '<div class="tag-check tag ">'
-             +     '<div class="check-txt ">我的组合</div>'
-             +     '<div class="check-tags">'
-             +         '<span><i></i><strong>红三兵</strong></span>'
-             +         '<span><i></i><strong>红三兵</strong></span>'
-             +         '<span><i></i><strong>红三兵</strong></span>'
-             +         '<span><i></i><strong>红三兵</strong></span>'
-             +         '<span><i></i><strong>红三兵</strong></span>'
-             +     '</div>'
-             +     '<div class="check-btn">'
-             +         '<a href="javascript:void(0);"><strong ng-bind="btnCare" class="">关注组合指标</strong></a>'
-             +         '<a href="javascript:void(0);"><strong ng-bind="btnClc" class="">收藏组合指标</strong></a>'
-             +     '</div>'
-             + '</div>'
-
-        html += '<div class="srceen ">'
-             +     '<div class="srceen-txt">'
-             +        ' <span>根据您的指标组合共计筛选出</span><span class="red ">120</span><span >支股票</span>'
-             +     '</div>'
-             +     '<div class="screen-main">'
-             +         '<div class="screen-item ">'
-             +             '<div class="item-col-1">'
-             +                 '<span  class="">上海电影</span>'
-             +                 '<span class="blue">328370</span>'
-             +             '</div>'
-             +             '<div class="item-col-2 ">03-01 12:35</div>'
-             +             '<div class="item-col-3 ">潜力股</div>'
-             +             '<div class="item-col-4">'
-             +                 '<a href="javascript:void(0);" class="recommend"></a>'
-             +                 '<a href="javascript:void(0);" class="choose"></a>'
-             +             '</div>'
-             +         '</div>'
-             +     '</div>'
-             +    '<div class="screen-main">'
-            +         '<div class="screen-item ">'
-            +             '<div class="item-col-1">'
-            +                 '<span  class="">上海电影</span>'
-            +                 '<span class="blue">328370</span>'
-            +             '</div>'
-            +             '<div class="item-col-2 ">03-01 12:35</div>'
-            +             '<div class="item-col-3 ">潜力股</div>'
-            +             '<div class="item-col-4">'
-            +                 '<a href="javascript:void(0);" class="recommend"></a>'
-            +                 '<a href="javascript:void(0);" class="choose"></a>'
-            +             '</div>'
-            +         '</div>'
-            +     '</div>'
-            +      '<div class="screen-main">'
-            +         '<div class="screen-item ">'
-            +             '<div class="item-col-1">'
-            +                 '<span  class="">上海电影</span>'
-            +                 '<span class="blue">328370</span>'
-            +             '</div>'
-            +             '<div class="item-col-2 ">03-01 12:35</div>'
-            +             '<div class="item-col-3 ">潜力股</div>'
-            +             '<div class="item-col-4">'
-            +                 '<a href="javascript:void(0);" class="recommend"></a>'
-            +                 '<a href="javascript:void(0);" class="choose"></a>'
-            +             '</div>'
-            +         '</div>'
-            +     '</div>'
-            +      '<div class="screen-main">'
-            +         '<div class="screen-item ">'
-            +             '<div class="item-col-1">'
-            +                 '<span  class="">上海电影</span>'
-            +                 '<span class="blue">328370</span>'
-            +             '</div>'
-            +             '<div class="item-col-2 ">03-01 12:35</div>'
-            +             '<div class="item-col-3 ">潜力股</div>'
-            +             '<div class="item-col-4">'
-            +                 '<a href="javascript:void(0);" class="recommend"></a>'
-            +                 '<a href="javascript:void(0);" class="choose"></a>'
-            +             '</div>'
-            +         '</div>'
-            +     '</div>'
-            +     '<div class="load-more">'
-             +         '<i></i><span>加载更多</span>'
-             +     '</div>'
-             +   '</div> '
 
         html += '</div>';
 
         $parent.append(html);
+        $('.diy-main').removeClass('fadeIn').addClass('fadeOut').css('display','none');
+        $parent.removeClass('fadeOut').css('display','block').addClass('fadeIn');
         loadingHide($('.qltt-toast'));
+
         
         new Swiper('#'+wrapperId, {
             pagination: '#'+paginationId,
@@ -188,7 +105,6 @@ $(function(){
                     $parent.append(html);
                     $('.load-more i').removeClass('active');
                     loadFlag = true; 
-                    diySwiper.update();
 
             },
             error: function(xhr, type){
@@ -214,32 +130,6 @@ $(function(){
         loadingShow($('.qltt-toast'));
         createSearchBox($('#diy-wrapper'));
         createHtml('diy-main-0');
-        diySwiper = new Swiper('#diy-container',{
-            spaceBetween: 30,
-            observer:true,
-            autoHeight: true, //高度随内容变化
-            onInit: function(swiper){ 
-                swiperAnimateCache(swiper); //隐藏动画元素 
-                swiperAnimate(swiper); //初始化完成开始动画
-            }, 
-            onSlideChangeStart: function(){
-                
-                refreshScrollTop('diy-main-'+diySwiper.previousIndex,'diy-main-'+diySwiper.activeIndex);
-                if($('#diy-main-'+ diySwiper.activeIndex).find('.diy-box').length<=0){
-                    loadingShow($('.qltt-toast'));
-                    createHtml('diy-main-'+ diySwiper.activeIndex);
-                }
-
-                headIScroll.scrollToElement($('#header li').get(diySwiper.activeIndex),30);
-
-            },
-            onSlideChangeEnd: function(swiper){
-                $('#header li').removeClass('active');
-                $('#header li').eq(diySwiper.activeIndex).addClass('active');
-                swiperAnimate(swiper); //每个slide切换结束时也运行当前slide动画
-                diySwiper.update();
-            }
-        });
 
     }
 
@@ -248,13 +138,18 @@ $(function(){
 
     $('#header').delegate('li', 'tap', function(event) {
 
+        if($(this).hasClass('active')) return;
         var searchBoxId = 'diy-main-'+$(this).index();
-
         $('#header li').removeClass('active');
         $(this).addClass('active');
-        
-        diySwiper.slideTo($(this).index());
-        
+
+        if(!$('#'+searchBoxId).text()){
+            createHtml(searchBoxId);
+        }else{
+            $('.diy-main').removeClass('fadeIn').addClass('fadeOut').css('display','none');
+            $('#'+searchBoxId).removeClass('fadeOut').css('display','block').addClass('fadeIn');
+        }
+         
     });
 
     var loadFlag = true;
