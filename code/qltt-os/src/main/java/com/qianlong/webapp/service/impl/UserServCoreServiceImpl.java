@@ -86,8 +86,10 @@ public class UserServCoreServiceImpl extends CommonServiceImpl implements IUserS
 			throw new HttpRequestException("微信授权登录时由于网络原因导致失败", e);
 		}
 		
+		logger.debug(String.format("微信授权登录 - [errorCode = %s] [errorMsg = %s]", content.getMessage().getErrorCode(), content.getMessage().getErrorMsg()));
+		
 		if (content.getMessage() != null && !Constants.USER_SERV_CODE_OK.equals(content.getMessage().getErrorCode()))
-			throw new HttpBusinessException(content.getMessage().getErrorMsg());
+			throw new HttpBusinessException(String.format("微信授权登录错误: %s", content.getMessage().getErrorMsg()));
 		
 		return content.getContent();
 	}
@@ -108,8 +110,11 @@ public class UserServCoreServiceImpl extends CommonServiceImpl implements IUserS
 			throw new HttpRequestException("开通用户账号时由于网络原因导致失败", e);
 		}
 		
+		logger.debug(String.format("开通用户账号 - [errorCode = %s] [errorMsg = %s]", content.getMessage().getErrorCode(), content.getMessage().getErrorMsg()));
+		logger.debug(String.format("开通用户账号 - [手机号码: %s] [推推账号: %s]", content.getContent().getCn(), content.getContent().getTtacct()));
+		
 		if (content.getMessage() != null && !Constants.USER_SERV_CODE_OK.equals(content.getMessage().getErrorCode()))
-			throw new HttpBusinessException(content.getMessage().getErrorMsg());
+			throw new HttpBusinessException(String.format("开通用户账号错误: %s", content.getMessage().getErrorMsg()));
 		
 		return content.getContent();
 	}

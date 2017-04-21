@@ -64,7 +64,12 @@
 		<property name="dbType" value="${jdbc.dbType}" />
 	</bean>
 	<!-- 异常处理类 -->
-	<bean id="exceptionHandler" class="org.jeecgframework.core.common.exception.ExceptionHandler" />
+	<bean id="exceptionHandler" class="org.jeecgframework.core.common.exception.ExceptionHandler">
+		<property name="matcher">
+			<bean class="org.springframework.util.AntPathMatcher" />
+		</property>
+		<property name="mobilePath" value="/webapp/**" />
+	</bean>
 	<!-- 拦截器 -->
 	<mvc:interceptors>
 		<mvc:interceptor>

@@ -37,7 +37,7 @@ $(document).ready(function() {
 							+ '<div class="search-head">'
 							+ members[i].tacname
 							+ '</div>'
-							+ '<div class="search-body"><a href="' + contextPath + '/webapp/search/result.do?tactic=' + members[i].tactic + '">'
+							+ '<div class="search-body"><a href="' + contextPath + '/webapp/stock/home.do?tactic=' + members[i].tactic + '&tacname=' + members[i].tacname + '">'
 							+ members[i].tacdetail
 							+ '</a></div>' + '</div>'
 					}

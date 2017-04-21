@@ -45,6 +45,7 @@ public class MyGetMessage implements Runnable {
 				// "+Thread.currentThread().getName()+"获取队列的数值"+InitQueue.q.take()+"移除后队列剩余的个数:"+InitQueue.q.size());
 			try {
 				tep = (SendMessageTep) InitQueue.q.take();
+				logger.debug("MyGetMessage.run");
 				if (tep.getSvcchnl().intValue() == 1) {
 					handleWeiXinSend(tep);
 				} else {
@@ -96,7 +97,7 @@ public class MyGetMessage implements Runnable {
 	
 			String msg;
 		
-			String token = weixinAccountService.getAccessToken(getData.getString("accountId"));
+			String token = weixinAccountService.getAccessToken(getData.getString("wechat.accountId"));
 			msg = MessageTemplateApiUtil.sendTemplateMsg(token, result);
 			// 发送消息保存
 			if (getData.getString("is_save_message").equals("0")) {

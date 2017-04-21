@@ -32,9 +32,10 @@ private Logger logger = Logger.getLogger(StockController.class);
 	private IIndexSystemService indexSystemService;
 
 	@RequestMapping("home")
-	public ModelAndView home(@RequestParam(value = "tactic")String tacTic) {
+	public ModelAndView home(@RequestParam(value = "tactic")String tacTic, @RequestParam(value = "tacname")String tacName) {
 		Map<String, Object> model = new HashMap<>();
 		model.put("tacTic", tacTic);
+		model.put("tacName", tacName);
 		return new ModelAndView("qianlong/stock", model);
 	}
 	
@@ -47,6 +48,7 @@ private Logger logger = Logger.getLogger(StockController.class);
 		Object result = null;
 		try {
 			String json = JsonFormat.printer().print(rsp);
+			logger.debug(String.format("T02003001 交易 - 转换后的JSON字符串: [%s]", json));
 			JsonFormat.printer().print(rsp);
 			result = JSONObject.parse(json);
 		} catch (InvalidProtocolBufferException e) {

@@ -30,4 +30,9 @@ public class UserServMessage {
 	public void setErrorMsg(String errorMsg) {
 		this.errorMsg = errorMsg;
 	}
+
+	@Override
+	public String toString() {
+		return "UserServMessage [errorCode=" + errorCode + ", errorMsg=" + errorMsg + "]";
+	}
 }

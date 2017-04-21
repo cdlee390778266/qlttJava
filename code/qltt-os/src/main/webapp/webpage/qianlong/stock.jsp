@@ -20,13 +20,13 @@
 <body>
 	<!-- 详细内容 -->
 	<div class="result">
-		<input type="hidden" id="tacTic" hidden="tacTic">
+		<input type="hidden" id="tacTic" hidden="tacTic" value="${tacTic}">
 		<div class="result-box">
 			<img src="<c:url value='/extension/images/result_bg.png' />" alt="" class="img-responsive" />
 			<div class="result-main">
 				<div class="result-tags">
 					<div class="result-tags-box">
-						<span>红三兵</span> <span>红三兵</span> <span>红三兵</span>
+						<span>${tacName}</span>
 					</div>
 				</div>
 			</div>
@@ -37,9 +37,9 @@
 	</div>
 
 	<!-- 详细内容 -->
-	<div class="srceen ">
+	<div class="srceen">
 		<div class="srceen-txt">
-			<span>该指标共计筛选出</span><span class="red">120</span><span>支股票</span>
+			<span>该指标共计筛选出</span><span class="red"></span><span>支股票</span>
 		</div>
 		<div class="screen-main" data-start="1" data-size="10"></div>
 		<div class="load-more">
@@ -56,7 +56,8 @@
 			</div>
 			<div class="dialog-foot">
 				<div class="dialog-foot-right">
-					<span class="dialog-btn-close">取消</span> <span class="dialog-btn-confirm">确定</span>
+					<span class="dialog-btn-close">取消</span>
+					<span class="dialog-btn-confirm">确定</span>
 				</div>
 			</div>
 		</div>
@@ -82,7 +83,8 @@
 			</div>
 			<div class="dialog-foot">
 				<div class="dialog-foot-right">
-					<span class="dialog-btn-close">取消</span> <span class="dialog-btn-confirm">确定</span>
+					<span class="dialog-btn-close">取消</span>
+					<span class="dialog-btn-confirm">确定</span>
 				</div>
 			</div>
 		</div>

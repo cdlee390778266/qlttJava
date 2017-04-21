@@ -6,7 +6,7 @@
 	<packaging>war</packaging>
 	<properties>
 		<codegenerate.version>3.4.7</codegenerate.version>
-		<minidao.version>1.6-SNAPSHOT</minidao.version>
+		<minidao.version>1.0.0</minidao.version>
 		<jeewx-api.version>1.1-SNAPSHOT</jeewx-api.version>
 
 		<m2eclipse.wtp.contextRoot>qltt</m2eclipse.wtp.contextRoot>
@@ -190,7 +190,7 @@
 			<version>${codegenerate.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>org.jeecgframework</groupId>
+			<groupId>com.qianlong</groupId>
 			<artifactId>minidao-pe</artifactId>
 			<version>${minidao.version}</version>
 			<exclusions>
@@ -882,7 +882,7 @@
 	</build>
 	<profiles>
 		<profile>
-			<id>mysql-dev</id>
+			<id>com-in-dev</id>
 			<properties>
 				<hibernate.dialect>org.hibernate.dialect.MySQLDialect</hibernate.dialect>
 				<validationQuery.sqlserver>SELECT 1</validationQuery.sqlserver>
@@ -892,37 +892,27 @@
 				<jdbc.dbType>mysql</jdbc.dbType>
 				<hibernate.hbm2ddl.auto>none</hibernate.hbm2ddl.auto>
 				<diver.name>com.mysql.jdbc.Driver</diver.name>
-				<database.name>cnacex</database.name>
+				<database.name>qltt</database.name>
+				<zmqproxy.valid.crc>false</zmqproxy.valid.crc>
+				<zmqproxy.ip>192.168.16.22</zmqproxy.ip>
+				<zmqproxy.rsp.port>7702</zmqproxy.rsp.port>
+				<zmqproxy.req.port>7703</zmqproxy.req.port>
 			</properties>
 		</profile>
 		<profile>
-			<id>oracle-dev</id>
+			<id>com-out-dev</id>
 			<properties>
-				<hibernate.dialect>org.hibernate.dialect.Oracle10gDialect</hibernate.dialect>
+				<hibernate.dialect>org.hibernate.dialect.MySQLDialect</hibernate.dialect>
 				<validationQuery.sqlserver>SELECT 1</validationQuery.sqlserver>
-				<jdbc.url>jdbc:oracle:thin:@192.168.100.107:1521:cnacex</jdbc.url>
+				<jdbc.url><![CDATA[ jdbc:mysql://qlcdyf.vicp.net:9100/ttwechat?useUnicode=true&amp;characterEncoding=UTF-8 ]]></jdbc.url>
 				<jdbc.username>qltt</jdbc.username>
-				<jdbc.password>123456</jdbc.password>
-				<jdbc.dbType>oracle</jdbc.dbType>
+				<jdbc.password>12345678</jdbc.password>
+				<jdbc.dbType>mysql</jdbc.dbType>
 				<hibernate.hbm2ddl.auto>none</hibernate.hbm2ddl.auto>
-				<diver.name>oracle.jdbc.driver.OracleDriver</diver.name>
-				<database.name>cnacex</database.name>
-			</properties>
-		</profile>
-		<profile>
-			<id>zmq-useless</id>
-			<properties>
+				<diver.name>com.mysql.jdbc.Driver</diver.name>
+				<database.name>ttwechat</database.name>
 				<zmqproxy.valid.crc>false</zmqproxy.valid.crc>
-				<zmqproxy.ip>192.168.16.22</zmqproxy.ip>
-				<zmqproxy.rsp.port>9112</zmqproxy.rsp.port>
-				<zmqproxy.req.port>9113</zmqproxy.req.port>
-			</properties>
-		</profile>
-		<profile>
-			<id>zmq-inuse</id>
-			<properties>
-				<zmqproxy.valid.crc>false</zmqproxy.valid.crc>
-				<zmqproxy.ip>192.168.16.22</zmqproxy.ip>
+				<zmqproxy.ip>127.0.0.1</zmqproxy.ip>
 				<zmqproxy.rsp.port>7702</zmqproxy.rsp.port>
 				<zmqproxy.req.port>7703</zmqproxy.req.port>
 			</properties>

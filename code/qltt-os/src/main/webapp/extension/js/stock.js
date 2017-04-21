@@ -52,13 +52,13 @@ $(document).ready(function() {
 							+ '<a href="javascript:void(0);" class="choose"></a>'
 							+ '</div>' + '</div>';
 					}
+					$('.srceen-txt .red').text(data.pgrsp.rspnum);
 				}
 
 				$parent.append(html);
 				$('.load-more i').removeClass('active');
 				refreshFlag = true;
 
-				//分页页码加1
 				$parent.data('start', parseInt(start) + size);
 			},
 			error : function(xhr, type) {
