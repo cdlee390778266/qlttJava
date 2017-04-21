@@ -1,5 +1,6 @@
 package com.qianlong.webapp.service;
 
+import com.qianlong.webapp.domain.TacPoolReqBody;
 import com.qlcd.qltt.body.pvt.T02001001;
 import com.qlcd.qltt.body.pvt.T02001002;
 import com.qlcd.qltt.body.pvt.T02001003;
@@ -43,5 +44,5 @@ public interface IIndexSystemService {
 	 * 
 	 * @return 最新实时行情指标数据
 	 */
-	public T02003001._rsp queryTacDataPool(Integer start, Integer size, String tacTic, Integer tacPrm);
+	public T02003001._rsp queryTacDataPool(TacPoolReqBody body);
 }

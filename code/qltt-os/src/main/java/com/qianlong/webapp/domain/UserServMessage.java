@@ -5,6 +5,15 @@ public class UserServMessage {
 	private String errorCode;
 	
 	private String errorMsg;
+	
+	public UserServMessage() {
+		//
+	}
+	
+	public UserServMessage(String errorCode, String errorMsg) {
+		this.errorCode = errorCode;
+		this.errorMsg = errorMsg;
+	}
 
 	public String getErrorCode() {
 		return errorCode;

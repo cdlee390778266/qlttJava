@@ -80,6 +80,7 @@
 		<aopalliance.version>1.0</aopalliance.version>
 		<xstream.version>1.4.4</xstream.version>
 		<groovy.version>2.3.3</groovy.version>
+		<google.protobuf.version>3.2.0</google.protobuf.version>
 
 		<!-- JZMQ Client -->
 		<jeromq.version>0.3.4</jeromq.version>
@@ -155,9 +156,13 @@
 		<dependency>
 			<groupId>com.google.protobuf</groupId>
 			<artifactId>protobuf-java</artifactId>
-			<version>3.2.0</version>
+			<version>${google.protobuf.version}</version>
 		</dependency>
-
+		<dependency>
+			<groupId>com.google.protobuf</groupId>
+			<artifactId>protobuf-java-util</artifactId>
+			<version>${google.protobuf.version}</version>
+		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.zeromq/jeromq -->
 		<dependency>
 			<groupId>org.zeromq</groupId>

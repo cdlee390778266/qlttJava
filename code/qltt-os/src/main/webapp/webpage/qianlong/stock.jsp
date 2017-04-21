@@ -14,12 +14,13 @@
 <script type="text/javascript" src="<c:url value='/extension/js/zepto.min.js' />"></script>
 <script type="text/javascript" src="<c:url value='/extension/js/swiper.min.js' />"></script>
 <script type="text/javascript" src="<c:url value='/extension/js/zepto.touch.js' />"></script>
-<script type="text/javascript" src="<c:url value='/extension/js/result.js' />"></script>
+<script type="text/javascript" src="<c:url value='/extension/js/stock.js' />"></script>
 <title>我的选股结果</title>
 </head>
 <body>
 	<!-- 详细内容 -->
 	<div class="result">
+		<input type="hidden" id="tacTic" hidden="tacTic">
 		<div class="result-box">
 			<img src="<c:url value='/extension/images/result_bg.png' />" alt="" class="img-responsive" />
 			<div class="result-main">
@@ -40,7 +41,7 @@
 		<div class="srceen-txt">
 			<span>该指标共计筛选出</span><span class="red">120</span><span>支股票</span>
 		</div>
-		<div class="screen-main" data-page="1" data-size="10"></div>
+		<div class="screen-main" data-start="1" data-size="10"></div>
 		<div class="load-more">
 			<i></i><span>加载更多</span>
 		</div>

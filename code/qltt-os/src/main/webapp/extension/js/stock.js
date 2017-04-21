@@ -4,7 +4,7 @@
  * @Last Modified time: 2017-04-12 18:19:49
  */
 $(document).ready(function() {
-	var url = '../../extension/data/result.json';
+	var url = 'pool.do';
 	var refreshFlag = true;
 
 	var refreshHeight = function() {
@@ -14,35 +14,44 @@ $(document).ready(function() {
 	}
 
 	var refreshData = function(url, $parent) {
-		var page = $parent.data('page');
+		var start = $parent.data('start');
 		var size = $parent.data('size');
-		
+		var tacTic = $('#tacTic').val();
 		$.ajax({
 			url : url,
 			type : 'post',
-			data : {'page' : page, "size" : size},
-			success : function(resData) {
+			data : {
+				'start' : start, 
+				'size' : size,
+				'tacTic' : tacTic,
+				'tacPrm' : '0'
+			},
+			success : function(data) {
 				var html = '';
-				for ( var i in resData) {
-					html += '<div class="screen-item"  >'
-						+ '<div class="item-col-1">'
-						+ '<span>'
-						+ resData[i].name
-						+ '</span>'
-						+ '<span class="blue">'
-						+ resData[i].nums
-						+ '</span>'
-						+ '</div>'
-						+ '<div class="item-col-2">'
-						+ resData[i].date
-						+ '</div>'
-						+ '<div class="item-col-3">'
-						+ resData[i].type
-						+ '</div>'
-						+ '<div class="item-col-4">'
-						+ '<a href="javascript:void(0);" class="recommend" ></a>'
-						+ '<a href="javascript:void(0);" class="choose"></a>'
-						+ '</div>' + '</div>';
+				data = $.parseJSON(data);
+				var stocks = data.dprtlist;
+				if (stocks != null) {
+					for ( var i in stocks) {
+						html += '<div class="screen-item"  >'
+							+ '<div class="item-col-1">'
+							+ '<span>'
+							+ stocks[i].stockname
+							+ '</span>'
+							+ '<span class="blue">'
+							+ stocks[i].stockcode
+							+ '</span>'
+							+ '</div>'
+							+ '<div class="item-col-2">'
+							+ stocks[i].efftime
+							+ '</div>'
+							+ '<div class="item-col-3">'
+							+ stocks[i].remarks
+							+ '</div>'
+							+ '<div class="item-col-4">'
+							+ '<a href="javascript:void(0);" class="recommend" ></a>'
+							+ '<a href="javascript:void(0);" class="choose"></a>'
+							+ '</div>' + '</div>';
+					}
 				}
 
 				$parent.append(html);
@@ -50,7 +59,7 @@ $(document).ready(function() {
 				refreshFlag = true;
 
 				//分页页码加1
-				$parent.data('page', parseInt(page) + 1);
+				$parent.data('start', parseInt(start) + size);
 			},
 			error : function(xhr, type) {
 				alert('获取数据失败！');
