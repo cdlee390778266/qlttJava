@@ -38,22 +38,21 @@ public class MyGetMessage implements Runnable {
 
 	@Override
 	public void run() {
+		SendMessageTep tep;
 		while (true) {
-			if (!InitQueue.q.isEmpty()) {
+//			if (!InitQueue.q.isEmpty()) {//当队列为空的时候，该处会陷入死循环
 				// System.out.println("队列中数据个数:"+InitQueue.q.size()+"
 				// "+Thread.currentThread().getName()+"获取队列的数值"+InitQueue.q.take()+"移除后队列剩余的个数:"+InitQueue.q.size());
-				try {
-					SendMessageTep tep = (SendMessageTep) InitQueue.q.take();
-					if (tep.getSvcchnl().intValue() == 1) {
-						handleWeiXinSend(tep);
-					} else {
-						// TODO 手机APP渠道
-					}
-					Thread.sleep(1000);//take()函数，队列中没有数据，则线程wait释放CPU，这个是否有必要？
-				} catch (InterruptedException e1) {
-					e1.printStackTrace();
-					logger.error(e1.getMessage());
+			try {
+				tep = (SendMessageTep) InitQueue.q.take();
+				if (tep.getSvcchnl().intValue() == 1) {
+					handleWeiXinSend(tep);
+				} else {
+					// TODO 手机APP渠道
 				}
+			} catch (InterruptedException e1) {
+				e1.printStackTrace();
+				logger.error(e1.getMessage());
 			}
 		}
 	}

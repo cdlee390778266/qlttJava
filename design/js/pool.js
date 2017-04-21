@@ -1,7 +1,7 @@
 /* 
 * @Author: lee
 * @Date:   2017-04-07 14:31:52
-* @Last Modified time: 2017-04-18 17:48:42
+* @Last Modified time: 2017-04-20 16:38:46
 */
 
 $(document).ready(function(){
@@ -150,7 +150,7 @@ $(document).ready(function(){
             $('#scrollerPool li[data-href="'+ dataHref +'"]').find('span').text(text);
         
         }else if(type=='add'){
-            $('#scrollerPool ul').append('<li class="" data-href="' + dataHref + '" ><span>选股池E</span></li>');
+            $('#scrollerPool ul').append('<li class="" data-href="' + dataHref + '" ><span>' + text + '</span></li>');
             $('#pool-wrapper').append('<div class="pool-main animated" id="' + dataHref + '" ></div>');
             scrollTopArr[dataHref] = 0;
             refreshIScroll();

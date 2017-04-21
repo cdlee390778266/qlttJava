@@ -82,6 +82,13 @@
             </select>
           </div>
       </div>
+      
+      <script>
 
+          $('body').delegate('select', 'change', function(event) {
+              $(this).parent().find('.push-item-left').text($(this).val());
+          });
+
+      </script>
   </body>
 </html>
