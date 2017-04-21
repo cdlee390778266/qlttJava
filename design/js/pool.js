@@ -1,7 +1,7 @@
 /* 
 * @Author: lee
 * @Date:   2017-04-07 14:31:52
-* @Last Modified time: 2017-04-20 16:38:46
+* @Last Modified time: 2017-04-21 14:05:30
 */
 
 $(document).ready(function(){
@@ -37,11 +37,7 @@ $(document).ready(function(){
             url: '../data/pool.json',
             type: 'post',
             success: function(resData){
-                    if(parentId =='pool-main-1'){
-                        html += '<div class="pool-empty">'
-                             +      '<img src="../images/pool.png" /><br />该选股池还没有数据'
-                             +  '</div>'
-                    }else{
+                  
                        for(var i in resData){
                         html += '<div class="pool-item">'
                              +      '<div class="poolItem-td">' + resData[i].name + '</div>'
@@ -53,16 +49,21 @@ $(document).ready(function(){
                              +   '</div>'         
                         }
                         // html += '<div class="loadMore">下拉加载更多</div>'; 
-                    }
                     
-                    
-                    $parent.append(html);
+                    $parent.html(html);
                     loadingHide($('.qltt-toast'));
 
             },
             error: function(xhr, type){
-                alert('获取数据失败!');
+                // alert('获取数据失败!');
+                html += '<div class="pool-empty">'
+                      +      '<img src="../images/pool.png" /><br />该选股池还没有数据'
+                      +  '</div>'
+                $parent.html(html);
+                loadingHide($('.qltt-toast'));
+
             }
+
         })
        
         $parent.append(html);
@@ -185,7 +186,7 @@ $(document).ready(function(){
         $('#headerPool li').removeClass('active');
         $(this).addClass('active');
         
-        if(!$('#'+$(this).attr('data-href')).text() ){
+        if($('#'+$(this).attr('data-href')).find('.pool-item').length<=0 ){
             loadingShow($('.qltt-toast'));
             createHtml($(this).attr('data-href'));
         }
