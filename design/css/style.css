@@ -804,15 +804,12 @@ a {
 }
 /******   tag   ******/
 .tag {
-  padding-top: 1.4rem;
-  padding-left: 2.6rem;
-  padding-right: 2.6rem;
   padding-bottom: 1rem;
 }
 .tag span {
   border: 1px solid #ddd;
   display: inline-block;
-  width: 8rem;
+  width: 6rem;
   height: 2.4rem;
   line-height: 2.4rem;
   text-align: center;
@@ -827,12 +824,16 @@ a {
 .tag .swiper-button-next {
   background-size: 250px 700px;
   background-image: url(../images/icon.png);
-  background-position: -145px -242px;
+  background-position: -138px -253px;
 }
 .tag .swiper-button-prev {
   background-size: 250px 700px;
   background-image: url(../images/icon.png);
-  background-position: -109px -242px;
+  background-position: -117px -253px;
+}
+.tag .swiper-wrapper .swiper-slide {
+  padding-left: 1.8rem;
+  padding-right: 1.8rem;
 }
 .tag .swiper-mes {
   line-height: 14px;
@@ -849,8 +850,6 @@ a {
 
 .tag-check {
   padding-top: 1.4rem;
-  padding-left: 2.6rem;
-  padding-right: 2.6rem;
   background-color: #fafafa;
 }
 .tag-check .check-txt {
@@ -920,7 +919,7 @@ a {
 }
 
 #diy-container {
-  margin-top: 5rem;
+  margin-top: 4rem;
 }
 
 /******   screen   ******/
@@ -1197,6 +1196,23 @@ a {
   margin-top: 50px;
   width: 100%;
 }
+.dialog .dialog-box .dialog-body input.sc-title {
+  border: 1px solid #ddd;
+  margin-top: 20px;
+  background-color: #fcfcfc;
+  text-indent: 4px;
+}
+.dialog .dialog-box .dialog-body .sc-text {
+  border: 1px solid #ddd;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-top: none;
+  height: 80px;
+  background-color: #fcfcfc;
+  outline: none;
+  text-indent: 4px;
+  padding-top: 10px;
+}
 .dialog .dialog-box .dialog-body .select-box {
   position: relative;
   height: 50px;
@@ -1252,7 +1268,7 @@ a {
   flex: 1;
 }
 .dialog .dialog-box .dialog-foot .dialog-foot-right span {
-  margin: 0 20px;
+  margin: 0 5px;
   display: inline-block;
   padding: 4px 15px;
 }
@@ -1945,15 +1961,9 @@ a {
     font-size: 10px;
   }
 
-  .tag {
-    padding-top: 1.4rem;
-    padding-left: 2.6rem;
-    padding-right: 2.6rem;
-  }
   .tag span {
     border: 1px solid #ddd;
     display: inline-block;
-    width: 5.5rem;
     height: 2.4rem;
     line-height: 2.4rem;
     text-align: center;
@@ -1970,17 +1980,12 @@ a {
     font-size: 11px;
   }
 
-  .tag {
-    padding-top: 1.4rem;
-    padding-left: 2.6rem;
-    padding-right: 2.6rem;
-  }
   .tag span {
     border: 1px solid #ddd;
     display: inline-block;
-    width: 7rem !important;
     height: 2.4rem;
     line-height: 2.4rem;
+    width: 8rem;
     text-align: center;
     margin: 0.5rem 0.8rem;
     border-radius: 4px;
@@ -1995,15 +2000,9 @@ a {
     font-size: 12px;
   }
 
-  .tag {
-    padding-top: 1.4rem;
-    padding-left: 2.6rem;
-    padding-right: 2.6rem;
-  }
   .tag span {
     border: 1px solid #ddd;
     display: inline-block;
-    width: 8rem !important;
     height: 2.4rem;
     line-height: 2.4rem;
     text-align: center;

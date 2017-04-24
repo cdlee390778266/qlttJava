@@ -782,15 +782,12 @@ a{
 
 /******   tag   ******/
 .tag{
-  padding-top:1.4rem;
-  padding-left:2.6rem;
-  padding-right: 2.6rem;
   padding-bottom: 1rem;
   // height: 18rem;
     span{
         border : 1px solid #ddd;
         display: inline-block;
-        width: 8rem;
+        width:6rem;
         height: 2.4rem;
         line-height: 2.4rem;
         text-align: center;
@@ -806,16 +803,20 @@ a{
     .swiper-button-next{
         background-size: $bgSize;
         background-image: url(../images/icon.png);
-        background-position: -145px -242px;
+      background-position: -138px -253px;
     }
     .swiper-button-prev{
         background-size: $bgSize;
         background-image: url(../images/icon.png);
-        background-position: -109px -242px;
+        background-position: -117px -253px;
     }
     .swiper-wrapper{
         // height: 100px;
+         .swiper-slide{
+           padding-left: 1.8rem;
+           padding-right: 1.8rem;
 
+         }
     }
 
     .swiper-mes{
@@ -834,13 +835,9 @@ a{
 
 .tag-check{
     padding-top:1.4rem;
-    padding-left:2.6rem;
-    padding-right: 2.6rem;
-  background-color: #fafafa;
-
+    background-color: #fafafa;
     .check-txt{
         padding-left: 11px;
-
     } 
     .check-tags{
         span{
@@ -903,7 +900,7 @@ a{
 }
 
 #diy-container{
-    margin-top: 5rem;
+    margin-top:4rem;
 }
 
 /******   screen   ******/
@@ -1169,7 +1166,27 @@ a{
                 padding:10px 0;
                 margin-top: 50px;
                 width:100%;
+              &.sc-title{
+                border:1px solid $lightgray;
+                margin-top: 20px;
+                background-color: #fcfcfc;
+                text-indent:4px;
+
+              }
+
             }
+          .sc-text{
+            border:1px solid $lightgray;
+            width:100%;
+            border:1px solid $lightgray;
+            border-top:none;
+            height:80px;
+            background-color: #fcfcfc;
+            outline:none;
+            text-indent:4px;
+            padding-top: 10px;
+
+          }
             .select-box{
                 position:relative;
                 height:50px;
@@ -1219,7 +1236,7 @@ a{
             .dialog-foot-right{
                  @include flex(1);
                  span{
-                    margin:0 20px;
+                    margin:0 5px;
                     display: inline-block;
                     padding:4px 15px;
                     &:active{
@@ -1860,15 +1877,10 @@ a{
     font-size: 10px;
   }
   .tag {
-    padding-top: 1.4rem;
-    padding-left: 2.6rem;
-    padding-right: 2.6rem;
-
     // height: 18rem;
     span {
       border: 1px solid #ddd;
       display: inline-block;
-      width: 5.5rem;
       height: 2.4rem;
       line-height: 2.4rem;
       text-align: center;
@@ -1888,16 +1900,13 @@ a{
     font-size: 11px;
   }
   .tag {
-    padding-top: 1.4rem;
-    padding-left: 2.6rem;
-    padding-right: 2.6rem;
     // height: 18rem;
     span{
       border: 1px solid #ddd;
       display: inline-block;
-      width: 7rem !important;
       height: 2.4rem;
       line-height: 2.4rem;
+      width: 8rem;
       text-align: center;
       margin: 0.5rem 0.8rem;
       border-radius: 4px;
@@ -1915,14 +1924,10 @@ a{
     font-size: 12px;
   }
   .tag {
-    padding-top: 1.4rem;
-    padding-left: 2.6rem;
-    padding-right: 2.6rem;
     // height: 18rem;
     span{
       border: 1px solid #ddd;
       display: inline-block;
-      width: 8rem !important;
       height: 2.4rem;
       line-height: 2.4rem;
       text-align: center;

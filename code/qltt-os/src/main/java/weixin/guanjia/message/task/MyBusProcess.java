@@ -9,6 +9,7 @@ import com.qlcd.qltt.body.pvt.T03001001._evacctpush;
 import com.qlcd.qltt.body.pvt.T03001001._eventpush;
 import com.qlcd.util.IBusProcess;
 
+import net.sf.json.JSONObject;
 import weixin.guanjia.message.model.SendMessageTep;
 import weixin.util.StringTypeUtil;
 
@@ -52,7 +53,6 @@ public class MyBusProcess implements IBusProcess {
 				T03001001._rsp rsp = rsph.build();
 				return rsp;
 			}else{
-				
 				com.qlcd.qltt.body.BppSys._rsp_succhead.Builder succheadbuilder = com.qlcd.qltt.body.BppSys._rsp_succhead.newBuilder();
 				succheadbuilder.setRspcode(0);
 				succheadbuilder.setRspmsg("fail");
@@ -63,6 +63,8 @@ public class MyBusProcess implements IBusProcess {
 				return rsp;
 			}
 		}catch(Exception e){
+			T03001001._req content = (T03001001._req) requestBody;
+			org.jeecgframework.core.util.LogUtil.info("代理发送的异常数据为"+JSONObject.fromObject(content));
 			com.qlcd.qltt.body.BppSys._rsp_succhead.Builder succheadbuilder = com.qlcd.qltt.body.BppSys._rsp_succhead.newBuilder();
 			succheadbuilder.setRspcode(0);
 			succheadbuilder.setRspmsg("fail");
