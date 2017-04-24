@@ -10,4 +10,14 @@ public class WeiXinConstants {
 	 *微信商城用户登录是的openid
 	 */
 	public static final String USER_OPENID = "USER_OPENID";
+	
+	/**
+	 * 渠道推送服务开关: 打开
+	 */
+	public static final String ZMQ_SWITCH_ON = "ON";
+	
+	/**
+	 * 渠道推送服务开关: 关闭
+	 */
+	public static final String ZMQ_SWITCH_OFF = "OFF";
 }
