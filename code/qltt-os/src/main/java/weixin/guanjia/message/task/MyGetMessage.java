@@ -99,7 +99,6 @@ public class MyGetMessage implements Runnable {
 		
 			String token = weixinAccountService.getAccessToken(getData.getString("wechat.accountId"));
 			msg = MessageTemplateApiUtil.sendTemplateMsg(token, result);
-			org.jeecgframework.core.util.LogUtil.info("模板推送的信息为:"+JSONObject.fromObject(data)+"模板推送返回的消息信息为:"+msg);
 			// 发送消息保存
 			if (getData.getString("is_save_message").equals("0")) {
 				if (!msg.equals("")) {
