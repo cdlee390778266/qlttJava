@@ -252,6 +252,7 @@
         <directory>src/main/java</directory>
         <includes>
           <include>**/*.xml</include>
+          <include>**/*.properties</include>
         </includes>
       </resource>
       <resource>
@@ -262,13 +263,29 @@
   </build>
 
   <profiles>
+  
+  
     <profile>
-      <id>com-localhost</id>
+      <id>test-test</id>
       <properties>
         <jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
-        <jdbc.url><![CDATA[jdbc:mysql://localhost:3306/qltt-us?useUnicode=true&amp;characterEncoding=UTF-8 ]]></jdbc.url>
-        <jdbc.username>qltt-us</jdbc.username>
-        <jdbc.password>cdyf2008</jdbc.password>
+        <jdbc.url><![CDATA[jdbc:mysql://192.168.16.22:9100/t-ttuser?useUnicode=true&amp;characterEncoding=UTF-8 ]]></jdbc.url>
+        <jdbc.username>qltt</jdbc.username>
+        <jdbc.password>12345678</jdbc.password>
+        <jdbc.maxActive>50</jdbc.maxActive>
+        <jdbc.maxIdle>10</jdbc.maxIdle>
+        <jdbc.minIdle>5</jdbc.minIdle>
+        <jdbc.initialSize>20</jdbc.initialSize>
+      </properties>
+    </profile>
+    
+    <profile>
+      <id>dev-test</id>
+      <properties>
+        <jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
+        <jdbc.url><![CDATA[jdbc:mysql://192.168.16.22:9100/ttuser?useUnicode=true&amp;characterEncoding=UTF-8 ]]></jdbc.url>
+        <jdbc.username>qltt</jdbc.username>
+        <jdbc.password>12345678</jdbc.password>
         <jdbc.maxActive>50</jdbc.maxActive>
         <jdbc.maxIdle>10</jdbc.maxIdle>
         <jdbc.minIdle>5</jdbc.minIdle>
@@ -277,7 +294,7 @@
     </profile>
 
     <profile>
-      <id>com-103</id>
+      <id>dev-dev</id>
       <properties>
         <jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
         <jdbc.url><![CDATA[jdbc:mysql://192.168.100.103:3306/qltt-us?useUnicode=true&amp;characterEncoding=UTF-8 ]]></jdbc.url>
