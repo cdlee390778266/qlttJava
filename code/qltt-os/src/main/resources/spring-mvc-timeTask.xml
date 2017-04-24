@@ -32,12 +32,12 @@
 
 	<bean id="autoResetWeixinTokenCronTrigger" class="org.jeecgframework.core.timer.DataBaseCronTriggerBean">
 		<property name="jobDetail" ref="autoResetWeixinTokenJob" />
-		<property name="cronExpression" value="0 0/1 * * * ?" />
+		<property name="cronExpression" value="0 0 0/1 * * ?" />
 	</bean>
 	
 	<bean id="autoResetUserServTokenCronTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
 		<property name="jobDetail" ref="autoResetUserServTokenJob" />
-		<property name="cronExpression" value="0 0/1 * * * ?" />
+		<property name="cronExpression" value="0 0 0/1 * * ?" />
 	</bean>
 
 	<!-- 定时任务调度器 -->
