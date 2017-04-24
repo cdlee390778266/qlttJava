@@ -45,6 +45,7 @@
 	<bean id="initQueue" class="weixin.guanjia.message.task.InitQueue">
 		<constructor-arg ref="busProcess"></constructor-arg>
 		<constructor-arg ref="zmqToProxy"></constructor-arg>
+		<constructor-arg value="${zmqproxy.switch}"></constructor-arg>
 	</bean>
 	<!-- 配置数据源1 -->
 	<bean name="dataSource_jeecg" class="com.alibaba.druid.pool.DruidDataSource"

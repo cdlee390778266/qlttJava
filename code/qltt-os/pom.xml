@@ -881,6 +881,8 @@
 		</resources>
 	</build>
 	<profiles>
+	
+		<!-- 开发环境: 需单独指定zmq开关参数, 避免多台开发机器同时启动影响测试 -->
 		<profile>
 			<id>com-in-dev</id>
 			<properties>
@@ -900,6 +902,20 @@
 			</properties>
 		</profile>
 		<profile>
+			<id>dev-zmq-on</id>
+			<properties>
+				<zmqproxy.switch>ON</zmqproxy.switch>
+			</properties>
+		</profile>
+		<profile>
+			<id>dev-zmq-off</id>
+			<properties>
+				<zmqproxy.switch>OFF</zmqproxy.switch>
+			</properties>
+		</profile>
+		
+		<!-- 开发测试环境 -->
+		<profile>
 			<id>com-out-dev</id>
 			<properties>
 				<hibernate.dialect>org.hibernate.dialect.MySQLDialect</hibernate.dialect>
@@ -912,6 +928,28 @@
 				<diver.name>com.mysql.jdbc.Driver</diver.name>
 				<database.name>ttwechat</database.name>
 				<zmqproxy.valid.crc>false</zmqproxy.valid.crc>
+				<zmqproxy.switch>ON</zmqproxy.switch>
+				<zmqproxy.ip>127.0.0.1</zmqproxy.ip>
+				<zmqproxy.rsp.port>9143</zmqproxy.rsp.port>
+				<zmqproxy.req.port>9141</zmqproxy.req.port>
+			</properties>
+		</profile>
+		
+		<!-- 测试测试环境 -->
+		<profile>
+			<id>com-out-test</id>
+			<properties>
+				<hibernate.dialect>org.hibernate.dialect.MySQLDialect</hibernate.dialect>
+				<validationQuery.sqlserver>SELECT 1</validationQuery.sqlserver>
+				<jdbc.url><![CDATA[ jdbc:mysql://qlcdyf.vicp.net:9100/t-ttwechat?useUnicode=true&amp;characterEncoding=UTF-8 ]]></jdbc.url>
+				<jdbc.username>qltt</jdbc.username>
+				<jdbc.password>12345678</jdbc.password>
+				<jdbc.dbType>mysql</jdbc.dbType>
+				<hibernate.hbm2ddl.auto>none</hibernate.hbm2ddl.auto>
+				<diver.name>com.mysql.jdbc.Driver</diver.name>
+				<database.name>t-ttwechat</database.name>
+				<zmqproxy.valid.crc>false</zmqproxy.valid.crc>
+				<zmqproxy.switch>ON</zmqproxy.switch>
 				<zmqproxy.ip>127.0.0.1</zmqproxy.ip>
 				<zmqproxy.rsp.port>9143</zmqproxy.rsp.port>
 				<zmqproxy.req.port>9141</zmqproxy.req.port>
