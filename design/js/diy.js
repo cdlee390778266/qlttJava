@@ -165,6 +165,23 @@ $(function(){
         
     });
 
+    //搜藏指标弹窗
+    $('body').delegate('.sc-btn', 'tap', function(){
+
+        showDialog($('#zdyzh'));
+    });
+
+    $('#zdyzh .dialog-btn-close,#zdyzh .dialog-mask').tap(function(){
+        hideDialog($('#zdyzh'));
+    })
+
+    $('#zdyzh .dialog-btn-confirm').tap(function(){
+        hideDialog($('#zdyzh'),function(){
+            alert('搜藏成功，请到我的关注查看');
+        });
+    })
+
+
     //荐股池弹窗
     $('body').delegate('.recommend', 'tap', function(){
        
