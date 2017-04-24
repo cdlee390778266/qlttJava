@@ -1,0 +1,135 @@
+﻿<!DOCTYPE html >
+<html lang="zh-CN" ng-app="qlttApp">
+  <head>
+  <meta charset="utf-8">
+  <meta name="referrer" content="always">
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+
+  <link rel="stylesheet" href="../css/animate.min.css" />
+  <link href="../css/style.css" rel="stylesheet">
+
+  <title>自定义组合指标</title>
+  </head>
+  <body style="height:auto;">
+
+    <!-- 头部菜单 -->
+    <div class="history-header">
+        <form action="historySearch.html" id="history-search">
+            <input type="text" placeholder="输入股票或者股票代码" />
+        </form>
+    </div>
+    
+  
+    <!-- 搜索结果 -->
+    <div class="history-search animated" >
+        <div class="history-wrapper">
+
+            <div class="history-item">
+              <div class="hisItem-head">
+                <div class="hisItem-headL">
+                  <img src="../images/face.png" alt="">
+                </div>
+                <div class="hisItem-headM"><span>May</span>2分钟前</div>
+                <div class="hisItem-headR">成功率：68.23%</div>
+              </div>
+              <div class="hisItem-body">
+                <div class="hisItem-bodyT"><span>荐股</span>中国电力32658955</div>
+                <div class="hisItem-bodyD">根据以往的经验分析</div>
+              </div>
+              <div class="hisItem-foot">
+                <div class="hisItem-footL"><i class="animated"></i><span>666</span></div><div class="hisItem-footR"><i class="animated"></i><span>999</span>
+                </div>
+              </div>
+            </div>
+            <div class="history-item">
+              <div class="hisItem-head">
+                <div class="hisItem-headL">
+                  <img src="../images/face.png" alt="">
+                </div>
+                <div class="hisItem-headM"><span>May</span>2分钟前</div>
+                <div class="hisItem-headR">成功率：68.23%</div>
+              </div>
+              <div class="hisItem-body">
+                <div class="hisItem-bodyT"><span>荐股</span>中国电力32658955</div>
+                <div class="hisItem-bodyD">根据以往的经验分析</div>
+              </div>
+              <div class="hisItem-foot">
+                <div class="hisItem-footL"><i class="animated"></i><span>666</span></div><div class="hisItem-footR"><i class="animated"></i><span>999</span>
+                </div>
+              </div>
+            </div>
+            <div class="history-item">
+              <div class="hisItem-head">
+                <div class="hisItem-headL">
+                  <img src="../images/face.png" alt="">
+                </div>
+                <div class="hisItem-headM"><span>May</span>2分钟前</div>
+                <div class="hisItem-headR">成功率：68.23%</div>
+              </div>
+              <div class="hisItem-body">
+                <div class="hisItem-bodyT"><span>荐股</span>中国电力32658955</div>
+                <div class="hisItem-bodyD">根据以往的经验分析</div>
+              </div>
+              <div class="hisItem-foot">
+                <div class="hisItem-footL"><i class="animated"></i><span>666</span></div><div class="hisItem-footR"><i class="animated"></i><span>999</span>
+                </div>
+              </div>
+            </div>
+
+        </div>
+    </div>
+    
+    <!-- 加载中 -->
+    <div class="qltt-toast">
+        <i class="qltt-loading qltt-icon_toast"></i>
+        <!--<p class="qltt-toast_content">数据加载中</p>-->
+    </div>
+
+    
+
+    <!-- 页脚菜单 -->
+   <div class="footer">
+      <a href="search.html" >
+        <i class="icon icon-searchd "></i><br>
+        <span >指标查询</span>
+      </a>
+      <a href="care.html">
+        <i class="icon icon-care"></i><br>
+        <span  >我的关注</span>
+      </a>
+      <a href="pool.html">
+        <i class="icon icon-pool"></i><br>
+        <span  >选股池</span>
+      </a>
+      <a href="history.html" class="active">
+        <i class="icon icon-rmd"></i><br>
+        <span >荐股池</span>
+      </a>
+    </div>
+   
+
+    
+
+    <script src="../js/zepto.min.js"></script>
+    <script src="../js/zepto.touch.js"></script>
+    <script>
+        $(function(){
+          //赞
+            $('body').delegate('.hisItem-foot>div', 'tap', function(event) {
+                
+                if($(this).find('i').hasClass('active')){
+                    $(this).find('i').removeClass('active');
+                    $(this).find('span').text(parseInt($(this).find('span').text())-1);
+                }else{
+                    $(this).find('i').addClass('active');
+                    $(this).find('span').text(parseInt($(this).find('span').text())+1);
+                }
+                $(this).find('i').toggleClass('bounceIn');
+                
+            });
+        })
+    </script>
+    
+  </body>
+</html>

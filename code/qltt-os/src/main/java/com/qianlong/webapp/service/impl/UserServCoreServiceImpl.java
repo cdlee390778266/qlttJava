@@ -5,6 +5,7 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.jeecgframework.core.common.service.CommonService;
@@ -49,6 +50,11 @@ public class UserServCoreServiceImpl extends CommonServiceImpl implements IUserS
 					Integer.valueOf(ResourceUtil.getConfigByName("user.serv.port")),
 					Constants.USER_SERV_OBTAINACCESSTOKEN_PATH, nvps, (JSONObject) JSONObject.toJSON(body),
 					UserServAccessToken.class, UserServMessage.class);
+			
+			if (content.getContent() == null || StringUtils.isEmpty(content.getContent().getAccessToken())) {
+				throw new HttpRequestException(String.format("获取用户服务器access_token错误: %s", 
+						content.getMessage() == null ? "用户服务器未知错误" : content.getMessage().getErrorMsg()));
+			}
 
 			executeSql("DELETE FROM user_serv_accesstoken");
 			save(content.getContent());
@@ -58,7 +64,7 @@ public class UserServCoreServiceImpl extends CommonServiceImpl implements IUserS
 		}
 		
 		if (content.getMessage() != null && !Constants.USER_SERV_CODE_OK.equals(content.getMessage().getErrorCode()))
-			throw new HttpBusinessException(content.getMessage().getErrorMsg());
+			throw new HttpBusinessException(String.format("获取access_token错误: %s", content.getMessage().getErrorMsg()));
 		
 		return content.getContent();
 	}
@@ -87,7 +93,7 @@ public class UserServCoreServiceImpl extends CommonServiceImpl implements IUserS
 		}
 		
 		if (content.getMessage() != null && !Constants.USER_SERV_CODE_OK.equals(content.getMessage().getErrorCode()))
-			throw new HttpBusinessException(content.getMessage().getErrorMsg());
+			throw new HttpBusinessException(String.format("微信授权登录错误: %s", content.getMessage().getErrorMsg()));
 		
 		return content.getContent();
 	}
@@ -109,7 +115,7 @@ public class UserServCoreServiceImpl extends CommonServiceImpl implements IUserS
 		}
 		
 		if (content.getMessage() != null && !Constants.USER_SERV_CODE_OK.equals(content.getMessage().getErrorCode()))
-			throw new HttpBusinessException(content.getMessage().getErrorMsg());
+			throw new HttpBusinessException(String.format("开通用户账号错误: %s", content.getMessage().getErrorMsg()));
 		
 		return content.getContent();
 	}

@@ -27,19 +27,21 @@ $(document).ready(function() {
 		$.ajax({
 			url : 'index.do',
 			data : {"tacgroup" : $parent.data("group")},
-			dataType : 'json',
 			type : 'post',
-			success : function(resData) {
-				for ( var i in resData) {
-					html += '<div class="search-item ani" swiper-animate-effect="fadeIn" swiper-animate-duration="1s" swiper-animate-delay="0s" >'
-						+ '<div class="search-head">'
-						+ resData[i].searchHead
-						+ '</div>'
-						+ '<div class="search-body"><a href="' + contextPath + '/webapp/search/result.do?">'
-						+ resData[i].searchBody
-						+ '</a></div>' + '</div>'
+			success : function(data) {
+				data = $.parseJSON(data);
+				if (data != null) {
+					var members = data.ptgmlist;
+					for ( var i in members) {
+						html += '<div class="search-item ani" swiper-animate-effect="fadeIn" swiper-animate-duration="1s" swiper-animate-delay="0s" >'
+							+ '<div class="search-head">'
+							+ members[i].tacname
+							+ '</div>'
+							+ '<div class="search-body"><a href="' + contextPath + '/webapp/stock/home.do?tactic=' + members[i].tactic + '&tacname=' + members[i].tacname + '">'
+							+ members[i].tacdetail
+							+ '</a></div>' + '</div>'
+					}
 				}
-
 				$parent.append(html);
 				loadingHide($('.qltt-toast'));
 			},

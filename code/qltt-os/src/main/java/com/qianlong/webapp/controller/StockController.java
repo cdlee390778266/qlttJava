@@ -1,7 +1,6 @@
 package com.qianlong.webapp.controller;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
@@ -15,43 +14,42 @@ import org.springframework.web.servlet.ModelAndView;
 import com.alibaba.fastjson.JSONObject;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.util.JsonFormat;
+import com.qianlong.webapp.domain.TacPoolReqBody;
 import com.qianlong.webapp.service.IIndexSystemService;
-import com.qlcd.qltt.body.pvt.T02001002;
-import com.qlcd.qltt.body.pvt.T02001003;
+import com.qlcd.qltt.body.pvt.T02003001;
 
 /**
- * 指标查询
+ * 股票查询
  * @author wangk
  */
 @Controller
-@RequestMapping("webapp/search")
-public class IndexSearchController {
-	
-	private Logger logger = Logger.getLogger(IndexSearchController.class);
+@RequestMapping("webapp/stock")
+public class StockController {
+
+private Logger logger = Logger.getLogger(StockController.class);
 	
 	@Autowired
 	private IIndexSystemService indexSystemService;
 
 	@RequestMapping("home")
-	public ModelAndView home() {
-		logger.debug("进入搜索查询页面");
-		T02001002._rsp rsp = indexSystemService.queryIdxGroup();
-		List<T02001002._protacgroup> idxGroups = rsp.getPtglistList();
+	public ModelAndView home(@RequestParam(value = "tactic")String tacTic, @RequestParam(value = "tacname")String tacName) {
 		Map<String, Object> model = new HashMap<>();
-		model.put("idxGroups", idxGroups);
-		return new ModelAndView("qianlong/search", model);
+		model.put("tacTic", tacTic);
+		model.put("tacName", tacName);
+		return new ModelAndView("qianlong/stock", model);
 	}
 	
-	@RequestMapping("index")
+	@RequestMapping("pool")
 	@ResponseBody
-	public Object index(@RequestParam(value = "tacgroup")String tacGroup) {
-		logger.debug("获取指定指标组的指标");
-		T02001003._rsp rsp = indexSystemService.queryIdxByGroup(tacGroup);
+	public Object pool(TacPoolReqBody body) {
+		logger.debug("最新实时行情指标数据池查询[分页]");
+		T02003001._rsp rsp = indexSystemService.queryTacDataPool(body);
 		
 		Object result = null;
 		try {
 			String json = JsonFormat.printer().print(rsp);
-			logger.debug(String.format("T02001003 交易 - 转换后的JSON字符串: [%s]", json));
+			logger.debug(String.format("T02003001 交易 - 转换后的JSON字符串: [%s]", json));
+			JsonFormat.printer().print(rsp);
 			result = JSONObject.parse(json);
 		} catch (InvalidProtocolBufferException e) {
 			logger.error(e.getMessage(), e);

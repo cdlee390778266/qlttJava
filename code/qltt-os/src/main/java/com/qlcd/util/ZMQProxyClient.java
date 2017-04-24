@@ -142,7 +142,7 @@ public class ZMQProxyClient {
 			throw new CommZMQException("解析响应报文头出错:" + e.getMessage());
 		}
 		
-		org.jeecgframework.core.util.LogUtil.info(String.format("%d %s %d %d", rspHead.getTrdcode(), rspHead.getBodyclass(), rspHead.getReqno(), rspHead.getToken()));
+		org.jeecgframework.core.util.LogUtil.info(String.format("响应报文头主要信息: { [%d] [%s] [%d] [%d] }", rspHead.getTrdcode(), rspHead.getBodyclass(), rspHead.getReqno(), rspHead.getToken()));
 
 		// 头部验证
 		if (rspHead.getTrdcode() != reqHead.getTrdcode()) {
@@ -185,7 +185,7 @@ public class ZMQProxyClient {
 			Method parseFrom = clazz.getMethod("parseFrom", byte[].class);
 			responBody = (T)parseFrom.invoke(null, rspBodyByte);
 		} catch (Exception e) {
-			throw new CommZMQException("响应报文体反序列号出现错误:" + e.getMessage());
+			throw new CommZMQException("响应报文体反序列化出现错误:" + e.getMessage());
 		}
 		return responBody;
 	}

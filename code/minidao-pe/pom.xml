@@ -2,9 +2,9 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	
-	<groupId>org.jeecgframework</groupId>
+	<groupId>com.qianlong</groupId>
 	<artifactId>minidao-pe</artifactId>
-	<version>1.6-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<packaging>jar</packaging>
 	
 	<properties>
@@ -26,19 +26,15 @@
 		
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
-
-	<distributionManagement>  
-		  <repository>
-            <id>jeecg</id>
-            <name>jeecg Repository</name>
-            <url>http://maven.jeecg.com:8090/nexus/content/repositories/jeecg</url>
-        </repository>
-        <snapshotRepository>
-	        <id>jeecg-snapshots</id>
-            <name>jeecg Snapshot Repository</name>
-            <url>http://maven.jeecg.com:8090/nexus/content/repositories/snapshots/</url>
-	    </snapshotRepository>
+	
+	<distributionManagement>
+		<repository>
+			<id>qianlong</id>
+			<name>Qianlong Repository</name>
+			<url>http://192.168.1.213:8081/nexus/content/repositories/qianlong</url>
+		</repository>
 	</distributionManagement>
+	
 	<repositories>
 		<repository>
             <id>jeecg</id>
@@ -182,13 +178,6 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-		<!-- 
-		<dependency>
-			<groupId>org.junit</groupId>
-			<artifactId>com.springsource.org.junit</artifactId>
-			<version>${org.junit.version}</version>
-		</dependency>
-		 -->
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjrt</artifactId>
@@ -212,8 +201,7 @@
 		</dependency>
 	</dependencies>
 
-	<description>Minidao-PE版本</description>
-	<url>http://www.jeecg.org</url>
+	<description>Minidao-pe乾隆修改版本</description>
 	<build>
 		<plugins>
 			<plugin>

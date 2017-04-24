@@ -4,13 +4,14 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.qianlong.webapp.domain.TacPoolReqBody;
 import com.qianlong.webapp.service.IIndexSystemService;
+import com.qlcd.qltt.body.BppBiz;
 import com.qlcd.qltt.body.pvt.T02001001;
 import com.qlcd.qltt.body.pvt.T02001002;
 import com.qlcd.qltt.body.pvt.T02001003;
 import com.qlcd.qltt.body.pvt.T02003001;
 import com.qlcd.util.ZMQProxyClient;
-import com.qlcd.qltt.body.BppBiz;
 
 @Service
 public class IndexSystemServiceImpl implements IIndexSystemService {
@@ -46,14 +47,14 @@ public class IndexSystemServiceImpl implements IIndexSystemService {
 	}
 	
 	@Override
-	public T02003001._rsp queryTacDataPool(Integer start, Integer size, String tacTic, Integer tacPrm) {
+	public T02003001._rsp queryTacDataPool(TacPoolReqBody body) {
 		logger.debug("最新实时行情指标数据池查询[分页]");
 		T02003001._req.Builder builder = T02003001._req.newBuilder();
-		builder.setTactic(tacTic);
-		builder.setTacprm(tacPrm);
+		builder.setTactic(body.getTacTic());
+		builder.setTacprm(body.getTacPrm());
 		BppBiz._page_req.Builder pageBuilder = BppBiz._page_req.newBuilder();
-		pageBuilder.setReqstart(start);
-		pageBuilder.setReqnum(size);
+		pageBuilder.setReqstart(body.getStart());
+		pageBuilder.setReqnum(body.getSize());
 		builder.setPgreq(pageBuilder.build());
 		T02003001._rsp rsp = zmqProxyClient.outBound("2003001", builder.build());
 		return rsp;

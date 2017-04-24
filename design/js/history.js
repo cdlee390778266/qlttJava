@@ -1,7 +1,7 @@
 /* 
 * @Author: lee
 * @Date:   2017-04-07 14:31:52
-* @Last Modified time: 2017-04-20 17:51:52
+* @Last Modified time: 2017-04-21 15:26:25
 */
 
 $(document).ready(function(){
@@ -15,6 +15,12 @@ $(document).ready(function(){
         scrollTopArr[prevKey][prevKeyType] = getScrollTop();
         scrollTopArr[prevKey]['active'] = prevActive; 
         scrollTop(scrollTopArr[currentKey][currentKeyType]);
+    }
+
+    var saveScrollTop = function(prevKey,prevKeyType,prevActive,currentKey,currentKeyType,currentActive){
+        scrollTopArr[prevKey][prevKeyType] = getScrollTop();
+        scrollTopArr[prevKey]['active'] = prevActive; 
+        
     }
 
     var createSearchBox = function($parent){
@@ -62,12 +68,21 @@ $(document).ready(function(){
                     $('.history-type>div').eq(type).addClass('active');
                     $('.history-main>div').removeClass('fadeIn').addClass('fadeOut').css('display','none');
                     $('#'+parentId+'>div').eq($('.history-type div.active').index()).css('display','block').removeClass('fadeOut').addClass('fadeIn');
-                    $parent.append(html);
+                    $parent.html(html);
                     loadingHide($('.qltt-toast'));
-
                 },
-                error: function(xhr, type){
-                    alert('获取数据失败!');
+                error: function(){
+                    // alert('获取数据失败!');
+                    html += '<div class="pool-empty">'
+                         +      '<img src="../images/pool.png" /><br />加载数据失败'
+                         +  '</div>'
+
+                    $('.history-type>div').removeClass('active');
+                    $('.history-type>div').eq(type).addClass('active');
+                    $('.history-main>div').removeClass('fadeIn').addClass('fadeOut').css('display','none');
+                    $('#'+parentId+'>div').eq($('.history-type div.active').index()).css('display','block').removeClass('fadeOut').addClass('fadeIn');
+                    $parent.html(html);
+                    loadingHide($('.qltt-toast'));
                 }
             })
         }else{
@@ -91,12 +106,22 @@ $(document).ready(function(){
                     $('.history-type>div').eq(type).addClass('active');
                     $('.history-main>div').removeClass('fadeIn').addClass('fadeOut').css('display','none');
                     $('#'+parentId+'>div').eq($('.history-type div.active').index()).css('display','block').removeClass('fadeOut').addClass('fadeIn');
-                    $parent.append(html);
+                    $parent.html(html);
                     loadingHide($('.qltt-toast'));
 
                 },
-                error: function(xhr, type){
-                    alert('获取数据失败!');
+                error: function(){
+                    // alert('获取数据失败!');
+                    html += '<div class="pool-empty">'
+                         +      '<img src="../images/pool.png" /><br />加载数据失败'
+                         +  '</div>'
+
+                    $('.history-type>div').removeClass('active');
+                    $('.history-type>div').eq(type).addClass('active');
+                    $('.history-main>div').removeClass('fadeIn').addClass('fadeOut').css('display','none');
+                    $('#'+parentId+'>div').eq($('.history-type div.active').index()).css('display','block').removeClass('fadeOut').addClass('fadeIn');
+                    $parent.html(html);
+                    loadingHide($('.qltt-toast'));
                 }
             })
         }
@@ -175,37 +200,38 @@ $(document).ready(function(){
         $('.history-type div').removeClass('active');
         $('.history-type div').eq(currentKeyType).addClass('active');
         
+
+        saveScrollTop(prevKey,prevKeyType,prevKeyType,currentKey,currentKeyType,currentKeyType);
         $('.history-main').removeClass('fadeIn').addClass('fadeOut').css('display','none');
         $('.history-main').eq($(this).index()).css('display','block').removeClass('fadeOut').addClass('fadeIn');
 
-        if(!$('#'+currentKey).find('div').eq(0).text()){
-            loadingShow($('.qltt-toast'));
-            if($(this).attr('tplType')!='history'){
-                $('.history-type div').eq(0).text('今日荐股');
-                $('.history-type div').eq(1).text('历史荐股');
-                createHtml(currentKey,0);
+        if($(this).attr('tplType')!='history'){
+            $('.history-type div').eq(0).text('今日荐股');
+            $('.history-type div').eq(1).text('历史荐股');
+            if($('#'+currentKey+'>div').eq(currentKeyType).find('.history-item').length<=0){
+                loadingShow($('.qltt-toast'));
+                createHtml(currentKey,currentKeyType);
             }else{
-                $('.history-type div').eq(0).text('个人成功率');
-                $('.history-type div').eq(1).text('股票成功率');
-                createHtml(currentKey,0,1);
+                $('.history-main>div').removeClass('fadeIn').addClass('fadeOut').css('display','none');
+                $('#'+ currentKey +'>div').eq(currentKeyType).css('display','block').removeClass('fadeOut').addClass('fadeIn');
             }
             
-        }else{
-            if($(this).attr('tplType')!='history'){
-                $('.history-type div').eq(0).text('今日荐股');
-                $('.history-type div').eq(1).text('历史荐股');
             }else{
+
                 $('.history-type div').eq(0).text('个人成功率');
                 $('.history-type div').eq(1).text('股票成功率');
+
+                if($('#'+currentKey+'>div').eq(currentKeyType).find('.history-head').length<=0){
+                    loadingShow($('.qltt-toast'));
+                    createHtml(currentKey,currentKeyType,1);
+                }else{
+                    $('.history-main>div').removeClass('fadeIn').addClass('fadeOut').css('display','none');
+                    $('#'+ currentKey +'>div').eq(currentKeyType).css('display','block').removeClass('fadeOut').addClass('fadeIn');
+                }
+                
             }
-            $('.history-main>div').removeClass('fadeIn').addClass('fadeOut').css('display','none');
-            $('#'+ currentKey +'>div').eq(currentKeyType).css('display','block').removeClass('fadeOut').addClass('fadeIn');
-        }
 
-
-        refreshScrollTop(prevKey,prevKeyType,prevKeyType,currentKey,currentKeyType,currentKeyType);
-
-        
+            scrollTop(scrollTopArr[currentKey][currentKeyType]);         
     });
 
     $('body').delegate('.history-type>div', 'tap', function(event) {
@@ -219,23 +245,29 @@ $(document).ready(function(){
         $('.history-type>div').removeClass('active');
         $(this).addClass('active');
         
-        if(!$('#'+prevKey+'>div').eq(currentKeyType).text()){
-            loadingShow($('.qltt-toast'));
-            if($('#header li.active').attr('tplType')!='history'){
+        saveScrollTop(prevKey,prevKeyType,prevKeyType,prevKey,currentKeyType,currentKeyType);
+
+        if($('#header li.active').attr('tplType')!='history'){
+            if($('#'+prevKey+'>div').eq(currentKeyType).find('.history-item').length<=0){
+                loadingShow($('.qltt-toast'));
                 createHtml(prevKey,currentKeyType);
             }else{
-                createHtml(prevKey,currentKeyType,1);
+                $('.history-main>div').removeClass('fadeIn').addClass('fadeOut').css('display','none');
+                $('#'+prevKey+'>div').eq(currentKeyType).css('display','block').removeClass('fadeOut').addClass('fadeIn');
             }
-            
+
         }else{
-            $('.history-main>div').removeClass('fadeIn').addClass('fadeOut').css('display','none');
-            $('#'+prevKey+'>div').eq(currentKeyType).css('display','block').removeClass('fadeOut').addClass('fadeIn');
+
+            if($('#'+prevKey+'>div').eq(currentKeyType).find('.history-head').length<=0){
+                loadingShow($('.qltt-toast'));
+                createHtml(prevKey,currentKeyType,1);
+            }else{
+                $('.history-main>div').removeClass('fadeIn').addClass('fadeOut').css('display','none');
+                $('#'+prevKey+'>div').eq(currentKeyType).css('display','block').removeClass('fadeOut').addClass('fadeIn');
+            }
         }
 
-        refreshScrollTop(prevKey,prevKeyType,prevKeyType,prevKey,currentKeyType,currentKeyType);
-
-        
-
+        scrollTop(scrollTopArr[currentKey][currentKeyType]);  
 
     });
 

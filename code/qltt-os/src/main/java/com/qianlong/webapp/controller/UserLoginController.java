@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
+import org.jeecgframework.core.util.ResourceUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -48,8 +49,8 @@ public class UserLoginController {
 		if (!StringUtils.isEmpty(code) && !StringUtils.isEmpty(state)) {
 			//微信端访问
 			WeixinAccountEntity account = new WeixinAccountEntity();
-			account.setAccountappid("wx5d31a5be817a1b47");
-			account.setAccountappsecret("32be6a017915bd351104e214e28e184c");
+			account.setAccountappid(ResourceUtil.getConfigByName("wechat.accountAppId"));
+			account.setAccountappsecret(ResourceUtil.getConfigByName("wechat.accountAppSecret"));
 			OAuthCallbackEntity oauthCallbackEntity = null;
 			try {
 				oauthCallbackEntity = wechatCoreService.getOpenidByOAuth(account, code, state);
