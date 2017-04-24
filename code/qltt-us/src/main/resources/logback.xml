@@ -2,8 +2,8 @@
 <!-- 使用说明: debug="true" 启动时输出配置加载信息 scan="true" 默认每分钟自动扫描 scanPeriod="30 seconds" 设置每30秒自动扫描, 若没有指定具体单位则以milliseconds为标准(单位:milliseconds, seconds, minutes or hours) -->
 <configuration scan="true" scanPeriod="20 seconds">
   <contextName>qltt_us</contextName>
-  <property name="LOGHOME" value="/logs/" />
-  <property name="PROJECT" value="qltt_us" />
+  <property name="LOGHOME" value="/home/sunc/logs/" />
+  <property name="PROJECT" value="qltt-us" />
 
   <!--appender 模块 -->
   <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
@@ -25,7 +25,7 @@
     </encoder>
   </appender>
 
-  <appender name="FILE_RBAC" class="ch.qos.logback.core.rolling.RollingFileAppender">
+  <appender name="FILE_QLTT_US" class="ch.qos.logback.core.rolling.RollingFileAppender">
     <file>${LOGHOME}${PROJECT}/qltt_us.log</file>
 
     <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
@@ -39,11 +39,11 @@
   </appender>
 
   <logger name="com.qianlong.qltt.us" level="${logback.logger.level}" additivity="false">
-    <appender-ref ref="FILE_RBAC" />
+    <appender-ref ref="FILE_QLTT_US" />
     <appender-ref ref="CONSOLE" />
   </logger>
   
-  <root level="INFO">
+  <root level="DEBUG">
     <appender-ref ref="FILE_DEFAULT" />
     <appender-ref ref="CONSOLE" />
   </root>
