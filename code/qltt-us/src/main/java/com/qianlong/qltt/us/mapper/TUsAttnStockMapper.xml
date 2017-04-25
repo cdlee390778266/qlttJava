@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qianlong.qltt.us.mapper.TUsAttnStockMapper" >
+  <resultMap id="BaseResultMap" type="com.qianlong.qltt.us.domain.TUsAttnStock" >
+    <id column="Fs_ttacct" property="fsTtacct" jdbcType="VARCHAR" />
+    <id column="Fi_poolindex" property="fiPoolindex" jdbcType="INTEGER" />
+    <id column="Fi_stockorder" property="fiStockorder" jdbcType="INTEGER" />
+    <result column="Fs_stockcode" property="fsStockcode" jdbcType="VARCHAR" />
+    <result column="Fs_stockname" property="fsStockname" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    Fs_ttacct, Fi_poolindex, Fi_stockorder, Fs_stockcode, Fs_stockname
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.qianlong.qltt.us.domain.TUsAttnStockExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tusattnstock
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.qianlong.qltt.us.domain.TUsAttnStockKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from tusattnstock
+    where Fs_ttacct = #{fsTtacct,jdbcType=VARCHAR}
+      and Fi_poolindex = #{fiPoolindex,jdbcType=INTEGER}
+      and Fi_stockorder = #{fiStockorder,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.qianlong.qltt.us.domain.TUsAttnStockKey" >
+    delete from tusattnstock
+    where Fs_ttacct = #{fsTtacct,jdbcType=VARCHAR}
+      and Fi_poolindex = #{fiPoolindex,jdbcType=INTEGER}
+      and Fi_stockorder = #{fiStockorder,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.qianlong.qltt.us.domain.TUsAttnStockExample" >
+    delete from tusattnstock
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.qianlong.qltt.us.domain.TUsAttnStock" >
+    insert into tusattnstock (Fs_ttacct, Fi_poolindex, Fi_stockorder, 
+      Fs_stockcode, Fs_stockname)
+    values (#{fsTtacct,jdbcType=VARCHAR}, #{fiPoolindex,jdbcType=INTEGER}, #{fiStockorder,jdbcType=INTEGER}, 
+      #{fsStockcode,jdbcType=VARCHAR}, #{fsStockname,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qianlong.qltt.us.domain.TUsAttnStock" >
+    insert into tusattnstock
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="fsTtacct != null" >
+        Fs_ttacct,
+      </if>
+      <if test="fiPoolindex != null" >
+        Fi_poolindex,
+      </if>
+      <if test="fiStockorder != null" >
+        Fi_stockorder,
+      </if>
+      <if test="fsStockcode != null" >
+        Fs_stockcode,
+      </if>
+      <if test="fsStockname != null" >
+        Fs_stockname,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="fsTtacct != null" >
+        #{fsTtacct,jdbcType=VARCHAR},
+      </if>
+      <if test="fiPoolindex != null" >
+        #{fiPoolindex,jdbcType=INTEGER},
+      </if>
+      <if test="fiStockorder != null" >
+        #{fiStockorder,jdbcType=INTEGER},
+      </if>
+      <if test="fsStockcode != null" >
+        #{fsStockcode,jdbcType=VARCHAR},
+      </if>
+      <if test="fsStockname != null" >
+        #{fsStockname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.qianlong.qltt.us.domain.TUsAttnStockExample" resultType="java.lang.Integer" >
+    select count(*) from tusattnstock
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tusattnstock
+    <set >
+      <if test="record.fsTtacct != null" >
+        Fs_ttacct = #{record.fsTtacct,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fiPoolindex != null" >
+        Fi_poolindex = #{record.fiPoolindex,jdbcType=INTEGER},
+      </if>
+      <if test="record.fiStockorder != null" >
+        Fi_stockorder = #{record.fiStockorder,jdbcType=INTEGER},
+      </if>
+      <if test="record.fsStockcode != null" >
+        Fs_stockcode = #{record.fsStockcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fsStockname != null" >
+        Fs_stockname = #{record.fsStockname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tusattnstock
+    set Fs_ttacct = #{record.fsTtacct,jdbcType=VARCHAR},
+      Fi_poolindex = #{record.fiPoolindex,jdbcType=INTEGER},
+      Fi_stockorder = #{record.fiStockorder,jdbcType=INTEGER},
+      Fs_stockcode = #{record.fsStockcode,jdbcType=VARCHAR},
+      Fs_stockname = #{record.fsStockname,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qianlong.qltt.us.domain.TUsAttnStock" >
+    update tusattnstock
+    <set >
+      <if test="fsStockcode != null" >
+        Fs_stockcode = #{fsStockcode,jdbcType=VARCHAR},
+      </if>
+      <if test="fsStockname != null" >
+        Fs_stockname = #{fsStockname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Fs_ttacct = #{fsTtacct,jdbcType=VARCHAR}
+      and Fi_poolindex = #{fiPoolindex,jdbcType=INTEGER}
+      and Fi_stockorder = #{fiStockorder,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qianlong.qltt.us.domain.TUsAttnStock" >
+    update tusattnstock
+    set Fs_stockcode = #{fsStockcode,jdbcType=VARCHAR},
+      Fs_stockname = #{fsStockname,jdbcType=VARCHAR}
+    where Fs_ttacct = #{fsTtacct,jdbcType=VARCHAR}
+      and Fi_poolindex = #{fiPoolindex,jdbcType=INTEGER}
+      and Fi_stockorder = #{fiStockorder,jdbcType=INTEGER}
+  </update>
+</mapper>

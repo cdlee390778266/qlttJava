@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qianlong.qltt.us.mapper.TUsAttnTacTicMapper" >
+  <resultMap id="BaseResultMap" type="com.qianlong.qltt.us.domain.TUsAttnTacTic" >
+    <id column="Fs_ttacct" property="fsTtacct" jdbcType="VARCHAR" />
+    <id column="Fs_tactic" property="fsTactic" jdbcType="VARCHAR" />
+    <result column="Fi_tacticprm" property="fiTacticprm" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    Fs_ttacct, Fs_tactic, Fi_tacticprm
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.qianlong.qltt.us.domain.TUsAttnTacTicExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tusattntactic
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.qianlong.qltt.us.domain.TUsAttnTacTicKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from tusattntactic
+    where Fs_ttacct = #{fsTtacct,jdbcType=VARCHAR}
+      and Fs_tactic = #{fsTactic,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.qianlong.qltt.us.domain.TUsAttnTacTicKey" >
+    delete from tusattntactic
+    where Fs_ttacct = #{fsTtacct,jdbcType=VARCHAR}
+      and Fs_tactic = #{fsTactic,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.qianlong.qltt.us.domain.TUsAttnTacTicExample" >
+    delete from tusattntactic
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.qianlong.qltt.us.domain.TUsAttnTacTic" >
+    insert into tusattntactic (Fs_ttacct, Fs_tactic, Fi_tacticprm
+      )
+    values (#{fsTtacct,jdbcType=VARCHAR}, #{fsTactic,jdbcType=VARCHAR}, #{fiTacticprm,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.qianlong.qltt.us.domain.TUsAttnTacTic" >
+    insert into tusattntactic
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="fsTtacct != null" >
+        Fs_ttacct,
+      </if>
+      <if test="fsTactic != null" >
+        Fs_tactic,
+      </if>
+      <if test="fiTacticprm != null" >
+        Fi_tacticprm,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="fsTtacct != null" >
+        #{fsTtacct,jdbcType=VARCHAR},
+      </if>
+      <if test="fsTactic != null" >
+        #{fsTactic,jdbcType=VARCHAR},
+      </if>
+      <if test="fiTacticprm != null" >
+        #{fiTacticprm,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.qianlong.qltt.us.domain.TUsAttnTacTicExample" resultType="java.lang.Integer" >
+    select count(*) from tusattntactic
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tusattntactic
+    <set >
+      <if test="record.fsTtacct != null" >
+        Fs_ttacct = #{record.fsTtacct,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fsTactic != null" >
+        Fs_tactic = #{record.fsTactic,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fiTacticprm != null" >
+        Fi_tacticprm = #{record.fiTacticprm,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tusattntactic
+    set Fs_ttacct = #{record.fsTtacct,jdbcType=VARCHAR},
+      Fs_tactic = #{record.fsTactic,jdbcType=VARCHAR},
+      Fi_tacticprm = #{record.fiTacticprm,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qianlong.qltt.us.domain.TUsAttnTacTic" >
+    update tusattntactic
+    <set >
+      <if test="fiTacticprm != null" >
+        Fi_tacticprm = #{fiTacticprm,jdbcType=INTEGER},
+      </if>
+    </set>
+    where Fs_ttacct = #{fsTtacct,jdbcType=VARCHAR}
+      and Fs_tactic = #{fsTactic,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qianlong.qltt.us.domain.TUsAttnTacTic" >
+    update tusattntactic
+    set Fi_tacticprm = #{fiTacticprm,jdbcType=INTEGER}
+    where Fs_ttacct = #{fsTtacct,jdbcType=VARCHAR}
+      and Fs_tactic = #{fsTactic,jdbcType=VARCHAR}
+  </update>
+  
+  <insert id="batchInsert" parameterType="java.util.List">
+    insert into tusattntactic (Fs_ttacct, Fs_tactic, Fi_tacticprm) values 
+    <foreach collection="list" item="att" separator=",">
+     (#{att.fsTtacct,jdbcType=VARCHAR}, #{att.fsTactic,jdbcType=VARCHAR},#{att.fiTacticprm,jdbcType=INTEGER})
+    </foreach>
+  </insert>
+</mapper>
