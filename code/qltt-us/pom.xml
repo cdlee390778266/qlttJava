@@ -263,8 +263,6 @@
   </build>
 
   <profiles>
-  
-  
     <profile>
       <id>test-test</id>
       <properties>
@@ -278,7 +276,6 @@
         <jdbc.initialSize>20</jdbc.initialSize>
       </properties>
     </profile>
-    
     <profile>
       <id>dev-test</id>
       <properties>
