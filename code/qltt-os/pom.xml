@@ -888,17 +888,29 @@
 			<properties>
 				<hibernate.dialect>org.hibernate.dialect.MySQLDialect</hibernate.dialect>
 				<validationQuery.sqlserver>SELECT 1</validationQuery.sqlserver>
-				<jdbc.url><![CDATA[ jdbc:mysql://192.168.100.103:3306/qltt?useUnicode=true&amp;characterEncoding=UTF-8 ]]></jdbc.url>
+				<jdbc.url><![CDATA[ jdbc:mysql://192.168.16.22:9100/ttwechat?useUnicode=true&amp;characterEncoding=UTF-8 ]]></jdbc.url>
 				<jdbc.username>qltt</jdbc.username>
-				<jdbc.password>123456</jdbc.password>
+				<jdbc.password>12345678</jdbc.password>
 				<jdbc.dbType>mysql</jdbc.dbType>
 				<hibernate.hbm2ddl.auto>none</hibernate.hbm2ddl.auto>
 				<diver.name>com.mysql.jdbc.Driver</diver.name>
-				<database.name>qltt</database.name>
+				<database.name>ttwechat</database.name>
+				<!-- ZMQ配置 -->
 				<zmqproxy.valid.crc>false</zmqproxy.valid.crc>
 				<zmqproxy.ip>192.168.16.22</zmqproxy.ip>
 				<zmqproxy.rsp.port>7702</zmqproxy.rsp.port>
 				<zmqproxy.req.port>7703</zmqproxy.req.port>
+				<!-- 用户服务器配置 -->
+				<user.serv.host>192.168.16.42</user.serv.host>
+				<user.serv.port>8080</user.serv.port>
+				<user.serv.context>/</user.serv.context>
+				<user.serv.appid>app1493175262628</user.serv.appid>
+				<user.serv.plaintext>app1493175262628</user.serv.plaintext>
+				<user.serv.secret>clqSj0/n2ztk8ADIvSfPc0uNMU6gKCXkWo7VNeJyxtnxpTFEbbCPy9NbWsT2WcVfIwVDihtK/3xf5s6kW45N1TxVhgdf58LrYtjrS7AOZZWVvPiHyfKcyV30aXK7T6AAB8WB6L6lMss8c5MixDAs5zKt9dD/+KO76oKN3iAuFfg=</user.serv.secret>
+				<!-- 微信公众号配置 -->
+				<wechat.accountId>gh_16ed608b6426</wechat.accountId>
+				<wechat.accountAppId>wx5d31a5be817a1b47</wechat.accountAppId>
+				<wechat.accountAppSecret>32be6a017915bd351104e214e28e184c</wechat.accountAppSecret>
 			</properties>
 		</profile>
 		<profile>
@@ -911,27 +923,6 @@
 			<id>dev-zmq-off</id>
 			<properties>
 				<zmqproxy.switch>OFF</zmqproxy.switch>
-			</properties>
-		</profile>
-		
-		<!-- 开发测试环境 -->
-		<profile>
-			<id>com-out-dev</id>
-			<properties>
-				<hibernate.dialect>org.hibernate.dialect.MySQLDialect</hibernate.dialect>
-				<validationQuery.sqlserver>SELECT 1</validationQuery.sqlserver>
-				<jdbc.url><![CDATA[ jdbc:mysql://qlcdyf.vicp.net:9100/ttwechat?useUnicode=true&amp;characterEncoding=UTF-8 ]]></jdbc.url>
-				<jdbc.username>qltt</jdbc.username>
-				<jdbc.password>12345678</jdbc.password>
-				<jdbc.dbType>mysql</jdbc.dbType>
-				<hibernate.hbm2ddl.auto>none</hibernate.hbm2ddl.auto>
-				<diver.name>com.mysql.jdbc.Driver</diver.name>
-				<database.name>ttwechat</database.name>
-				<zmqproxy.valid.crc>false</zmqproxy.valid.crc>
-				<zmqproxy.switch>ON</zmqproxy.switch>
-				<zmqproxy.ip>127.0.0.1</zmqproxy.ip>
-				<zmqproxy.rsp.port>9143</zmqproxy.rsp.port>
-				<zmqproxy.req.port>9141</zmqproxy.req.port>
 			</properties>
 		</profile>
 		
@@ -953,6 +944,17 @@
 				<zmqproxy.ip>127.0.0.1</zmqproxy.ip>
 				<zmqproxy.rsp.port>9143</zmqproxy.rsp.port>
 				<zmqproxy.req.port>9141</zmqproxy.req.port>
+				<!-- 用户服务器配置 -->
+				<user.serv.host>qlcdyf.vicp.net</user.serv.host>
+				<user.serv.port>9120</user.serv.port>
+				<user.serv.context>/qltt-us/</user.serv.context>
+				<user.serv.appid>app1493028185145</user.serv.appid>
+				<user.serv.plaintext>app1493028185145</user.serv.plaintext>
+				<user.serv.secret>C7FcF+dmr9MP2oi2/QWEnzGIDjTr7/AZot00naI1vOc1vKmUSuGH9E1wtMYA7cNrkQpbwOjYVFbhm8C6iiG8ZiHDJBphHx/hl6uMBH9uaR+0nr2XJahdxsmjQhINy6gK2hHXLMSXdQ484A/b1ijUEt0MUh7zCeo7BjqZjHm9dP8=</user.serv.secret>
+				<!-- 微信公众号配置 -->
+				<wechat.accountId>gh_15926e22e247</wechat.accountId>
+				<wechat.accountAppId>wx37b283059af81b4e</wechat.accountAppId>
+				<wechat.accountAppSecret>f0f7a6d0033e29eeb1ecd0c3ff1fdc8c</wechat.accountAppSecret>
 			</properties>
 		</profile>
 	</profiles>
