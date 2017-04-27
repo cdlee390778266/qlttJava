@@ -45,6 +45,7 @@
 	<bean id="initQueue" class="weixin.guanjia.message.task.InitQueue">
 		<constructor-arg ref="busProcess"></constructor-arg>
 		<constructor-arg ref="zmqToProxy"></constructor-arg>
+		<constructor-arg value="${zmqproxy.switch}"></constructor-arg>
 	</bean>
 	<!-- 配置数据源1 -->
 	<bean name="dataSource_jeecg" class="com.alibaba.druid.pool.DruidDataSource"
@@ -112,8 +113,8 @@
 				<!--<prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop> -->
 				<prop key="hibernate.dialect">${hibernate.dialect}</prop>
 				<prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
-				<prop key="hibernate.show_sql">true</prop>
-				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.format_sql">false</prop>
 				<prop key="hibernate.temp.use_jdbc_metadata_defaults">false</prop>
 			</props>
 		</property>

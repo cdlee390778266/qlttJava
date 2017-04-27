@@ -2,12 +2,15 @@ package org.jeecgframework.web.system.listener;
 
 import javax.servlet.ServletContextEvent;
 
+import org.jeecgframework.core.util.ResourceUtil;
 import org.jeecgframework.web.system.service.MenuInitService;
 import org.jeecgframework.web.system.service.SystemService;
-
-import org.jeecgframework.core.util.ResourceUtil;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
+
+import com.qianlong.webapp.job.UserServTokenTask;
+
+import weixin.p3.oauth2.task.WeixinAccountTokenTask;
 
 
 /**
@@ -27,6 +30,8 @@ public class InitListener  implements javax.servlet.ServletContextListener {
 		WebApplicationContext webApplicationContext = WebApplicationContextUtils.getWebApplicationContext(event.getServletContext());
 		SystemService systemService = (SystemService) webApplicationContext.getBean("systemService");
 		MenuInitService menuInitService = (MenuInitService) webApplicationContext.getBean("menuInitService");
+		UserServTokenTask userServTokenTask = (UserServTokenTask)webApplicationContext.getBean("userServTokenTask");
+		WeixinAccountTokenTask weixinAccountTokenTask = (WeixinAccountTokenTask)webApplicationContext.getBean("weixinAccountTokenTask");
 		
 		/**
 		 * 第一部分：对数据字典进行缓存
@@ -43,6 +48,11 @@ public class InitListener  implements javax.servlet.ServletContextListener {
 			menuInitService.initMenu();
 		}
 		
+		/**
+		 * 自动重置用户服务器和微信的access_token
+		 */
+		userServTokenTask.autoResetToken();
+		weixinAccountTokenTask.autoResetToken();
 	}
 
 }
