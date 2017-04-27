@@ -1,24 +1,23 @@
 package com.qianlong.qltt.us.service.impl;
 
-import java.util.Date;
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.qianlong.qltt.us.domain.acct.TUSAcctBaseInfo;
-import com.qianlong.qltt.us.domain.acct.TUSAcctCNReg;
-import com.qianlong.qltt.us.domain.acct.TUSAcctCNRegExample;
-import com.qianlong.qltt.us.domain.acct.TUSAcctCNRegExample.Criteria;
-import com.qianlong.qltt.us.domain.acct.TUSBindRel;
-import com.qianlong.qltt.us.domain.device.TUSChnlDevInfo;
+import com.qianlong.qltt.us.domain.TUSAcctBaseInfo;
+import com.qianlong.qltt.us.domain.TUSAcctCNReg;
+import com.qianlong.qltt.us.domain.TUSAcctCNRegExample;
+import com.qianlong.qltt.us.domain.TUSBindRel;
+import com.qianlong.qltt.us.domain.TUSChnlDevInfo;
 import com.qianlong.qltt.us.exception.ErrorCodeMaster;
 import com.qianlong.qltt.us.exception.QlttUSBusinessException;
-import com.qianlong.qltt.us.mapper.acct.TUSAcctBaseInfoMapper;
-import com.qianlong.qltt.us.mapper.acct.TUSAcctCNRegMapper;
-import com.qianlong.qltt.us.mapper.acct.TUSBindRelMapper;
-import com.qianlong.qltt.us.mapper.device.TUSChnlDevInfoMapper;
+import com.qianlong.qltt.us.mapper.TUSAcctBaseInfoMapper;
+import com.qianlong.qltt.us.mapper.TUSAcctCNRegMapper;
+import com.qianlong.qltt.us.mapper.TUSBindRelMapper;
+import com.qianlong.qltt.us.mapper.TUSChnlDevInfoMapper;
 import com.qianlong.qltt.us.protocol.acctopen.AcctBindInfo;
 import com.qianlong.qltt.us.protocol.acctopen.AcctOpen001Req;
 import com.qianlong.qltt.us.protocol.acctopen.AcctOpen001Rsp;
@@ -43,11 +42,11 @@ public class AcctOpenServiceImpl extends CommServiceImpl implements IAcctOpenSer
 	@Transactional
 	public AcctOpen001Rsp open001(AcctOpen001Req req) {
 		String cn = req.getCn();
-		Date now = getSystemDate();
+		Timestamp now = getSystemDate();
 
 		// 向tusacctcnreg表查询是否存在指定手机号且status=1的记录，如果存在，则拒绝开通新账户
 		TUSAcctCNRegExample tusAcctCNRegExample = new TUSAcctCNRegExample();
-		Criteria acreCriteria = tusAcctCNRegExample.createCriteria();
+		TUSAcctCNRegExample.Criteria acreCriteria = tusAcctCNRegExample.createCriteria();
 		acreCriteria.andFsCnEqualTo(cn);// 指定手机号
 		acreCriteria.andFiStatusEqualTo(1);// 指定状态==1
 		List<TUSAcctCNReg> regList = tUSAcctCNRegMapper.selectByExample(tusAcctCNRegExample);

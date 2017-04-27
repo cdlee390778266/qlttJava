@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qianlong.qltt.us.mapper.TUSAcctBaseInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.qianlong.qltt.us.domain.TUSAcctBaseInfo" >
+    <id column="Fs_ttacct" property="fsTtacct" jdbcType="VARCHAR" />
+    <result column="Fs_name" property="fsName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    Fs_ttacct, Fs_name
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.qianlong.qltt.us.domain.TUSAcctBaseInfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tusacctbaseinfo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.qianlong.qltt.us.domain.TUSAcctBaseInfoKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from tusacctbaseinfo
+    where Fs_ttacct = #{fsTtacct,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.qianlong.qltt.us.domain.TUSAcctBaseInfoKey" >
+    delete from tusacctbaseinfo
+    where Fs_ttacct = #{fsTtacct,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.qianlong.qltt.us.domain.TUSAcctBaseInfoExample" >
+    delete from tusacctbaseinfo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.qianlong.qltt.us.domain.TUSAcctBaseInfo" >
+    insert into tusacctbaseinfo (Fs_ttacct, Fs_name)
+    values (#{fsTtacct,jdbcType=VARCHAR}, #{fsName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qianlong.qltt.us.domain.TUSAcctBaseInfo" >
+    insert into tusacctbaseinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="fsTtacct != null" >
+        Fs_ttacct,
+      </if>
+      <if test="fsName != null" >
+        Fs_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="fsTtacct != null" >
+        #{fsTtacct,jdbcType=VARCHAR},
+      </if>
+      <if test="fsName != null" >
+        #{fsName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.qianlong.qltt.us.domain.TUSAcctBaseInfoExample" resultType="java.lang.Integer" >
+    select count(*) from tusacctbaseinfo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tusacctbaseinfo
+    <set >
+      <if test="record.fsTtacct != null" >
+        Fs_ttacct = #{record.fsTtacct,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fsName != null" >
+        Fs_name = #{record.fsName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tusacctbaseinfo
+    set Fs_ttacct = #{record.fsTtacct,jdbcType=VARCHAR},
+      Fs_name = #{record.fsName,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qianlong.qltt.us.domain.TUSAcctBaseInfo" >
+    update tusacctbaseinfo
+    <set >
+      <if test="fsName != null" >
+        Fs_name = #{fsName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Fs_ttacct = #{fsTtacct,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qianlong.qltt.us.domain.TUSAcctBaseInfo" >
+    update tusacctbaseinfo
+    set Fs_name = #{fsName,jdbcType=VARCHAR}
+    where Fs_ttacct = #{fsTtacct,jdbcType=VARCHAR}
+  </update>
+</mapper>

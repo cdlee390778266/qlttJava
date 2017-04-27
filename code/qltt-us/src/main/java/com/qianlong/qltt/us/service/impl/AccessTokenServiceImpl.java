@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.qianlong.qltt.us.common.Constants;
-import com.qianlong.qltt.us.domain.app.TUSSysApp;
+import com.qianlong.qltt.us.domain.TUSSysApp;
 import com.qianlong.qltt.us.domain.comm.AccessToken;
 import com.qianlong.qltt.us.exception.ErrorCodeMaster;
 import com.qianlong.qltt.us.exception.QlttUSBusinessException;

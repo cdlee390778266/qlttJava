@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qianlong.qltt.us.mapper.TUSSysAccessTokenTmpMapper">
+  <resultMap id="BaseResultMap"
+    type="com.qianlong.qltt.us.domain.TUSSysAccessTokenTmp">
+    <id column="Fs_appid" property="fsAppid" jdbcType="VARCHAR" />
+    <result column="Fs_accesstoken" property="fsAccesstoken"
+      jdbcType="VARCHAR" />
+    <result column="Ft_timestamp" property="ftTimestamp"
+      jdbcType="TIMESTAMP" />
+  </resultMap>
+  
+  <resultMap id="AccessTokenResultMap" type="com.qianlong.qltt.us.domain.comm.AccessToken">
+    <id column="Fs_appid" property="appID" jdbcType="VARCHAR" />
+    <result column="Fs_accesstoken" property="accessToken"
+      jdbcType="VARCHAR" />
+    <result column="Ft_timestamp" property="timeStamp" jdbcType="TIMESTAMP" />
+  </resultMap>
+  
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria"
+        separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" suffix=")" prefixOverrides="and">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and
+                  ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and
+                  ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and
+                  ${criterion.condition} #{criterion.value} and
+                  #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem"
+                    open="(" close=")" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria"
+        separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" suffix=")" prefixOverrides="and">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and
+                  ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and
+                  ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and
+                  ${criterion.condition} #{criterion.value} and
+                  #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem"
+                    open="(" close=")" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    Fs_appid, Fs_accesstoken, Ft_timestamp
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap"
+    parameterType="com.qianlong.qltt.us.domain.TUSSysAccessTokenTmpExample">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tussysaccesstokentmp
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap"
+    parameterType="com.qianlong.qltt.us.domain.TUSSysAccessTokenTmpKey">
+    select
+    <include refid="Base_Column_List" />
+    from tussysaccesstokentmp
+    where Fs_appid =
+    #{fsAppid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey"
+    parameterType="com.qianlong.qltt.us.domain.TUSSysAccessTokenTmpKey">
+    delete from tussysaccesstokentmp
+    where Fs_appid =
+    #{fsAppid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample"
+    parameterType="com.qianlong.qltt.us.domain.TUSSysAccessTokenTmpExample">
+    delete from tussysaccesstokentmp
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.qianlong.qltt.us.domain.TUSSysAccessTokenTmp">
+    insert into tussysaccesstokentmp (Fs_appid, Fs_accesstoken,
+    Ft_timestamp
+    )
+    values (#{fsAppid,jdbcType=VARCHAR},
+    #{fsAccesstoken,jdbcType=VARCHAR}, #{ftTimestamp,jdbcType=TIMESTAMP}
+    )
+  </insert>
+  <insert id="insertSelective" parameterType="com.qianlong.qltt.us.domain.TUSSysAccessTokenTmp">
+    insert into tussysaccesstokentmp
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="fsAppid != null">
+        Fs_appid,
+      </if>
+      <if test="fsAccesstoken != null">
+        Fs_accesstoken,
+      </if>
+      <if test="ftTimestamp != null">
+        Ft_timestamp,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="fsAppid != null">
+        #{fsAppid,jdbcType=VARCHAR},
+      </if>
+      <if test="fsAccesstoken != null">
+        #{fsAccesstoken,jdbcType=VARCHAR},
+      </if>
+      <if test="ftTimestamp != null">
+        #{ftTimestamp,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample"
+    parameterType="com.qianlong.qltt.us.domain.TUSSysAccessTokenTmpExample"
+    resultType="java.lang.Integer">
+    select count(*) from tussysaccesstokentmp
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update tussysaccesstokentmp
+    <set>
+      <if test="record.fsAppid != null">
+        Fs_appid =
+        #{record.fsAppid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fsAccesstoken != null">
+        Fs_accesstoken =
+        #{record.fsAccesstoken,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ftTimestamp != null">
+        Ft_timestamp =
+        #{record.ftTimestamp,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update tussysaccesstokentmp
+    set Fs_appid =
+    #{record.fsAppid,jdbcType=VARCHAR},
+    Fs_accesstoken = #{record.fsAccesstoken,jdbcType=VARCHAR},
+    Ft_timestamp = #{record.ftTimestamp,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qianlong.qltt.us.domain.TUSSysAccessTokenTmp">
+    update tussysaccesstokentmp
+    <set>
+      <if test="fsAccesstoken != null">
+        Fs_accesstoken =
+        #{fsAccesstoken,jdbcType=VARCHAR},
+      </if>
+      <if test="ftTimestamp != null">
+        Ft_timestamp =
+        #{ftTimestamp,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where Fs_appid = #{fsAppid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qianlong.qltt.us.domain.TUSSysAccessTokenTmp">
+    update tussysaccesstokentmp
+    set Fs_accesstoken =
+    #{fsAccesstoken,jdbcType=VARCHAR},
+    Ft_timestamp = #{ftTimestamp,jdbcType=TIMESTAMP}
+    where Fs_appid =
+    #{fsAppid,jdbcType=VARCHAR}
+  </update>
+
+  <select id="selectAllAccessTokens" resultMap="AccessTokenResultMap">
+    select * from
+    tussysaccesstokentmp
+  </select>
+
+  <delete id="deleteAll">
+    delete from tussysaccesstokentmp
+  </delete>
+
+  <insert id="batchInsert" parameterType="java.util.List">
+    insert into tussysaccesstokentmp (Fs_appid, Fs_accesstoken,
+    Ft_timestamp)
+    values
+    <foreach collection="list" item="at" index="index"
+      separator=",">
+      (
+      #{at.appID,jdbcType=VARCHAR},
+      #{at.accessToken,jdbcType=VARCHAR},
+      #{at.timeStamp,jdbcType=TIMESTAMP}
+      )
+    </foreach>
+  </insert>
+</mapper>
