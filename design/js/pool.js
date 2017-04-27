@@ -286,7 +286,7 @@ $(document).ready(function(){
         if(!editFlag){
             $('.menu-body span').removeClass('active');
             $(this).addClass('active');
-            $('#poolName').val($(this).find('strong').text());
+            $('#poolName').val($(this).find('strong').text())
         }
         
     });
