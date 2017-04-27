@@ -82,6 +82,9 @@
     <if test="orderByClause != null" >
       order by ${orderByClause}
     </if>
+    <if test="limitStart != null and limitStart>=0 and limitEnd !=null and limitEnd>=limitStart" >
+      limit #{limitStart} , #{limitEnd}
+    </if>
   </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.qianlong.qltt.us.domain.TUsAttnStockKey" >
     select 
@@ -208,4 +211,15 @@
       and Fi_poolindex = #{fiPoolindex,jdbcType=INTEGER}
       and Fi_stockorder = #{fiStockorder,jdbcType=INTEGER}
   </update>
+  
+  <insert id="batchInsert" parameterType="java.util.List">
+     insert into tusattnstock (Fs_ttacct, Fi_poolindex, Fi_stockorder, 
+      Fs_stockcode, Fs_stockname)
+    values 
+    <foreach collection="list" item="stock"
+      separator=",">
+    (#{stock.fsTtacct,jdbcType=VARCHAR}, #{stock.fiPoolindex,jdbcType=INTEGER}, #{stock.fiStockorder,jdbcType=INTEGER}, 
+      #{stock.fsStockcode,jdbcType=VARCHAR}, #{stock.fsStockname,jdbcType=VARCHAR})
+    </foreach>
+  </insert>
 </mapper>

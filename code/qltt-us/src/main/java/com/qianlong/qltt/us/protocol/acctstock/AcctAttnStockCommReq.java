@@ -1,4 +1,4 @@
-package com.qianlong.qltt.us.protocol.acctattntac;
+package com.qianlong.qltt.us.protocol.acctstock;
 
 import java.util.List;
 
@@ -7,15 +7,14 @@ import javax.validation.constraints.NotNull;
 
 import com.qianlong.qltt.us.util.validator.UTF8MAXLenth;
 
-public class AcctAttnTac003Req {
-
+public class AcctAttnStockCommReq {
 	@NotNull
 	@UTF8MAXLenth(max=16)
 	private String ttacct;
 	
 	@Valid
-	private List<AttnTacTic> attntactic;
-
+	private List<StockPool> stockpool;
+	
 	public String getTtacct() {
 		return ttacct;
 	}
@@ -24,11 +23,11 @@ public class AcctAttnTac003Req {
 		this.ttacct = ttacct;
 	}
 
-	public List<AttnTacTic> getAttntactic() {
-		return attntactic;
+	public List<StockPool> getStockpool() {
+		return stockpool;
 	}
 
-	public void setAttntactic(List<AttnTacTic> attntactic) {
-		this.attntactic = attntactic;
+	public void setStockpool(List<StockPool> stockpool) {
+		this.stockpool = stockpool;
 	}
 }

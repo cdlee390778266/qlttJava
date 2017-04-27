@@ -3,6 +3,8 @@ package com.qianlong.qltt.us.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,6 +24,8 @@ import com.qianlong.qltt.us.util.StringUtil;
 
 @Service("acctAttnTacService")
 public class AcctAttnTacServiceImpl extends CommServiceImpl implements IAcctAttnTacService {
+	
+	private static final Logger logger = LoggerFactory.getLogger(AcctAttnTacServiceImpl.class);
 	
 	@Autowired
 	private TUsAttnTacTicMapper tUsAttnTacTicMapper;
@@ -72,17 +76,17 @@ public class AcctAttnTacServiceImpl extends CommServiceImpl implements IAcctAttn
 	@Transactional
 	public CommRsp attntac003(AcctAttnTac003Req req) {
 		//先删除
-		List<TUsAttnTacTic> usAttnTacTics = createTUsAttnTacTics(req.getTtacct(),req.getCncltactic());
-		if(usAttnTacTics != null && !usAttnTacTics.isEmpty()){
-			for(TUsAttnTacTic tacTic : usAttnTacTics){
-				tUsAttnTacTicMapper.deleteByPrimaryKey(tacTic);
-			}
-		}
+		TUsAttnTacTicExample example = new TUsAttnTacTicExample();
+		TUsAttnTacTicExample.Criteria criteria = example.createCriteria();
+		criteria.andFsTtacctEqualTo(req.getTtacct());
+		int num = tUsAttnTacTicMapper.deleteByExample(example);
+		logger.debug("删除了"+num+"条数据");
 		//后插入
-		usAttnTacTics = createTUsAttnTacTics(req.getTtacct(), req.getAttntactic());
+		List<TUsAttnTacTic> usAttnTacTics = createTUsAttnTacTics(req.getTtacct(), req.getAttntactic());
 		if(usAttnTacTics !=null && !usAttnTacTics.isEmpty()){
-			tUsAttnTacTicMapper.batchInsert(usAttnTacTics);
+			num= tUsAttnTacTicMapper.batchInsert(usAttnTacTics);
 		}
+		logger.debug("新增了"+num+"条数据");
 		return new CommRsp();
 	}
 

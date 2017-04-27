@@ -1,10 +1,12 @@
 package com.qianlong.qltt.us.mapper;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
 import com.qianlong.qltt.us.domain.TUsAttnStock;
 import com.qianlong.qltt.us.domain.TUsAttnStockExample;
 import com.qianlong.qltt.us.domain.TUsAttnStockKey;
-import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
 public interface TUsAttnStockMapper {
     int countByExample(TUsAttnStockExample example);
@@ -28,4 +30,7 @@ public interface TUsAttnStockMapper {
     int updateByPrimaryKeySelective(TUsAttnStock record);
 
     int updateByPrimaryKey(TUsAttnStock record);
+
+    /**批量插入*/
+	int batchInsert(List<TUsAttnStock> tUsAttnStocks);
 }

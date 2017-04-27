@@ -9,14 +9,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.qianlong.qltt.us.domain.comm.CommRsp;
 import com.qianlong.qltt.us.exception.QlttRuntimeException;
 import com.qianlong.qltt.us.exception.QlttUSBusinessException;
 import com.qianlong.qltt.us.protocol.acctattntac.AcctAttnTac001Req;
 import com.qianlong.qltt.us.protocol.acctattntac.AcctAttnTac002Req;
 import com.qianlong.qltt.us.protocol.acctattntac.AcctAttnTac003Req;
 import com.qianlong.qltt.us.protocol.acctattntac.AcctAttnTac004Req;
-import com.qianlong.qltt.us.protocol.acctattntac.AcctAttnTac004Rsp;
 import com.qianlong.qltt.us.service.IAcctAttnTacService;
 /**
  * 关注指标Controller
@@ -66,8 +64,7 @@ public class UserAcctAttnTacController extends BaseController {
 	public Object attntac001(@Valid @RequestBody AcctAttnTac001Req req,BindingResult result){
 		handleReqParamerValid(result);
 		try {
-			CommRsp rsp = acctAttnTacService.attntac001(req);
-			return rsp;
+			return acctAttnTacService.attntac001(req);
 		} catch (QlttUSBusinessException e) {
 			throw e; 
 		}catch (Exception e) {
@@ -113,8 +110,7 @@ public class UserAcctAttnTacController extends BaseController {
 	public Object attntac002(@Valid @RequestBody AcctAttnTac002Req req,BindingResult result){
 		handleReqParamerValid(result);
 		try {
-			CommRsp rsp = acctAttnTacService.attntac002(req);
-			return rsp;
+			return acctAttnTacService.attntac002(req);
 		} catch (QlttUSBusinessException e) {
 			throw e; 
 		}catch (Exception e) {
@@ -133,15 +129,6 @@ public class UserAcctAttnTacController extends BaseController {
 	 * 接口请求Json数据格式:
 	 * 		{
 	 * 			"ttacct":"tt000000000001",//推推账号
-	 * 			"cncltactic":[//关注指标列表
-	 * 				{
-	 * 					"tacprm":2,//指标参数
-	 * 					"tactic":"指标2"//指标
-	 * 				},
-	 * 				{
-	 * 					"tacprm":1,
-	 * 					"tactic":"指标1"
-	 * 				}],
 	 * 			"attntactic":[//关注指标列表
 	 * 				{
 	 * 					"tacprm":2,//指标参数
@@ -169,8 +156,7 @@ public class UserAcctAttnTacController extends BaseController {
 	public Object attntac003(@Valid @RequestBody AcctAttnTac003Req req,BindingResult result){
 		handleReqParamerValid(result);
 		try {
-			CommRsp rsp = acctAttnTacService.attntac003(req);
-			return rsp;
+			return acctAttnTacService.attntac003(req);
 		} catch (QlttUSBusinessException e) {
 			throw e; 
 		}catch (Exception e) {
@@ -215,8 +201,7 @@ public class UserAcctAttnTacController extends BaseController {
 	public Object attntac004(@Valid @RequestBody AcctAttnTac004Req req,BindingResult result){
 		handleReqParamerValid(result);
 		try {
-			AcctAttnTac004Rsp rsp = acctAttnTacService.attntac004(req);
-			return rsp;
+			return acctAttnTacService.attntac004(req);
 		} catch (QlttUSBusinessException e) {
 			throw e; 
 		}catch (Exception e) {

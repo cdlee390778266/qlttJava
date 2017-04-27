@@ -142,5 +142,51 @@
       <req-call-max>1000</req-call-max>
     </protocol>
     <!-- 关注指标  end -->
+    
+    <!-- 选股池 start -->
+    <protocol>
+      <interface-num>IFC_UserAcctAttnStock001</interface-num>
+      <interface-name>新增账户关注个股</interface-name>
+      <interface-des></interface-des>
+      <interface-remark></interface-remark>
+      <protocol-num>1005001</protocol-num>
+      <protocol-mode>请求-应答</protocol-mode>
+      <req-url>/acctattnstock/attnstock001</req-url>
+      <req-call-max>1000</req-call-max>
+    </protocol>
+    
+    <protocol>
+      <interface-num>IFC_UserAcctAttnStock002</interface-num>
+      <interface-name>取消账户个股关注</interface-name>
+      <interface-des></interface-des>
+      <interface-remark></interface-remark>
+      <protocol-num>1005002</protocol-num>
+      <protocol-mode>请求-应答</protocol-mode>
+      <req-url>/acctattnstock/attnstock002</req-url>
+      <req-call-max>1000</req-call-max>
+    </protocol>
+    
+    <protocol>
+      <interface-num>IFC_UserAcctAttnStock003</interface-num>
+      <interface-name>账户关注个股变更</interface-name>
+      <interface-des></interface-des>
+      <interface-remark></interface-remark>
+      <protocol-num>1005003</protocol-num>
+      <protocol-mode>请求-应答</protocol-mode>
+      <req-url>/acctattnstock/attnstock003</req-url>
+      <req-call-max>1000</req-call-max>
+    </protocol>
+    
+    <protocol>
+      <interface-num>IFC_UserAcctAttnStock004</interface-num>
+      <interface-name>账户指定指标池关注个股查询</interface-name>
+      <interface-des></interface-des>
+      <interface-remark></interface-remark>
+      <protocol-num>1005004</protocol-num>
+      <protocol-mode>请求-应答</protocol-mode>
+      <req-url>/acctattnstock/attnstock004</req-url>
+      <req-call-max>1000</req-call-max>
+    </protocol>
+    <!-- 关注指标  end -->
   </protocols>
 </xml>
