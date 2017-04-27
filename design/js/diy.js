@@ -1,11 +1,14 @@
 /* 
 * @Author: lee
 * @Date:   2017-04-07 14:10:42
-* @Last Modified time: 2017-04-21 10:40:40
+* @Last Modified time: 2017-04-27 15:08:50
 */
 
 $(function(){
 
+    var index = 0;
+    var tagNums = 5;    //最多可选中的组合指标个数  
+    var $errorEle = $('#error');
     
     var createSearchBox = function($parent){
         var html = '';
@@ -23,7 +26,7 @@ $(function(){
         var html = '<div class="diy-box ani" swiper-animate-effect="fadeIn" swiper-animate-duration="1s" swiper-animate-delay="0s">';
         html +=  '<div class="tag swiper-container swiper-container-horizontal" id="'+ wrapperId +'" >'
              +      '<div class="swiper-wrapper">'
-             +          '<div class="swiper-slide" >'
+             +          '<div class="swiper-slide" id="tag'+ index +'" >'
              +               '<span>红三兵</span>'
              +               '<span>早晨之星</span>'
              +               '<span>红三兵</span>'
@@ -36,7 +39,9 @@ $(function(){
              +               '<span>红三兵</span>'
              +               '<span>红三兵</span>'
              +           '</div>'
-             +          '<div class="swiper-slide" >'
+        index++;
+
+        html +=      '<div class="swiper-slide" id="tag'+ index +'"  >'
              +               '<span>红三兵</span>'
              +               '<span>早晨之星</span>'
              +               '<span>红三兵</span>'
@@ -133,7 +138,24 @@ $(function(){
         createSearchBox($('#diy-wrapper'));
         createHtml('diy-main-0');
 
+        if($('.check-tags span').length<=0){
+            $('.check-tags').html('<div class="tag-empty">您没有选中任何指标！</div>');
+            $('.check-btn a strong').addClass('disabled');
+        }
+
+        $errorEle.find('span').html('最多只能选中'+tagNums+'个指标！');
     }
+
+    // var refreshTag = function($cParent,$parent){
+    //     var html = '';
+    //     $cParent.find('span').each(array/object, function(index, val) {
+    //          if($(this).hasClass('active')){
+    //             html += '<span><i></i><strong>' + $(this).text() + '</strong></span>';
+    //          }
+    //     });
+
+    //     $parent.html(html);
+    // }
 
 
     init();
@@ -215,6 +237,54 @@ $(function(){
 
     $('body').delegate('#choosePool', 'change', function(event) {
         $('.select-mask').text($(this).val());
+    });
+
+    //选中与取消组合指标
+    $('body').delegate('.swiper-slide span', 'tap', function(event) {
+        var id = $(this).parent().attr('id') + '-' + $(this).index();
+
+            if($(this).hasClass('active')){
+                
+                    $(this).removeClass('active');
+                    $('#'+id).remove();
+                    if($('.check-tags span').length<=0){
+                        $('.check-tags').html('<div class="tag-empty">您没有选中任何指标！</div>');
+                        $('.check-btn strong').addClass('disabled');
+                    }     
+            }else{
+                if($('.check-tags span').length<tagNums){
+                    $(this).addClass('active');
+                    $('.tag-empty').remove();
+                    if($('#'+id).length<=0){
+                        $('.check-tags').append('<span id="' + id + '"><i></i><strong>' + $(this).text() + '</strong></span>');
+                    }
+                    $('.check-btn strong').removeClass('disabled');
+                }else{
+                    $errorEle.removeClass('fadeOut');
+                    $errorEle.addClass('fadeIn');
+                    $errorEle.css('display','block');
+                }
+
+            }
+      
+    });
+
+    $('#error').tap(function(e){
+        e.stopPropagation();
+        $errorEle.removeClass('fadeIn');
+        $errorEle.addClass('fadeOut');
+        $errorEle.css('display','none');
+    }) 
+
+    $('body').delegate('.check-tags i', 'tap', function(event) {
+        var $ele = $(this).parent();
+        var dataArr = $ele.attr('id').split('-');
+        $('#'+dataArr[0]).find('span').eq(dataArr[1]).removeClass('active');
+        $ele.remove();
+        if($('.check-tags span').length<=0){
+            $('.check-tags').html('<div class="tag-empty">您没有选中任何指标！</div>');
+            $('.check-btn strong').addClass('disabled');
+        }  
     });
   
 })
