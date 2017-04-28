@@ -795,10 +795,14 @@ a{
         border-radius: 4px;
         color: #333;
         background-color: #fff;
-
-      &:active{
-        background-color:#ddd;
-      }
+        
+        &.active{
+            background: $red;
+            color:#fff;
+        }
+        &:active{
+            background-color:#ddd;
+        }
     }
     .swiper-button-next{
         background-size: $bgSize;
@@ -840,6 +844,11 @@ a{
         padding-left: 11px;
     } 
     .check-tags{
+        height : 8.2rem;
+        .tag-empty{
+            line-height: 8.2rem;
+            text-align: center;
+        }
         span{
             position: relative;
             i{
@@ -878,6 +887,9 @@ a{
                   &:active{
                     background-color: #e3a804;
                   }
+                  &.disabled{
+                        background:#ddd !important;
+                  }
                 }
             }
             &:last-child{
@@ -893,8 +905,12 @@ a{
                   &:active{
                     background-color: #d23e3a;
                   }
+                  &.disabled{
+                        background:#ddd !important;
+                  }
                 }
             }
+
         }
     }
 }
