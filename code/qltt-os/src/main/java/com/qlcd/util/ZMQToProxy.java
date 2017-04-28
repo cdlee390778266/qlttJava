@@ -79,7 +79,12 @@ public class ZMQToProxy {
 			if (connFlag == false) {
 				if (responder != null)
 					responder.close();
+				//设置这些防止半连接出现
 				responder = rcontext.socket(ZMQ.REP);
+				responder.setTCPKeepAliveIdle(120);
+				responder.setTCPKeepAliveInterval(5);
+				responder.setTCPKeepAlive(1);
+				responder.setTCPKeepAliveCount(3);
 				responder.connect(proxyAddr);
 				connFlag = true;
 			}

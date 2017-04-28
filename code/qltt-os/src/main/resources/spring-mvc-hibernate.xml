@@ -22,16 +22,15 @@
 	</context:component-scan>
 
 	<!-- 引入属性文件 -->
-	<context:property-placeholder location="classpath:dbconfig.properties"
-		ignore-unresolvable="true" order="1" />
+	<context:property-placeholder location="classpath:dbconfig.properties" ignore-unresolvable="true" order="1" />
 	<!-- 引入线程池文件 -->
-	<context:property-placeholder location="classpath:zmqTask.properties"
-		ignore-unresolvable="false" order="2" />
+	<context:property-placeholder location="classpath:zmqTask.properties" ignore-unresolvable="false" order="2" />
 
 	<bean id="busProcess" class="weixin.guanjia.message.task.MyBusProcess" />
   	<bean id="initGetMessage" class="weixin.guanjia.message.task.InitGetMessage">
 		<constructor-arg ref="commonService"></constructor-arg>
  		<constructor-arg ref="weixinAccountService"></constructor-arg>
+ 		<constructor-arg ref="messageTemplateService"></constructor-arg>
 	</bean>
 	<bean id="zmqProxyClient" class="com.qlcd.util.ZMQProxyClient">
 		<property name="validCRC" value="${zmqproxy.valid.crc}"></property>

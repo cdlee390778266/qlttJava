@@ -2,11 +2,13 @@ package weixin.guanjia.message.task;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import com.qlcd.qltt.body.pvt.T03001001;
 import com.qlcd.qltt.body.pvt.T03001001._evacctpush;
 import com.qlcd.qltt.body.pvt.T03001001._eventpush;
+import com.qlcd.qltt.body.pvt.T03001002;
 import com.qlcd.util.IBusProcess;
 
 import net.sf.json.JSONObject;
@@ -18,11 +20,10 @@ public class MyBusProcess implements IBusProcess {
 	@SuppressWarnings("unchecked")
 	@Override
 	public Object active(int trdcode,Object requestBody) {
-		int i = 0;
+		SimpleDateFormat data = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		try{
 			//模板消息推送
 			if(trdcode == 3001001){
-				SimpleDateFormat data = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 				T03001001._req content = (T03001001._req) requestBody;
 				_eventpush eventpush = content.getEp();
 				List<_evacctpush> e =content.getEaplistList();
@@ -35,44 +36,80 @@ public class MyBusProcess implements IBusProcess {
 					tep.setTtacct(epush.getTtacct());//推推账号
 					
 					tep.setTitle1(eventpush.getTitle1());//标题
-					tep.setKeyword1("尊敬的客户"+epush.getCN());//keyword1
+					tep.setKeyword1("尊敬的客户:"+epush.getCN());//keyword1
 					tep.setKeyword2(eventpush.getTacname());//keyword2
 					String remark = eventpush.getEvdetail()+epush.getContent();//remark
 					
 					tep.setContent(StringTypeUtil.stringToClob(remark));//内容
 					tep.setWeight(content.getEp().getMxdlyval());//权重
+					org.jeecgframework.core.util.LogUtil.info("添加队列开始时间:"+data.format(new Date()));
 					InitQueue.q.add(tep);
+					org.jeecgframework.core.util.LogUtil.info("添加队列结束时间:"+data.format(new Date()));
 				
 				}
 				com.qlcd.qltt.body.BppSys._rsp_succhead.Builder succheadbuilder = com.qlcd.qltt.body.BppSys._rsp_succhead.newBuilder();
-				succheadbuilder.setRspcode(1);
-				succheadbuilder.setRspmsg("OK");
+				succheadbuilder.setRspcode(0);
+				succheadbuilder.setRspmsg("成功");
 				
 				T03001001._rsp.Builder rsph =T03001001._rsp.newBuilder();
 				rsph.setRsh(succheadbuilder.build());
 				T03001001._rsp rsp = rsph.build();
 				return rsp;
-			}else{
+			}if(trdcode == 3001002){
+				T03001002._rsp.Builder rsph02 = T03001002._rsp.newBuilder();
+				T03001002._req content = (T03001002._req)requestBody;
+				List<com.qlcd.qltt.body.pvt.T03001002._eventpush> event = content.getEpList();
+				
+				for (com.qlcd.qltt.body.pvt.T03001002._eventpush _eventpush : event) {
+					T03001002._acptpush.Builder acp = T03001002._acptpush.newBuilder();
+					SendMessageTep tep = new SendMessageTep();
+					tep.setCreatetime(new Timestamp(data.parse(_eventpush.getOcctime()).getTime()));//创建时间
+					tep.setOpenId(_eventpush.getDevno());//设备id
+					tep.setSvcchnl(_eventpush.getSvcchnlValue());//渠道标识
+					tep.setDevtype(_eventpush.getDevtypeValue());
+					tep.setTtacct(_eventpush.getTtacct());//推推账号
+					
+					tep.setTitle1(_eventpush.getTitle1());//标题
+					tep.setKeyword1("尊敬的客户:"+_eventpush.getCN());//keyword1
+					tep.setKeyword2(_eventpush.getTacname());//keyword2
+					String remark = _eventpush.getEvdetail()+_eventpush.getContent();//remark
+					
+					tep.setContent(StringTypeUtil.stringToClob(remark));//内容
+					tep.setWeight(_eventpush.getMxdlyval());//权重
+					org.jeecgframework.core.util.LogUtil.info("添加队列开始时间:"+data.format(new Date()));
+					InitQueue.q.add(tep);
+					acp.setPushindex(_eventpush.getPushindex());
+					rsph02.addAcplist(acp);
+					org.jeecgframework.core.util.LogUtil.info("添加队列结束时间:"+data.format(new Date()));
+				}
+				
 				com.qlcd.qltt.body.BppSys._rsp_succhead.Builder succheadbuilder = com.qlcd.qltt.body.BppSys._rsp_succhead.newBuilder();
 				succheadbuilder.setRspcode(0);
-				succheadbuilder.setRspmsg("fail");
+				succheadbuilder.setRspmsg("成功");
 				
-				T03001001._rsp.Builder rsph =T03001001._rsp.newBuilder();
-				rsph.setRsh(succheadbuilder.build());
-				T03001001._rsp rsp = rsph.build();
+				rsph02.setRsh(succheadbuilder);
+				T03001002._rsp rsp =rsph02.build();
 				return rsp;
 			}
 		}catch(Exception e){
-			T03001001._req content = (T03001001._req) requestBody;
-			org.jeecgframework.core.util.LogUtil.info("代理发送的异常数据为"+JSONObject.fromObject(content));
 			com.qlcd.qltt.body.BppSys._rsp_succhead.Builder succheadbuilder = com.qlcd.qltt.body.BppSys._rsp_succhead.newBuilder();
-			succheadbuilder.setRspcode(0);
-			succheadbuilder.setRspmsg("fail");
+			succheadbuilder.setRspcode(1);
+			succheadbuilder.setRspmsg("失败");
+			if(trdcode == 3001001){
+				T03001001._req content = (T03001001._req) requestBody;		
+				org.jeecgframework.core.util.LogUtil.info("代理发送的异常数据为"+JSONObject.fromObject(content));
+				T03001001._rsp.Builder rsph =T03001001._rsp.newBuilder();
+				rsph.setRsh(succheadbuilder.build());
+				T03001001._rsp rsp = rsph.build();
+				return rsp;
+			}else if(trdcode == 3001002){
+				T03001002._rsp.Builder rsph02 = T03001002._rsp.newBuilder();
+				rsph02.setRsh(succheadbuilder.build());
+				T03001002._rsp rsp = rsph02.build();
+				return rsp;
+			}
 			
-			T03001001._rsp.Builder rsph =T03001001._rsp.newBuilder();
-			rsph.setRsh(succheadbuilder.build());
-			T03001001._rsp rsp = rsph.build();
-			return rsp;
-		}	
+		}
+		return null;	
 	}
 }
