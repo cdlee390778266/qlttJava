@@ -142,6 +142,7 @@ public class AcctAttnStockServiceImpl extends CommServiceImpl implements IAcctAt
 
 
 	@Override
+	@Transactional(readOnly = true)
 	public AcctAttnStock004Rsp attntac004(AcctAttnStock004Req req) {
 		TUsAttnStockExample example = new TUsAttnStockExample();
 		TUsAttnStockExample.Criteria criteria = example.createCriteria();
