@@ -17,6 +17,7 @@ import weixin.guanjia.account.service.WeixinAccountServiceI;
 import weixin.guanjia.message.entity.MessageTemplate;
 import weixin.guanjia.message.entity.SendMessage;
 import weixin.guanjia.message.model.SendMessageTep;
+import weixin.guanjia.message.service.MessageTemplateService;
 import weixin.util.MessageTemplateApiUtil;
 import weixin.util.StringTypeUtil;
 
@@ -27,22 +28,22 @@ public class MyGetMessage implements Runnable {
 	private CommonService commonService;
 
 	private WeixinAccountServiceI weixinAccountService;
+	
+	private MessageTemplateService messageTemplateService;
 
 	private static final ResourceBundle getData = java.util.ResourceBundle.getBundle("sysConfig");
 	private static SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
-	public MyGetMessage(CommonService commonService, WeixinAccountServiceI weixinAccountService) {
+	public MyGetMessage(CommonService commonService, WeixinAccountServiceI weixinAccountService,MessageTemplateService messageTemplateService) {
 		this.commonService = commonService;
 		this.weixinAccountService = weixinAccountService;
+		this.messageTemplateService = messageTemplateService;
 	}
 
 	@Override
 	public void run() {
 		SendMessageTep tep;
 		while (true) {
-//			if (!InitQueue.q.isEmpty()) {//当队列为空的时候，该处会陷入死循环
-				// System.out.println("队列中数据个数:"+InitQueue.q.size()+"
-				// "+Thread.currentThread().getName()+"获取队列的数值"+InitQueue.q.take()+"移除后队列剩余的个数:"+InitQueue.q.size());
 			try {
 				tep = (SendMessageTep) InitQueue.q.take();
 				logger.debug("MyGetMessage.run");
@@ -116,29 +117,15 @@ public class MyGetMessage implements Runnable {
 	}
 	
 	private void saveSendMessage(SendMessageTep tep,String msgid,String templateId){
-		if (!"".equals(msgid)) {
-			SendMessage message = commonService.findUniqueByProperty(SendMessage.class, "msgid",msgid);
-			if (message == null) {
-				message = new SendMessage();
-				message.setContent(tep.getContent());
-				message.setSvcchnl(tep.getSvcchnl());
-				message.setDevtype(tep.getDevtype());
-				message.setTtacct(tep.getTtacct());
-				message.setCreatetime(tep.getCreatetime());
-				message.setOpenId(tep.getOpenId());
-				message.setTemplateId(templateId);
-				message.setMsgid(msgid);
-				commonService.save(message);
-			} else {
-				message.setSvcchnl(tep.getSvcchnl());
-				message.setTtacct(tep.getTtacct());
-				message.setContent(tep.getContent());
-				message.setCreatetime(tep.getCreatetime());
-				message.setDevtype(tep.getDevtype());
-				message.setOpenId(tep.getOpenId());
-				message.setTemplateId(templateId);
-				commonService.updateEntitie(message);
-			}
-		}
+		SendMessage message = new SendMessage();
+		message.setContent(tep.getContent());
+		message.setSvcchnl(tep.getSvcchnl());
+		message.setDevtype(tep.getDevtype());
+		message.setTtacct(tep.getTtacct());
+		message.setCreatetime(tep.getCreatetime());
+		message.setOpenId(tep.getOpenId());
+		message.setTemplateId(templateId);
+		message.setMsgid(msgid);
+		messageTemplateService.handle(message);
 	}
 }

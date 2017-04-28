@@ -904,9 +904,9 @@
 				<user.serv.host>192.168.16.42</user.serv.host>
 				<user.serv.port>8080</user.serv.port>
 				<user.serv.context>/</user.serv.context>
-				<user.serv.appid>app1493175262628</user.serv.appid>
-				<user.serv.plaintext>app1493175262628</user.serv.plaintext>
-				<user.serv.secret>clqSj0/n2ztk8ADIvSfPc0uNMU6gKCXkWo7VNeJyxtnxpTFEbbCPy9NbWsT2WcVfIwVDihtK/3xf5s6kW45N1TxVhgdf58LrYtjrS7AOZZWVvPiHyfKcyV30aXK7T6AAB8WB6L6lMss8c5MixDAs5zKt9dD/+KO76oKN3iAuFfg=</user.serv.secret>
+				<user.serv.appid>app1493095724732</user.serv.appid>
+				<user.serv.plaintext>app1493095724732</user.serv.plaintext>
+				<user.serv.secret>X2zoQsNRPlg94CNqQgzRuoXEz+2bjni0+DR1YVLlUlVkjxssFS59v1IeXOGTziX8Lx4koA1oy/kO46b7DpX1Ydb5ib5a+d9Qmb1tlwKYimVfwTEy9SZg3n2kZQtX8GMGO7lj9LwZmgP7WxydWdSdMdgiqEBUJgw/8vPYABwlTiM=</user.serv.secret>
 				<!-- 微信公众号配置 -->
 				<wechat.accountId>gh_16ed608b6426</wechat.accountId>
 				<wechat.accountAppId>wx5d31a5be817a1b47</wechat.accountAppId>

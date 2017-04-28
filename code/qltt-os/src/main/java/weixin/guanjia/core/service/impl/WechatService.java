@@ -36,6 +36,7 @@ import weixin.guanjia.message.entity.ReceiveText;
 import weixin.guanjia.message.entity.SendMessage;
 import weixin.guanjia.message.entity.TextTemplate;
 import weixin.guanjia.message.service.AutoResponseServiceI;
+import weixin.guanjia.message.service.MessageTemplateService;
 import weixin.guanjia.message.service.NewsItemServiceI;
 import weixin.guanjia.message.service.NewsTemplateServiceI;
 import weixin.guanjia.message.service.ReceiveTextServiceI;
@@ -70,6 +71,8 @@ public class WechatService {
 	private IUserService userService;
 	@Autowired
 	private CommonService commonService;
+	@Autowired
+	private MessageTemplateService messageTemplateService;
 
 	public String coreService(HttpServletRequest request) {
 		String respMessage = null;
@@ -147,19 +150,10 @@ public class WechatService {
 				}
 				//模板消息发送
 				else if(eventType.equals(MessageUtil.EVENT_TYPE_TEMPLATESENDJOBFINISH)){
-					//根据消息ID查询数据
-					SendMessage message = commonService.findUniqueByProperty(SendMessage.class,"msgid",msgId);
-					if(message == null){
-						message = new SendMessage();
-						message.setMsgid(msgId);
-						message.setSendStatus(requestMap.get("Status"));
-						
-						commonService.save(message);
-					}else{
-						
-						message.setSendStatus(requestMap.get("Status"));
-						commonService.updateEntitie(message);
-					}
+					SendMessage message = new SendMessage();
+					message.setMsgid(msgId);
+					message.setSendStatus(requestMap.get("Status"));
+					messageTemplateService.handle(message);
 					
 				}
 			}
