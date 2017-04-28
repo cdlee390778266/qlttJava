@@ -1,6 +1,7 @@
 package com.qianlong.qltt.us.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.qianlong.qltt.us.domain.TUsGSetPushFreq;
@@ -19,6 +20,8 @@ import com.qianlong.qltt.us.protocol.setprm.SetPrmPushNum;
 import com.qianlong.qltt.us.protocol.setprm.SetPrmPushScope;
 import com.qianlong.qltt.us.service.IAcctSetPrmService;
 
+
+@Service("acctSetPrmService")
 public class AcctSetPrmServiceImpl extends CommServiceImpl implements IAcctSetPrmService{
 	
 	@Autowired
