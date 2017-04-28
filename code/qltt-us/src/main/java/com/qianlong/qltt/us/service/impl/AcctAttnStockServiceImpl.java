@@ -150,7 +150,7 @@ public class AcctAttnStockServiceImpl extends CommServiceImpl implements IAcctAt
 		criteria.andFiPoolindexEqualTo(req.getPoolindex());
 		if(req.getPagereq() != null){
 			example.setLimitStart(req.getPagereq().getReqstart());
-			example.setLimitStart(req.getPagereq().getReqnum());
+			example.setLimitEnd(req.getPagereq().getReqnum());
 		}
 		example.setOrderByClause("`Fi_stockorder` ASC");
 		List<TUsAttnStock> tUsAttnStocks = tUsAttnStockMapper.selectByExample(example);
