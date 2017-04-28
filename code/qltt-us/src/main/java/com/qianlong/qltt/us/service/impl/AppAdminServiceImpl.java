@@ -1,18 +1,18 @@
 package com.qianlong.qltt.us.service.impl;
 
 import java.io.UnsupportedEncodingException;
-import java.util.Date;
+import java.sql.Timestamp;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.qianlong.qltt.us.domain.app.TUSSysApp;
-import com.qianlong.qltt.us.domain.app.TUSSysAppKey;
+import com.qianlong.qltt.us.domain.TUSSysApp;
+import com.qianlong.qltt.us.domain.TUSSysAppKey;
 import com.qianlong.qltt.us.exception.ErrorCodeMaster;
 import com.qianlong.qltt.us.exception.QlttRuntimeException;
 import com.qianlong.qltt.us.exception.QlttUSBusinessException;
-import com.qianlong.qltt.us.mapper.app.TUSSysAppMapper;
+import com.qianlong.qltt.us.mapper.TUSSysAppMapper;
 import com.qianlong.qltt.us.protocol.app.AppCreate001Rsp;
 import com.qianlong.qltt.us.protocol.app.TokenReset001;
 import com.qianlong.qltt.us.service.IAppAdminService;
@@ -36,7 +36,7 @@ public class AppAdminServiceImpl extends CommServiceImpl implements IAppAdminSer
 	@Transactional
 	public AppCreate001Rsp createApp() {
 		try {
-			Date now = getSystemDate();
+			Timestamp now = getSystemDate();
 			TUSSysApp app = new TUSSysApp();
 			String appid = generateAppid();
 			app.setFiStatus(1);
@@ -72,7 +72,7 @@ public class AppAdminServiceImpl extends CommServiceImpl implements IAppAdminSer
 		String appid = req.getAppid();
 		TUSSysApp app =  validAppSecret(appid, req.getOld_token(),req.getSecret());
 		try {
-			Date now = getSystemDate();
+			Timestamp now = getSystemDate();
 			KeyGenerater keyGenerater = new KeyGenerater();
 			keyGenerater.generater(appid + now.getTime());
 

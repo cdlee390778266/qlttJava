@@ -30,7 +30,5 @@ public @interface UTF8MAXLenth {
 
     Class<? extends Payload>[] payload() default {};
 
-    int max();
-    
-    
+    int max(); 
 }

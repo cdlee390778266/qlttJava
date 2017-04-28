@@ -97,6 +97,13 @@
       <artifactId>mybatis-spring</artifactId>
       <version>1.2.0</version>
     </dependency>
+    <dependency>
+      <groupId>org.mybatis.generator</groupId>
+      <artifactId>mybatis-generator-core</artifactId>
+      <version>1.3.2</version>
+      <type>jar</type>
+      <scope>test</scope>
+    </dependency>
 
     <!-- 数据池 -->
     <dependency>
@@ -263,8 +270,6 @@
   </build>
 
   <profiles>
-  
-  
     <profile>
       <id>test-test</id>
       <properties>
@@ -278,22 +283,8 @@
         <jdbc.initialSize>20</jdbc.initialSize>
       </properties>
     </profile>
-    
     <profile>
       <id>dev-test</id>
-      <properties>
-        <jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
-        <jdbc.url><![CDATA[jdbc:mysql://192.168.16.22:9100/ttuser?useUnicode=true&amp;characterEncoding=UTF-8 ]]></jdbc.url>
-        <jdbc.username>qltt</jdbc.username>
-        <jdbc.password>12345678</jdbc.password>
-        <jdbc.maxActive>50</jdbc.maxActive>
-        <jdbc.maxIdle>10</jdbc.maxIdle>
-        <jdbc.minIdle>5</jdbc.minIdle>
-        <jdbc.initialSize>20</jdbc.initialSize>
-      </properties>
-    </profile>
-    <profile>
-      <id>com-dev</id>
       <properties>
         <jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
         <jdbc.url><![CDATA[jdbc:mysql://192.168.16.22:9100/ttuser?useUnicode=true&amp;characterEncoding=UTF-8 ]]></jdbc.url>
@@ -309,7 +300,7 @@
       <id>dev-dev</id>
       <properties>
         <jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
-        <jdbc.url><![CDATA[jdbc:mysql://192.168.100.103:3306/qltt-us?useUnicode=true&amp;characterEncoding=UTF-8 ]]></jdbc.url>
+        <jdbc.url><![CDATA[jdbc:mysql://127.0.0.1:3306/qltt-us?useUnicode=true&amp;characterEncoding=UTF-8 ]]></jdbc.url>
         <jdbc.username>qltt-us</jdbc.username>
         <jdbc.password>cdyf2008</jdbc.password>
         <jdbc.maxActive>50</jdbc.maxActive>

@@ -6,16 +6,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.qianlong.qltt.us.domain.acct.TUSAcctCNReg;
-import com.qianlong.qltt.us.domain.acct.TUSAcctCNRegExample;
-import com.qianlong.qltt.us.domain.acct.TUSAcctCNRegExample.Criteria;
-import com.qianlong.qltt.us.domain.acct.TUSAcctCNRegKey;
-import com.qianlong.qltt.us.domain.acct.TUSBindRel;
-import com.qianlong.qltt.us.domain.acct.TUSBindRelExample;
+import com.qianlong.qltt.us.domain.TUSAcctCNReg;
+import com.qianlong.qltt.us.domain.TUSAcctCNRegExample;
+import com.qianlong.qltt.us.domain.TUSAcctCNRegExample.Criteria;
+import com.qianlong.qltt.us.domain.TUSAcctCNRegKey;
+import com.qianlong.qltt.us.domain.TUSBindRel;
+import com.qianlong.qltt.us.domain.TUSBindRelExample;
 import com.qianlong.qltt.us.exception.ErrorCodeMaster;
 import com.qianlong.qltt.us.exception.QlttUSBusinessException;
-import com.qianlong.qltt.us.mapper.acct.TUSAcctCNRegMapper;
-import com.qianlong.qltt.us.mapper.acct.TUSBindRelMapper;
+import com.qianlong.qltt.us.mapper.TUSAcctCNRegMapper;
+import com.qianlong.qltt.us.mapper.TUSBindRelMapper;
 import com.qianlong.qltt.us.protocol.acctlogin.AcctLogin001Req;
 import com.qianlong.qltt.us.protocol.acctlogin.AcctLogin001Rsp;
 import com.qianlong.qltt.us.protocol.acctlogin.AcctLogin002Req;
@@ -63,7 +63,7 @@ public class AcctLoginServiceImpl extends CommServiceImpl implements IAcctLoginS
 	public AcctLogin002Rsp login002(AcctLogin002Req req) {
 		// 根据请求信息向tusbindrel表查询ttacct
 		TUSBindRelExample tusBindRelExample = new TUSBindRelExample();
-		com.qianlong.qltt.us.domain.acct.TUSBindRelExample.Criteria brCriteria = tusBindRelExample.createCriteria();
+		com.qianlong.qltt.us.domain.TUSBindRelExample.Criteria brCriteria = tusBindRelExample.createCriteria();
 		brCriteria.andFiSvcchnlEqualTo(req.getSvcchnl());
 		brCriteria.andFsBindacctEqualTo(req.getBindacct());
 		List<TUSBindRel> tusBindRels = tUSBindRelMapper.selectByExample(tusBindRelExample);

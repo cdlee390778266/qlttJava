@@ -95,5 +95,161 @@
       <req-call-max>1000</req-call-max>
     </protocol>
     <!-- 信息维护管理  end -->
+    
+    
+     <!-- 关注指标 start -->
+    <protocol>
+      <interface-num>IFC_UserAcctAttnTac001</interface-num>
+      <interface-name>新增账户关注指标</interface-name>
+      <interface-des></interface-des>
+      <interface-remark></interface-remark>
+      <protocol-num>1004001</protocol-num>
+      <protocol-mode>请求-应答</protocol-mode>
+      <req-url>/acctattntac/attntac001</req-url>
+      <req-call-max>1000</req-call-max>
+    </protocol>
+    
+    <protocol>
+      <interface-num>IFC_UserAcctAttnTac002</interface-num>
+      <interface-name>账户取消指标关注</interface-name>
+      <interface-des></interface-des>
+      <interface-remark></interface-remark>
+      <protocol-num>1004002</protocol-num>
+      <protocol-mode>请求-应答</protocol-mode>
+      <req-url>/acctattntac/attntac002</req-url>
+      <req-call-max>1000</req-call-max>
+    </protocol>
+    
+    <protocol>
+      <interface-num>IFC_UserAcctAttnTac003</interface-num>
+      <interface-name>账户关注指标变更</interface-name>
+      <interface-des></interface-des>
+      <interface-remark></interface-remark>
+      <protocol-num>1004003</protocol-num>
+      <protocol-mode>请求-应答</protocol-mode>
+      <req-url>/acctattntac/attntac003</req-url>
+      <req-call-max>1000</req-call-max>
+    </protocol>
+    
+    <protocol>
+      <interface-num>IFC_UserAcctAttnTac004</interface-num>
+      <interface-name>账户关注指标查询</interface-name>
+      <interface-des></interface-des>
+      <interface-remark></interface-remark>
+      <protocol-num>1004004</protocol-num>
+      <protocol-mode>请求-应答</protocol-mode>
+      <req-url>/acctattntac/attntac004</req-url>
+      <req-call-max>1000</req-call-max>
+    </protocol>
+    <!-- 关注指标  end -->
+    
+    <!-- 选股池 start -->
+    <protocol>
+      <interface-num>IFC_UserAcctAttnStock001</interface-num>
+      <interface-name>新增账户关注个股</interface-name>
+      <interface-des></interface-des>
+      <interface-remark></interface-remark>
+      <protocol-num>1005001</protocol-num>
+      <protocol-mode>请求-应答</protocol-mode>
+      <req-url>/acctattnstock/attnstock001</req-url>
+      <req-call-max>1000</req-call-max>
+    </protocol>
+    
+    <protocol>
+      <interface-num>IFC_UserAcctAttnStock002</interface-num>
+      <interface-name>取消账户个股关注</interface-name>
+      <interface-des></interface-des>
+      <interface-remark></interface-remark>
+      <protocol-num>1005002</protocol-num>
+      <protocol-mode>请求-应答</protocol-mode>
+      <req-url>/acctattnstock/attnstock002</req-url>
+      <req-call-max>1000</req-call-max>
+    </protocol>
+    
+    <protocol>
+      <interface-num>IFC_UserAcctAttnStock003</interface-num>
+      <interface-name>账户关注个股变更</interface-name>
+      <interface-des></interface-des>
+      <interface-remark></interface-remark>
+      <protocol-num>1005003</protocol-num>
+      <protocol-mode>请求-应答</protocol-mode>
+      <req-url>/acctattnstock/attnstock003</req-url>
+      <req-call-max>1000</req-call-max>
+    </protocol>
+    
+    <protocol>
+      <interface-num>IFC_UserAcctAttnStock004</interface-num>
+      <interface-name>账户指定指标池关注个股查询</interface-name>
+      <interface-des></interface-des>
+      <interface-remark></interface-remark>
+      <protocol-num>1005004</protocol-num>
+      <protocol-mode>请求-应答</protocol-mode>
+      <req-url>/acctattnstock/attnstock004</req-url>
+      <req-call-max>1000</req-call-max>
+    </protocol>
+    <!-- 选股池  end -->
+    
+    <!-- 参数设置 start -->
+    <protocol>
+      <interface-num>IFC_UserAcctSetPrm001</interface-num>
+      <interface-name>全局推送范围设置</interface-name>
+      <interface-des></interface-des>
+      <interface-remark></interface-remark>
+      <protocol-num>1006001</protocol-num>
+      <protocol-mode>请求-应答</protocol-mode>
+      <req-url>/acctsetprm/setprm001</req-url>
+      <req-call-max>1000</req-call-max>
+    </protocol>
+    <protocol>
+      <interface-num>IFC_UserAcctSetPrm002</interface-num>
+      <interface-name>全局推送范围查询</interface-name>
+      <interface-des></interface-des>
+      <interface-remark></interface-remark>
+      <protocol-num>1006002</protocol-num>
+      <protocol-mode>请求-应答</protocol-mode>
+      <req-url>/acctsetprm/setprm002</req-url>
+      <req-call-max>1000</req-call-max>
+    </protocol>
+    <protocol>
+      <interface-num>IFC_UserAcctSetPrm003</interface-num>
+      <interface-name>全局推送数量设置</interface-name>
+      <interface-des></interface-des>
+      <interface-remark></interface-remark>
+      <protocol-num>1006003</protocol-num>
+      <protocol-mode>请求-应答</protocol-mode>
+      <req-url>/acctsetprm/setprm003</req-url>
+      <req-call-max>1000</req-call-max>
+    </protocol>
+    <protocol>
+      <interface-num>IFC_UserAcctSetPrm004</interface-num>
+      <interface-name>全局推送数量查询</interface-name>
+      <interface-des></interface-des>
+      <interface-remark></interface-remark>
+      <protocol-num>1006004</protocol-num>
+      <protocol-mode>请求-应答</protocol-mode>
+      <req-url>/acctsetprm/setprm004</req-url>
+      <req-call-max>1000</req-call-max>
+    </protocol>
+    <protocol>
+      <interface-num>IFC_UserAcctSetPrm005</interface-num>
+      <interface-name>全局推送频率设置</interface-name>
+      <interface-des></interface-des>
+      <interface-remark></interface-remark>
+      <protocol-num>1006005</protocol-num>
+      <protocol-mode>请求-应答</protocol-mode>
+      <req-url>/acctsetprm/setprm005</req-url>
+      <req-call-max>1000</req-call-max>
+    </protocol>
+    <protocol>
+      <interface-num>IFC_UserAcctSetPrm006</interface-num>
+      <interface-name>全局推送频率查询</interface-name>
+      <interface-des></interface-des>
+      <interface-remark></interface-remark>
+      <protocol-num>1006006</protocol-num>
+      <protocol-mode>请求-应答</protocol-mode>
+      <req-url>/acctsetprm/setprm006</req-url>
+      <req-call-max>1000</req-call-max>
+    </protocol>
+    <!--参数设置  end -->
   </protocols>
 </xml>

@@ -1,6 +1,7 @@
 package com.qianlong.qltt.us.service.impl;
 
 import java.net.URL;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -21,18 +22,18 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.qianlong.qltt.us.common.Constants;
-import com.qianlong.qltt.us.domain.app.TUSSysApp;
-import com.qianlong.qltt.us.domain.app.TUSSysAppKey;
-import com.qianlong.qltt.us.domain.app.TUSSysPtcDailyCall;
+import com.qianlong.qltt.us.domain.TUSSysApp;
+import com.qianlong.qltt.us.domain.TUSSysAppKey;
+import com.qianlong.qltt.us.domain.TUSSysPtcDailyCall;
 import com.qianlong.qltt.us.domain.comm.AccessToken;
 import com.qianlong.qltt.us.domain.comm.InterfaceCallInfo;
 import com.qianlong.qltt.us.exception.ErrorCodeMaster;
 import com.qianlong.qltt.us.exception.QlttRuntimeException;
 import com.qianlong.qltt.us.exception.QlttUSBusinessException;
-import com.qianlong.qltt.us.mapper.app.TUSSysAccessTokenTmpMapper;
-import com.qianlong.qltt.us.mapper.app.TUSSysAppMapper;
-import com.qianlong.qltt.us.mapper.app.TUSSysPtcDailyCallMapper;
-import com.qianlong.qltt.us.mapper.app.TUsSysPtcCallTmpMapper;
+import com.qianlong.qltt.us.mapper.TUSSysAccessTokenTmpMapper;
+import com.qianlong.qltt.us.mapper.TUSSysAppMapper;
+import com.qianlong.qltt.us.mapper.TUSSysPtcDailyCallMapper;
+import com.qianlong.qltt.us.mapper.TUsSysPtcCallTmpMapper;
 import com.qianlong.qltt.us.service.IInterfaceCallInfoService;
 import com.qianlong.qltt.us.util.DateUtil;
 
@@ -60,15 +61,13 @@ public class InterfaceCallInfoServiceImpl extends CommServiceImpl implements IIn
 		Date lastCallTime = interfaceCallInfo.getLastCallTime();
 		Integer maxCallNo = interfaceCallInfo.getMaxCallNo();
 		Integer callNo = interfaceCallInfo.getCallNo();
-		Date now = getSystemDate();//当前时间
+		Timestamp now = getSystemDate();//当前时间
 		if(DateUtil.isSameDate(lastCallTime, now)){//若是同一天
 			if(maxCallNo != null){
 				if(maxCallNo < callNo){
-					lastCallTime = now;
 					return false;
 				}else{
-					callNo++;
-					interfaceCallInfo.setCallNo(callNo);
+					callNo++;	
 				}
 			}	
 		}else{//如果不是同一天
@@ -76,12 +75,13 @@ public class InterfaceCallInfoServiceImpl extends CommServiceImpl implements IIn
 			TUSSysPtcDailyCall pltDailyCall = new TUSSysPtcDailyCall();
 			pltDailyCall.setFsAppid(interfaceCallInfo.getAppID());
 			pltDailyCall.setFsPtlno(interfaceCallInfo.getProtocolNo());
-			pltDailyCall.setFtPtllastcalltime(interfaceCallInfo.getLastCallTime());
+			pltDailyCall.setFtPtllastcalltime(new Timestamp(interfaceCallInfo.getLastCallTime().getTime()));
 			pltDailyCall.setFiPtlcallnum(callNo);
 			tUSSysPltDailyCallMapper.insert(pltDailyCall);
 			callNo = 1 ;
 		}
-		lastCallTime = now ;
+		interfaceCallInfo.setCallNo(callNo);
+		interfaceCallInfo.setLastCallTime(now);
 		return true;
 	}
 

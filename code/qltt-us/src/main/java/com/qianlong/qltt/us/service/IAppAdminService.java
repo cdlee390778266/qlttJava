@@ -1,6 +1,7 @@
 package com.qianlong.qltt.us.service;
 
-import com.qianlong.qltt.us.domain.app.TUSSysApp;
+
+import com.qianlong.qltt.us.domain.TUSSysApp;
 import com.qianlong.qltt.us.protocol.app.AppCreate001Rsp;
 import com.qianlong.qltt.us.protocol.app.TokenReset001;
 

@@ -28,7 +28,6 @@ public class CommRsp {
 		CommRsp rsp = new CommRsp();
 		rsp.setErrorCode("0");
 		rsp.setErrorMsg("ok");
-		
 		System.out.println(JSONObject.fromObject(rsp).toString());
 	}
 }

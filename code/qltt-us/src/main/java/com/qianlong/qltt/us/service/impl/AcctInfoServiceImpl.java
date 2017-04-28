@@ -4,11 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.qianlong.qltt.us.domain.acct.TUSAcctBaseInfo;
+import com.qianlong.qltt.us.domain.TUSAcctBaseInfo;
+import com.qianlong.qltt.us.domain.TUSChnlDevInfo;
 import com.qianlong.qltt.us.domain.comm.CommRsp;
-import com.qianlong.qltt.us.domain.device.TUSChnlDevInfo;
-import com.qianlong.qltt.us.mapper.acct.TUSAcctBaseInfoMapper;
-import com.qianlong.qltt.us.mapper.device.TUSChnlDevInfoMapper;
+import com.qianlong.qltt.us.mapper.TUSAcctBaseInfoMapper;
+import com.qianlong.qltt.us.mapper.TUSChnlDevInfoMapper;
 import com.qianlong.qltt.us.protocol.acctinfo.AcctInfo001Req;
 import com.qianlong.qltt.us.protocol.acctinfo.AcctInfo002Req;
 import com.qianlong.qltt.us.service.IAcctInfoService;
