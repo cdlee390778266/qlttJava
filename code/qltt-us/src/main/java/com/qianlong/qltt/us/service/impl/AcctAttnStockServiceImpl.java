@@ -14,11 +14,11 @@ import com.qianlong.qltt.us.mapper.TUsAttnStockMapper;
 import com.qianlong.qltt.us.protocol.PageRspParameter;
 import com.qianlong.qltt.us.protocol.acctstock.AcctAttnStock001Req;
 import com.qianlong.qltt.us.protocol.acctstock.AcctAttnStock002Req;
+import com.qianlong.qltt.us.protocol.acctstock.AcctAttnStock003Req;
 import com.qianlong.qltt.us.protocol.acctstock.AcctAttnStock004Req;
 import com.qianlong.qltt.us.protocol.acctstock.AcctAttnStock004Rsp;
-import com.qianlong.qltt.us.protocol.acctstock.AcctAttnStock003Req;
-import com.qianlong.qltt.us.protocol.acctstock.AttnStock003;
 import com.qianlong.qltt.us.protocol.acctstock.AttnStock001;
+import com.qianlong.qltt.us.protocol.acctstock.AttnStock003;
 import com.qianlong.qltt.us.protocol.acctstock.AttnStockComm;
 import com.qianlong.qltt.us.protocol.acctstock.StockPool;
 import com.qianlong.qltt.us.protocol.acctstock.StockPoolIndex;
@@ -79,24 +79,24 @@ public class AcctAttnStockServiceImpl extends CommServiceImpl implements IAcctAt
 				tUsAttnStockMapper.deleteByExample(example);
 				
 				//再将剩下的记录重新排序
-				example = new TUsAttnStockExample();
-				criteria = example.createCriteria();
-				criteria.andFsTtacctEqualTo(ttacct);
-				criteria.andFiPoolindexEqualTo(sp.getPoolindex());
-				example.setOrderByClause("`Fi_stockorder` ASC");
-				
-				List<TUsAttnStock> stocks = tUsAttnStockMapper.selectByExample(example);
-				if( stocks != null && !stocks.isEmpty()){
-					//将排序的记录先删除
-					tUsAttnStockMapper.deleteByExample(example);
-					
-					//将记录排序
-					for (int i = 0; i < stocks.size();) {
-						stocks.get(i).setFiStockorder(++i);
-					}
-					//将排序好的记录插回数据库
-					tUsAttnStockMapper.batchInsert(stocks);
-				}
+//				example = new TUsAttnStockExample();
+//				criteria = example.createCriteria();
+//				criteria.andFsTtacctEqualTo(ttacct);
+//				criteria.andFiPoolindexEqualTo(sp.getPoolindex());
+//				example.setOrderByClause("`Fi_stockorder` ASC");
+//				
+//				List<TUsAttnStock> stocks = tUsAttnStockMapper.selectByExample(example);
+//				if( stocks != null && !stocks.isEmpty()){
+//					//将排序的记录先删除
+//					tUsAttnStockMapper.deleteByExample(example);
+//					
+//					//将记录排序
+//					for (int i = 0; i < stocks.size();) {
+//						stocks.get(i).setFiStockorder(++i);
+//					}
+//					//将排序好的记录插回数据库
+//					tUsAttnStockMapper.batchInsert(stocks);
+//				}
 			}
 		}
 		return new CommRsp();

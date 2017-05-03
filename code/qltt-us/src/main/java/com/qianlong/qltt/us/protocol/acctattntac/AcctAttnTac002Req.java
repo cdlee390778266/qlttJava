@@ -3,14 +3,12 @@ package com.qianlong.qltt.us.protocol.acctattntac;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
-import org.hibernate.validator.constraints.NotEmpty;
-
 import com.qianlong.qltt.us.protocol.Ttacct;
 
 import net.sf.json.JSONObject;
 
 public class AcctAttnTac002Req extends Ttacct{
-	@NotEmpty
+	
 	@NotNull
 	private AttnTacTic cncltactic;
 

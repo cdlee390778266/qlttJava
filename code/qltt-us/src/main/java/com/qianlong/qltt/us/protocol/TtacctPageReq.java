@@ -2,6 +2,7 @@ package com.qianlong.qltt.us.protocol;
 
 import javax.validation.constraints.NotNull;
 
+import com.qianlong.qltt.us.util.JSONUtil;
 import com.qianlong.qltt.us.util.validator.UTF8MAXLenth;
 
 public class TtacctPageReq extends PageReq{
@@ -16,5 +17,16 @@ public class TtacctPageReq extends PageReq{
 
 	public void setTtacct(String ttacct) {
 		this.ttacct = ttacct;
+	}
+	
+	public static void main(String[] args) {
+		TtacctPageReq pageReq = new TtacctPageReq();
+		pageReq.setTtacct("tt000001");
+		
+		PageReqParameter pageReqParameter = new PageReqParameter();
+		pageReqParameter.setReqnum(10);
+		pageReqParameter.setReqstart(0);
+		pageReq.setPagereq(pageReqParameter);
+		System.out.println(JSONUtil.objToJson(pageReq));
 	}
 }

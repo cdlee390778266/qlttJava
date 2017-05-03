@@ -251,5 +251,48 @@
       <req-call-max>1000</req-call-max>
     </protocol>
     <!--参数设置  end -->
+    
+    <!-- 指标菜单 start -->
+    <protocol>
+      <interface-num>IFC_UserAcctTacMenu001</interface-num>
+      <interface-name>新增账户组合指标菜单</interface-name>
+      <interface-des></interface-des>
+      <interface-remark>>.用于单例新增</interface-remark>
+      <protocol-num>1007001</protocol-num>
+      <protocol-mode>请求-应答</protocol-mode>
+      <req-url>/accttacmenu/tacmenu001</req-url>
+      <req-call-max>1000</req-call-max>
+    </protocol>
+    <protocol>
+      <interface-num>IFC_UserAcctTacMenu002</interface-num>
+      <interface-name>删除账户组合指标菜单</interface-name>
+      <interface-des></interface-des>
+      <interface-remark>>.用于单例删除</interface-remark>
+      <protocol-num>1007002</protocol-num>
+      <protocol-mode>请求-应答</protocol-mode>
+      <req-url>/accttacmenu/tacmenu002</req-url>
+      <req-call-max>1000</req-call-max>
+    </protocol>
+    <protocol>
+      <interface-num>IFC_UserAcctTacMenu003</interface-num>
+      <interface-name>账户组合指标菜单变更</interface-name>
+      <interface-des></interface-des>
+      <interface-remark>>.用于批量操作</interface-remark>
+      <protocol-num>1007003</protocol-num>
+      <protocol-mode>请求-应答</protocol-mode>
+      <req-url>/accttacmenu/tacmenu003</req-url>
+      <req-call-max>1000</req-call-max>
+    </protocol>
+    <protocol>
+      <interface-num>IFC_UserAcctTacMenu004</interface-num>
+      <interface-name>账户组合指标菜单查询</interface-name>
+      <interface-des></interface-des>
+      <interface-remark></interface-remark>
+      <protocol-num>1007004</protocol-num>
+      <protocol-mode>请求-应答</protocol-mode>
+      <req-url>/accttacmenu/tacmenu004</req-url>
+      <req-call-max>1000</req-call-max>
+    </protocol>
+    <!--指标菜单  end -->
   </protocols>
 </xml>
