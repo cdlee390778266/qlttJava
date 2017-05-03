@@ -12,7 +12,6 @@ public class AcctAttnTac002Req extends Ttacct{
 	@NotNull
 	private AttnTacTic cncltactic;
 
-
 	@Valid
 	public AttnTacTic getCncltactic() {
 		return cncltactic;

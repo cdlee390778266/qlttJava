@@ -2,6 +2,8 @@ package com.qianlong.qltt.us.protocol.acctinfo;
 
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import com.qianlong.qltt.us.protocol.Ttacct;
 import com.qianlong.qltt.us.util.validator.UTF8MAXLenth;
 
@@ -11,6 +13,7 @@ public class AcctInfo002Req extends Ttacct{
 	
 	@NotNull
 	@UTF8MAXLenth(max=64)
+	@NotBlank
 	private String	devno;//设备号	
 	
 	@NotNull

@@ -37,20 +37,15 @@ public class AcctAttnStockServiceImpl extends CommServiceImpl implements IAcctAt
 		AttnStock001 attnStock = req.getAttnstock();
 		List<StockPoolIndex> stockpool = attnStock.getStockpool();
 		if(stockpool != null && !stockpool.isEmpty()){
-			List<TUsAttnStock> tUsAttnStocks = new ArrayList<TUsAttnStock>();
-			TUsAttnStock tUsAttnStock = null;
 			for(StockPoolIndex sp:stockpool){
-				tUsAttnStock = new TUsAttnStock();
-				tUsAttnStocks.add(tUsAttnStock);
+				TUsAttnStock tUsAttnStock = new TUsAttnStock();
 				tUsAttnStock.setFsTtacct(ttacct);
 				tUsAttnStock.setFiPoolindex(sp.getPoolindex());
 				Integer stockorder = getStockOrder(ttacct,sp.getPoolindex());
 				tUsAttnStock.setFiStockorder(stockorder);
 				tUsAttnStock.setFsStockcode(attnStock.getStockcode());
 				tUsAttnStock.setFsStockname(attnStock.getStockname());
-			}
-			if(!tUsAttnStocks.isEmpty()){
-				tUsAttnStockMapper.batchInsert(tUsAttnStocks);
+				tUsAttnStockMapper.insert(tUsAttnStock);
 			}
 		}
 		return new CommRsp();

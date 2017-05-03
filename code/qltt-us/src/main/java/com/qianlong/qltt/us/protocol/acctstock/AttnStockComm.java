@@ -2,6 +2,8 @@ package com.qianlong.qltt.us.protocol.acctstock;
 
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import com.qianlong.qltt.us.util.validator.UTF8MAXLenth;
 
 public class AttnStockComm {
@@ -12,6 +14,7 @@ public class AttnStockComm {
 
 	@NotNull
 	@UTF8MAXLenth(max=32)
+	@NotBlank
 	public String getStockcode() {
 		return stockcode;
 	}
@@ -22,6 +25,7 @@ public class AttnStockComm {
 	
 	@NotNull
 	@UTF8MAXLenth(max=128)
+	@NotBlank
 	public String getStockname() {
 		return stockname;
 	}

@@ -35,5 +35,5 @@ public interface TUsAttnStockMapper {
 	int batchInsert(List<TUsAttnStock> tUsAttnStocks);
 
 	/**推推账户下*/
-	int selectMaxOfSorckOrder(String ttacct, Integer poolindex);
+	int selectMaxOfSorckOrder(@Param("ttacct") String ttacct, @Param("poolindex") Integer poolindex);
 }

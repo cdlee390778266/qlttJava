@@ -112,6 +112,7 @@ public class AcctTacMenuServiceImpl extends CommServiceImpl implements IAcctTacM
 				tacMenu.setTacdetail(tUsCombTacMenu.getFsDetail());
 				tacMenu.setTacname(tUsCombTacMenu.getFsName());
 				tacMenu.setTactic(tUsCombTacMenu.getFsTtacct());
+				tacmenus.add(tacMenu);
 			}
 		}
 		return rsp;

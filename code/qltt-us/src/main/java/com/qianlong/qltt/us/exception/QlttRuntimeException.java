@@ -11,8 +11,11 @@ public  class QlttRuntimeException extends QlttUSException {
 	
 	private Object source;
 	
+	private final Exception exception;
+	
 	public QlttRuntimeException(Exception exception) {
 		super(exception.getMessage());
+		this.exception = exception;
 		logger.error(exception.getMessage());
 	}
 
@@ -27,5 +30,9 @@ public  class QlttRuntimeException extends QlttUSException {
 	
 	public String getExceptionCode() {
 		return ErrorCodeMaster.RUNTIME_EXCEPTION;
+	}
+
+	public Exception getException() {
+		return exception;
 	}
 }

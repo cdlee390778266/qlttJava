@@ -1,10 +1,15 @@
 package com.qianlong.qltt.us.protocol.tacmenu;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+
 import com.qianlong.qltt.us.protocol.Ttacct;
 import com.qianlong.qltt.us.util.JSONUtil;
 
 public class AcctTacMenu001Req extends Ttacct{
 	
+	@Valid
+	@NotNull
 	private AddTacMenu addtacmenu;
 
 	public AddTacMenu getAddtacmenu() {

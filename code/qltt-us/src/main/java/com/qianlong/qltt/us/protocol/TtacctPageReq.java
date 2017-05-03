@@ -2,6 +2,8 @@ package com.qianlong.qltt.us.protocol;
 
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import com.qianlong.qltt.us.util.JSONUtil;
 import com.qianlong.qltt.us.util.validator.UTF8MAXLenth;
 
@@ -11,6 +13,7 @@ public class TtacctPageReq extends PageReq{
 
 	@NotNull
 	@UTF8MAXLenth(max=16)
+	@NotBlank
 	public String getTtacct() {
 		return ttacct;
 	}
