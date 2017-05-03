@@ -33,13 +33,18 @@ public class AcctAttnTacServiceImpl extends CommServiceImpl implements IAcctAttn
 	@Override
 	@Transactional
 	public CommRsp attntac001(AcctAttnTac001Req req) {
-		List<TUsAttnTacTic> usAttnTacTics = createTUsAttnTacTics(req.getTtacct(),req.getAttntactic());
-		if(usAttnTacTics !=null && !usAttnTacTics.isEmpty()){
-			tUsAttnTacTicMapper.batchInsert(usAttnTacTics);
-		}
+		TUsAttnTacTic tUsAttnTacTic =  createTUsAttnTacTics(req.getTtacct(),req.getAttntactic());
+		tUsAttnTacTicMapper.insert(tUsAttnTacTic);
 		return new CommRsp();
 	}
 
+	private TUsAttnTacTic  createTUsAttnTacTics(String ttacct, AttnTacTic attntactic){
+		TUsAttnTacTic tUsAttnTacTic = new TUsAttnTacTic();
+		tUsAttnTacTic.setFsTtacct(ttacct);
+		tUsAttnTacTic.setFsTactic(attntactic.getTactic());
+		tUsAttnTacTic.setFiTacticprm(attntactic.getTacprm());
+		return tUsAttnTacTic;
+	}
 	
 	private List<TUsAttnTacTic> createTUsAttnTacTics(String ttacct, List<AttnTacTic> attntactic) {
 		if(StringUtil.isNullOrBlank(ttacct) ||
@@ -62,12 +67,8 @@ public class AcctAttnTacServiceImpl extends CommServiceImpl implements IAcctAttn
 	@Override
 	@Transactional
 	public CommRsp attntac002(AcctAttnTac002Req req) {
-		List<TUsAttnTacTic> usAttnTacTics = createTUsAttnTacTics(req.getTtacct(),req.getCncltactic());
-		if(usAttnTacTics != null && !usAttnTacTics.isEmpty()){
-			for(TUsAttnTacTic tacTic : usAttnTacTics){
-				tUsAttnTacTicMapper.deleteByPrimaryKey(tacTic);
-			}
-		}
+		TUsAttnTacTic usAttnTacTic =  createTUsAttnTacTics(req.getTtacct(),req.getCncltactic());
+		tUsAttnTacTicMapper.deleteByPrimaryKey(usAttnTacTic);
 		return new CommRsp();
 	}
 

@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.qianlong.qltt.us.exception.QlttRuntimeException;
 import com.qianlong.qltt.us.exception.QlttUSBusinessException;
+import com.qianlong.qltt.us.protocol.acctstock.AcctAttnStock001Req;
+import com.qianlong.qltt.us.protocol.acctstock.AcctAttnStock002Req;
 import com.qianlong.qltt.us.protocol.acctstock.AcctAttnStock004Req;
 import com.qianlong.qltt.us.protocol.acctstock.AcctAttnStock004Rsp;
-import com.qianlong.qltt.us.protocol.acctstock.AcctAttnStockCommReq;
+import com.qianlong.qltt.us.protocol.acctstock.AcctAttnStock003Req;
 import com.qianlong.qltt.us.service.IAcctAttnStockService;
 import com.qianlong.qltt.us.util.JSONUtil;
 /**
@@ -40,22 +42,17 @@ public class UserAcctAttnStockController extends BaseController {
 	 * 接口请求方式：POST
 	 * 接口请求Json数据格式:
 	 * 		{
-	 * 			"ttacct":"tt000001",
-	 * 			"stockpool":[
-	 * 				{
-	 * 					"poolindex":1,
-	 * 					"attnstock":[
+	 * 			"ttacct":"tt000000000001",
+	 * 			"attnstock":{
+	 * 					"stockcode":"60001",
+	 * 					"stockname":"xxx公司",
+	 * 					"stockpool":[
 	 * 						{
-	 * 							"stockorder":1,
-	 * 							"stockcode":"TJ001",
-	 * 							"stockname":"添加股票1"
-	 * 						},
-	 * 						{
-	 * 							"stockorder":2,
-	 * 							"stockcode":"TJ002",
-	 * 							"stockname":"添加股票2"
-	 * 						}]
-	 * 				}]
+	 * 							"poolindex":1,
+	 * 							"poolindex":2
+	 * 						}
+	 * 					]
+	 * 			}
 	 * 		}
 	 * 接口响应JSon数据格式：
 	 * 	  正确的响应格式：
@@ -71,7 +68,7 @@ public class UserAcctAttnStockController extends BaseController {
 	 */
 	@RequestMapping(value="attnstock001")
 	@ResponseBody
-	public Object attnstock001(@Valid @RequestBody AcctAttnStockCommReq req,BindingResult result){
+	public Object attnstock001(@Valid @RequestBody AcctAttnStock001Req req,BindingResult result){
 		logger.debug("协议号：1005001");
 		logger.debug("协议传入参数："+JSONUtil.objToJson(req));
 		handleReqParamerValid(result);
@@ -93,21 +90,19 @@ public class UserAcctAttnStockController extends BaseController {
 	 * 接口请求URL：SERVER-NAME/acctattnstock/attnstock002?access_token=ACCESSTOKEN
 	 * 接口请求方式：POST
 	 * 接口请求Json数据格式:
-	 * 	 	{
-	 * 			"ttacct":"tt000001",
-	 * 			"stockpool":[
-	 * 				{
-	 * 					"poolindex":1,
-	 * 					"cnclstock":[
-	 * 						{
-	 * 							"stockcode":"SC001",
-	 * 							"stockname":"删除股票1"
-	 * 						},
-	 * 						{
-	 * 							"stockcode":"SC002",
-	 * 							"stockname":"删除股票2"
-	 * 						}]
-	 * 				}]
+	 * 		{
+	 * 			"ttacct":"tt000000000001",
+	 * 			"cnclstock":{
+	 * 				"stockcode":"60001",
+	 * 				"stockname":"xxx公司",
+	 * 				"stockpool":[
+	 * 					{
+	 * 						"poolindex":1
+	 * 					},
+	 * 					{
+	 * 						"poolindex":2
+	 * 					}]
+	 * 				}
 	 * 		}
 	 * 接口响应JSon数据格式：
 	 * 	  正确的响应格式：
@@ -123,7 +118,7 @@ public class UserAcctAttnStockController extends BaseController {
 	 */
 	@RequestMapping(value="attnstock002")
 	@ResponseBody
-	public Object attnstock002(@Valid @RequestBody AcctAttnStockCommReq req,BindingResult result){
+	public Object attnstock002(@Valid @RequestBody AcctAttnStock002Req req,BindingResult result){
 		handleReqParamerValid(result);
 		logger.debug("协议号：1005002");
 		logger.debug("协议传入参数："+JSONUtil.objToJson(req));
@@ -177,7 +172,7 @@ public class UserAcctAttnStockController extends BaseController {
 	 */
 	@RequestMapping(value="attnstock003")
 	@ResponseBody
-	public Object attnstock003(@Valid @RequestBody AcctAttnStockCommReq req,BindingResult result){
+	public Object attnstock003(@Valid @RequestBody AcctAttnStock003Req req,BindingResult result){
 		handleReqParamerValid(result);
 		logger.debug("协议号：1005003");
 		logger.debug("协议传入参数："+JSONUtil.objToJson(req));

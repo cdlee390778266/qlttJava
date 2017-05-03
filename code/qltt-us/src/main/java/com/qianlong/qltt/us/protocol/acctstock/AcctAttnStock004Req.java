@@ -4,29 +4,17 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
-import com.qianlong.qltt.us.protocol.PageReq;
 import com.qianlong.qltt.us.protocol.PageReqParameter;
-import com.qianlong.qltt.us.util.validator.UTF8MAXLenth;
+import com.qianlong.qltt.us.protocol.TtacctPageReq;
 
 import net.sf.json.JSONObject;
 
-public class AcctAttnStock004Req extends PageReq{
-	@NotNull
-	@UTF8MAXLenth(max=16)
-	private String ttacct;
+public class AcctAttnStock004Req extends TtacctPageReq{
 	
 	@NotNull
 	@Max(3)
 	@Min(1)
 	private Integer poolindex;
-
-	public String getTtacct() {
-		return ttacct;
-	}
-
-	public void setTtacct(String ttacct) {
-		this.ttacct = ttacct;
-	}
 
 	public Integer getPoolindex() {
 		return poolindex;

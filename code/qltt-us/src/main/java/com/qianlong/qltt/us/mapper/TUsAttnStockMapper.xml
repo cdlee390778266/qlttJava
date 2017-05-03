@@ -222,4 +222,8 @@
       #{stock.fsStockcode,jdbcType=VARCHAR}, #{stock.fsStockname,jdbcType=VARCHAR})
     </foreach>
   </insert>
+  
+  <select id="selectMaxOfSorckOrder" resultType="int">
+    select IFNULL(max(Fi_stockorder),0) from tusattnstock  where Fs_ttacct = #{ttacct,jdbcType=VARCHAR} and Fi_poolindex = #{poolindex,jdbcType=INTEGER}
+  </select>
 </mapper>

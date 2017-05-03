@@ -84,7 +84,7 @@ public class UserAcctSetPrmController extends BaseController {
 	 * 接口请求方式：POST
 	 * 接口请求Json数据格式:
 	 * 		{
-	 * 			"ttacct":"tt000001",
+	 * 			"ttacct":"tt000001"
 	 *		 }
 	 * 接口响应JSon数据格式：
 	 * 	  正确的响应格式：

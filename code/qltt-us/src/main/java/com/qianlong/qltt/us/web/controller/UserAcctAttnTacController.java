@@ -35,17 +35,12 @@ public class UserAcctAttnTacController extends BaseController {
 	 * 接口请求URL：SERVER-NAME/acctattntac/attntac001?access_token=ACCESSTOKEN
 	 * 接口请求方式：POST
 	 * 接口请求Json数据格式:
-	 * 		{
-	 * 			"ttacct":"tt000000000001",//推推账号
-	 * 			"attntactic":[//关注指标列表
-	 * 				{
-	 * 					"tacprm":2,//指标参数
-	 * 					"tactic":"指标2"//指标
-	 * 				},
-	 * 				{
-	 * 					"tacprm":1,
-	 * 					"tactic":"指标1"
-	 * 				}]
+	 * 		{	
+	 * 			"ttacct":"tt000000000001",
+	 * 			"attntactic":{
+	 * 				"tacprm":1,
+	 * 				"tactic":"指标1"
+	 * 			}
 	 * 		}
 	 * 接口响应JSon数据格式：
 	 * 	  正确的响应格式：
@@ -82,16 +77,11 @@ public class UserAcctAttnTacController extends BaseController {
 	 * 接口请求方式：POST
 	 * 接口请求Json数据格式:
 	 * 		{
-	 * 			"ttacct":"tt000000000001",//推推账号
-	 * 			"cncltactic":[//关注指标列表
-	 * 				{
-	 * 					"tacprm":2,//指标参数
-	 * 					"tactic":"指标2"//指标
-	 * 				},
-	 * 				{
-	 * 					"tacprm":1,
-	 * 					"tactic":"指标1"
-	 * 				}]
+	 * 			"ttacct":"tt000000000001",
+	 * 			"cncltactic":{
+	 * 				"tacprm":1,
+	 * 				"tactic":"指标1"
+	 * 			}
 	 * 		}
 	 * 接口响应JSon数据格式：
 	 * 	  正确的响应格式：

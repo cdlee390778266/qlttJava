@@ -10,13 +10,13 @@ import net.sf.json.JSONObject;
 
 public class AcctAttnStock004Rsp extends PageRsp{
 	
-	private List<CnclStock> attnstock;
+	private List<AttnStockComm> attnstock;
 
-	public List<CnclStock> getAttnstock() {
+	public List<AttnStockComm> getAttnstock() {
 		return attnstock;
 	}
 
-	public void setAttnstock(List<CnclStock> attnstock) {
+	public void setAttnstock(List<AttnStockComm> attnstock) {
 		this.attnstock = attnstock;
 	}
 	
@@ -27,13 +27,13 @@ public class AcctAttnStock004Rsp extends PageRsp{
 		pageRspParameter.setTotalnum(29);
 		rsp.setPagersp(pageRspParameter);
 		
-		List<CnclStock> tCnclStocks = new ArrayList<CnclStock>();
-		CnclStock cnclStock = new CnclStock();
+		List<AttnStockComm> tCnclStocks = new ArrayList<AttnStockComm>();
+		AttnStockComm cnclStock = new AttnStockComm();
 		cnclStock.setStockcode("6100000");
 		cnclStock.setStockname("中国石化");
 		tCnclStocks.add(cnclStock);
 		
-		cnclStock = new CnclStock();
+		cnclStock = new AttnStockComm();
 		cnclStock.setStockcode("6100001");
 		cnclStock.setStockname("中国石油");
 		tCnclStocks.add(cnclStock);

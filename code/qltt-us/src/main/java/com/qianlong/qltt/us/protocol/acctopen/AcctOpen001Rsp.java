@@ -2,26 +2,15 @@ package com.qianlong.qltt.us.protocol.acctopen;
 
 import javax.validation.constraints.NotNull;
 
+import com.qianlong.qltt.us.protocol.Ttacct;
 import com.qianlong.qltt.us.util.validator.UTF8MAXLenth;
 
 import net.sf.json.JSONObject;
 
-public class AcctOpen001Rsp {
-	@NotNull
-	@UTF8MAXLenth(max=16)
-	private String ttacct;//推推账号	
-	
+public class AcctOpen001Rsp extends Ttacct{
 	@NotNull
 	@UTF8MAXLenth(max=16)
 	private String cn;//手机号	
-
-	public String getTtacct() {
-		return ttacct;
-	}
-
-	public void setTtacct(String ttacct) {
-		this.ttacct = ttacct;
-	}
 
 	public String getCn() {
 		return cn;
