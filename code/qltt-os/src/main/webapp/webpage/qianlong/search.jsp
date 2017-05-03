@@ -36,7 +36,7 @@
 							<li data-group="${idxGroup.tacgroup}" class="active">${idxGroup.grpname}</li>
 						</c:when>
 						<c:otherwise>
-							<li>${idxGroup.grpname}</li>
+							<li data-group="${idxGroup.tacgroup}">${idxGroup.grpname}</li>
 						</c:otherwise>
 					</c:choose>
 				</c:forEach>
