@@ -1,7 +1,7 @@
 package com.qianlong.qltt.us.exception;
 
 import java.io.IOException;
-import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.Properties;
 
 import org.slf4j.Logger;
@@ -20,9 +20,8 @@ public class ErrorCodeMaster {
 	}
 	
 	private static void loadConfigFile() {
-		InputStream is = ErrorCodeMaster.class.getResourceAsStream(PATH);
 		try {
-			properties.load(is);
+			properties.load(new InputStreamReader(ErrorCodeMaster.class.getResourceAsStream(PATH), "UTF-8"));
 		} catch (IOException ex) {
 			logger.error("加载错误码字典失败");
 			ex.printStackTrace();
@@ -114,4 +113,7 @@ public class ErrorCodeMaster {
 
 	/**该账号不存在或状态异常*/
 	public static final String ACCT_NOT_CORRECT = "20000002";	
+	public static void main(String[] args) {
+		System.out.println(ErrorCodeMaster.getMessage(ErrorCodeMaster.ACCT_NOT_CORRECT));
+	}
 }
