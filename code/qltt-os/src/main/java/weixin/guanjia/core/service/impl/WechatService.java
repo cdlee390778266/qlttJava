@@ -150,10 +150,13 @@ public class WechatService {
 				}
 				//模板消息发送
 				else if(eventType.equals(MessageUtil.EVENT_TYPE_TEMPLATESENDJOBFINISH)){
-					SendMessage message = new SendMessage();
-					message.setMsgid(msgId);
-					message.setSendStatus(requestMap.get("Status"));
-					messageTemplateService.handle(message);
+					if(bundler.getString("is_save_message").equals("0")) {
+						SendMessage message = new SendMessage();
+						message.setMsgid(msgId);
+						message.setSendStatus(requestMap.get("Status"));
+						messageTemplateService.handle(message);
+					}
+					
 					
 				}
 			}
