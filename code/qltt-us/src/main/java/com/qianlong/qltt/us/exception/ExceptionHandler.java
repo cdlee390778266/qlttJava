@@ -44,7 +44,9 @@ public class ExceptionHandler implements HandlerExceptionResolver {
 	public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response, Object object,
 			Exception e) {
 		CommRsp rsp = new CommRsp();
+		
 		if (e instanceof QlttUSException){
+			logger.info(getExceptionStackTrace(e));
 			rsp.setErrorCode(((QlttUSException) e).getExceptionCode());
 		}else{
 			logger.error(getExceptionStackTrace(e));
@@ -53,7 +55,7 @@ public class ExceptionHandler implements HandlerExceptionResolver {
 			}else if(e instanceof TransactionException){//事务异常
 				rsp.setErrorCode(ErrorCodeMaster.TransactionException);	
 			}else{
-				rsp.setErrorCode(ErrorCodeMaster.EXCEPTION_UNKNOWN_EXCEPTION);
+				rsp.setErrorCode(ErrorCodeMaster.RE_RUNTIMEEXCEPTION);
 			}
 		}
 		rsp.setErrorMsg(ErrorCodeMaster.getMessage(rsp.getErrorCode()));
@@ -115,6 +117,7 @@ public class ExceptionHandler implements HandlerExceptionResolver {
 		response.setCharacterEncoding("UTF-8"); // 避免乱码
 		response.setHeader("Cache-Control", "no-cache, must-revalidate");
 		JSONObject jsonObject = JSONObject.fromObject(rsp);
+		logger.debug(jsonObject.toString());
 		PrintWriter writer = null;
 		try {
 			response.setCharacterEncoding("UTF-8");
