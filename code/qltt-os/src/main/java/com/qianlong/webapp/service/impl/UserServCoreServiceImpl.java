@@ -25,8 +25,8 @@ import com.qianlong.webapp.domain.TrenchInfoEnity;
 import com.qianlong.webapp.domain.UserServAccessToken;
 import com.qianlong.webapp.domain.UserServAccessTokenReqBody;
 import com.qianlong.webapp.domain.UserServMessage;
-import com.qianlong.webapp.exception.HttpBusinessException;
 import com.qianlong.webapp.exception.HttpRequestException;
+import com.qianlong.webapp.exception.UserServBusinessException;
 import com.qianlong.webapp.service.IHttpService;
 import com.qianlong.webapp.service.IUserServCoreService;
 import com.qianlong.webapp.utils.Constants;
@@ -50,9 +50,9 @@ public class UserServCoreServiceImpl extends CommonServiceImpl implements IUserS
 					Integer.valueOf(ResourceUtil.getConfigByName("user.serv.port")),
 					Constants.USER_SERV_OBTAINACCESSTOKEN_PATH, nvps, (JSONObject) JSONObject.toJSON(body),
 					UserServAccessToken.class, UserServMessage.class);
-			
+
 			if (content.getContent() == null || StringUtils.isEmpty(content.getContent().getAccessToken())) {
-				throw new HttpRequestException(String.format("获取用户服务器ACCESS_TOKEN错误 - 错误信息: %s", 
+				throw new UserServBusinessException(String.format("获取用户服务器ACCESS_TOKEN错误 - 错误信息: %s",
 						content.getMessage() == null ? "用户服务器未知错误" : content.getMessage().getErrorMsg()));
 			}
 
@@ -62,10 +62,12 @@ public class UserServCoreServiceImpl extends CommonServiceImpl implements IUserS
 			logger.error(e.getMessage(), e);
 			throw new HttpRequestException("HTTP请求发生错误，请检查URI是否正确，网络是否畅通", e);
 		}
-		
+
 		if (content.getMessage() != null && !Constants.USER_SERV_CODE_OK.equals(content.getMessage().getErrorCode()))
-			throw new HttpBusinessException(String.format("获取用户服务器ACCESS_TOKEN错误 - 错误信息: %s", content.getMessage().getErrorMsg()));
-		
+			throw new UserServBusinessException(
+					String.format("获取用户服务器ACCESS_TOKEN错误 - 错误信息: %s", content.getMessage().getErrorMsg()),
+					content.getMessage().getErrorCode());
+
 		return content.getContent();
 	}
 
@@ -91,10 +93,12 @@ public class UserServCoreServiceImpl extends CommonServiceImpl implements IUserS
 			logger.error(e.getMessage(), e);
 			throw new HttpRequestException("微信授权登录时由于网络原因导致失败", e);
 		}
-		
+
 		if (content.getMessage() != null && !Constants.USER_SERV_CODE_OK.equals(content.getMessage().getErrorCode()))
-			throw new HttpBusinessException(String.format("微信授权登录错误 - 错误信息: %s", content.getMessage().getErrorMsg()));
-		
+			throw new UserServBusinessException(
+					String.format("微信授权登录错误 - 错误信息: %s", content.getMessage().getErrorMsg()),
+					content.getMessage().getErrorCode());
+
 		return content.getContent();
 	}
 
@@ -103,7 +107,7 @@ public class UserServCoreServiceImpl extends CommonServiceImpl implements IUserS
 		UserServAccessToken accessToken = getCurrentAccessToken();
 		List<NameValuePair> nvps = new ArrayList<>();
 		nvps.add(new BasicNameValuePair("access_token", accessToken.getAccessToken()));
-		
+
 		HttpContent<AuthResultEntity, UserServMessage> content = null;
 		try {
 			content = httpService.httpPost(Constants.SCHEME_HTTP, ResourceUtil.getConfigByName("user.serv.host"),
@@ -113,10 +117,12 @@ public class UserServCoreServiceImpl extends CommonServiceImpl implements IUserS
 			logger.error(e.getMessage(), e);
 			throw new HttpRequestException("开通用户账号时由于网络原因导致失败", e);
 		}
-		
+
 		if (content.getMessage() != null && !Constants.USER_SERV_CODE_OK.equals(content.getMessage().getErrorCode()))
-			throw new HttpBusinessException(String.format("开通用户账号错误 - 错误信息: %s", content.getMessage().getErrorMsg()));
-		
+			throw new UserServBusinessException(
+					String.format("开通用户账号错误 - 错误信息: %s", content.getMessage().getErrorMsg()),
+					content.getMessage().getErrorCode());
+
 		return content.getContent();
 	}
 }

@@ -1,5 +1,8 @@
 package com.qianlong.webapp.exception;
 
+/**
+ * HTTP请求业务异常，包括微信业务和用户服务
+ */
 public class HttpBusinessException extends RuntimeException {
 	
 	private static final long serialVersionUID = -2821348743259591634L;

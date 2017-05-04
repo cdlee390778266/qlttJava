@@ -14,7 +14,9 @@ import org.springframework.web.servlet.ModelAndView;
 import com.qianlong.webapp.domain.AuthResultEntity;
 import com.qianlong.webapp.domain.OAuthCallbackEntity;
 import com.qianlong.webapp.domain.TrenchInfoEnity;
+import com.qianlong.webapp.exception.BusinessException;
 import com.qianlong.webapp.exception.HttpRequestException;
+import com.qianlong.webapp.exception.UserServBusinessException;
 import com.qianlong.webapp.service.IUserServCoreService;
 import com.qianlong.webapp.service.IWechatCoreService;
 import com.qianlong.webapp.utils.Constants;
@@ -56,6 +58,7 @@ public class UserLoginController {
 				oauthCallbackEntity = wechatCoreService.getOpenidByOAuth(account, code, state);
 			} catch (HttpRequestException e) {
 				logger.error(e.getMessage(), e);
+				throw new BusinessException("网络异常，无法登录！");
 			}
 			
 			logger.debug(String.format("OAuthCallbackEntity = %s", oauthCallbackEntity));
@@ -67,6 +70,10 @@ public class UserLoginController {
 				AuthResultEntity authResult = null;
 				try {
 					authResult = userServCoreService.tdPartAuthLogin(trenchInfo);
+				} catch (UserServBusinessException e) {
+					logger.error(e.getMessage(), e);
+				} catch (HttpRequestException e) {
+					logger.error(e.getMessage(), e);
 				} catch (Exception e) {
 					logger.error(e.getMessage(), e);
 				}
