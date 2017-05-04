@@ -897,9 +897,9 @@
 				<database.name>ttwechat</database.name>
 				<!-- ZMQ配置 -->
 				<zmqproxy.valid.crc>false</zmqproxy.valid.crc>
-				<zmqproxy.ip>106.14.76.174</zmqproxy.ip>
-				<zmqproxy.rsp.port>9143</zmqproxy.rsp.port>
-				<zmqproxy.req.port>9141</zmqproxy.req.port>
+				<zmqproxy.ip>192.168.16.22</zmqproxy.ip>
+				<zmqproxy.rsp.port>7701</zmqproxy.rsp.port>
+				<zmqproxy.req.port>7703</zmqproxy.req.port>
 				<!-- 用户服务器配置 -->
 				<user.serv.host>192.168.16.22</user.serv.host>
 				<user.serv.port>9120</user.serv.port>
@@ -908,7 +908,7 @@
 				<user.serv.plaintext>app1493028185145</user.serv.plaintext>
 				<user.serv.secret>C7FcF+dmr9MP2oi2/QWEnzGIDjTr7/AZot00naI1vOc1vKmUSuGH9E1wtMYA7cNrkQpbwOjYVFbhm8C6iiG8ZiHDJBphHx/hl6uMBH9uaR+0nr2XJahdxsmjQhINy6gK2hHXLMSXdQ484A/b1ijUEt0MUh7zCeo7BjqZjHm9dP8=</user.serv.secret>
 				<!-- 微信公众号配置 -->
-				<wechat.accountId>gh_16ed608b6426</wechat.accountId>
+				<wechat.accountId>gh_014b62e05567</wechat.accountId>
 				<wechat.accountAppId>wx5d31a5be817a1b47</wechat.accountAppId>
 				<wechat.accountAppSecret>32be6a017915bd351104e214e28e184c</wechat.accountAppSecret>
 			</properties>

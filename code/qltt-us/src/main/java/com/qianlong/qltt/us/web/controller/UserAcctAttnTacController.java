@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.qianlong.qltt.us.exception.QlttRuntimeException;
-import com.qianlong.qltt.us.exception.QlttUSBusinessException;
 import com.qianlong.qltt.us.protocol.acctattntac.AcctAttnTac001Req;
 import com.qianlong.qltt.us.protocol.acctattntac.AcctAttnTac002Req;
 import com.qianlong.qltt.us.protocol.acctattntac.AcctAttnTac003Req;
@@ -35,17 +33,12 @@ public class UserAcctAttnTacController extends BaseController {
 	 * 接口请求URL：SERVER-NAME/acctattntac/attntac001?access_token=ACCESSTOKEN
 	 * 接口请求方式：POST
 	 * 接口请求Json数据格式:
-	 * 		{
-	 * 			"ttacct":"tt000000000001",//推推账号
-	 * 			"attntactic":[//关注指标列表
-	 * 				{
-	 * 					"tacprm":2,//指标参数
-	 * 					"tactic":"指标2"//指标
-	 * 				},
-	 * 				{
-	 * 					"tacprm":1,
-	 * 					"tactic":"指标1"
-	 * 				}]
+	 * 		{	
+	 * 			"ttacct":"tt000000000001",
+	 * 			"attntactic":{
+	 * 				"tacprm":1,
+	 * 				"tactic":"指标1"
+	 * 			}
 	 * 		}
 	 * 接口响应JSon数据格式：
 	 * 	  正确的响应格式：
@@ -63,13 +56,7 @@ public class UserAcctAttnTacController extends BaseController {
 	@ResponseBody
 	public Object attntac001(@Valid @RequestBody AcctAttnTac001Req req,BindingResult result){
 		handleReqParamerValid(result);
-		try {
-			return acctAttnTacService.attntac001(req);
-		} catch (QlttUSBusinessException e) {
-			throw e; 
-		}catch (Exception e) {
-			throw new QlttRuntimeException(this,e);
-		}
+		return acctAttnTacService.attntac001(req);
 	}
 	
 	/**
@@ -82,16 +69,11 @@ public class UserAcctAttnTacController extends BaseController {
 	 * 接口请求方式：POST
 	 * 接口请求Json数据格式:
 	 * 		{
-	 * 			"ttacct":"tt000000000001",//推推账号
-	 * 			"cncltactic":[//关注指标列表
-	 * 				{
-	 * 					"tacprm":2,//指标参数
-	 * 					"tactic":"指标2"//指标
-	 * 				},
-	 * 				{
-	 * 					"tacprm":1,
-	 * 					"tactic":"指标1"
-	 * 				}]
+	 * 			"ttacct":"tt000000000001",
+	 * 			"cncltactic":{
+	 * 				"tacprm":1,
+	 * 				"tactic":"指标1"
+	 * 			}
 	 * 		}
 	 * 接口响应JSon数据格式：
 	 * 	  正确的响应格式：
@@ -109,13 +91,7 @@ public class UserAcctAttnTacController extends BaseController {
 	@ResponseBody
 	public Object attntac002(@Valid @RequestBody AcctAttnTac002Req req,BindingResult result){
 		handleReqParamerValid(result);
-		try {
-			return acctAttnTacService.attntac002(req);
-		} catch (QlttUSBusinessException e) {
-			throw e; 
-		}catch (Exception e) {
-			throw new QlttRuntimeException(this,e);
-		}
+		return acctAttnTacService.attntac002(req);
 	}
 	
 	/**
@@ -155,13 +131,7 @@ public class UserAcctAttnTacController extends BaseController {
 	@ResponseBody
 	public Object attntac003(@Valid @RequestBody AcctAttnTac003Req req,BindingResult result){
 		handleReqParamerValid(result);
-		try {
-			return acctAttnTacService.attntac003(req);
-		} catch (QlttUSBusinessException e) {
-			throw e; 
-		}catch (Exception e) {
-			throw new QlttRuntimeException(this,e);
-		}
+		return acctAttnTacService.attntac003(req);
 	}
 	
 
@@ -200,12 +170,6 @@ public class UserAcctAttnTacController extends BaseController {
 	@ResponseBody
 	public Object attntac004(@Valid @RequestBody AcctAttnTac004Req req,BindingResult result){
 		handleReqParamerValid(result);
-		try {
-			return acctAttnTacService.attntac004(req);
-		} catch (QlttUSBusinessException e) {
-			throw e; 
-		}catch (Exception e) {
-			throw new QlttRuntimeException(this,e);
-		}
+		return acctAttnTacService.attntac004(req);
 	}
 }

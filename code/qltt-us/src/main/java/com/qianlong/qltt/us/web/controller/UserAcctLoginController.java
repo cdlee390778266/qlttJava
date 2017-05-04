@@ -9,12 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.qianlong.qltt.us.exception.QlttRuntimeException;
-import com.qianlong.qltt.us.exception.QlttUSBusinessException;
 import com.qianlong.qltt.us.protocol.acctlogin.AcctLogin001Req;
-import com.qianlong.qltt.us.protocol.acctlogin.AcctLogin001Rsp;
 import com.qianlong.qltt.us.protocol.acctlogin.AcctLogin002Req;
-import com.qianlong.qltt.us.protocol.acctlogin.AcctLogin002Rsp;
 import com.qianlong.qltt.us.service.IAcctLoginService;
 
 /**
@@ -55,14 +51,7 @@ public class UserAcctLoginController extends BaseController {
 	@ResponseBody
 	public Object login001(@Valid @RequestBody AcctLogin001Req req,BindingResult result){
 		handleReqParamerValid(result);
-		try {
-			AcctLogin001Rsp rsp = acctLoginService.login001(req);
-			return rsp;
-		} catch (QlttUSBusinessException e) {
-			throw e; 
-		}catch (Exception e) {
-			throw new QlttRuntimeException(this,e);
-		}
+		return  acctLoginService.login001(req);
 	}
 	
 	/**
@@ -94,13 +83,6 @@ public class UserAcctLoginController extends BaseController {
 	@ResponseBody
 	public Object login002(@Valid @RequestBody AcctLogin002Req req,BindingResult result){
 		handleReqParamerValid(result);
-		try {
-			AcctLogin002Rsp rsp = acctLoginService.login002(req);
-			return rsp;
-		} catch (QlttUSBusinessException e) {
-			throw e; 
-		}catch (Exception e) {
-			throw new QlttRuntimeException(this,e);
-		}
+		return acctLoginService.login002(req);
 	}
 }

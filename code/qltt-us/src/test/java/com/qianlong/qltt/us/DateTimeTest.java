@@ -15,7 +15,7 @@ import com.qianlong.qltt.us.mapper.TUSAcctCNRegMapper;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:conf/spring-jdbc.xml","classpath:**.properties"})
+@ContextConfiguration(locations = {"classpath:conf/spring-qltt-us.xml"})
 public class DateTimeTest {
 	
 	@Resource

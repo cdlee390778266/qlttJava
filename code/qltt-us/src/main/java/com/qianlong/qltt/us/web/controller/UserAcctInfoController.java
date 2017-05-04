@@ -9,9 +9,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.qianlong.qltt.us.domain.comm.CommRsp;
-import com.qianlong.qltt.us.exception.QlttRuntimeException;
-import com.qianlong.qltt.us.exception.QlttUSBusinessException;
 import com.qianlong.qltt.us.protocol.acctinfo.AcctInfo001Req;
 import com.qianlong.qltt.us.protocol.acctinfo.AcctInfo002Req;
 import com.qianlong.qltt.us.service.IAcctInfoService;
@@ -48,15 +45,7 @@ public class UserAcctInfoController extends BaseController {
 	@ResponseBody
 	public Object info001(@Valid @RequestBody AcctInfo001Req req,BindingResult result){
 		handleReqParamerValid(result);
-		try {
-			CommRsp rsp = acctInfoService.info001(req);
-			return rsp;
-		} catch (QlttUSBusinessException e) {
-			throw e; 
-		}catch (Exception e) {
-			throw new QlttRuntimeException(this,e);
-		}
-	
+		return  acctInfoService.info001(req);
 	}
 	
 	/**
@@ -83,13 +72,6 @@ public class UserAcctInfoController extends BaseController {
 	@ResponseBody
 	public Object info002(@Valid @RequestBody AcctInfo002Req req,BindingResult result){
 		handleReqParamerValid(result);
-		try {
-			CommRsp rsp = acctInfoService.info002(req);
-			return rsp;
-		} catch (QlttUSBusinessException e) {
-			throw e; 
-		}catch (Exception e) {
-			throw new QlttRuntimeException(this,e);
-		}
+		return acctInfoService.info002(req);
 	}
 }

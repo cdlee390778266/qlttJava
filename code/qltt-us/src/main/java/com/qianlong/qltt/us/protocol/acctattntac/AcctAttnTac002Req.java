@@ -1,38 +1,35 @@
 package com.qianlong.qltt.us.protocol.acctattntac;
 
-import java.util.List;
-
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
-import org.hibernate.validator.constraints.NotEmpty;
+import com.qianlong.qltt.us.protocol.Ttacct;
 
-import com.qianlong.qltt.us.util.validator.UTF8MAXLenth;
+import net.sf.json.JSONObject;
 
-public class AcctAttnTac002Req {
-
-	@NotNull
-	@UTF8MAXLenth(max=16)
-	private String ttacct;
+public class AcctAttnTac002Req extends Ttacct{
 	
-	@NotEmpty
 	@NotNull
-	private List<AttnTacTic> cncltactic;
-
-	public String getTtacct() {
-		return ttacct;
-	}
-
-	public void setTtacct(String ttacct) {
-		this.ttacct = ttacct;
-	}
+	private AttnTacTic cncltactic;
 
 	@Valid
-	public List<AttnTacTic> getCncltactic() {
+	public AttnTacTic getCncltactic() {
 		return cncltactic;
 	}
 
-	public void setCncltactic(List<AttnTacTic> cncltactic) {
+	public void setCncltactic(AttnTacTic cncltactic) {
 		this.cncltactic = cncltactic;
+	}
+	
+	public static void main(String[] args) {
+		AcctAttnTac002Req req = new AcctAttnTac002Req();
+		req.setTtacct("tt000000000001");
+
+		AttnTacTic attn1 = new AttnTacTic();
+		attn1.setTactic("指标1");
+		attn1.setTacprm(1);
+		req.setCncltactic(attn1);
+		
+		System.out.println(JSONObject.fromObject(req).toString());
 	}
 }

@@ -3,27 +3,14 @@ package com.qianlong.qltt.us.protocol.acctattntac;
 import java.util.List;
 
 import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
 
-import com.qianlong.qltt.us.util.validator.UTF8MAXLenth;
+import com.qianlong.qltt.us.protocol.Ttacct;
 
-public class AcctAttnTac003Req {
-
-	@NotNull
-	@UTF8MAXLenth(max=16)
-	private String ttacct;
-	
+public class AcctAttnTac003Req extends Ttacct{
 	@Valid
 	private List<AttnTacTic> attntactic;
 
-	public String getTtacct() {
-		return ttacct;
-	}
-
-	public void setTtacct(String ttacct) {
-		this.ttacct = ttacct;
-	}
-
+	
 	public List<AttnTacTic> getAttntactic() {
 		return attntactic;
 	}

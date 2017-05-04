@@ -28,7 +28,6 @@ import com.qianlong.qltt.us.domain.TUSSysPtcDailyCall;
 import com.qianlong.qltt.us.domain.comm.AccessToken;
 import com.qianlong.qltt.us.domain.comm.InterfaceCallInfo;
 import com.qianlong.qltt.us.exception.ErrorCodeMaster;
-import com.qianlong.qltt.us.exception.QlttRuntimeException;
 import com.qianlong.qltt.us.exception.QlttUSBusinessException;
 import com.qianlong.qltt.us.mapper.TUSSysAccessTokenTmpMapper;
 import com.qianlong.qltt.us.mapper.TUSSysAppMapper;
@@ -195,7 +194,6 @@ public class InterfaceCallInfoServiceImpl extends CommServiceImpl implements IIn
 			logger.debug(protocolMap.toString());
 		} catch (Exception e){
 			e.printStackTrace();
-			throw new QlttRuntimeException(this, e);
 		}
 	}
 

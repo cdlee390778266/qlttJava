@@ -57,7 +57,7 @@ public class AcctOpenServiceImpl extends CommServiceImpl implements IAcctOpenSer
 		// 向tusacctcnreg插入新记录：根据规则生成推推账号，status=1
 		String acctno = generateAcct();
 		TUSAcctCNReg tUSAcctCNReg = new TUSAcctCNReg();
-		tUSAcctCNReg.setFiStatus(1);
+		tUSAcctCNReg.setFiStatus(0);
 		tUSAcctCNReg.setFsCn(cn);
 		tUSAcctCNReg.setFsTtacct(acctno);
 		tUSAcctCNReg.setFtRegtime(now);

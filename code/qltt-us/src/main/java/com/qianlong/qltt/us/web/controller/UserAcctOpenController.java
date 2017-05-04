@@ -9,10 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.qianlong.qltt.us.exception.QlttRuntimeException;
-import com.qianlong.qltt.us.exception.QlttUSBusinessException;
 import com.qianlong.qltt.us.protocol.acctopen.AcctOpen001Req;
-import com.qianlong.qltt.us.protocol.acctopen.AcctOpen001Rsp;
 import com.qianlong.qltt.us.service.IAcctOpenService;
 /**
  * 渠道开户管理Controller
@@ -57,13 +54,6 @@ public class UserAcctOpenController extends BaseController {
 	@ResponseBody
 	public Object open001(@Valid @RequestBody AcctOpen001Req req,BindingResult result){
 		handleReqParamerValid(result);
-		try {
-			AcctOpen001Rsp rsp = acctOpenService.open001(req);
-			return rsp;
-		} catch (QlttUSBusinessException e) {
-			throw e; 
-		}catch (Exception e) {
-			throw new QlttRuntimeException(this,e);
-		}
+		return acctOpenService.open001(req);
 	}
 }

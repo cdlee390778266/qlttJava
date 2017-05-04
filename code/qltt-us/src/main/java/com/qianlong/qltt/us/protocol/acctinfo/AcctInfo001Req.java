@@ -1,26 +1,13 @@
 package com.qianlong.qltt.us.protocol.acctinfo;
 
-import javax.validation.constraints.NotNull;
-
+import com.qianlong.qltt.us.protocol.Ttacct;
 import com.qianlong.qltt.us.util.validator.UTF8MAXLenth;
 
 import net.sf.json.JSONObject;
 
-public class AcctInfo001Req {
-	@NotNull
-	@UTF8MAXLenth(max=16)
-	private String  ttacct;//推推账号
-	
+public class AcctInfo001Req extends Ttacct{
 	@UTF8MAXLenth(max=64)
 	private String name	;//账号名称
-
-	public String getTtacct() {
-		return ttacct;
-	}
-
-	public void setTtacct(String ttacct) {
-		this.ttacct = ttacct;
-	}
 
 	public String getName() {
 		return name;

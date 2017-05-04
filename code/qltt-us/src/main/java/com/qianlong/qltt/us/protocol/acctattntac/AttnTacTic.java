@@ -2,11 +2,14 @@ package com.qianlong.qltt.us.protocol.acctattntac;
 
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import com.qianlong.qltt.us.util.validator.UTF8MAXLenth;
 
 public class AttnTacTic{
 	@NotNull
 	@UTF8MAXLenth(max=16)
+	@NotBlank
 	private String tactic;//指标	
 	
 	@NotNull

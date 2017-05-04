@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.qianlong.qltt.us.domain.comm.CommRsp;
-import com.qianlong.qltt.us.exception.QlttRuntimeException;
-import com.qianlong.qltt.us.exception.QlttUSBusinessException;
 import com.qianlong.qltt.us.protocol.Ttacct;
 import com.qianlong.qltt.us.protocol.setprm.SetPrmPushFreq;
 import com.qianlong.qltt.us.protocol.setprm.SetPrmPushNum;
@@ -64,13 +62,7 @@ public class UserAcctSetPrmController extends BaseController {
 		handleReqParamerValid(result);
 		logger.debug("协议号：1006001");
 		logger.debug("协议传入参数："+JSONUtil.objToJson(req));
-		try {
-			return acctSetPrmService.setprm001(req);
-		} catch (QlttUSBusinessException e) {
-			throw e; 
-		}catch (Exception e) {
-			throw new QlttRuntimeException(this,e);
-		}
+		return acctSetPrmService.setprm001(req);
 	}
 	
 	
@@ -84,7 +76,7 @@ public class UserAcctSetPrmController extends BaseController {
 	 * 接口请求方式：POST
 	 * 接口请求Json数据格式:
 	 * 		{
-	 * 			"ttacct":"tt000001",
+	 * 			"ttacct":"tt000001"
 	 *		 }
 	 * 接口响应JSon数据格式：
 	 * 	  正确的响应格式：
@@ -105,15 +97,9 @@ public class UserAcctSetPrmController extends BaseController {
 		handleReqParamerValid(result);
 		logger.debug("协议号：1006002");
 		logger.debug("协议传入参数："+JSONUtil.objToJson(req));
-		try {
-			SetPrmPushScope rsp = acctSetPrmService.setprm002(req);
-			logger.debug("协议返回数据："+JSONUtil.objToJson(rsp));
-			return rsp;
-		} catch (QlttUSBusinessException e) {
-			throw e; 
-		}catch (Exception e) {
-			throw new QlttRuntimeException(this,e);
-		}
+		SetPrmPushScope rsp = acctSetPrmService.setprm002(req);
+		logger.debug("协议返回数据："+JSONUtil.objToJson(rsp));
+		return rsp;
 	}
 	
 	
@@ -148,15 +134,7 @@ public class UserAcctSetPrmController extends BaseController {
 		handleReqParamerValid(result);
 		logger.debug("协议号：1006003");
 		logger.debug("协议传入参数："+JSONUtil.objToJson(req));
-		try {
-			CommRsp rsp = acctSetPrmService.setprm003(req);
-			//logger.debug("协议返回数据："+JSONUtil.objToJson(rsp));
-			return rsp;
-		} catch (QlttUSBusinessException e) {
-			throw e; 
-		}catch (Exception e) {
-			throw new QlttRuntimeException(this,e);
-		}
+		return acctSetPrmService.setprm003(req);
 	}
 	
 	
@@ -190,15 +168,10 @@ public class UserAcctSetPrmController extends BaseController {
 		handleReqParamerValid(result);
 		logger.debug("协议号：1006004");
 		logger.debug("协议传入参数："+JSONUtil.objToJson(req));
-		try {
-			SetPrmPushNum rsp = acctSetPrmService.setprm004(req);
-			logger.debug("协议返回数据："+JSONUtil.objToJson(rsp));
-			return rsp;
-		} catch (QlttUSBusinessException e) {
-			throw e; 
-		}catch (Exception e) {
-			throw new QlttRuntimeException(this,e);
-		}
+		SetPrmPushNum rsp = acctSetPrmService.setprm004(req);
+		logger.debug("协议返回数据："+JSONUtil.objToJson(rsp));
+		return rsp;
+		
 	}
 	
 	/**
@@ -232,15 +205,10 @@ public class UserAcctSetPrmController extends BaseController {
 		handleReqParamerValid(result);
 		logger.debug("协议号：1006005");
 		logger.debug("协议传入参数："+JSONUtil.objToJson(req));
-		try {
-			CommRsp rsp = acctSetPrmService.setprm005(req);
-			logger.debug("协议返回数据："+JSONUtil.objToJson(rsp));
-			return rsp;
-		} catch (QlttUSBusinessException e) {
-			throw e; 
-		}catch (Exception e) {
-			throw new QlttRuntimeException(this,e);
-		}
+		CommRsp rsp = acctSetPrmService.setprm005(req);
+		logger.debug("协议返回数据："+JSONUtil.objToJson(rsp));
+		return rsp;
+		
 	}
 	
 	/**
@@ -273,14 +241,8 @@ public class UserAcctSetPrmController extends BaseController {
 		handleReqParamerValid(result);
 		logger.debug("协议号：1006006");
 		logger.debug("协议传入参数："+JSONUtil.objToJson(req));
-		try {
-			SetPrmPushFreq rsp = acctSetPrmService.setprm006(req);
-			logger.debug("协议返回数据："+JSONUtil.objToJson(rsp));
-			return rsp;
-		} catch (QlttUSBusinessException e) {
-			throw e; 
-		}catch (Exception e) {
-			throw new QlttRuntimeException(this,e);
-		}
+		SetPrmPushFreq rsp = acctSetPrmService.setprm006(req);
+		logger.debug("协议返回数据："+JSONUtil.objToJson(rsp));
+		return rsp;
 	}
 }

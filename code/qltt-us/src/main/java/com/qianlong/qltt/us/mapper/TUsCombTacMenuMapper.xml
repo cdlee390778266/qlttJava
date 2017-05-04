@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qianlong.qltt.us.mapper.TUsCombTacMenuMapper" >
+  <resultMap id="BaseResultMap" type="com.qianlong.qltt.us.domain.TUsCombTacMenu" >
+    <id column="Fs_ttacct" property="fsTtacct" jdbcType="VARCHAR" />
+    <id column="Fi_order" property="fiOrder" jdbcType="INTEGER" />
+    <result column="Fs_tactic" property="fsTactic" jdbcType="VARCHAR" />
+    <result column="Fs_name" property="fsName" jdbcType="VARCHAR" />
+    <result column="Fs_detail" property="fsDetail" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    Fs_ttacct, Fi_order, Fs_tactic, Fs_name, Fs_detail
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.qianlong.qltt.us.domain.TUsCombTacMenuExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tuscombtacmenu
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="limitStart != null and limitStart>=0" >
+      limit #{limitStart} , #{limitEnd}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.qianlong.qltt.us.domain.TUsCombTacMenuKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from tuscombtacmenu
+    where Fs_ttacct = #{fsTtacct,jdbcType=VARCHAR}
+      and Fi_order = #{fiOrder,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.qianlong.qltt.us.domain.TUsCombTacMenuKey" >
+    delete from tuscombtacmenu
+    where Fs_ttacct = #{fsTtacct,jdbcType=VARCHAR}
+      and Fi_order = #{fiOrder,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.qianlong.qltt.us.domain.TUsCombTacMenuExample" >
+    delete from tuscombtacmenu
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.qianlong.qltt.us.domain.TUsCombTacMenu" >
+    insert into tuscombtacmenu (Fs_ttacct, Fi_order, Fs_tactic, 
+      Fs_name, Fs_detail)
+    values (#{fsTtacct,jdbcType=VARCHAR}, #{fiOrder,jdbcType=INTEGER}, #{fsTactic,jdbcType=VARCHAR}, 
+      #{fsName,jdbcType=VARCHAR}, #{fsDetail,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qianlong.qltt.us.domain.TUsCombTacMenu" >
+    insert into tuscombtacmenu
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="fsTtacct != null" >
+        Fs_ttacct,
+      </if>
+      <if test="fiOrder != null" >
+        Fi_order,
+      </if>
+      <if test="fsTactic != null" >
+        Fs_tactic,
+      </if>
+      <if test="fsName != null" >
+        Fs_name,
+      </if>
+      <if test="fsDetail != null" >
+        Fs_detail,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="fsTtacct != null" >
+        #{fsTtacct,jdbcType=VARCHAR},
+      </if>
+      <if test="fiOrder != null" >
+        #{fiOrder,jdbcType=INTEGER},
+      </if>
+      <if test="fsTactic != null" >
+        #{fsTactic,jdbcType=VARCHAR},
+      </if>
+      <if test="fsName != null" >
+        #{fsName,jdbcType=VARCHAR},
+      </if>
+      <if test="fsDetail != null" >
+        #{fsDetail,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.qianlong.qltt.us.domain.TUsCombTacMenuExample" resultType="java.lang.Integer" >
+    select count(*) from tuscombtacmenu
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tuscombtacmenu
+    <set >
+      <if test="record.fsTtacct != null" >
+        Fs_ttacct = #{record.fsTtacct,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fiOrder != null" >
+        Fi_order = #{record.fiOrder,jdbcType=INTEGER},
+      </if>
+      <if test="record.fsTactic != null" >
+        Fs_tactic = #{record.fsTactic,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fsName != null" >
+        Fs_name = #{record.fsName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fsDetail != null" >
+        Fs_detail = #{record.fsDetail,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tuscombtacmenu
+    set Fs_ttacct = #{record.fsTtacct,jdbcType=VARCHAR},
+      Fi_order = #{record.fiOrder,jdbcType=INTEGER},
+      Fs_tactic = #{record.fsTactic,jdbcType=VARCHAR},
+      Fs_name = #{record.fsName,jdbcType=VARCHAR},
+      Fs_detail = #{record.fsDetail,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qianlong.qltt.us.domain.TUsCombTacMenu" >
+    update tuscombtacmenu
+    <set >
+      <if test="fsTactic != null" >
+        Fs_tactic = #{fsTactic,jdbcType=VARCHAR},
+      </if>
+      <if test="fsName != null" >
+        Fs_name = #{fsName,jdbcType=VARCHAR},
+      </if>
+      <if test="fsDetail != null" >
+        Fs_detail = #{fsDetail,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Fs_ttacct = #{fsTtacct,jdbcType=VARCHAR}
+      and Fi_order = #{fiOrder,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qianlong.qltt.us.domain.TUsCombTacMenu" >
+    update tuscombtacmenu
+    set Fs_tactic = #{fsTactic,jdbcType=VARCHAR},
+      Fs_name = #{fsName,jdbcType=VARCHAR},
+      Fs_detail = #{fsDetail,jdbcType=VARCHAR}
+    where Fs_ttacct = #{fsTtacct,jdbcType=VARCHAR}
+      and Fi_order = #{fiOrder,jdbcType=INTEGER}
+  </update>
+  
+  <select id="selectMaxOrderByTtacct" resultType="int">
+    select IFNULL(max(Fi_order),0) from tuscombtacmenu  where Fs_ttacct = #{ttacct,jdbcType=VARCHAR}
+  </select>
+</mapper>

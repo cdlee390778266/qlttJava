@@ -45,7 +45,7 @@ public class AcctLoginServiceImpl extends CommServiceImpl implements IAcctLoginS
 		TUSAcctCNRegExample tusAcctCNRegExample = new TUSAcctCNRegExample();
 		Criteria acreCriteria = tusAcctCNRegExample.createCriteria();
 		acreCriteria.andFsCnEqualTo(cn);// 指定手机号
-		acreCriteria.andFiStatusEqualTo(1);// 指定状态==1
+		acreCriteria.andFiStatusEqualTo(0);// 指定状态0
 		List<TUSAcctCNReg> regList = tUSAcctCNRegMapper.selectByExample(tusAcctCNRegExample);
 		if (regList != null && !regList.isEmpty()) {
 			TUSAcctCNReg reg = regList.get(0);
@@ -68,12 +68,12 @@ public class AcctLoginServiceImpl extends CommServiceImpl implements IAcctLoginS
 		brCriteria.andFsBindacctEqualTo(req.getBindacct());
 		List<TUSBindRel> tusBindRels = tUSBindRelMapper.selectByExample(tusBindRelExample);
 		if (tusBindRels != null && !tusBindRels.isEmpty()) {
-			// 向tusacctcnreg表验证ttacct的状态必须为1
+			// 向tusacctcnreg表验证ttacct的状态必须为0
 			String acct = tusBindRels.get(0).getFsTtacct();
 			TUSAcctCNRegKey tusAcctCNRegKey = new TUSAcctCNRegKey();
 			tusAcctCNRegKey.setFsTtacct(acct);
 			TUSAcctCNReg tusAcctCNReg = tUSAcctCNRegMapper.selectByPrimaryKey(tusAcctCNRegKey);
-			if (tusAcctCNReg.getFiStatus().equals(1)) {
+			if (tusAcctCNReg.getFiStatus().equals(0)) {
 				AcctLogin002Rsp rsp = new AcctLogin002Rsp();
 				rsp.setCn(tusAcctCNReg.getFsCn());
 				rsp.setTtacct(acct);

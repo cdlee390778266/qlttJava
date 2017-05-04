@@ -2,6 +2,8 @@ package com.qianlong.qltt.us.protocol.acctlogin;
 
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import com.qianlong.qltt.us.util.validator.UTF8MAXLenth;
 
 import net.sf.json.JSONObject;
@@ -9,6 +11,7 @@ import net.sf.json.JSONObject;
 public class AcctLogin001Req {
 	@NotNull//非空
 	@UTF8MAXLenth(max=16)//最大长度16
+	@NotBlank
 	private String cn;
 	
 	public String getCn() {
