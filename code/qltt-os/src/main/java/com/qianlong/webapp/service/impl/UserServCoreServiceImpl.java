@@ -52,7 +52,7 @@ public class UserServCoreServiceImpl extends CommonServiceImpl implements IUserS
 					UserServAccessToken.class, UserServMessage.class);
 			
 			if (content.getContent() == null || StringUtils.isEmpty(content.getContent().getAccessToken())) {
-				throw new HttpRequestException(String.format("获取用户服务器access_token错误: %s", 
+				throw new HttpRequestException(String.format("获取用户服务器ACCESS_TOKEN错误 - 错误信息: %s", 
 						content.getMessage() == null ? "用户服务器未知错误" : content.getMessage().getErrorMsg()));
 			}
 
@@ -64,7 +64,7 @@ public class UserServCoreServiceImpl extends CommonServiceImpl implements IUserS
 		}
 		
 		if (content.getMessage() != null && !Constants.USER_SERV_CODE_OK.equals(content.getMessage().getErrorCode()))
-			throw new HttpBusinessException(String.format("获取access_token错误: %s", content.getMessage().getErrorMsg()));
+			throw new HttpBusinessException(String.format("获取用户服务器ACCESS_TOKEN错误 - 错误信息: %s", content.getMessage().getErrorMsg()));
 		
 		return content.getContent();
 	}
@@ -93,7 +93,7 @@ public class UserServCoreServiceImpl extends CommonServiceImpl implements IUserS
 		}
 		
 		if (content.getMessage() != null && !Constants.USER_SERV_CODE_OK.equals(content.getMessage().getErrorCode()))
-			throw new HttpBusinessException(String.format("微信授权登录错误: %s", content.getMessage().getErrorMsg()));
+			throw new HttpBusinessException(String.format("微信授权登录错误 - 错误信息: %s", content.getMessage().getErrorMsg()));
 		
 		return content.getContent();
 	}
@@ -115,7 +115,7 @@ public class UserServCoreServiceImpl extends CommonServiceImpl implements IUserS
 		}
 		
 		if (content.getMessage() != null && !Constants.USER_SERV_CODE_OK.equals(content.getMessage().getErrorCode()))
-			throw new HttpBusinessException(String.format("开通用户账号错误: %s", content.getMessage().getErrorMsg()));
+			throw new HttpBusinessException(String.format("开通用户账号错误 - 错误信息: %s", content.getMessage().getErrorMsg()));
 		
 		return content.getContent();
 	}
