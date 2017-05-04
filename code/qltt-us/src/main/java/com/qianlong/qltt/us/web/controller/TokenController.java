@@ -12,10 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.qianlong.qltt.us.exception.QlttRuntimeException;
-import com.qianlong.qltt.us.exception.QlttUSBusinessException;
 import com.qianlong.qltt.us.protocol.commom.GetAccessTokenReq;
-import com.qianlong.qltt.us.protocol.commom.GetAccessTokenRsp;
 import com.qianlong.qltt.us.service.IAccessTokenService;
 
 @Controller
@@ -51,14 +48,7 @@ public class TokenController extends BaseController{
 	@ResponseBody
 	public Object getAccessToken(@Valid @RequestBody GetAccessTokenReq req,BindingResult result,HttpServletRequest request){
 		handleReqParamerValid(result);
-		try {
-			GetAccessTokenRsp rsp = accessTokenService.getAccessToken(getServletContext(request),req);
-			return rsp;
-		} catch (QlttUSBusinessException e) {
-			throw e; 
-		}catch (Exception e) {
-			throw new QlttRuntimeException(this,e);
-		}
+		return accessTokenService.getAccessToken(getServletContext(request),req);
 	}
 	
 	public static void main(String[] args) {

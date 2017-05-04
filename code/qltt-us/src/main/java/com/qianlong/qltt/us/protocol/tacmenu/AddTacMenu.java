@@ -31,4 +31,9 @@ public class AddTacMenu extends Tactic{
 	public void setTacdetail(String tacdetail) {
 		this.tacdetail = tacdetail;
 	}
+
+	@Override
+	public String toString() {
+		return "tacname=" + tacname + ", tacdetail=" + tacdetail  + ",tactic=" + getTactic();
+	}
 }

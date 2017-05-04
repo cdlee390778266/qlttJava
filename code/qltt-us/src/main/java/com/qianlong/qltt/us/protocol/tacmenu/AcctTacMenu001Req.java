@@ -4,7 +4,6 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import com.qianlong.qltt.us.protocol.Ttacct;
-import com.qianlong.qltt.us.util.JSONUtil;
 
 public class AcctTacMenu001Req extends Ttacct{
 	
@@ -20,6 +19,12 @@ public class AcctTacMenu001Req extends Ttacct{
 		this.addtacmenu = addtacmenu;
 	}
 	
+	
+	@Override
+	public String toString() {
+		return "AcctTacMenu001Req [ttacct="+ getTtacct()+"," + addtacmenu.toString()+"]";
+	}
+
 	public static void main(String[] args) {
 		AcctTacMenu001Req req = new AcctTacMenu001Req();
 		req.setTtacct("tt000001");
@@ -29,6 +34,6 @@ public class AcctTacMenu001Req extends Ttacct{
 		addtacmenu.setTacname("指标名字1");
 		addtacmenu.setTacdetail("指标内容1");
 		
-		System.out.println(JSONUtil.objToJson(req));
+		System.out.println(req.toString());
 	}
 }

@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.qianlong.qltt.us.exception.QlttRuntimeException;
-import com.qianlong.qltt.us.exception.QlttUSBusinessException;
 import com.qianlong.qltt.us.protocol.TtacctPageReq;
 import com.qianlong.qltt.us.protocol.tacmenu.AcctTacMenu001Req;
 import com.qianlong.qltt.us.protocol.tacmenu.AcctTacMenu002Req;
@@ -68,13 +66,7 @@ public class UserAcctTacMenuController extends BaseController {
 		logger.debug("协议号：1007001");
 		logger.debug("协议传入参数："+JSONUtil.objToJson(req));
 		handleReqParamerValid(result);
-		try {
-			return acctTacMenuService.tacmenu001(req);
-		} catch (QlttUSBusinessException e) {
-			throw e; 
-		}catch (Exception e) {
-			throw new QlttRuntimeException(this,e);
-		}
+		return acctTacMenuService.tacmenu001(req);
 	}
 	
 	
@@ -111,13 +103,7 @@ public class UserAcctTacMenuController extends BaseController {
 		logger.debug("协议号：1007002");
 		logger.debug("协议传入参数："+JSONUtil.objToJson(req));
 		handleReqParamerValid(result);
-		try {
-			return acctTacMenuService.tacmenu002(req);
-		} catch (QlttUSBusinessException e) {
-			throw e; 
-		}catch (Exception e) {
-			throw new QlttRuntimeException(this,e);
-		}
+		return acctTacMenuService.tacmenu002(req);
 	}
 	
 	/**
@@ -156,13 +142,7 @@ public class UserAcctTacMenuController extends BaseController {
 		logger.debug("协议号：1007003");
 		logger.debug("协议传入参数："+JSONUtil.objToJson(req));
 		handleReqParamerValid(result);
-		try {
-			return acctTacMenuService.tacmenu003(req);
-		} catch (QlttUSBusinessException e) {
-			throw e; 
-		}catch (Exception e) {
-			throw new QlttRuntimeException(this,e);
-		}
+		return acctTacMenuService.tacmenu003(req);
 	}
 	
 	/**
@@ -199,15 +179,9 @@ public class UserAcctTacMenuController extends BaseController {
 		logger.debug("协议号：1007004");
 		logger.debug("协议传入参数："+JSONUtil.objToJson(req));
 		handleReqParamerValid(result);
-		try {
-			AcctTacMenu004Rsp rsp = acctTacMenuService.tacmenu004(req);
-			logger.debug("协议返回结果："+JSONUtil.objToJson(rsp));
-			return rsp;
-		} catch (QlttUSBusinessException e) {
-			throw e; 
-		}catch (Exception e) {
-			throw new QlttRuntimeException(this,e);
-		}
+		AcctTacMenu004Rsp rsp = acctTacMenuService.tacmenu004(req);
+		logger.debug("协议返回结果："+JSONUtil.objToJson(rsp));
+		return rsp;
 	}
 }
 

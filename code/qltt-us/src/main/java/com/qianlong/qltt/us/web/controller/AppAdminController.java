@@ -11,9 +11,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.qianlong.qltt.us.exception.QlttRuntimeException;
-import com.qianlong.qltt.us.exception.QlttUSBusinessException;
-import com.qianlong.qltt.us.protocol.app.AppCreate001Rsp;
 import com.qianlong.qltt.us.protocol.app.TokenReset001;
 import com.qianlong.qltt.us.service.IAppAdminService;
 
@@ -43,14 +40,7 @@ public class AppAdminController extends BaseController{
 	@RequestMapping(value="createApp")
 	@ResponseBody
 	public Object createApp(){
-		try {
-			AppCreate001Rsp rsp = appAdminService.createApp();
-			return rsp;
-		} catch (QlttUSBusinessException e) {
-			throw e; 
-		}catch (Exception e) {
-			throw new QlttRuntimeException(this,e);
-		}
+		return appAdminService.createApp();
 	}
 	
 	/**
@@ -82,14 +72,7 @@ public class AppAdminController extends BaseController{
 	@ResponseBody
 	public Object resetAppToken(@Valid @RequestBody TokenReset001 req,BindingResult result){
 		handleReqParamerValid(result);
-		try {
-			TokenReset001 rsp = appAdminService.resetAppToken(req);
-			return rsp;
-		} catch (QlttUSBusinessException e) {
-			throw e; 
-		}catch (Exception e) {
-			throw new QlttRuntimeException(this,e);
-		}
+		return  appAdminService.resetAppToken(req);
 	}
 	
 	public static void main(String[] args) {

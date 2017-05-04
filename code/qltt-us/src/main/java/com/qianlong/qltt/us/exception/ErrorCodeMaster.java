@@ -71,14 +71,48 @@ public class ErrorCodeMaster {
 	/**该账号不存在或状态异常*/
 	public static final String ACCT_NOT_CORRECT = "00040002";
 
-	//runtime exception
-	public static final String RUNTIME_EXCEPTION = "00050001";
-	
 	//app
 	/**app不存在*/
 	public static final String APP_IS_NOT_EXIST = "00060001";
 
 	/**appid状态异常*/
 	public static final String APP_STATUS_IS_NOT_NORMAL = "00060002";
+	
+	//unknown exception
+	public static final String EXCEPTION_UNKNOWN_EXCEPTION = "00070001";
+
+	//DAO
+	public static final String DAO_CleanupFailureDataAccessException = "00080001";
+
+	public static final String DAO_DataIntegrityViolationException = "00080002";
+
+	public static final String DAO_DataRetrievalFailureException = "00080003";
+
+	public static final String DAO_DataSourceLookupFailureException = "00080004";
+
+	public static final String DAO_InvalidDataAccessApiUsageException = "00080005";
+
+	public static final String DAO_InvalidDataAccessResourceUsageException = "00080006";
+
+	public static final String DAO_NonTransientDataAccessResourceException = "00080007";
+
+	public static final String DAO_PermissionDeniedDataAccessException = "00080008";
+
+	public static final String DAO_UncategorizedDataAccessException = "00080009";
+
+	public static final String DAO_RecoverableDataAccessException = "00080010";
+
+	public static final String DAO_CannotReadScriptException = "00080011";
+
+	public static final String DAO_OptimisticLockingFailureException = "00080012";
+
+	public static final String DAO_PessimisticLockingFailureException = "00080013";
+
+	public static final String DAO_QueryTimeoutException ="00080014";
+
+	public static final String DAO_TransientDataAccessResourceException = "00080015";
+	
+	//TransactionException
+	public static final String TransactionException = "00090001";
 
 }

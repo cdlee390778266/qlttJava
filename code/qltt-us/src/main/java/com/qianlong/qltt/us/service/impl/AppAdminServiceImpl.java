@@ -3,6 +3,8 @@ package com.qianlong.qltt.us.service.impl;
 import java.io.UnsupportedEncodingException;
 import java.sql.Timestamp;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,7 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.qianlong.qltt.us.domain.TUSSysApp;
 import com.qianlong.qltt.us.domain.TUSSysAppKey;
 import com.qianlong.qltt.us.exception.ErrorCodeMaster;
-import com.qianlong.qltt.us.exception.QlttRuntimeException;
 import com.qianlong.qltt.us.exception.QlttUSBusinessException;
 import com.qianlong.qltt.us.mapper.TUSSysAppMapper;
 import com.qianlong.qltt.us.protocol.app.AppCreate001Rsp;
@@ -22,7 +23,7 @@ import com.qianlong.qltt.us.util.token.Signaturer;
 
 @Service("appAdminService")
 public class AppAdminServiceImpl extends CommServiceImpl implements IAppAdminService {
-	
+	private static final Logger logger = LoggerFactory.getLogger(AppAdminServiceImpl.class);
 	@Autowired
 	private TUSSysAppMapper tUSSysAppMapper;
 	
@@ -61,8 +62,9 @@ public class AppAdminServiceImpl extends CommServiceImpl implements IAppAdminSer
 			rsp.setSecret(new String(signbytes, "utf-8"));
 			return rsp;
 		} catch (UnsupportedEncodingException e) {
-			throw new QlttRuntimeException(this, e);
+			e.printStackTrace();
 		}
+		return null;
 	}
 
 	@Override
@@ -86,8 +88,9 @@ public class AppAdminServiceImpl extends CommServiceImpl implements IAppAdminSer
 			req.setSecret(new String(signbytes, "utf-8"));
 			return req;
 		} catch (UnsupportedEncodingException e) {
-			throw new QlttRuntimeException(this, e);
+			e.printStackTrace();
 		}
+		return null;
 	}
 
 	@Override

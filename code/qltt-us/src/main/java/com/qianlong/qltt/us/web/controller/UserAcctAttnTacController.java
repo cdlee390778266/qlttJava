@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.qianlong.qltt.us.exception.QlttRuntimeException;
-import com.qianlong.qltt.us.exception.QlttUSBusinessException;
 import com.qianlong.qltt.us.protocol.acctattntac.AcctAttnTac001Req;
 import com.qianlong.qltt.us.protocol.acctattntac.AcctAttnTac002Req;
 import com.qianlong.qltt.us.protocol.acctattntac.AcctAttnTac003Req;
@@ -58,13 +56,7 @@ public class UserAcctAttnTacController extends BaseController {
 	@ResponseBody
 	public Object attntac001(@Valid @RequestBody AcctAttnTac001Req req,BindingResult result){
 		handleReqParamerValid(result);
-		try {
-			return acctAttnTacService.attntac001(req);
-		} catch (QlttUSBusinessException e) {
-			throw e; 
-		}catch (Exception e) {
-			throw new QlttRuntimeException(this,e);
-		}
+		return acctAttnTacService.attntac001(req);
 	}
 	
 	/**
@@ -99,13 +91,7 @@ public class UserAcctAttnTacController extends BaseController {
 	@ResponseBody
 	public Object attntac002(@Valid @RequestBody AcctAttnTac002Req req,BindingResult result){
 		handleReqParamerValid(result);
-		try {
-			return acctAttnTacService.attntac002(req);
-		} catch (QlttUSBusinessException e) {
-			throw e; 
-		}catch (Exception e) {
-			throw new QlttRuntimeException(this,e);
-		}
+		return acctAttnTacService.attntac002(req);
 	}
 	
 	/**
@@ -145,13 +131,7 @@ public class UserAcctAttnTacController extends BaseController {
 	@ResponseBody
 	public Object attntac003(@Valid @RequestBody AcctAttnTac003Req req,BindingResult result){
 		handleReqParamerValid(result);
-		try {
-			return acctAttnTacService.attntac003(req);
-		} catch (QlttUSBusinessException e) {
-			throw e; 
-		}catch (Exception e) {
-			throw new QlttRuntimeException(this,e);
-		}
+		return acctAttnTacService.attntac003(req);
 	}
 	
 
@@ -190,12 +170,6 @@ public class UserAcctAttnTacController extends BaseController {
 	@ResponseBody
 	public Object attntac004(@Valid @RequestBody AcctAttnTac004Req req,BindingResult result){
 		handleReqParamerValid(result);
-		try {
-			return acctAttnTacService.attntac004(req);
-		} catch (QlttUSBusinessException e) {
-			throw e; 
-		}catch (Exception e) {
-			throw new QlttRuntimeException(this,e);
-		}
+		return acctAttnTacService.attntac004(req);
 	}
 }

@@ -11,13 +11,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.qianlong.qltt.us.exception.QlttRuntimeException;
-import com.qianlong.qltt.us.exception.QlttUSBusinessException;
 import com.qianlong.qltt.us.protocol.acctstock.AcctAttnStock001Req;
 import com.qianlong.qltt.us.protocol.acctstock.AcctAttnStock002Req;
+import com.qianlong.qltt.us.protocol.acctstock.AcctAttnStock003Req;
 import com.qianlong.qltt.us.protocol.acctstock.AcctAttnStock004Req;
 import com.qianlong.qltt.us.protocol.acctstock.AcctAttnStock004Rsp;
-import com.qianlong.qltt.us.protocol.acctstock.AcctAttnStock003Req;
 import com.qianlong.qltt.us.service.IAcctAttnStockService;
 import com.qianlong.qltt.us.util.JSONUtil;
 /**
@@ -72,13 +70,7 @@ public class UserAcctAttnStockController extends BaseController {
 		logger.debug("协议号：1005001");
 		logger.debug("协议传入参数："+JSONUtil.objToJson(req));
 		handleReqParamerValid(result);
-		try {
-			return acctAttnStockService.attnstock001(req);
-		} catch (QlttUSBusinessException e) {
-			throw e; 
-		}catch (Exception e) {
-			throw new QlttRuntimeException(this,e);
-		}
+		return acctAttnStockService.attnstock001(req);	
 	}
 	
 	/**
@@ -122,13 +114,7 @@ public class UserAcctAttnStockController extends BaseController {
 		handleReqParamerValid(result);
 		logger.debug("协议号：1005002");
 		logger.debug("协议传入参数："+JSONUtil.objToJson(req));
-		try {
-			return acctAttnStockService.attnstock002(req);
-		} catch (QlttUSBusinessException e) {
-			throw e; 
-		}catch (Exception e) {
-			throw new QlttRuntimeException(this,e);
-		}
+		return acctAttnStockService.attnstock002(req);
 	}
 	
 	/**
@@ -176,13 +162,7 @@ public class UserAcctAttnStockController extends BaseController {
 		handleReqParamerValid(result);
 		logger.debug("协议号：1005003");
 		logger.debug("协议传入参数："+JSONUtil.objToJson(req));
-		try {
-			return acctAttnStockService.attnstock003(req);
-		} catch (QlttUSBusinessException e) {
-			throw e; 
-		}catch (Exception e) {
-			throw new QlttRuntimeException(this,e);
-		}
+		return acctAttnStockService.attnstock003(req);
 	}
 	
 
@@ -234,14 +214,8 @@ public class UserAcctAttnStockController extends BaseController {
 		handleReqParamerValid(result);
 		logger.debug("协议号：1005004");
 		logger.debug("协议传入参数："+JSONUtil.objToJson(req));
-		try {
-			AcctAttnStock004Rsp rsp = acctAttnStockService.attntac004(req);
-			logger.debug("协议返回参数："+JSONUtil.objToJson(rsp));
-			return rsp;
-		} catch (QlttUSBusinessException e) {
-			throw e; 
-		}catch (Exception e) {
-			throw new QlttRuntimeException(this,e);
-		}
+		AcctAttnStock004Rsp rsp = acctAttnStockService.attntac004(req);
+		logger.debug("协议返回参数："+JSONUtil.objToJson(rsp));
+		return rsp;
 	}
 }
