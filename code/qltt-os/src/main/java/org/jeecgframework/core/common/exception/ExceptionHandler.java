@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.jeecgframework.core.util.ExceptionUtil;
 import org.springframework.stereotype.Component;
@@ -30,11 +31,13 @@ public class ExceptionHandler implements HandlerExceptionResolver {
 
 	public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) {
 		String exceptionMessage = ExceptionUtil.getExceptionMessage(ex);
+		String simpleMessage = ex.getMessage();
 		logger.error(String.format("全局异常统一处理 - 异常信息: %s", exceptionMessage));
 		
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("exceptionMessage", exceptionMessage);
 		model.put("ex", ex);
+		model.put("simpleMessage", StringUtils.isEmpty(simpleMessage) ? "哎哟喂！页面让狗狗叼走了！" : simpleMessage);
 		
 		if(!(request.getHeader("accept").indexOf("application/json") > -1 
 				|| (request.getHeader("X-Requested-With") != null && request.getHeader("X-Requested-With").indexOf("XMLHttpRequest") > -1))) {

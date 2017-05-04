@@ -15,10 +15,8 @@
 	<context:component-scan base-package="org.jeecgframework.core.common.service.*" />
 
 	<!-- 加载service,此时要排除要controller,因为controller已经spring-mvc中加载过了 -->
-	<context:component-scan
-		base-package="org.jeecgframework.web.*,weixin.*,com.jeecg.*,com.qianlong.webapp.*">
-		<context:exclude-filter type="annotation"
-			expression="org.springframework.stereotype.Controller" />
+	<context:component-scan base-package="org.jeecgframework.web.*,weixin.*,com.jeecg.*,com.qianlong.webapp.*">
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
 
 	<!-- 引入属性文件 -->
@@ -62,8 +60,6 @@
 		<property name="minIdle" value="5" />
 		<!-- 获取连接最大等待时间 -->
 		<property name="maxWait" value="60000" />
-		<!-- <property name="poolPreparedStatements" value="true" /> <property 
-			name="maxPoolPreparedStatementPerConnectionSize" value="33" /> -->
 		<property name="validationQuery" value="${validationQuery.sqlserver}" />
 		<property name="testOnBorrow" value="false" />
 		<property name="testOnReturn" value="false" />
@@ -83,7 +79,6 @@
 
 		<!-- 开启Druid的监控统计功能 -->
 		<property name="filters" value="stat" />
-		<!--<property name="filters" value="mergeStat" /> -->
 		<!-- Oracle连接是获取字段注释 -->
 		<property name="connectProperties">
 			<props>
@@ -93,23 +88,19 @@
 	</bean>
 
 	<!-- 数据源集合 -->
-	<bean id="dataSource"
-		class="org.jeecgframework.core.extend.datasource.DynamicDataSource">
+	<bean id="dataSource" class="org.jeecgframework.core.extend.datasource.DynamicDataSource">
 		<property name="targetDataSources">
 			<map key-type="org.jeecgframework.core.extend.datasource.DataSourceType">
 				<entry key="dataSource_jeecg" value-ref="dataSource_jeecg" />
-				<!-- <entry key="mapdataSource" value-ref="mapdataSource" /> -->
 			</map>
 		</property>
 		<property name="defaultTargetDataSource" ref="dataSource_jeecg" />
 	</bean>
-	<bean id="sessionFactory"
-		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="entityInterceptor" ref="hiberAspect" />
 		<property name="hibernateProperties">
 			<props>
-				<!--<prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop> -->
 				<prop key="hibernate.dialect">${hibernate.dialect}</prop>
 				<prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
 				<prop key="hibernate.show_sql">false</prop>
@@ -141,19 +132,16 @@
 	</bean>
 
 	<!-- JDBC配置 -->
-	<bean id="namedParameterJdbcTemplate"
-		class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
+	<bean id="namedParameterJdbcTemplate" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
 		<constructor-arg ref="dataSource" />
 	</bean>
 
 	<!-- 配置事物管理器，在*ServiceImpl里写@Transactional就可以启用事物管理 -->
-	<bean name="transactionManager"
-		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+	<bean name="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	<tx:annotation-driven transaction-manager="transactionManager" />
 
 	<!-- JSR303 Validator定义 -->
-	<bean id="validator"
-		class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
+	<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
 </beans>

@@ -17,7 +17,7 @@
 		<p>
 			<img src="<c:url value='/extension/images/error.png' />" alt="" />
 		</p>
-		<p>哎哟喂！页面让狗狗叼走了！</p>
+		<p>${simpleMessage}</p>
 	</div>
 </body>
 </html>
