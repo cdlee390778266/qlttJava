@@ -112,8 +112,12 @@ public class ErrorCodeMaster {
 	public static final String CN_IS_EXIST = "20000001";
 
 	/**该账号不存在或状态异常*/
-	public static final String ACCT_NOT_CORRECT = "20000002";	
+	public static final String ACCT_IS_NOT_EXIST = "20000002";
+
+	/**该账号不存在或状态异常*/
+	public static final String ACCT_STATUS_EXCEPTION = "20000003";
+	
 	public static void main(String[] args) {
-		System.out.println(ErrorCodeMaster.getMessage(ErrorCodeMaster.ACCT_NOT_CORRECT));
+		System.out.println(ErrorCodeMaster.getMessage(ErrorCodeMaster.ACCT_IS_NOT_EXIST));
 	}
 }
