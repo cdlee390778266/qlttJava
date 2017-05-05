@@ -90,6 +90,10 @@ $(document).ready(function() {
 		$(this).addClass('active');
 		searchSwiper.slideTo($(this).index());
 	});
+	
+	$('body').delegate('.search-item', 'tap', function(){
+		location.href = $(this).find('a').attr('href');
+	})
 
 	init();
 });

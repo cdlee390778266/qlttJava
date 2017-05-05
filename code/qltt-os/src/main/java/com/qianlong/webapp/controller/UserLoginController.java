@@ -72,10 +72,10 @@ public class UserLoginController {
 					authResult = userServCoreService.tdPartAuthLogin(trenchInfo);
 				} catch (UserServBusinessException e) {
 					logger.error(e.getMessage(), e);
+					throw e;
 				} catch (HttpRequestException e) {
 					logger.error(e.getMessage(), e);
-				} catch (Exception e) {
-					logger.error(e.getMessage(), e);
+					throw new BusinessException("网络异常，无法登录！");
 				}
 				//未找到注册信息，跳转到注册界面
 				if (authResult == null || StringUtils.isEmpty(authResult.getCn())) {

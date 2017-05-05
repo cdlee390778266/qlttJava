@@ -1,4 +1,5 @@
 package org.jeecgframework.web.system.controller.core;
+
 import java.text.ParseException;
 
 import javax.servlet.http.HttpServletRequest;
@@ -24,13 +25,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-
-/**   
+/**
  * @Title: Controller
  * @Description: 定时任务管理
  * @author jueyue
  * @date 2013-09-21 20:47:43
- * @version V1.0   
+ * @version V1.0
  *
  */
 @Scope("prototype")
@@ -45,7 +45,7 @@ public class TimeTaskController extends BaseController {
 	@Autowired
 	private SystemService systemService;
 	private String message;
-	
+
 	public String getMessage() {
 		return message;
 	}
@@ -53,7 +53,6 @@ public class TimeTaskController extends BaseController {
 	public void setMessage(String message) {
 		this.message = message;
 	}
-
 
 	/**
 	 * 定时任务管理列表 页面跳转
@@ -74,10 +73,11 @@ public class TimeTaskController extends BaseController {
 	 * @param user
 	 */
 
+	@SuppressWarnings("unchecked")
 	@RequestMapping(params = "datagrid")
-	public void datagrid(TSTimeTaskEntity timeTask,HttpServletRequest request, HttpServletResponse response, DataGrid dataGrid) {
+	public void datagrid(TSTimeTaskEntity timeTask, HttpServletRequest request, HttpServletResponse response, DataGrid dataGrid) {
 		CriteriaQuery cq = new CriteriaQuery(TSTimeTaskEntity.class, dataGrid);
-		//查询条件组装器
+		// 查询条件组装器
 		org.jeecgframework.core.extend.hqlsearch.HqlGenerateUtil.installHql(cq, timeTask, request.getParameterMap());
 		this.timeTaskService.getDataGridReturn(cq, true);
 		TagUtil.datagrid(response, dataGrid);
@@ -100,7 +100,6 @@ public class TimeTaskController extends BaseController {
 		return j;
 	}
 
-
 	/**
 	 * 添加定时任务管理
 	 * 
@@ -122,7 +121,7 @@ public class TimeTaskController extends BaseController {
 			message = "定时任务管理更新成功";
 			TSTimeTaskEntity t = timeTaskService.get(TSTimeTaskEntity.class, timeTask.getId());
 			try {
-				if(!timeTask.getCronExpression().equals(t.getCronExpression())){
+				if (!timeTask.getCronExpression().equals(t.getCronExpression())) {
 					timeTask.setIsEffect("0");
 				}
 				MyBeanUtils.copyBeanNotNull2Bean(timeTask, t);
@@ -155,7 +154,7 @@ public class TimeTaskController extends BaseController {
 		}
 		return new ModelAndView("system/timetask/timeTask");
 	}
-	
+
 	/**
 	 * 更新任务时间使之生效
 	 */
@@ -164,15 +163,16 @@ public class TimeTaskController extends BaseController {
 	public AjaxJson updateTime(TSTimeTaskEntity timeTask, HttpServletRequest request) {
 		AjaxJson j = new AjaxJson();
 		timeTask = timeTaskService.get(TSTimeTaskEntity.class, timeTask.getId());
-		boolean isUpdate = dynamicTask.updateCronExpression(timeTask.getTaskId() , timeTask.getCronExpression());
-		if(isUpdate){
+		boolean isUpdate = dynamicTask.updateCronExpression(timeTask.getTaskId(), timeTask.getCronExpression());
+		if (isUpdate) {
 			timeTask.setIsEffect("1");
 			timeTask.setIsStart("1");
 			timeTaskService.updateEntitie(timeTask);
 		}
-		j.setMsg(isUpdate?"定时任务管理更新成功":"定时任务管理更新失败");
+		j.setMsg(isUpdate ? "定时任务管理更新成功" : "定时任务管理更新失败");
 		return j;
 	}
+
 	/**
 	 * 启动或者停止任务
 	 */
@@ -182,15 +182,14 @@ public class TimeTaskController extends BaseController {
 		AjaxJson j = new AjaxJson();
 		boolean isStart = timeTask.getIsStart().equals("1");
 		timeTask = timeTaskService.get(TSTimeTaskEntity.class, timeTask.getId());
-		boolean isSuccess = dynamicTask.startOrStop(timeTask.getTaskId() ,isStart);
-		if(isSuccess){
-			timeTask.setIsStart(isStart?"1":"0");
+		boolean isSuccess = dynamicTask.startOrStop(timeTask.getTaskId(), isStart);
+		if (isSuccess) {
+			timeTask.setIsStart(isStart ? "1" : "0");
 			timeTaskService.updateEntitie(timeTask);
-			systemService.addLog((isStart?"开启任务":"停止任务")+timeTask.getTaskId(),
-					Globals.Log_Type_UPDATE, Globals.Log_Leavel_INFO);
+			systemService.addLog((isStart ? "开启任务" : "停止任务") + timeTask.getTaskId(), Globals.Log_Type_UPDATE, Globals.Log_Leavel_INFO);
 		}
-		j.setMsg(isSuccess?"定时任务管理更新成功":"定时任务管理更新失败");
+		j.setMsg(isSuccess ? "定时任务管理更新成功" : "定时任务管理更新失败");
 		return j;
 	}
-	
+
 }
