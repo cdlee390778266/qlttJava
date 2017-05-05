@@ -45,16 +45,20 @@ public class AcctLoginServiceImpl extends CommServiceImpl implements IAcctLoginS
 		TUSAcctCNRegExample tusAcctCNRegExample = new TUSAcctCNRegExample();
 		Criteria acreCriteria = tusAcctCNRegExample.createCriteria();
 		acreCriteria.andFsCnEqualTo(cn);// 指定手机号
-		acreCriteria.andFiStatusEqualTo(0);// 指定状态0
+		//acreCriteria.andFiStatusEqualTo(0);// 指定状态0
 		List<TUSAcctCNReg> regList = tUSAcctCNRegMapper.selectByExample(tusAcctCNRegExample);
 		if (regList != null && !regList.isEmpty()) {
 			TUSAcctCNReg reg = regList.get(0);
-			AcctLogin001Rsp rsp = new AcctLogin001Rsp();
-			rsp.setCn(cn);
-			rsp.setTtacct(reg.getFsTtacct());
-			return rsp;
+			if(reg.getFiStatus().equals(0)){
+				AcctLogin001Rsp rsp = new AcctLogin001Rsp();
+				rsp.setCn(cn);
+				rsp.setTtacct(reg.getFsTtacct());
+				return rsp;
+			}else{
+				throw new QlttUSBusinessException(ErrorCodeMaster.ACCT_STATUS_EXCEPTION);
+			}
 		} else {
-			throw new QlttUSBusinessException(ErrorCodeMaster.ACCT_NOT_CORRECT);
+			throw new QlttUSBusinessException(ErrorCodeMaster.ACCT_IS_NOT_EXIST);
 		}
 	}
 
@@ -79,10 +83,10 @@ public class AcctLoginServiceImpl extends CommServiceImpl implements IAcctLoginS
 				rsp.setTtacct(acct);
 				return rsp;
 			} else {
-				throw new QlttUSBusinessException(ErrorCodeMaster.ACCT_NOT_CORRECT);
+				throw new QlttUSBusinessException(ErrorCodeMaster.ACCT_STATUS_EXCEPTION);
 			}
 		} else {
-			throw new QlttUSBusinessException(ErrorCodeMaster.ACCT_NOT_CORRECT);
+			throw new QlttUSBusinessException(ErrorCodeMaster.ACCT_IS_NOT_EXIST);
 		}
 	}
 }
