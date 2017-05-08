@@ -96,23 +96,10 @@ public class AcctAttnTacServiceImpl extends CommServiceImpl implements IAcctAttn
 	@Override
 	@Transactional(readOnly = true)
 	public AcctAttnTac004Rsp attntac004(AcctAttnTac004Req req) {
-		TUsAttnTacTicExample example = new TUsAttnTacTicExample();
-		TUsAttnTacTicExample.Criteria criteria = example.createCriteria();
-		criteria.andFsTtacctEqualTo(req.getTtacct());
-		List<TUsAttnTacTic> tUsAttnTacTics = tUsAttnTacTicMapper.selectByExample(example);
-		//拼装返回数据
 		AcctAttnTac004Rsp rsp = new AcctAttnTac004Rsp();
-		List<AttnTacTic> attntactic = new ArrayList<AttnTacTic>();
-		rsp.setAttntactic(attntactic);
-		if(tUsAttnTacTics != null && !tUsAttnTacTics.isEmpty()){
-			AttnTacTic tacTic = null;
-			for(TUsAttnTacTic it:tUsAttnTacTics){
-				tacTic = new AttnTacTic();
-				tacTic.setTacprm(it.getFiTacticprm());
-				tacTic.setTactic(it.getFsTactic());
-				attntactic.add(tacTic);
-			}
-		}
+		List<AttnTacTic> attnTacTics = tUsAttnTacTicMapper.selectByTTAcct(req.getTtacct());
+		//拼装返回数据
+		rsp.setAttntactic(attnTacTics);
 		return rsp;
 	}
 }
