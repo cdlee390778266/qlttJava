@@ -38,13 +38,14 @@ public class MyBusProcess implements IBusProcess {
 					tep.setTitle1(eventpush.getTitle1());//标题
 					tep.setKeyword1("尊敬的客户:"+epush.getCN());//keyword1
 					tep.setKeyword2(eventpush.getTacname());//keyword2
-					String remark = eventpush.getEvdetail()+epush.getContent();//remark
-					
+					String remark = eventpush.getEvdetail()+epush.getSummary()+"(查看更多请点击详情,内容当日有效)";//remark
+					//TODO:详情url
+					String url ="";
+					tep.setUrl(url);
 					tep.setContent(StringTypeUtil.stringToClob(remark));//内容
 					tep.setWeight(content.getEp().getMxdlyval());//权重
-					org.jeecgframework.core.util.LogUtil.info("添加队列开始时间:"+data.format(new Date()));
 					InitQueue.q.add(tep);
-					org.jeecgframework.core.util.LogUtil.info("添加队列结束时间:"+data.format(new Date()));
+
 				
 				}
 				com.qlcd.qltt.body.BppSys._rsp_succhead.Builder succheadbuilder = com.qlcd.qltt.body.BppSys._rsp_succhead.newBuilder();
@@ -72,15 +73,17 @@ public class MyBusProcess implements IBusProcess {
 					tep.setTitle1(_eventpush.getTitle1());//标题
 					tep.setKeyword1("尊敬的客户:"+_eventpush.getCN());//keyword1
 					tep.setKeyword2(_eventpush.getTacname());//keyword2
-					String remark = _eventpush.getEvdetail()+_eventpush.getContent();//remark
+					String remark = _eventpush.getEvdetail()+_eventpush.getSummary()+"(查看更多请点击详情,内容当日有效)";//remark
+					
+					//TODO:详情url
+					String url ="";
+					tep.setUrl(url);
 					
 					tep.setContent(StringTypeUtil.stringToClob(remark));//内容
 					tep.setWeight(_eventpush.getMxdlyval());//权重
-					org.jeecgframework.core.util.LogUtil.info("添加队列开始时间:"+data.format(new Date()));
 					InitQueue.q.add(tep);
 					acp.setPushindex(_eventpush.getPushindex());
 					rsph02.addAcplist(acp);
-					org.jeecgframework.core.util.LogUtil.info("添加队列结束时间:"+data.format(new Date()));
 				}
 				
 				com.qlcd.qltt.body.BppSys._rsp_succhead.Builder succheadbuilder = com.qlcd.qltt.body.BppSys._rsp_succhead.newBuilder();

@@ -31,6 +31,9 @@ public class SendMessageTep implements Comparable<SendMessageTep>{
 	private Integer weight;//权重
 
 	private Integer sendStatus;
+	
+	private String url;
+	
 	public String getId() {
 		return id;
 	}
@@ -114,5 +117,11 @@ public class SendMessageTep implements Comparable<SendMessageTep>{
 	@Override
 	public int compareTo(SendMessageTep o) {
 		return this.weight.intValue() > o.weight.intValue() ? 1 : this.weight.intValue() < o.weight.intValue() ? -1 : 0;
+	}
+	public String getUrl() {
+		return url;
+	}
+	public void setUrl(String url) {
+		this.url = url;
 	}
 }
