@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.persistence.criteria.CriteriaBuilder.Case;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -15,6 +16,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.PathMatcher;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.qianlong.webapp.exception.UserServBusinessException;
 
 /**
  * spring mvc异常捕获类
@@ -33,6 +36,16 @@ public class ExceptionHandler implements HandlerExceptionResolver {
 		String exceptionMessage = ExceptionUtil.getExceptionMessage(ex);
 		String simpleMessage = ex.getMessage();
 		logger.error(String.format("全局异常统一处理 - 异常信息: %s", exceptionMessage));
+		
+		if (ex instanceof UserServBusinessException) {
+			String errorCode = ((UserServBusinessException)ex).getErrorCode();
+			switch (errorCode) {
+			case "":
+				break;
+			default:
+				break;
+			}
+		}
 		
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("exceptionMessage", exceptionMessage);

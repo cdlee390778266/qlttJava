@@ -24,7 +24,7 @@
 	<!-- 引入线程池文件 -->
 	<context:property-placeholder location="classpath:zmqTask.properties" ignore-unresolvable="false" order="2" />
 
-	<bean id="busProcess" class="weixin.guanjia.message.task.MyBusProcess" />
+	<bean id="busProcess" class="weixin.guanjia.message.task.MyBusProcess"/>
   	<bean id="initGetMessage" class="weixin.guanjia.message.task.InitGetMessage">
 		<constructor-arg ref="commonService"></constructor-arg>
  		<constructor-arg ref="weixinAccountService"></constructor-arg>

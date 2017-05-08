@@ -120,6 +120,9 @@ public class ZMQProxyClient {
 			if (!requester.send(reqBodyByte, 0))
 				throw new RuntimeException("请求交易体未发送成功");
 			rspHeadByte = requester.recv(0);
+			
+			if (rspHeadByte == null)
+				throw new CommZMQException("网络通讯错误: 未接收到任何数据");
 
 			while (requester.hasReceiveMore()) {
 				rspBodyByte = requester.recv(0);

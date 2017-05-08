@@ -20,6 +20,7 @@ public class InitGetMessage{
 			Thread th = new Thread(gm);
 			th.start();
 		}
+
 	}
 }
 

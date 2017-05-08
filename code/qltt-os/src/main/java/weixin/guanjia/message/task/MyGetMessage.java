@@ -42,16 +42,18 @@ public class MyGetMessage implements Runnable {
 
 	@Override
 	public void run() {
-		SendMessageTep tep;
+		SendMessageTep tep ;
 		while (true) {
-			try {
+			try {					
 				tep = (SendMessageTep) InitQueue.q.take();
+				
 				logger.debug("MyGetMessage.run");
 				if (tep.getSvcchnl().intValue() == 1) {
 					handleWeiXinSend(tep);
 				} else {
 					// TODO 手机APP渠道
 				}
+				
 			} catch (InterruptedException e1) {
 				e1.printStackTrace();
 				logger.error(e1.getMessage());
@@ -71,7 +73,7 @@ public class MyGetMessage implements Runnable {
 			result.setTemplate_id(templateId);
 			result.setTouser(tep.getOpenId());
 			result.setData(data);
-	
+			result.setUrl(tep.getUrl());
 			// first
 			TemplateData first = new TemplateData();
 			first.setValue(tep.getTitle1());
