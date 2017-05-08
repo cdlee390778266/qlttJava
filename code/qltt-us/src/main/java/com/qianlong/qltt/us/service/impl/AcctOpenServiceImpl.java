@@ -48,7 +48,7 @@ public class AcctOpenServiceImpl extends CommServiceImpl implements IAcctOpenSer
 		TUSAcctCNRegExample tusAcctCNRegExample = new TUSAcctCNRegExample();
 		TUSAcctCNRegExample.Criteria acreCriteria = tusAcctCNRegExample.createCriteria();
 		acreCriteria.andFsCnEqualTo(cn);// 指定手机号
-		acreCriteria.andFiStatusEqualTo(1);// 指定状态==1
+		acreCriteria.andFiStatusEqualTo(0);// 指定状态0
 		List<TUSAcctCNReg> regList = tUSAcctCNRegMapper.selectByExample(tusAcctCNRegExample);
 		if (regList != null && !regList.isEmpty()) {
 			throw new QlttUSBusinessException(ErrorCodeMaster.CN_IS_EXIST);
@@ -99,7 +99,7 @@ public class AcctOpenServiceImpl extends CommServiceImpl implements IAcctOpenSer
 	}
 
 	private String generateAcct() {
-		// TODO 按照一定的规则生成推推账号
-		return "tt" + String.valueOf(getSystemDate().getTime());
+		int max = tUSAcctCNRegMapper.selectMaxAcct();
+		return String.valueOf(++max);
 	}
 }
