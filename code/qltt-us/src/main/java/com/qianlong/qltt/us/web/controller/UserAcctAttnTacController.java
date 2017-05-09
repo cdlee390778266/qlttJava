@@ -152,12 +152,10 @@ public class UserAcctAttnTacController extends BaseController {
 	 * 		{
 	 * 			"attntactic":[//关注指标列表
 	 * 				{
+	 * 					"tacprmname":"指标参数名称2",//指标参数名称
 	 * 					"tacprm":2,//指标参数
+	 * 					"tacname":"指标名称2",//指标名称
 	 * 					"tactic":"指标2"//指标
-	 * 				},
-	 * 				{
-	 * 					"tacprm":1,
-	 * 					"tactic":"指标1"
 	 * 				}]
 	 * 		}
 	 * 	错误的响应格式：
