@@ -13,6 +13,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.util.CollectionUtils;
 
 import com.qianlong.webapp.service.IIndexSystemService;
+import com.qlcd.qltt.body.pvt.T02001001;
 import com.qlcd.qltt.body.pvt.T02001002;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -42,4 +43,20 @@ public class IndexSystemServiceImplTest {
 		assertTrue("testQueryIdxGroup", rsp != null);
 	}
 
+	@Test
+	public void testQueryAllIdx() {
+		T02001001._rsp rsp = indexSystemService.queryAllIdx();
+		logger.debug(String.format("结果类: [%s]", rsp != null ? rsp.getClass().getName() : null));
+		List<T02001001._protacgroup> list = rsp.getPtglistList();
+		if (!CollectionUtils.isEmpty(list)) {
+			for (T02001001._protacgroup group : list) {
+				List<T02001001._protacgrpmem> memList = group.getPtgmlistList();
+				if (!CollectionUtils.isEmpty(memList)) {
+					for (T02001001._protacgrpmem mem : memList) {
+						logger.debug(String.format("指标编号:[%s], 指标名称:[%s], 指标描述:[%s]", mem.getTactic(), mem.getTacname(), mem.getTacdetail()));
+					}
+				}
+			}
+		}
+	}
 }

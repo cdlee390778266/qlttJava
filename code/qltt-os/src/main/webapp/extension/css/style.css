@@ -1998,3 +1998,8 @@ a {
     background-color: #ddd;
   }
 }
+
+.hidden {
+  display: none;
+  visibility: hidden;
+}

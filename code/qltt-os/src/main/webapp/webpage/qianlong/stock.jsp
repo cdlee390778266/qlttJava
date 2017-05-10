@@ -70,14 +70,10 @@
 			<div class="dialog-body">
 				<div class="select-box">
 					<div class="select-mask">选股池A</div>
-					<select name="" id="choosePool">
-						<option value="选股池A">选股池A</option>
-						<option value="选股池B">选股池B</option>
-						<option value="选股池C">选股池C</option>
-						<option value="选股池D">选股池D</option>
-						<option value="选股池E">选股池E</option>
-						<option value="选股池F">选股池F</option>
-						<option value="选股池G">选股池G</option>
+					<select name="" id="choosePool" multiple="multiple">
+						<option value="1">选股池A</option>
+						<option value="2">选股池B</option>
+						<option value="3">选股池C</option>
 					</select>
 				</div>
 			</div>

@@ -3,6 +3,7 @@ package com.qlcd.util;
 import java.lang.reflect.Method;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.log4j.Logger;
 import org.zeromq.ZMQ;
 import org.zeromq.ZMQ.Socket;
 
@@ -11,6 +12,8 @@ import com.qlcd.qltt.body.BppSys;
 import com.qlcd.qltt.head.Hpprot;
 
 public class ZMQProxyClient {
+	
+	private Logger logger = Logger.getLogger(ZMQProxyClient.class);
 
 	private String proxyIp;
 
@@ -116,9 +119,9 @@ public class ZMQProxyClient {
 			requester.setSendTimeOut(sndTimeOut * 1000);
 
 			if (!requester.send(reqHeadByte, org.zeromq.ZMQ.SNDMORE))
-				throw new RuntimeException("请求交易头部未发送成功");
+				throw new CommZMQException("请求交易头部未发送成功");
 			if (!requester.send(reqBodyByte, 0))
-				throw new RuntimeException("请求交易体未发送成功");
+				throw new CommZMQException("请求交易体未发送成功");
 			rspHeadByte = requester.recv(0);
 			
 			if (rspHeadByte == null)
@@ -129,6 +132,7 @@ public class ZMQProxyClient {
 				recvTimes ++;
 			}
 		} catch (Exception e) {
+			logger.error("网络通讯错误", e);
 			throw new CommZMQException("网络通讯错误:" + e.getMessage());
 		} finally {
 			if (requester != null)

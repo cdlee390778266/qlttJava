@@ -33,11 +33,12 @@ $(document).ready(function() {
 				if (data != null) {
 					var members = data.ptgmlist;
 					for ( var i in members) {
+						var href = encodeURI("../stock/home.do?tactic=" + members[i].tactic + "&tacname=" + members[i].tacname);
 						html += '<div class="search-item ani" swiper-animate-effect="fadeIn" swiper-animate-duration="1s" swiper-animate-delay="0s" >'
 							+ '<div class="search-head">'
 							+ members[i].tacname
 							+ '</div>'
-							+ '<div class="search-body"><a href="' + contextPath + '/webapp/stock/home.do?tactic=' + members[i].tactic + '&tacname=' + members[i].tacname + '">'
+							+ '<div class="search-body"><a href="' + href + '">'
 							+ members[i].tacdetail
 							+ '</a></div>' + '</div>'
 					}

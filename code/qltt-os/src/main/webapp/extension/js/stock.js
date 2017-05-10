@@ -85,11 +85,47 @@ $(document).ready(function() {
 
 	}
 
+	//关注和取消关注
 	$('.result-btns span').tap(function() {
+		var follow = $(this);
 		if ($(this).hasClass('active')) {
-			$(this).removeClass('active');
+			//取消关注
+			$.ajax({
+				url : '../myattention/unfollow.do',
+				data : {
+					"tacTic" : $("#tacTic").val(),
+					"tacPrm" : 0
+				},
+				dataType : "json",
+				error : function(jqXHR, textStatus, errorThrown) {
+					alert(textStatus);
+				},
+				success : function(data, textStatus, jqXHR) {
+					if (data.status == 1)
+						follow.removeClass('active');
+					else
+						alert(data.message);
+				}
+			});
 		} else {
-			$(this).addClass('active');
+			//关注
+			$.ajax({
+				url : '../myattention/follow.do',
+				data : {
+					"tacTic" : $("#tacTic").val(),
+					"tacPrm" : 0
+				},
+				dataType : "json",
+				error : function(jqXHR, textStatus, errorThrown) {
+					alert("服务器异常！");
+				},
+				success : function(data, textStatus, jqXHR) {
+					if (data.status == 1)
+						follow.addClass('active');
+					else
+						alert(data.message);
+				}
+			});
 		}
 	})
 					
