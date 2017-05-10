@@ -13,6 +13,7 @@ import com.qianlong.qltt.us.protocol.acctattntac.AcctAttnTac001Req;
 import com.qianlong.qltt.us.protocol.acctattntac.AcctAttnTac002Req;
 import com.qianlong.qltt.us.protocol.acctattntac.AcctAttnTac003Req;
 import com.qianlong.qltt.us.protocol.acctattntac.AcctAttnTac004Req;
+import com.qianlong.qltt.us.protocol.acctattntac.AcctAttnTac005Req;
 import com.qianlong.qltt.us.service.IAcctAttnTacService;
 /**
  * 关注指标Controller
@@ -152,12 +153,10 @@ public class UserAcctAttnTacController extends BaseController {
 	 * 		{
 	 * 			"attntactic":[//关注指标列表
 	 * 				{
+	 * 					"tacprmname":"指标参数名称2",//指标参数名称
 	 * 					"tacprm":2,//指标参数
+	 * 					"tacname":"指标名称2",//指标名称
 	 * 					"tactic":"指标2"//指标
-	 * 				},
-	 * 				{
-	 * 					"tacprm":1,
-	 * 					"tactic":"指标1"
 	 * 				}]
 	 * 		}
 	 * 	错误的响应格式：
@@ -171,5 +170,37 @@ public class UserAcctAttnTacController extends BaseController {
 	public Object attntac004(@Valid @RequestBody AcctAttnTac004Req req,BindingResult result){
 		handleReqParamerValid(result);
 		return acctAttnTacService.attntac004(req);
+	}
+	
+	/**
+	 * 接口编号：IFC_UserAcctAttnTac005
+	 * 交易码：1004005
+	 * 接口名称：校验账户关注指标查询
+	 * 接口描述：校验某个指标是否被某账户关注
+	 * 备注说明：
+	 * 接口请求URL：SERVER-NAME/acctattntac/attntac005?access_token=ACCESSTOKEN
+	 * 接口请求方式：POST
+	 * 接口请求Json数据格式:
+	 * 		{
+	 * 			"ttacct":"tt000000000001"//推推账号	
+	 * 			"tactic":"指标2",//指标
+	 * 			"tacprm":2//指标参数
+	 * 		}
+	 * 接口响应JSon数据格式：
+	 * 	  正确的响应格式：
+	 * 		{
+	 * 			"isattn":0
+	 *		}
+	 * 	错误的响应格式：
+	 * 		{
+	 * 			"errorCode":"00010001",
+	 * 			"errorMsg":"请求参数格式不正确"
+	 * 		}
+	 */
+	@RequestMapping(value="attntac005")
+	@ResponseBody
+	public Object attntac005(@Valid @RequestBody AcctAttnTac005Req req,BindingResult result){
+		handleReqParamerValid(result);
+		return acctAttnTacService.attntac005(req);
 	}
 }

@@ -6,6 +6,14 @@
     <id column="Fs_tactic" property="fsTactic" jdbcType="VARCHAR" />
     <result column="Fi_tacticprm" property="fiTacticprm" jdbcType="INTEGER" />
   </resultMap>
+  
+   <resultMap id="AttnTacTicResultMap" type="com.qianlong.qltt.us.protocol.acctattntac.AttnTacTic" >
+    <id column="Fs_tactic" property="tactic" jdbcType="VARCHAR" />
+    <result column="Fs_name" property="tacname" jdbcType="VARCHAR" />
+    <result column="Fi_tacticprm" property="tacprm" jdbcType="INTEGER" />
+    <result column="Fs_tacprmname" property="tacprmname" jdbcType="VARCHAR" />
+  </resultMap>
+  
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >
@@ -185,4 +193,15 @@
      (#{att.fsTtacct,jdbcType=VARCHAR}, #{att.fsTactic,jdbcType=VARCHAR},#{att.fiTacticprm,jdbcType=INTEGER})
     </foreach>
   </insert>
+  
+  <select id="selectByTTAcct" resultMap="AttnTacTicResultMap" parameterType="string" >
+    select 
+        t.Fs_tactic as Fs_tactic,
+        t.Fi_tacticprm as Fi_tacticprm ,
+        n.Fs_name as Fs_name,
+        p.Fs_tacprmname as Fs_tacprmname 
+    from (select * from tusattntactic where Fs_ttacct =#{ttacct,jdbcType=VARCHAR}) t 
+        left join ttadefprotactic n on t.Fs_tactic = n.Fs_tactic 
+        left join ttadefprotacprm p on (t.Fs_tactic = p.Fs_tactic and t.Fi_tacticprm = p.Fi_tacticprm)
+  </select>
 </mapper>

@@ -208,4 +208,8 @@
       Fi_status = #{fiStatus,jdbcType=INTEGER}
     where Fs_ttacct = #{fsTtacct,jdbcType=VARCHAR}
   </update>
+  
+  <select id="selectMaxAcct" resultType="int">
+    select IFNULL(max(Fs_ttacct),9999) from tusacctcnreg
+  </select>
 </mapper>

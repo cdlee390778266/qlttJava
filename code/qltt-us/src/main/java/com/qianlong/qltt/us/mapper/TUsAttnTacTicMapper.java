@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import com.qianlong.qltt.us.domain.TUsAttnTacTic;
 import com.qianlong.qltt.us.domain.TUsAttnTacTicExample;
 import com.qianlong.qltt.us.domain.TUsAttnTacTicKey;
+import com.qianlong.qltt.us.protocol.acctattntac.AttnTacTic;
 
 public interface TUsAttnTacTicMapper {
     int countByExample(TUsAttnTacTicExample example);
@@ -33,4 +34,7 @@ public interface TUsAttnTacTicMapper {
 
     /**批量插入记录*/
 	int batchInsert(List<TUsAttnTacTic> usAttnTacTics);
+
+	/**根据推推账号查询关注指标*/
+	List<AttnTacTic> selectByTTAcct(String ttacct);
 }

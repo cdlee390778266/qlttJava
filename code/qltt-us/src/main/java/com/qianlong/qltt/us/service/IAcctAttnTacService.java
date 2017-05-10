@@ -6,6 +6,8 @@ import com.qianlong.qltt.us.protocol.acctattntac.AcctAttnTac002Req;
 import com.qianlong.qltt.us.protocol.acctattntac.AcctAttnTac003Req;
 import com.qianlong.qltt.us.protocol.acctattntac.AcctAttnTac004Req;
 import com.qianlong.qltt.us.protocol.acctattntac.AcctAttnTac004Rsp;
+import com.qianlong.qltt.us.protocol.acctattntac.AcctAttnTac005Req;
+import com.qianlong.qltt.us.protocol.acctattntac.AcctAttnTac005Rsp;
 
 public interface IAcctAttnTacService {
 	
@@ -16,4 +18,7 @@ public interface IAcctAttnTacService {
 	CommRsp attntac003(AcctAttnTac003Req req);
 
 	AcctAttnTac004Rsp attntac004(AcctAttnTac004Req req);
+
+	AcctAttnTac005Rsp attntac005(AcctAttnTac005Req req);
+
 }

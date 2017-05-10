@@ -18,6 +18,8 @@ import com.qianlong.qltt.us.protocol.acctattntac.AcctAttnTac002Req;
 import com.qianlong.qltt.us.protocol.acctattntac.AcctAttnTac003Req;
 import com.qianlong.qltt.us.protocol.acctattntac.AcctAttnTac004Req;
 import com.qianlong.qltt.us.protocol.acctattntac.AcctAttnTac004Rsp;
+import com.qianlong.qltt.us.protocol.acctattntac.AcctAttnTac005Req;
+import com.qianlong.qltt.us.protocol.acctattntac.AcctAttnTac005Rsp;
 import com.qianlong.qltt.us.protocol.acctattntac.AttnTacTic;
 import com.qianlong.qltt.us.service.IAcctAttnTacService;
 import com.qianlong.qltt.us.util.StringUtil;
@@ -96,23 +98,23 @@ public class AcctAttnTacServiceImpl extends CommServiceImpl implements IAcctAttn
 	@Override
 	@Transactional(readOnly = true)
 	public AcctAttnTac004Rsp attntac004(AcctAttnTac004Req req) {
+		AcctAttnTac004Rsp rsp = new AcctAttnTac004Rsp();
+		List<AttnTacTic> attnTacTics = tUsAttnTacTicMapper.selectByTTAcct(req.getTtacct());
+		//拼装返回数据
+		rsp.setAttntactic(attnTacTics);
+		return rsp;
+	}
+
+	@Override
+	public AcctAttnTac005Rsp attntac005(AcctAttnTac005Req req) {
 		TUsAttnTacTicExample example = new TUsAttnTacTicExample();
 		TUsAttnTacTicExample.Criteria criteria = example.createCriteria();
 		criteria.andFsTtacctEqualTo(req.getTtacct());
-		List<TUsAttnTacTic> tUsAttnTacTics = tUsAttnTacTicMapper.selectByExample(example);
-		//拼装返回数据
-		AcctAttnTac004Rsp rsp = new AcctAttnTac004Rsp();
-		List<AttnTacTic> attntactic = new ArrayList<AttnTacTic>();
-		rsp.setAttntactic(attntactic);
-		if(tUsAttnTacTics != null && !tUsAttnTacTics.isEmpty()){
-			AttnTacTic tacTic = null;
-			for(TUsAttnTacTic it:tUsAttnTacTics){
-				tacTic = new AttnTacTic();
-				tacTic.setTacprm(it.getFiTacticprm());
-				tacTic.setTactic(it.getFsTactic());
-				attntactic.add(tacTic);
-			}
-		}
+		criteria.andFsTacticEqualTo(req.getTactic());
+		criteria.andFiTacticprmEqualTo(req.getTacprm());
+		List<TUsAttnTacTic> list = tUsAttnTacTicMapper.selectByExample(example);
+		AcctAttnTac005Rsp rsp = new AcctAttnTac005Rsp();
+		rsp.setIsattn((list==null || list.isEmpty())?0:1);
 		return rsp;
 	}
 }
