@@ -18,6 +18,8 @@ import com.qianlong.qltt.us.protocol.acctattntac.AcctAttnTac002Req;
 import com.qianlong.qltt.us.protocol.acctattntac.AcctAttnTac003Req;
 import com.qianlong.qltt.us.protocol.acctattntac.AcctAttnTac004Req;
 import com.qianlong.qltt.us.protocol.acctattntac.AcctAttnTac004Rsp;
+import com.qianlong.qltt.us.protocol.acctattntac.AcctAttnTac005Req;
+import com.qianlong.qltt.us.protocol.acctattntac.AcctAttnTac005Rsp;
 import com.qianlong.qltt.us.protocol.acctattntac.AttnTacTic;
 import com.qianlong.qltt.us.service.IAcctAttnTacService;
 import com.qianlong.qltt.us.util.StringUtil;
@@ -100,6 +102,19 @@ public class AcctAttnTacServiceImpl extends CommServiceImpl implements IAcctAttn
 		List<AttnTacTic> attnTacTics = tUsAttnTacTicMapper.selectByTTAcct(req.getTtacct());
 		//拼装返回数据
 		rsp.setAttntactic(attnTacTics);
+		return rsp;
+	}
+
+	@Override
+	public AcctAttnTac005Rsp attntac005(AcctAttnTac005Req req) {
+		TUsAttnTacTicExample example = new TUsAttnTacTicExample();
+		TUsAttnTacTicExample.Criteria criteria = example.createCriteria();
+		criteria.andFsTtacctEqualTo(req.getTtacct());
+		criteria.andFsTacticEqualTo(req.getTactic());
+		criteria.andFiTacticprmEqualTo(req.getTacprm());
+		List<TUsAttnTacTic> list = tUsAttnTacTicMapper.selectByExample(example);
+		AcctAttnTac005Rsp rsp = new AcctAttnTac005Rsp();
+		rsp.setIsattn((list==null || list.isEmpty())?0:1);
 		return rsp;
 	}
 }

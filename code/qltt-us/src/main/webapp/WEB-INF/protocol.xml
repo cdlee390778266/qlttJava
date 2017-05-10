@@ -141,6 +141,17 @@
       <req-url>/acctattntac/attntac004</req-url>
       <req-call-max>1000</req-call-max>
     </protocol>
+    
+     <protocol>
+      <interface-num>IFC_UserAcctAttnTac005</interface-num>
+      <interface-name>校验账户关注指标查询</interface-name>
+      <interface-des></interface-des>
+      <interface-remark></interface-remark>
+      <protocol-num>1004005</protocol-num>
+      <protocol-mode>请求-应答</protocol-mode>
+      <req-url>/acctattntac/attntac005</req-url>
+      <req-call-max>1000</req-call-max>
+    </protocol>
     <!-- 关注指标  end -->
     
     <!-- 选股池 start -->
