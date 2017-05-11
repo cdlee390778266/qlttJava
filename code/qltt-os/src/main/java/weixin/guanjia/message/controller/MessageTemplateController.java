@@ -16,7 +16,6 @@ import org.jeecgframework.core.util.StringUtil;
 import org.jeecgframework.tag.core.easyui.TagUtil;
 import org.jeecgframework.web.system.service.SystemService;
 import org.jeewx.api.core.exception.WexinReqException;
-import org.jeewx.api.wxsendmsg.JwSendTemplateMsgAPI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,7 +26,9 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import weixin.guanjia.account.service.WeixinAccountServiceI;
 import weixin.guanjia.message.entity.MessageTemplate;
+import weixin.guanjia.message.model.SendMessageTep;
 import weixin.guanjia.message.service.MessageTemplateService;
+import weixin.guanjia.message.task.InitQueue;
 import weixin.util.MessageTemplateApiUtil;
 import weixin.util.StringTypeUtil;
 
@@ -169,9 +170,14 @@ public class MessageTemplateController {
 		//添加新的消息模板
 		List<String> mnewIdList = new ArrayList<>();
 		List<String> moldIdList = new ArrayList<>();
+		for (MessageTemplate m2 : messageoldList) {
+			moldIdList.add(m2.getTemplateId());
+		}
 		for (MessageTemplate m1 : messnewList) {
 			mnewIdList.add(m1.getTemplateId());
-			this.messageTemplateService.saveOrUpdate(m1);
+			if(!moldIdList.contains(m1.getTemplateId())){
+				this.messageTemplateService.saveOrUpdate(m1);
+			}
 		}
 		//删除已经不存在的消息模板
 		for (MessageTemplate m2 : messageoldList) {
@@ -183,8 +189,40 @@ public class MessageTemplateController {
 		return "0";
 	}
 	
-	public static void main(String[] args) {
-		JSONArray tempA = JSONArray.fromObject("[]");
-		System.out.println(tempA.size());
+	/**
+	 * 测试发送消息
+	* @Title: goUpdate 
+	* @Description: TODO
+	* @param @param weixinAccount
+	* @param @param req
+	* @param @return    
+	* @return ModelAndView   
+	* @throws
+	 */
+	@RequestMapping(params = "sendMessage")
+	public ModelAndView sendMessage(MessageTemplate messageTemplate,
+			HttpServletRequest req) throws Exception {
+		if (StringUtil.isNotEmpty(messageTemplate.getTemplateId())) {
+			req.setAttribute("message", messageTemplate);
+		}
+		return new ModelAndView("weixin/guanjia/message/sendmessage");
+	}
+	
+	@RequestMapping(params = "send")
+	@ResponseBody
+	public AjaxJson send(String id,SendMessageTep tep,String content1,
+			HttpServletRequest req) throws Exception {
+		AjaxJson j = new AjaxJson();
+		try{
+			tep.setContent(StringTypeUtil.stringToClob(content1));
+			System.out.println(com.alibaba.fastjson.JSONObject.toJSONString(tep));
+			InitQueue.q.add(tep);
+			j.setSuccess(true);
+			j.setMsg("发送消息成功!");
+		}catch(Exception e){
+			j.setSuccess(false);
+			j.setMsg("发送消息失败!");
+		}
+		return j;
 	}
 }
