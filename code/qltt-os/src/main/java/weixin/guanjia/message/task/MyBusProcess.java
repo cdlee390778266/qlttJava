@@ -2,7 +2,6 @@ package weixin.guanjia.message.task;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import com.qlcd.qltt.body.pvt.T03001001;
@@ -11,7 +10,6 @@ import com.qlcd.qltt.body.pvt.T03001001._eventpush;
 import com.qlcd.qltt.body.pvt.T03001002;
 import com.qlcd.util.IBusProcess;
 
-import net.sf.json.JSONObject;
 import weixin.guanjia.message.model.SendMessageTep;
 import weixin.util.StringTypeUtil;
 
@@ -100,7 +98,7 @@ public class MyBusProcess implements IBusProcess {
 			succheadbuilder.setRspmsg("失败");
 			if(trdcode == 3001001){
 				T03001001._req content = (T03001001._req) requestBody;		
-				org.jeecgframework.core.util.LogUtil.info("代理发送的异常数据为"+JSONObject.fromObject(content));
+				org.jeecgframework.core.util.LogUtil.info("代理发送的异常数据为"+com.alibaba.fastjson.JSONObject.toJSONString(content));
 				T03001001._rsp.Builder rsph =T03001001._rsp.newBuilder();
 				rsph.setRsh(succheadbuilder.build());
 				T03001001._rsp rsp = rsph.build();
