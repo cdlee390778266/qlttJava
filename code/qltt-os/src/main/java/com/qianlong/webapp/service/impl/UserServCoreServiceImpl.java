@@ -30,6 +30,7 @@ import com.qianlong.webapp.exception.UserServBusinessException;
 import com.qianlong.webapp.service.IHttpService;
 import com.qianlong.webapp.service.IUserServCoreService;
 import com.qianlong.webapp.utils.Constants;
+import com.qianlong.webapp.utils.UserServPath;
 
 @Service("userServCoreService")
 public class UserServCoreServiceImpl extends CommonServiceImpl implements IUserServCoreService, CommonService {
@@ -48,7 +49,7 @@ public class UserServCoreServiceImpl extends CommonServiceImpl implements IUserS
 		try {
 			content = httpService.httpPost(Constants.SCHEME_HTTP, ResourceUtil.getConfigByName("user.serv.host"),
 					Integer.valueOf(ResourceUtil.getConfigByName("user.serv.port")),
-					Constants.USER_SERV_OBTAINACCESSTOKEN_PATH, nvps, (JSONObject) JSONObject.toJSON(body),
+					UserServPath.USER_SERV_OBTAINACCESSTOKEN_PATH, nvps, (JSONObject) JSONObject.toJSON(body),
 					UserServAccessToken.class, UserServMessage.class);
 
 			if (content.getContent() == null || StringUtils.isEmpty(content.getContent().getAccessToken())) {
@@ -87,7 +88,7 @@ public class UserServCoreServiceImpl extends CommonServiceImpl implements IUserS
 		try {
 			content = httpService.httpPost(Constants.SCHEME_HTTP, ResourceUtil.getConfigByName("user.serv.host"),
 					Integer.valueOf(ResourceUtil.getConfigByName("user.serv.port")),
-					Constants.USER_SERV_TDPART_AUTH_LOGIN, nvps, (JSONObject) JSONObject.toJSON(user),
+					UserServPath.USER_SERV_TDPART_AUTH_LOGIN, nvps, (JSONObject) JSONObject.toJSON(user),
 					AuthResultEntity.class, UserServMessage.class);
 		} catch (URISyntaxException | IOException e) {
 			logger.error(e.getMessage(), e);
@@ -111,7 +112,7 @@ public class UserServCoreServiceImpl extends CommonServiceImpl implements IUserS
 		HttpContent<AuthResultEntity, UserServMessage> content = null;
 		try {
 			content = httpService.httpPost(Constants.SCHEME_HTTP, ResourceUtil.getConfigByName("user.serv.host"),
-					Integer.valueOf(ResourceUtil.getConfigByName("user.serv.port")), Constants.USER_SERV_ACCT_OPEN,
+					Integer.valueOf(ResourceUtil.getConfigByName("user.serv.port")), UserServPath.USER_SERV_ACCT_OPEN,
 					nvps, (JSONObject) JSONObject.toJSON(regInfo), AuthResultEntity.class, UserServMessage.class);
 		} catch (URISyntaxException | IOException e) {
 			logger.error(e.getMessage(), e);

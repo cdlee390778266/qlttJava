@@ -33,4 +33,12 @@ public interface IMyAttentionService {
 	 * @return
 	 */
 	public List<BaseIndex> followingList(String ttacct);
+	
+	/**
+	 * 校验指标是否被当前用户关注
+	 * @param index 指标
+	 * @param ttacct 推推账号
+	 * @return
+	 */
+	public boolean isFollow(BaseIndex index, String ttacct);
 }

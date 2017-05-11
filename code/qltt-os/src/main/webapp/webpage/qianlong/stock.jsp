@@ -32,7 +32,7 @@
 			</div>
 		</div>
 		<div class="result-btns">
-			<span class="result-btn-care">关注</span>
+			<span class="result-btn-care<c:if test="${isFollow}"> active</c:if>">关注</span>
 		</div>
 	</div>
 
@@ -52,7 +52,9 @@
 		<div class="dialog-box">
 			<div class="dialog-head">推荐到我的荐股</div>
 			<div class="dialog-body">
-				<input type="text" placeholder="推荐理由" />
+				<input type="hidden" id="code" name="code" />
+				<input type="hidden" id="name" name="name" />
+				<input type="text" id="reason" name="reason" placeholder="推荐理由" />
 			</div>
 			<div class="dialog-foot">
 				<div class="dialog-foot-right">

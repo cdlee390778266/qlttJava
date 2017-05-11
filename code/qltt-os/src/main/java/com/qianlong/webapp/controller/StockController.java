@@ -3,6 +3,8 @@ package com.qianlong.webapp.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,8 +16,12 @@ import org.springframework.web.servlet.ModelAndView;
 import com.alibaba.fastjson.JSONObject;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.util.JsonFormat;
+import com.qianlong.webapp.domain.AuthResultEntity;
+import com.qianlong.webapp.domain.BaseIndex;
 import com.qianlong.webapp.domain.TacPoolReqBody;
 import com.qianlong.webapp.service.IIndexSystemService;
+import com.qianlong.webapp.service.IMyAttentionService;
+import com.qianlong.webapp.utils.Constants;
 import com.qlcd.qltt.body.pvt.T02003001;
 
 /**
@@ -30,12 +36,23 @@ private Logger logger = Logger.getLogger(StockController.class);
 	
 	@Autowired
 	private IIndexSystemService indexSystemService;
+	
+	@Autowired
+	private IMyAttentionService myAttentionService;
 
 	@RequestMapping("home")
-	public ModelAndView home(@RequestParam(value = "tactic")String tacTic, @RequestParam(value = "tacname")String tacName) {
+	public ModelAndView home(@RequestParam(value = "tactic")String tacTic, @RequestParam(value = "tacname")String tacName, HttpServletRequest request) {
+		AuthResultEntity user = (AuthResultEntity)request.getSession().getAttribute(Constants.LOGIN_USER_ACCOUNT);
 		Map<String, Object> model = new HashMap<>();
+		
+		BaseIndex index = new BaseIndex();
+		index.setTacTic(tacTic);
+		index.setTacPrm(0);
+		boolean isFollow = myAttentionService.isFollow(index, user.getTtacct());
+		
 		model.put("tacTic", tacTic);
 		model.put("tacName", tacName);
+		model.put("isFollow", isFollow);
 		return new ModelAndView("qianlong/stock", model);
 	}
 	

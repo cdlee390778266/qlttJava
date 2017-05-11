@@ -32,23 +32,15 @@ $(document).ready(function() {
 				var stocks = data.dprtlist;
 				if (stocks != null) {
 					for ( var i in stocks) {
-						html += '<div class="screen-item"  >'
+						html += '<div class="screen-item">'
 							+ '<div class="item-col-1">'
-							+ '<span>'
-							+ stocks[i].stockname
-							+ '</span>'
-							+ '<span class="blue">'
-							+ stocks[i].stockcode
-							+ '</span>'
+							+ '<span class="item-col-name">' + stocks[i].stockname + '</span>'
+							+ '<span class="blue item-col-code">' + stocks[i].stockcode + '</span>'
 							+ '</div>'
-							+ '<div class="item-col-2">'
-							+ stocks[i].efftime
-							+ '</div>'
-							+ '<div class="item-col-3">'
-							+ stocks[i].remarks
-							+ '</div>'
+							+ '<div class="item-col-2">' + stocks[i].efftime + '</div>'
+							+ '<div class="item-col-3">' + stocks[i].remarks + '</div>'
 							+ '<div class="item-col-4">'
-							+ '<a href="javascript:void(0);" class="recommend" ></a>'
+							+ '<a href="javascript:void(0);" class="recommend"></a>'
 							+ '<a href="javascript:void(0);" class="choose"></a>'
 							+ '</div>' + '</div>';
 					}
@@ -146,25 +138,55 @@ $(document).ready(function() {
 		hideDialog($('#recommend'));
 	});
 
+	//加入选股池提交
 	$('#recommend .dialog-btn-confirm').tap(function() {
 		hideDialog($('#recommend'), function() {
 			console.log('提交');
+			
 		});
 	});
 
 	// 选股池弹窗
 	$('body').delegate('.choose', 'tap', function() {
+		$("#code").val($(this).parent().parent().find('.item-col-code').text());
+		$("#name").val($(this).parent().parent().find('.item-col-name').text());
 		showDialog($('#choose'));
 	});
 
-	$('#choose .dialog-btn-close,#choose .dialog-mask').tap(
-		function() {
-			hideDialog($('#choose'));
+	$('#choose .dialog-btn-close,#choose .dialog-mask').tap(function() {
+		$("#code").val("");
+		$("#name").val("");
+		hideDialog($('#choose'));
 	});
 
 	$('#choose .dialog-btn-confirm').tap(function() {
 		hideDialog($('#choose'), function() {
 			console.log('提交');
+			var stockPool = [];
+			$.each($("#choosePool").val(), function(idx, e){
+				stockPool.push({"poolIndex": e});
+			});
+			var data = {
+				"stockCode": $("#code").val(),
+				"stockName": $("#name").val(),
+				"stockPool": stockPool
+			};
+			$.ajax({
+				url: '../userpool/follow.do',
+				data: JSON.stringify(data),
+				dataType: 'json',
+				type: 'post',
+				contentType: 'application/json;charset=UTF-8',
+				success: function(data) {
+					if (data.status == 1)
+						alert("成功加入选股池！");
+					else
+						alert(data.message);
+				},
+				error: function(jqXHR, textStatus, errorThrown) {
+					alert("加入选股池失败！");
+				}
+			});
 		});
 	});
 

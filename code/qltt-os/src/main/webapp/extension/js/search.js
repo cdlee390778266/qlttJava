@@ -46,7 +46,7 @@ $(document).ready(function() {
 				$parent.append(html);
 				loadingHide($('.qltt-toast'));
 			},
-			error : function(jqXHR, textStatus, errorThrown ) {
+			error : function(jqXHR, textStatus, errorThrown) {
 				alert('获取数据失败！');
 			}
 		});
@@ -71,6 +71,11 @@ $(document).ready(function() {
 					if ($('#search-box-' + searchSwiper.activeIndex).find('.search-item ').length <= 0) {
 						loadingShow($('.qltt-toast'));
 						createHtml($('#search-box-' + searchSwiper.activeIndex));
+					}
+					if (searchSwiper.activeIndex == 0) {
+						$('.pFooter-btn').show();
+					} else {
+						$('.pFooter-btn').hide();
 					}
 
 					headIScroll.scrollToElement($('#header li').get(searchSwiper.activeIndex), 30);

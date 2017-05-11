@@ -20,11 +20,11 @@
 <body>
 	<div class="search container care">
 		<c:forEach items="${followingList}" var="following" varStatus="status">
-			<div class="search-item animated" >
+			<div class="search-item animated">
 				<div class="search-head" data-id="${following.tacTic}"><span>${following.tacName}[${following.tacTic}]</span><i></i></div>
-				<div class="search-body"><a href="result.html">${following.tacName}</a></div>
+				<div class="search-body"><a href="javascript:void(0);">${following.tacName}[${following.tacTic}]</a></div>
 				<div class="search-foot">
-					<span class="active hidden">关注</span>
+					<span class="active">关注</span>
 				</div>
 			</div>
 		</c:forEach>
@@ -39,7 +39,7 @@
 	<div class="footer">
 		<a href="<c:url value='/webapp/search/home.do' />"><i class="icon icon-searchd"></i><br><span>指标查询</span></a>
 		<a href="<c:url value='/webapp/myattention/home.do' />" class="active"><i class="icon icon-care"></i><br><span>我的关注</span></a>
-		<a href="javascript:void(0);"><i class="icon icon-pool"></i><br><span>选股池</span></a>
+		<a href="<c:url value='/webapp/userpool/home.do' />"><i class="icon icon-pool"></i><br><span>选股池</span></a>
 		<a href="javascript:void(0);"><i class="icon icon-rmd"></i><br><span>荐股池</span></a>
 	</div>
 	<script type="text/javascript">

@@ -19,6 +19,7 @@
 <script type="text/javascript" src="<c:url value='/extension/js/headerISroll.js' />"></script>
 <script type="text/javascript" src="<c:url value='/extension/js/footer.js' />"></script>
 <script type="text/javascript" src="<c:url value='/extension/js/common.js' />"></script>
+<script type="text/javascript" src="<c:url value='/extension/js/pool.js' />"></script>
 <script type="text/javascript">
 	var contextPath = '${pageContext.request.contextPath}';
 </script>
@@ -55,11 +56,16 @@
 	</div>
 
 	<!-- 页脚菜单 -->
-	<div class="footer">
-		<a href="<c:url value='/webapp/search/home.do' />" class="active"><i class="icon icon-searchd"></i><br><span>指标查询</span></a>
-		<a href="<c:url value='/webapp/myattention/home.do' />"><i class="icon icon-care"></i><br><span>我的关注</span></a>
-		<a href="javascript:void(0);"><i class="icon icon-pool"></i><br><span>选股池</span></a>
-		<a href="javascript:void(0);"><i class="icon icon-rmd"></i><br><span>荐股池</span></a>
+	<div class="pool-footer">
+		<div class="pFooter-btn">
+			<a href="javascript:void(0);"><span><i>+</i>组合指标设置</span></a>
+		</div>
+		<div class="footer">
+			<a href="<c:url value='/webapp/search/home.do' />" class="active"><i class="icon icon-searchd"></i><br><span>指标查询</span></a>
+			<a href="<c:url value='/webapp/myattention/home.do' />"><i class="icon icon-care"></i><br><span>我的关注</span></a>
+			<a href="<c:url value='/webapp/userpool/home.do' />"><i class="icon icon-pool"></i><br><span>选股池</span></a>
+			<a href="javascript:void(0);"><i class="icon icon-rmd"></i><br><span>荐股池</span></a>
+		</div>
 	</div>
 </body>
 </html>
