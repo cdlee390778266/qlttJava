@@ -3,6 +3,7 @@ package com.qianlong.webapp.interceptor;
 import java.util.Enumeration;
 import java.util.List;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -40,10 +41,21 @@ public class WechatAuthInterceptor implements HandlerInterceptor {
 			Enumeration<?> headers = request.getHeaders(headerName);
 			int idx = 0;
 			while (headers.hasMoreElements()) {
-				logger.debug(String.format("header[%s][%d]={%s}", headerName, idx, headers.nextElement()));
+				logger.debug(String.format("Header - header[%s][%d]={%s}", headerName, idx, headers.nextElement()));
 				idx ++;
 			}
 		}
+		
+		Cookie[] cookies = request.getCookies();
+		if (cookies != null && cookies.length > 0) {
+			for (Cookie cookie : cookies) {
+				logger.debug(String.format("Cookie - Name: [%s], Value: [%s], Path: [%s], MaxAge: [%d], Domain: [%s], Comment: [%s], Secure: [%s], Version: [%s]", 
+						cookie.getName(), cookie.getValue(), cookie.getPath(), cookie.getMaxAge(), cookie.getDomain(), cookie.getComment(), cookie.getSecure(), cookie.getVersion()));
+			}
+		}
+		
+		logger.debug(String.format("Session - sessionid: [%s]", request.getSession().getId()));
+		logger.debug(String.format("Session - hash code: [%s]", request.getSession()));
 		
 		if (excludeUrls.contains(requestPath)) {
 			return true;
