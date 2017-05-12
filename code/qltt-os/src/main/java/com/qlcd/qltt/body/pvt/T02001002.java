@@ -394,24 +394,39 @@ public final class T02001002 {
         getTacgroupBytes();
 
     /**
-     * <code>string grpname = 3;</code>
+     * <code>string grpname = 2;</code>
      */
     java.lang.String getGrpname();
     /**
-     * <code>string grpname = 3;</code>
+     * <code>string grpname = 2;</code>
      */
     com.google.protobuf.ByteString
         getGrpnameBytes();
 
     /**
-     * <code>string grpdetail = 4;</code>
+     * <code>string grpdetail = 3;</code>
      */
     java.lang.String getGrpdetail();
     /**
-     * <code>string grpdetail = 4;</code>
+     * <code>string grpdetail = 3;</code>
      */
     com.google.protobuf.ByteString
         getGrpdetailBytes();
+
+    /**
+     * <code>int32 grplevel = 4;</code>
+     */
+    int getGrplevel();
+
+    /**
+     * <code>string ptacgroup = 5;</code>
+     */
+    java.lang.String getPtacgroup();
+    /**
+     * <code>string ptacgroup = 5;</code>
+     */
+    com.google.protobuf.ByteString
+        getPtacgroupBytes();
   }
   /**
    * Protobuf type {@code com.qlcd.qltt.body.pvt.T02001002._protacgroup}
@@ -428,6 +443,8 @@ public final class T02001002 {
       tacgroup_ = "";
       grpname_ = "";
       grpdetail_ = "";
+      grplevel_ = 0;
+      ptacgroup_ = "";
     }
 
     @java.lang.Override
@@ -461,16 +478,27 @@ public final class T02001002 {
               tacgroup_ = s;
               break;
             }
-            case 26: {
+            case 18: {
               java.lang.String s = input.readStringRequireUtf8();
 
               grpname_ = s;
               break;
             }
-            case 34: {
+            case 26: {
               java.lang.String s = input.readStringRequireUtf8();
 
               grpdetail_ = s;
+              break;
+            }
+            case 32: {
+
+              grplevel_ = input.readInt32();
+              break;
+            }
+            case 42: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              ptacgroup_ = s;
               break;
             }
           }
@@ -530,10 +558,10 @@ public final class T02001002 {
       }
     }
 
-    public static final int GRPNAME_FIELD_NUMBER = 3;
+    public static final int GRPNAME_FIELD_NUMBER = 2;
     private volatile java.lang.Object grpname_;
     /**
-     * <code>string grpname = 3;</code>
+     * <code>string grpname = 2;</code>
      */
     public java.lang.String getGrpname() {
       java.lang.Object ref = grpname_;
@@ -548,7 +576,7 @@ public final class T02001002 {
       }
     }
     /**
-     * <code>string grpname = 3;</code>
+     * <code>string grpname = 2;</code>
      */
     public com.google.protobuf.ByteString
         getGrpnameBytes() {
@@ -564,10 +592,10 @@ public final class T02001002 {
       }
     }
 
-    public static final int GRPDETAIL_FIELD_NUMBER = 4;
+    public static final int GRPDETAIL_FIELD_NUMBER = 3;
     private volatile java.lang.Object grpdetail_;
     /**
-     * <code>string grpdetail = 4;</code>
+     * <code>string grpdetail = 3;</code>
      */
     public java.lang.String getGrpdetail() {
       java.lang.Object ref = grpdetail_;
@@ -582,7 +610,7 @@ public final class T02001002 {
       }
     }
     /**
-     * <code>string grpdetail = 4;</code>
+     * <code>string grpdetail = 3;</code>
      */
     public com.google.protobuf.ByteString
         getGrpdetailBytes() {
@@ -592,6 +620,49 @@ public final class T02001002 {
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         grpdetail_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int GRPLEVEL_FIELD_NUMBER = 4;
+    private int grplevel_;
+    /**
+     * <code>int32 grplevel = 4;</code>
+     */
+    public int getGrplevel() {
+      return grplevel_;
+    }
+
+    public static final int PTACGROUP_FIELD_NUMBER = 5;
+    private volatile java.lang.Object ptacgroup_;
+    /**
+     * <code>string ptacgroup = 5;</code>
+     */
+    public java.lang.String getPtacgroup() {
+      java.lang.Object ref = ptacgroup_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        ptacgroup_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string ptacgroup = 5;</code>
+     */
+    public com.google.protobuf.ByteString
+        getPtacgroupBytes() {
+      java.lang.Object ref = ptacgroup_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        ptacgroup_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -614,10 +685,16 @@ public final class T02001002 {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, tacgroup_);
       }
       if (!getGrpnameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, grpname_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, grpname_);
       }
       if (!getGrpdetailBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, grpdetail_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, grpdetail_);
+      }
+      if (grplevel_ != 0) {
+        output.writeInt32(4, grplevel_);
+      }
+      if (!getPtacgroupBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, ptacgroup_);
       }
     }
 
@@ -630,10 +707,17 @@ public final class T02001002 {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, tacgroup_);
       }
       if (!getGrpnameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, grpname_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, grpname_);
       }
       if (!getGrpdetailBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, grpdetail_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, grpdetail_);
+      }
+      if (grplevel_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, grplevel_);
+      }
+      if (!getPtacgroupBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, ptacgroup_);
       }
       memoizedSize = size;
       return size;
@@ -657,6 +741,10 @@ public final class T02001002 {
           .equals(other.getGrpname());
       result = result && getGrpdetail()
           .equals(other.getGrpdetail());
+      result = result && (getGrplevel()
+          == other.getGrplevel());
+      result = result && getPtacgroup()
+          .equals(other.getPtacgroup());
       return result;
     }
 
@@ -673,6 +761,10 @@ public final class T02001002 {
       hash = (53 * hash) + getGrpname().hashCode();
       hash = (37 * hash) + GRPDETAIL_FIELD_NUMBER;
       hash = (53 * hash) + getGrpdetail().hashCode();
+      hash = (37 * hash) + GRPLEVEL_FIELD_NUMBER;
+      hash = (53 * hash) + getGrplevel();
+      hash = (37 * hash) + PTACGROUP_FIELD_NUMBER;
+      hash = (53 * hash) + getPtacgroup().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -797,6 +889,10 @@ public final class T02001002 {
 
         grpdetail_ = "";
 
+        grplevel_ = 0;
+
+        ptacgroup_ = "";
+
         return this;
       }
 
@@ -822,6 +918,8 @@ public final class T02001002 {
         result.tacgroup_ = tacgroup_;
         result.grpname_ = grpname_;
         result.grpdetail_ = grpdetail_;
+        result.grplevel_ = grplevel_;
+        result.ptacgroup_ = ptacgroup_;
         onBuilt();
         return result;
       }
@@ -873,6 +971,13 @@ public final class T02001002 {
         }
         if (!other.getGrpdetail().isEmpty()) {
           grpdetail_ = other.grpdetail_;
+          onChanged();
+        }
+        if (other.getGrplevel() != 0) {
+          setGrplevel(other.getGrplevel());
+        }
+        if (!other.getPtacgroup().isEmpty()) {
+          ptacgroup_ = other.ptacgroup_;
           onChanged();
         }
         onChanged();
@@ -972,7 +1077,7 @@ public final class T02001002 {
 
       private java.lang.Object grpname_ = "";
       /**
-       * <code>string grpname = 3;</code>
+       * <code>string grpname = 2;</code>
        */
       public java.lang.String getGrpname() {
         java.lang.Object ref = grpname_;
@@ -987,7 +1092,7 @@ public final class T02001002 {
         }
       }
       /**
-       * <code>string grpname = 3;</code>
+       * <code>string grpname = 2;</code>
        */
       public com.google.protobuf.ByteString
           getGrpnameBytes() {
@@ -1003,7 +1108,7 @@ public final class T02001002 {
         }
       }
       /**
-       * <code>string grpname = 3;</code>
+       * <code>string grpname = 2;</code>
        */
       public Builder setGrpname(
           java.lang.String value) {
@@ -1016,7 +1121,7 @@ public final class T02001002 {
         return this;
       }
       /**
-       * <code>string grpname = 3;</code>
+       * <code>string grpname = 2;</code>
        */
       public Builder clearGrpname() {
         
@@ -1025,7 +1130,7 @@ public final class T02001002 {
         return this;
       }
       /**
-       * <code>string grpname = 3;</code>
+       * <code>string grpname = 2;</code>
        */
       public Builder setGrpnameBytes(
           com.google.protobuf.ByteString value) {
@@ -1041,7 +1146,7 @@ public final class T02001002 {
 
       private java.lang.Object grpdetail_ = "";
       /**
-       * <code>string grpdetail = 4;</code>
+       * <code>string grpdetail = 3;</code>
        */
       public java.lang.String getGrpdetail() {
         java.lang.Object ref = grpdetail_;
@@ -1056,7 +1161,7 @@ public final class T02001002 {
         }
       }
       /**
-       * <code>string grpdetail = 4;</code>
+       * <code>string grpdetail = 3;</code>
        */
       public com.google.protobuf.ByteString
           getGrpdetailBytes() {
@@ -1072,7 +1177,7 @@ public final class T02001002 {
         }
       }
       /**
-       * <code>string grpdetail = 4;</code>
+       * <code>string grpdetail = 3;</code>
        */
       public Builder setGrpdetail(
           java.lang.String value) {
@@ -1085,7 +1190,7 @@ public final class T02001002 {
         return this;
       }
       /**
-       * <code>string grpdetail = 4;</code>
+       * <code>string grpdetail = 3;</code>
        */
       public Builder clearGrpdetail() {
         
@@ -1094,7 +1199,7 @@ public final class T02001002 {
         return this;
       }
       /**
-       * <code>string grpdetail = 4;</code>
+       * <code>string grpdetail = 3;</code>
        */
       public Builder setGrpdetailBytes(
           com.google.protobuf.ByteString value) {
@@ -1104,6 +1209,101 @@ public final class T02001002 {
   checkByteStringIsUtf8(value);
         
         grpdetail_ = value;
+        onChanged();
+        return this;
+      }
+
+      private int grplevel_ ;
+      /**
+       * <code>int32 grplevel = 4;</code>
+       */
+      public int getGrplevel() {
+        return grplevel_;
+      }
+      /**
+       * <code>int32 grplevel = 4;</code>
+       */
+      public Builder setGrplevel(int value) {
+        
+        grplevel_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 grplevel = 4;</code>
+       */
+      public Builder clearGrplevel() {
+        
+        grplevel_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object ptacgroup_ = "";
+      /**
+       * <code>string ptacgroup = 5;</code>
+       */
+      public java.lang.String getPtacgroup() {
+        java.lang.Object ref = ptacgroup_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          ptacgroup_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string ptacgroup = 5;</code>
+       */
+      public com.google.protobuf.ByteString
+          getPtacgroupBytes() {
+        java.lang.Object ref = ptacgroup_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          ptacgroup_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string ptacgroup = 5;</code>
+       */
+      public Builder setPtacgroup(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        ptacgroup_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string ptacgroup = 5;</code>
+       */
+      public Builder clearPtacgroup() {
+        
+        ptacgroup_ = getDefaultInstance().getPtacgroup();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string ptacgroup = 5;</code>
+       */
+      public Builder setPtacgroupBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        ptacgroup_ = value;
         onChanged();
         return this;
       }
@@ -2177,13 +2377,14 @@ public final class T02001002 {
     java.lang.String[] descriptorData = {
       "\n\030body/pvt/T02001002.proto\022 com.qlcd.qlt" +
       "t.body.pvt.T02001002\032\021body/BppSys.proto\"" +
-      "\006\n\004_req\"D\n\014_protacgroup\022\020\n\010tacgroup\030\001 \001(" +
-      "\t\022\017\n\007grpname\030\003 \001(\t\022\021\n\tgrpdetail\030\004 \001(\t\"\216\001" +
-      "\n\004_rsp\0225\n\003rsh\030\001 \001(\0132(.com.qlcd.qltt.body" +
-      ".BppSys._rsp_succhead\022\016\n\006ptgcnt\030\002 \001(\005\022?\n" +
-      "\007ptglist\030\003 \003(\0132..com.qlcd.qltt.body.pvt." +
-      "T02001002._protacgroupB\030\n\026com.qlcd.qltt." +
-      "body.pvtb\006proto3"
+      "\006\n\004_req\"i\n\014_protacgroup\022\020\n\010tacgroup\030\001 \001(" +
+      "\t\022\017\n\007grpname\030\002 \001(\t\022\021\n\tgrpdetail\030\003 \001(\t\022\020\n" +
+      "\010grplevel\030\004 \001(\005\022\021\n\tptacgroup\030\005 \001(\t\"\216\001\n\004_" +
+      "rsp\0225\n\003rsh\030\001 \001(\0132(.com.qlcd.qltt.body.Bp" +
+      "pSys._rsp_succhead\022\016\n\006ptgcnt\030\002 \001(\005\022?\n\007pt" +
+      "glist\030\003 \003(\0132..com.qlcd.qltt.body.pvt.T02" +
+      "001002._protacgroupB\030\n\026com.qlcd.qltt.bod" +
+      "y.pvtb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -2209,7 +2410,7 @@ public final class T02001002 {
     internal_static_com_qlcd_qltt_body_pvt_T02001002__protacgroup_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_qlcd_qltt_body_pvt_T02001002__protacgroup_descriptor,
-        new java.lang.String[] { "Tacgroup", "Grpname", "Grpdetail", });
+        new java.lang.String[] { "Tacgroup", "Grpname", "Grpdetail", "Grplevel", "Ptacgroup", });
     internal_static_com_qlcd_qltt_body_pvt_T02001002__rsp_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_com_qlcd_qltt_body_pvt_T02001002__rsp_fieldAccessorTable = new

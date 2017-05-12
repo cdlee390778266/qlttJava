@@ -14,572 +14,6 @@ public final class T01004003 {
     registerAllExtensions(
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
-  public interface _cncltacticOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:com.qlcd.qltt.body.pvt.T01004003._cncltactic)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>string tactic = 1;</code>
-     */
-    java.lang.String getTactic();
-    /**
-     * <code>string tactic = 1;</code>
-     */
-    com.google.protobuf.ByteString
-        getTacticBytes();
-
-    /**
-     * <code>int32 tacprm = 2;</code>
-     */
-    int getTacprm();
-  }
-  /**
-   * Protobuf type {@code com.qlcd.qltt.body.pvt.T01004003._cncltactic}
-   */
-  public  static final class _cncltactic extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:com.qlcd.qltt.body.pvt.T01004003._cncltactic)
-      _cncltacticOrBuilder {
-    // Use _cncltactic.newBuilder() to construct.
-    private _cncltactic(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private _cncltactic() {
-      tactic_ = "";
-      tacprm_ = 0;
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
-    }
-    private _cncltactic(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      int mutable_bitField0_ = 0;
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!input.skipField(tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              tactic_ = s;
-              break;
-            }
-            case 16: {
-
-              tacprm_ = input.readInt32();
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.qlcd.qltt.body.pvt.T01004003.internal_static_com_qlcd_qltt_body_pvt_T01004003__cncltactic_descriptor;
-    }
-
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.qlcd.qltt.body.pvt.T01004003.internal_static_com_qlcd_qltt_body_pvt_T01004003__cncltactic_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.qlcd.qltt.body.pvt.T01004003._cncltactic.class, com.qlcd.qltt.body.pvt.T01004003._cncltactic.Builder.class);
-    }
-
-    public static final int TACTIC_FIELD_NUMBER = 1;
-    private volatile java.lang.Object tactic_;
-    /**
-     * <code>string tactic = 1;</code>
-     */
-    public java.lang.String getTactic() {
-      java.lang.Object ref = tactic_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        tactic_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string tactic = 1;</code>
-     */
-    public com.google.protobuf.ByteString
-        getTacticBytes() {
-      java.lang.Object ref = tactic_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        tactic_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int TACPRM_FIELD_NUMBER = 2;
-    private int tacprm_;
-    /**
-     * <code>int32 tacprm = 2;</code>
-     */
-    public int getTacprm() {
-      return tacprm_;
-    }
-
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (!getTacticBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, tactic_);
-      }
-      if (tacprm_ != 0) {
-        output.writeInt32(2, tacprm_);
-      }
-    }
-
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (!getTacticBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, tactic_);
-      }
-      if (tacprm_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, tacprm_);
-      }
-      memoizedSize = size;
-      return size;
-    }
-
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof com.qlcd.qltt.body.pvt.T01004003._cncltactic)) {
-        return super.equals(obj);
-      }
-      com.qlcd.qltt.body.pvt.T01004003._cncltactic other = (com.qlcd.qltt.body.pvt.T01004003._cncltactic) obj;
-
-      boolean result = true;
-      result = result && getTactic()
-          .equals(other.getTactic());
-      result = result && (getTacprm()
-          == other.getTacprm());
-      return result;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + TACTIC_FIELD_NUMBER;
-      hash = (53 * hash) + getTactic().hashCode();
-      hash = (37 * hash) + TACPRM_FIELD_NUMBER;
-      hash = (53 * hash) + getTacprm();
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static com.qlcd.qltt.body.pvt.T01004003._cncltactic parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.qlcd.qltt.body.pvt.T01004003._cncltactic parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.qlcd.qltt.body.pvt.T01004003._cncltactic parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.qlcd.qltt.body.pvt.T01004003._cncltactic parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.qlcd.qltt.body.pvt.T01004003._cncltactic parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static com.qlcd.qltt.body.pvt.T01004003._cncltactic parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static com.qlcd.qltt.body.pvt.T01004003._cncltactic parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static com.qlcd.qltt.body.pvt.T01004003._cncltactic parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static com.qlcd.qltt.body.pvt.T01004003._cncltactic parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static com.qlcd.qltt.body.pvt.T01004003._cncltactic parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(com.qlcd.qltt.body.pvt.T01004003._cncltactic prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code com.qlcd.qltt.body.pvt.T01004003._cncltactic}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:com.qlcd.qltt.body.pvt.T01004003._cncltactic)
-        com.qlcd.qltt.body.pvt.T01004003._cncltacticOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.qlcd.qltt.body.pvt.T01004003.internal_static_com_qlcd_qltt_body_pvt_T01004003__cncltactic_descriptor;
-      }
-
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.qlcd.qltt.body.pvt.T01004003.internal_static_com_qlcd_qltt_body_pvt_T01004003__cncltactic_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.qlcd.qltt.body.pvt.T01004003._cncltactic.class, com.qlcd.qltt.body.pvt.T01004003._cncltactic.Builder.class);
-      }
-
-      // Construct using com.qlcd.qltt.body.pvt.T01004003._cncltactic.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      public Builder clear() {
-        super.clear();
-        tactic_ = "";
-
-        tacprm_ = 0;
-
-        return this;
-      }
-
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.qlcd.qltt.body.pvt.T01004003.internal_static_com_qlcd_qltt_body_pvt_T01004003__cncltactic_descriptor;
-      }
-
-      public com.qlcd.qltt.body.pvt.T01004003._cncltactic getDefaultInstanceForType() {
-        return com.qlcd.qltt.body.pvt.T01004003._cncltactic.getDefaultInstance();
-      }
-
-      public com.qlcd.qltt.body.pvt.T01004003._cncltactic build() {
-        com.qlcd.qltt.body.pvt.T01004003._cncltactic result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      public com.qlcd.qltt.body.pvt.T01004003._cncltactic buildPartial() {
-        com.qlcd.qltt.body.pvt.T01004003._cncltactic result = new com.qlcd.qltt.body.pvt.T01004003._cncltactic(this);
-        result.tactic_ = tactic_;
-        result.tacprm_ = tacprm_;
-        onBuilt();
-        return result;
-      }
-
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.qlcd.qltt.body.pvt.T01004003._cncltactic) {
-          return mergeFrom((com.qlcd.qltt.body.pvt.T01004003._cncltactic)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(com.qlcd.qltt.body.pvt.T01004003._cncltactic other) {
-        if (other == com.qlcd.qltt.body.pvt.T01004003._cncltactic.getDefaultInstance()) return this;
-        if (!other.getTactic().isEmpty()) {
-          tactic_ = other.tactic_;
-          onChanged();
-        }
-        if (other.getTacprm() != 0) {
-          setTacprm(other.getTacprm());
-        }
-        onChanged();
-        return this;
-      }
-
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        com.qlcd.qltt.body.pvt.T01004003._cncltactic parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.qlcd.qltt.body.pvt.T01004003._cncltactic) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-
-      private java.lang.Object tactic_ = "";
-      /**
-       * <code>string tactic = 1;</code>
-       */
-      public java.lang.String getTactic() {
-        java.lang.Object ref = tactic_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          tactic_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string tactic = 1;</code>
-       */
-      public com.google.protobuf.ByteString
-          getTacticBytes() {
-        java.lang.Object ref = tactic_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          tactic_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string tactic = 1;</code>
-       */
-      public Builder setTactic(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        tactic_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string tactic = 1;</code>
-       */
-      public Builder clearTactic() {
-        
-        tactic_ = getDefaultInstance().getTactic();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string tactic = 1;</code>
-       */
-      public Builder setTacticBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        tactic_ = value;
-        onChanged();
-        return this;
-      }
-
-      private int tacprm_ ;
-      /**
-       * <code>int32 tacprm = 2;</code>
-       */
-      public int getTacprm() {
-        return tacprm_;
-      }
-      /**
-       * <code>int32 tacprm = 2;</code>
-       */
-      public Builder setTacprm(int value) {
-        
-        tacprm_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int32 tacprm = 2;</code>
-       */
-      public Builder clearTacprm() {
-        
-        tacprm_ = 0;
-        onChanged();
-        return this;
-      }
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:com.qlcd.qltt.body.pvt.T01004003._cncltactic)
-    }
-
-    // @@protoc_insertion_point(class_scope:com.qlcd.qltt.body.pvt.T01004003._cncltactic)
-    private static final com.qlcd.qltt.body.pvt.T01004003._cncltactic DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new com.qlcd.qltt.body.pvt.T01004003._cncltactic();
-    }
-
-    public static com.qlcd.qltt.body.pvt.T01004003._cncltactic getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<_cncltactic>
-        PARSER = new com.google.protobuf.AbstractParser<_cncltactic>() {
-      public _cncltactic parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-          return new _cncltactic(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<_cncltactic> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<_cncltactic> getParserForType() {
-      return PARSER;
-    }
-
-    public com.qlcd.qltt.body.pvt.T01004003._cncltactic getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
   public interface _attntacticOrBuilder extends
       // @@protoc_insertion_point(interface_extends:com.qlcd.qltt.body.pvt.T01004003._attntactic)
       com.google.protobuf.MessageOrBuilder {
@@ -1161,49 +595,25 @@ public final class T01004003 {
         getTtacctBytes();
 
     /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._cncltactic cctlist = 2;</code>
-     */
-    java.util.List<com.qlcd.qltt.body.pvt.T01004003._cncltactic> 
-        getCctlistList();
-    /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._cncltactic cctlist = 2;</code>
-     */
-    com.qlcd.qltt.body.pvt.T01004003._cncltactic getCctlist(int index);
-    /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._cncltactic cctlist = 2;</code>
-     */
-    int getCctlistCount();
-    /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._cncltactic cctlist = 2;</code>
-     */
-    java.util.List<? extends com.qlcd.qltt.body.pvt.T01004003._cncltacticOrBuilder> 
-        getCctlistOrBuilderList();
-    /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._cncltactic cctlist = 2;</code>
-     */
-    com.qlcd.qltt.body.pvt.T01004003._cncltacticOrBuilder getCctlistOrBuilder(
-        int index);
-
-    /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._attntactic attlist = 3;</code>
+     * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._attntactic attlist = 2;</code>
      */
     java.util.List<com.qlcd.qltt.body.pvt.T01004003._attntactic> 
         getAttlistList();
     /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._attntactic attlist = 3;</code>
+     * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._attntactic attlist = 2;</code>
      */
     com.qlcd.qltt.body.pvt.T01004003._attntactic getAttlist(int index);
     /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._attntactic attlist = 3;</code>
+     * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._attntactic attlist = 2;</code>
      */
     int getAttlistCount();
     /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._attntactic attlist = 3;</code>
+     * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._attntactic attlist = 2;</code>
      */
     java.util.List<? extends com.qlcd.qltt.body.pvt.T01004003._attntacticOrBuilder> 
         getAttlistOrBuilderList();
     /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._attntactic attlist = 3;</code>
+     * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._attntactic attlist = 2;</code>
      */
     com.qlcd.qltt.body.pvt.T01004003._attntacticOrBuilder getAttlistOrBuilder(
         int index);
@@ -1221,7 +631,6 @@ public final class T01004003 {
     }
     private _req() {
       ttacct_ = "";
-      cctlist_ = java.util.Collections.emptyList();
       attlist_ = java.util.Collections.emptyList();
     }
 
@@ -1258,17 +667,8 @@ public final class T01004003 {
             }
             case 18: {
               if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
-                cctlist_ = new java.util.ArrayList<com.qlcd.qltt.body.pvt.T01004003._cncltactic>();
-                mutable_bitField0_ |= 0x00000002;
-              }
-              cctlist_.add(
-                  input.readMessage(com.qlcd.qltt.body.pvt.T01004003._cncltactic.parser(), extensionRegistry));
-              break;
-            }
-            case 26: {
-              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
                 attlist_ = new java.util.ArrayList<com.qlcd.qltt.body.pvt.T01004003._attntactic>();
-                mutable_bitField0_ |= 0x00000004;
+                mutable_bitField0_ |= 0x00000002;
               }
               attlist_.add(
                   input.readMessage(com.qlcd.qltt.body.pvt.T01004003._attntactic.parser(), extensionRegistry));
@@ -1283,9 +683,6 @@ public final class T01004003 {
             e).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
-          cctlist_ = java.util.Collections.unmodifiableList(cctlist_);
-        }
-        if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
           attlist_ = java.util.Collections.unmodifiableList(attlist_);
         }
         makeExtensionsImmutable();
@@ -1338,70 +735,35 @@ public final class T01004003 {
       }
     }
 
-    public static final int CCTLIST_FIELD_NUMBER = 2;
-    private java.util.List<com.qlcd.qltt.body.pvt.T01004003._cncltactic> cctlist_;
-    /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._cncltactic cctlist = 2;</code>
-     */
-    public java.util.List<com.qlcd.qltt.body.pvt.T01004003._cncltactic> getCctlistList() {
-      return cctlist_;
-    }
-    /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._cncltactic cctlist = 2;</code>
-     */
-    public java.util.List<? extends com.qlcd.qltt.body.pvt.T01004003._cncltacticOrBuilder> 
-        getCctlistOrBuilderList() {
-      return cctlist_;
-    }
-    /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._cncltactic cctlist = 2;</code>
-     */
-    public int getCctlistCount() {
-      return cctlist_.size();
-    }
-    /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._cncltactic cctlist = 2;</code>
-     */
-    public com.qlcd.qltt.body.pvt.T01004003._cncltactic getCctlist(int index) {
-      return cctlist_.get(index);
-    }
-    /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._cncltactic cctlist = 2;</code>
-     */
-    public com.qlcd.qltt.body.pvt.T01004003._cncltacticOrBuilder getCctlistOrBuilder(
-        int index) {
-      return cctlist_.get(index);
-    }
-
-    public static final int ATTLIST_FIELD_NUMBER = 3;
+    public static final int ATTLIST_FIELD_NUMBER = 2;
     private java.util.List<com.qlcd.qltt.body.pvt.T01004003._attntactic> attlist_;
     /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._attntactic attlist = 3;</code>
+     * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._attntactic attlist = 2;</code>
      */
     public java.util.List<com.qlcd.qltt.body.pvt.T01004003._attntactic> getAttlistList() {
       return attlist_;
     }
     /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._attntactic attlist = 3;</code>
+     * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._attntactic attlist = 2;</code>
      */
     public java.util.List<? extends com.qlcd.qltt.body.pvt.T01004003._attntacticOrBuilder> 
         getAttlistOrBuilderList() {
       return attlist_;
     }
     /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._attntactic attlist = 3;</code>
+     * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._attntactic attlist = 2;</code>
      */
     public int getAttlistCount() {
       return attlist_.size();
     }
     /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._attntactic attlist = 3;</code>
+     * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._attntactic attlist = 2;</code>
      */
     public com.qlcd.qltt.body.pvt.T01004003._attntactic getAttlist(int index) {
       return attlist_.get(index);
     }
     /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._attntactic attlist = 3;</code>
+     * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._attntactic attlist = 2;</code>
      */
     public com.qlcd.qltt.body.pvt.T01004003._attntacticOrBuilder getAttlistOrBuilder(
         int index) {
@@ -1423,11 +785,8 @@ public final class T01004003 {
       if (!getTtacctBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, ttacct_);
       }
-      for (int i = 0; i < cctlist_.size(); i++) {
-        output.writeMessage(2, cctlist_.get(i));
-      }
       for (int i = 0; i < attlist_.size(); i++) {
-        output.writeMessage(3, attlist_.get(i));
+        output.writeMessage(2, attlist_.get(i));
       }
     }
 
@@ -1439,13 +798,9 @@ public final class T01004003 {
       if (!getTtacctBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, ttacct_);
       }
-      for (int i = 0; i < cctlist_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, cctlist_.get(i));
-      }
       for (int i = 0; i < attlist_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, attlist_.get(i));
+          .computeMessageSize(2, attlist_.get(i));
       }
       memoizedSize = size;
       return size;
@@ -1465,8 +820,6 @@ public final class T01004003 {
       boolean result = true;
       result = result && getTtacct()
           .equals(other.getTtacct());
-      result = result && getCctlistList()
-          .equals(other.getCctlistList());
       result = result && getAttlistList()
           .equals(other.getAttlistList());
       return result;
@@ -1481,10 +834,6 @@ public final class T01004003 {
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + TTACCT_FIELD_NUMBER;
       hash = (53 * hash) + getTtacct().hashCode();
-      if (getCctlistCount() > 0) {
-        hash = (37 * hash) + CCTLIST_FIELD_NUMBER;
-        hash = (53 * hash) + getCctlistList().hashCode();
-      }
       if (getAttlistCount() > 0) {
         hash = (37 * hash) + ATTLIST_FIELD_NUMBER;
         hash = (53 * hash) + getAttlistList().hashCode();
@@ -1603,7 +952,6 @@ public final class T01004003 {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
-          getCctlistFieldBuilder();
           getAttlistFieldBuilder();
         }
       }
@@ -1611,15 +959,9 @@ public final class T01004003 {
         super.clear();
         ttacct_ = "";
 
-        if (cctlistBuilder_ == null) {
-          cctlist_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
-        } else {
-          cctlistBuilder_.clear();
-        }
         if (attlistBuilder_ == null) {
           attlist_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000004);
+          bitField0_ = (bitField0_ & ~0x00000002);
         } else {
           attlistBuilder_.clear();
         }
@@ -1648,19 +990,10 @@ public final class T01004003 {
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         result.ttacct_ = ttacct_;
-        if (cctlistBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) == 0x00000002)) {
-            cctlist_ = java.util.Collections.unmodifiableList(cctlist_);
-            bitField0_ = (bitField0_ & ~0x00000002);
-          }
-          result.cctlist_ = cctlist_;
-        } else {
-          result.cctlist_ = cctlistBuilder_.build();
-        }
         if (attlistBuilder_ == null) {
-          if (((bitField0_ & 0x00000004) == 0x00000004)) {
+          if (((bitField0_ & 0x00000002) == 0x00000002)) {
             attlist_ = java.util.Collections.unmodifiableList(attlist_);
-            bitField0_ = (bitField0_ & ~0x00000004);
+            bitField0_ = (bitField0_ & ~0x00000002);
           }
           result.attlist_ = attlist_;
         } else {
@@ -1712,37 +1045,11 @@ public final class T01004003 {
           ttacct_ = other.ttacct_;
           onChanged();
         }
-        if (cctlistBuilder_ == null) {
-          if (!other.cctlist_.isEmpty()) {
-            if (cctlist_.isEmpty()) {
-              cctlist_ = other.cctlist_;
-              bitField0_ = (bitField0_ & ~0x00000002);
-            } else {
-              ensureCctlistIsMutable();
-              cctlist_.addAll(other.cctlist_);
-            }
-            onChanged();
-          }
-        } else {
-          if (!other.cctlist_.isEmpty()) {
-            if (cctlistBuilder_.isEmpty()) {
-              cctlistBuilder_.dispose();
-              cctlistBuilder_ = null;
-              cctlist_ = other.cctlist_;
-              bitField0_ = (bitField0_ & ~0x00000002);
-              cctlistBuilder_ = 
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                   getCctlistFieldBuilder() : null;
-            } else {
-              cctlistBuilder_.addAllMessages(other.cctlist_);
-            }
-          }
-        }
         if (attlistBuilder_ == null) {
           if (!other.attlist_.isEmpty()) {
             if (attlist_.isEmpty()) {
               attlist_ = other.attlist_;
-              bitField0_ = (bitField0_ & ~0x00000004);
+              bitField0_ = (bitField0_ & ~0x00000002);
             } else {
               ensureAttlistIsMutable();
               attlist_.addAll(other.attlist_);
@@ -1755,7 +1062,7 @@ public final class T01004003 {
               attlistBuilder_.dispose();
               attlistBuilder_ = null;
               attlist_ = other.attlist_;
-              bitField0_ = (bitField0_ & ~0x00000004);
+              bitField0_ = (bitField0_ & ~0x00000002);
               attlistBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getAttlistFieldBuilder() : null;
@@ -1860,252 +1167,12 @@ public final class T01004003 {
         return this;
       }
 
-      private java.util.List<com.qlcd.qltt.body.pvt.T01004003._cncltactic> cctlist_ =
-        java.util.Collections.emptyList();
-      private void ensureCctlistIsMutable() {
-        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
-          cctlist_ = new java.util.ArrayList<com.qlcd.qltt.body.pvt.T01004003._cncltactic>(cctlist_);
-          bitField0_ |= 0x00000002;
-         }
-      }
-
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          com.qlcd.qltt.body.pvt.T01004003._cncltactic, com.qlcd.qltt.body.pvt.T01004003._cncltactic.Builder, com.qlcd.qltt.body.pvt.T01004003._cncltacticOrBuilder> cctlistBuilder_;
-
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._cncltactic cctlist = 2;</code>
-       */
-      public java.util.List<com.qlcd.qltt.body.pvt.T01004003._cncltactic> getCctlistList() {
-        if (cctlistBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(cctlist_);
-        } else {
-          return cctlistBuilder_.getMessageList();
-        }
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._cncltactic cctlist = 2;</code>
-       */
-      public int getCctlistCount() {
-        if (cctlistBuilder_ == null) {
-          return cctlist_.size();
-        } else {
-          return cctlistBuilder_.getCount();
-        }
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._cncltactic cctlist = 2;</code>
-       */
-      public com.qlcd.qltt.body.pvt.T01004003._cncltactic getCctlist(int index) {
-        if (cctlistBuilder_ == null) {
-          return cctlist_.get(index);
-        } else {
-          return cctlistBuilder_.getMessage(index);
-        }
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._cncltactic cctlist = 2;</code>
-       */
-      public Builder setCctlist(
-          int index, com.qlcd.qltt.body.pvt.T01004003._cncltactic value) {
-        if (cctlistBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureCctlistIsMutable();
-          cctlist_.set(index, value);
-          onChanged();
-        } else {
-          cctlistBuilder_.setMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._cncltactic cctlist = 2;</code>
-       */
-      public Builder setCctlist(
-          int index, com.qlcd.qltt.body.pvt.T01004003._cncltactic.Builder builderForValue) {
-        if (cctlistBuilder_ == null) {
-          ensureCctlistIsMutable();
-          cctlist_.set(index, builderForValue.build());
-          onChanged();
-        } else {
-          cctlistBuilder_.setMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._cncltactic cctlist = 2;</code>
-       */
-      public Builder addCctlist(com.qlcd.qltt.body.pvt.T01004003._cncltactic value) {
-        if (cctlistBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureCctlistIsMutable();
-          cctlist_.add(value);
-          onChanged();
-        } else {
-          cctlistBuilder_.addMessage(value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._cncltactic cctlist = 2;</code>
-       */
-      public Builder addCctlist(
-          int index, com.qlcd.qltt.body.pvt.T01004003._cncltactic value) {
-        if (cctlistBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureCctlistIsMutable();
-          cctlist_.add(index, value);
-          onChanged();
-        } else {
-          cctlistBuilder_.addMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._cncltactic cctlist = 2;</code>
-       */
-      public Builder addCctlist(
-          com.qlcd.qltt.body.pvt.T01004003._cncltactic.Builder builderForValue) {
-        if (cctlistBuilder_ == null) {
-          ensureCctlistIsMutable();
-          cctlist_.add(builderForValue.build());
-          onChanged();
-        } else {
-          cctlistBuilder_.addMessage(builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._cncltactic cctlist = 2;</code>
-       */
-      public Builder addCctlist(
-          int index, com.qlcd.qltt.body.pvt.T01004003._cncltactic.Builder builderForValue) {
-        if (cctlistBuilder_ == null) {
-          ensureCctlistIsMutable();
-          cctlist_.add(index, builderForValue.build());
-          onChanged();
-        } else {
-          cctlistBuilder_.addMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._cncltactic cctlist = 2;</code>
-       */
-      public Builder addAllCctlist(
-          java.lang.Iterable<? extends com.qlcd.qltt.body.pvt.T01004003._cncltactic> values) {
-        if (cctlistBuilder_ == null) {
-          ensureCctlistIsMutable();
-          com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, cctlist_);
-          onChanged();
-        } else {
-          cctlistBuilder_.addAllMessages(values);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._cncltactic cctlist = 2;</code>
-       */
-      public Builder clearCctlist() {
-        if (cctlistBuilder_ == null) {
-          cctlist_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
-          onChanged();
-        } else {
-          cctlistBuilder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._cncltactic cctlist = 2;</code>
-       */
-      public Builder removeCctlist(int index) {
-        if (cctlistBuilder_ == null) {
-          ensureCctlistIsMutable();
-          cctlist_.remove(index);
-          onChanged();
-        } else {
-          cctlistBuilder_.remove(index);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._cncltactic cctlist = 2;</code>
-       */
-      public com.qlcd.qltt.body.pvt.T01004003._cncltactic.Builder getCctlistBuilder(
-          int index) {
-        return getCctlistFieldBuilder().getBuilder(index);
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._cncltactic cctlist = 2;</code>
-       */
-      public com.qlcd.qltt.body.pvt.T01004003._cncltacticOrBuilder getCctlistOrBuilder(
-          int index) {
-        if (cctlistBuilder_ == null) {
-          return cctlist_.get(index);  } else {
-          return cctlistBuilder_.getMessageOrBuilder(index);
-        }
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._cncltactic cctlist = 2;</code>
-       */
-      public java.util.List<? extends com.qlcd.qltt.body.pvt.T01004003._cncltacticOrBuilder> 
-           getCctlistOrBuilderList() {
-        if (cctlistBuilder_ != null) {
-          return cctlistBuilder_.getMessageOrBuilderList();
-        } else {
-          return java.util.Collections.unmodifiableList(cctlist_);
-        }
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._cncltactic cctlist = 2;</code>
-       */
-      public com.qlcd.qltt.body.pvt.T01004003._cncltactic.Builder addCctlistBuilder() {
-        return getCctlistFieldBuilder().addBuilder(
-            com.qlcd.qltt.body.pvt.T01004003._cncltactic.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._cncltactic cctlist = 2;</code>
-       */
-      public com.qlcd.qltt.body.pvt.T01004003._cncltactic.Builder addCctlistBuilder(
-          int index) {
-        return getCctlistFieldBuilder().addBuilder(
-            index, com.qlcd.qltt.body.pvt.T01004003._cncltactic.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._cncltactic cctlist = 2;</code>
-       */
-      public java.util.List<com.qlcd.qltt.body.pvt.T01004003._cncltactic.Builder> 
-           getCctlistBuilderList() {
-        return getCctlistFieldBuilder().getBuilderList();
-      }
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          com.qlcd.qltt.body.pvt.T01004003._cncltactic, com.qlcd.qltt.body.pvt.T01004003._cncltactic.Builder, com.qlcd.qltt.body.pvt.T01004003._cncltacticOrBuilder> 
-          getCctlistFieldBuilder() {
-        if (cctlistBuilder_ == null) {
-          cctlistBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              com.qlcd.qltt.body.pvt.T01004003._cncltactic, com.qlcd.qltt.body.pvt.T01004003._cncltactic.Builder, com.qlcd.qltt.body.pvt.T01004003._cncltacticOrBuilder>(
-                  cctlist_,
-                  ((bitField0_ & 0x00000002) == 0x00000002),
-                  getParentForChildren(),
-                  isClean());
-          cctlist_ = null;
-        }
-        return cctlistBuilder_;
-      }
-
       private java.util.List<com.qlcd.qltt.body.pvt.T01004003._attntactic> attlist_ =
         java.util.Collections.emptyList();
       private void ensureAttlistIsMutable() {
-        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
+        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
           attlist_ = new java.util.ArrayList<com.qlcd.qltt.body.pvt.T01004003._attntactic>(attlist_);
-          bitField0_ |= 0x00000004;
+          bitField0_ |= 0x00000002;
          }
       }
 
@@ -2113,7 +1180,7 @@ public final class T01004003 {
           com.qlcd.qltt.body.pvt.T01004003._attntactic, com.qlcd.qltt.body.pvt.T01004003._attntactic.Builder, com.qlcd.qltt.body.pvt.T01004003._attntacticOrBuilder> attlistBuilder_;
 
       /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._attntactic attlist = 3;</code>
+       * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._attntactic attlist = 2;</code>
        */
       public java.util.List<com.qlcd.qltt.body.pvt.T01004003._attntactic> getAttlistList() {
         if (attlistBuilder_ == null) {
@@ -2123,7 +1190,7 @@ public final class T01004003 {
         }
       }
       /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._attntactic attlist = 3;</code>
+       * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._attntactic attlist = 2;</code>
        */
       public int getAttlistCount() {
         if (attlistBuilder_ == null) {
@@ -2133,7 +1200,7 @@ public final class T01004003 {
         }
       }
       /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._attntactic attlist = 3;</code>
+       * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._attntactic attlist = 2;</code>
        */
       public com.qlcd.qltt.body.pvt.T01004003._attntactic getAttlist(int index) {
         if (attlistBuilder_ == null) {
@@ -2143,7 +1210,7 @@ public final class T01004003 {
         }
       }
       /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._attntactic attlist = 3;</code>
+       * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._attntactic attlist = 2;</code>
        */
       public Builder setAttlist(
           int index, com.qlcd.qltt.body.pvt.T01004003._attntactic value) {
@@ -2160,7 +1227,7 @@ public final class T01004003 {
         return this;
       }
       /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._attntactic attlist = 3;</code>
+       * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._attntactic attlist = 2;</code>
        */
       public Builder setAttlist(
           int index, com.qlcd.qltt.body.pvt.T01004003._attntactic.Builder builderForValue) {
@@ -2174,7 +1241,7 @@ public final class T01004003 {
         return this;
       }
       /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._attntactic attlist = 3;</code>
+       * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._attntactic attlist = 2;</code>
        */
       public Builder addAttlist(com.qlcd.qltt.body.pvt.T01004003._attntactic value) {
         if (attlistBuilder_ == null) {
@@ -2190,7 +1257,7 @@ public final class T01004003 {
         return this;
       }
       /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._attntactic attlist = 3;</code>
+       * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._attntactic attlist = 2;</code>
        */
       public Builder addAttlist(
           int index, com.qlcd.qltt.body.pvt.T01004003._attntactic value) {
@@ -2207,7 +1274,7 @@ public final class T01004003 {
         return this;
       }
       /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._attntactic attlist = 3;</code>
+       * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._attntactic attlist = 2;</code>
        */
       public Builder addAttlist(
           com.qlcd.qltt.body.pvt.T01004003._attntactic.Builder builderForValue) {
@@ -2221,7 +1288,7 @@ public final class T01004003 {
         return this;
       }
       /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._attntactic attlist = 3;</code>
+       * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._attntactic attlist = 2;</code>
        */
       public Builder addAttlist(
           int index, com.qlcd.qltt.body.pvt.T01004003._attntactic.Builder builderForValue) {
@@ -2235,7 +1302,7 @@ public final class T01004003 {
         return this;
       }
       /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._attntactic attlist = 3;</code>
+       * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._attntactic attlist = 2;</code>
        */
       public Builder addAllAttlist(
           java.lang.Iterable<? extends com.qlcd.qltt.body.pvt.T01004003._attntactic> values) {
@@ -2250,12 +1317,12 @@ public final class T01004003 {
         return this;
       }
       /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._attntactic attlist = 3;</code>
+       * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._attntactic attlist = 2;</code>
        */
       public Builder clearAttlist() {
         if (attlistBuilder_ == null) {
           attlist_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000004);
+          bitField0_ = (bitField0_ & ~0x00000002);
           onChanged();
         } else {
           attlistBuilder_.clear();
@@ -2263,7 +1330,7 @@ public final class T01004003 {
         return this;
       }
       /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._attntactic attlist = 3;</code>
+       * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._attntactic attlist = 2;</code>
        */
       public Builder removeAttlist(int index) {
         if (attlistBuilder_ == null) {
@@ -2276,14 +1343,14 @@ public final class T01004003 {
         return this;
       }
       /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._attntactic attlist = 3;</code>
+       * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._attntactic attlist = 2;</code>
        */
       public com.qlcd.qltt.body.pvt.T01004003._attntactic.Builder getAttlistBuilder(
           int index) {
         return getAttlistFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._attntactic attlist = 3;</code>
+       * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._attntactic attlist = 2;</code>
        */
       public com.qlcd.qltt.body.pvt.T01004003._attntacticOrBuilder getAttlistOrBuilder(
           int index) {
@@ -2293,7 +1360,7 @@ public final class T01004003 {
         }
       }
       /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._attntactic attlist = 3;</code>
+       * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._attntactic attlist = 2;</code>
        */
       public java.util.List<? extends com.qlcd.qltt.body.pvt.T01004003._attntacticOrBuilder> 
            getAttlistOrBuilderList() {
@@ -2304,14 +1371,14 @@ public final class T01004003 {
         }
       }
       /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._attntactic attlist = 3;</code>
+       * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._attntactic attlist = 2;</code>
        */
       public com.qlcd.qltt.body.pvt.T01004003._attntactic.Builder addAttlistBuilder() {
         return getAttlistFieldBuilder().addBuilder(
             com.qlcd.qltt.body.pvt.T01004003._attntactic.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._attntactic attlist = 3;</code>
+       * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._attntactic attlist = 2;</code>
        */
       public com.qlcd.qltt.body.pvt.T01004003._attntactic.Builder addAttlistBuilder(
           int index) {
@@ -2319,7 +1386,7 @@ public final class T01004003 {
             index, com.qlcd.qltt.body.pvt.T01004003._attntactic.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._attntactic attlist = 3;</code>
+       * <code>repeated .com.qlcd.qltt.body.pvt.T01004003._attntactic attlist = 2;</code>
        */
       public java.util.List<com.qlcd.qltt.body.pvt.T01004003._attntactic.Builder> 
            getAttlistBuilderList() {
@@ -2332,7 +1399,7 @@ public final class T01004003 {
           attlistBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               com.qlcd.qltt.body.pvt.T01004003._attntactic, com.qlcd.qltt.body.pvt.T01004003._attntactic.Builder, com.qlcd.qltt.body.pvt.T01004003._attntacticOrBuilder>(
                   attlist_,
-                  ((bitField0_ & 0x00000004) == 0x00000004),
+                  ((bitField0_ & 0x00000002) == 0x00000002),
                   getParentForChildren(),
                   isClean());
           attlist_ = null;
@@ -2949,11 +2016,6 @@ public final class T01004003 {
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_qlcd_qltt_body_pvt_T01004003__cncltactic_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_com_qlcd_qltt_body_pvt_T01004003__cncltactic_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_com_qlcd_qltt_body_pvt_T01004003__attntactic_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -2979,15 +2041,12 @@ public final class T01004003 {
     java.lang.String[] descriptorData = {
       "\n\030body/pvt/T01004003.proto\022 com.qlcd.qlt" +
       "t.body.pvt.T01004003\032\021body/BppSys.proto\"" +
-      "-\n\013_cncltactic\022\016\n\006tactic\030\001 \001(\t\022\016\n\006tacprm" +
-      "\030\002 \001(\005\"-\n\013_attntactic\022\016\n\006tactic\030\001 \001(\t\022\016\n" +
-      "\006tacprm\030\002 \001(\005\"\226\001\n\004_req\022\016\n\006ttacct\030\001 \001(\t\022>" +
-      "\n\007cctlist\030\002 \003(\0132-.com.qlcd.qltt.body.pvt" +
-      ".T01004003._cncltactic\022>\n\007attlist\030\003 \003(\0132" +
-      "-.com.qlcd.qltt.body.pvt.T01004003._attn" +
-      "tactic\"=\n\004_rsp\0225\n\003rsh\030\001 \001(\0132(.com.qlcd.q" +
-      "ltt.body.BppSys._rsp_succheadB\030\n\026com.qlc",
-      "d.qltt.body.pvtb\006proto3"
+      "-\n\013_attntactic\022\016\n\006tactic\030\001 \001(\t\022\016\n\006tacprm" +
+      "\030\002 \001(\005\"V\n\004_req\022\016\n\006ttacct\030\001 \001(\t\022>\n\007attlis" +
+      "t\030\002 \003(\0132-.com.qlcd.qltt.body.pvt.T010040" +
+      "03._attntactic\"=\n\004_rsp\0225\n\003rsh\030\001 \001(\0132(.co" +
+      "m.qlcd.qltt.body.BppSys._rsp_succheadB\030\n" +
+      "\026com.qlcd.qltt.body.pvtb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -3002,26 +2061,20 @@ public final class T01004003 {
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           com.qlcd.qltt.body.BppSys.getDescriptor(),
         }, assigner);
-    internal_static_com_qlcd_qltt_body_pvt_T01004003__cncltactic_descriptor =
-      getDescriptor().getMessageTypes().get(0);
-    internal_static_com_qlcd_qltt_body_pvt_T01004003__cncltactic_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_qlcd_qltt_body_pvt_T01004003__cncltactic_descriptor,
-        new java.lang.String[] { "Tactic", "Tacprm", });
     internal_static_com_qlcd_qltt_body_pvt_T01004003__attntactic_descriptor =
-      getDescriptor().getMessageTypes().get(1);
+      getDescriptor().getMessageTypes().get(0);
     internal_static_com_qlcd_qltt_body_pvt_T01004003__attntactic_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_qlcd_qltt_body_pvt_T01004003__attntactic_descriptor,
         new java.lang.String[] { "Tactic", "Tacprm", });
     internal_static_com_qlcd_qltt_body_pvt_T01004003__req_descriptor =
-      getDescriptor().getMessageTypes().get(2);
+      getDescriptor().getMessageTypes().get(1);
     internal_static_com_qlcd_qltt_body_pvt_T01004003__req_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_qlcd_qltt_body_pvt_T01004003__req_descriptor,
-        new java.lang.String[] { "Ttacct", "Cctlist", "Attlist", });
+        new java.lang.String[] { "Ttacct", "Attlist", });
     internal_static_com_qlcd_qltt_body_pvt_T01004003__rsp_descriptor =
-      getDescriptor().getMessageTypes().get(3);
+      getDescriptor().getMessageTypes().get(2);
     internal_static_com_qlcd_qltt_body_pvt_T01004003__rsp_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_qlcd_qltt_body_pvt_T01004003__rsp_descriptor,

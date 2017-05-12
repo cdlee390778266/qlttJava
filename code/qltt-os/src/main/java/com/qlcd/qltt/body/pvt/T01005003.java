@@ -14,666 +14,31 @@ public final class T01005003 {
     registerAllExtensions(
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
-  public interface _cnclstockOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:com.qlcd.qltt.body.pvt.T01005003._cnclstock)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>string stockcode = 1;</code>
-     */
-    java.lang.String getStockcode();
-    /**
-     * <code>string stockcode = 1;</code>
-     */
-    com.google.protobuf.ByteString
-        getStockcodeBytes();
-
-    /**
-     * <code>string stockname = 2;</code>
-     */
-    java.lang.String getStockname();
-    /**
-     * <code>string stockname = 2;</code>
-     */
-    com.google.protobuf.ByteString
-        getStocknameBytes();
-  }
-  /**
-   * Protobuf type {@code com.qlcd.qltt.body.pvt.T01005003._cnclstock}
-   */
-  public  static final class _cnclstock extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:com.qlcd.qltt.body.pvt.T01005003._cnclstock)
-      _cnclstockOrBuilder {
-    // Use _cnclstock.newBuilder() to construct.
-    private _cnclstock(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private _cnclstock() {
-      stockcode_ = "";
-      stockname_ = "";
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
-    }
-    private _cnclstock(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      int mutable_bitField0_ = 0;
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!input.skipField(tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              stockcode_ = s;
-              break;
-            }
-            case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              stockname_ = s;
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.qlcd.qltt.body.pvt.T01005003.internal_static_com_qlcd_qltt_body_pvt_T01005003__cnclstock_descriptor;
-    }
-
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.qlcd.qltt.body.pvt.T01005003.internal_static_com_qlcd_qltt_body_pvt_T01005003__cnclstock_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.qlcd.qltt.body.pvt.T01005003._cnclstock.class, com.qlcd.qltt.body.pvt.T01005003._cnclstock.Builder.class);
-    }
-
-    public static final int STOCKCODE_FIELD_NUMBER = 1;
-    private volatile java.lang.Object stockcode_;
-    /**
-     * <code>string stockcode = 1;</code>
-     */
-    public java.lang.String getStockcode() {
-      java.lang.Object ref = stockcode_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        stockcode_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string stockcode = 1;</code>
-     */
-    public com.google.protobuf.ByteString
-        getStockcodeBytes() {
-      java.lang.Object ref = stockcode_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        stockcode_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int STOCKNAME_FIELD_NUMBER = 2;
-    private volatile java.lang.Object stockname_;
-    /**
-     * <code>string stockname = 2;</code>
-     */
-    public java.lang.String getStockname() {
-      java.lang.Object ref = stockname_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        stockname_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string stockname = 2;</code>
-     */
-    public com.google.protobuf.ByteString
-        getStocknameBytes() {
-      java.lang.Object ref = stockname_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        stockname_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (!getStockcodeBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, stockcode_);
-      }
-      if (!getStocknameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, stockname_);
-      }
-    }
-
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (!getStockcodeBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, stockcode_);
-      }
-      if (!getStocknameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, stockname_);
-      }
-      memoizedSize = size;
-      return size;
-    }
-
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof com.qlcd.qltt.body.pvt.T01005003._cnclstock)) {
-        return super.equals(obj);
-      }
-      com.qlcd.qltt.body.pvt.T01005003._cnclstock other = (com.qlcd.qltt.body.pvt.T01005003._cnclstock) obj;
-
-      boolean result = true;
-      result = result && getStockcode()
-          .equals(other.getStockcode());
-      result = result && getStockname()
-          .equals(other.getStockname());
-      return result;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + STOCKCODE_FIELD_NUMBER;
-      hash = (53 * hash) + getStockcode().hashCode();
-      hash = (37 * hash) + STOCKNAME_FIELD_NUMBER;
-      hash = (53 * hash) + getStockname().hashCode();
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static com.qlcd.qltt.body.pvt.T01005003._cnclstock parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.qlcd.qltt.body.pvt.T01005003._cnclstock parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.qlcd.qltt.body.pvt.T01005003._cnclstock parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.qlcd.qltt.body.pvt.T01005003._cnclstock parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.qlcd.qltt.body.pvt.T01005003._cnclstock parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static com.qlcd.qltt.body.pvt.T01005003._cnclstock parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static com.qlcd.qltt.body.pvt.T01005003._cnclstock parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static com.qlcd.qltt.body.pvt.T01005003._cnclstock parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static com.qlcd.qltt.body.pvt.T01005003._cnclstock parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static com.qlcd.qltt.body.pvt.T01005003._cnclstock parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(com.qlcd.qltt.body.pvt.T01005003._cnclstock prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code com.qlcd.qltt.body.pvt.T01005003._cnclstock}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:com.qlcd.qltt.body.pvt.T01005003._cnclstock)
-        com.qlcd.qltt.body.pvt.T01005003._cnclstockOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.qlcd.qltt.body.pvt.T01005003.internal_static_com_qlcd_qltt_body_pvt_T01005003__cnclstock_descriptor;
-      }
-
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.qlcd.qltt.body.pvt.T01005003.internal_static_com_qlcd_qltt_body_pvt_T01005003__cnclstock_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.qlcd.qltt.body.pvt.T01005003._cnclstock.class, com.qlcd.qltt.body.pvt.T01005003._cnclstock.Builder.class);
-      }
-
-      // Construct using com.qlcd.qltt.body.pvt.T01005003._cnclstock.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      public Builder clear() {
-        super.clear();
-        stockcode_ = "";
-
-        stockname_ = "";
-
-        return this;
-      }
-
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.qlcd.qltt.body.pvt.T01005003.internal_static_com_qlcd_qltt_body_pvt_T01005003__cnclstock_descriptor;
-      }
-
-      public com.qlcd.qltt.body.pvt.T01005003._cnclstock getDefaultInstanceForType() {
-        return com.qlcd.qltt.body.pvt.T01005003._cnclstock.getDefaultInstance();
-      }
-
-      public com.qlcd.qltt.body.pvt.T01005003._cnclstock build() {
-        com.qlcd.qltt.body.pvt.T01005003._cnclstock result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      public com.qlcd.qltt.body.pvt.T01005003._cnclstock buildPartial() {
-        com.qlcd.qltt.body.pvt.T01005003._cnclstock result = new com.qlcd.qltt.body.pvt.T01005003._cnclstock(this);
-        result.stockcode_ = stockcode_;
-        result.stockname_ = stockname_;
-        onBuilt();
-        return result;
-      }
-
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.qlcd.qltt.body.pvt.T01005003._cnclstock) {
-          return mergeFrom((com.qlcd.qltt.body.pvt.T01005003._cnclstock)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(com.qlcd.qltt.body.pvt.T01005003._cnclstock other) {
-        if (other == com.qlcd.qltt.body.pvt.T01005003._cnclstock.getDefaultInstance()) return this;
-        if (!other.getStockcode().isEmpty()) {
-          stockcode_ = other.stockcode_;
-          onChanged();
-        }
-        if (!other.getStockname().isEmpty()) {
-          stockname_ = other.stockname_;
-          onChanged();
-        }
-        onChanged();
-        return this;
-      }
-
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        com.qlcd.qltt.body.pvt.T01005003._cnclstock parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.qlcd.qltt.body.pvt.T01005003._cnclstock) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-
-      private java.lang.Object stockcode_ = "";
-      /**
-       * <code>string stockcode = 1;</code>
-       */
-      public java.lang.String getStockcode() {
-        java.lang.Object ref = stockcode_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          stockcode_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string stockcode = 1;</code>
-       */
-      public com.google.protobuf.ByteString
-          getStockcodeBytes() {
-        java.lang.Object ref = stockcode_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          stockcode_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string stockcode = 1;</code>
-       */
-      public Builder setStockcode(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        stockcode_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string stockcode = 1;</code>
-       */
-      public Builder clearStockcode() {
-        
-        stockcode_ = getDefaultInstance().getStockcode();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string stockcode = 1;</code>
-       */
-      public Builder setStockcodeBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        stockcode_ = value;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object stockname_ = "";
-      /**
-       * <code>string stockname = 2;</code>
-       */
-      public java.lang.String getStockname() {
-        java.lang.Object ref = stockname_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          stockname_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string stockname = 2;</code>
-       */
-      public com.google.protobuf.ByteString
-          getStocknameBytes() {
-        java.lang.Object ref = stockname_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          stockname_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string stockname = 2;</code>
-       */
-      public Builder setStockname(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        stockname_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string stockname = 2;</code>
-       */
-      public Builder clearStockname() {
-        
-        stockname_ = getDefaultInstance().getStockname();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string stockname = 2;</code>
-       */
-      public Builder setStocknameBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        stockname_ = value;
-        onChanged();
-        return this;
-      }
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:com.qlcd.qltt.body.pvt.T01005003._cnclstock)
-    }
-
-    // @@protoc_insertion_point(class_scope:com.qlcd.qltt.body.pvt.T01005003._cnclstock)
-    private static final com.qlcd.qltt.body.pvt.T01005003._cnclstock DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new com.qlcd.qltt.body.pvt.T01005003._cnclstock();
-    }
-
-    public static com.qlcd.qltt.body.pvt.T01005003._cnclstock getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<_cnclstock>
-        PARSER = new com.google.protobuf.AbstractParser<_cnclstock>() {
-      public _cnclstock parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-          return new _cnclstock(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<_cnclstock> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<_cnclstock> getParserForType() {
-      return PARSER;
-    }
-
-    public com.qlcd.qltt.body.pvt.T01005003._cnclstock getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
   public interface _attnstockOrBuilder extends
       // @@protoc_insertion_point(interface_extends:com.qlcd.qltt.body.pvt.T01005003._attnstock)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>string stockcode = 1;</code>
+     * <code>int32 stockorder = 1;</code>
+     */
+    int getStockorder();
+
+    /**
+     * <code>string stockcode = 2;</code>
      */
     java.lang.String getStockcode();
     /**
-     * <code>string stockcode = 1;</code>
+     * <code>string stockcode = 2;</code>
      */
     com.google.protobuf.ByteString
         getStockcodeBytes();
 
     /**
-     * <code>string stockname = 2;</code>
+     * <code>string stockname = 3;</code>
      */
     java.lang.String getStockname();
     /**
-     * <code>string stockname = 2;</code>
+     * <code>string stockname = 3;</code>
      */
     com.google.protobuf.ByteString
         getStocknameBytes();
@@ -690,6 +55,7 @@ public final class T01005003 {
       super(builder);
     }
     private _attnstock() {
+      stockorder_ = 0;
       stockcode_ = "";
       stockname_ = "";
     }
@@ -719,13 +85,18 @@ public final class T01005003 {
               }
               break;
             }
-            case 10: {
+            case 8: {
+
+              stockorder_ = input.readInt32();
+              break;
+            }
+            case 18: {
               java.lang.String s = input.readStringRequireUtf8();
 
               stockcode_ = s;
               break;
             }
-            case 18: {
+            case 26: {
               java.lang.String s = input.readStringRequireUtf8();
 
               stockname_ = s;
@@ -754,10 +125,19 @@ public final class T01005003 {
               com.qlcd.qltt.body.pvt.T01005003._attnstock.class, com.qlcd.qltt.body.pvt.T01005003._attnstock.Builder.class);
     }
 
-    public static final int STOCKCODE_FIELD_NUMBER = 1;
+    public static final int STOCKORDER_FIELD_NUMBER = 1;
+    private int stockorder_;
+    /**
+     * <code>int32 stockorder = 1;</code>
+     */
+    public int getStockorder() {
+      return stockorder_;
+    }
+
+    public static final int STOCKCODE_FIELD_NUMBER = 2;
     private volatile java.lang.Object stockcode_;
     /**
-     * <code>string stockcode = 1;</code>
+     * <code>string stockcode = 2;</code>
      */
     public java.lang.String getStockcode() {
       java.lang.Object ref = stockcode_;
@@ -772,7 +152,7 @@ public final class T01005003 {
       }
     }
     /**
-     * <code>string stockcode = 1;</code>
+     * <code>string stockcode = 2;</code>
      */
     public com.google.protobuf.ByteString
         getStockcodeBytes() {
@@ -788,10 +168,10 @@ public final class T01005003 {
       }
     }
 
-    public static final int STOCKNAME_FIELD_NUMBER = 2;
+    public static final int STOCKNAME_FIELD_NUMBER = 3;
     private volatile java.lang.Object stockname_;
     /**
-     * <code>string stockname = 2;</code>
+     * <code>string stockname = 3;</code>
      */
     public java.lang.String getStockname() {
       java.lang.Object ref = stockname_;
@@ -806,7 +186,7 @@ public final class T01005003 {
       }
     }
     /**
-     * <code>string stockname = 2;</code>
+     * <code>string stockname = 3;</code>
      */
     public com.google.protobuf.ByteString
         getStocknameBytes() {
@@ -834,11 +214,14 @@ public final class T01005003 {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
+      if (stockorder_ != 0) {
+        output.writeInt32(1, stockorder_);
+      }
       if (!getStockcodeBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, stockcode_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, stockcode_);
       }
       if (!getStocknameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, stockname_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, stockname_);
       }
     }
 
@@ -847,11 +230,15 @@ public final class T01005003 {
       if (size != -1) return size;
 
       size = 0;
+      if (stockorder_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, stockorder_);
+      }
       if (!getStockcodeBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, stockcode_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, stockcode_);
       }
       if (!getStocknameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, stockname_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, stockname_);
       }
       memoizedSize = size;
       return size;
@@ -869,6 +256,8 @@ public final class T01005003 {
       com.qlcd.qltt.body.pvt.T01005003._attnstock other = (com.qlcd.qltt.body.pvt.T01005003._attnstock) obj;
 
       boolean result = true;
+      result = result && (getStockorder()
+          == other.getStockorder());
       result = result && getStockcode()
           .equals(other.getStockcode());
       result = result && getStockname()
@@ -883,6 +272,8 @@ public final class T01005003 {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + STOCKORDER_FIELD_NUMBER;
+      hash = (53 * hash) + getStockorder();
       hash = (37 * hash) + STOCKCODE_FIELD_NUMBER;
       hash = (53 * hash) + getStockcode().hashCode();
       hash = (37 * hash) + STOCKNAME_FIELD_NUMBER;
@@ -1005,6 +396,8 @@ public final class T01005003 {
       }
       public Builder clear() {
         super.clear();
+        stockorder_ = 0;
+
         stockcode_ = "";
 
         stockname_ = "";
@@ -1031,6 +424,7 @@ public final class T01005003 {
 
       public com.qlcd.qltt.body.pvt.T01005003._attnstock buildPartial() {
         com.qlcd.qltt.body.pvt.T01005003._attnstock result = new com.qlcd.qltt.body.pvt.T01005003._attnstock(this);
+        result.stockorder_ = stockorder_;
         result.stockcode_ = stockcode_;
         result.stockname_ = stockname_;
         onBuilt();
@@ -1074,6 +468,9 @@ public final class T01005003 {
 
       public Builder mergeFrom(com.qlcd.qltt.body.pvt.T01005003._attnstock other) {
         if (other == com.qlcd.qltt.body.pvt.T01005003._attnstock.getDefaultInstance()) return this;
+        if (other.getStockorder() != 0) {
+          setStockorder(other.getStockorder());
+        }
         if (!other.getStockcode().isEmpty()) {
           stockcode_ = other.stockcode_;
           onChanged();
@@ -1108,9 +505,35 @@ public final class T01005003 {
         return this;
       }
 
+      private int stockorder_ ;
+      /**
+       * <code>int32 stockorder = 1;</code>
+       */
+      public int getStockorder() {
+        return stockorder_;
+      }
+      /**
+       * <code>int32 stockorder = 1;</code>
+       */
+      public Builder setStockorder(int value) {
+        
+        stockorder_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 stockorder = 1;</code>
+       */
+      public Builder clearStockorder() {
+        
+        stockorder_ = 0;
+        onChanged();
+        return this;
+      }
+
       private java.lang.Object stockcode_ = "";
       /**
-       * <code>string stockcode = 1;</code>
+       * <code>string stockcode = 2;</code>
        */
       public java.lang.String getStockcode() {
         java.lang.Object ref = stockcode_;
@@ -1125,7 +548,7 @@ public final class T01005003 {
         }
       }
       /**
-       * <code>string stockcode = 1;</code>
+       * <code>string stockcode = 2;</code>
        */
       public com.google.protobuf.ByteString
           getStockcodeBytes() {
@@ -1141,7 +564,7 @@ public final class T01005003 {
         }
       }
       /**
-       * <code>string stockcode = 1;</code>
+       * <code>string stockcode = 2;</code>
        */
       public Builder setStockcode(
           java.lang.String value) {
@@ -1154,7 +577,7 @@ public final class T01005003 {
         return this;
       }
       /**
-       * <code>string stockcode = 1;</code>
+       * <code>string stockcode = 2;</code>
        */
       public Builder clearStockcode() {
         
@@ -1163,7 +586,7 @@ public final class T01005003 {
         return this;
       }
       /**
-       * <code>string stockcode = 1;</code>
+       * <code>string stockcode = 2;</code>
        */
       public Builder setStockcodeBytes(
           com.google.protobuf.ByteString value) {
@@ -1179,7 +602,7 @@ public final class T01005003 {
 
       private java.lang.Object stockname_ = "";
       /**
-       * <code>string stockname = 2;</code>
+       * <code>string stockname = 3;</code>
        */
       public java.lang.String getStockname() {
         java.lang.Object ref = stockname_;
@@ -1194,7 +617,7 @@ public final class T01005003 {
         }
       }
       /**
-       * <code>string stockname = 2;</code>
+       * <code>string stockname = 3;</code>
        */
       public com.google.protobuf.ByteString
           getStocknameBytes() {
@@ -1210,7 +633,7 @@ public final class T01005003 {
         }
       }
       /**
-       * <code>string stockname = 2;</code>
+       * <code>string stockname = 3;</code>
        */
       public Builder setStockname(
           java.lang.String value) {
@@ -1223,7 +646,7 @@ public final class T01005003 {
         return this;
       }
       /**
-       * <code>string stockname = 2;</code>
+       * <code>string stockname = 3;</code>
        */
       public Builder clearStockname() {
         
@@ -1232,7 +655,7 @@ public final class T01005003 {
         return this;
       }
       /**
-       * <code>string stockname = 2;</code>
+       * <code>string stockname = 3;</code>
        */
       public Builder setStocknameBytes(
           com.google.protobuf.ByteString value) {
@@ -1304,49 +727,25 @@ public final class T01005003 {
     int getPoolindex();
 
     /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._cnclstock ccslist = 2;</code>
-     */
-    java.util.List<com.qlcd.qltt.body.pvt.T01005003._cnclstock> 
-        getCcslistList();
-    /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._cnclstock ccslist = 2;</code>
-     */
-    com.qlcd.qltt.body.pvt.T01005003._cnclstock getCcslist(int index);
-    /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._cnclstock ccslist = 2;</code>
-     */
-    int getCcslistCount();
-    /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._cnclstock ccslist = 2;</code>
-     */
-    java.util.List<? extends com.qlcd.qltt.body.pvt.T01005003._cnclstockOrBuilder> 
-        getCcslistOrBuilderList();
-    /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._cnclstock ccslist = 2;</code>
-     */
-    com.qlcd.qltt.body.pvt.T01005003._cnclstockOrBuilder getCcslistOrBuilder(
-        int index);
-
-    /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._attnstock atslist = 3;</code>
+     * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._attnstock atslist = 2;</code>
      */
     java.util.List<com.qlcd.qltt.body.pvt.T01005003._attnstock> 
         getAtslistList();
     /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._attnstock atslist = 3;</code>
+     * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._attnstock atslist = 2;</code>
      */
     com.qlcd.qltt.body.pvt.T01005003._attnstock getAtslist(int index);
     /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._attnstock atslist = 3;</code>
+     * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._attnstock atslist = 2;</code>
      */
     int getAtslistCount();
     /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._attnstock atslist = 3;</code>
+     * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._attnstock atslist = 2;</code>
      */
     java.util.List<? extends com.qlcd.qltt.body.pvt.T01005003._attnstockOrBuilder> 
         getAtslistOrBuilderList();
     /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._attnstock atslist = 3;</code>
+     * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._attnstock atslist = 2;</code>
      */
     com.qlcd.qltt.body.pvt.T01005003._attnstockOrBuilder getAtslistOrBuilder(
         int index);
@@ -1364,7 +763,6 @@ public final class T01005003 {
     }
     private _stockpool() {
       poolindex_ = 0;
-      ccslist_ = java.util.Collections.emptyList();
       atslist_ = java.util.Collections.emptyList();
     }
 
@@ -1400,17 +798,8 @@ public final class T01005003 {
             }
             case 18: {
               if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
-                ccslist_ = new java.util.ArrayList<com.qlcd.qltt.body.pvt.T01005003._cnclstock>();
-                mutable_bitField0_ |= 0x00000002;
-              }
-              ccslist_.add(
-                  input.readMessage(com.qlcd.qltt.body.pvt.T01005003._cnclstock.parser(), extensionRegistry));
-              break;
-            }
-            case 26: {
-              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
                 atslist_ = new java.util.ArrayList<com.qlcd.qltt.body.pvt.T01005003._attnstock>();
-                mutable_bitField0_ |= 0x00000004;
+                mutable_bitField0_ |= 0x00000002;
               }
               atslist_.add(
                   input.readMessage(com.qlcd.qltt.body.pvt.T01005003._attnstock.parser(), extensionRegistry));
@@ -1425,9 +814,6 @@ public final class T01005003 {
             e).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
-          ccslist_ = java.util.Collections.unmodifiableList(ccslist_);
-        }
-        if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
           atslist_ = java.util.Collections.unmodifiableList(atslist_);
         }
         makeExtensionsImmutable();
@@ -1455,70 +841,35 @@ public final class T01005003 {
       return poolindex_;
     }
 
-    public static final int CCSLIST_FIELD_NUMBER = 2;
-    private java.util.List<com.qlcd.qltt.body.pvt.T01005003._cnclstock> ccslist_;
-    /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._cnclstock ccslist = 2;</code>
-     */
-    public java.util.List<com.qlcd.qltt.body.pvt.T01005003._cnclstock> getCcslistList() {
-      return ccslist_;
-    }
-    /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._cnclstock ccslist = 2;</code>
-     */
-    public java.util.List<? extends com.qlcd.qltt.body.pvt.T01005003._cnclstockOrBuilder> 
-        getCcslistOrBuilderList() {
-      return ccslist_;
-    }
-    /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._cnclstock ccslist = 2;</code>
-     */
-    public int getCcslistCount() {
-      return ccslist_.size();
-    }
-    /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._cnclstock ccslist = 2;</code>
-     */
-    public com.qlcd.qltt.body.pvt.T01005003._cnclstock getCcslist(int index) {
-      return ccslist_.get(index);
-    }
-    /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._cnclstock ccslist = 2;</code>
-     */
-    public com.qlcd.qltt.body.pvt.T01005003._cnclstockOrBuilder getCcslistOrBuilder(
-        int index) {
-      return ccslist_.get(index);
-    }
-
-    public static final int ATSLIST_FIELD_NUMBER = 3;
+    public static final int ATSLIST_FIELD_NUMBER = 2;
     private java.util.List<com.qlcd.qltt.body.pvt.T01005003._attnstock> atslist_;
     /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._attnstock atslist = 3;</code>
+     * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._attnstock atslist = 2;</code>
      */
     public java.util.List<com.qlcd.qltt.body.pvt.T01005003._attnstock> getAtslistList() {
       return atslist_;
     }
     /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._attnstock atslist = 3;</code>
+     * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._attnstock atslist = 2;</code>
      */
     public java.util.List<? extends com.qlcd.qltt.body.pvt.T01005003._attnstockOrBuilder> 
         getAtslistOrBuilderList() {
       return atslist_;
     }
     /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._attnstock atslist = 3;</code>
+     * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._attnstock atslist = 2;</code>
      */
     public int getAtslistCount() {
       return atslist_.size();
     }
     /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._attnstock atslist = 3;</code>
+     * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._attnstock atslist = 2;</code>
      */
     public com.qlcd.qltt.body.pvt.T01005003._attnstock getAtslist(int index) {
       return atslist_.get(index);
     }
     /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._attnstock atslist = 3;</code>
+     * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._attnstock atslist = 2;</code>
      */
     public com.qlcd.qltt.body.pvt.T01005003._attnstockOrBuilder getAtslistOrBuilder(
         int index) {
@@ -1540,11 +891,8 @@ public final class T01005003 {
       if (poolindex_ != 0) {
         output.writeInt32(1, poolindex_);
       }
-      for (int i = 0; i < ccslist_.size(); i++) {
-        output.writeMessage(2, ccslist_.get(i));
-      }
       for (int i = 0; i < atslist_.size(); i++) {
-        output.writeMessage(3, atslist_.get(i));
+        output.writeMessage(2, atslist_.get(i));
       }
     }
 
@@ -1557,13 +905,9 @@ public final class T01005003 {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(1, poolindex_);
       }
-      for (int i = 0; i < ccslist_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, ccslist_.get(i));
-      }
       for (int i = 0; i < atslist_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, atslist_.get(i));
+          .computeMessageSize(2, atslist_.get(i));
       }
       memoizedSize = size;
       return size;
@@ -1583,8 +927,6 @@ public final class T01005003 {
       boolean result = true;
       result = result && (getPoolindex()
           == other.getPoolindex());
-      result = result && getCcslistList()
-          .equals(other.getCcslistList());
       result = result && getAtslistList()
           .equals(other.getAtslistList());
       return result;
@@ -1599,10 +941,6 @@ public final class T01005003 {
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + POOLINDEX_FIELD_NUMBER;
       hash = (53 * hash) + getPoolindex();
-      if (getCcslistCount() > 0) {
-        hash = (37 * hash) + CCSLIST_FIELD_NUMBER;
-        hash = (53 * hash) + getCcslistList().hashCode();
-      }
       if (getAtslistCount() > 0) {
         hash = (37 * hash) + ATSLIST_FIELD_NUMBER;
         hash = (53 * hash) + getAtslistList().hashCode();
@@ -1721,7 +1059,6 @@ public final class T01005003 {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
-          getCcslistFieldBuilder();
           getAtslistFieldBuilder();
         }
       }
@@ -1729,15 +1066,9 @@ public final class T01005003 {
         super.clear();
         poolindex_ = 0;
 
-        if (ccslistBuilder_ == null) {
-          ccslist_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
-        } else {
-          ccslistBuilder_.clear();
-        }
         if (atslistBuilder_ == null) {
           atslist_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000004);
+          bitField0_ = (bitField0_ & ~0x00000002);
         } else {
           atslistBuilder_.clear();
         }
@@ -1766,19 +1097,10 @@ public final class T01005003 {
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         result.poolindex_ = poolindex_;
-        if (ccslistBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) == 0x00000002)) {
-            ccslist_ = java.util.Collections.unmodifiableList(ccslist_);
-            bitField0_ = (bitField0_ & ~0x00000002);
-          }
-          result.ccslist_ = ccslist_;
-        } else {
-          result.ccslist_ = ccslistBuilder_.build();
-        }
         if (atslistBuilder_ == null) {
-          if (((bitField0_ & 0x00000004) == 0x00000004)) {
+          if (((bitField0_ & 0x00000002) == 0x00000002)) {
             atslist_ = java.util.Collections.unmodifiableList(atslist_);
-            bitField0_ = (bitField0_ & ~0x00000004);
+            bitField0_ = (bitField0_ & ~0x00000002);
           }
           result.atslist_ = atslist_;
         } else {
@@ -1829,37 +1151,11 @@ public final class T01005003 {
         if (other.getPoolindex() != 0) {
           setPoolindex(other.getPoolindex());
         }
-        if (ccslistBuilder_ == null) {
-          if (!other.ccslist_.isEmpty()) {
-            if (ccslist_.isEmpty()) {
-              ccslist_ = other.ccslist_;
-              bitField0_ = (bitField0_ & ~0x00000002);
-            } else {
-              ensureCcslistIsMutable();
-              ccslist_.addAll(other.ccslist_);
-            }
-            onChanged();
-          }
-        } else {
-          if (!other.ccslist_.isEmpty()) {
-            if (ccslistBuilder_.isEmpty()) {
-              ccslistBuilder_.dispose();
-              ccslistBuilder_ = null;
-              ccslist_ = other.ccslist_;
-              bitField0_ = (bitField0_ & ~0x00000002);
-              ccslistBuilder_ = 
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                   getCcslistFieldBuilder() : null;
-            } else {
-              ccslistBuilder_.addAllMessages(other.ccslist_);
-            }
-          }
-        }
         if (atslistBuilder_ == null) {
           if (!other.atslist_.isEmpty()) {
             if (atslist_.isEmpty()) {
               atslist_ = other.atslist_;
-              bitField0_ = (bitField0_ & ~0x00000004);
+              bitField0_ = (bitField0_ & ~0x00000002);
             } else {
               ensureAtslistIsMutable();
               atslist_.addAll(other.atslist_);
@@ -1872,7 +1168,7 @@ public final class T01005003 {
               atslistBuilder_.dispose();
               atslistBuilder_ = null;
               atslist_ = other.atslist_;
-              bitField0_ = (bitField0_ & ~0x00000004);
+              bitField0_ = (bitField0_ & ~0x00000002);
               atslistBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getAtslistFieldBuilder() : null;
@@ -1934,252 +1230,12 @@ public final class T01005003 {
         return this;
       }
 
-      private java.util.List<com.qlcd.qltt.body.pvt.T01005003._cnclstock> ccslist_ =
-        java.util.Collections.emptyList();
-      private void ensureCcslistIsMutable() {
-        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
-          ccslist_ = new java.util.ArrayList<com.qlcd.qltt.body.pvt.T01005003._cnclstock>(ccslist_);
-          bitField0_ |= 0x00000002;
-         }
-      }
-
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          com.qlcd.qltt.body.pvt.T01005003._cnclstock, com.qlcd.qltt.body.pvt.T01005003._cnclstock.Builder, com.qlcd.qltt.body.pvt.T01005003._cnclstockOrBuilder> ccslistBuilder_;
-
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._cnclstock ccslist = 2;</code>
-       */
-      public java.util.List<com.qlcd.qltt.body.pvt.T01005003._cnclstock> getCcslistList() {
-        if (ccslistBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(ccslist_);
-        } else {
-          return ccslistBuilder_.getMessageList();
-        }
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._cnclstock ccslist = 2;</code>
-       */
-      public int getCcslistCount() {
-        if (ccslistBuilder_ == null) {
-          return ccslist_.size();
-        } else {
-          return ccslistBuilder_.getCount();
-        }
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._cnclstock ccslist = 2;</code>
-       */
-      public com.qlcd.qltt.body.pvt.T01005003._cnclstock getCcslist(int index) {
-        if (ccslistBuilder_ == null) {
-          return ccslist_.get(index);
-        } else {
-          return ccslistBuilder_.getMessage(index);
-        }
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._cnclstock ccslist = 2;</code>
-       */
-      public Builder setCcslist(
-          int index, com.qlcd.qltt.body.pvt.T01005003._cnclstock value) {
-        if (ccslistBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureCcslistIsMutable();
-          ccslist_.set(index, value);
-          onChanged();
-        } else {
-          ccslistBuilder_.setMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._cnclstock ccslist = 2;</code>
-       */
-      public Builder setCcslist(
-          int index, com.qlcd.qltt.body.pvt.T01005003._cnclstock.Builder builderForValue) {
-        if (ccslistBuilder_ == null) {
-          ensureCcslistIsMutable();
-          ccslist_.set(index, builderForValue.build());
-          onChanged();
-        } else {
-          ccslistBuilder_.setMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._cnclstock ccslist = 2;</code>
-       */
-      public Builder addCcslist(com.qlcd.qltt.body.pvt.T01005003._cnclstock value) {
-        if (ccslistBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureCcslistIsMutable();
-          ccslist_.add(value);
-          onChanged();
-        } else {
-          ccslistBuilder_.addMessage(value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._cnclstock ccslist = 2;</code>
-       */
-      public Builder addCcslist(
-          int index, com.qlcd.qltt.body.pvt.T01005003._cnclstock value) {
-        if (ccslistBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureCcslistIsMutable();
-          ccslist_.add(index, value);
-          onChanged();
-        } else {
-          ccslistBuilder_.addMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._cnclstock ccslist = 2;</code>
-       */
-      public Builder addCcslist(
-          com.qlcd.qltt.body.pvt.T01005003._cnclstock.Builder builderForValue) {
-        if (ccslistBuilder_ == null) {
-          ensureCcslistIsMutable();
-          ccslist_.add(builderForValue.build());
-          onChanged();
-        } else {
-          ccslistBuilder_.addMessage(builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._cnclstock ccslist = 2;</code>
-       */
-      public Builder addCcslist(
-          int index, com.qlcd.qltt.body.pvt.T01005003._cnclstock.Builder builderForValue) {
-        if (ccslistBuilder_ == null) {
-          ensureCcslistIsMutable();
-          ccslist_.add(index, builderForValue.build());
-          onChanged();
-        } else {
-          ccslistBuilder_.addMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._cnclstock ccslist = 2;</code>
-       */
-      public Builder addAllCcslist(
-          java.lang.Iterable<? extends com.qlcd.qltt.body.pvt.T01005003._cnclstock> values) {
-        if (ccslistBuilder_ == null) {
-          ensureCcslistIsMutable();
-          com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, ccslist_);
-          onChanged();
-        } else {
-          ccslistBuilder_.addAllMessages(values);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._cnclstock ccslist = 2;</code>
-       */
-      public Builder clearCcslist() {
-        if (ccslistBuilder_ == null) {
-          ccslist_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
-          onChanged();
-        } else {
-          ccslistBuilder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._cnclstock ccslist = 2;</code>
-       */
-      public Builder removeCcslist(int index) {
-        if (ccslistBuilder_ == null) {
-          ensureCcslistIsMutable();
-          ccslist_.remove(index);
-          onChanged();
-        } else {
-          ccslistBuilder_.remove(index);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._cnclstock ccslist = 2;</code>
-       */
-      public com.qlcd.qltt.body.pvt.T01005003._cnclstock.Builder getCcslistBuilder(
-          int index) {
-        return getCcslistFieldBuilder().getBuilder(index);
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._cnclstock ccslist = 2;</code>
-       */
-      public com.qlcd.qltt.body.pvt.T01005003._cnclstockOrBuilder getCcslistOrBuilder(
-          int index) {
-        if (ccslistBuilder_ == null) {
-          return ccslist_.get(index);  } else {
-          return ccslistBuilder_.getMessageOrBuilder(index);
-        }
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._cnclstock ccslist = 2;</code>
-       */
-      public java.util.List<? extends com.qlcd.qltt.body.pvt.T01005003._cnclstockOrBuilder> 
-           getCcslistOrBuilderList() {
-        if (ccslistBuilder_ != null) {
-          return ccslistBuilder_.getMessageOrBuilderList();
-        } else {
-          return java.util.Collections.unmodifiableList(ccslist_);
-        }
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._cnclstock ccslist = 2;</code>
-       */
-      public com.qlcd.qltt.body.pvt.T01005003._cnclstock.Builder addCcslistBuilder() {
-        return getCcslistFieldBuilder().addBuilder(
-            com.qlcd.qltt.body.pvt.T01005003._cnclstock.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._cnclstock ccslist = 2;</code>
-       */
-      public com.qlcd.qltt.body.pvt.T01005003._cnclstock.Builder addCcslistBuilder(
-          int index) {
-        return getCcslistFieldBuilder().addBuilder(
-            index, com.qlcd.qltt.body.pvt.T01005003._cnclstock.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._cnclstock ccslist = 2;</code>
-       */
-      public java.util.List<com.qlcd.qltt.body.pvt.T01005003._cnclstock.Builder> 
-           getCcslistBuilderList() {
-        return getCcslistFieldBuilder().getBuilderList();
-      }
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          com.qlcd.qltt.body.pvt.T01005003._cnclstock, com.qlcd.qltt.body.pvt.T01005003._cnclstock.Builder, com.qlcd.qltt.body.pvt.T01005003._cnclstockOrBuilder> 
-          getCcslistFieldBuilder() {
-        if (ccslistBuilder_ == null) {
-          ccslistBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              com.qlcd.qltt.body.pvt.T01005003._cnclstock, com.qlcd.qltt.body.pvt.T01005003._cnclstock.Builder, com.qlcd.qltt.body.pvt.T01005003._cnclstockOrBuilder>(
-                  ccslist_,
-                  ((bitField0_ & 0x00000002) == 0x00000002),
-                  getParentForChildren(),
-                  isClean());
-          ccslist_ = null;
-        }
-        return ccslistBuilder_;
-      }
-
       private java.util.List<com.qlcd.qltt.body.pvt.T01005003._attnstock> atslist_ =
         java.util.Collections.emptyList();
       private void ensureAtslistIsMutable() {
-        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
+        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
           atslist_ = new java.util.ArrayList<com.qlcd.qltt.body.pvt.T01005003._attnstock>(atslist_);
-          bitField0_ |= 0x00000004;
+          bitField0_ |= 0x00000002;
          }
       }
 
@@ -2187,7 +1243,7 @@ public final class T01005003 {
           com.qlcd.qltt.body.pvt.T01005003._attnstock, com.qlcd.qltt.body.pvt.T01005003._attnstock.Builder, com.qlcd.qltt.body.pvt.T01005003._attnstockOrBuilder> atslistBuilder_;
 
       /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._attnstock atslist = 3;</code>
+       * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._attnstock atslist = 2;</code>
        */
       public java.util.List<com.qlcd.qltt.body.pvt.T01005003._attnstock> getAtslistList() {
         if (atslistBuilder_ == null) {
@@ -2197,7 +1253,7 @@ public final class T01005003 {
         }
       }
       /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._attnstock atslist = 3;</code>
+       * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._attnstock atslist = 2;</code>
        */
       public int getAtslistCount() {
         if (atslistBuilder_ == null) {
@@ -2207,7 +1263,7 @@ public final class T01005003 {
         }
       }
       /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._attnstock atslist = 3;</code>
+       * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._attnstock atslist = 2;</code>
        */
       public com.qlcd.qltt.body.pvt.T01005003._attnstock getAtslist(int index) {
         if (atslistBuilder_ == null) {
@@ -2217,7 +1273,7 @@ public final class T01005003 {
         }
       }
       /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._attnstock atslist = 3;</code>
+       * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._attnstock atslist = 2;</code>
        */
       public Builder setAtslist(
           int index, com.qlcd.qltt.body.pvt.T01005003._attnstock value) {
@@ -2234,7 +1290,7 @@ public final class T01005003 {
         return this;
       }
       /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._attnstock atslist = 3;</code>
+       * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._attnstock atslist = 2;</code>
        */
       public Builder setAtslist(
           int index, com.qlcd.qltt.body.pvt.T01005003._attnstock.Builder builderForValue) {
@@ -2248,7 +1304,7 @@ public final class T01005003 {
         return this;
       }
       /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._attnstock atslist = 3;</code>
+       * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._attnstock atslist = 2;</code>
        */
       public Builder addAtslist(com.qlcd.qltt.body.pvt.T01005003._attnstock value) {
         if (atslistBuilder_ == null) {
@@ -2264,7 +1320,7 @@ public final class T01005003 {
         return this;
       }
       /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._attnstock atslist = 3;</code>
+       * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._attnstock atslist = 2;</code>
        */
       public Builder addAtslist(
           int index, com.qlcd.qltt.body.pvt.T01005003._attnstock value) {
@@ -2281,7 +1337,7 @@ public final class T01005003 {
         return this;
       }
       /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._attnstock atslist = 3;</code>
+       * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._attnstock atslist = 2;</code>
        */
       public Builder addAtslist(
           com.qlcd.qltt.body.pvt.T01005003._attnstock.Builder builderForValue) {
@@ -2295,7 +1351,7 @@ public final class T01005003 {
         return this;
       }
       /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._attnstock atslist = 3;</code>
+       * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._attnstock atslist = 2;</code>
        */
       public Builder addAtslist(
           int index, com.qlcd.qltt.body.pvt.T01005003._attnstock.Builder builderForValue) {
@@ -2309,7 +1365,7 @@ public final class T01005003 {
         return this;
       }
       /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._attnstock atslist = 3;</code>
+       * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._attnstock atslist = 2;</code>
        */
       public Builder addAllAtslist(
           java.lang.Iterable<? extends com.qlcd.qltt.body.pvt.T01005003._attnstock> values) {
@@ -2324,12 +1380,12 @@ public final class T01005003 {
         return this;
       }
       /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._attnstock atslist = 3;</code>
+       * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._attnstock atslist = 2;</code>
        */
       public Builder clearAtslist() {
         if (atslistBuilder_ == null) {
           atslist_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000004);
+          bitField0_ = (bitField0_ & ~0x00000002);
           onChanged();
         } else {
           atslistBuilder_.clear();
@@ -2337,7 +1393,7 @@ public final class T01005003 {
         return this;
       }
       /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._attnstock atslist = 3;</code>
+       * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._attnstock atslist = 2;</code>
        */
       public Builder removeAtslist(int index) {
         if (atslistBuilder_ == null) {
@@ -2350,14 +1406,14 @@ public final class T01005003 {
         return this;
       }
       /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._attnstock atslist = 3;</code>
+       * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._attnstock atslist = 2;</code>
        */
       public com.qlcd.qltt.body.pvt.T01005003._attnstock.Builder getAtslistBuilder(
           int index) {
         return getAtslistFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._attnstock atslist = 3;</code>
+       * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._attnstock atslist = 2;</code>
        */
       public com.qlcd.qltt.body.pvt.T01005003._attnstockOrBuilder getAtslistOrBuilder(
           int index) {
@@ -2367,7 +1423,7 @@ public final class T01005003 {
         }
       }
       /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._attnstock atslist = 3;</code>
+       * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._attnstock atslist = 2;</code>
        */
       public java.util.List<? extends com.qlcd.qltt.body.pvt.T01005003._attnstockOrBuilder> 
            getAtslistOrBuilderList() {
@@ -2378,14 +1434,14 @@ public final class T01005003 {
         }
       }
       /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._attnstock atslist = 3;</code>
+       * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._attnstock atslist = 2;</code>
        */
       public com.qlcd.qltt.body.pvt.T01005003._attnstock.Builder addAtslistBuilder() {
         return getAtslistFieldBuilder().addBuilder(
             com.qlcd.qltt.body.pvt.T01005003._attnstock.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._attnstock atslist = 3;</code>
+       * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._attnstock atslist = 2;</code>
        */
       public com.qlcd.qltt.body.pvt.T01005003._attnstock.Builder addAtslistBuilder(
           int index) {
@@ -2393,7 +1449,7 @@ public final class T01005003 {
             index, com.qlcd.qltt.body.pvt.T01005003._attnstock.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._attnstock atslist = 3;</code>
+       * <code>repeated .com.qlcd.qltt.body.pvt.T01005003._attnstock atslist = 2;</code>
        */
       public java.util.List<com.qlcd.qltt.body.pvt.T01005003._attnstock.Builder> 
            getAtslistBuilderList() {
@@ -2406,7 +1462,7 @@ public final class T01005003 {
           atslistBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               com.qlcd.qltt.body.pvt.T01005003._attnstock, com.qlcd.qltt.body.pvt.T01005003._attnstock.Builder, com.qlcd.qltt.body.pvt.T01005003._attnstockOrBuilder>(
                   atslist_,
-                  ((bitField0_ & 0x00000004) == 0x00000004),
+                  ((bitField0_ & 0x00000002) == 0x00000002),
                   getParentForChildren(),
                   isClean());
           atslist_ = null;
@@ -3898,11 +2954,6 @@ public final class T01005003 {
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_qlcd_qltt_body_pvt_T01005003__cnclstock_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_com_qlcd_qltt_body_pvt_T01005003__cnclstock_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_com_qlcd_qltt_body_pvt_T01005003__attnstock_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -3933,18 +2984,15 @@ public final class T01005003 {
     java.lang.String[] descriptorData = {
       "\n\030body/pvt/T01005003.proto\022 com.qlcd.qlt" +
       "t.body.pvt.T01005003\032\021body/BppSys.proto\"" +
-      "2\n\n_cnclstock\022\021\n\tstockcode\030\001 \001(\t\022\021\n\tstoc" +
-      "kname\030\002 \001(\t\"2\n\n_attnstock\022\021\n\tstockcode\030\001" +
-      " \001(\t\022\021\n\tstockname\030\002 \001(\t\"\235\001\n\n_stockpool\022\021" +
-      "\n\tpoolindex\030\001 \001(\005\022=\n\007ccslist\030\002 \003(\0132,.com" +
-      ".qlcd.qltt.body.pvt.T01005003._cnclstock" +
-      "\022=\n\007atslist\030\003 \003(\0132,.com.qlcd.qltt.body.p" +
-      "vt.T01005003._attnstock\"U\n\004_req\022\016\n\006ttacc" +
-      "t\030\001 \001(\t\022=\n\007stplist\030\002 \003(\0132,.com.qlcd.qltt",
-      ".body.pvt.T01005003._stockpool\"=\n\004_rsp\0225" +
-      "\n\003rsh\030\001 \001(\0132(.com.qlcd.qltt.body.BppSys." +
-      "_rsp_succheadB\030\n\026com.qlcd.qltt.body.pvtb" +
-      "\006proto3"
+      "F\n\n_attnstock\022\022\n\nstockorder\030\001 \001(\005\022\021\n\tsto" +
+      "ckcode\030\002 \001(\t\022\021\n\tstockname\030\003 \001(\t\"^\n\n_stoc" +
+      "kpool\022\021\n\tpoolindex\030\001 \001(\005\022=\n\007atslist\030\002 \003(" +
+      "\0132,.com.qlcd.qltt.body.pvt.T01005003._at" +
+      "tnstock\"U\n\004_req\022\016\n\006ttacct\030\001 \001(\t\022=\n\007stpli" +
+      "st\030\002 \003(\0132,.com.qlcd.qltt.body.pvt.T01005" +
+      "003._stockpool\"=\n\004_rsp\0225\n\003rsh\030\001 \001(\0132(.co" +
+      "m.qlcd.qltt.body.BppSys._rsp_succheadB\030\n",
+      "\026com.qlcd.qltt.body.pvtb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -3959,32 +3007,26 @@ public final class T01005003 {
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           com.qlcd.qltt.body.BppSys.getDescriptor(),
         }, assigner);
-    internal_static_com_qlcd_qltt_body_pvt_T01005003__cnclstock_descriptor =
-      getDescriptor().getMessageTypes().get(0);
-    internal_static_com_qlcd_qltt_body_pvt_T01005003__cnclstock_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_qlcd_qltt_body_pvt_T01005003__cnclstock_descriptor,
-        new java.lang.String[] { "Stockcode", "Stockname", });
     internal_static_com_qlcd_qltt_body_pvt_T01005003__attnstock_descriptor =
-      getDescriptor().getMessageTypes().get(1);
+      getDescriptor().getMessageTypes().get(0);
     internal_static_com_qlcd_qltt_body_pvt_T01005003__attnstock_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_qlcd_qltt_body_pvt_T01005003__attnstock_descriptor,
-        new java.lang.String[] { "Stockcode", "Stockname", });
+        new java.lang.String[] { "Stockorder", "Stockcode", "Stockname", });
     internal_static_com_qlcd_qltt_body_pvt_T01005003__stockpool_descriptor =
-      getDescriptor().getMessageTypes().get(2);
+      getDescriptor().getMessageTypes().get(1);
     internal_static_com_qlcd_qltt_body_pvt_T01005003__stockpool_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_qlcd_qltt_body_pvt_T01005003__stockpool_descriptor,
-        new java.lang.String[] { "Poolindex", "Ccslist", "Atslist", });
+        new java.lang.String[] { "Poolindex", "Atslist", });
     internal_static_com_qlcd_qltt_body_pvt_T01005003__req_descriptor =
-      getDescriptor().getMessageTypes().get(3);
+      getDescriptor().getMessageTypes().get(2);
     internal_static_com_qlcd_qltt_body_pvt_T01005003__req_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_qlcd_qltt_body_pvt_T01005003__req_descriptor,
         new java.lang.String[] { "Ttacct", "Stplist", });
     internal_static_com_qlcd_qltt_body_pvt_T01005003__rsp_descriptor =
-      getDescriptor().getMessageTypes().get(4);
+      getDescriptor().getMessageTypes().get(3);
     internal_static_com_qlcd_qltt_body_pvt_T01005003__rsp_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_qlcd_qltt_body_pvt_T01005003__rsp_descriptor,
