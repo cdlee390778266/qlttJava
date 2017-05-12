@@ -1234,50 +1234,65 @@ public final class T02001001 {
         getTacgroupBytes();
 
     /**
-     * <code>string grpname = 3;</code>
+     * <code>string grpname = 2;</code>
      */
     java.lang.String getGrpname();
     /**
-     * <code>string grpname = 3;</code>
+     * <code>string grpname = 2;</code>
      */
     com.google.protobuf.ByteString
         getGrpnameBytes();
 
     /**
-     * <code>string grpdetail = 4;</code>
+     * <code>string grpdetail = 3;</code>
      */
     java.lang.String getGrpdetail();
     /**
-     * <code>string grpdetail = 4;</code>
+     * <code>string grpdetail = 3;</code>
      */
     com.google.protobuf.ByteString
         getGrpdetailBytes();
 
     /**
-     * <code>int32 grpmemcnt = 5;</code>
+     * <code>int32 grplevel = 4;</code>
+     */
+    int getGrplevel();
+
+    /**
+     * <code>string ptacgroup = 5;</code>
+     */
+    java.lang.String getPtacgroup();
+    /**
+     * <code>string ptacgroup = 5;</code>
+     */
+    com.google.protobuf.ByteString
+        getPtacgroupBytes();
+
+    /**
+     * <code>int32 grpmemcnt = 6;</code>
      */
     int getGrpmemcnt();
 
     /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T02001001._protacgrpmem ptgmlist = 6;</code>
+     * <code>repeated .com.qlcd.qltt.body.pvt.T02001001._protacgrpmem ptgmlist = 7;</code>
      */
     java.util.List<com.qlcd.qltt.body.pvt.T02001001._protacgrpmem> 
         getPtgmlistList();
     /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T02001001._protacgrpmem ptgmlist = 6;</code>
+     * <code>repeated .com.qlcd.qltt.body.pvt.T02001001._protacgrpmem ptgmlist = 7;</code>
      */
     com.qlcd.qltt.body.pvt.T02001001._protacgrpmem getPtgmlist(int index);
     /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T02001001._protacgrpmem ptgmlist = 6;</code>
+     * <code>repeated .com.qlcd.qltt.body.pvt.T02001001._protacgrpmem ptgmlist = 7;</code>
      */
     int getPtgmlistCount();
     /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T02001001._protacgrpmem ptgmlist = 6;</code>
+     * <code>repeated .com.qlcd.qltt.body.pvt.T02001001._protacgrpmem ptgmlist = 7;</code>
      */
     java.util.List<? extends com.qlcd.qltt.body.pvt.T02001001._protacgrpmemOrBuilder> 
         getPtgmlistOrBuilderList();
     /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T02001001._protacgrpmem ptgmlist = 6;</code>
+     * <code>repeated .com.qlcd.qltt.body.pvt.T02001001._protacgrpmem ptgmlist = 7;</code>
      */
     com.qlcd.qltt.body.pvt.T02001001._protacgrpmemOrBuilder getPtgmlistOrBuilder(
         int index);
@@ -1297,6 +1312,8 @@ public final class T02001001 {
       tacgroup_ = "";
       grpname_ = "";
       grpdetail_ = "";
+      grplevel_ = 0;
+      ptacgroup_ = "";
       grpmemcnt_ = 0;
       ptgmlist_ = java.util.Collections.emptyList();
     }
@@ -1332,27 +1349,38 @@ public final class T02001001 {
               tacgroup_ = s;
               break;
             }
-            case 26: {
+            case 18: {
               java.lang.String s = input.readStringRequireUtf8();
 
               grpname_ = s;
               break;
             }
-            case 34: {
+            case 26: {
               java.lang.String s = input.readStringRequireUtf8();
 
               grpdetail_ = s;
               break;
             }
-            case 40: {
+            case 32: {
+
+              grplevel_ = input.readInt32();
+              break;
+            }
+            case 42: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              ptacgroup_ = s;
+              break;
+            }
+            case 48: {
 
               grpmemcnt_ = input.readInt32();
               break;
             }
-            case 50: {
-              if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+            case 58: {
+              if (!((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
                 ptgmlist_ = new java.util.ArrayList<com.qlcd.qltt.body.pvt.T02001001._protacgrpmem>();
-                mutable_bitField0_ |= 0x00000010;
+                mutable_bitField0_ |= 0x00000040;
               }
               ptgmlist_.add(
                   input.readMessage(com.qlcd.qltt.body.pvt.T02001001._protacgrpmem.parser(), extensionRegistry));
@@ -1366,7 +1394,7 @@ public final class T02001001 {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+        if (((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
           ptgmlist_ = java.util.Collections.unmodifiableList(ptgmlist_);
         }
         makeExtensionsImmutable();
@@ -1419,10 +1447,10 @@ public final class T02001001 {
       }
     }
 
-    public static final int GRPNAME_FIELD_NUMBER = 3;
+    public static final int GRPNAME_FIELD_NUMBER = 2;
     private volatile java.lang.Object grpname_;
     /**
-     * <code>string grpname = 3;</code>
+     * <code>string grpname = 2;</code>
      */
     public java.lang.String getGrpname() {
       java.lang.Object ref = grpname_;
@@ -1437,7 +1465,7 @@ public final class T02001001 {
       }
     }
     /**
-     * <code>string grpname = 3;</code>
+     * <code>string grpname = 2;</code>
      */
     public com.google.protobuf.ByteString
         getGrpnameBytes() {
@@ -1453,10 +1481,10 @@ public final class T02001001 {
       }
     }
 
-    public static final int GRPDETAIL_FIELD_NUMBER = 4;
+    public static final int GRPDETAIL_FIELD_NUMBER = 3;
     private volatile java.lang.Object grpdetail_;
     /**
-     * <code>string grpdetail = 4;</code>
+     * <code>string grpdetail = 3;</code>
      */
     public java.lang.String getGrpdetail() {
       java.lang.Object ref = grpdetail_;
@@ -1471,7 +1499,7 @@ public final class T02001001 {
       }
     }
     /**
-     * <code>string grpdetail = 4;</code>
+     * <code>string grpdetail = 3;</code>
      */
     public com.google.protobuf.ByteString
         getGrpdetailBytes() {
@@ -1487,44 +1515,87 @@ public final class T02001001 {
       }
     }
 
-    public static final int GRPMEMCNT_FIELD_NUMBER = 5;
+    public static final int GRPLEVEL_FIELD_NUMBER = 4;
+    private int grplevel_;
+    /**
+     * <code>int32 grplevel = 4;</code>
+     */
+    public int getGrplevel() {
+      return grplevel_;
+    }
+
+    public static final int PTACGROUP_FIELD_NUMBER = 5;
+    private volatile java.lang.Object ptacgroup_;
+    /**
+     * <code>string ptacgroup = 5;</code>
+     */
+    public java.lang.String getPtacgroup() {
+      java.lang.Object ref = ptacgroup_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        ptacgroup_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string ptacgroup = 5;</code>
+     */
+    public com.google.protobuf.ByteString
+        getPtacgroupBytes() {
+      java.lang.Object ref = ptacgroup_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        ptacgroup_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int GRPMEMCNT_FIELD_NUMBER = 6;
     private int grpmemcnt_;
     /**
-     * <code>int32 grpmemcnt = 5;</code>
+     * <code>int32 grpmemcnt = 6;</code>
      */
     public int getGrpmemcnt() {
       return grpmemcnt_;
     }
 
-    public static final int PTGMLIST_FIELD_NUMBER = 6;
+    public static final int PTGMLIST_FIELD_NUMBER = 7;
     private java.util.List<com.qlcd.qltt.body.pvt.T02001001._protacgrpmem> ptgmlist_;
     /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T02001001._protacgrpmem ptgmlist = 6;</code>
+     * <code>repeated .com.qlcd.qltt.body.pvt.T02001001._protacgrpmem ptgmlist = 7;</code>
      */
     public java.util.List<com.qlcd.qltt.body.pvt.T02001001._protacgrpmem> getPtgmlistList() {
       return ptgmlist_;
     }
     /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T02001001._protacgrpmem ptgmlist = 6;</code>
+     * <code>repeated .com.qlcd.qltt.body.pvt.T02001001._protacgrpmem ptgmlist = 7;</code>
      */
     public java.util.List<? extends com.qlcd.qltt.body.pvt.T02001001._protacgrpmemOrBuilder> 
         getPtgmlistOrBuilderList() {
       return ptgmlist_;
     }
     /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T02001001._protacgrpmem ptgmlist = 6;</code>
+     * <code>repeated .com.qlcd.qltt.body.pvt.T02001001._protacgrpmem ptgmlist = 7;</code>
      */
     public int getPtgmlistCount() {
       return ptgmlist_.size();
     }
     /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T02001001._protacgrpmem ptgmlist = 6;</code>
+     * <code>repeated .com.qlcd.qltt.body.pvt.T02001001._protacgrpmem ptgmlist = 7;</code>
      */
     public com.qlcd.qltt.body.pvt.T02001001._protacgrpmem getPtgmlist(int index) {
       return ptgmlist_.get(index);
     }
     /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T02001001._protacgrpmem ptgmlist = 6;</code>
+     * <code>repeated .com.qlcd.qltt.body.pvt.T02001001._protacgrpmem ptgmlist = 7;</code>
      */
     public com.qlcd.qltt.body.pvt.T02001001._protacgrpmemOrBuilder getPtgmlistOrBuilder(
         int index) {
@@ -1547,16 +1618,22 @@ public final class T02001001 {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, tacgroup_);
       }
       if (!getGrpnameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, grpname_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, grpname_);
       }
       if (!getGrpdetailBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, grpdetail_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, grpdetail_);
+      }
+      if (grplevel_ != 0) {
+        output.writeInt32(4, grplevel_);
+      }
+      if (!getPtacgroupBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, ptacgroup_);
       }
       if (grpmemcnt_ != 0) {
-        output.writeInt32(5, grpmemcnt_);
+        output.writeInt32(6, grpmemcnt_);
       }
       for (int i = 0; i < ptgmlist_.size(); i++) {
-        output.writeMessage(6, ptgmlist_.get(i));
+        output.writeMessage(7, ptgmlist_.get(i));
       }
     }
 
@@ -1569,18 +1646,25 @@ public final class T02001001 {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, tacgroup_);
       }
       if (!getGrpnameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, grpname_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, grpname_);
       }
       if (!getGrpdetailBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, grpdetail_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, grpdetail_);
+      }
+      if (grplevel_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, grplevel_);
+      }
+      if (!getPtacgroupBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, ptacgroup_);
       }
       if (grpmemcnt_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(5, grpmemcnt_);
+          .computeInt32Size(6, grpmemcnt_);
       }
       for (int i = 0; i < ptgmlist_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(6, ptgmlist_.get(i));
+          .computeMessageSize(7, ptgmlist_.get(i));
       }
       memoizedSize = size;
       return size;
@@ -1604,6 +1688,10 @@ public final class T02001001 {
           .equals(other.getGrpname());
       result = result && getGrpdetail()
           .equals(other.getGrpdetail());
+      result = result && (getGrplevel()
+          == other.getGrplevel());
+      result = result && getPtacgroup()
+          .equals(other.getPtacgroup());
       result = result && (getGrpmemcnt()
           == other.getGrpmemcnt());
       result = result && getPtgmlistList()
@@ -1624,6 +1712,10 @@ public final class T02001001 {
       hash = (53 * hash) + getGrpname().hashCode();
       hash = (37 * hash) + GRPDETAIL_FIELD_NUMBER;
       hash = (53 * hash) + getGrpdetail().hashCode();
+      hash = (37 * hash) + GRPLEVEL_FIELD_NUMBER;
+      hash = (53 * hash) + getGrplevel();
+      hash = (37 * hash) + PTACGROUP_FIELD_NUMBER;
+      hash = (53 * hash) + getPtacgroup().hashCode();
       hash = (37 * hash) + GRPMEMCNT_FIELD_NUMBER;
       hash = (53 * hash) + getGrpmemcnt();
       if (getPtgmlistCount() > 0) {
@@ -1755,11 +1847,15 @@ public final class T02001001 {
 
         grpdetail_ = "";
 
+        grplevel_ = 0;
+
+        ptacgroup_ = "";
+
         grpmemcnt_ = 0;
 
         if (ptgmlistBuilder_ == null) {
           ptgmlist_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000010);
+          bitField0_ = (bitField0_ & ~0x00000040);
         } else {
           ptgmlistBuilder_.clear();
         }
@@ -1790,11 +1886,13 @@ public final class T02001001 {
         result.tacgroup_ = tacgroup_;
         result.grpname_ = grpname_;
         result.grpdetail_ = grpdetail_;
+        result.grplevel_ = grplevel_;
+        result.ptacgroup_ = ptacgroup_;
         result.grpmemcnt_ = grpmemcnt_;
         if (ptgmlistBuilder_ == null) {
-          if (((bitField0_ & 0x00000010) == 0x00000010)) {
+          if (((bitField0_ & 0x00000040) == 0x00000040)) {
             ptgmlist_ = java.util.Collections.unmodifiableList(ptgmlist_);
-            bitField0_ = (bitField0_ & ~0x00000010);
+            bitField0_ = (bitField0_ & ~0x00000040);
           }
           result.ptgmlist_ = ptgmlist_;
         } else {
@@ -1854,6 +1952,13 @@ public final class T02001001 {
           grpdetail_ = other.grpdetail_;
           onChanged();
         }
+        if (other.getGrplevel() != 0) {
+          setGrplevel(other.getGrplevel());
+        }
+        if (!other.getPtacgroup().isEmpty()) {
+          ptacgroup_ = other.ptacgroup_;
+          onChanged();
+        }
         if (other.getGrpmemcnt() != 0) {
           setGrpmemcnt(other.getGrpmemcnt());
         }
@@ -1861,7 +1966,7 @@ public final class T02001001 {
           if (!other.ptgmlist_.isEmpty()) {
             if (ptgmlist_.isEmpty()) {
               ptgmlist_ = other.ptgmlist_;
-              bitField0_ = (bitField0_ & ~0x00000010);
+              bitField0_ = (bitField0_ & ~0x00000040);
             } else {
               ensurePtgmlistIsMutable();
               ptgmlist_.addAll(other.ptgmlist_);
@@ -1874,7 +1979,7 @@ public final class T02001001 {
               ptgmlistBuilder_.dispose();
               ptgmlistBuilder_ = null;
               ptgmlist_ = other.ptgmlist_;
-              bitField0_ = (bitField0_ & ~0x00000010);
+              bitField0_ = (bitField0_ & ~0x00000040);
               ptgmlistBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getPtgmlistFieldBuilder() : null;
@@ -1981,7 +2086,7 @@ public final class T02001001 {
 
       private java.lang.Object grpname_ = "";
       /**
-       * <code>string grpname = 3;</code>
+       * <code>string grpname = 2;</code>
        */
       public java.lang.String getGrpname() {
         java.lang.Object ref = grpname_;
@@ -1996,7 +2101,7 @@ public final class T02001001 {
         }
       }
       /**
-       * <code>string grpname = 3;</code>
+       * <code>string grpname = 2;</code>
        */
       public com.google.protobuf.ByteString
           getGrpnameBytes() {
@@ -2012,7 +2117,7 @@ public final class T02001001 {
         }
       }
       /**
-       * <code>string grpname = 3;</code>
+       * <code>string grpname = 2;</code>
        */
       public Builder setGrpname(
           java.lang.String value) {
@@ -2025,7 +2130,7 @@ public final class T02001001 {
         return this;
       }
       /**
-       * <code>string grpname = 3;</code>
+       * <code>string grpname = 2;</code>
        */
       public Builder clearGrpname() {
         
@@ -2034,7 +2139,7 @@ public final class T02001001 {
         return this;
       }
       /**
-       * <code>string grpname = 3;</code>
+       * <code>string grpname = 2;</code>
        */
       public Builder setGrpnameBytes(
           com.google.protobuf.ByteString value) {
@@ -2050,7 +2155,7 @@ public final class T02001001 {
 
       private java.lang.Object grpdetail_ = "";
       /**
-       * <code>string grpdetail = 4;</code>
+       * <code>string grpdetail = 3;</code>
        */
       public java.lang.String getGrpdetail() {
         java.lang.Object ref = grpdetail_;
@@ -2065,7 +2170,7 @@ public final class T02001001 {
         }
       }
       /**
-       * <code>string grpdetail = 4;</code>
+       * <code>string grpdetail = 3;</code>
        */
       public com.google.protobuf.ByteString
           getGrpdetailBytes() {
@@ -2081,7 +2186,7 @@ public final class T02001001 {
         }
       }
       /**
-       * <code>string grpdetail = 4;</code>
+       * <code>string grpdetail = 3;</code>
        */
       public Builder setGrpdetail(
           java.lang.String value) {
@@ -2094,7 +2199,7 @@ public final class T02001001 {
         return this;
       }
       /**
-       * <code>string grpdetail = 4;</code>
+       * <code>string grpdetail = 3;</code>
        */
       public Builder clearGrpdetail() {
         
@@ -2103,7 +2208,7 @@ public final class T02001001 {
         return this;
       }
       /**
-       * <code>string grpdetail = 4;</code>
+       * <code>string grpdetail = 3;</code>
        */
       public Builder setGrpdetailBytes(
           com.google.protobuf.ByteString value) {
@@ -2117,15 +2222,110 @@ public final class T02001001 {
         return this;
       }
 
+      private int grplevel_ ;
+      /**
+       * <code>int32 grplevel = 4;</code>
+       */
+      public int getGrplevel() {
+        return grplevel_;
+      }
+      /**
+       * <code>int32 grplevel = 4;</code>
+       */
+      public Builder setGrplevel(int value) {
+        
+        grplevel_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 grplevel = 4;</code>
+       */
+      public Builder clearGrplevel() {
+        
+        grplevel_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object ptacgroup_ = "";
+      /**
+       * <code>string ptacgroup = 5;</code>
+       */
+      public java.lang.String getPtacgroup() {
+        java.lang.Object ref = ptacgroup_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          ptacgroup_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string ptacgroup = 5;</code>
+       */
+      public com.google.protobuf.ByteString
+          getPtacgroupBytes() {
+        java.lang.Object ref = ptacgroup_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          ptacgroup_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string ptacgroup = 5;</code>
+       */
+      public Builder setPtacgroup(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        ptacgroup_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string ptacgroup = 5;</code>
+       */
+      public Builder clearPtacgroup() {
+        
+        ptacgroup_ = getDefaultInstance().getPtacgroup();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string ptacgroup = 5;</code>
+       */
+      public Builder setPtacgroupBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        ptacgroup_ = value;
+        onChanged();
+        return this;
+      }
+
       private int grpmemcnt_ ;
       /**
-       * <code>int32 grpmemcnt = 5;</code>
+       * <code>int32 grpmemcnt = 6;</code>
        */
       public int getGrpmemcnt() {
         return grpmemcnt_;
       }
       /**
-       * <code>int32 grpmemcnt = 5;</code>
+       * <code>int32 grpmemcnt = 6;</code>
        */
       public Builder setGrpmemcnt(int value) {
         
@@ -2134,7 +2334,7 @@ public final class T02001001 {
         return this;
       }
       /**
-       * <code>int32 grpmemcnt = 5;</code>
+       * <code>int32 grpmemcnt = 6;</code>
        */
       public Builder clearGrpmemcnt() {
         
@@ -2146,9 +2346,9 @@ public final class T02001001 {
       private java.util.List<com.qlcd.qltt.body.pvt.T02001001._protacgrpmem> ptgmlist_ =
         java.util.Collections.emptyList();
       private void ensurePtgmlistIsMutable() {
-        if (!((bitField0_ & 0x00000010) == 0x00000010)) {
+        if (!((bitField0_ & 0x00000040) == 0x00000040)) {
           ptgmlist_ = new java.util.ArrayList<com.qlcd.qltt.body.pvt.T02001001._protacgrpmem>(ptgmlist_);
-          bitField0_ |= 0x00000010;
+          bitField0_ |= 0x00000040;
          }
       }
 
@@ -2156,7 +2356,7 @@ public final class T02001001 {
           com.qlcd.qltt.body.pvt.T02001001._protacgrpmem, com.qlcd.qltt.body.pvt.T02001001._protacgrpmem.Builder, com.qlcd.qltt.body.pvt.T02001001._protacgrpmemOrBuilder> ptgmlistBuilder_;
 
       /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T02001001._protacgrpmem ptgmlist = 6;</code>
+       * <code>repeated .com.qlcd.qltt.body.pvt.T02001001._protacgrpmem ptgmlist = 7;</code>
        */
       public java.util.List<com.qlcd.qltt.body.pvt.T02001001._protacgrpmem> getPtgmlistList() {
         if (ptgmlistBuilder_ == null) {
@@ -2166,7 +2366,7 @@ public final class T02001001 {
         }
       }
       /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T02001001._protacgrpmem ptgmlist = 6;</code>
+       * <code>repeated .com.qlcd.qltt.body.pvt.T02001001._protacgrpmem ptgmlist = 7;</code>
        */
       public int getPtgmlistCount() {
         if (ptgmlistBuilder_ == null) {
@@ -2176,7 +2376,7 @@ public final class T02001001 {
         }
       }
       /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T02001001._protacgrpmem ptgmlist = 6;</code>
+       * <code>repeated .com.qlcd.qltt.body.pvt.T02001001._protacgrpmem ptgmlist = 7;</code>
        */
       public com.qlcd.qltt.body.pvt.T02001001._protacgrpmem getPtgmlist(int index) {
         if (ptgmlistBuilder_ == null) {
@@ -2186,7 +2386,7 @@ public final class T02001001 {
         }
       }
       /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T02001001._protacgrpmem ptgmlist = 6;</code>
+       * <code>repeated .com.qlcd.qltt.body.pvt.T02001001._protacgrpmem ptgmlist = 7;</code>
        */
       public Builder setPtgmlist(
           int index, com.qlcd.qltt.body.pvt.T02001001._protacgrpmem value) {
@@ -2203,7 +2403,7 @@ public final class T02001001 {
         return this;
       }
       /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T02001001._protacgrpmem ptgmlist = 6;</code>
+       * <code>repeated .com.qlcd.qltt.body.pvt.T02001001._protacgrpmem ptgmlist = 7;</code>
        */
       public Builder setPtgmlist(
           int index, com.qlcd.qltt.body.pvt.T02001001._protacgrpmem.Builder builderForValue) {
@@ -2217,7 +2417,7 @@ public final class T02001001 {
         return this;
       }
       /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T02001001._protacgrpmem ptgmlist = 6;</code>
+       * <code>repeated .com.qlcd.qltt.body.pvt.T02001001._protacgrpmem ptgmlist = 7;</code>
        */
       public Builder addPtgmlist(com.qlcd.qltt.body.pvt.T02001001._protacgrpmem value) {
         if (ptgmlistBuilder_ == null) {
@@ -2233,7 +2433,7 @@ public final class T02001001 {
         return this;
       }
       /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T02001001._protacgrpmem ptgmlist = 6;</code>
+       * <code>repeated .com.qlcd.qltt.body.pvt.T02001001._protacgrpmem ptgmlist = 7;</code>
        */
       public Builder addPtgmlist(
           int index, com.qlcd.qltt.body.pvt.T02001001._protacgrpmem value) {
@@ -2250,7 +2450,7 @@ public final class T02001001 {
         return this;
       }
       /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T02001001._protacgrpmem ptgmlist = 6;</code>
+       * <code>repeated .com.qlcd.qltt.body.pvt.T02001001._protacgrpmem ptgmlist = 7;</code>
        */
       public Builder addPtgmlist(
           com.qlcd.qltt.body.pvt.T02001001._protacgrpmem.Builder builderForValue) {
@@ -2264,7 +2464,7 @@ public final class T02001001 {
         return this;
       }
       /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T02001001._protacgrpmem ptgmlist = 6;</code>
+       * <code>repeated .com.qlcd.qltt.body.pvt.T02001001._protacgrpmem ptgmlist = 7;</code>
        */
       public Builder addPtgmlist(
           int index, com.qlcd.qltt.body.pvt.T02001001._protacgrpmem.Builder builderForValue) {
@@ -2278,7 +2478,7 @@ public final class T02001001 {
         return this;
       }
       /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T02001001._protacgrpmem ptgmlist = 6;</code>
+       * <code>repeated .com.qlcd.qltt.body.pvt.T02001001._protacgrpmem ptgmlist = 7;</code>
        */
       public Builder addAllPtgmlist(
           java.lang.Iterable<? extends com.qlcd.qltt.body.pvt.T02001001._protacgrpmem> values) {
@@ -2293,12 +2493,12 @@ public final class T02001001 {
         return this;
       }
       /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T02001001._protacgrpmem ptgmlist = 6;</code>
+       * <code>repeated .com.qlcd.qltt.body.pvt.T02001001._protacgrpmem ptgmlist = 7;</code>
        */
       public Builder clearPtgmlist() {
         if (ptgmlistBuilder_ == null) {
           ptgmlist_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000010);
+          bitField0_ = (bitField0_ & ~0x00000040);
           onChanged();
         } else {
           ptgmlistBuilder_.clear();
@@ -2306,7 +2506,7 @@ public final class T02001001 {
         return this;
       }
       /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T02001001._protacgrpmem ptgmlist = 6;</code>
+       * <code>repeated .com.qlcd.qltt.body.pvt.T02001001._protacgrpmem ptgmlist = 7;</code>
        */
       public Builder removePtgmlist(int index) {
         if (ptgmlistBuilder_ == null) {
@@ -2319,14 +2519,14 @@ public final class T02001001 {
         return this;
       }
       /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T02001001._protacgrpmem ptgmlist = 6;</code>
+       * <code>repeated .com.qlcd.qltt.body.pvt.T02001001._protacgrpmem ptgmlist = 7;</code>
        */
       public com.qlcd.qltt.body.pvt.T02001001._protacgrpmem.Builder getPtgmlistBuilder(
           int index) {
         return getPtgmlistFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T02001001._protacgrpmem ptgmlist = 6;</code>
+       * <code>repeated .com.qlcd.qltt.body.pvt.T02001001._protacgrpmem ptgmlist = 7;</code>
        */
       public com.qlcd.qltt.body.pvt.T02001001._protacgrpmemOrBuilder getPtgmlistOrBuilder(
           int index) {
@@ -2336,7 +2536,7 @@ public final class T02001001 {
         }
       }
       /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T02001001._protacgrpmem ptgmlist = 6;</code>
+       * <code>repeated .com.qlcd.qltt.body.pvt.T02001001._protacgrpmem ptgmlist = 7;</code>
        */
       public java.util.List<? extends com.qlcd.qltt.body.pvt.T02001001._protacgrpmemOrBuilder> 
            getPtgmlistOrBuilderList() {
@@ -2347,14 +2547,14 @@ public final class T02001001 {
         }
       }
       /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T02001001._protacgrpmem ptgmlist = 6;</code>
+       * <code>repeated .com.qlcd.qltt.body.pvt.T02001001._protacgrpmem ptgmlist = 7;</code>
        */
       public com.qlcd.qltt.body.pvt.T02001001._protacgrpmem.Builder addPtgmlistBuilder() {
         return getPtgmlistFieldBuilder().addBuilder(
             com.qlcd.qltt.body.pvt.T02001001._protacgrpmem.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T02001001._protacgrpmem ptgmlist = 6;</code>
+       * <code>repeated .com.qlcd.qltt.body.pvt.T02001001._protacgrpmem ptgmlist = 7;</code>
        */
       public com.qlcd.qltt.body.pvt.T02001001._protacgrpmem.Builder addPtgmlistBuilder(
           int index) {
@@ -2362,7 +2562,7 @@ public final class T02001001 {
             index, com.qlcd.qltt.body.pvt.T02001001._protacgrpmem.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T02001001._protacgrpmem ptgmlist = 6;</code>
+       * <code>repeated .com.qlcd.qltt.body.pvt.T02001001._protacgrpmem ptgmlist = 7;</code>
        */
       public java.util.List<com.qlcd.qltt.body.pvt.T02001001._protacgrpmem.Builder> 
            getPtgmlistBuilderList() {
@@ -2375,7 +2575,7 @@ public final class T02001001 {
           ptgmlistBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               com.qlcd.qltt.body.pvt.T02001001._protacgrpmem, com.qlcd.qltt.body.pvt.T02001001._protacgrpmem.Builder, com.qlcd.qltt.body.pvt.T02001001._protacgrpmemOrBuilder>(
                   ptgmlist_,
-                  ((bitField0_ & 0x00000010) == 0x00000010),
+                  ((bitField0_ & 0x00000040) == 0x00000040),
                   getParentForChildren(),
                   isClean());
           ptgmlist_ = null;
@@ -3459,15 +3659,16 @@ public final class T02001001 {
       "t.body.pvt.T02001001\032\021body/BppSys.proto\"" +
       "\006\n\004_req\"R\n\r_protacgrpmem\022\r\n\005index\030\001 \001(\005\022" +
       "\016\n\006tactic\030\002 \001(\t\022\017\n\007tacname\030\003 \001(\t\022\021\n\ttacd" +
-      "etail\030\004 \001(\t\"\232\001\n\014_protacgroup\022\020\n\010tacgroup" +
-      "\030\001 \001(\t\022\017\n\007grpname\030\003 \001(\t\022\021\n\tgrpdetail\030\004 \001" +
-      "(\t\022\021\n\tgrpmemcnt\030\005 \001(\005\022A\n\010ptgmlist\030\006 \003(\0132" +
-      "/.com.qlcd.qltt.body.pvt.T02001001._prot" +
-      "acgrpmem\"\216\001\n\004_rsp\0225\n\003rsh\030\001 \001(\0132(.com.qlc" +
-      "d.qltt.body.BppSys._rsp_succhead\022\016\n\006ptgc",
-      "nt\030\002 \001(\005\022?\n\007ptglist\030\003 \003(\0132..com.qlcd.qlt" +
-      "t.body.pvt.T02001001._protacgroupB\030\n\026com" +
-      ".qlcd.qltt.body.pvtb\006proto3"
+      "etail\030\004 \001(\t\"\277\001\n\014_protacgroup\022\020\n\010tacgroup" +
+      "\030\001 \001(\t\022\017\n\007grpname\030\002 \001(\t\022\021\n\tgrpdetail\030\003 \001" +
+      "(\t\022\020\n\010grplevel\030\004 \001(\005\022\021\n\tptacgroup\030\005 \001(\t\022" +
+      "\021\n\tgrpmemcnt\030\006 \001(\005\022A\n\010ptgmlist\030\007 \003(\0132/.c" +
+      "om.qlcd.qltt.body.pvt.T02001001._protacg" +
+      "rpmem\"\216\001\n\004_rsp\0225\n\003rsh\030\001 \001(\0132(.com.qlcd.q",
+      "ltt.body.BppSys._rsp_succhead\022\016\n\006ptgcnt\030" +
+      "\002 \001(\005\022?\n\007ptglist\030\003 \003(\0132..com.qlcd.qltt.b" +
+      "ody.pvt.T02001001._protacgroupB\030\n\026com.ql" +
+      "cd.qltt.body.pvtb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -3499,7 +3700,7 @@ public final class T02001001 {
     internal_static_com_qlcd_qltt_body_pvt_T02001001__protacgroup_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_qlcd_qltt_body_pvt_T02001001__protacgroup_descriptor,
-        new java.lang.String[] { "Tacgroup", "Grpname", "Grpdetail", "Grpmemcnt", "Ptgmlist", });
+        new java.lang.String[] { "Tacgroup", "Grpname", "Grpdetail", "Grplevel", "Ptacgroup", "Grpmemcnt", "Ptgmlist", });
     internal_static_com_qlcd_qltt_body_pvt_T02001001__rsp_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_com_qlcd_qltt_body_pvt_T02001001__rsp_fieldAccessorTable = new

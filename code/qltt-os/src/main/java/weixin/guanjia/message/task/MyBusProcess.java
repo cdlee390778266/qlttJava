@@ -2,8 +2,8 @@ package weixin.guanjia.message.task;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
+import java.util.ResourceBundle;
 
 import com.qlcd.qltt.body.pvt.T03001001;
 import com.qlcd.qltt.body.pvt.T03001001._evacctpush;
@@ -11,11 +11,12 @@ import com.qlcd.qltt.body.pvt.T03001001._eventpush;
 import com.qlcd.qltt.body.pvt.T03001002;
 import com.qlcd.util.IBusProcess;
 
-import net.sf.json.JSONObject;
 import weixin.guanjia.message.model.SendMessageTep;
 import weixin.util.StringTypeUtil;
 
 public class MyBusProcess implements IBusProcess {
+	
+	private ResourceBundle getData = java.util.ResourceBundle.getBundle("sysConfig");
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -40,7 +41,10 @@ public class MyBusProcess implements IBusProcess {
 					tep.setKeyword2(eventpush.getTacname());//keyword2
 					String remark = eventpush.getEvdetail()+epush.getSummary()+"(查看更多请点击详情,内容当日有效)";//remark
 					//TODO:详情url
-					String url ="";
+					String url =getData.getString("wechat.infourl")
+							+"webapp/getMessage/query1001.do?eventdate="+tep.getTemplateId()
+							+"&eventno="+content.getEp().getEventno()
+							+"&ttacct="+epush.getTtacct()+"&svcchnl="+epush.getSvcchnlValue();
 					tep.setUrl(url);
 					tep.setContent(StringTypeUtil.stringToClob(remark));//内容
 					tep.setWeight(content.getEp().getMxdlyval());//权重
@@ -76,7 +80,10 @@ public class MyBusProcess implements IBusProcess {
 					String remark = _eventpush.getEvdetail()+_eventpush.getSummary()+"(查看更多请点击详情,内容当日有效)";//remark
 					
 					//TODO:详情url
-					String url ="";
+					String url =getData.getString("wechat.infourl")
+							+"webapp/getMessage/query1002.do?eventdate="+tep.getTemplateId()
+							+"&eventno="+_eventpush.getEventno()
+							+"&ttacct="+_eventpush.getTtacct()+"&svcchnl="+_eventpush.getSvcchnlValue();
 					tep.setUrl(url);
 					
 					tep.setContent(StringTypeUtil.stringToClob(remark));//内容
@@ -100,7 +107,7 @@ public class MyBusProcess implements IBusProcess {
 			succheadbuilder.setRspmsg("失败");
 			if(trdcode == 3001001){
 				T03001001._req content = (T03001001._req) requestBody;		
-				org.jeecgframework.core.util.LogUtil.info("代理发送的异常数据为"+JSONObject.fromObject(content));
+				org.jeecgframework.core.util.LogUtil.info("代理发送的异常数据为"+com.alibaba.fastjson.JSONObject.toJSONString(content));
 				T03001001._rsp.Builder rsph =T03001001._rsp.newBuilder();
 				rsph.setRsh(succheadbuilder.build());
 				T03001001._rsp rsp = rsph.build();

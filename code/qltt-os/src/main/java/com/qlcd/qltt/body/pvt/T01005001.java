@@ -14,6 +14,435 @@ public final class T01005001 {
     registerAllExtensions(
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
+  public interface _stockpoolOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:com.qlcd.qltt.body.pvt.T01005001._stockpool)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int32 poolindex = 1;</code>
+     */
+    int getPoolindex();
+  }
+  /**
+   * Protobuf type {@code com.qlcd.qltt.body.pvt.T01005001._stockpool}
+   */
+  public  static final class _stockpool extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:com.qlcd.qltt.body.pvt.T01005001._stockpool)
+      _stockpoolOrBuilder {
+    // Use _stockpool.newBuilder() to construct.
+    private _stockpool(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private _stockpool() {
+      poolindex_ = 0;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+    private _stockpool(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      int mutable_bitField0_ = 0;
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+
+              poolindex_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.qlcd.qltt.body.pvt.T01005001.internal_static_com_qlcd_qltt_body_pvt_T01005001__stockpool_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.qlcd.qltt.body.pvt.T01005001.internal_static_com_qlcd_qltt_body_pvt_T01005001__stockpool_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.qlcd.qltt.body.pvt.T01005001._stockpool.class, com.qlcd.qltt.body.pvt.T01005001._stockpool.Builder.class);
+    }
+
+    public static final int POOLINDEX_FIELD_NUMBER = 1;
+    private int poolindex_;
+    /**
+     * <code>int32 poolindex = 1;</code>
+     */
+    public int getPoolindex() {
+      return poolindex_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (poolindex_ != 0) {
+        output.writeInt32(1, poolindex_);
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (poolindex_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, poolindex_);
+      }
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.qlcd.qltt.body.pvt.T01005001._stockpool)) {
+        return super.equals(obj);
+      }
+      com.qlcd.qltt.body.pvt.T01005001._stockpool other = (com.qlcd.qltt.body.pvt.T01005001._stockpool) obj;
+
+      boolean result = true;
+      result = result && (getPoolindex()
+          == other.getPoolindex());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + POOLINDEX_FIELD_NUMBER;
+      hash = (53 * hash) + getPoolindex();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.qlcd.qltt.body.pvt.T01005001._stockpool parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.qlcd.qltt.body.pvt.T01005001._stockpool parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.qlcd.qltt.body.pvt.T01005001._stockpool parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.qlcd.qltt.body.pvt.T01005001._stockpool parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.qlcd.qltt.body.pvt.T01005001._stockpool parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.qlcd.qltt.body.pvt.T01005001._stockpool parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.qlcd.qltt.body.pvt.T01005001._stockpool parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.qlcd.qltt.body.pvt.T01005001._stockpool parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.qlcd.qltt.body.pvt.T01005001._stockpool parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.qlcd.qltt.body.pvt.T01005001._stockpool parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.qlcd.qltt.body.pvt.T01005001._stockpool prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.qlcd.qltt.body.pvt.T01005001._stockpool}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:com.qlcd.qltt.body.pvt.T01005001._stockpool)
+        com.qlcd.qltt.body.pvt.T01005001._stockpoolOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.qlcd.qltt.body.pvt.T01005001.internal_static_com_qlcd_qltt_body_pvt_T01005001__stockpool_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.qlcd.qltt.body.pvt.T01005001.internal_static_com_qlcd_qltt_body_pvt_T01005001__stockpool_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.qlcd.qltt.body.pvt.T01005001._stockpool.class, com.qlcd.qltt.body.pvt.T01005001._stockpool.Builder.class);
+      }
+
+      // Construct using com.qlcd.qltt.body.pvt.T01005001._stockpool.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        poolindex_ = 0;
+
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.qlcd.qltt.body.pvt.T01005001.internal_static_com_qlcd_qltt_body_pvt_T01005001__stockpool_descriptor;
+      }
+
+      public com.qlcd.qltt.body.pvt.T01005001._stockpool getDefaultInstanceForType() {
+        return com.qlcd.qltt.body.pvt.T01005001._stockpool.getDefaultInstance();
+      }
+
+      public com.qlcd.qltt.body.pvt.T01005001._stockpool build() {
+        com.qlcd.qltt.body.pvt.T01005001._stockpool result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.qlcd.qltt.body.pvt.T01005001._stockpool buildPartial() {
+        com.qlcd.qltt.body.pvt.T01005001._stockpool result = new com.qlcd.qltt.body.pvt.T01005001._stockpool(this);
+        result.poolindex_ = poolindex_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.qlcd.qltt.body.pvt.T01005001._stockpool) {
+          return mergeFrom((com.qlcd.qltt.body.pvt.T01005001._stockpool)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.qlcd.qltt.body.pvt.T01005001._stockpool other) {
+        if (other == com.qlcd.qltt.body.pvt.T01005001._stockpool.getDefaultInstance()) return this;
+        if (other.getPoolindex() != 0) {
+          setPoolindex(other.getPoolindex());
+        }
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.qlcd.qltt.body.pvt.T01005001._stockpool parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.qlcd.qltt.body.pvt.T01005001._stockpool) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int poolindex_ ;
+      /**
+       * <code>int32 poolindex = 1;</code>
+       */
+      public int getPoolindex() {
+        return poolindex_;
+      }
+      /**
+       * <code>int32 poolindex = 1;</code>
+       */
+      public Builder setPoolindex(int value) {
+        
+        poolindex_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 poolindex = 1;</code>
+       */
+      public Builder clearPoolindex() {
+        
+        poolindex_ = 0;
+        onChanged();
+        return this;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:com.qlcd.qltt.body.pvt.T01005001._stockpool)
+    }
+
+    // @@protoc_insertion_point(class_scope:com.qlcd.qltt.body.pvt.T01005001._stockpool)
+    private static final com.qlcd.qltt.body.pvt.T01005001._stockpool DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.qlcd.qltt.body.pvt.T01005001._stockpool();
+    }
+
+    public static com.qlcd.qltt.body.pvt.T01005001._stockpool getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<_stockpool>
+        PARSER = new com.google.protobuf.AbstractParser<_stockpool>() {
+      public _stockpool parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new _stockpool(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<_stockpool> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<_stockpool> getParserForType() {
+      return PARSER;
+    }
+
+    public com.qlcd.qltt.body.pvt.T01005001._stockpool getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface _attnstockOrBuilder extends
       // @@protoc_insertion_point(interface_extends:com.qlcd.qltt.body.pvt.T01005001._attnstock)
       com.google.protobuf.MessageOrBuilder {
@@ -37,6 +466,30 @@ public final class T01005001 {
      */
     com.google.protobuf.ByteString
         getStocknameBytes();
+
+    /**
+     * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._stockpool stplist = 3;</code>
+     */
+    java.util.List<com.qlcd.qltt.body.pvt.T01005001._stockpool> 
+        getStplistList();
+    /**
+     * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._stockpool stplist = 3;</code>
+     */
+    com.qlcd.qltt.body.pvt.T01005001._stockpool getStplist(int index);
+    /**
+     * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._stockpool stplist = 3;</code>
+     */
+    int getStplistCount();
+    /**
+     * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._stockpool stplist = 3;</code>
+     */
+    java.util.List<? extends com.qlcd.qltt.body.pvt.T01005001._stockpoolOrBuilder> 
+        getStplistOrBuilderList();
+    /**
+     * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._stockpool stplist = 3;</code>
+     */
+    com.qlcd.qltt.body.pvt.T01005001._stockpoolOrBuilder getStplistOrBuilder(
+        int index);
   }
   /**
    * Protobuf type {@code com.qlcd.qltt.body.pvt.T01005001._attnstock}
@@ -52,6 +505,7 @@ public final class T01005001 {
     private _attnstock() {
       stockcode_ = "";
       stockname_ = "";
+      stplist_ = java.util.Collections.emptyList();
     }
 
     @java.lang.Override
@@ -91,6 +545,15 @@ public final class T01005001 {
               stockname_ = s;
               break;
             }
+            case 26: {
+              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+                stplist_ = new java.util.ArrayList<com.qlcd.qltt.body.pvt.T01005001._stockpool>();
+                mutable_bitField0_ |= 0x00000004;
+              }
+              stplist_.add(
+                  input.readMessage(com.qlcd.qltt.body.pvt.T01005001._stockpool.parser(), extensionRegistry));
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -99,6 +562,9 @@ public final class T01005001 {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+          stplist_ = java.util.Collections.unmodifiableList(stplist_);
+        }
         makeExtensionsImmutable();
       }
     }
@@ -114,6 +580,7 @@ public final class T01005001 {
               com.qlcd.qltt.body.pvt.T01005001._attnstock.class, com.qlcd.qltt.body.pvt.T01005001._attnstock.Builder.class);
     }
 
+    private int bitField0_;
     public static final int STOCKCODE_FIELD_NUMBER = 1;
     private volatile java.lang.Object stockcode_;
     /**
@@ -182,6 +649,41 @@ public final class T01005001 {
       }
     }
 
+    public static final int STPLIST_FIELD_NUMBER = 3;
+    private java.util.List<com.qlcd.qltt.body.pvt.T01005001._stockpool> stplist_;
+    /**
+     * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._stockpool stplist = 3;</code>
+     */
+    public java.util.List<com.qlcd.qltt.body.pvt.T01005001._stockpool> getStplistList() {
+      return stplist_;
+    }
+    /**
+     * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._stockpool stplist = 3;</code>
+     */
+    public java.util.List<? extends com.qlcd.qltt.body.pvt.T01005001._stockpoolOrBuilder> 
+        getStplistOrBuilderList() {
+      return stplist_;
+    }
+    /**
+     * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._stockpool stplist = 3;</code>
+     */
+    public int getStplistCount() {
+      return stplist_.size();
+    }
+    /**
+     * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._stockpool stplist = 3;</code>
+     */
+    public com.qlcd.qltt.body.pvt.T01005001._stockpool getStplist(int index) {
+      return stplist_.get(index);
+    }
+    /**
+     * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._stockpool stplist = 3;</code>
+     */
+    public com.qlcd.qltt.body.pvt.T01005001._stockpoolOrBuilder getStplistOrBuilder(
+        int index) {
+      return stplist_.get(index);
+    }
+
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -200,6 +702,9 @@ public final class T01005001 {
       if (!getStocknameBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, stockname_);
       }
+      for (int i = 0; i < stplist_.size(); i++) {
+        output.writeMessage(3, stplist_.get(i));
+      }
     }
 
     public int getSerializedSize() {
@@ -212,6 +717,10 @@ public final class T01005001 {
       }
       if (!getStocknameBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, stockname_);
+      }
+      for (int i = 0; i < stplist_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, stplist_.get(i));
       }
       memoizedSize = size;
       return size;
@@ -233,6 +742,8 @@ public final class T01005001 {
           .equals(other.getStockcode());
       result = result && getStockname()
           .equals(other.getStockname());
+      result = result && getStplistList()
+          .equals(other.getStplistList());
       return result;
     }
 
@@ -247,6 +758,10 @@ public final class T01005001 {
       hash = (53 * hash) + getStockcode().hashCode();
       hash = (37 * hash) + STOCKNAME_FIELD_NUMBER;
       hash = (53 * hash) + getStockname().hashCode();
+      if (getStplistCount() > 0) {
+        hash = (37 * hash) + STPLIST_FIELD_NUMBER;
+        hash = (53 * hash) + getStplistList().hashCode();
+      }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -361,6 +876,7 @@ public final class T01005001 {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
+          getStplistFieldBuilder();
         }
       }
       public Builder clear() {
@@ -369,6 +885,12 @@ public final class T01005001 {
 
         stockname_ = "";
 
+        if (stplistBuilder_ == null) {
+          stplist_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
+        } else {
+          stplistBuilder_.clear();
+        }
         return this;
       }
 
@@ -391,8 +913,20 @@ public final class T01005001 {
 
       public com.qlcd.qltt.body.pvt.T01005001._attnstock buildPartial() {
         com.qlcd.qltt.body.pvt.T01005001._attnstock result = new com.qlcd.qltt.body.pvt.T01005001._attnstock(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
         result.stockcode_ = stockcode_;
         result.stockname_ = stockname_;
+        if (stplistBuilder_ == null) {
+          if (((bitField0_ & 0x00000004) == 0x00000004)) {
+            stplist_ = java.util.Collections.unmodifiableList(stplist_);
+            bitField0_ = (bitField0_ & ~0x00000004);
+          }
+          result.stplist_ = stplist_;
+        } else {
+          result.stplist_ = stplistBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -442,6 +976,32 @@ public final class T01005001 {
           stockname_ = other.stockname_;
           onChanged();
         }
+        if (stplistBuilder_ == null) {
+          if (!other.stplist_.isEmpty()) {
+            if (stplist_.isEmpty()) {
+              stplist_ = other.stplist_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+            } else {
+              ensureStplistIsMutable();
+              stplist_.addAll(other.stplist_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.stplist_.isEmpty()) {
+            if (stplistBuilder_.isEmpty()) {
+              stplistBuilder_.dispose();
+              stplistBuilder_ = null;
+              stplist_ = other.stplist_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+              stplistBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getStplistFieldBuilder() : null;
+            } else {
+              stplistBuilder_.addAllMessages(other.stplist_);
+            }
+          }
+        }
         onChanged();
         return this;
       }
@@ -467,6 +1027,7 @@ public final class T01005001 {
         }
         return this;
       }
+      private int bitField0_;
 
       private java.lang.Object stockcode_ = "";
       /**
@@ -605,6 +1166,246 @@ public final class T01005001 {
         onChanged();
         return this;
       }
+
+      private java.util.List<com.qlcd.qltt.body.pvt.T01005001._stockpool> stplist_ =
+        java.util.Collections.emptyList();
+      private void ensureStplistIsMutable() {
+        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
+          stplist_ = new java.util.ArrayList<com.qlcd.qltt.body.pvt.T01005001._stockpool>(stplist_);
+          bitField0_ |= 0x00000004;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          com.qlcd.qltt.body.pvt.T01005001._stockpool, com.qlcd.qltt.body.pvt.T01005001._stockpool.Builder, com.qlcd.qltt.body.pvt.T01005001._stockpoolOrBuilder> stplistBuilder_;
+
+      /**
+       * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._stockpool stplist = 3;</code>
+       */
+      public java.util.List<com.qlcd.qltt.body.pvt.T01005001._stockpool> getStplistList() {
+        if (stplistBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(stplist_);
+        } else {
+          return stplistBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._stockpool stplist = 3;</code>
+       */
+      public int getStplistCount() {
+        if (stplistBuilder_ == null) {
+          return stplist_.size();
+        } else {
+          return stplistBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._stockpool stplist = 3;</code>
+       */
+      public com.qlcd.qltt.body.pvt.T01005001._stockpool getStplist(int index) {
+        if (stplistBuilder_ == null) {
+          return stplist_.get(index);
+        } else {
+          return stplistBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._stockpool stplist = 3;</code>
+       */
+      public Builder setStplist(
+          int index, com.qlcd.qltt.body.pvt.T01005001._stockpool value) {
+        if (stplistBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureStplistIsMutable();
+          stplist_.set(index, value);
+          onChanged();
+        } else {
+          stplistBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._stockpool stplist = 3;</code>
+       */
+      public Builder setStplist(
+          int index, com.qlcd.qltt.body.pvt.T01005001._stockpool.Builder builderForValue) {
+        if (stplistBuilder_ == null) {
+          ensureStplistIsMutable();
+          stplist_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          stplistBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._stockpool stplist = 3;</code>
+       */
+      public Builder addStplist(com.qlcd.qltt.body.pvt.T01005001._stockpool value) {
+        if (stplistBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureStplistIsMutable();
+          stplist_.add(value);
+          onChanged();
+        } else {
+          stplistBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._stockpool stplist = 3;</code>
+       */
+      public Builder addStplist(
+          int index, com.qlcd.qltt.body.pvt.T01005001._stockpool value) {
+        if (stplistBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureStplistIsMutable();
+          stplist_.add(index, value);
+          onChanged();
+        } else {
+          stplistBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._stockpool stplist = 3;</code>
+       */
+      public Builder addStplist(
+          com.qlcd.qltt.body.pvt.T01005001._stockpool.Builder builderForValue) {
+        if (stplistBuilder_ == null) {
+          ensureStplistIsMutable();
+          stplist_.add(builderForValue.build());
+          onChanged();
+        } else {
+          stplistBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._stockpool stplist = 3;</code>
+       */
+      public Builder addStplist(
+          int index, com.qlcd.qltt.body.pvt.T01005001._stockpool.Builder builderForValue) {
+        if (stplistBuilder_ == null) {
+          ensureStplistIsMutable();
+          stplist_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          stplistBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._stockpool stplist = 3;</code>
+       */
+      public Builder addAllStplist(
+          java.lang.Iterable<? extends com.qlcd.qltt.body.pvt.T01005001._stockpool> values) {
+        if (stplistBuilder_ == null) {
+          ensureStplistIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, stplist_);
+          onChanged();
+        } else {
+          stplistBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._stockpool stplist = 3;</code>
+       */
+      public Builder clearStplist() {
+        if (stplistBuilder_ == null) {
+          stplist_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
+          onChanged();
+        } else {
+          stplistBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._stockpool stplist = 3;</code>
+       */
+      public Builder removeStplist(int index) {
+        if (stplistBuilder_ == null) {
+          ensureStplistIsMutable();
+          stplist_.remove(index);
+          onChanged();
+        } else {
+          stplistBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._stockpool stplist = 3;</code>
+       */
+      public com.qlcd.qltt.body.pvt.T01005001._stockpool.Builder getStplistBuilder(
+          int index) {
+        return getStplistFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._stockpool stplist = 3;</code>
+       */
+      public com.qlcd.qltt.body.pvt.T01005001._stockpoolOrBuilder getStplistOrBuilder(
+          int index) {
+        if (stplistBuilder_ == null) {
+          return stplist_.get(index);  } else {
+          return stplistBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._stockpool stplist = 3;</code>
+       */
+      public java.util.List<? extends com.qlcd.qltt.body.pvt.T01005001._stockpoolOrBuilder> 
+           getStplistOrBuilderList() {
+        if (stplistBuilder_ != null) {
+          return stplistBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(stplist_);
+        }
+      }
+      /**
+       * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._stockpool stplist = 3;</code>
+       */
+      public com.qlcd.qltt.body.pvt.T01005001._stockpool.Builder addStplistBuilder() {
+        return getStplistFieldBuilder().addBuilder(
+            com.qlcd.qltt.body.pvt.T01005001._stockpool.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._stockpool stplist = 3;</code>
+       */
+      public com.qlcd.qltt.body.pvt.T01005001._stockpool.Builder addStplistBuilder(
+          int index) {
+        return getStplistFieldBuilder().addBuilder(
+            index, com.qlcd.qltt.body.pvt.T01005001._stockpool.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._stockpool stplist = 3;</code>
+       */
+      public java.util.List<com.qlcd.qltt.body.pvt.T01005001._stockpool.Builder> 
+           getStplistBuilderList() {
+        return getStplistFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          com.qlcd.qltt.body.pvt.T01005001._stockpool, com.qlcd.qltt.body.pvt.T01005001._stockpool.Builder, com.qlcd.qltt.body.pvt.T01005001._stockpoolOrBuilder> 
+          getStplistFieldBuilder() {
+        if (stplistBuilder_ == null) {
+          stplistBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              com.qlcd.qltt.body.pvt.T01005001._stockpool, com.qlcd.qltt.body.pvt.T01005001._stockpool.Builder, com.qlcd.qltt.body.pvt.T01005001._stockpoolOrBuilder>(
+                  stplist_,
+                  ((bitField0_ & 0x00000004) == 0x00000004),
+                  getParentForChildren(),
+                  isClean());
+          stplist_ = null;
+        }
+        return stplistBuilder_;
+      }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return this;
@@ -654,807 +1455,6 @@ public final class T01005001 {
 
   }
 
-  public interface _stockpoolOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:com.qlcd.qltt.body.pvt.T01005001._stockpool)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>int32 poolindex = 1;</code>
-     */
-    int getPoolindex();
-
-    /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._attnstock atslist = 2;</code>
-     */
-    java.util.List<com.qlcd.qltt.body.pvt.T01005001._attnstock> 
-        getAtslistList();
-    /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._attnstock atslist = 2;</code>
-     */
-    com.qlcd.qltt.body.pvt.T01005001._attnstock getAtslist(int index);
-    /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._attnstock atslist = 2;</code>
-     */
-    int getAtslistCount();
-    /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._attnstock atslist = 2;</code>
-     */
-    java.util.List<? extends com.qlcd.qltt.body.pvt.T01005001._attnstockOrBuilder> 
-        getAtslistOrBuilderList();
-    /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._attnstock atslist = 2;</code>
-     */
-    com.qlcd.qltt.body.pvt.T01005001._attnstockOrBuilder getAtslistOrBuilder(
-        int index);
-  }
-  /**
-   * Protobuf type {@code com.qlcd.qltt.body.pvt.T01005001._stockpool}
-   */
-  public  static final class _stockpool extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:com.qlcd.qltt.body.pvt.T01005001._stockpool)
-      _stockpoolOrBuilder {
-    // Use _stockpool.newBuilder() to construct.
-    private _stockpool(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private _stockpool() {
-      poolindex_ = 0;
-      atslist_ = java.util.Collections.emptyList();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
-    }
-    private _stockpool(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      int mutable_bitField0_ = 0;
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!input.skipField(tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 8: {
-
-              poolindex_ = input.readInt32();
-              break;
-            }
-            case 18: {
-              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
-                atslist_ = new java.util.ArrayList<com.qlcd.qltt.body.pvt.T01005001._attnstock>();
-                mutable_bitField0_ |= 0x00000002;
-              }
-              atslist_.add(
-                  input.readMessage(com.qlcd.qltt.body.pvt.T01005001._attnstock.parser(), extensionRegistry));
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
-          atslist_ = java.util.Collections.unmodifiableList(atslist_);
-        }
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.qlcd.qltt.body.pvt.T01005001.internal_static_com_qlcd_qltt_body_pvt_T01005001__stockpool_descriptor;
-    }
-
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.qlcd.qltt.body.pvt.T01005001.internal_static_com_qlcd_qltt_body_pvt_T01005001__stockpool_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.qlcd.qltt.body.pvt.T01005001._stockpool.class, com.qlcd.qltt.body.pvt.T01005001._stockpool.Builder.class);
-    }
-
-    private int bitField0_;
-    public static final int POOLINDEX_FIELD_NUMBER = 1;
-    private int poolindex_;
-    /**
-     * <code>int32 poolindex = 1;</code>
-     */
-    public int getPoolindex() {
-      return poolindex_;
-    }
-
-    public static final int ATSLIST_FIELD_NUMBER = 2;
-    private java.util.List<com.qlcd.qltt.body.pvt.T01005001._attnstock> atslist_;
-    /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._attnstock atslist = 2;</code>
-     */
-    public java.util.List<com.qlcd.qltt.body.pvt.T01005001._attnstock> getAtslistList() {
-      return atslist_;
-    }
-    /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._attnstock atslist = 2;</code>
-     */
-    public java.util.List<? extends com.qlcd.qltt.body.pvt.T01005001._attnstockOrBuilder> 
-        getAtslistOrBuilderList() {
-      return atslist_;
-    }
-    /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._attnstock atslist = 2;</code>
-     */
-    public int getAtslistCount() {
-      return atslist_.size();
-    }
-    /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._attnstock atslist = 2;</code>
-     */
-    public com.qlcd.qltt.body.pvt.T01005001._attnstock getAtslist(int index) {
-      return atslist_.get(index);
-    }
-    /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._attnstock atslist = 2;</code>
-     */
-    public com.qlcd.qltt.body.pvt.T01005001._attnstockOrBuilder getAtslistOrBuilder(
-        int index) {
-      return atslist_.get(index);
-    }
-
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (poolindex_ != 0) {
-        output.writeInt32(1, poolindex_);
-      }
-      for (int i = 0; i < atslist_.size(); i++) {
-        output.writeMessage(2, atslist_.get(i));
-      }
-    }
-
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (poolindex_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, poolindex_);
-      }
-      for (int i = 0; i < atslist_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, atslist_.get(i));
-      }
-      memoizedSize = size;
-      return size;
-    }
-
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof com.qlcd.qltt.body.pvt.T01005001._stockpool)) {
-        return super.equals(obj);
-      }
-      com.qlcd.qltt.body.pvt.T01005001._stockpool other = (com.qlcd.qltt.body.pvt.T01005001._stockpool) obj;
-
-      boolean result = true;
-      result = result && (getPoolindex()
-          == other.getPoolindex());
-      result = result && getAtslistList()
-          .equals(other.getAtslistList());
-      return result;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + POOLINDEX_FIELD_NUMBER;
-      hash = (53 * hash) + getPoolindex();
-      if (getAtslistCount() > 0) {
-        hash = (37 * hash) + ATSLIST_FIELD_NUMBER;
-        hash = (53 * hash) + getAtslistList().hashCode();
-      }
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static com.qlcd.qltt.body.pvt.T01005001._stockpool parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.qlcd.qltt.body.pvt.T01005001._stockpool parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.qlcd.qltt.body.pvt.T01005001._stockpool parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.qlcd.qltt.body.pvt.T01005001._stockpool parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.qlcd.qltt.body.pvt.T01005001._stockpool parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static com.qlcd.qltt.body.pvt.T01005001._stockpool parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static com.qlcd.qltt.body.pvt.T01005001._stockpool parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static com.qlcd.qltt.body.pvt.T01005001._stockpool parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static com.qlcd.qltt.body.pvt.T01005001._stockpool parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static com.qlcd.qltt.body.pvt.T01005001._stockpool parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(com.qlcd.qltt.body.pvt.T01005001._stockpool prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code com.qlcd.qltt.body.pvt.T01005001._stockpool}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:com.qlcd.qltt.body.pvt.T01005001._stockpool)
-        com.qlcd.qltt.body.pvt.T01005001._stockpoolOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.qlcd.qltt.body.pvt.T01005001.internal_static_com_qlcd_qltt_body_pvt_T01005001__stockpool_descriptor;
-      }
-
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.qlcd.qltt.body.pvt.T01005001.internal_static_com_qlcd_qltt_body_pvt_T01005001__stockpool_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.qlcd.qltt.body.pvt.T01005001._stockpool.class, com.qlcd.qltt.body.pvt.T01005001._stockpool.Builder.class);
-      }
-
-      // Construct using com.qlcd.qltt.body.pvt.T01005001._stockpool.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-          getAtslistFieldBuilder();
-        }
-      }
-      public Builder clear() {
-        super.clear();
-        poolindex_ = 0;
-
-        if (atslistBuilder_ == null) {
-          atslist_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
-        } else {
-          atslistBuilder_.clear();
-        }
-        return this;
-      }
-
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.qlcd.qltt.body.pvt.T01005001.internal_static_com_qlcd_qltt_body_pvt_T01005001__stockpool_descriptor;
-      }
-
-      public com.qlcd.qltt.body.pvt.T01005001._stockpool getDefaultInstanceForType() {
-        return com.qlcd.qltt.body.pvt.T01005001._stockpool.getDefaultInstance();
-      }
-
-      public com.qlcd.qltt.body.pvt.T01005001._stockpool build() {
-        com.qlcd.qltt.body.pvt.T01005001._stockpool result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      public com.qlcd.qltt.body.pvt.T01005001._stockpool buildPartial() {
-        com.qlcd.qltt.body.pvt.T01005001._stockpool result = new com.qlcd.qltt.body.pvt.T01005001._stockpool(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        result.poolindex_ = poolindex_;
-        if (atslistBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) == 0x00000002)) {
-            atslist_ = java.util.Collections.unmodifiableList(atslist_);
-            bitField0_ = (bitField0_ & ~0x00000002);
-          }
-          result.atslist_ = atslist_;
-        } else {
-          result.atslist_ = atslistBuilder_.build();
-        }
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
-
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.qlcd.qltt.body.pvt.T01005001._stockpool) {
-          return mergeFrom((com.qlcd.qltt.body.pvt.T01005001._stockpool)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(com.qlcd.qltt.body.pvt.T01005001._stockpool other) {
-        if (other == com.qlcd.qltt.body.pvt.T01005001._stockpool.getDefaultInstance()) return this;
-        if (other.getPoolindex() != 0) {
-          setPoolindex(other.getPoolindex());
-        }
-        if (atslistBuilder_ == null) {
-          if (!other.atslist_.isEmpty()) {
-            if (atslist_.isEmpty()) {
-              atslist_ = other.atslist_;
-              bitField0_ = (bitField0_ & ~0x00000002);
-            } else {
-              ensureAtslistIsMutable();
-              atslist_.addAll(other.atslist_);
-            }
-            onChanged();
-          }
-        } else {
-          if (!other.atslist_.isEmpty()) {
-            if (atslistBuilder_.isEmpty()) {
-              atslistBuilder_.dispose();
-              atslistBuilder_ = null;
-              atslist_ = other.atslist_;
-              bitField0_ = (bitField0_ & ~0x00000002);
-              atslistBuilder_ = 
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                   getAtslistFieldBuilder() : null;
-            } else {
-              atslistBuilder_.addAllMessages(other.atslist_);
-            }
-          }
-        }
-        onChanged();
-        return this;
-      }
-
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        com.qlcd.qltt.body.pvt.T01005001._stockpool parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.qlcd.qltt.body.pvt.T01005001._stockpool) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      private int bitField0_;
-
-      private int poolindex_ ;
-      /**
-       * <code>int32 poolindex = 1;</code>
-       */
-      public int getPoolindex() {
-        return poolindex_;
-      }
-      /**
-       * <code>int32 poolindex = 1;</code>
-       */
-      public Builder setPoolindex(int value) {
-        
-        poolindex_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int32 poolindex = 1;</code>
-       */
-      public Builder clearPoolindex() {
-        
-        poolindex_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private java.util.List<com.qlcd.qltt.body.pvt.T01005001._attnstock> atslist_ =
-        java.util.Collections.emptyList();
-      private void ensureAtslistIsMutable() {
-        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
-          atslist_ = new java.util.ArrayList<com.qlcd.qltt.body.pvt.T01005001._attnstock>(atslist_);
-          bitField0_ |= 0x00000002;
-         }
-      }
-
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          com.qlcd.qltt.body.pvt.T01005001._attnstock, com.qlcd.qltt.body.pvt.T01005001._attnstock.Builder, com.qlcd.qltt.body.pvt.T01005001._attnstockOrBuilder> atslistBuilder_;
-
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._attnstock atslist = 2;</code>
-       */
-      public java.util.List<com.qlcd.qltt.body.pvt.T01005001._attnstock> getAtslistList() {
-        if (atslistBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(atslist_);
-        } else {
-          return atslistBuilder_.getMessageList();
-        }
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._attnstock atslist = 2;</code>
-       */
-      public int getAtslistCount() {
-        if (atslistBuilder_ == null) {
-          return atslist_.size();
-        } else {
-          return atslistBuilder_.getCount();
-        }
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._attnstock atslist = 2;</code>
-       */
-      public com.qlcd.qltt.body.pvt.T01005001._attnstock getAtslist(int index) {
-        if (atslistBuilder_ == null) {
-          return atslist_.get(index);
-        } else {
-          return atslistBuilder_.getMessage(index);
-        }
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._attnstock atslist = 2;</code>
-       */
-      public Builder setAtslist(
-          int index, com.qlcd.qltt.body.pvt.T01005001._attnstock value) {
-        if (atslistBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureAtslistIsMutable();
-          atslist_.set(index, value);
-          onChanged();
-        } else {
-          atslistBuilder_.setMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._attnstock atslist = 2;</code>
-       */
-      public Builder setAtslist(
-          int index, com.qlcd.qltt.body.pvt.T01005001._attnstock.Builder builderForValue) {
-        if (atslistBuilder_ == null) {
-          ensureAtslistIsMutable();
-          atslist_.set(index, builderForValue.build());
-          onChanged();
-        } else {
-          atslistBuilder_.setMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._attnstock atslist = 2;</code>
-       */
-      public Builder addAtslist(com.qlcd.qltt.body.pvt.T01005001._attnstock value) {
-        if (atslistBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureAtslistIsMutable();
-          atslist_.add(value);
-          onChanged();
-        } else {
-          atslistBuilder_.addMessage(value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._attnstock atslist = 2;</code>
-       */
-      public Builder addAtslist(
-          int index, com.qlcd.qltt.body.pvt.T01005001._attnstock value) {
-        if (atslistBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureAtslistIsMutable();
-          atslist_.add(index, value);
-          onChanged();
-        } else {
-          atslistBuilder_.addMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._attnstock atslist = 2;</code>
-       */
-      public Builder addAtslist(
-          com.qlcd.qltt.body.pvt.T01005001._attnstock.Builder builderForValue) {
-        if (atslistBuilder_ == null) {
-          ensureAtslistIsMutable();
-          atslist_.add(builderForValue.build());
-          onChanged();
-        } else {
-          atslistBuilder_.addMessage(builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._attnstock atslist = 2;</code>
-       */
-      public Builder addAtslist(
-          int index, com.qlcd.qltt.body.pvt.T01005001._attnstock.Builder builderForValue) {
-        if (atslistBuilder_ == null) {
-          ensureAtslistIsMutable();
-          atslist_.add(index, builderForValue.build());
-          onChanged();
-        } else {
-          atslistBuilder_.addMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._attnstock atslist = 2;</code>
-       */
-      public Builder addAllAtslist(
-          java.lang.Iterable<? extends com.qlcd.qltt.body.pvt.T01005001._attnstock> values) {
-        if (atslistBuilder_ == null) {
-          ensureAtslistIsMutable();
-          com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, atslist_);
-          onChanged();
-        } else {
-          atslistBuilder_.addAllMessages(values);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._attnstock atslist = 2;</code>
-       */
-      public Builder clearAtslist() {
-        if (atslistBuilder_ == null) {
-          atslist_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
-          onChanged();
-        } else {
-          atslistBuilder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._attnstock atslist = 2;</code>
-       */
-      public Builder removeAtslist(int index) {
-        if (atslistBuilder_ == null) {
-          ensureAtslistIsMutable();
-          atslist_.remove(index);
-          onChanged();
-        } else {
-          atslistBuilder_.remove(index);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._attnstock atslist = 2;</code>
-       */
-      public com.qlcd.qltt.body.pvt.T01005001._attnstock.Builder getAtslistBuilder(
-          int index) {
-        return getAtslistFieldBuilder().getBuilder(index);
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._attnstock atslist = 2;</code>
-       */
-      public com.qlcd.qltt.body.pvt.T01005001._attnstockOrBuilder getAtslistOrBuilder(
-          int index) {
-        if (atslistBuilder_ == null) {
-          return atslist_.get(index);  } else {
-          return atslistBuilder_.getMessageOrBuilder(index);
-        }
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._attnstock atslist = 2;</code>
-       */
-      public java.util.List<? extends com.qlcd.qltt.body.pvt.T01005001._attnstockOrBuilder> 
-           getAtslistOrBuilderList() {
-        if (atslistBuilder_ != null) {
-          return atslistBuilder_.getMessageOrBuilderList();
-        } else {
-          return java.util.Collections.unmodifiableList(atslist_);
-        }
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._attnstock atslist = 2;</code>
-       */
-      public com.qlcd.qltt.body.pvt.T01005001._attnstock.Builder addAtslistBuilder() {
-        return getAtslistFieldBuilder().addBuilder(
-            com.qlcd.qltt.body.pvt.T01005001._attnstock.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._attnstock atslist = 2;</code>
-       */
-      public com.qlcd.qltt.body.pvt.T01005001._attnstock.Builder addAtslistBuilder(
-          int index) {
-        return getAtslistFieldBuilder().addBuilder(
-            index, com.qlcd.qltt.body.pvt.T01005001._attnstock.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._attnstock atslist = 2;</code>
-       */
-      public java.util.List<com.qlcd.qltt.body.pvt.T01005001._attnstock.Builder> 
-           getAtslistBuilderList() {
-        return getAtslistFieldBuilder().getBuilderList();
-      }
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          com.qlcd.qltt.body.pvt.T01005001._attnstock, com.qlcd.qltt.body.pvt.T01005001._attnstock.Builder, com.qlcd.qltt.body.pvt.T01005001._attnstockOrBuilder> 
-          getAtslistFieldBuilder() {
-        if (atslistBuilder_ == null) {
-          atslistBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              com.qlcd.qltt.body.pvt.T01005001._attnstock, com.qlcd.qltt.body.pvt.T01005001._attnstock.Builder, com.qlcd.qltt.body.pvt.T01005001._attnstockOrBuilder>(
-                  atslist_,
-                  ((bitField0_ & 0x00000002) == 0x00000002),
-                  getParentForChildren(),
-                  isClean());
-          atslist_ = null;
-        }
-        return atslistBuilder_;
-      }
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:com.qlcd.qltt.body.pvt.T01005001._stockpool)
-    }
-
-    // @@protoc_insertion_point(class_scope:com.qlcd.qltt.body.pvt.T01005001._stockpool)
-    private static final com.qlcd.qltt.body.pvt.T01005001._stockpool DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new com.qlcd.qltt.body.pvt.T01005001._stockpool();
-    }
-
-    public static com.qlcd.qltt.body.pvt.T01005001._stockpool getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<_stockpool>
-        PARSER = new com.google.protobuf.AbstractParser<_stockpool>() {
-      public _stockpool parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-          return new _stockpool(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<_stockpool> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<_stockpool> getParserForType() {
-      return PARSER;
-    }
-
-    public com.qlcd.qltt.body.pvt.T01005001._stockpool getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
   public interface _reqOrBuilder extends
       // @@protoc_insertion_point(interface_extends:com.qlcd.qltt.body.pvt.T01005001._req)
       com.google.protobuf.MessageOrBuilder {
@@ -1470,28 +1470,17 @@ public final class T01005001 {
         getTtacctBytes();
 
     /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._stockpool stplist = 2;</code>
+     * <code>.com.qlcd.qltt.body.pvt.T01005001._attnstock ats = 2;</code>
      */
-    java.util.List<com.qlcd.qltt.body.pvt.T01005001._stockpool> 
-        getStplistList();
+    boolean hasAts();
     /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._stockpool stplist = 2;</code>
+     * <code>.com.qlcd.qltt.body.pvt.T01005001._attnstock ats = 2;</code>
      */
-    com.qlcd.qltt.body.pvt.T01005001._stockpool getStplist(int index);
+    com.qlcd.qltt.body.pvt.T01005001._attnstock getAts();
     /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._stockpool stplist = 2;</code>
+     * <code>.com.qlcd.qltt.body.pvt.T01005001._attnstock ats = 2;</code>
      */
-    int getStplistCount();
-    /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._stockpool stplist = 2;</code>
-     */
-    java.util.List<? extends com.qlcd.qltt.body.pvt.T01005001._stockpoolOrBuilder> 
-        getStplistOrBuilderList();
-    /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._stockpool stplist = 2;</code>
-     */
-    com.qlcd.qltt.body.pvt.T01005001._stockpoolOrBuilder getStplistOrBuilder(
-        int index);
+    com.qlcd.qltt.body.pvt.T01005001._attnstockOrBuilder getAtsOrBuilder();
   }
   /**
    * Protobuf type {@code com.qlcd.qltt.body.pvt.T01005001._req}
@@ -1506,7 +1495,6 @@ public final class T01005001 {
     }
     private _req() {
       ttacct_ = "";
-      stplist_ = java.util.Collections.emptyList();
     }
 
     @java.lang.Override
@@ -1541,12 +1529,16 @@ public final class T01005001 {
               break;
             }
             case 18: {
-              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
-                stplist_ = new java.util.ArrayList<com.qlcd.qltt.body.pvt.T01005001._stockpool>();
-                mutable_bitField0_ |= 0x00000002;
+              com.qlcd.qltt.body.pvt.T01005001._attnstock.Builder subBuilder = null;
+              if (ats_ != null) {
+                subBuilder = ats_.toBuilder();
               }
-              stplist_.add(
-                  input.readMessage(com.qlcd.qltt.body.pvt.T01005001._stockpool.parser(), extensionRegistry));
+              ats_ = input.readMessage(com.qlcd.qltt.body.pvt.T01005001._attnstock.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(ats_);
+                ats_ = subBuilder.buildPartial();
+              }
+
               break;
             }
           }
@@ -1557,9 +1549,6 @@ public final class T01005001 {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
-          stplist_ = java.util.Collections.unmodifiableList(stplist_);
-        }
         makeExtensionsImmutable();
       }
     }
@@ -1575,7 +1564,6 @@ public final class T01005001 {
               com.qlcd.qltt.body.pvt.T01005001._req.class, com.qlcd.qltt.body.pvt.T01005001._req.Builder.class);
     }
 
-    private int bitField0_;
     public static final int TTACCT_FIELD_NUMBER = 1;
     private volatile java.lang.Object ttacct_;
     /**
@@ -1610,39 +1598,25 @@ public final class T01005001 {
       }
     }
 
-    public static final int STPLIST_FIELD_NUMBER = 2;
-    private java.util.List<com.qlcd.qltt.body.pvt.T01005001._stockpool> stplist_;
+    public static final int ATS_FIELD_NUMBER = 2;
+    private com.qlcd.qltt.body.pvt.T01005001._attnstock ats_;
     /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._stockpool stplist = 2;</code>
+     * <code>.com.qlcd.qltt.body.pvt.T01005001._attnstock ats = 2;</code>
      */
-    public java.util.List<com.qlcd.qltt.body.pvt.T01005001._stockpool> getStplistList() {
-      return stplist_;
+    public boolean hasAts() {
+      return ats_ != null;
     }
     /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._stockpool stplist = 2;</code>
+     * <code>.com.qlcd.qltt.body.pvt.T01005001._attnstock ats = 2;</code>
      */
-    public java.util.List<? extends com.qlcd.qltt.body.pvt.T01005001._stockpoolOrBuilder> 
-        getStplistOrBuilderList() {
-      return stplist_;
+    public com.qlcd.qltt.body.pvt.T01005001._attnstock getAts() {
+      return ats_ == null ? com.qlcd.qltt.body.pvt.T01005001._attnstock.getDefaultInstance() : ats_;
     }
     /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._stockpool stplist = 2;</code>
+     * <code>.com.qlcd.qltt.body.pvt.T01005001._attnstock ats = 2;</code>
      */
-    public int getStplistCount() {
-      return stplist_.size();
-    }
-    /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._stockpool stplist = 2;</code>
-     */
-    public com.qlcd.qltt.body.pvt.T01005001._stockpool getStplist(int index) {
-      return stplist_.get(index);
-    }
-    /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._stockpool stplist = 2;</code>
-     */
-    public com.qlcd.qltt.body.pvt.T01005001._stockpoolOrBuilder getStplistOrBuilder(
-        int index) {
-      return stplist_.get(index);
+    public com.qlcd.qltt.body.pvt.T01005001._attnstockOrBuilder getAtsOrBuilder() {
+      return getAts();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -1660,8 +1634,8 @@ public final class T01005001 {
       if (!getTtacctBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, ttacct_);
       }
-      for (int i = 0; i < stplist_.size(); i++) {
-        output.writeMessage(2, stplist_.get(i));
+      if (ats_ != null) {
+        output.writeMessage(2, getAts());
       }
     }
 
@@ -1673,9 +1647,9 @@ public final class T01005001 {
       if (!getTtacctBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, ttacct_);
       }
-      for (int i = 0; i < stplist_.size(); i++) {
+      if (ats_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, stplist_.get(i));
+          .computeMessageSize(2, getAts());
       }
       memoizedSize = size;
       return size;
@@ -1695,8 +1669,11 @@ public final class T01005001 {
       boolean result = true;
       result = result && getTtacct()
           .equals(other.getTtacct());
-      result = result && getStplistList()
-          .equals(other.getStplistList());
+      result = result && (hasAts() == other.hasAts());
+      if (hasAts()) {
+        result = result && getAts()
+            .equals(other.getAts());
+      }
       return result;
     }
 
@@ -1709,9 +1686,9 @@ public final class T01005001 {
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + TTACCT_FIELD_NUMBER;
       hash = (53 * hash) + getTtacct().hashCode();
-      if (getStplistCount() > 0) {
-        hash = (37 * hash) + STPLIST_FIELD_NUMBER;
-        hash = (53 * hash) + getStplistList().hashCode();
+      if (hasAts()) {
+        hash = (37 * hash) + ATS_FIELD_NUMBER;
+        hash = (53 * hash) + getAts().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -1827,18 +1804,17 @@ public final class T01005001 {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
-          getStplistFieldBuilder();
         }
       }
       public Builder clear() {
         super.clear();
         ttacct_ = "";
 
-        if (stplistBuilder_ == null) {
-          stplist_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
+        if (atsBuilder_ == null) {
+          ats_ = null;
         } else {
-          stplistBuilder_.clear();
+          ats_ = null;
+          atsBuilder_ = null;
         }
         return this;
       }
@@ -1862,19 +1838,12 @@ public final class T01005001 {
 
       public com.qlcd.qltt.body.pvt.T01005001._req buildPartial() {
         com.qlcd.qltt.body.pvt.T01005001._req result = new com.qlcd.qltt.body.pvt.T01005001._req(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
         result.ttacct_ = ttacct_;
-        if (stplistBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) == 0x00000002)) {
-            stplist_ = java.util.Collections.unmodifiableList(stplist_);
-            bitField0_ = (bitField0_ & ~0x00000002);
-          }
-          result.stplist_ = stplist_;
+        if (atsBuilder_ == null) {
+          result.ats_ = ats_;
         } else {
-          result.stplist_ = stplistBuilder_.build();
+          result.ats_ = atsBuilder_.build();
         }
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -1920,31 +1889,8 @@ public final class T01005001 {
           ttacct_ = other.ttacct_;
           onChanged();
         }
-        if (stplistBuilder_ == null) {
-          if (!other.stplist_.isEmpty()) {
-            if (stplist_.isEmpty()) {
-              stplist_ = other.stplist_;
-              bitField0_ = (bitField0_ & ~0x00000002);
-            } else {
-              ensureStplistIsMutable();
-              stplist_.addAll(other.stplist_);
-            }
-            onChanged();
-          }
-        } else {
-          if (!other.stplist_.isEmpty()) {
-            if (stplistBuilder_.isEmpty()) {
-              stplistBuilder_.dispose();
-              stplistBuilder_ = null;
-              stplist_ = other.stplist_;
-              bitField0_ = (bitField0_ & ~0x00000002);
-              stplistBuilder_ = 
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                   getStplistFieldBuilder() : null;
-            } else {
-              stplistBuilder_.addAllMessages(other.stplist_);
-            }
-          }
+        if (other.hasAts()) {
+          mergeAts(other.getAts());
         }
         onChanged();
         return this;
@@ -1971,7 +1917,6 @@ public final class T01005001 {
         }
         return this;
       }
-      private int bitField0_;
 
       private java.lang.Object ttacct_ = "";
       /**
@@ -2042,244 +1987,121 @@ public final class T01005001 {
         return this;
       }
 
-      private java.util.List<com.qlcd.qltt.body.pvt.T01005001._stockpool> stplist_ =
-        java.util.Collections.emptyList();
-      private void ensureStplistIsMutable() {
-        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
-          stplist_ = new java.util.ArrayList<com.qlcd.qltt.body.pvt.T01005001._stockpool>(stplist_);
-          bitField0_ |= 0x00000002;
-         }
+      private com.qlcd.qltt.body.pvt.T01005001._attnstock ats_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.qlcd.qltt.body.pvt.T01005001._attnstock, com.qlcd.qltt.body.pvt.T01005001._attnstock.Builder, com.qlcd.qltt.body.pvt.T01005001._attnstockOrBuilder> atsBuilder_;
+      /**
+       * <code>.com.qlcd.qltt.body.pvt.T01005001._attnstock ats = 2;</code>
+       */
+      public boolean hasAts() {
+        return atsBuilder_ != null || ats_ != null;
       }
+      /**
+       * <code>.com.qlcd.qltt.body.pvt.T01005001._attnstock ats = 2;</code>
+       */
+      public com.qlcd.qltt.body.pvt.T01005001._attnstock getAts() {
+        if (atsBuilder_ == null) {
+          return ats_ == null ? com.qlcd.qltt.body.pvt.T01005001._attnstock.getDefaultInstance() : ats_;
+        } else {
+          return atsBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.com.qlcd.qltt.body.pvt.T01005001._attnstock ats = 2;</code>
+       */
+      public Builder setAts(com.qlcd.qltt.body.pvt.T01005001._attnstock value) {
+        if (atsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ats_ = value;
+          onChanged();
+        } else {
+          atsBuilder_.setMessage(value);
+        }
 
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          com.qlcd.qltt.body.pvt.T01005001._stockpool, com.qlcd.qltt.body.pvt.T01005001._stockpool.Builder, com.qlcd.qltt.body.pvt.T01005001._stockpoolOrBuilder> stplistBuilder_;
+        return this;
+      }
+      /**
+       * <code>.com.qlcd.qltt.body.pvt.T01005001._attnstock ats = 2;</code>
+       */
+      public Builder setAts(
+          com.qlcd.qltt.body.pvt.T01005001._attnstock.Builder builderForValue) {
+        if (atsBuilder_ == null) {
+          ats_ = builderForValue.build();
+          onChanged();
+        } else {
+          atsBuilder_.setMessage(builderForValue.build());
+        }
 
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._stockpool stplist = 2;</code>
-       */
-      public java.util.List<com.qlcd.qltt.body.pvt.T01005001._stockpool> getStplistList() {
-        if (stplistBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(stplist_);
-        } else {
-          return stplistBuilder_.getMessageList();
-        }
+        return this;
       }
       /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._stockpool stplist = 2;</code>
+       * <code>.com.qlcd.qltt.body.pvt.T01005001._attnstock ats = 2;</code>
        */
-      public int getStplistCount() {
-        if (stplistBuilder_ == null) {
-          return stplist_.size();
-        } else {
-          return stplistBuilder_.getCount();
-        }
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._stockpool stplist = 2;</code>
-       */
-      public com.qlcd.qltt.body.pvt.T01005001._stockpool getStplist(int index) {
-        if (stplistBuilder_ == null) {
-          return stplist_.get(index);
-        } else {
-          return stplistBuilder_.getMessage(index);
-        }
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._stockpool stplist = 2;</code>
-       */
-      public Builder setStplist(
-          int index, com.qlcd.qltt.body.pvt.T01005001._stockpool value) {
-        if (stplistBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
+      public Builder mergeAts(com.qlcd.qltt.body.pvt.T01005001._attnstock value) {
+        if (atsBuilder_ == null) {
+          if (ats_ != null) {
+            ats_ =
+              com.qlcd.qltt.body.pvt.T01005001._attnstock.newBuilder(ats_).mergeFrom(value).buildPartial();
+          } else {
+            ats_ = value;
           }
-          ensureStplistIsMutable();
-          stplist_.set(index, value);
           onChanged();
         } else {
-          stplistBuilder_.setMessage(index, value);
+          atsBuilder_.mergeFrom(value);
         }
+
         return this;
       }
       /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._stockpool stplist = 2;</code>
+       * <code>.com.qlcd.qltt.body.pvt.T01005001._attnstock ats = 2;</code>
        */
-      public Builder setStplist(
-          int index, com.qlcd.qltt.body.pvt.T01005001._stockpool.Builder builderForValue) {
-        if (stplistBuilder_ == null) {
-          ensureStplistIsMutable();
-          stplist_.set(index, builderForValue.build());
+      public Builder clearAts() {
+        if (atsBuilder_ == null) {
+          ats_ = null;
           onChanged();
         } else {
-          stplistBuilder_.setMessage(index, builderForValue.build());
+          ats_ = null;
+          atsBuilder_ = null;
         }
+
         return this;
       }
       /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._stockpool stplist = 2;</code>
+       * <code>.com.qlcd.qltt.body.pvt.T01005001._attnstock ats = 2;</code>
        */
-      public Builder addStplist(com.qlcd.qltt.body.pvt.T01005001._stockpool value) {
-        if (stplistBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureStplistIsMutable();
-          stplist_.add(value);
-          onChanged();
+      public com.qlcd.qltt.body.pvt.T01005001._attnstock.Builder getAtsBuilder() {
+        
+        onChanged();
+        return getAtsFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.com.qlcd.qltt.body.pvt.T01005001._attnstock ats = 2;</code>
+       */
+      public com.qlcd.qltt.body.pvt.T01005001._attnstockOrBuilder getAtsOrBuilder() {
+        if (atsBuilder_ != null) {
+          return atsBuilder_.getMessageOrBuilder();
         } else {
-          stplistBuilder_.addMessage(value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._stockpool stplist = 2;</code>
-       */
-      public Builder addStplist(
-          int index, com.qlcd.qltt.body.pvt.T01005001._stockpool value) {
-        if (stplistBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureStplistIsMutable();
-          stplist_.add(index, value);
-          onChanged();
-        } else {
-          stplistBuilder_.addMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._stockpool stplist = 2;</code>
-       */
-      public Builder addStplist(
-          com.qlcd.qltt.body.pvt.T01005001._stockpool.Builder builderForValue) {
-        if (stplistBuilder_ == null) {
-          ensureStplistIsMutable();
-          stplist_.add(builderForValue.build());
-          onChanged();
-        } else {
-          stplistBuilder_.addMessage(builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._stockpool stplist = 2;</code>
-       */
-      public Builder addStplist(
-          int index, com.qlcd.qltt.body.pvt.T01005001._stockpool.Builder builderForValue) {
-        if (stplistBuilder_ == null) {
-          ensureStplistIsMutable();
-          stplist_.add(index, builderForValue.build());
-          onChanged();
-        } else {
-          stplistBuilder_.addMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._stockpool stplist = 2;</code>
-       */
-      public Builder addAllStplist(
-          java.lang.Iterable<? extends com.qlcd.qltt.body.pvt.T01005001._stockpool> values) {
-        if (stplistBuilder_ == null) {
-          ensureStplistIsMutable();
-          com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, stplist_);
-          onChanged();
-        } else {
-          stplistBuilder_.addAllMessages(values);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._stockpool stplist = 2;</code>
-       */
-      public Builder clearStplist() {
-        if (stplistBuilder_ == null) {
-          stplist_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
-          onChanged();
-        } else {
-          stplistBuilder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._stockpool stplist = 2;</code>
-       */
-      public Builder removeStplist(int index) {
-        if (stplistBuilder_ == null) {
-          ensureStplistIsMutable();
-          stplist_.remove(index);
-          onChanged();
-        } else {
-          stplistBuilder_.remove(index);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._stockpool stplist = 2;</code>
-       */
-      public com.qlcd.qltt.body.pvt.T01005001._stockpool.Builder getStplistBuilder(
-          int index) {
-        return getStplistFieldBuilder().getBuilder(index);
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._stockpool stplist = 2;</code>
-       */
-      public com.qlcd.qltt.body.pvt.T01005001._stockpoolOrBuilder getStplistOrBuilder(
-          int index) {
-        if (stplistBuilder_ == null) {
-          return stplist_.get(index);  } else {
-          return stplistBuilder_.getMessageOrBuilder(index);
+          return ats_ == null ?
+              com.qlcd.qltt.body.pvt.T01005001._attnstock.getDefaultInstance() : ats_;
         }
       }
       /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._stockpool stplist = 2;</code>
+       * <code>.com.qlcd.qltt.body.pvt.T01005001._attnstock ats = 2;</code>
        */
-      public java.util.List<? extends com.qlcd.qltt.body.pvt.T01005001._stockpoolOrBuilder> 
-           getStplistOrBuilderList() {
-        if (stplistBuilder_ != null) {
-          return stplistBuilder_.getMessageOrBuilderList();
-        } else {
-          return java.util.Collections.unmodifiableList(stplist_);
-        }
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._stockpool stplist = 2;</code>
-       */
-      public com.qlcd.qltt.body.pvt.T01005001._stockpool.Builder addStplistBuilder() {
-        return getStplistFieldBuilder().addBuilder(
-            com.qlcd.qltt.body.pvt.T01005001._stockpool.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._stockpool stplist = 2;</code>
-       */
-      public com.qlcd.qltt.body.pvt.T01005001._stockpool.Builder addStplistBuilder(
-          int index) {
-        return getStplistFieldBuilder().addBuilder(
-            index, com.qlcd.qltt.body.pvt.T01005001._stockpool.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01005001._stockpool stplist = 2;</code>
-       */
-      public java.util.List<com.qlcd.qltt.body.pvt.T01005001._stockpool.Builder> 
-           getStplistBuilderList() {
-        return getStplistFieldBuilder().getBuilderList();
-      }
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          com.qlcd.qltt.body.pvt.T01005001._stockpool, com.qlcd.qltt.body.pvt.T01005001._stockpool.Builder, com.qlcd.qltt.body.pvt.T01005001._stockpoolOrBuilder> 
-          getStplistFieldBuilder() {
-        if (stplistBuilder_ == null) {
-          stplistBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              com.qlcd.qltt.body.pvt.T01005001._stockpool, com.qlcd.qltt.body.pvt.T01005001._stockpool.Builder, com.qlcd.qltt.body.pvt.T01005001._stockpoolOrBuilder>(
-                  stplist_,
-                  ((bitField0_ & 0x00000002) == 0x00000002),
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.qlcd.qltt.body.pvt.T01005001._attnstock, com.qlcd.qltt.body.pvt.T01005001._attnstock.Builder, com.qlcd.qltt.body.pvt.T01005001._attnstockOrBuilder> 
+          getAtsFieldBuilder() {
+        if (atsBuilder_ == null) {
+          atsBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.qlcd.qltt.body.pvt.T01005001._attnstock, com.qlcd.qltt.body.pvt.T01005001._attnstock.Builder, com.qlcd.qltt.body.pvt.T01005001._attnstockOrBuilder>(
+                  getAts(),
                   getParentForChildren(),
                   isClean());
-          stplist_ = null;
+          ats_ = null;
         }
-        return stplistBuilder_;
+        return atsBuilder_;
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -2891,15 +2713,15 @@ public final class T01005001 {
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_qlcd_qltt_body_pvt_T01005001__attnstock_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_com_qlcd_qltt_body_pvt_T01005001__attnstock_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_com_qlcd_qltt_body_pvt_T01005001__stockpool_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_qlcd_qltt_body_pvt_T01005001__stockpool_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_qlcd_qltt_body_pvt_T01005001__attnstock_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_com_qlcd_qltt_body_pvt_T01005001__attnstock_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_com_qlcd_qltt_body_pvt_T01005001__req_descriptor;
   private static final 
@@ -2921,15 +2743,15 @@ public final class T01005001 {
     java.lang.String[] descriptorData = {
       "\n\030body/pvt/T01005001.proto\022 com.qlcd.qlt" +
       "t.body.pvt.T01005001\032\021body/BppSys.proto\"" +
-      "2\n\n_attnstock\022\021\n\tstockcode\030\001 \001(\t\022\021\n\tstoc" +
-      "kname\030\002 \001(\t\"^\n\n_stockpool\022\021\n\tpoolindex\030\001" +
-      " \001(\005\022=\n\007atslist\030\002 \003(\0132,.com.qlcd.qltt.bo" +
-      "dy.pvt.T01005001._attnstock\"U\n\004_req\022\016\n\006t" +
-      "tacct\030\001 \001(\t\022=\n\007stplist\030\002 \003(\0132,.com.qlcd." +
-      "qltt.body.pvt.T01005001._stockpool\"=\n\004_r" +
-      "sp\0225\n\003rsh\030\001 \001(\0132(.com.qlcd.qltt.body.Bpp" +
-      "Sys._rsp_succheadB\030\n\026com.qlcd.qltt.body.",
-      "pvtb\006proto3"
+      "\037\n\n_stockpool\022\021\n\tpoolindex\030\001 \001(\005\"q\n\n_att" +
+      "nstock\022\021\n\tstockcode\030\001 \001(\t\022\021\n\tstockname\030\002" +
+      " \001(\t\022=\n\007stplist\030\003 \003(\0132,.com.qlcd.qltt.bo" +
+      "dy.pvt.T01005001._stockpool\"Q\n\004_req\022\016\n\006t" +
+      "tacct\030\001 \001(\t\0229\n\003ats\030\002 \001(\0132,.com.qlcd.qltt" +
+      ".body.pvt.T01005001._attnstock\"=\n\004_rsp\0225" +
+      "\n\003rsh\030\001 \001(\0132(.com.qlcd.qltt.body.BppSys." +
+      "_rsp_succheadB\030\n\026com.qlcd.qltt.body.pvtb",
+      "\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -2944,24 +2766,24 @@ public final class T01005001 {
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           com.qlcd.qltt.body.BppSys.getDescriptor(),
         }, assigner);
-    internal_static_com_qlcd_qltt_body_pvt_T01005001__attnstock_descriptor =
-      getDescriptor().getMessageTypes().get(0);
-    internal_static_com_qlcd_qltt_body_pvt_T01005001__attnstock_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_qlcd_qltt_body_pvt_T01005001__attnstock_descriptor,
-        new java.lang.String[] { "Stockcode", "Stockname", });
     internal_static_com_qlcd_qltt_body_pvt_T01005001__stockpool_descriptor =
-      getDescriptor().getMessageTypes().get(1);
+      getDescriptor().getMessageTypes().get(0);
     internal_static_com_qlcd_qltt_body_pvt_T01005001__stockpool_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_qlcd_qltt_body_pvt_T01005001__stockpool_descriptor,
-        new java.lang.String[] { "Poolindex", "Atslist", });
+        new java.lang.String[] { "Poolindex", });
+    internal_static_com_qlcd_qltt_body_pvt_T01005001__attnstock_descriptor =
+      getDescriptor().getMessageTypes().get(1);
+    internal_static_com_qlcd_qltt_body_pvt_T01005001__attnstock_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_com_qlcd_qltt_body_pvt_T01005001__attnstock_descriptor,
+        new java.lang.String[] { "Stockcode", "Stockname", "Stplist", });
     internal_static_com_qlcd_qltt_body_pvt_T01005001__req_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_com_qlcd_qltt_body_pvt_T01005001__req_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_qlcd_qltt_body_pvt_T01005001__req_descriptor,
-        new java.lang.String[] { "Ttacct", "Stplist", });
+        new java.lang.String[] { "Ttacct", "Ats", });
     internal_static_com_qlcd_qltt_body_pvt_T01005001__rsp_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_com_qlcd_qltt_body_pvt_T01005001__rsp_fieldAccessorTable = new

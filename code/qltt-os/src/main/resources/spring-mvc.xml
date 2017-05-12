@@ -138,6 +138,8 @@
 						<value>webapp/register/register.do</value>
 						<value>webapp/logon/home.do</value>
 						<value>webapp/logon/login.do</value>
+						<value>webapp/getMessage/query1001.do</value>
+						<value>webapp/getMessage/query1002.do</value>
 					</list>
 				</property>
 			</bean>
