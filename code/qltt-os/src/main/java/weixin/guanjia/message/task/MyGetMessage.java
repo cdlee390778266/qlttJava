@@ -31,7 +31,7 @@ public class MyGetMessage implements Runnable {
 	
 	private MessageTemplateService messageTemplateService;
 
-	private static final ResourceBundle getData = java.util.ResourceBundle.getBundle("sysConfig");
+	private ResourceBundle getData = java.util.ResourceBundle.getBundle("sysConfig");
 	private static SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
 	public MyGetMessage(CommonService commonService, WeixinAccountServiceI weixinAccountService,MessageTemplateService messageTemplateService) {
