@@ -22,6 +22,7 @@ public class MyBusProcess implements IBusProcess {
 	@Override
 	public Object active(int trdcode,Object requestBody) {
 		SimpleDateFormat data = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		SimpleDateFormat data1 = new SimpleDateFormat("yyyyMMdd");
 		try{
 			//模板消息推送
 			if(trdcode == 3001001){
@@ -42,7 +43,7 @@ public class MyBusProcess implements IBusProcess {
 					String remark = eventpush.getEvdetail()+epush.getSummary()+"(查看更多请点击详情,内容当日有效)";//remark
 					//TODO:详情url
 					String url =getData.getString("wechat.infourl")
-							+"webapp/getMessage/query1001.do?eventdate="+tep.getTemplateId()
+							+"webapp/getMessage/query1001.do?eventdate="+data1.format(data.parse(content.getEp().getOcctime()))
 							+"&eventno="+content.getEp().getEventno()
 							+"&ttacct="+epush.getTtacct()+"&svcchnl="+epush.getSvcchnlValue();
 					tep.setUrl(url);
@@ -81,7 +82,7 @@ public class MyBusProcess implements IBusProcess {
 					
 					//TODO:详情url
 					String url =getData.getString("wechat.infourl")
-							+"webapp/getMessage/query1002.do?eventdate="+tep.getTemplateId()
+							+"webapp/getMessage/query1002.do?eventdate="+data1.format(data.parse(_eventpush.getOcctime()))
 							+"&eventno="+_eventpush.getEventno()
 							+"&ttacct="+_eventpush.getTtacct()+"&svcchnl="+_eventpush.getSvcchnlValue();
 					tep.setUrl(url);
