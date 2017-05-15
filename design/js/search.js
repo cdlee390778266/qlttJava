@@ -1,7 +1,7 @@
 /* 
 * @Author: lee
 * @Date:   2017-04-07 17:02:56
-* @Last Modified time: 2017-04-21 15:52:11
+* @Last Modified time: 2017-05-15 16:55:52
 */
 
 
@@ -32,17 +32,29 @@ $(document).ready(function(){
             type: 'post',
             success: function(resData){
                     for(var i in resData){
-                        html += '<div class="search-item ani" swiper-animate-effect="fadeIn" swiper-animate-duration="1s" swiper-animate-delay="0s" >'
-                             +      '<div class="search-head">' + resData[i].searchHead + '</div>'
-                             +      '<div class="search-body"><a href="result.html">' + resData[i].searchBody + '</a></div>'
-                             // +      '<div class="search-foot">'
-                             // +          '<span >关注</span>'
-                             // +      '</div>'  
-                             +   '</div>'         
+
+                        html += '<div class="search-slide">'
+                             +      '<div class="search-slide-head">' + resData[i]['key'] + '<span></span></div>'
+                             +      '<div class="search-slide-body animated" >'
+
+                        for(var j in resData[i]['data']){
+                            html += '<div class="search-item ani" swiper-animate-effect="fadeIn" swiper-animate-duration="1s" swiper-animate-delay="0s" >'
+                                 +      '<div class="search-head">' + resData[i]['data'][j].searchHead + '</div>'
+                                 +      '<div class="search-body"><a href="result.html">' + resData[i]['data'][j].searchBody + '</a></div>'
+                                 // +      '<div class="search-foot">'
+                                 // +          '<span >关注</span>'
+                                 // +      '</div>'  
+                                 +   '</div>'
+                        }
+
+                        html +=     '</div>';
+                        html += '</div>';
                     }
                     // html += '<div class="loadMore">下拉加载更多</div>';
     
                     $parent.append(html);
+                    $parent.find('.search-slide').eq(0).addClass('active');
+                    $parent.find('.search-slide').eq(0).find('.search-slide-body');
                     loadingHide($('.qltt-toast'));
 
             },
@@ -52,6 +64,7 @@ $(document).ready(function(){
         })
         
     }
+
 
     var init = function(){
         loadingShow($('.qltt-toast'));
@@ -101,6 +114,9 @@ $(document).ready(function(){
         
     });
 
+    $('body').delegate('.search-slide-head', 'tap', function(event) {
+        $(this).parent().toggleClass('active');
+    });
    
     init();
 });
