@@ -125,7 +125,7 @@ public class ZMQProxyClient {
 			rspHeadByte = requester.recv(0);
 			
 			if (rspHeadByte == null)
-				throw new CommZMQException("网络通讯错误: 未接收到任何数据");
+				throw new CommZMQException("未接收到任何数据");
 
 			while (requester.hasReceiveMore()) {
 				rspBodyByte = requester.recv(0);
@@ -133,7 +133,7 @@ public class ZMQProxyClient {
 			}
 		} catch (Exception e) {
 			logger.error("网络通讯错误", e);
-			throw new CommZMQException("网络通讯错误:" + e.getMessage());
+			throw new CommZMQException("网络通讯错误: " + e.getMessage());
 		} finally {
 			if (requester != null)
 				requester.close();

@@ -1,6 +1,7 @@
 package com.qianlong.webapp.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang.StringUtils;
@@ -42,10 +43,10 @@ public class UserLoginController {
 	}
 	
 	@RequestMapping("login")
-	public ModelAndView login(HttpServletRequest request) {
+	public ModelAndView login(HttpServletRequest request, HttpServletResponse response) {
 		String code = request.getParameter("code");
 		String state = request.getParameter("state");
-		logger.debug(String.format("获取到的回调参数:code=[%s],state=[%s]", code, state));
+		logger.debug(String.format("获取到的回调参数: code=[%s],state=[%s]", code, state));
 		HttpSession session = request.getSession();
 
 		if (!StringUtils.isEmpty(code) && !StringUtils.isEmpty(state)) {
@@ -90,7 +91,7 @@ public class UserLoginController {
 			}
 		} else {
 			//非微信端访问
-			return new ModelAndView("redirect:/webapp/register/home.do");
+			throw new BusinessException("暂不支持其它客户端访问！");
 		}
 	}
 }
