@@ -1886,6 +1886,172 @@ a{
     text-align: center;
 }
 
+/******   detail  ******/
+.data{
+   .data-head{
+        @include flexBox();
+        text-align: center;
+        position: fixed;
+        left:0;
+        right:0;
+        top:0;
+        color:#fff;
+        height:4.4rem;
+        line-height: 4.4rem;
+        background:$red;
+        z-index: 99;
+        .data-head-l{
+            width:110px;
+            position: relative;
+            z-index: 2;
+            &:before{
+                content: '';
+                display: block;
+                height: 100%;
+                border-right: 1px solid #fff;
+                position: absolute;
+                right: 0px;
+                top:0;
+                transform: scaleX(0.5);
+            } 
+        }
+        .data-head-r{
+            @include flex(1);
+            position: relative;
+            z-index: 1;
+        }
+   }
+   .data-body{
+        @include flexBox();
+        text-align: center;
+        line-height: 4.4rem;
+        padding-top: 4.4rem;
+        color:#000;
+        .data-body-l{
+            width:110px;
+            position: relative;
+            z-index: 2;
+            .data-tr-l{
+                height:4.4rem;
+                line-height: 1.4rem;
+                padding-top: 0.8rem;
+                position: relative;
+                &:after{
+                    content: '';
+                    display: block;
+                    width: 100%;
+                    border-bottom: 1px solid $red;
+                    position: absolute;
+                    left: 0;
+                    bottom: 0px;
+                    transform: scaleY(0.5);
+                } 
+                &:before{
+                    content: '';
+                    display: block;
+                    height: 100%;
+                    border-right: 1px solid $red;
+                    position: absolute;
+                    right: 0px;
+                    top:0;
+                    transform: scaleX(0.5);
+                } 
+                strong{
+                    color:#999;
+                    font-size: 1.1rem;
+                }
+            }
+        }
+        .data-body-r{
+            @include flex(1);
+            background : #fff !important;
+            position: relative;
+            z-index: 1;
+            height:auto;
+            overflow:auto;
+            // &:after{
+            //     content: '';
+            //     display: block;
+            //     width: 100%;
+            //     position: absolute;
+            //     left: 0;
+            //     bottom: 0px;
+            //     transform: scaleY(0.5);
+            // } 
+            .swiper-scroller{
+                background : #fff !important;
+                .data-tr-r{
+                    height:4.4rem;
+                    position: relative;
+                    &:after{
+                        content: '';
+                        display: block;
+                        width: 100%;
+                        border-bottom: 1px solid $red;
+                        position: absolute;
+                        left: 0;
+                        bottom: 0px;
+                        transform: scaleY(0.5);
+                    }
+                    &:nth-child(even) {
+                        background:#f0f0f0;
+                        span{
+                            background:#f0f0f0 !important;
+                        }
+                    } 
+                    span{
+                        background : #fff !important;
+                        font-size: 1.2rem;
+                    }
+                }
+                
+            }
+        }
+
+   }
+   
+}
+
+.dswiper{
+    position: relative;
+    width: 100%;
+    height: 4.4rem;
+    background: $red;
+    overflow: hidden;
+}
+.swiper-scroller {
+    position: absolute;
+    z-index: 1;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    width: 5000px;
+    height: 4.4rem;
+    background-color: $red;
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-text-size-adjust: none;
+    -moz-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+    -o-text-size-adjust: none;
+    text-size-adjust: none;
+}
+
+.swiper-scroller span {
+    display: block;
+    float: left;
+    width: 160px;
+    height: 4.4rem;
+    background-color:$red;
+    font-size: 1.2rem;
+}
+
 /*各个尺寸字体大小设置***/
 
 @media screen and (min-width:320px) and (max-width:359px){
