@@ -73,7 +73,10 @@ public class UserLoginController {
 					authResult = userServCoreService.tdPartAuthLogin(trenchInfo);
 				} catch (UserServBusinessException e) {
 					logger.error(e.getMessage(), e);
-					throw e;
+					if ("20000002".equals(e.getErrorCode()))
+						authResult = null;
+					else
+						throw e;
 				} catch (HttpRequestException e) {
 					logger.error(e.getMessage(), e);
 					throw new BusinessException("网络异常，无法登录！");

@@ -819,10 +819,15 @@ a {
   margin: 0.5rem 0.8rem;
   border-radius: 4px;
   color: #333;
+  overflow: hidden;
   background-color: #fff;
 }
 .tag span:active {
   background-color: #ddd;
+}
+.tag span.active {
+  background-color: #dc3c38;
+  color: #fff;
 }
 .tag .swiper-button-next {
   background-size: 250px 700px;
@@ -858,6 +863,7 @@ a {
 }
 .tag-check .check-tags span {
   position: relative;
+  overflow: visible;
 }
 .tag-check .check-tags span i {
   display: block;
