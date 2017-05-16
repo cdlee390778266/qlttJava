@@ -40,7 +40,7 @@ public class MyBusProcess implements IBusProcess {
 					tep.setTitle1(eventpush.getTitle1());//标题
 					tep.setKeyword1("尊敬的客户:"+epush.getCN());//keyword1
 					tep.setKeyword2(eventpush.getTacname());//keyword2
-					String remark = eventpush.getEvdetail()+epush.getSummary()+"(查看更多请点击详情,内容当日有效)";//remark
+					String remark = eventpush.getEvdetail()+"\n"+epush.getSummary()+"(查看更多请点击详情,内容当日有效)";//remark
 					//TODO:详情url
 					String url =getData.getString("wechat.infourl")
 							+"webapp/getMessage/query1001.do?eventdate="+data1.format(data.parse(content.getEp().getOcctime()))
@@ -78,7 +78,7 @@ public class MyBusProcess implements IBusProcess {
 					tep.setTitle1(_eventpush.getTitle1());//标题
 					tep.setKeyword1("尊敬的客户:"+_eventpush.getCN());//keyword1
 					tep.setKeyword2(_eventpush.getTacname());//keyword2
-					String remark = _eventpush.getEvdetail()+_eventpush.getSummary()+"(查看更多请点击详情,内容当日有效)";//remark
+					String remark = _eventpush.getEvdetail()+"\n"+_eventpush.getSummary()+"(查看更多请点击详情,内容当日有效)";//remark
 					
 					//TODO:详情url
 					String url =getData.getString("wechat.infourl")
