@@ -4,6 +4,7 @@ import static org.junit.Assert.assertTrue;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
+import org.jeecgframework.core.util.ResourceUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,17 +28,12 @@ public class UserServCoreServiceImplTest {
 	IUserServCoreService userServCoreService;
 
 	@Test
-	public void testObtainAccessToken() {
+	public void testObtainAccessToken() throws HttpRequestException {
 		UserServAccessTokenReqBody body = new UserServAccessTokenReqBody();
-		body.setAppid("wx_000001");
-		body.setSecret("OuIEqeoVdaKG9K4vrUqBd2UsFJouRamdSZdnEKFh3dOuL0t1zzbaI8VF/ZKSbyFRckd/vsihXVfFqSOC8anZANVlCcDQ1uHi2AEdQdsN/UYl/09XCJVRPl2M3295g/l3kdGgnWxWJc5iAr4HYNu7DEKw53k4bbXWLzPReU42YcE=");
-		body.setPlaintext("AhQ");
-		UserServAccessToken token = null;
-		try {
-			token = userServCoreService.obtainAccessToken(body);
-		} catch (HttpRequestException e) {
-			logger.error(e.getMessage(), e);
-		}
+		body.setAppid(ResourceUtil.getConfigByName("user.serv.appid"));
+		body.setSecret(ResourceUtil.getConfigByName("user.serv.secret"));
+		body.setPlaintext(ResourceUtil.getConfigByName("user.serv.plaintext"));
+		UserServAccessToken token = userServCoreService.obtainAccessToken(body);
 		logger.debug(token);
 		assertTrue("testProduceAuthCode", token != null && !StringUtils.isEmpty(token.getAccessToken()));
 	}

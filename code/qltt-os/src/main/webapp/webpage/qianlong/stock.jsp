@@ -32,7 +32,7 @@
 			</div>
 		</div>
 		<div class="result-btns">
-			<span class="result-btn-care">关注</span>
+			<span class="result-btn-care<c:if test="${isFollow}"> active</c:if>">关注</span>
 		</div>
 	</div>
 
@@ -52,7 +52,9 @@
 		<div class="dialog-box">
 			<div class="dialog-head">推荐到我的荐股</div>
 			<div class="dialog-body">
-				<input type="text" placeholder="推荐理由" />
+				<input type="hidden" id="code" name="code" />
+				<input type="hidden" id="name" name="name" />
+				<input type="text" id="reason" name="reason" placeholder="推荐理由" />
 			</div>
 			<div class="dialog-foot">
 				<div class="dialog-foot-right">
@@ -70,14 +72,10 @@
 			<div class="dialog-body">
 				<div class="select-box">
 					<div class="select-mask">选股池A</div>
-					<select name="" id="choosePool">
-						<option value="选股池A">选股池A</option>
-						<option value="选股池B">选股池B</option>
-						<option value="选股池C">选股池C</option>
-						<option value="选股池D">选股池D</option>
-						<option value="选股池E">选股池E</option>
-						<option value="选股池F">选股池F</option>
-						<option value="选股池G">选股池G</option>
+					<select name="" id="choosePool" multiple="multiple">
+						<option value="1">选股池A</option>
+						<option value="2">选股池B</option>
+						<option value="3">选股池C</option>
 					</select>
 				</div>
 			</div>

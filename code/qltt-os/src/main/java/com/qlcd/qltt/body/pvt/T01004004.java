@@ -532,9 +532,29 @@ public final class T01004004 {
         getTacticBytes();
 
     /**
-     * <code>int32 tacprm = 2;</code>
+     * <code>string tacname = 2;</code>
+     */
+    java.lang.String getTacname();
+    /**
+     * <code>string tacname = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getTacnameBytes();
+
+    /**
+     * <code>int32 tacprm = 3;</code>
      */
     int getTacprm();
+
+    /**
+     * <code>string tacprmname = 4;</code>
+     */
+    java.lang.String getTacprmname();
+    /**
+     * <code>string tacprmname = 4;</code>
+     */
+    com.google.protobuf.ByteString
+        getTacprmnameBytes();
   }
   /**
    * Protobuf type {@code com.qlcd.qltt.body.pvt.T01004004._attntactic}
@@ -549,7 +569,9 @@ public final class T01004004 {
     }
     private _attntactic() {
       tactic_ = "";
+      tacname_ = "";
       tacprm_ = 0;
+      tacprmname_ = "";
     }
 
     @java.lang.Override
@@ -583,9 +605,21 @@ public final class T01004004 {
               tactic_ = s;
               break;
             }
-            case 16: {
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              tacname_ = s;
+              break;
+            }
+            case 24: {
 
               tacprm_ = input.readInt32();
+              break;
+            }
+            case 34: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              tacprmname_ = s;
               break;
             }
           }
@@ -645,13 +679,81 @@ public final class T01004004 {
       }
     }
 
-    public static final int TACPRM_FIELD_NUMBER = 2;
+    public static final int TACNAME_FIELD_NUMBER = 2;
+    private volatile java.lang.Object tacname_;
+    /**
+     * <code>string tacname = 2;</code>
+     */
+    public java.lang.String getTacname() {
+      java.lang.Object ref = tacname_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        tacname_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string tacname = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getTacnameBytes() {
+      java.lang.Object ref = tacname_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        tacname_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int TACPRM_FIELD_NUMBER = 3;
     private int tacprm_;
     /**
-     * <code>int32 tacprm = 2;</code>
+     * <code>int32 tacprm = 3;</code>
      */
     public int getTacprm() {
       return tacprm_;
+    }
+
+    public static final int TACPRMNAME_FIELD_NUMBER = 4;
+    private volatile java.lang.Object tacprmname_;
+    /**
+     * <code>string tacprmname = 4;</code>
+     */
+    public java.lang.String getTacprmname() {
+      java.lang.Object ref = tacprmname_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        tacprmname_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string tacprmname = 4;</code>
+     */
+    public com.google.protobuf.ByteString
+        getTacprmnameBytes() {
+      java.lang.Object ref = tacprmname_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        tacprmname_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     private byte memoizedIsInitialized = -1;
@@ -669,8 +771,14 @@ public final class T01004004 {
       if (!getTacticBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, tactic_);
       }
+      if (!getTacnameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, tacname_);
+      }
       if (tacprm_ != 0) {
-        output.writeInt32(2, tacprm_);
+        output.writeInt32(3, tacprm_);
+      }
+      if (!getTacprmnameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, tacprmname_);
       }
     }
 
@@ -682,9 +790,15 @@ public final class T01004004 {
       if (!getTacticBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, tactic_);
       }
+      if (!getTacnameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, tacname_);
+      }
       if (tacprm_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, tacprm_);
+          .computeInt32Size(3, tacprm_);
+      }
+      if (!getTacprmnameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, tacprmname_);
       }
       memoizedSize = size;
       return size;
@@ -704,8 +818,12 @@ public final class T01004004 {
       boolean result = true;
       result = result && getTactic()
           .equals(other.getTactic());
+      result = result && getTacname()
+          .equals(other.getTacname());
       result = result && (getTacprm()
           == other.getTacprm());
+      result = result && getTacprmname()
+          .equals(other.getTacprmname());
       return result;
     }
 
@@ -718,8 +836,12 @@ public final class T01004004 {
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + TACTIC_FIELD_NUMBER;
       hash = (53 * hash) + getTactic().hashCode();
+      hash = (37 * hash) + TACNAME_FIELD_NUMBER;
+      hash = (53 * hash) + getTacname().hashCode();
       hash = (37 * hash) + TACPRM_FIELD_NUMBER;
       hash = (53 * hash) + getTacprm();
+      hash = (37 * hash) + TACPRMNAME_FIELD_NUMBER;
+      hash = (53 * hash) + getTacprmname().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -840,7 +962,11 @@ public final class T01004004 {
         super.clear();
         tactic_ = "";
 
+        tacname_ = "";
+
         tacprm_ = 0;
+
+        tacprmname_ = "";
 
         return this;
       }
@@ -865,7 +991,9 @@ public final class T01004004 {
       public com.qlcd.qltt.body.pvt.T01004004._attntactic buildPartial() {
         com.qlcd.qltt.body.pvt.T01004004._attntactic result = new com.qlcd.qltt.body.pvt.T01004004._attntactic(this);
         result.tactic_ = tactic_;
+        result.tacname_ = tacname_;
         result.tacprm_ = tacprm_;
+        result.tacprmname_ = tacprmname_;
         onBuilt();
         return result;
       }
@@ -911,8 +1039,16 @@ public final class T01004004 {
           tactic_ = other.tactic_;
           onChanged();
         }
+        if (!other.getTacname().isEmpty()) {
+          tacname_ = other.tacname_;
+          onChanged();
+        }
         if (other.getTacprm() != 0) {
           setTacprm(other.getTacprm());
+        }
+        if (!other.getTacprmname().isEmpty()) {
+          tacprmname_ = other.tacprmname_;
+          onChanged();
         }
         onChanged();
         return this;
@@ -1009,15 +1145,84 @@ public final class T01004004 {
         return this;
       }
 
+      private java.lang.Object tacname_ = "";
+      /**
+       * <code>string tacname = 2;</code>
+       */
+      public java.lang.String getTacname() {
+        java.lang.Object ref = tacname_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          tacname_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string tacname = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getTacnameBytes() {
+        java.lang.Object ref = tacname_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          tacname_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string tacname = 2;</code>
+       */
+      public Builder setTacname(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        tacname_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string tacname = 2;</code>
+       */
+      public Builder clearTacname() {
+        
+        tacname_ = getDefaultInstance().getTacname();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string tacname = 2;</code>
+       */
+      public Builder setTacnameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        tacname_ = value;
+        onChanged();
+        return this;
+      }
+
       private int tacprm_ ;
       /**
-       * <code>int32 tacprm = 2;</code>
+       * <code>int32 tacprm = 3;</code>
        */
       public int getTacprm() {
         return tacprm_;
       }
       /**
-       * <code>int32 tacprm = 2;</code>
+       * <code>int32 tacprm = 3;</code>
        */
       public Builder setTacprm(int value) {
         
@@ -1026,11 +1231,80 @@ public final class T01004004 {
         return this;
       }
       /**
-       * <code>int32 tacprm = 2;</code>
+       * <code>int32 tacprm = 3;</code>
        */
       public Builder clearTacprm() {
         
         tacprm_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object tacprmname_ = "";
+      /**
+       * <code>string tacprmname = 4;</code>
+       */
+      public java.lang.String getTacprmname() {
+        java.lang.Object ref = tacprmname_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          tacprmname_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string tacprmname = 4;</code>
+       */
+      public com.google.protobuf.ByteString
+          getTacprmnameBytes() {
+        java.lang.Object ref = tacprmname_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          tacprmname_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string tacprmname = 4;</code>
+       */
+      public Builder setTacprmname(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        tacprmname_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string tacprmname = 4;</code>
+       */
+      public Builder clearTacprmname() {
+        
+        tacprmname_ = getDefaultInstance().getTacprmname();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string tacprmname = 4;</code>
+       */
+      public Builder setTacprmnameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        tacprmname_ = value;
         onChanged();
         return this;
       }
@@ -2041,12 +2315,13 @@ public final class T01004004 {
     java.lang.String[] descriptorData = {
       "\n\030body/pvt/T01004004.proto\022 com.qlcd.qlt" +
       "t.body.pvt.T01004004\032\021body/BppSys.proto\"" +
-      "\026\n\004_req\022\016\n\006ttacct\030\001 \001(\t\"-\n\013_attntactic\022\016" +
-      "\n\006tactic\030\001 \001(\t\022\016\n\006tacprm\030\002 \001(\005\"}\n\004_rsp\0225" +
-      "\n\003rsh\030\001 \001(\0132(.com.qlcd.qltt.body.BppSys." +
-      "_rsp_succhead\022>\n\007attlist\030\002 \003(\0132-.com.qlc" +
-      "d.qltt.body.pvt.T01004004._attntacticB\030\n" +
-      "\026com.qlcd.qltt.body.pvtb\006proto3"
+      "\026\n\004_req\022\016\n\006ttacct\030\001 \001(\t\"R\n\013_attntactic\022\016" +
+      "\n\006tactic\030\001 \001(\t\022\017\n\007tacname\030\002 \001(\t\022\016\n\006tacpr" +
+      "m\030\003 \001(\005\022\022\n\ntacprmname\030\004 \001(\t\"}\n\004_rsp\0225\n\003r" +
+      "sh\030\001 \001(\0132(.com.qlcd.qltt.body.BppSys._rs" +
+      "p_succhead\022>\n\007attlist\030\002 \003(\0132-.com.qlcd.q" +
+      "ltt.body.pvt.T01004004._attntacticB\030\n\026co" +
+      "m.qlcd.qltt.body.pvtb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -2072,7 +2347,7 @@ public final class T01004004 {
     internal_static_com_qlcd_qltt_body_pvt_T01004004__attntactic_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_qlcd_qltt_body_pvt_T01004004__attntactic_descriptor,
-        new java.lang.String[] { "Tactic", "Tacprm", });
+        new java.lang.String[] { "Tactic", "Tacname", "Tacprm", "Tacprmname", });
     internal_static_com_qlcd_qltt_body_pvt_T01004004__rsp_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_com_qlcd_qltt_body_pvt_T01004004__rsp_fieldAccessorTable = new

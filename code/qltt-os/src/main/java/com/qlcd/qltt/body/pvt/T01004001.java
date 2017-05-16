@@ -595,28 +595,17 @@ public final class T01004001 {
         getTtacctBytes();
 
     /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01004001._attntactic attlist = 2;</code>
+     * <code>.com.qlcd.qltt.body.pvt.T01004001._attntactic att = 2;</code>
      */
-    java.util.List<com.qlcd.qltt.body.pvt.T01004001._attntactic> 
-        getAttlistList();
+    boolean hasAtt();
     /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01004001._attntactic attlist = 2;</code>
+     * <code>.com.qlcd.qltt.body.pvt.T01004001._attntactic att = 2;</code>
      */
-    com.qlcd.qltt.body.pvt.T01004001._attntactic getAttlist(int index);
+    com.qlcd.qltt.body.pvt.T01004001._attntactic getAtt();
     /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01004001._attntactic attlist = 2;</code>
+     * <code>.com.qlcd.qltt.body.pvt.T01004001._attntactic att = 2;</code>
      */
-    int getAttlistCount();
-    /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01004001._attntactic attlist = 2;</code>
-     */
-    java.util.List<? extends com.qlcd.qltt.body.pvt.T01004001._attntacticOrBuilder> 
-        getAttlistOrBuilderList();
-    /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01004001._attntactic attlist = 2;</code>
-     */
-    com.qlcd.qltt.body.pvt.T01004001._attntacticOrBuilder getAttlistOrBuilder(
-        int index);
+    com.qlcd.qltt.body.pvt.T01004001._attntacticOrBuilder getAttOrBuilder();
   }
   /**
    * Protobuf type {@code com.qlcd.qltt.body.pvt.T01004001._req}
@@ -631,7 +620,6 @@ public final class T01004001 {
     }
     private _req() {
       ttacct_ = "";
-      attlist_ = java.util.Collections.emptyList();
     }
 
     @java.lang.Override
@@ -666,12 +654,16 @@ public final class T01004001 {
               break;
             }
             case 18: {
-              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
-                attlist_ = new java.util.ArrayList<com.qlcd.qltt.body.pvt.T01004001._attntactic>();
-                mutable_bitField0_ |= 0x00000002;
+              com.qlcd.qltt.body.pvt.T01004001._attntactic.Builder subBuilder = null;
+              if (att_ != null) {
+                subBuilder = att_.toBuilder();
               }
-              attlist_.add(
-                  input.readMessage(com.qlcd.qltt.body.pvt.T01004001._attntactic.parser(), extensionRegistry));
+              att_ = input.readMessage(com.qlcd.qltt.body.pvt.T01004001._attntactic.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(att_);
+                att_ = subBuilder.buildPartial();
+              }
+
               break;
             }
           }
@@ -682,9 +674,6 @@ public final class T01004001 {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
-          attlist_ = java.util.Collections.unmodifiableList(attlist_);
-        }
         makeExtensionsImmutable();
       }
     }
@@ -700,7 +689,6 @@ public final class T01004001 {
               com.qlcd.qltt.body.pvt.T01004001._req.class, com.qlcd.qltt.body.pvt.T01004001._req.Builder.class);
     }
 
-    private int bitField0_;
     public static final int TTACCT_FIELD_NUMBER = 1;
     private volatile java.lang.Object ttacct_;
     /**
@@ -735,39 +723,25 @@ public final class T01004001 {
       }
     }
 
-    public static final int ATTLIST_FIELD_NUMBER = 2;
-    private java.util.List<com.qlcd.qltt.body.pvt.T01004001._attntactic> attlist_;
+    public static final int ATT_FIELD_NUMBER = 2;
+    private com.qlcd.qltt.body.pvt.T01004001._attntactic att_;
     /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01004001._attntactic attlist = 2;</code>
+     * <code>.com.qlcd.qltt.body.pvt.T01004001._attntactic att = 2;</code>
      */
-    public java.util.List<com.qlcd.qltt.body.pvt.T01004001._attntactic> getAttlistList() {
-      return attlist_;
+    public boolean hasAtt() {
+      return att_ != null;
     }
     /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01004001._attntactic attlist = 2;</code>
+     * <code>.com.qlcd.qltt.body.pvt.T01004001._attntactic att = 2;</code>
      */
-    public java.util.List<? extends com.qlcd.qltt.body.pvt.T01004001._attntacticOrBuilder> 
-        getAttlistOrBuilderList() {
-      return attlist_;
+    public com.qlcd.qltt.body.pvt.T01004001._attntactic getAtt() {
+      return att_ == null ? com.qlcd.qltt.body.pvt.T01004001._attntactic.getDefaultInstance() : att_;
     }
     /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01004001._attntactic attlist = 2;</code>
+     * <code>.com.qlcd.qltt.body.pvt.T01004001._attntactic att = 2;</code>
      */
-    public int getAttlistCount() {
-      return attlist_.size();
-    }
-    /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01004001._attntactic attlist = 2;</code>
-     */
-    public com.qlcd.qltt.body.pvt.T01004001._attntactic getAttlist(int index) {
-      return attlist_.get(index);
-    }
-    /**
-     * <code>repeated .com.qlcd.qltt.body.pvt.T01004001._attntactic attlist = 2;</code>
-     */
-    public com.qlcd.qltt.body.pvt.T01004001._attntacticOrBuilder getAttlistOrBuilder(
-        int index) {
-      return attlist_.get(index);
+    public com.qlcd.qltt.body.pvt.T01004001._attntacticOrBuilder getAttOrBuilder() {
+      return getAtt();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -785,8 +759,8 @@ public final class T01004001 {
       if (!getTtacctBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, ttacct_);
       }
-      for (int i = 0; i < attlist_.size(); i++) {
-        output.writeMessage(2, attlist_.get(i));
+      if (att_ != null) {
+        output.writeMessage(2, getAtt());
       }
     }
 
@@ -798,9 +772,9 @@ public final class T01004001 {
       if (!getTtacctBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, ttacct_);
       }
-      for (int i = 0; i < attlist_.size(); i++) {
+      if (att_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, attlist_.get(i));
+          .computeMessageSize(2, getAtt());
       }
       memoizedSize = size;
       return size;
@@ -820,8 +794,11 @@ public final class T01004001 {
       boolean result = true;
       result = result && getTtacct()
           .equals(other.getTtacct());
-      result = result && getAttlistList()
-          .equals(other.getAttlistList());
+      result = result && (hasAtt() == other.hasAtt());
+      if (hasAtt()) {
+        result = result && getAtt()
+            .equals(other.getAtt());
+      }
       return result;
     }
 
@@ -834,9 +811,9 @@ public final class T01004001 {
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + TTACCT_FIELD_NUMBER;
       hash = (53 * hash) + getTtacct().hashCode();
-      if (getAttlistCount() > 0) {
-        hash = (37 * hash) + ATTLIST_FIELD_NUMBER;
-        hash = (53 * hash) + getAttlistList().hashCode();
+      if (hasAtt()) {
+        hash = (37 * hash) + ATT_FIELD_NUMBER;
+        hash = (53 * hash) + getAtt().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -952,18 +929,17 @@ public final class T01004001 {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
-          getAttlistFieldBuilder();
         }
       }
       public Builder clear() {
         super.clear();
         ttacct_ = "";
 
-        if (attlistBuilder_ == null) {
-          attlist_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
+        if (attBuilder_ == null) {
+          att_ = null;
         } else {
-          attlistBuilder_.clear();
+          att_ = null;
+          attBuilder_ = null;
         }
         return this;
       }
@@ -987,19 +963,12 @@ public final class T01004001 {
 
       public com.qlcd.qltt.body.pvt.T01004001._req buildPartial() {
         com.qlcd.qltt.body.pvt.T01004001._req result = new com.qlcd.qltt.body.pvt.T01004001._req(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
         result.ttacct_ = ttacct_;
-        if (attlistBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) == 0x00000002)) {
-            attlist_ = java.util.Collections.unmodifiableList(attlist_);
-            bitField0_ = (bitField0_ & ~0x00000002);
-          }
-          result.attlist_ = attlist_;
+        if (attBuilder_ == null) {
+          result.att_ = att_;
         } else {
-          result.attlist_ = attlistBuilder_.build();
+          result.att_ = attBuilder_.build();
         }
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -1045,31 +1014,8 @@ public final class T01004001 {
           ttacct_ = other.ttacct_;
           onChanged();
         }
-        if (attlistBuilder_ == null) {
-          if (!other.attlist_.isEmpty()) {
-            if (attlist_.isEmpty()) {
-              attlist_ = other.attlist_;
-              bitField0_ = (bitField0_ & ~0x00000002);
-            } else {
-              ensureAttlistIsMutable();
-              attlist_.addAll(other.attlist_);
-            }
-            onChanged();
-          }
-        } else {
-          if (!other.attlist_.isEmpty()) {
-            if (attlistBuilder_.isEmpty()) {
-              attlistBuilder_.dispose();
-              attlistBuilder_ = null;
-              attlist_ = other.attlist_;
-              bitField0_ = (bitField0_ & ~0x00000002);
-              attlistBuilder_ = 
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                   getAttlistFieldBuilder() : null;
-            } else {
-              attlistBuilder_.addAllMessages(other.attlist_);
-            }
-          }
+        if (other.hasAtt()) {
+          mergeAtt(other.getAtt());
         }
         onChanged();
         return this;
@@ -1096,7 +1042,6 @@ public final class T01004001 {
         }
         return this;
       }
-      private int bitField0_;
 
       private java.lang.Object ttacct_ = "";
       /**
@@ -1167,244 +1112,121 @@ public final class T01004001 {
         return this;
       }
 
-      private java.util.List<com.qlcd.qltt.body.pvt.T01004001._attntactic> attlist_ =
-        java.util.Collections.emptyList();
-      private void ensureAttlistIsMutable() {
-        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
-          attlist_ = new java.util.ArrayList<com.qlcd.qltt.body.pvt.T01004001._attntactic>(attlist_);
-          bitField0_ |= 0x00000002;
-         }
+      private com.qlcd.qltt.body.pvt.T01004001._attntactic att_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.qlcd.qltt.body.pvt.T01004001._attntactic, com.qlcd.qltt.body.pvt.T01004001._attntactic.Builder, com.qlcd.qltt.body.pvt.T01004001._attntacticOrBuilder> attBuilder_;
+      /**
+       * <code>.com.qlcd.qltt.body.pvt.T01004001._attntactic att = 2;</code>
+       */
+      public boolean hasAtt() {
+        return attBuilder_ != null || att_ != null;
       }
+      /**
+       * <code>.com.qlcd.qltt.body.pvt.T01004001._attntactic att = 2;</code>
+       */
+      public com.qlcd.qltt.body.pvt.T01004001._attntactic getAtt() {
+        if (attBuilder_ == null) {
+          return att_ == null ? com.qlcd.qltt.body.pvt.T01004001._attntactic.getDefaultInstance() : att_;
+        } else {
+          return attBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.com.qlcd.qltt.body.pvt.T01004001._attntactic att = 2;</code>
+       */
+      public Builder setAtt(com.qlcd.qltt.body.pvt.T01004001._attntactic value) {
+        if (attBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          att_ = value;
+          onChanged();
+        } else {
+          attBuilder_.setMessage(value);
+        }
 
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          com.qlcd.qltt.body.pvt.T01004001._attntactic, com.qlcd.qltt.body.pvt.T01004001._attntactic.Builder, com.qlcd.qltt.body.pvt.T01004001._attntacticOrBuilder> attlistBuilder_;
-
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01004001._attntactic attlist = 2;</code>
-       */
-      public java.util.List<com.qlcd.qltt.body.pvt.T01004001._attntactic> getAttlistList() {
-        if (attlistBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(attlist_);
-        } else {
-          return attlistBuilder_.getMessageList();
-        }
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01004001._attntactic attlist = 2;</code>
-       */
-      public int getAttlistCount() {
-        if (attlistBuilder_ == null) {
-          return attlist_.size();
-        } else {
-          return attlistBuilder_.getCount();
-        }
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01004001._attntactic attlist = 2;</code>
-       */
-      public com.qlcd.qltt.body.pvt.T01004001._attntactic getAttlist(int index) {
-        if (attlistBuilder_ == null) {
-          return attlist_.get(index);
-        } else {
-          return attlistBuilder_.getMessage(index);
-        }
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01004001._attntactic attlist = 2;</code>
-       */
-      public Builder setAttlist(
-          int index, com.qlcd.qltt.body.pvt.T01004001._attntactic value) {
-        if (attlistBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureAttlistIsMutable();
-          attlist_.set(index, value);
-          onChanged();
-        } else {
-          attlistBuilder_.setMessage(index, value);
-        }
         return this;
       }
       /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01004001._attntactic attlist = 2;</code>
+       * <code>.com.qlcd.qltt.body.pvt.T01004001._attntactic att = 2;</code>
        */
-      public Builder setAttlist(
-          int index, com.qlcd.qltt.body.pvt.T01004001._attntactic.Builder builderForValue) {
-        if (attlistBuilder_ == null) {
-          ensureAttlistIsMutable();
-          attlist_.set(index, builderForValue.build());
-          onChanged();
-        } else {
-          attlistBuilder_.setMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01004001._attntactic attlist = 2;</code>
-       */
-      public Builder addAttlist(com.qlcd.qltt.body.pvt.T01004001._attntactic value) {
-        if (attlistBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureAttlistIsMutable();
-          attlist_.add(value);
-          onChanged();
-        } else {
-          attlistBuilder_.addMessage(value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01004001._attntactic attlist = 2;</code>
-       */
-      public Builder addAttlist(
-          int index, com.qlcd.qltt.body.pvt.T01004001._attntactic value) {
-        if (attlistBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureAttlistIsMutable();
-          attlist_.add(index, value);
-          onChanged();
-        } else {
-          attlistBuilder_.addMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01004001._attntactic attlist = 2;</code>
-       */
-      public Builder addAttlist(
+      public Builder setAtt(
           com.qlcd.qltt.body.pvt.T01004001._attntactic.Builder builderForValue) {
-        if (attlistBuilder_ == null) {
-          ensureAttlistIsMutable();
-          attlist_.add(builderForValue.build());
+        if (attBuilder_ == null) {
+          att_ = builderForValue.build();
           onChanged();
         } else {
-          attlistBuilder_.addMessage(builderForValue.build());
+          attBuilder_.setMessage(builderForValue.build());
         }
+
         return this;
       }
       /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01004001._attntactic attlist = 2;</code>
+       * <code>.com.qlcd.qltt.body.pvt.T01004001._attntactic att = 2;</code>
        */
-      public Builder addAttlist(
-          int index, com.qlcd.qltt.body.pvt.T01004001._attntactic.Builder builderForValue) {
-        if (attlistBuilder_ == null) {
-          ensureAttlistIsMutable();
-          attlist_.add(index, builderForValue.build());
+      public Builder mergeAtt(com.qlcd.qltt.body.pvt.T01004001._attntactic value) {
+        if (attBuilder_ == null) {
+          if (att_ != null) {
+            att_ =
+              com.qlcd.qltt.body.pvt.T01004001._attntactic.newBuilder(att_).mergeFrom(value).buildPartial();
+          } else {
+            att_ = value;
+          }
           onChanged();
         } else {
-          attlistBuilder_.addMessage(index, builderForValue.build());
+          attBuilder_.mergeFrom(value);
         }
+
         return this;
       }
       /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01004001._attntactic attlist = 2;</code>
+       * <code>.com.qlcd.qltt.body.pvt.T01004001._attntactic att = 2;</code>
        */
-      public Builder addAllAttlist(
-          java.lang.Iterable<? extends com.qlcd.qltt.body.pvt.T01004001._attntactic> values) {
-        if (attlistBuilder_ == null) {
-          ensureAttlistIsMutable();
-          com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, attlist_);
+      public Builder clearAtt() {
+        if (attBuilder_ == null) {
+          att_ = null;
           onChanged();
         } else {
-          attlistBuilder_.addAllMessages(values);
+          att_ = null;
+          attBuilder_ = null;
         }
+
         return this;
       }
       /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01004001._attntactic attlist = 2;</code>
+       * <code>.com.qlcd.qltt.body.pvt.T01004001._attntactic att = 2;</code>
        */
-      public Builder clearAttlist() {
-        if (attlistBuilder_ == null) {
-          attlist_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
-          onChanged();
+      public com.qlcd.qltt.body.pvt.T01004001._attntactic.Builder getAttBuilder() {
+        
+        onChanged();
+        return getAttFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.com.qlcd.qltt.body.pvt.T01004001._attntactic att = 2;</code>
+       */
+      public com.qlcd.qltt.body.pvt.T01004001._attntacticOrBuilder getAttOrBuilder() {
+        if (attBuilder_ != null) {
+          return attBuilder_.getMessageOrBuilder();
         } else {
-          attlistBuilder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01004001._attntactic attlist = 2;</code>
-       */
-      public Builder removeAttlist(int index) {
-        if (attlistBuilder_ == null) {
-          ensureAttlistIsMutable();
-          attlist_.remove(index);
-          onChanged();
-        } else {
-          attlistBuilder_.remove(index);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01004001._attntactic attlist = 2;</code>
-       */
-      public com.qlcd.qltt.body.pvt.T01004001._attntactic.Builder getAttlistBuilder(
-          int index) {
-        return getAttlistFieldBuilder().getBuilder(index);
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01004001._attntactic attlist = 2;</code>
-       */
-      public com.qlcd.qltt.body.pvt.T01004001._attntacticOrBuilder getAttlistOrBuilder(
-          int index) {
-        if (attlistBuilder_ == null) {
-          return attlist_.get(index);  } else {
-          return attlistBuilder_.getMessageOrBuilder(index);
+          return att_ == null ?
+              com.qlcd.qltt.body.pvt.T01004001._attntactic.getDefaultInstance() : att_;
         }
       }
       /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01004001._attntactic attlist = 2;</code>
+       * <code>.com.qlcd.qltt.body.pvt.T01004001._attntactic att = 2;</code>
        */
-      public java.util.List<? extends com.qlcd.qltt.body.pvt.T01004001._attntacticOrBuilder> 
-           getAttlistOrBuilderList() {
-        if (attlistBuilder_ != null) {
-          return attlistBuilder_.getMessageOrBuilderList();
-        } else {
-          return java.util.Collections.unmodifiableList(attlist_);
-        }
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01004001._attntactic attlist = 2;</code>
-       */
-      public com.qlcd.qltt.body.pvt.T01004001._attntactic.Builder addAttlistBuilder() {
-        return getAttlistFieldBuilder().addBuilder(
-            com.qlcd.qltt.body.pvt.T01004001._attntactic.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01004001._attntactic attlist = 2;</code>
-       */
-      public com.qlcd.qltt.body.pvt.T01004001._attntactic.Builder addAttlistBuilder(
-          int index) {
-        return getAttlistFieldBuilder().addBuilder(
-            index, com.qlcd.qltt.body.pvt.T01004001._attntactic.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .com.qlcd.qltt.body.pvt.T01004001._attntactic attlist = 2;</code>
-       */
-      public java.util.List<com.qlcd.qltt.body.pvt.T01004001._attntactic.Builder> 
-           getAttlistBuilderList() {
-        return getAttlistFieldBuilder().getBuilderList();
-      }
-      private com.google.protobuf.RepeatedFieldBuilderV3<
+      private com.google.protobuf.SingleFieldBuilderV3<
           com.qlcd.qltt.body.pvt.T01004001._attntactic, com.qlcd.qltt.body.pvt.T01004001._attntactic.Builder, com.qlcd.qltt.body.pvt.T01004001._attntacticOrBuilder> 
-          getAttlistFieldBuilder() {
-        if (attlistBuilder_ == null) {
-          attlistBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+          getAttFieldBuilder() {
+        if (attBuilder_ == null) {
+          attBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               com.qlcd.qltt.body.pvt.T01004001._attntactic, com.qlcd.qltt.body.pvt.T01004001._attntactic.Builder, com.qlcd.qltt.body.pvt.T01004001._attntacticOrBuilder>(
-                  attlist_,
-                  ((bitField0_ & 0x00000002) == 0x00000002),
+                  getAtt(),
                   getParentForChildren(),
                   isClean());
-          attlist_ = null;
+          att_ = null;
         }
-        return attlistBuilder_;
+        return attBuilder_;
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -2042,11 +1864,11 @@ public final class T01004001 {
       "\n\030body/pvt/T01004001.proto\022 com.qlcd.qlt" +
       "t.body.pvt.T01004001\032\021body/BppSys.proto\"" +
       "-\n\013_attntactic\022\016\n\006tactic\030\001 \001(\t\022\016\n\006tacprm" +
-      "\030\002 \001(\005\"V\n\004_req\022\016\n\006ttacct\030\001 \001(\t\022>\n\007attlis" +
-      "t\030\002 \003(\0132-.com.qlcd.qltt.body.pvt.T010040" +
-      "01._attntactic\"=\n\004_rsp\0225\n\003rsh\030\001 \001(\0132(.co" +
-      "m.qlcd.qltt.body.BppSys._rsp_succheadB\030\n" +
-      "\026com.qlcd.qltt.body.pvtb\006proto3"
+      "\030\002 \001(\005\"R\n\004_req\022\016\n\006ttacct\030\001 \001(\t\022:\n\003att\030\002 " +
+      "\001(\0132-.com.qlcd.qltt.body.pvt.T01004001._" +
+      "attntactic\"=\n\004_rsp\0225\n\003rsh\030\001 \001(\0132(.com.ql" +
+      "cd.qltt.body.BppSys._rsp_succheadB\030\n\026com" +
+      ".qlcd.qltt.body.pvtb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -2072,7 +1894,7 @@ public final class T01004001 {
     internal_static_com_qlcd_qltt_body_pvt_T01004001__req_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_qlcd_qltt_body_pvt_T01004001__req_descriptor,
-        new java.lang.String[] { "Ttacct", "Attlist", });
+        new java.lang.String[] { "Ttacct", "Att", });
     internal_static_com_qlcd_qltt_body_pvt_T01004001__rsp_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_com_qlcd_qltt_body_pvt_T01004001__rsp_fieldAccessorTable = new

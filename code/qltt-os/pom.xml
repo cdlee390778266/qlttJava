@@ -904,9 +904,9 @@
 				<user.serv.host>192.168.16.42</user.serv.host>
 				<user.serv.port>8080</user.serv.port>
 				<user.serv.context>/qltt-us/</user.serv.context>
-				<user.serv.appid>app1493880964393</user.serv.appid>
-				<user.serv.plaintext>app1493880964393</user.serv.plaintext>
-				<user.serv.secret>VxhimWuNRpi+fm/GCBXSV9FTWTvnRqkEze6s3VstXq5NZ5KyLdtSRTTMXNydABMZDNsX/B/VEbexhRFXFkwZssFDTSub4QhJ5YEW7QRLvKlKGTw5y/wF6VZodNH4dig0mvUWCtCAM71SOXXThgpJrO9F9UX+tIp4egUb3H339BU=</user.serv.secret>
+				<user.serv.appid>app1494816682202</user.serv.appid>
+				<user.serv.plaintext>app1494816682202</user.serv.plaintext>
+				<user.serv.secret>XZzwJYIYH3mPKHZbL4ExWT0iDgVpNNm/Dr3uWYUaCtiSrUyyC840sHWC251HC4tYI/XMesImfAl7fb5tBAWNu/XLTfFFEvXsZa/H2nGHhNsxookqlk9b0viladjnIsIxrRM7zB2YtDis3dmFy9XYwX7/TnEDH66f6B+ml+C4WaA=</user.serv.secret>
 			</properties>
 		</profile>
 		<profile>

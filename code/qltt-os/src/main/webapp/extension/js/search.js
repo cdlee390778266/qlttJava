@@ -33,11 +33,12 @@ $(document).ready(function() {
 				if (data != null) {
 					var members = data.ptgmlist;
 					for ( var i in members) {
+						var href = encodeURI("../stock/home.do?tactic=" + members[i].tactic + "&tacname=" + members[i].tacname);
 						html += '<div class="search-item ani" swiper-animate-effect="fadeIn" swiper-animate-duration="1s" swiper-animate-delay="0s" >'
 							+ '<div class="search-head">'
 							+ members[i].tacname
 							+ '</div>'
-							+ '<div class="search-body"><a href="' + contextPath + '/webapp/stock/home.do?tactic=' + members[i].tactic + '&tacname=' + members[i].tacname + '">'
+							+ '<div class="search-body"><a href="' + href + '">'
 							+ members[i].tacdetail
 							+ '</a></div>' + '</div>'
 					}
@@ -45,7 +46,7 @@ $(document).ready(function() {
 				$parent.append(html);
 				loadingHide($('.qltt-toast'));
 			},
-			error : function(jqXHR, textStatus, errorThrown ) {
+			error : function(jqXHR, textStatus, errorThrown) {
 				alert('获取数据失败！');
 			}
 		});
@@ -70,6 +71,11 @@ $(document).ready(function() {
 					if ($('#search-box-' + searchSwiper.activeIndex).find('.search-item ').length <= 0) {
 						loadingShow($('.qltt-toast'));
 						createHtml($('#search-box-' + searchSwiper.activeIndex));
+					}
+					if (searchSwiper.activeIndex == 0) {
+						$('.pFooter-btn').show();
+					} else {
+						$('.pFooter-btn').hide();
 					}
 
 					headIScroll.scrollToElement($('#header li').get(searchSwiper.activeIndex), 30);
