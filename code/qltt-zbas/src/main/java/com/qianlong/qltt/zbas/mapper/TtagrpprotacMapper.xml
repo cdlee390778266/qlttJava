@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qianlong.qltt.zbas.mapper.TtagrpprotacMapper" >
+  <resultMap id="BaseResultMap" type="com.qianlong.qltt.zbas.domain.Ttagrpprotac" >
+    <id column="Fs_tacgroup" property="fsTacgroup" jdbcType="VARCHAR" />
+    <result column="Fs_name" property="fsName" jdbcType="VARCHAR" />
+    <result column="Fs_detail" property="fsDetail" jdbcType="VARCHAR" />
+    <result column="Fi_level" property="fiLevel" jdbcType="INTEGER" />
+    <result column="Fs_ptacgroup" property="fsPtacgroup" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    Fs_tacgroup, Fs_name, Fs_detail, Fi_level, Fs_ptacgroup
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.qianlong.qltt.zbas.domain.TtagrpprotacExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ttagrpprotac
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="limitStart != null and limitStart>=0" >
+      limit #{limitStart} , #{limitEnd}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.qianlong.qltt.zbas.domain.TtagrpprotacKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from ttagrpprotac
+    where Fs_tacgroup = #{fsTacgroup,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.qianlong.qltt.zbas.domain.TtagrpprotacKey" >
+    delete from ttagrpprotac
+    where Fs_tacgroup = #{fsTacgroup,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.qianlong.qltt.zbas.domain.TtagrpprotacExample" >
+    delete from ttagrpprotac
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.qianlong.qltt.zbas.domain.Ttagrpprotac" >
+    insert into ttagrpprotac (Fs_tacgroup, Fs_name, Fs_detail, 
+      Fi_level, Fs_ptacgroup)
+    values (#{fsTacgroup,jdbcType=VARCHAR}, #{fsName,jdbcType=VARCHAR}, #{fsDetail,jdbcType=VARCHAR}, 
+      #{fiLevel,jdbcType=INTEGER}, #{fsPtacgroup,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qianlong.qltt.zbas.domain.Ttagrpprotac" >
+    insert into ttagrpprotac
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="fsTacgroup != null" >
+        Fs_tacgroup,
+      </if>
+      <if test="fsName != null" >
+        Fs_name,
+      </if>
+      <if test="fsDetail != null" >
+        Fs_detail,
+      </if>
+      <if test="fiLevel != null" >
+        Fi_level,
+      </if>
+      <if test="fsPtacgroup != null" >
+        Fs_ptacgroup,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="fsTacgroup != null" >
+        #{fsTacgroup,jdbcType=VARCHAR},
+      </if>
+      <if test="fsName != null" >
+        #{fsName,jdbcType=VARCHAR},
+      </if>
+      <if test="fsDetail != null" >
+        #{fsDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="fiLevel != null" >
+        #{fiLevel,jdbcType=INTEGER},
+      </if>
+      <if test="fsPtacgroup != null" >
+        #{fsPtacgroup,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.qianlong.qltt.zbas.domain.TtagrpprotacExample" resultType="java.lang.Integer" >
+    select count(*) from ttagrpprotac
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update ttagrpprotac
+    <set >
+      <if test="record.fsTacgroup != null" >
+        Fs_tacgroup = #{record.fsTacgroup,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fsName != null" >
+        Fs_name = #{record.fsName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fsDetail != null" >
+        Fs_detail = #{record.fsDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fiLevel != null" >
+        Fi_level = #{record.fiLevel,jdbcType=INTEGER},
+      </if>
+      <if test="record.fsPtacgroup != null" >
+        Fs_ptacgroup = #{record.fsPtacgroup,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update ttagrpprotac
+    set Fs_tacgroup = #{record.fsTacgroup,jdbcType=VARCHAR},
+      Fs_name = #{record.fsName,jdbcType=VARCHAR},
+      Fs_detail = #{record.fsDetail,jdbcType=VARCHAR},
+      Fi_level = #{record.fiLevel,jdbcType=INTEGER},
+      Fs_ptacgroup = #{record.fsPtacgroup,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qianlong.qltt.zbas.domain.Ttagrpprotac" >
+    update ttagrpprotac
+    <set >
+      <if test="fsName != null" >
+        Fs_name = #{fsName,jdbcType=VARCHAR},
+      </if>
+      <if test="fsDetail != null" >
+        Fs_detail = #{fsDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="fiLevel != null" >
+        Fi_level = #{fiLevel,jdbcType=INTEGER},
+      </if>
+      <if test="fsPtacgroup != null" >
+        Fs_ptacgroup = #{fsPtacgroup,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Fs_tacgroup = #{fsTacgroup,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qianlong.qltt.zbas.domain.Ttagrpprotac" >
+    update ttagrpprotac
+    set Fs_name = #{fsName,jdbcType=VARCHAR},
+      Fs_detail = #{fsDetail,jdbcType=VARCHAR},
+      Fi_level = #{fiLevel,jdbcType=INTEGER},
+      Fs_ptacgroup = #{fsPtacgroup,jdbcType=VARCHAR}
+    where Fs_tacgroup = #{fsTacgroup,jdbcType=VARCHAR}
+  </update>
+</mapper>
