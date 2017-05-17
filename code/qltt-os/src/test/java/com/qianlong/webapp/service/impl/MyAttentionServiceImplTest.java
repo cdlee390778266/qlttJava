@@ -26,7 +26,7 @@ public class MyAttentionServiceImplTest {
 	@Autowired
 	private IMyAttentionService myAttentionService;
 	
-	//@Test
+	@Test
 	public void testFollow() {
 		BaseIndex index = new BaseIndex();
 		index.setTacTic("100000000");
@@ -34,7 +34,7 @@ public class MyAttentionServiceImplTest {
 		myAttentionService.follow(index, "tt1493095617721");
 	}
 	
-	//@Test
+	@Test
 	public void testUnfollow() {
 		BaseIndex index = new BaseIndex();
 		index.setTacTic("100000000");

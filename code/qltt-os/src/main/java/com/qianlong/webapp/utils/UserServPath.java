@@ -63,4 +63,34 @@ public class UserServPath {
 	 * 账户指定指标池关注个股查询
 	 */
 	public static final String USER_SERV_STOCK_ATTN_QUERY = ResourceUtil.getConfigByName("user.serv.context") + "acctattnstock/attnstock004";
+	
+	/**
+	 * 全局推送范围设置
+	 */
+	public static final String USER_SERV_PUSH_SCOPE_SET = ResourceUtil.getConfigByName("user.serv.context") + "acctsetprm/setprm001";
+	
+	/**
+	 * 全局推送范围查询
+	 */
+	public static final String USER_SERV_PUSH_SCOPE_QUERY = ResourceUtil.getConfigByName("user.serv.context") + "acctsetprm/setprm002";
+	
+	/**
+	 * 全局推送数量设置
+	 */
+	public static final String USER_SERV_PUSH_NUM_SET = ResourceUtil.getConfigByName("user.serv.context") + "acctsetprm/setprm003";
+	
+	/**
+	 * 全局推送数量查询
+	 */
+	public static final String USER_SERV_PUSH_NUM_QUERY = ResourceUtil.getConfigByName("user.serv.context") + "acctsetprm/setprm004";
+	
+	/**
+	 * 全局推送频率设置
+	 */
+	public static final String USER_SERV_PUSH_FREQ_SET = ResourceUtil.getConfigByName("user.serv.context") + "acctsetprm/setprm005";
+	
+	/**
+	 * 全局推送频率查询
+	 */
+	public static final String USER_SERV_PUSH_FREQ_QUERY = ResourceUtil.getConfigByName("user.serv.context") + "acctsetprm/setprm006";
 }
