@@ -20,9 +20,7 @@ import org.springframework.stereotype.Service;
 import weixin.guanjia.account.entity.WeixinAccountEntity;
 import weixin.guanjia.account.service.WeixinAccountServiceI;
 import weixin.guanjia.base.entity.Subscribe;
-import weixin.guanjia.base.entity.WeixinExpandconfigEntity;
 import weixin.guanjia.base.service.SubscribeServiceI;
-import weixin.guanjia.base.service.WeixinExpandconfigServiceI;
 import weixin.guanjia.core.entity.message.resp.Article;
 import weixin.guanjia.core.entity.message.resp.NewsMessageResp;
 import weixin.guanjia.core.entity.message.resp.TextMessageResp;
@@ -42,7 +40,6 @@ import weixin.guanjia.message.service.NewsTemplateServiceI;
 import weixin.guanjia.message.service.ReceiveTextServiceI;
 import weixin.guanjia.message.service.TextTemplateServiceI;
 import weixin.guanjia.user.service.IUserService;
-import weixin.idea.extend.function.KeyServiceI;
 import weixin.util.DateUtils;
 
 @Service("wechatService")
@@ -63,8 +60,6 @@ public class WechatService {
 	private SystemService systemService;
 	@Autowired
 	private SubscribeServiceI subscribeService;
-	@Autowired
-	private WeixinExpandconfigServiceI weixinExpandconfigService;
 	@Autowired
 	private WeixinAccountServiceI weixinAccountService;
 	@Autowired
@@ -283,6 +278,7 @@ public class WechatService {
 				respMessage = MessageUtil.newsMessageToXml(newsResp);
 			}
 		} else {
+			/*
 			// Step.2  通过微信扩展接口（支持二次开发，例如：翻译，天气）
 			LogUtil.info("------------微信客户端发送请求--------------Step.2  通过微信扩展接口（支持二次开发，例如：翻译，天气）---");
 			List<WeixinExpandconfigEntity> weixinExpandconfigEntityLst = weixinExpandconfigService.findByQueryString("FROM WeixinExpandconfigEntity");
@@ -305,6 +301,7 @@ public class WechatService {
 					}
 				}
 			}
+			*/
 
 		}
 		return respMessage;
@@ -420,10 +417,12 @@ public class WechatService {
 				respMessage = MessageUtil
 						.newsMessageToXml(newsResp);
 			} else if ("expand".equals(type)) {
+				/*
 				WeixinExpandconfigEntity expandconfigEntity = weixinExpandconfigService.getEntity(WeixinExpandconfigEntity.class,menuEntity.getTemplateId());
 				String className = expandconfigEntity.getClassname();
 				KeyServiceI keyService = (KeyServiceI) Class.forName(className).newInstance();
 				respMessage = keyService.excute("", textMessage,request);
+				*/
 
 			}
 		}
