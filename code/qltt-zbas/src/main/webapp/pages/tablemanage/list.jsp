@@ -17,7 +17,7 @@
 			<div class="easyui-layout" data-options="fit:true">
 				<div style="height:250px;"  data-options="region:'north',split:false,border:false" ></div>
 				<div data-options="region:'center',border:false" >
-					<table class="easyui-datagrid" id="tb-source" style="height:500px;"
+					<table class="easyui-datagrid" id="tb-source" style="height:400px;"
 						data-options="rownumbers:true,singleSelect:false,autoRowHeight:true,fitColumns:true,title:'源数据库'">
 						<thead>
 							<tr>
@@ -82,7 +82,7 @@
 				</div>
 				
 				<div data-options="region:'center',border:false">
-					<table class="easyui-datagrid" id="tb-target" style="height:500px;"
+					<table class="easyui-datagrid" id="tb-target" style="min-height:400px;"
 						data-options="singleSelect:false,autoRowHeight:true,fitColumns:true,rownumbers:true,idField:'tableName',title:'目标数据库'">
 						<thead>
 							<tr>
@@ -117,8 +117,10 @@
 			 */
 			$("#tb-target").datagrid({
 				idField : 'tableName',
-				data:[],
-				emptyMsg : '没有数据！'
+				data:{
+						result:"ok",
+						data:[]
+				}
 			});
 		})
 		
@@ -173,7 +175,6 @@
 						msg: '您确认要将选中的表复制到目标数据库中吗',
 						fn: function(r){
 							if(r){
-								console.log(param);
 								var url = "copytables.html"
 								$.ajax({
 									async : true,
@@ -185,19 +186,11 @@
 									success : function(object) {
 										if (object.result == 'ok'){
 											queryTargetDBTables();//从新加载目标数据库的数据
-											$.messager.alert("提示","操作成功");
+											$.messager.alert("操作成功","复制库表成功");
 										}else{
-											$.messager.alert("提示","操作失败："+object.message);
+											$.messager.alert("操作成功","复制库表失败："+object.message);
 										}
-									},
-								  error : function(XMLHttpRequest, textStatus, errorThrown) {
-										var text = XMLHttpRequest.responseText;
-										if(!isEmpty(text)) {
-											$.messager.alert("提示",text);
-										} else {
-											$.messager.alert("提示","系统错误...");
-										}
-									} 
+									}
 								}); 
 							}
 						}

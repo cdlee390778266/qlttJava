@@ -67,17 +67,9 @@
     				cache : false,
     				success : function(object) {
     					if (object.result == 'ok') {
-    						$.messager.alert("提示","操作成功");
+    						$.messager.alert("操作成功","操作成功");
     					}else{
-    						$.messager.alert("提示","操作失败："+object.message);
-    					}
-    				},
-    				error : function(XMLHttpRequest, textStatus, errorThrown) {
-    					var text = XMLHttpRequest.responseText;
-    					if(!isEmpty(text)) {
-    						$.messager.alert("提示",text);
-    					} else {
-    						$.messager.alert("提示","系统调用出现错误，请联系系统管理员进行处理");
+    						$.messager.alert("操作失败",object.message);
     					}
     				}
     			});

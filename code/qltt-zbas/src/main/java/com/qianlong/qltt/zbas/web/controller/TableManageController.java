@@ -40,7 +40,7 @@ public class TableManageController {
 	public Object getSourceDBTables(){
 		ConnectionParam param = tableManageService.getSourceDBConnectionParam();
 		List<TableInfo> infos = tableManageService.getTables(param);
-		return infos;
+		return JsonResult.jsonData(infos);
 	}
 	
 	/**
@@ -55,7 +55,7 @@ public class TableManageController {
 			@Param(value="password") String password){
 		ConnectionParam  param = tableManageService.getDBConnectionParam(host,port,database,username,password);
 		List<TableInfo> infos = tableManageService.getTables(param);
-		return infos;
+		return JsonResult.jsonData(infos);
 	}
 	
 	/**

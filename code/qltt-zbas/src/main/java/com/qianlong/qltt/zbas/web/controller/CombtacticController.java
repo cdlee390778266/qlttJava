@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.qianlong.qltt.zbas.common.JsonResult;
 import com.qianlong.qltt.zbas.common.pagination.Pagination;
 import com.qianlong.qltt.zbas.domain.TtadefcombtacprmKey;
 import com.qianlong.qltt.zbas.domain.Ttadefcombtactic;
@@ -31,12 +32,12 @@ public class CombtacticController {
 	@RequestMapping("/list.html")
 	@ResponseBody
 	public Object list(Ttadefcombtactic ttadefcombtactic,Pagination pagination){
-		return combtacticService.selectProtacticPageData(ttadefcombtactic,pagination);
+		return JsonResult.jsonData(combtacticService.selectProtacticPageData(ttadefcombtactic,pagination));
 	}
 	
 	@RequestMapping("/cslist.html")
 	@ResponseBody
 	public Object cslist(TtadefcombtacprmKey ttadefcombtacprmKey,Pagination pagination){
-		return combtacticService.selectProtacticPageData(ttadefcombtacprmKey,pagination);
+		return JsonResult.jsonData(combtacticService.selectProtacticPageData(ttadefcombtacprmKey,pagination));
 	}
 }

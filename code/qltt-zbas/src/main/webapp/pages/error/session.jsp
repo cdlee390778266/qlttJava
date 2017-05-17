@@ -10,16 +10,13 @@
 </head>
 <body class="easyui-layout" data-options="fit:true">
 	<div style="margin:40px;">
-		<h3>出现错误</h3><br/>
-		<h3>错误信息：</h3>
-		<p>{error}</p>
-		<h3>返回<a style="color:red" href="#" onClick="javascript:backToPre();">上一页</a></h3>
+		<h3>会话超时，请重新登陆...</h3><br/>
+		<h3>返回<a style="color:red" href="#" onClick="javascript:backToLogin();">登陆页面</a></h3>
 	</div>
 	<script>
-		function backToPre(){
-			history.go(-1);
+		function backToLogin(){
+			window.top.location.href='${ctx}/index.html';
 		}
 	</script>
-    <h2>${error}</h2>
 </body>
 </html>

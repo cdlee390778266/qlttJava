@@ -16,7 +16,7 @@
 			<a id="grp-cancel"  onclick="javascript:deleteTaggrp()" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-cancel',disabled:true">删除</a>
 			<a id="grp-un-select"  onclick="javascript:unselectTaggrp()" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-reload'">取消选中</a>
 		</div>
-		 <table class="easyui-treegrid" style="width:100%;padding:5px;" id="grp-tb"
+		 <table class="easyui-treegrid" style="min-height:300px;width:100%;padding:5px;" id="grp-tb"
             data-options="fitColumns:true,method: 'get',idField:'fsTacgroup',treeField:'fsName',rownumbers:true">
 	        <thead>
 	            <tr>
@@ -74,7 +74,7 @@
 					</tr>
 					<tr>
 						<td colspan="4">
-							<table class="easyui-datagrid" id="mem-tb" title="原生指标组指标成员" style="width:90%; height:300px;"  
+							<table class="easyui-datagrid" id="mem-tb" title="原生指标组指标成员" style="width:90%;min-height:300px;"  
 								data-options="singleSelect:true,autoRowHeight:true,fitColumns:true">  
 								 <thead>
 							        <tr>
@@ -143,7 +143,7 @@
 		</div>	
 		<div class="easyui-layout" style="dispaly:block;width:745px;height:310px;">
 			<div data-options="region:'west',split:false,border:false" style="width:44%">
-				<table class="easyui-datagrid" id="edit-mem-unselect" title="未选择原生指标" style="width:98%;height:300px;"  
+				<table class="easyui-datagrid" id="edit-mem-unselect" title="未选择原生指标" style="width:90%;height:300px;margin:auto;"  
 					data-options="singleSelect:false,autoRowHeight:true,fitColumns:true,rownumbers:true,idField:'fsTactic'">  
 					 <thead>
 				        <tr>
@@ -161,7 +161,7 @@
 				</div>
 			</div>
 			<div data-options="region:'east',split:false,border:false" style="width:44%">
-				<table class="easyui-datagrid" id="edit-mem-select" title="已选中原生指标" style="width:90%; height:300px;"  
+				<table class="easyui-datagrid" id="edit-mem-select" title="已选中原生指标" style="width:90%; height:300px;margin:auto;"  
 					data-options="singleSelect:false,checkOnSelect:true,autoRowHeight:true,fitColumns:true,rownumbers:true,idField:'fsTactic'">  
 					<thead>
 				        <tr>
@@ -181,6 +181,11 @@
  
 	<script type="text/javascript">
 	$.parser.parse();
+	var emptydata = {
+			result:"ok",
+			data:[]
+		};
+	
 	var checknode;
 	/*
 	 * Tool Function:
@@ -285,15 +290,7 @@
 					}
 					$("#edit-mem-unselect").datagrid({data:data});
 				}else{
-					$.messager.alert("提示","加载未选中原生指标失败："+object.message);
-				}
-			},
-			error : function(XMLHttpRequest, textStatus, errorThrown) {
-				var text = XMLHttpRequest.responseText;
-				if(!isEmpty(text)) {
-					$.messager.alert("提示",text);
-				} else {
-					$.messager.alert("提示","系统调用出现错误，请联系系统管理员进行处理");
+					$.messager.alert("加载表格数据失败",object.message);
 				}
 			}
 		});
@@ -320,6 +317,15 @@
 			method: 'get',
 			animate: true,
 			toolbar : '#grp-toolbar',
+			loadFilter:function(data){
+				if(data.result="ok"){
+					return data.data;
+				}else if(data.result="error"){
+					$.messager.alert("表格加载数据错误",data.message);
+				}else{
+					$.messager.alert("表格加载数据错误","加载表格数据异常");
+				}
+			},
 			onClickRow: function(node) {
 				checkNode = node ; 
 				loadRightPanel(node);
@@ -338,6 +344,18 @@
 				}
 			}
 		});
+		
+		$("#mem-tb").datagrid({loadFilter:function(data){
+			return data
+		}});
+		
+		$("#edit-mem-unselect").datagrid({loadFilter:function(data){
+			return data
+		}});
+		
+		$("#edit-mem-select").datagrid({loadFilter:function(data){
+			return data
+		}});
 	})
 	
 	/*  
@@ -363,7 +381,6 @@
 		//数据填充
 		$("#oper").val("ADD");//操作标识
 		var node = $('#grp-tb').treegrid("getSelected");
-		console.log(node);
 		if(node){//父级
 			$("#grp-edit-form #fiLevel").textbox("setValue",node.fiLevel+1);//层级
 			$("#grp-edit-form #fsPtacgroupName").textbox("setValue",node.fsName);//指标组名称
@@ -424,7 +441,6 @@
 							var param = {}
 							param.fsTacgroup = node.fsTacgroup;
 							param.oper = "DELETE";
-							console.log(param);
 							$.ajax({
 			    				async : true,
 			    				data : param,
@@ -434,18 +450,10 @@
 			    				cache : false,
 			    				success : function(object) {
 			    					if(object.result == 'ok') {
-			    						$.messager.alert("提示","删除原生指标组成功");
+			    						$.messager.alert("操作成功","删除原生指标组成功");
 			    						reloadTreeGrid();
 			    					}else{
-			    						$.messager.alert("提示","删除原生指标组成功："+object.message);
-			    					}
-			    				},
-			    				error : function(XMLHttpRequest, textStatus, errorThrown) {
-			    					var text = XMLHttpRequest.responseText;
-			    					if(!isEmpty(text)) {
-			    						$.messager.alert("提示",text);
-			    					} else {
-			    						$.messager.alert("提示","系统调用出现错误，请联系系统管理员进行处理");
+			    						$.messager.alert("操作失败",object.message);
 			    					}
 			    				}
 			    			});
@@ -470,6 +478,9 @@
 	 * 		编辑窗口页面上"提交"按钮"点击"事件的响应Function
 	 */
 	 function submitEditForm(){
+		if(!$("#grp-edit-form").form('validate')){
+			return;
+		}
 		var param = {};
 		//操作参数
 		param.oper = $("#oper").val();
@@ -489,7 +500,6 @@
 				
 			}
 		}
-		console.log(param);
 		var url = "saveTacgroup.html";
 		$.ajax({
 			async : true,
@@ -500,19 +510,11 @@
 			cache : false,
 			success : function(object) {
 				if (object.result == 'ok'){
-					$.messager.alert("提示","操作成功");
+					$.messager.alert("操作成功","保存数据成功");
 					closeEditForm();
 					reloadTreeGrid();
 				}else{
-					$.messager.alert("提示","保存数据失败："+object.message);
-				}
-			},
-			error : function(XMLHttpRequest, textStatus, errorThrown) {
-				var text = XMLHttpRequest.responseText;
-				if(!isEmpty(text)) {
-					$.messager.alert("提示",text);
-				} else {
-					$.messager.alert("提示","系统调用出现错误，请联系系统管理员进行处理");
+					$.messager.alert("操作失败","保存数据失败："+object.message);
 				}
 			}
 		});

@@ -4,7 +4,16 @@
 		pageNumber : 1,
 		pageSize : 10,
 		pageList : [ 10, 20, 30,40],
-		emptyMsg : '没有数据！'
+		emptyMsg : '没有数据！',
+		loadFilter:function(data){
+			if(data.result="ok"){
+				return data.data;
+			}else if(data.result="error"){
+				$.messager.alert("表格加载数据错误",data.message);
+			}else{
+				$.messager.alert("表格加载数据错误","加载表格数据异常");
+			}
+		}
 	});
 	
 	$.extend($.fn.validatebox.defaults.rules, { 
@@ -99,9 +108,9 @@
 	    }, 
 	    integer : {// 验证整数 
 	        validator : function(value) { 
-	            return /^[+]?[1-9]+\d*$/i.test(value); 
+	            return /^(0|\+?[1-9][0-9]*)$/i.test(value); 
 	        }, 
-	        message : '请输入整数'
+	        message : '请输非负整数'
 	    }, 
 	    chinese : {// 验证中文 
 	        validator : function(value) { 

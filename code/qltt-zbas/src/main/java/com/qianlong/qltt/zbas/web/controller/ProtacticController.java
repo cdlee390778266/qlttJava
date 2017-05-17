@@ -34,7 +34,7 @@ public class ProtacticController {
 	@RequestMapping("/list.html")
 	@ResponseBody
 	public Object list(Ttadefprotactic ttadefprotactic,Pagination pagination){
-		return protaticService.selectProtacticPageData(ttadefprotactic,pagination);
+		return JsonResult.jsonData(protaticService.selectProtacticPageData(ttadefprotactic,pagination));
 	}
 	
 	@RequestMapping("/editProtactic.html")
@@ -64,7 +64,7 @@ public class ProtacticController {
 	@RequestMapping("/cslist.html")
 	@ResponseBody
 	public Object cslist(Ttadefprotacprm tadefprotacprm,Pagination pagination){
-		return protaticService.selectProtacprmPageData(tadefprotacprm,pagination);
+		return JsonResult.jsonData(protaticService.selectProtacprmPageData(tadefprotacprm,pagination));
 	}
 	
 	@RequestMapping("/editProtacprm.html")

@@ -15,10 +15,9 @@
 		<div class="easyui-panel" style="width:95%;padding: 5px;margin:5px;" data-options="border:false">
 			<input id="sch-fsTactic"    class="easyui-textbox" style="width: 160px" data-options="label:'指标：',labelWidth:60,labelAlign:'right'">
 			<input id="sch-fiMaxdelay"  class="easyui-textbox" style="width: 200px" data-options="label:'最大延迟指数：',labelWidth:100,labelAlign:'right'">
-			<!-- <input id="sch-fsChkcode"   class="easyui-textbox" style="width: 200px" data-options="label:'校验码：',labelWidth:100,labelAlign:'right'"> -->
 			<a id="zb-query" onclick="javascript:handleZbQuery()" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'">查询</a>
 		</div>
-		<table class="easyui-datagrid" id="tb-zb"
+		<table class="easyui-datagrid" id="tb-zb" style="min-height:300px;"
 			data-options="rownumbers:true,singleSelect:true,autoRowHeight:true,fitColumns:true">
 			<thead>
 				<tr>
@@ -44,7 +43,7 @@
 		</div>
 		<div class="easyui-panel" style="padding: 5px;"
 			data-options="border:false">
-			<table class="easyui-datagrid" id="tb-zbcs" style="height:400px;"
+			<table class="easyui-datagrid" id="tb-zbcs" style="min-height:300px;"
 				data-options="rownumbers:true,singleSelect:true,autoRowHeight:true,fitColumns:true">
 				<thead>
 					<tr>
@@ -59,6 +58,11 @@
 	<script type="text/javascript">
 		$.parser.parse();
 
+		var emptydata = {
+			result:"ok",
+			data:[]
+		};
+		
 		$(function(){
 			var param =  queryParams();
 			$("#tb-zb").datagrid({
@@ -84,10 +88,7 @@
 				idField : 'fsTactic',
 				singleSelect : true,
 				toolbar : '#zbcs-toolbar',
-				data:[],
-				onClickRow:function(node){
-					manageZBCSBtn("enable");
-				},
+				data:emptydata,
 				onLoadSuccess:function(){
 					$("#tb-zbcs").datagrid("unselectAll");//加载成功后取消被选中
 				}
@@ -99,7 +100,6 @@
 			var param = {};
 			param.fsTactic   =  $("#sch-fsTactic").textbox("getValue");
 			param.fiMaxdelay =  $("#sch-fiMaxdelay").textbox("getValue");
-			//param.fsChkcode  =  $("#sch-fsChkcode").textbox("getValue");
 			return param;
 		}
 		
@@ -108,7 +108,6 @@
 		 */
 		function handleZbQuery(){
 			var param = queryParams(); 
-			console.log(param);
 			$("#tb-zb").datagrid("load",param);
 			cleanCenterPanel();//清空指标参数面板
 		}
@@ -139,7 +138,7 @@
 			//table清空
 			$("#tb-zbcs").datagrid({
 				url:null,
-				data:[]
+				data:emptydata
 			}); 
 		}
 		
@@ -151,8 +150,6 @@
 			param.fsTactic = $("#sch-cs-fsTactic").val();
 			param.fsSrctactic = $("#sch-cs-fsSrctactic").textbox("getValue");
 			param.fiSrctacticprm = $("#sch-cs-fiSrctacticprm").textbox("getValue");
-			console.log("指标参数查询参数：");
-			console.log(param);
 			$("#tb-zbcs").datagrid({
 				url:"cslist.html",
 				queryParams:param

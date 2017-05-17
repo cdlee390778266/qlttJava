@@ -24,7 +24,7 @@
 			<a  id="zb-delete" onclick="javascript:deleteZb()"     style="margin-right:10px;" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-remove',disabled:true">删除</a>
 			<a  id="zb-schcs" onclick="javascript:searchZBCS()"       href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search',disabled:true">查看指标参数</a>
 		</div>
-		<table class="easyui-datagrid" id="tb-zb"
+		<table class="easyui-datagrid" id="tb-zb" style="min-height:300px;"
 			data-options="rownumbers:true,singleSelect:true,autoRowHeight:true,fitColumns:true">
 			<thead>
 				<tr>
@@ -61,7 +61,7 @@
 		
 		<div class="easyui-panel" style="padding: 5px;"
 			data-options="border:false">
-			<table class="easyui-datagrid" id="tb-zbcs"
+			<table class="easyui-datagrid" id="tb-zbcs" style="min-height:300px;"
 				data-options="rownumbers:true,singleSelect:true,autoRowHeight:true,fitColumns:true">
 				<thead>
 					<tr>
@@ -236,7 +236,6 @@
 		*/
 		function editZb(){
 		   var row = $("#tb-zb").datagrid("getSelected");
-		   console.log(row)
 		   if(row){
 			    cleanZbEditForm();//清空原生指标编辑Form
 				$("#zbEditForm #zboper").val("EDIT");
@@ -266,7 +265,6 @@
 							var param = {}
 							param.fsTactic = row.fsTactic;
 							param.zboper = "DELETE";
-							console.log(param);
 							$.ajax({
 			    				async : true,
 			    				data : param,
@@ -275,22 +273,14 @@
 			    				url : url,
 			    				cache : false,
 			    				success : function(object) {
-			    					if (object.result == 'ok') {
-			    						$.messager.alert("提示","删除原生指标成功");
+			    					if(object.result == 'ok') {
+			    						$.messager.alert("操作成功","删除原生指标成功");
 			    						reloadZbQuery();
 			    					}else{
-			    						$.messager.alert("提示","删除原生指标成功："+object.message);
-			    					}
-			    				},
-			    				error : function(XMLHttpRequest, textStatus, errorThrown) {
-			    					var text = XMLHttpRequest.responseText;
-			    					if(!isEmpty(text)) {
-			    						$.messager.alert("提示",text);
-			    					} else {
-			    						$.messager.alert("提示","系统调用出现错误，请联系系统管理员进行处理");
+			    						$.messager.alert("操作失败","删除原生指标失败："+object.message);
 			    					}
 			    				}
-			    			});
+							});
 						}
 					}
 				});
@@ -337,7 +327,6 @@
 				param.fsName = $("#zbEditForm #fsName").textbox("getValue");
 				param.fsDetail = $("#zbEditForm #fsDetail").textbox("getValue");
 				$("#zb-submit").linkbutton('disable');//禁用提交按钮
-				console.log(param);
 				$.ajax({
     				async : true,
     				data : param,
@@ -386,7 +375,10 @@
 			//table清空
 			$("#tb-zbcs").datagrid({
 				url:null,
-				data:[]
+				data:{
+						result:"ok",
+						data:[]
+					}
 			}); 
 		}
 		
@@ -398,8 +390,6 @@
 			param.fsTactic = $("#sch-cs-fsTactic").val();
 			param.fiTacticprm = $("#sch-cs-fiTacticprm").textbox("getValue");
 			param.fsTacprmname = $("#sch-cs-fsTacprmname").textbox("getValue");
-			console.log("指标参数查询参数：");
-			console.log(param);
 			$("#tb-zbcs").datagrid({
 				url:"cslist.html",
 				queryParams:param,
@@ -436,7 +426,6 @@
 				param.fiMaxdelay = $("#zbcsEditForm #fiMaxdelay").textbox("getValue");
 				param.fsDetail = $("#zbcsEditForm #fsDetail").textbox("getValue");
 				$("#zbcs-submit").linkbutton('disable');//禁用提交按钮
-				console.log(param);
 				$.ajax({
     				async : true,
     				data : param,
@@ -471,7 +460,6 @@
 		//修改原生指标
 		function editZBCS(){
 			 var row = $("#tb-zbcs").datagrid("getSelected");
-			   console.log(row)
 			   if(row){
 				   cleanZbCSEditForm();//清空原生指标编辑Form
 				   $("#zbcsEditForm #zboper").val("EDIT");
@@ -501,7 +489,6 @@
 								param.fsTactic = row.fsTactic;
 								param.fiTacticprm = row.fiTacticprm;
 								param.oper = "DELETE";
-								console.log(param);
 								$.ajax({
 				    				async : true,
 				    				data : param,

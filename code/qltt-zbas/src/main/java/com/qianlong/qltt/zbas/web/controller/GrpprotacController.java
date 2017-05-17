@@ -36,7 +36,7 @@ public class GrpprotacController {
 	@ResponseBody
 	public Object getTreeList(){
 	    List<Ttagrpprotac> ttagrpprotacs = grpprotacService.selectGrpprotacTree(1,null,null);
-		return ttagrpprotacs;
+		return JsonResult.jsonData(ttagrpprotacs);
 	}
 	
 	@RequestMapping("/selectUnselectZB.html")
