@@ -3,4 +3,3 @@ target/
 .project
 .settings/
 velocity.log
-pom.xml
