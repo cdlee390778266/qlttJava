@@ -48,8 +48,9 @@
 		});
 		
 		function displayEmpty() {
-			if ($(".search-item").length < 1 && $(".pool-empty").hasClass("hidden")) {
-				$(".pool-empty").removeClass("hidden");
+			if ($(".search-item").length < 1){
+				if($(".pool-empty").hasClass("hidden"))
+					$(".pool-empty").removeClass("hidden");
 			} else {
 				$(".pool-empty").addClass("hidden");
 			}
