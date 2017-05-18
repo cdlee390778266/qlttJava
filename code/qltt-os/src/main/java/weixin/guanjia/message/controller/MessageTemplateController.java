@@ -24,6 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
+import weixin.guanjia.account.entity.WeixinAccountEntity;
 import weixin.guanjia.account.service.WeixinAccountServiceI;
 import weixin.guanjia.message.entity.MessageTemplate;
 import weixin.guanjia.message.model.SendMessageTep;
@@ -70,12 +71,14 @@ public class MessageTemplateController {
 	public void datagrid(MessageTemplate messageTemplate,
 			HttpServletRequest request, HttpServletResponse response,
 			DataGrid dataGrid) {
+		WeixinAccountEntity entity = weixinAccountService.findLoginWeixinAccount();
 		CriteriaQuery cq = new CriteriaQuery(MessageTemplate.class,
 				dataGrid);
 		// 查询条件组装器
 		org.jeecgframework.core.extend.hqlsearch.HqlGenerateUtil.installHql(cq,
 				messageTemplate, request.getParameterMap());
 		cq.eq("status", 1);
+		cq.eq("accountid", entity.getId());
 		cq.add();
 		this.messageTemplateService.getDataGridReturn(cq, true);
 		TagUtil.datagrid(response, dataGrid);
@@ -149,6 +152,8 @@ public class MessageTemplateController {
 	public String asyncDate() throws WexinReqException {
 		String token = weixinAccountService.getAccessToken();
 		String temp = MessageTemplateApiUtil.getTemplateList(token);
+		//获取当前登陆的用户
+		WeixinAccountEntity entity = weixinAccountService.findLoginWeixinAccount();
 		JSONArray tempA = JSONArray.fromObject(temp);
 		List<MessageTemplate> messnewList = new ArrayList<>();
 		for (int i = 0; i < tempA.size(); i++) {
@@ -162,11 +167,17 @@ public class MessageTemplateController {
 			messnew.setCreatetime(new Timestamp(new Date().getTime()));
 			messnew.setExContent(StringTypeUtil.stringToClob(tcon.getString("example")));
 			messnew.setStatus(1);
+			messnew.setAccountid(entity.getId());
 			messnewList.add(messnew);
 			
 		}
-		List<MessageTemplate> messageoldList = this.messageTemplateService.findByProperty(MessageTemplate.class,
-				"status", 1);
+		//List<MessageTemplate> messageoldList = this.messageTemplateService.findListbySql("select * from weixin_message_template where status = 1 and accountid='"+entity.getId()+"'");
+
+		CriteriaQuery cq = new CriteriaQuery(MessageTemplate.class);
+		cq.eq("status", 1);
+		cq.eq("accountid", entity.getId());
+		cq.add();
+		List<MessageTemplate> messageoldList = this.messageTemplateService.getListByCriteriaQuery(cq,true);
 		//添加新的消息模板
 		List<String> mnewIdList = new ArrayList<>();
 		List<String> moldIdList = new ArrayList<>();
