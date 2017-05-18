@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qianlong.qltt.zbas.mapper.TtadefcombtacprmMapper" >
+  <resultMap id="BaseResultMap" type="com.qianlong.qltt.zbas.domain.TtadefcombtacprmKey" >
+    <id column="Fs_tactic" property="fsTactic" jdbcType="VARCHAR" />
+    <id column="Fs_srctactic" property="fsSrctactic" jdbcType="VARCHAR" />
+    <id column="Fi_srctacticprm" property="fiSrctacticprm" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    Fs_tactic, Fs_srctactic, Fi_srctacticprm
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.qianlong.qltt.zbas.domain.TtadefcombtacprmExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ttadefcombtacprm
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="limitStart != null and limitStart>=0" >
+      limit #{limitStart} , #{limitEnd}
+    </if>
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.qianlong.qltt.zbas.domain.TtadefcombtacprmKey" >
+    delete from ttadefcombtacprm
+    where Fs_tactic = #{fsTactic,jdbcType=VARCHAR}
+      and Fs_srctactic = #{fsSrctactic,jdbcType=VARCHAR}
+      and Fi_srctacticprm = #{fiSrctacticprm,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.qianlong.qltt.zbas.domain.TtadefcombtacprmExample" >
+    delete from ttadefcombtacprm
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.qianlong.qltt.zbas.domain.TtadefcombtacprmKey" >
+    insert into ttadefcombtacprm (Fs_tactic, Fs_srctactic, Fi_srctacticprm
+      )
+    values (#{fsTactic,jdbcType=VARCHAR}, #{fsSrctactic,jdbcType=VARCHAR}, #{fiSrctacticprm,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.qianlong.qltt.zbas.domain.TtadefcombtacprmKey" >
+    insert into ttadefcombtacprm
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="fsTactic != null" >
+        Fs_tactic,
+      </if>
+      <if test="fsSrctactic != null" >
+        Fs_srctactic,
+      </if>
+      <if test="fiSrctacticprm != null" >
+        Fi_srctacticprm,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="fsTactic != null" >
+        #{fsTactic,jdbcType=VARCHAR},
+      </if>
+      <if test="fsSrctactic != null" >
+        #{fsSrctactic,jdbcType=VARCHAR},
+      </if>
+      <if test="fiSrctacticprm != null" >
+        #{fiSrctacticprm,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.qianlong.qltt.zbas.domain.TtadefcombtacprmExample" resultType="java.lang.Integer" >
+    select count(*) from ttadefcombtacprm
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update ttadefcombtacprm
+    <set >
+      <if test="record.fsTactic != null" >
+        Fs_tactic = #{record.fsTactic,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fsSrctactic != null" >
+        Fs_srctactic = #{record.fsSrctactic,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fiSrctacticprm != null" >
+        Fi_srctacticprm = #{record.fiSrctacticprm,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update ttadefcombtacprm
+    set Fs_tactic = #{record.fsTactic,jdbcType=VARCHAR},
+      Fs_srctactic = #{record.fsSrctactic,jdbcType=VARCHAR},
+      Fi_srctacticprm = #{record.fiSrctacticprm,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>
