@@ -47,8 +47,8 @@
 			<div class="check-txt ">我的组合</div>
 			<div class="check-tags"></div>
 			<div class="check-btn">
-				<a href="javascript:void(0);"><strong ng-bind="btnCare" class="gz-btn" >关注组合指标</strong></a>
-				<a href="javascript:void(0);"><strong ng-bind="btnClc" class="sc-btn" >收藏组合指标</strong></a>
+				<a href="javascript:void(0);"><strong ng-bind="btnCare" class="gz-btn">关注组合指标</strong></a>
+				<a href="javascript:void(0);"><strong ng-bind="btnClc" class="sc-btn">收藏组合指标</strong></a>
 			</div>
 		</div>
 		

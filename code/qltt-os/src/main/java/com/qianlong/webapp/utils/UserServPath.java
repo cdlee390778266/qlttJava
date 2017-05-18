@@ -93,4 +93,24 @@ public class UserServPath {
 	 * 全局推送频率查询
 	 */
 	public static final String USER_SERV_PUSH_FREQ_QUERY = ResourceUtil.getConfigByName("user.serv.context") + "acctsetprm/setprm006";
+	
+	/**
+	 * 新增账户组合指标菜单
+	 */
+	public static final String USER_SERV_ACCT_TAC_ADD = ResourceUtil.getConfigByName("user.serv.context") + "accttacmenu/tacmenu001";
+	
+	/**
+	 * 删除账户组合指标菜单
+	 */
+	public static final String USER_SERV_ACCT_TAC_DEL = ResourceUtil.getConfigByName("user.serv.context") + "accttacmenu/tacmenu002";
+	
+	/**
+	 * 账户组合指标菜单变更
+	 */
+	public static final String USER_SERV_ACCT_TAC_ALT = ResourceUtil.getConfigByName("user.serv.context") + "accttacmenu/tacmenu003";
+	
+	/**
+	 * 账户组合指标菜单查询
+	 */
+	public static final String USER_SERV_ACCT_TAC_QUERY = ResourceUtil.getConfigByName("user.serv.context") + "accttacmenu/tacmenu004";
 }

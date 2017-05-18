@@ -172,14 +172,46 @@ $(function() {
 	$('body').delegate('.sc-btn', 'tap', function() {
 		showDialog($('#zdyzh'));
 	});
+	
+	// 关注组合指标
+	$('body').delegate('.gz-btn', 'tap', function() {
+		//
+	});
 
 	$('#zdyzh .dialog-btn-close,#zdyzh .dialog-mask').tap(function() {
 		hideDialog($('#zdyzh'));
 	})
 
+	// 收藏指标
 	$('#zdyzh .dialog-btn-confirm').tap(function() {
-		hideDialog($('#zdyzh'), function() {
-			alert('收藏成功，请到我的关注查看');
+		var indices = [];
+		$('.check-tags span').each(function(idx, e) {
+			indices.push({"srcTactic": $(e).data("tactic"), "srcTacticPrm" : 0});
+		});
+		$.ajax({
+			url : "collect.do",
+			type : "post",
+			contentType : "application/json;charset=UTF-8",
+			dataType : "json",
+			data : JSON.stringify({
+				"indices": indices,
+				"addTacMenu" : {
+					"tacName" : $("#zdyzh .sc-title").val(),
+					"tacDetail" : $("#zdyzh .sc-text").val()
+				}
+			}),
+			success : function(data) {
+				if (data != null && data.status == 1) {
+					hideDialog($('#zdyzh'), function() {
+						alert('收藏成功，请到我的关注查看。');
+					});
+				} else {
+					alert(data.message);
+				}
+			},
+			error : function(jqXHR, textStatus, errorThrown) {
+				alert('收藏失败。');
+			}
 		});
 	})
 
