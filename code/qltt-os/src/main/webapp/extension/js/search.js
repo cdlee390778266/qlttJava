@@ -24,25 +24,41 @@ $(document).ready(function() {
 
 	var createHtml = function($parent) {
 		var html = '';
+		var group = $parent.data("group");
 		$.ajax({
 			url : 'index.do',
-			data : {"tacgroup" : $parent.data("group")},
+			data : {"tacgroup" : group},
 			type : 'post',
 			success : function(data) {
 				data = $.parseJSON(data);
 				if (data != null) {
-					var members = data.ptgmlist;
-					for ( var i in members) {
-						var href = encodeURI("../stock/home.do?tactic=" + members[i].tactic + "&tacname=" + members[i].tacname);
-						html += '<div class="search-item ani" swiper-animate-effect="fadeIn" swiper-animate-duration="1s" swiper-animate-delay="0s" >'
-							+ '<div class="search-head">'
-							+ members[i].tacname
-							+ '</div>'
-							+ '<div class="search-body"><a href="' + href + '">'
-							+ members[i].tacdetail
-							+ '</a></div>' + '</div>'
+					if (group == "combination") {
+						var members = data.content.tacMenu;
+						for ( var i in members) {
+							var href = encodeURI("../stock/home.do?tactic=" + members[i].tacTic + "&tacname=" + members[i].tacName);
+							html += '<div class="search-item ani" swiper-animate-effect="fadeIn" swiper-animate-duration="1s" swiper-animate-delay="0s" >'
+								+ '<div class="search-head">'
+								+ members[i].tacName
+								+ '</div>'
+								+ '<div class="search-body"><a href="' + href + '">'
+								+ members[i].tacDetail
+								+ '</a></div>' + '</div>';
+						}
+					} else {
+						var members = data.ptgmlist;
+						for ( var i in members) {
+							var href = encodeURI("../stock/home.do?tactic=" + members[i].tactic + "&tacname=" + members[i].tacname);
+							html += '<div class="search-item ani" swiper-animate-effect="fadeIn" swiper-animate-duration="1s" swiper-animate-delay="0s" >'
+								+ '<div class="search-head">'
+								+ members[i].tacname
+								+ '</div>'
+								+ '<div class="search-body"><a href="' + href + '">'
+								+ members[i].tacdetail
+								+ '</a></div>' + '</div>';
+						}
 					}
 				}
+				
 				$parent.append(html);
 				loadingHide($('.qltt-toast'));
 			},
@@ -83,7 +99,7 @@ $(document).ready(function() {
 				onSlideChangeEnd : function(swiper) {
 					$('#header li').removeClass('active');
 					$('#header li').eq(searchSwiper.activeIndex).addClass('active');
-					swiperAnimate(swiper); // 每个slide切换结束时也运行当前slide动画
+					swiperAnimate(swiper);   // 每个slide切换结束时也运行当前slide动画
 				}
 			}
 		);

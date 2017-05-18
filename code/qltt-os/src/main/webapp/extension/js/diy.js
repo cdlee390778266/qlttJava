@@ -83,33 +83,48 @@ $(function() {
 	}
 
 	var loadMore = function(url, $parent) {
+		var indices = [];
+		$('.check-tags span').each(function(idx, e) {
+			indices.push({"srcTactic": $(e).data("tactic"), "srcTacticPrm" : 0});
+		});
+		
+		var start = $(".srceen .screen-main").data("start");
+		var size = $(".srceen .screen-main").data("size");
+		
 		$.ajax({
 			url : url,
-			type : 'post',
-			success : function(resData) {
+			data : JSON.stringify({
+				"start" : start, 
+				"size" : size,
+				"indices" : indices
+			}),
+			type : "post",
+			contentType : "application/json;charset=UTF-8",
+			success : function(data) {
 				var html = '';
-
-				for ( var i in resData) {
-					html += '<div class="screen-item"  >'
-						+ '<div class="item-col-1">'
-						+ '<span>' + resData[i].name + '</span>'
-						+ '<span class="blue">' + resData[i].nums + '</span>' + '</div>'
-						+ '<div class="item-col-2">' + resData[i].date + '</div>'
-						+ '<div class="item-col-3">' + resData[i].type + '</div>'
-						+ '<div class="item-col-4">'
-						+ '<a href="javascript:void(0);" class="recommend" ></a>'
-						+ '<a href="javascript:void(0);" class="choose"></a>'
-						+ '</div>' + '</div>'
+				data = JSON.parse(data);
+				if (data && data.dpcblist) {
+					var stocks = data.dpcblist;
+					for (var i in stocks) {
+						html += '<div class="screen-item"  >'
+							+ '<div class="item-col-1">'
+							+ '<span class="item-col-name">' + stocks[i].stockname + '</span>'
+							+ '<span class="blue item-col-code">' + stocks[i].stockcode + '</span>' + '</div>'
+							+ '<div class="item-col-3">潜力股</div>'
+							+ '<div class="item-col-4">'
+							+ '<a href="javascript:void(0);" class="recommend" ></a>'
+							+ '<a href="javascript:void(0);" class="choose"></a>'
+							+ '</div>' + '</div>';
+					}
+					$parent.parent().find(".stock-num").text(data.pgrsp.totalnum);
+					$parent.data("start", parseInt(start) + stocks.length);
 				}
-
 				$parent.append(html);
 				$('.load-more i').removeClass('active');
 				loadFlag = true;
-
 			},
 			error : function(xhr, type) {
-				alert('获取数据失败!');
-
+				alert('获取数据失败！');
 			}
 		});
 	}
@@ -163,7 +178,7 @@ $(function() {
 		if (loadFlag) {
 			loadFlag = false;
 			$(this).find('i').addClass('active');
-			loadMore('../data/result.json', $(this).prev());
+			loadMore('filtration.do', $(this).prev());
 		}
 
 	});
@@ -171,11 +186,6 @@ $(function() {
 	// 收藏指标弹窗
 	$('body').delegate('.sc-btn', 'tap', function() {
 		showDialog($('#zdyzh'));
-	});
-	
-	// 关注组合指标
-	$('body').delegate('.gz-btn', 'tap', function() {
-		//
 	});
 
 	$('#zdyzh .dialog-btn-close,#zdyzh .dialog-mask').tap(function() {
@@ -232,16 +242,45 @@ $(function() {
 
 	// 选股池弹窗
 	$('body').delegate('.choose', 'tap', function() {
+		$("#code").val($(this).parent().parent().find('.item-col-code').text());
+		$("#name").val($(this).parent().parent().find('.item-col-name').text());
 		showDialog($('#choose'));
 	});
 
 	$('#choose .dialog-btn-close,#choose .dialog-mask').tap(function() {
+		$("#code").val("");
+		$("#name").val("");
 		hideDialog($('#choose'));
 	})
 
 	$('#choose .dialog-btn-confirm').tap(function() {
 		hideDialog($('#choose'), function() {
 			console.log('提交');
+			var stockPool = [];
+			$.each($("#choosePool").val(), function(idx, e){
+				stockPool.push({"poolIndex": e});
+			});
+			var data = {
+				"stockCode": $("#code").val(),
+				"stockName": $("#name").val(),
+				"stockPool": stockPool
+			};
+			$.ajax({
+				url: '../userpool/follow.do',
+				data: JSON.stringify(data),
+				dataType: 'json',
+				type: 'post',
+				contentType: 'application/json;charset=UTF-8',
+				success: function(data) {
+					if (data.status == 1)
+						alert("成功加入选股池！");
+					else
+						alert(data.message);
+				},
+				error: function(jqXHR, textStatus, errorThrown) {
+					alert("加入选股池失败！");
+				}
+			});
 		});
 	})
 
@@ -274,6 +313,7 @@ $(function() {
 				$errorEle.css('display', 'block');
 			}
 		}
+		filtration();
 	});
 
 	$('#error').tap(function(e) {
@@ -288,9 +328,61 @@ $(function() {
 		var id = $ele.attr('id');
 		$('#c_' + id).removeClass('active');
 		$ele.remove();
+		filtration();
 		if ($('.check-tags span').length <= 0) {
 			$('.check-tags').html('<div class="tag-empty">您没有选中任何指标！</div>');
 			$('.check-btn strong').addClass('disabled');
 		}
 	});
+	
+	function filtration() {
+		var indices = [];
+		$('.check-tags span').each(function(idx, e) {
+			indices.push({"srcTactic": $(e).data("tactic"), "srcTacticPrm" : 0});
+		});
+		
+		$(".srceen .screen-main").empty();
+		$(".srceen .stock-num").text("0");
+		var start = 1;
+		var size = $(".srceen .screen-main").data("size");
+		if (indices.length > 0) {
+			$.ajax({
+				url : "filtration.do",
+				data : JSON.stringify({
+					"start" : start, 
+					"size" : size,
+					"indices" : indices
+				}),
+				type : "post",
+				contentType : "application/json;charset=UTF-8",
+				success : function(data) {
+					data = JSON.parse(data);
+					if (data && data.dpcblist) {
+						var stocks = data.dpcblist;
+						var html = [];
+						for ( var i in stocks) {
+							html.push("<div class=\"screen-item\">");
+							html.push("<div class=\"item-col-1\">");
+							html.push("<span class=\"item-col-name\">" + stocks[i].stockname + "</span>");
+							html.push("<span class=\"blue item-col-code\">" + stocks[i].stockcode + "</span>")
+							html.push("</div>");
+							//html.push("<div class=\"item-col-2 \">" + new Date().toLocaleString() + "</div>");
+							html.push("<div class=\"item-col-3 \">潜力股</div>");
+							html.push("<div class=\"item-col-4\">");
+							html.push("<a href=\"javascript:void(0);\" class=\"recommend\"></a>");
+							html.push("<a href=\"javascript:void(0);\" class=\"choose\"></a>");
+							html.push("</div>");
+							html.push("</div>");
+						}
+						$(".srceen .stock-num").text(data.pgrsp.totalnum);
+						$(".srceen .screen-main").data("start", parseInt(start) + stocks.length);
+						$(".srceen .screen-main").append(html.join(""));
+					}
+				},
+				error : function(jqXHR, textStatus, errorThrown) {
+					//
+				}
+			});
+		}
+	}
 })

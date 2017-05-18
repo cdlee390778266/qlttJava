@@ -10,7 +10,6 @@ import com.qianlong.webapp.domain.SourceIndex;
 import com.qianlong.webapp.domain.UserAcctTac;
 import com.qianlong.webapp.service.ICollectService;
 import com.qianlong.webapp.service.ICombinedIndexService;
-import com.qianlong.webapp.service.IMyAttentionService;
 import com.qianlong.webapp.service.IUserAcctTacMenuService;
 
 @Service
@@ -23,9 +22,6 @@ public class CollectServiceImpl implements ICollectService {
 	
 	@Autowired
 	private IUserAcctTacMenuService userAcctTacMenuService;
-	
-	@Autowired
-	private IMyAttentionService myAttentionService;
 
 	@Override
 	public void collect(List<SourceIndex> indices, UserAcctTac addTacMenu, String ttacct) {

@@ -31,15 +31,9 @@
 	<div id="header">
 		<div id="scroller">
 			<ul>
+				<li data-group="combination" class="active">组合指标</li>
 				<c:forEach items="${idxGroups}" var="idxGroup" varStatus="status">
-					<c:choose>
-						<c:when test="${status.index == 0}">
-							<li data-group="${idxGroup.tacgroup}" class="active">${idxGroup.grpname}</li>
-						</c:when>
-						<c:otherwise>
-							<li data-group="${idxGroup.tacgroup}">${idxGroup.grpname}</li>
-						</c:otherwise>
-					</c:choose>
+					<li data-group="${idxGroup.tacgroup}">${idxGroup.grpname}</li>
 				</c:forEach>
 			</ul>
 		</div>

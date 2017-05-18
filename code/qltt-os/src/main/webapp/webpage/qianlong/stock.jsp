@@ -46,14 +46,15 @@
 			<i></i><span>加载更多</span>
 		</div>
 	</div>
+	
+	<input type="hidden" id="code" name="code" />
+	<input type="hidden" id="name" name="name" />
 
 	<div class="dialog animated" id="recommend">
 		<div class="dialog-mask"></div>
 		<div class="dialog-box">
 			<div class="dialog-head">推荐到我的荐股</div>
 			<div class="dialog-body">
-				<input type="hidden" id="code" name="code" />
-				<input type="hidden" id="name" name="name" />
 				<input type="text" id="reason" name="reason" placeholder="推荐理由" />
 			</div>
 			<div class="dialog-foot">

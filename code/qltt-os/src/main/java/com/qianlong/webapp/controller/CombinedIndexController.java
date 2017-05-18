@@ -14,13 +14,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.alibaba.fastjson.JSONObject;
+import com.google.protobuf.InvalidProtocolBufferException;
+import com.google.protobuf.util.JsonFormat;
 import com.qianlong.webapp.domain.AuthResultEntity;
 import com.qianlong.webapp.domain.CollectBody;
+import com.qianlong.webapp.domain.FilterBody;
 import com.qianlong.webapp.domain.JSONEntity;
 import com.qianlong.webapp.service.ICollectService;
+import com.qianlong.webapp.service.ICombinedIndexService;
 import com.qianlong.webapp.service.IIndexSystemService;
 import com.qianlong.webapp.utils.Constants;
 import com.qlcd.qltt.body.pvt.T02001002;
+import com.qlcd.qltt.body.pvt.T02005002;
 
 /**
  * 组合指标
@@ -38,6 +44,9 @@ public class CombinedIndexController {
 	
 	@Autowired
 	private IIndexSystemService indexSystemService;
+	
+	@Autowired
+	private ICombinedIndexService combinedIndexService;
 
 	@RequestMapping("home")
 	public ModelAndView home(HttpServletRequest request) {
@@ -49,6 +58,12 @@ public class CombinedIndexController {
 		return new ModelAndView("qianlong/combined", model);
 	}
 	
+	/**
+	 * 收藏组合指标
+	 * @param request
+	 * @param collectBody
+	 * @return
+	 */
 	@RequestMapping("collect")
 	@ResponseBody
 	public JSONEntity collect(HttpServletRequest request, @RequestBody CollectBody collectBody) {
@@ -60,7 +75,26 @@ public class CombinedIndexController {
 	@RequestMapping("follow")
 	@ResponseBody
 	public JSONEntity follow(HttpServletRequest request, @RequestBody CollectBody collectBody) {
-		//
 		return new JSONEntity(1, null, null);
+	}
+	
+	/**
+	 * 根据指标组合过滤股票
+	 * @param request
+	 * @param indices
+	 * @return
+	 */
+	@RequestMapping("filtration")
+	@ResponseBody
+	public Object filtration(HttpServletRequest request, @RequestBody FilterBody filter) {
+		T02005002._rsp rsp = combinedIndexService.filtration(filter);
+		Object result = null;
+		try {
+			String json = JsonFormat.printer().print(rsp);
+			result = JSONObject.parse(json);
+		} catch (InvalidProtocolBufferException e) {
+			logger.error(e.getMessage(), e);
+		}
+		return result;
 	}
 }

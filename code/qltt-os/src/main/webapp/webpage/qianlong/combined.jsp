@@ -47,7 +47,6 @@
 			<div class="check-txt ">我的组合</div>
 			<div class="check-tags"></div>
 			<div class="check-btn">
-				<a href="javascript:void(0);"><strong ng-bind="btnCare" class="gz-btn">关注组合指标</strong></a>
 				<a href="javascript:void(0);"><strong ng-bind="btnClc" class="sc-btn">收藏组合指标</strong></a>
 			</div>
 		</div>
@@ -78,21 +77,9 @@
 		
 		<div class="srceen">
 			<div class="srceen-txt">
-				<span>根据您的指标组合共计筛选出</span><span class="red ">120</span><span >支股票</span>
+				<span>根据您的指标组合共计筛选出</span><span class="red stock-num">0</span><span>支股票</span>
 			</div>
-			<div class="screen-main">
-				<div class="screen-item ">
-					<div class="item-col-1">
-						<span  class="">上海电影</span>
-						<span class="blue">328370</span>
-					</div>
-					<div class="item-col-2 ">03-01 12:35</div>
-					<div class="item-col-3 ">潜力股</div>
-					<div class="item-col-4">
-						<a href="javascript:void(0);" class="recommend"></a>
-						<a href="javascript:void(0);" class="choose"></a>
-					</div>
-				</div>
+			<div class="screen-main" data-start="1" data-size="3">
 			</div>
 			<div class="load-more">
 				<i></i><span>点击加载更多</span>
@@ -108,13 +95,16 @@
 	<!-- 错误提示 -->
 	<div id="error" class="animated"><span></span></div>
 	
+	<input type="hidden" id="code" name="code" />
+	<input type="hidden" id="name" name="name" />
+	
 	<!-- 荐股池弹窗 -->
 	<div class="dialog animated" id="recommend">
 		<div class="dialog-mask"></div>
 		<div class="dialog-box">
 			<div class="dialog-head">推荐到我的荐股</div>
 			<div class="dialog-body">
-				<input type="text" placeholder="推荐理由" />
+				<input type="text" id="reason" name="reason" placeholder="推荐理由" />
 			</div>
 			<div class="dialog-foot">
 				<div class="dialog-foot-right">
@@ -133,7 +123,7 @@
 			<div class="dialog-body">
 				<div class="select-box">
 					<div class="select-mask">选股池A</div>
-					<select name="" id="choosePool">
+					<select name="choosePool" id="choosePool" multiple="multiple">
 						<option value="1">选股池A</option>
 						<option value="2">选股池B</option>
 						<option value="3">选股池C</option>
