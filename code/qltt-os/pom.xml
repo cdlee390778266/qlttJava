@@ -929,17 +929,6 @@
 				<wechat.accountAppSecret>32be6a017915bd351104e214e28e184c</wechat.accountAppSecret>
 			</properties>
 		</profile>
-        <profile>
-          <id>dev-zmq-off-sunc</id>
-          <properties>
-            <zmqproxy.switch>OFF</zmqproxy.switch>
-            <!-- 微信公众号配置 -->
-            <wechat.accountId>gh_44648d03377b</wechat.accountId>
-			<wechat.accountAppId>wxf03096e49928b99e</wechat.accountAppId>
-			<wechat.accountAppSecret>8c6bd71a6b7a3f4d5c14f2070755382a</wechat.accountAppSecret>
-          </properties>
-        </profile>
-		
 		<!-- 测试测试环境 -->
 		<profile>
 			<id>com-out-test</id>
