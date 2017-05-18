@@ -929,7 +929,6 @@
 				<wechat.accountAppSecret>32be6a017915bd351104e214e28e184c</wechat.accountAppSecret>
 			</properties>
 		</profile>
-		
 		<!-- 测试测试环境 -->
 		<profile>
 			<id>com-out-test</id>
