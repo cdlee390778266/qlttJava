@@ -45,17 +45,41 @@ $(document).ready(function() {
 								+ '</a></div>' + '</div>';
 						}
 					} else {
-						var members = data.ptgmlist;
-						for ( var i in members) {
-							var href = encodeURI("../stock/home.do?tactic=" + members[i].tactic + "&tacname=" + members[i].tacname);
-							html += '<div class="search-item ani" swiper-animate-effect="fadeIn" swiper-animate-duration="1s" swiper-animate-delay="0s" >'
-								+ '<div class="search-head">'
-								+ members[i].tacname
-								+ '</div>'
-								+ '<div class="search-body"><a href="' + href + '">'
-								+ members[i].tacdetail
-								+ '</a></div>' + '</div>';
+						if(data.children.length==0){
+							var members = data.member.ptgmlist;
+							for ( var i in members) {
+								var href = encodeURI("../stock/home.do?tactic=" + members[i].tactic + "&tacname=" + members[i].tacname);
+								html += '<div class="search-item ani" swiper-animate-effect="fadeIn" swiper-animate-duration="1s" swiper-animate-delay="0s" >'
+									+ '<div class="search-head">'
+									+ members[i].tacname
+									+ '</div>'
+									+ '<div class="search-body"><a href="' + href + '">'
+									+ members[i].tacdetail
+									+ '</a></div>' + '</div>';
+							}
+						}else{
+							var resData = data.children;
+							 for(var i in resData){
+			                        html += '<div class="search-slide">'
+			                             +      '<div class="search-slide-head">' + resData[i]['info']['grpname'] + '<span></span></div>'
+			                             +      '<div class="search-slide-body animated" >'
+
+			                        for(var j in resData[i]['member'].ptgmlist){
+			                        	var ptgm = resData[i]['member'].ptgmlist[j];
+			                        	var href = encodeURI("../stock/home.do?tactic=" +ptgm.tactic + "&tacname=" +ptgm.tacname);
+			                            html += '<div class="search-item ani" swiper-animate-effect="fadeIn" swiper-animate-duration="1s" swiper-animate-delay="0s" >'
+			                                 +      '<div class="search-head">' + ptgm.tacname + '</div>'
+			                                 +      '<div class="search-body"><a href="'+href+'">' + ptgm.tacdetail + '</a></div>'
+			                                 +   '</div>'
+			                        }
+
+			                        html +=     '</div>';
+			                        html += '</div>';
+			                    }
+			                    $parent.find('.search-slide').eq(0).addClass('active');
+			                    $parent.find('.search-slide').eq(0).find('.search-slide-body');
 						}
+						
 					}
 				}
 				
@@ -112,6 +136,10 @@ $(document).ready(function() {
 		$(this).addClass('active');
 		searchSwiper.slideTo($(this).index());
 	});
+	
+	$('body').delegate('.search-slide-head', 'tap', function(event) {
+        $(this).parent().toggleClass('active');
+    });
 	
 	$('body').delegate('.search-item', 'tap', function(){
 		location.href = $(this).find('a').attr('href');

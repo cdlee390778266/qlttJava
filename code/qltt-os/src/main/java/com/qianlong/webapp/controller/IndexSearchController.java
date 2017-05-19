@@ -1,5 +1,6 @@
 package com.qianlong.webapp.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -49,7 +51,13 @@ public class IndexSearchController {
 		T02001002._rsp rsp = indexSystemService.queryIdxGroup();
 		List<T02001002._protacgroup> idxGroups = rsp.getPtglistList();
 		Map<String, Object> model = new HashMap<>();
-		model.put("idxGroups", idxGroups);
+		List<T02001002._protacgroup> _1level = new ArrayList<T02001002._protacgroup>();
+		for (T02001002._protacgroup protacgroup :idxGroups) {
+			if(protacgroup.getGrplevel() == 1){	
+				_1level.add(protacgroup);
+			}
+		}
+		model.put("idxGroups", _1level);
 		return new ModelAndView("qianlong/search", model);
 	}
 	
@@ -63,17 +71,52 @@ public class IndexSearchController {
 			AuthResultEntity user = (AuthResultEntity)request.getSession().getAttribute(Constants.LOGIN_USER_ACCOUNT);
 			QueryUserAcctTacRspBody body = userAcctTacMenuService.query(null, user.getTtacct());
 			result = new JSONEntity(1, null, body);
+			return result;
 		} else {
-			T02001003._rsp rsp = indexSystemService.queryIdxByGroup(tacGroup);
+			Map<String, Object> taggroup = new HashMap<String, Object>();
+			taggroup.put("member", getMembers(tacGroup));//指标成员
+			T02001002._rsp rsp = indexSystemService.queryIdxGroup();
+			List<T02001002._protacgroup> idxGroups = rsp.getPtglistList();
+			List<Map<String,Object>> children = new ArrayList<Map<String,Object>>();
+			if(!CollectionUtils.isEmpty(idxGroups)){//二级菜单
+				Map<String,Object> map = null;
+				for (T02001002._protacgroup protacgroup :idxGroups) {
+					if(protacgroup.getPtacgroup().equals(tacGroup)){	
+						map = new HashMap<String,Object>();
+						try {
+							map.put("info", JSONObject.parse(JsonFormat.printer().print(protacgroup)));
+							map.put("member",getMembers(protacgroup.getTacgroup()));
+							children.add(map);
+						} catch (InvalidProtocolBufferException e) {
+							logger.error(e.getMessage(), e);
+						}
+					}
+				}
+			}
+			taggroup.put("children", children);//指标成员
+			return taggroup;
+			/*T02001003._rsp rsp = indexSystemService.queryIdxByGroup(tacGroup);
 			try {
 				String json = JsonFormat.printer().print(rsp);
 				logger.debug(String.format("T02001003 交易 - 转换后的JSON字符串: [%s]", json));
 				result = JSONObject.parse(json);
 			} catch (InvalidProtocolBufferException e) {
 				logger.error(e.getMessage(), e);
-			}
+			}*/
 		}
 		
+		
+	}
+	private  Object getMembers(String tacGroup){
+		Object result = null;
+		T02001003._rsp rsp = indexSystemService.queryIdxByGroup(tacGroup);
+		try {
+			String json = JsonFormat.printer().print(rsp);
+			logger.debug(String.format("T02001003 交易 - 转换后的JSON字符串: [%s]", json));
+			result = JSONObject.parse(json);
+		} catch (InvalidProtocolBufferException e) {
+			logger.error(e.getMessage(), e);
+		}
 		return result;
 	}
 }
