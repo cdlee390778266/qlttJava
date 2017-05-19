@@ -24,15 +24,15 @@ $(function() {
 		
 		//获取数据
 		$.ajax({
-			url : '../search/index.do',
+			url : 'grouptag.do',
 			data : {"tacgroup" : $parent.data("group")},
 			type : 'post',
 			success : function(data) {
 				data = $.parseJSON(data);
 				console.dir(data);
 				
-				var members = data.ptgmlist;   //数据
-				var total = data.grpmemcnt;   //数据总量
+				var members = data;   //数据
+				var total = data.length;   //数据总量
 				var size = 2;   //分页大小
 				var pages = Math.ceil(total / size);   //总页数
 				var html = $('<div class="diy-box ani" swiper-animate-effect="fadeIn" swiper-animate-duration="1s" swiper-animate-delay="0s">'

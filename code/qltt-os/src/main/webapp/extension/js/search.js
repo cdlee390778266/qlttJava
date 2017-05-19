@@ -26,7 +26,7 @@ $(document).ready(function() {
 		var html = '';
 		var group = $parent.data("group");
 		$.ajax({
-			url : 'index.do',
+			url : 'child.do',
 			data : {"tacgroup" : group},
 			type : 'post',
 			success : function(data) {

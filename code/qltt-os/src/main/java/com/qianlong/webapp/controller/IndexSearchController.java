@@ -61,9 +61,9 @@ public class IndexSearchController {
 		return new ModelAndView("qianlong/search", model);
 	}
 	
-	@RequestMapping("index")
+	@RequestMapping("child")
 	@ResponseBody
-	public Object index(HttpServletRequest request, @RequestParam(value = "tacgroup")String tacGroup) {
+	public Object child(HttpServletRequest request, @RequestParam(value = "tacgroup") String tacGroup) {
 		logger.debug("获取指定指标组的指标");
 		Object result = null;
 		
@@ -74,7 +74,7 @@ public class IndexSearchController {
 			return result;
 		} else {
 			Map<String, Object> taggroup = new HashMap<String, Object>();
-			taggroup.put("member", getMembers(tacGroup));//指标成员
+			taggroup.put("member", index(tacGroup));//指标成员
 			T02001002._rsp rsp = indexSystemService.queryIdxGroup();
 			List<T02001002._protacgroup> idxGroups = rsp.getPtglistList();
 			List<Map<String,Object>> children = new ArrayList<Map<String,Object>>();
@@ -85,7 +85,7 @@ public class IndexSearchController {
 						map = new HashMap<String,Object>();
 						try {
 							map.put("info", JSONObject.parse(JsonFormat.printer().print(protacgroup)));
-							map.put("member",getMembers(protacgroup.getTacgroup()));
+							map.put("member",index(protacgroup.getTacgroup()));
 							children.add(map);
 						} catch (InvalidProtocolBufferException e) {
 							logger.error(e.getMessage(), e);
@@ -107,7 +107,10 @@ public class IndexSearchController {
 		
 		
 	}
-	private  Object getMembers(String tacGroup){
+	
+	@RequestMapping("index")
+	@ResponseBody
+	public Object index(@RequestParam(value = "tacgroup")String tacGroup) {
 		Object result = null;
 		T02001003._rsp rsp = indexSystemService.queryIdxByGroup(tacGroup);
 		try {
