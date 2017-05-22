@@ -104,20 +104,19 @@ public class CombinedIndexController {
 	}
 	
 	//获取一个指标组下面的所有指标
-	private List<Object> getGroupTags(List<Object> protacgrpmem,List<T02001002._protacgroup> idxGroups,String tacGroup){
+	private void getGroupTags(List<Object> protacgrpmem,List<T02001002._protacgroup> idxGroups,String tacGroup){
 		if(!CollectionUtils.isEmpty(idxGroups)){
 			 boolean isLeave = true;
 			 for(T02001002._protacgroup _protacgroup:idxGroups ){
 				 if(tacGroup.equals(_protacgroup.getPtacgroup())){
 					 isLeave = false;
-					 protacgrpmem.addAll(getGroupTags(protacgrpmem,idxGroups, _protacgroup.getTacgroup()));
+					getGroupTags(protacgrpmem,idxGroups, _protacgroup.getTacgroup());
 				 }
 			 }
 			 if(isLeave){
 				 protacgrpmem.addAll(getTacsByGroupid(tacGroup));
 			 }
 		}
-		return protacgrpmem;
 	}
 	
 	/**

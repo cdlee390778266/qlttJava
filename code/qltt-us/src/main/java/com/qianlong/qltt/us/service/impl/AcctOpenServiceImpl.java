@@ -12,12 +12,14 @@ import com.qianlong.qltt.us.domain.TUSAcctCNReg;
 import com.qianlong.qltt.us.domain.TUSAcctCNRegExample;
 import com.qianlong.qltt.us.domain.TUSBindRel;
 import com.qianlong.qltt.us.domain.TUSChnlDevInfo;
+import com.qianlong.qltt.us.domain.TUsAcctCnRegPKKey;
 import com.qianlong.qltt.us.exception.ErrorCodeMaster;
 import com.qianlong.qltt.us.exception.QlttUSBusinessException;
 import com.qianlong.qltt.us.mapper.TUSAcctBaseInfoMapper;
 import com.qianlong.qltt.us.mapper.TUSAcctCNRegMapper;
 import com.qianlong.qltt.us.mapper.TUSBindRelMapper;
 import com.qianlong.qltt.us.mapper.TUSChnlDevInfoMapper;
+import com.qianlong.qltt.us.mapper.TUsAcctCnRegPKMapper;
 import com.qianlong.qltt.us.protocol.acctopen.AcctBindInfo;
 import com.qianlong.qltt.us.protocol.acctopen.AcctOpen001Req;
 import com.qianlong.qltt.us.protocol.acctopen.AcctOpen001Rsp;
@@ -37,6 +39,9 @@ public class AcctOpenServiceImpl extends CommServiceImpl implements IAcctOpenSer
 
 	@Autowired
 	private TUSChnlDevInfoMapper tUSChnlDevInfoMapper;
+	
+	@Autowired
+	private TUsAcctCnRegPKMapper tUsAcctCnRegPKMapper;
 
 	@Override
 	@Transactional
@@ -99,7 +104,10 @@ public class AcctOpenServiceImpl extends CommServiceImpl implements IAcctOpenSer
 	}
 
 	private String generateAcct() {
-		int max = tUSAcctCNRegMapper.selectMaxAcct();
-		return String.valueOf(++max);
+		TUsAcctCnRegPKKey pkKey = new TUsAcctCnRegPKKey();
+		tUsAcctCnRegPKMapper.insert(pkKey);
+		int num = pkKey.getFiTtacct();
+		tUsAcctCnRegPKMapper.deleteByPrimaryKey(pkKey);
+		return String.valueOf(num);
 	}
 }

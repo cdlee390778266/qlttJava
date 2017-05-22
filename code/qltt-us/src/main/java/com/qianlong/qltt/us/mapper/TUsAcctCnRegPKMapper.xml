@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qianlong.qltt.us.mapper.TUsAcctCnRegPKMapper" >
+  <resultMap id="BaseResultMap" type="com.qianlong.qltt.us.domain.TUsAcctCnRegPKKey" >
+    <id column="Fi_ttacct" property="fiTtacct" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <sql id="Base_Column_List" >
+    Fi_ttacct
+  </sql>
+  
+  <delete id="deleteByPrimaryKey" parameterType="com.qianlong.qltt.us.domain.TUsAcctCnRegPKKey" >
+    delete from tusacctcnreg_pk
+    where Fi_ttacct = #{fiTtacct,jdbcType=INTEGER}
+  </delete>
+  
+  <insert id="insert" parameterType="com.qianlong.qltt.us.domain.TUsAcctCnRegPKKey" useGeneratedKeys="true" keyProperty="fiTtacct">
+    insert into tusacctcnreg_pk (Fi_ttacct)
+    values (#{fiTtacct,jdbcType=INTEGER})
+  </insert>
+</mapper>
