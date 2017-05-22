@@ -1,10 +1,12 @@
 package com.qianlong.webapp.service.impl;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
-import org.jeecgframework.core.util.ResourceUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,11 +16,12 @@ import com.qianlong.webapp.domain.TrenchInfoEnity;
 import com.qianlong.webapp.exception.BusinessException;
 import com.qianlong.webapp.exception.HttpRequestException;
 import com.qianlong.webapp.exception.UserServBusinessException;
-import com.qianlong.webapp.service.IUserServCoreService;
 import com.qianlong.webapp.service.ISubscriberService;
+import com.qianlong.webapp.service.IUserServCoreService;
 import com.qianlong.webapp.service.IWechatCoreService;
 
 import weixin.guanjia.account.entity.WeixinAccountEntity;
+import weixin.guanjia.account.service.WeixinAccountServiceI;
 
 @Service
 public class SubscriberServiceImpl implements ISubscriberService {
@@ -30,6 +33,9 @@ public class SubscriberServiceImpl implements ISubscriberService {
 	
 	@Autowired
 	private IWechatCoreService wechatCoreService;
+	
+	@Autowired
+	private WeixinAccountServiceI weixinAccountService;
 
 	@Override
 	public void save() {
@@ -43,8 +49,14 @@ public class SubscriberServiceImpl implements ISubscriberService {
 		
 		//微信端访问
 		WeixinAccountEntity account = new WeixinAccountEntity();
-		account.setAccountappid(ResourceUtil.getConfigByName("wechat.accountAppId"));
-		account.setAccountappsecret(ResourceUtil.getConfigByName("wechat.accountAppSecret"));
+		List<WeixinAccountEntity> list = weixinAccountService.findByAccountAppID(state);
+		if(CollectionUtils.isEmpty(list)){
+			throw new BusinessException("参数错误，无法登陆");
+		}else{
+			account = list.get(0);
+		}
+		//account.setAccountappid(ResourceUtil.getConfigByName("wechat.accountAppId"));
+		//account.setAccountappsecret(ResourceUtil.getConfigByName("wechat.accountAppSecret"));
 		OAuthCallbackEntity oauthCallbackEntity = null;
 		try {
 			oauthCallbackEntity = wechatCoreService.getOpenidByOAuth(account, code, state);
