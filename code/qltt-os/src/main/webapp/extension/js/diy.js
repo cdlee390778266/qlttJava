@@ -33,7 +33,7 @@ $(function() {
 				
 				var members = data;   //数据
 				var total = data.length;   //数据总量
-				var size = 2;   //分页大小
+				var size = 9;   //分页大小
 				var pages = Math.ceil(total / size);   //总页数
 				var html = $('<div class="diy-box ani" swiper-animate-effect="fadeIn" swiper-animate-duration="1s" swiper-animate-delay="0s">'
 					+ '<div class="tag swiper-container swiper-container-horizontal" id="' + wrapperId + '" >'
@@ -45,7 +45,7 @@ $(function() {
 				for (var pageNum = 0; pageNum < pages; pageNum ++) {
 					var elements = [];
 					elements.push('<div class="swiper-slide" id="tag' + pageNum + '" >');
-					for (var start = pageNum * size; start < start + size; start ++) {
+					for (var start = pageNum * size; start < pageNum * size + size; start ++) {
 						if (start >= total)
 							break;
 						elements.push('<span id="c_' + members[start].tactic + '" data-tactic="' + members[start].tactic + '">'+ members[start].tacname + '</span>');
