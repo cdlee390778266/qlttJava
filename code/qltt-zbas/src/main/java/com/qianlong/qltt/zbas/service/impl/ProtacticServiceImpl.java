@@ -57,19 +57,19 @@ public class ProtacticServiceImpl implements IProtacticService {
 	}
 
 	@Override
-	@Transactional()
+	@Transactional
 	public int insertProtactic(Ttadefprotactic ttadefprotactic) {
 		return ttadefprotacticMapper.insertSelective(ttadefprotactic);
 	}
 
 	@Override
-	@Transactional()
+	@Transactional
 	public int updateProtactic(Ttadefprotactic ttadefprotactic) {
 		return ttadefprotacticMapper.updateByPrimaryKey(ttadefprotactic);
 	}
 
 	@Override
-	@Transactional()
+	@Transactional
 	public int deleteProtactic(Ttadefprotactic ttadefprotactic) {
 		//将原生指标删除
 		int num = ttadefprotacticMapper.deleteByPrimaryKey(ttadefprotactic);
@@ -82,6 +82,7 @@ public class ProtacticServiceImpl implements IProtacticService {
 	}
 
 	@Override
+	@Transactional(readOnly=true)
 	public Map<String, Object> selectProtacprmPageData(Ttadefprotacprm tadefprotacprm, Pagination pagination) {
 		Map<String , Object> map = new HashMap<String,Object>();	
 		TtadefprotacprmExample example = new TtadefprotacprmExample();
@@ -110,16 +111,19 @@ public class ProtacticServiceImpl implements IProtacticService {
 	}
 
 	@Override
+	@Transactional
 	public int insertProtacprm(Ttadefprotacprm ttadefprotacprm) {
 		return ttadefprotacprmMapper.insert(ttadefprotacprm);
 	}
 
 	@Override
+	@Transactional
 	public int updateProtacprm(Ttadefprotacprm ttadefprotacprm) {
 		return ttadefprotacprmMapper.updateByPrimaryKey(ttadefprotacprm);
 	}
 
 	@Override
+	@Transactional
 	public int deleteProtacprm(Ttadefprotacprm ttadefprotacprm) {
 		return ttadefprotacprmMapper.deleteByPrimaryKey(ttadefprotacprm);
 	}

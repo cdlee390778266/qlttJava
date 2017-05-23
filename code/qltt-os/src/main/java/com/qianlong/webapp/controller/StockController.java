@@ -19,9 +19,11 @@ import com.google.protobuf.util.JsonFormat;
 import com.qianlong.webapp.domain.AuthResultEntity;
 import com.qianlong.webapp.domain.BaseIndex;
 import com.qianlong.webapp.domain.TacPoolReqBody;
+import com.qianlong.webapp.service.ICombinedIndexService;
 import com.qianlong.webapp.service.IIndexSystemService;
 import com.qianlong.webapp.service.IMyAttentionService;
 import com.qianlong.webapp.utils.Constants;
+import com.qlcd.qltt.body.pvt.T02002003;
 import com.qlcd.qltt.body.pvt.T02003001;
 
 /**
@@ -39,9 +41,15 @@ private Logger logger = Logger.getLogger(StockController.class);
 	
 	@Autowired
 	private IMyAttentionService myAttentionService;
+	
+	@Autowired
+	private ICombinedIndexService combinedIndexService;
 
 	@RequestMapping("home")
-	public ModelAndView home(@RequestParam(value = "tactic")String tacTic, @RequestParam(value = "tacname")String tacName, HttpServletRequest request) {
+	public ModelAndView home(@RequestParam(value = "tactic")String tacTic, 
+			@RequestParam(value = "tacname")String tacName, 
+			@RequestParam(value = "isCombRequest",required = false) Boolean isCombRequest,
+			HttpServletRequest request) {
 		AuthResultEntity user = (AuthResultEntity)request.getSession().getAttribute(Constants.LOGIN_USER_ACCOUNT);
 		Map<String, Object> model = new HashMap<>();
 		
@@ -50,6 +58,10 @@ private Logger logger = Logger.getLogger(StockController.class);
 		index.setTacPrm(0);
 		boolean isFollow = myAttentionService.isFollow(index, user.getTtacct());
 		
+		if(isCombRequest!=null && isCombRequest){
+			T02002003._rsp rsp = combinedIndexService.querycCombTacticMebs(tacTic);
+			model.put("members", rsp.getCbelistList());
+		}
 		model.put("tacTic", tacTic);
 		model.put("tacName", tacName);
 		model.put("isFollow", isFollow);

@@ -68,6 +68,7 @@ public class GrpprotacServiceImpl implements IGrpprotacService {
 	}
 
 	@Override
+	@Transactional(readOnly=true)
 	public String checkGrpCode(Ttagrpprotac ttagrpprotac) {
 		Ttagrpprotac fromDb = ttagrpprotacMapper.selectByPrimaryKey(ttagrpprotac);
 		return fromDb==null?"true":"false";

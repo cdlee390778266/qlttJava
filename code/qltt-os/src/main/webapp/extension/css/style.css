@@ -1572,7 +1572,7 @@ a {
 .pool-container .pool-item .poolItem-td span.poolItem-icon-cancle {
   background-position: -144px -102px;
 }
-.pool-container .pool-empty {
+.pool-empty {
   padding-top: 66px;
   text-align: center;
 }
@@ -2260,3 +2260,45 @@ a {
   background-color: #dc3c38;
   font-size: 1.2rem;
 }
+
+.search-head-del span{
+	display: inline-block;
+    width: 32px;
+    height: 28px;
+    background-size: 250px 700px;
+    background-image: url(../images/icon.png);
+    background-position: -144px -110px;
+    float:right;
+}
+.result-middle-item:after{
+	content: '';
+    display: block;
+    width: 100%;
+    border-bottom: 1px solid #e8e8e8;
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    transform: scaleY(0.5);
+}
+.result-middle-item{
+	margin-bottom: 1px;
+	padding-bottom: 10px;
+    margin-bottom: 5px;
+    padding: 1rem;
+    background-color: #fff;
+    position: relative;
+}
+.result-middle-item .search-head{
+	font-size: 1.3rem;
+    color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 4px;
+}
+.result-middle-item .search-body{
+	line-height: 2.2rem;
+}
+.result-middle-item .search-body a{
+	color: #999;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+}
+

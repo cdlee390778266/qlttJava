@@ -24,7 +24,7 @@
 			<a  id="zb-delete" onclick="javascript:deleteZb()"     style="margin-right:10px;" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-remove',disabled:true">删除</a>
 			<a  id="zb-schcs" onclick="javascript:searchZBCS()"       href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search',disabled:true">查看指标参数</a>
 		</div>
-		<table class="easyui-datagrid" id="tb-zb" style="min-height:300px;"
+		<table class="easyui-datagrid" id="tb-zb" style="height:300px;"
 			data-options="rownumbers:true,singleSelect:true,autoRowHeight:true,fitColumns:true">
 			<thead>
 				<tr>
@@ -61,7 +61,7 @@
 		
 		<div class="easyui-panel" style="padding: 5px;"
 			data-options="border:false">
-			<table class="easyui-datagrid" id="tb-zbcs" style="min-height:300px;"
+			<table class="easyui-datagrid" id="tb-zbcs" style="height:300px;"
 				data-options="rownumbers:true,singleSelect:true,autoRowHeight:true,fitColumns:true">
 				<thead>
 					<tr>
@@ -152,7 +152,12 @@
 
 	<script type="text/javascript">
 		$.parser.parse();
-
+		
+		var emptydata = {
+				result:"ok",
+				data:[]
+		};
+		
 		$(function(){
 			var param =  queryParams();
 			$("#tb-zb").datagrid({
@@ -180,7 +185,7 @@
 				idField : 'fsTactic',
 				singleSelect : true,
 				toolbar : '#zbcs-toolbar',
-				data:[],
+				data:emptydata,
 				onClickRow:function(node){
 					manageZBCSBtn("enable");
 				},
@@ -375,10 +380,7 @@
 			//table清空
 			$("#tb-zbcs").datagrid({
 				url:null,
-				data:{
-						result:"ok",
-						data:[]
-					}
+				data:emptydata
 			}); 
 		}
 		

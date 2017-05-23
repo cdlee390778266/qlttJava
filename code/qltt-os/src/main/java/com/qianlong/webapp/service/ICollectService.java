@@ -20,11 +20,5 @@ public interface ICollectService {
 	 */
 	public void collect(List<SourceIndex> indices, UserAcctTac addTacMenu, String ttacct);
 	
-	/**
-	 * 关注组合指标
-	 * 
-	 * @param indices 原生指标列表
-	 * @param ttacct 推推账号
-	 */
-	public void follow(List<SourceIndex> indices, String ttacct);
+	
 }

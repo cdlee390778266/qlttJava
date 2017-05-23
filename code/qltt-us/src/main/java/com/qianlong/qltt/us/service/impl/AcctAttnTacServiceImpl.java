@@ -106,6 +106,7 @@ public class AcctAttnTacServiceImpl extends CommServiceImpl implements IAcctAttn
 	}
 
 	@Override
+	@Transactional(readOnly=true)
 	public AcctAttnTac005Rsp attntac005(AcctAttnTac005Req req) {
 		TUsAttnTacTicExample example = new TUsAttnTacTicExample();
 		TUsAttnTacTicExample.Criteria criteria = example.createCriteria();
