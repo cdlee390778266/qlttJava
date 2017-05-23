@@ -592,6 +592,16 @@ public final class T02002002 {
      * <code>int32 srctacticprm = 2;</code>
      */
     int getSrctacticprm();
+
+    /**
+     * <code>string srctacname = 3;</code>
+     */
+    java.lang.String getSrctacname();
+    /**
+     * <code>string srctacname = 3;</code>
+     */
+    com.google.protobuf.ByteString
+        getSrctacnameBytes();
   }
   /**
    * Protobuf type {@code com.qlcd.qltt.body.pvt.T02002002._combele}
@@ -607,6 +617,7 @@ public final class T02002002 {
     private _combele() {
       srctactic_ = "";
       srctacticprm_ = 0;
+      srctacname_ = "";
     }
 
     @java.lang.Override
@@ -643,6 +654,12 @@ public final class T02002002 {
             case 16: {
 
               srctacticprm_ = input.readInt32();
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              srctacname_ = s;
               break;
             }
           }
@@ -711,6 +728,40 @@ public final class T02002002 {
       return srctacticprm_;
     }
 
+    public static final int SRCTACNAME_FIELD_NUMBER = 3;
+    private volatile java.lang.Object srctacname_;
+    /**
+     * <code>string srctacname = 3;</code>
+     */
+    public java.lang.String getSrctacname() {
+      java.lang.Object ref = srctacname_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        srctacname_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string srctacname = 3;</code>
+     */
+    public com.google.protobuf.ByteString
+        getSrctacnameBytes() {
+      java.lang.Object ref = srctacname_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        srctacname_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -729,6 +780,9 @@ public final class T02002002 {
       if (srctacticprm_ != 0) {
         output.writeInt32(2, srctacticprm_);
       }
+      if (!getSrctacnameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, srctacname_);
+      }
     }
 
     public int getSerializedSize() {
@@ -742,6 +796,9 @@ public final class T02002002 {
       if (srctacticprm_ != 0) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(2, srctacticprm_);
+      }
+      if (!getSrctacnameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, srctacname_);
       }
       memoizedSize = size;
       return size;
@@ -763,6 +820,8 @@ public final class T02002002 {
           .equals(other.getSrctactic());
       result = result && (getSrctacticprm()
           == other.getSrctacticprm());
+      result = result && getSrctacname()
+          .equals(other.getSrctacname());
       return result;
     }
 
@@ -777,6 +836,8 @@ public final class T02002002 {
       hash = (53 * hash) + getSrctactic().hashCode();
       hash = (37 * hash) + SRCTACTICPRM_FIELD_NUMBER;
       hash = (53 * hash) + getSrctacticprm();
+      hash = (37 * hash) + SRCTACNAME_FIELD_NUMBER;
+      hash = (53 * hash) + getSrctacname().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -899,6 +960,8 @@ public final class T02002002 {
 
         srctacticprm_ = 0;
 
+        srctacname_ = "";
+
         return this;
       }
 
@@ -923,6 +986,7 @@ public final class T02002002 {
         com.qlcd.qltt.body.pvt.T02002002._combele result = new com.qlcd.qltt.body.pvt.T02002002._combele(this);
         result.srctactic_ = srctactic_;
         result.srctacticprm_ = srctacticprm_;
+        result.srctacname_ = srctacname_;
         onBuilt();
         return result;
       }
@@ -970,6 +1034,10 @@ public final class T02002002 {
         }
         if (other.getSrctacticprm() != 0) {
           setSrctacticprm(other.getSrctacticprm());
+        }
+        if (!other.getSrctacname().isEmpty()) {
+          srctacname_ = other.srctacname_;
+          onChanged();
         }
         onChanged();
         return this;
@@ -1088,6 +1156,75 @@ public final class T02002002 {
       public Builder clearSrctacticprm() {
         
         srctacticprm_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object srctacname_ = "";
+      /**
+       * <code>string srctacname = 3;</code>
+       */
+      public java.lang.String getSrctacname() {
+        java.lang.Object ref = srctacname_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          srctacname_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string srctacname = 3;</code>
+       */
+      public com.google.protobuf.ByteString
+          getSrctacnameBytes() {
+        java.lang.Object ref = srctacname_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          srctacname_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string srctacname = 3;</code>
+       */
+      public Builder setSrctacname(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        srctacname_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string srctacname = 3;</code>
+       */
+      public Builder clearSrctacname() {
+        
+        srctacname_ = getDefaultInstance().getSrctacname();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string srctacname = 3;</code>
+       */
+      public Builder setSrctacnameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        srctacname_ = value;
         onChanged();
         return this;
       }
@@ -3174,15 +3311,16 @@ public final class T02002002 {
       "t.body.pvt.T02002002\032\021body/BppSys.proto\032" +
       "\021body/BppBiz.proto\";\n\004_req\0223\n\005pgreq\030\001 \001(" +
       "\0132$.com.qlcd.qltt.body.BppBiz._page_req\"" +
-      "3\n\010_combele\022\021\n\tsrctactic\030\001 \001(\t\022\024\n\014srctac" +
-      "ticprm\030\002 \001(\005\"Z\n\013_combtactic\022\016\n\006tactic\030\001 " +
-      "\001(\t\022;\n\007cbelist\030\002 \003(\0132*.com.qlcd.qltt.bod" +
-      "y.pvt.T02002002._combele\"\262\001\n\004_rsp\0225\n\003rsh" +
-      "\030\001 \001(\0132(.com.qlcd.qltt.body.BppSys._rsp_" +
-      "succhead\0223\n\005pgrsp\030\002 \001(\0132$.com.qlcd.qltt.",
-      "body.BppBiz._page_rsp\022>\n\007cbtlist\030\003 \003(\0132-" +
-      ".com.qlcd.qltt.body.pvt.T02002002._combt" +
-      "acticB\030\n\026com.qlcd.qltt.body.pvtb\006proto3"
+      "G\n\010_combele\022\021\n\tsrctactic\030\001 \001(\t\022\024\n\014srctac" +
+      "ticprm\030\002 \001(\005\022\022\n\nsrctacname\030\003 \001(\t\"Z\n\013_com" +
+      "btactic\022\016\n\006tactic\030\001 \001(\t\022;\n\007cbelist\030\002 \003(\013" +
+      "2*.com.qlcd.qltt.body.pvt.T02002002._com" +
+      "bele\"\262\001\n\004_rsp\0225\n\003rsh\030\001 \001(\0132(.com.qlcd.ql" +
+      "tt.body.BppSys._rsp_succhead\0223\n\005pgrsp\030\002 ",
+      "\001(\0132$.com.qlcd.qltt.body.BppBiz._page_rs" +
+      "p\022>\n\007cbtlist\030\003 \003(\0132-.com.qlcd.qltt.body." +
+      "pvt.T02002002._combtacticB\030\n\026com.qlcd.ql" +
+      "tt.body.pvtb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -3209,7 +3347,7 @@ public final class T02002002 {
     internal_static_com_qlcd_qltt_body_pvt_T02002002__combele_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_qlcd_qltt_body_pvt_T02002002__combele_descriptor,
-        new java.lang.String[] { "Srctactic", "Srctacticprm", });
+        new java.lang.String[] { "Srctactic", "Srctacticprm", "Srctacname", });
     internal_static_com_qlcd_qltt_body_pvt_T02002002__combtactic_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_com_qlcd_qltt_body_pvt_T02002002__combtactic_fieldAccessorTable = new

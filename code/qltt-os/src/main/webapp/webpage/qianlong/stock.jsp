@@ -35,6 +35,21 @@
 			<span class="result-btn-care<c:if test="${isFollow}"> active</c:if>">关注</span>
 		</div>
 	</div>
+	
+	<div class="result-middle">
+		<c:if test="${members!=null && !empty members}">
+			<c:forEach items="${members}" var="mem">
+				<div class="result-middle-item">
+					<div class="search-head">${mem.srctacname}[${mem.srctactic}]</div>
+					<!--
+					<div class="search-body">
+						<a href="#"></a>
+					</div>
+					  -->
+				</div>
+			</c:forEach>
+		</c:if>	
+	</div>	
 
 	<!-- 详细内容 -->
 	<div class="srceen">

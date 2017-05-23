@@ -6,6 +6,7 @@ import com.qianlong.webapp.domain.FilterBody;
 import com.qianlong.webapp.domain.SourceIndex;
 import com.qianlong.webapp.domain.SrcIndexReqBody;
 import com.qlcd.qltt.body.pvt.T02002002;
+import com.qlcd.qltt.body.pvt.T02002003;
 import com.qlcd.qltt.body.pvt.T02005002;
 
 /**
@@ -31,6 +32,14 @@ public interface ICombinedIndexService {
 	 * @return 组合指标列表
 	 */
 	public T02002002._rsp queryComIndex(SrcIndexReqBody req);
+	
+	/**
+	 * <p>接口编号：IFC_TacCombTacticDefine003
+	 * <p>交易码：2002003
+	 * <p>接口名称：组合指标构成查询
+	 * @return 组合指标成员
+	 */
+	public T02002003._rsp querycCombTacticMebs(String tacTic);
 	
 	/**
 	 * <p>接口编号：IFC_TacDataPoolComb002

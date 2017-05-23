@@ -35,10 +35,11 @@ $(document).ready(function() {
 					if (group == "combination") {
 						var members = data.content.tacMenu;
 						for ( var i in members) {
-							var href = encodeURI("../stock/home.do?tactic=" + members[i].tacTic + "&tacname=" + members[i].tacName);
+							var href = encodeURI("../stock/home.do?tactic=" + members[i].tacTic + "&tacname=" + members[i].tacName+"&isCombRequest=true");
 							html += '<div class="search-item ani" swiper-animate-effect="fadeIn" swiper-animate-duration="1s" swiper-animate-delay="0s" >'
-								+ '<div class="search-head">'
+								+ '<div class="search-head search-head-del" data-tacTic="'+members[i].tacTic+'">'
 								+ members[i].tacName
+								+ '<i></i>'
 								+ '</div>'
 								+ '<div class="search-body"><a href="' + href + '">'
 								+ members[i].tacDetail
@@ -141,9 +142,54 @@ $(document).ready(function() {
         $(this).parent().toggleClass('active');
     });
 	
-	$('body').delegate('.search-item', 'tap', function(){
-		location.href = $(this).find('a').attr('href');
-	})
-
+	var deleteTacMenu = function($searchitem,tactic){
+		$.ajax({
+			url : '../combined/delcombined.do',
+			data : {"tactic":tactic},
+			type : 'post',
+			success : function(data) {
+				data = $.parseJSON(data);
+				if(data.status==1){
+					$searchitem.remove();
+					alert("该组合指标已成功删除");
+				}else{
+					alert(data.message);
+				}
+			},
+			error : function(jqXHR, textStatus, errorThrown) {
+				alert('系统错误，请稍后重试或联系管理员');
+			}
+		});
+	}
+	
+	$('body').delegate('.search-item', 'tap', function(event) {
+		var $searchitem = $(this);
+        if(event.target.tagName=='I'){
+            if(window.confirm('您确定要从收藏中删除该组合指标吗？')){
+            	var tactic = $searchitem.find(".search-head").attr("data-tacTic");
+            	var data = {"tacTic" : tactic,"tacPrm":0};
+            	console.log(data);
+            	$.ajax({
+        			url : '../myattention/isfollowed.do',
+        			data : data,
+        			type : 'post',
+        			success : function(data) {
+        				data = $.parseJSON(data);
+        				if(data.content){//如果已经被关注
+        					alert("该指标已经被关注，请先取消关注再删除");
+        				}else{
+        					deleteTacMenu($searchitem,tactic);
+        				}
+        			},
+        			error : function(jqXHR, textStatus, errorThrown) {
+        				alert('系统错误，请稍后重试或联系管理员');
+        			}
+        		});
+            }
+        }else{
+            location.href = $(this).find('a').attr('href');
+        }
+        
+    });
 	init();
 });

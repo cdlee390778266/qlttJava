@@ -15,6 +15,7 @@ import com.qianlong.webapp.service.ICombinedIndexService;
 import com.qlcd.qltt.body.BppBiz;
 import com.qlcd.qltt.body.pvt.T02002001;
 import com.qlcd.qltt.body.pvt.T02002002;
+import com.qlcd.qltt.body.pvt.T02002003;
 import com.qlcd.qltt.body.pvt.T02005002;
 import com.qlcd.util.ZMQProxyClient;
 
@@ -53,6 +54,15 @@ public class CombinedIndexServiceImpl implements ICombinedIndexService {
 		T02002002._rsp rsp = zmqProxyClient.outBound("2002002", builder.build());
 		return rsp;
 	}
+	
+	@Override
+	public T02002003._rsp querycCombTacticMebs(String tacTic) {
+		logger.debug("组合指标构成查询");
+		T02002003._req.Builder builder = T02002003._req.newBuilder();
+		builder.setTactic(tacTic);
+		T02002003._rsp rsp = zmqProxyClient.outBound("2002003", builder.build());
+		return rsp;
+	}
 
 	@Override
 	public T02005002._rsp filtration(FilterBody filter) {
@@ -71,4 +81,6 @@ public class CombinedIndexServiceImpl implements ICombinedIndexService {
 		T02005002._rsp rsp = zmqProxyClient.outBound("2005002", builder.build());
 		return rsp;
 	}
+
+
 }

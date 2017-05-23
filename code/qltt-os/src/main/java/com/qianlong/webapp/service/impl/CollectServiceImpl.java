@@ -30,10 +30,4 @@ public class CollectServiceImpl implements ICollectService {
 		addTacMenu.setTacTic(tactic);
 		userAcctTacMenuService.add(addTacMenu, ttacct);
 	}
-	
-	@Override
-	public void follow(List<SourceIndex> indices, String ttacct) {
-		//
-	}
-
 }

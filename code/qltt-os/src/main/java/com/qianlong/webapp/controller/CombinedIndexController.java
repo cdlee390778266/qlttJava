@@ -24,9 +24,11 @@ import com.qianlong.webapp.domain.AuthResultEntity;
 import com.qianlong.webapp.domain.CollectBody;
 import com.qianlong.webapp.domain.FilterBody;
 import com.qianlong.webapp.domain.JSONEntity;
+import com.qianlong.webapp.domain.UserAcctTac;
 import com.qianlong.webapp.service.ICollectService;
 import com.qianlong.webapp.service.ICombinedIndexService;
 import com.qianlong.webapp.service.IIndexSystemService;
+import com.qianlong.webapp.service.IUserAcctTacMenuService;
 import com.qianlong.webapp.utils.Constants;
 import com.qlcd.qltt.body.pvt.T02001002;
 import com.qlcd.qltt.body.pvt.T02001003;
@@ -46,6 +48,9 @@ public class CombinedIndexController {
 	
 	@Autowired
 	private ICollectService collectService;
+	
+	@Autowired
+	private  IUserAcctTacMenuService userAcctTacMenuService ;
 	
 	@Autowired
 	private IIndexSystemService indexSystemService;
@@ -133,9 +138,19 @@ public class CombinedIndexController {
 		return new JSONEntity(1, null, null);
 	}
 	
-	@RequestMapping("follow")
+	/**
+	 * 根据指标组合过滤股票
+	 * @param request
+	 * @param indices
+	 * @return
+	 */
+	@RequestMapping("delcombined")
 	@ResponseBody
-	public JSONEntity follow(HttpServletRequest request, @RequestBody CollectBody collectBody) {
+	public JSONEntity delcombined(HttpServletRequest request, String tactic) {
+		AuthResultEntity user = (AuthResultEntity)request.getSession().getAttribute(Constants.LOGIN_USER_ACCOUNT);
+		UserAcctTac userAcctTac = new UserAcctTac();
+		userAcctTac.setTacTic(tactic);
+		userAcctTacMenuService.remove(userAcctTac, user.getTtacct());
 		return new JSONEntity(1, null, null);
 	}
 	
