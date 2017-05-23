@@ -4,12 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.qianlong.qltt.us.domain.TUsCombTacMenu;
 import com.qianlong.qltt.us.domain.TUsCombTacMenuExample;
 import com.qianlong.qltt.us.domain.comm.CommRsp;
+import com.qianlong.qltt.us.exception.ErrorCodeMaster;
+import com.qianlong.qltt.us.exception.QlttUSBusinessException;
 import com.qianlong.qltt.us.mapper.TUsCombTacMenuMapper;
 import com.qianlong.qltt.us.protocol.PageRspParameter;
 import com.qianlong.qltt.us.protocol.TtacctPageReq;
@@ -40,7 +43,11 @@ public class AcctTacMenuServiceImpl extends CommServiceImpl implements IAcctTacM
 		tUsCombTacMenu.setFsName(addTacMenu.getTacname());
 		tUsCombTacMenu.setFsDetail(addTacMenu.getTacdetail());
 		tUsCombTacMenu.setFiOrder(order);
-		tUsCombTacMenuMapper.insert(tUsCombTacMenu);
+		try {
+			tUsCombTacMenuMapper.insert(tUsCombTacMenu);
+		} catch (DuplicateKeyException e) {
+			throw new QlttUSBusinessException(ErrorCodeMaster.THE_COMB_IS_EXIST);
+		}
 		return new CommRsp();
 	}
 

@@ -14,7 +14,7 @@ public class ErrorCodeMaster {
 
 	private static final String PATH = "errorcode.properties";
 	private static Properties properties = new Properties();
-
+	
 	static {
 		loadConfigFile();
 	}
@@ -116,6 +116,15 @@ public class ErrorCodeMaster {
 
 	/**该账号不存在或状态异常*/
 	public static final String ACCT_STATUS_EXCEPTION = "20000003";
+
+	/**用户已经关注了该指标*/
+	public static final String TACTIC_WAS_ATTENTION = "20000004";
+	
+	/**该股票在当前选股池中已存在*/
+	public static final  String STOCK_IS_EXIST = "20000005";
+	
+	/**当前组合指标已经收藏*/
+	public static final  String THE_COMB_IS_EXIST = "20000006";
 	
 	public static void main(String[] args) {
 		System.out.println(ErrorCodeMaster.getMessage(ErrorCodeMaster.ACCT_IS_NOT_EXIST));

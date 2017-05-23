@@ -4,12 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.qianlong.qltt.us.domain.TUsAttnStock;
 import com.qianlong.qltt.us.domain.TUsAttnStockExample;
 import com.qianlong.qltt.us.domain.comm.CommRsp;
+import com.qianlong.qltt.us.exception.ErrorCodeMaster;
+import com.qianlong.qltt.us.exception.QlttUSBusinessException;
 import com.qianlong.qltt.us.mapper.TUsAttnStockMapper;
 import com.qianlong.qltt.us.protocol.PageRspParameter;
 import com.qianlong.qltt.us.protocol.acctstock.AcctAttnStock001Req;
@@ -45,7 +48,11 @@ public class AcctAttnStockServiceImpl extends CommServiceImpl implements IAcctAt
 				tUsAttnStock.setFiStockorder(stockorder);
 				tUsAttnStock.setFsStockcode(attnStock.getStockcode());
 				tUsAttnStock.setFsStockname(attnStock.getStockname());
-				tUsAttnStockMapper.insert(tUsAttnStock);
+				try {
+					tUsAttnStockMapper.insert(tUsAttnStock);
+				} catch (DuplicateKeyException e) {
+					throw new QlttUSBusinessException(ErrorCodeMaster.STOCK_IS_EXIST);
+				}
 			}
 		}
 		return new CommRsp();

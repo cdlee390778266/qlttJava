@@ -32,7 +32,7 @@ $(function() {
 				});
 			}
 		} else {
-			var href = encodeURI("../stock/home.do?tactic=" + $(this).find(".search-head").data("id") + "&tacname=" + $(this).find(".search-body").text());
+			var href = encodeURI("../stock/home.do?tactic=" + $(this).find(".search-head").data("id") + "&tacname=" + $(this).find(".search-head").data("name"));
 			window.location.href = href;
 		}
 	});
