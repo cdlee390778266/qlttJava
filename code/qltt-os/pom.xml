@@ -880,11 +880,11 @@
 			</resource>
 		</resources>
 	</build>
-	<profiles>
 	
-		<!-- 开发环境: 需单独指定zmq开关参数, 避免多台开发机器同时启动影响测试 -->
+	<profiles>
+		<!-- DB参数开始 -->
 		<profile>
-			<id>com-in-dev</id>
+			<id>db-dev</id>
 			<properties>
 				<hibernate.dialect>org.hibernate.dialect.MySQLDialect</hibernate.dialect>
 				<validationQuery.sqlserver>SELECT 1</validationQuery.sqlserver>
@@ -895,70 +895,134 @@
 				<hibernate.hbm2ddl.auto>none</hibernate.hbm2ddl.auto>
 				<diver.name>com.mysql.jdbc.Driver</diver.name>
 				<database.name>ttwechat</database.name>
-				<!-- ZMQ配置 -->
-				<zmqproxy.valid.crc>false</zmqproxy.valid.crc>
-				<zmqproxy.ip>192.168.16.22</zmqproxy.ip>
-				<zmqproxy.rsp.port>7701</zmqproxy.rsp.port>
-				<zmqproxy.req.port>7703</zmqproxy.req.port>
-				<!-- 用户服务器配置 -->
-				<user.serv.host>192.168.16.42</user.serv.host>
-				<user.serv.port>8080</user.serv.port>
-				<user.serv.context>/qltt-us/</user.serv.context>
-				<user.serv.appid>app1494816682202</user.serv.appid>
-				<user.serv.plaintext>app1494816682202</user.serv.plaintext>
-				<user.serv.secret>XZzwJYIYH3mPKHZbL4ExWT0iDgVpNNm/Dr3uWYUaCtiSrUyyC840sHWC251HC4tYI/XMesImfAl7fb5tBAWNu/XLTfFFEvXsZa/H2nGHhNsxookqlk9b0viladjnIsIxrRM7zB2YtDis3dmFy9XYwX7/TnEDH66f6B+ml+C4WaA=</user.serv.secret>
 			</properties>
 		</profile>
+		
 		<profile>
-			<id>dev-zmq-on</id>
-			<properties>
-				<zmqproxy.switch>ON</zmqproxy.switch>
-				<!-- 微信公众号配置 -->
-				<wechat.accountId>gh_014b62e05567</wechat.accountId>
-				<wechat.accountAppId>wx8dc60059bd8faac5</wechat.accountAppId>
-				<wechat.accountAppSecret>2aa940de40a633874c802e15e0d07866</wechat.accountAppSecret>
-			</properties>
-		</profile>
-		<profile>
-			<id>dev-zmq-off</id>
-			<properties>
-				<zmqproxy.switch>OFF</zmqproxy.switch>
-				<!-- 微信公众号配置 -->
-				<wechat.accountId>gh_44648d03377b</wechat.accountId>
-				<wechat.accountAppId>wxf03096e49928b99e</wechat.accountAppId>
-				<wechat.accountAppSecret>8c6bd71a6b7a3f4d5c14f2070755382a</wechat.accountAppSecret>
-			</properties>
-		</profile>
-		<!-- 测试测试环境 -->
-		<profile>
-			<id>com-out-test</id>
+			<id>db-test</id>
 			<properties>
 				<hibernate.dialect>org.hibernate.dialect.MySQLDialect</hibernate.dialect>
 				<validationQuery.sqlserver>SELECT 1</validationQuery.sqlserver>
-				<jdbc.url><![CDATA[ jdbc:mysql://qlcdyf.vicp.net:9100/t-ttwechat?useUnicode=true&amp;characterEncoding=UTF-8 ]]></jdbc.url>
+				<jdbc.url><![CDATA[ jdbc:mysql://127.0.0.1:9100/t-ttwechat?useUnicode=true&amp;characterEncoding=UTF-8 ]]></jdbc.url>
 				<jdbc.username>qltt</jdbc.username>
 				<jdbc.password>12345678</jdbc.password>
 				<jdbc.dbType>mysql</jdbc.dbType>
 				<hibernate.hbm2ddl.auto>none</hibernate.hbm2ddl.auto>
 				<diver.name>com.mysql.jdbc.Driver</diver.name>
 				<database.name>t-ttwechat</database.name>
-				<zmqproxy.valid.crc>false</zmqproxy.valid.crc>
-				<zmqproxy.switch>ON</zmqproxy.switch>
-				<zmqproxy.ip>127.0.0.1</zmqproxy.ip>
-				<zmqproxy.rsp.port>9143</zmqproxy.rsp.port>
-				<zmqproxy.req.port>9141</zmqproxy.req.port>
-				<!-- 用户服务器配置 -->
-				<user.serv.host>qlcdyf.vicp.net</user.serv.host>
+			</properties>
+		</profile>
+		
+		<!-- 生产参数待定 -->
+		<profile>
+			<id>db-product</id>
+			<properties>
+				<hibernate.dialect>org.hibernate.dialect.MySQLDialect</hibernate.dialect>
+				<validationQuery.sqlserver>SELECT 1</validationQuery.sqlserver>
+				<jdbc.url><![CDATA[ jdbc:mysql://127.0.0.1:9100/t-ttwechat?useUnicode=true&amp;characterEncoding=UTF-8 ]]></jdbc.url>
+				<jdbc.username>qltt</jdbc.username>
+				<jdbc.password>12345678</jdbc.password>
+				<jdbc.dbType>mysql</jdbc.dbType>
+				<hibernate.hbm2ddl.auto>none</hibernate.hbm2ddl.auto>
+				<diver.name>com.mysql.jdbc.Driver</diver.name>
+				<database.name>t-ttwechat</database.name>
+			</properties>
+		</profile>
+		<!-- DB参数结束 -->
+		
+		<!-- ZMQ参数开始 -->
+		<profile>
+			<id>zmq-dev-request</id>
+			<properties>
+				<zmq.allow.push>OFF</zmq.allow.push>
+				<zmq.valid.crc>false</zmq.valid.crc>
+				<zmq.ip>192.168.16.22</zmq.ip>
+				<zmq.push.port>7701</zmq.push.port>
+				<zmq.req.port>7703</zmq.req.port>
+				<zmq.push.wechataccountid>gh_44648d03377b</zmq.push.wechataccountid>
+				<zmq.push.save>0</zmq.push.save>							
+			</properties>			
+		</profile>
+		
+		<profile>
+			<id>zmq-dev-push</id>
+			<properties>
+				<zmq.allow.push>ON</zmq.allow.push>
+				<zmq.valid.crc>false</zmq.valid.crc>
+				<zmq.ip>192.168.16.22</zmq.ip>
+				<zmq.push.port>7701</zmq.push.port>
+				<zmq.req.port>7703</zmq.req.port>
+				<zmq.push.wechataccountid>gh_014b62e05567</zmq.push.wechataccountid>	
+				<zmq.push.save>0</zmq.push.save>							
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>zmq-test</id>
+			<properties>
+				<zmq.allow.push>ON</zmq.allow.push>
+				<zmq.valid.crc>false</zmq.valid.crc>
+				<zmq.ip>192.168.16.22</zmq.ip>
+				<zmq.push.port>9143</zmq.push.port>
+				<zmq.req.port>9141</zmq.req.port>
+				<zmq.push.wechataccountid>gh_aced603f391c</zmq.push.wechataccountid>
+				<zmq.push.save>0</zmq.push.save>					
+			</properties>	
+		</profile>
+		
+		<!-- 生产参数待定 -->
+		<profile>
+			<id>zmq-product</id>
+			<properties>
+				<zmq.allow.push>ON</zmq.allow.push>
+				<zmq.valid.crc>false</zmq.valid.crc>
+				<zmq.ip>127.0.0.1</zmq.ip>
+				<zmq.push.port>9143</zmq.push.port>
+				<zmq.req.port>9141</zmq.req.port>
+				<zmq.push.wechataccountid>gh_15926e22e247</zmq.push.wechataccountid>
+				<zmq.push.save>0</zmq.push.save>					
+			</properties>	
+		</profile>
+		<!-- ZMQ参数结束 -->
+		
+		<!-- 用户管理参数开始 -->
+		<profile>
+			<id>user-dev</id>
+			<properties>
+				<user.serv.host>192.168.16.42</user.serv.host>
+				<user.serv.port>8080</user.serv.port>
+				<user.serv.context>/qltt-us/</user.serv.context>
+				<user.serv.appid>app1494816682202</user.serv.appid>
+				<user.serv.plaintext>app1494816682202</user.serv.plaintext>
+				<user.serv.secret>XZzwJYIYH3mPKHZbL4ExWT0iDgVpNNm/Dr3uWYUaCtiSrUyyC840sHWC251HC4tYI/XMesImfAl7fb5tBAWNu/XLTfFFEvXsZa/H2nGHhNsxookqlk9b0viladjnIsIxrRM7zB2YtDis3dmFy9XYwX7/TnEDH66f6B+ml+C4WaA=</user.serv.secret>
+			</properties>			
+		</profile>
+		
+		<profile>
+			<id>user-test</id>
+			<properties>
+				<user.serv.host>192.168.16.22</user.serv.host>
+				<user.serv.port>9120</user.serv.port>
+				<user.serv.context>/qltt-us/</user.serv.context>
+				<user.serv.appid>app1495505521500</user.serv.appid>
+				<user.serv.plaintext>app1495505521500</user.serv.plaintext>
+				<user.serv.secret>JZ3TFV5CE75k/ii2oYMMHrjdM4bluflhRfJfRXL/mTt++fRxwq+pRH9SxKufynirrGQJn8GgoGO7DRi/MWmIzqt5MM/VhvjTxHVHCr+KNsIyLN33psbracPAdJEaP51r/bt/Vq9NU+aG9kK5JGVU/RKjlri07zeFuJFFmbDKYus=</user.serv.secret>			
+			</properties>			
+		</profile>
+		
+		<!-- 生产参数待定 -->
+		<profile>
+			<id>user-product</id>
+			<properties>
+				<user.serv.host>127.0.0.1</user.serv.host>
 				<user.serv.port>9120</user.serv.port>
 				<user.serv.context>/qltt-us/</user.serv.context>
 				<user.serv.appid>app1493028185145</user.serv.appid>
 				<user.serv.plaintext>app1493028185145</user.serv.plaintext>
-				<user.serv.secret>C7FcF+dmr9MP2oi2/QWEnzGIDjTr7/AZot00naI1vOc1vKmUSuGH9E1wtMYA7cNrkQpbwOjYVFbhm8C6iiG8ZiHDJBphHx/hl6uMBH9uaR+0nr2XJahdxsmjQhINy6gK2hHXLMSXdQ484A/b1ijUEt0MUh7zCeo7BjqZjHm9dP8=</user.serv.secret>
-				<!-- 微信公众号配置 -->
-				<wechat.accountId>gh_15926e22e247</wechat.accountId>
-				<wechat.accountAppId>wx37b283059af81b4e</wechat.accountAppId>
-				<wechat.accountAppSecret>f0f7a6d0033e29eeb1ecd0c3ff1fdc8c</wechat.accountAppSecret>
+				<user.serv.secret>C7FcF+dmr9MP2oi2/QWEnzGIDjTr7/AZot00naI1vOc1vKmUSuGH9E1wtMYA7cNrkQpbwOjYVFbhm8C6iiG8ZiHDJBphHx/hl6uMBH9uaR+0nr2XJahdxsmjQhINy6gK2hHXLMSXdQ484A/b1ijUEt0MUh7zCeo7BjqZjHm9dP8=</user.serv.secret>			
 			</properties>
 		</profile>
+		<!-- 用户管理参数结束 -->
+		
 	</profiles>
 </project>
