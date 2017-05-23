@@ -56,6 +56,7 @@ public class InterfaceCallInfoServiceImpl extends CommServiceImpl implements IIn
 	/**
 	 * 检查接口调用是否超出限定次数
 	 */
+	@Transactional
 	private boolean validInterfaceCallLimit(InterfaceCallInfo interfaceCallInfo){
 		Date lastCallTime = interfaceCallInfo.getLastCallTime();
 		Integer maxCallNo = interfaceCallInfo.getMaxCallNo();

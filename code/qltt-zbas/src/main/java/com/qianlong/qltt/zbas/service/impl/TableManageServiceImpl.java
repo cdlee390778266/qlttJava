@@ -37,35 +37,37 @@ public class TableManageServiceImpl implements ITableManageService {
 	@Override
 	public List<TableInfo> getTables(ConnectionParam param) {
 		Connection connection = null;
-		Statement statement = null;
+		PreparedStatement statement = null;
 		ResultSet tabs = null;
 		ResultSet resultSet = null;
 		DatabaseMetaData dbMetaData = null;
 		try {
 			connection = JDBCUtil.getConnection(param);
 			dbMetaData = connection.getMetaData();
+			TableInfo tableInfo =null;
 			String[] types = { "TABLE" };
 			List<TableInfo> tables = new ArrayList<TableInfo>();
 			tabs = dbMetaData.getTables(null, null, null, types);
 			while (tabs.next()) {
-				TableInfo tableInfo = new TableInfo();
+				tableInfo = new TableInfo();
 				String tablename = tabs.getString("TABLE_NAME");
 				tableInfo.setTableName(tablename);
 				tableInfo.setRemarks(tabs.getString("REMARKS"));
-				statement = connection.createStatement();
-				resultSet = statement.executeQuery("select count(1) from " + tablename);
-				while (resultSet.next()) {
-					tableInfo.setRecordNum(resultSet.getInt(1));
-				}
-				resultSet.close();
+				statement = connection.prepareStatement("select count(1) from "+tablename+";");
+				resultSet = statement.executeQuery();
+				resultSet.next();
+				tableInfo.setRecordNum(resultSet.getInt(1));
+				JDBCUtil.closeStatement(statement);
+				JDBCUtil.closeResultSet(resultSet);
 				tables.add(tableInfo);
 			}
-			tabs.close();
 			logger.debug(JSONUtil.arrayToJson(tables));
 			return tables;
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		} finally {
+			JDBCUtil.closeResultSet(resultSet);
+			JDBCUtil.closeResultSet(tabs);
 			JDBCUtil.closeStatement(statement);
 			JDBCUtil.closeConnection(connection);
 		}
@@ -115,9 +117,8 @@ public class TableManageServiceImpl implements ITableManageService {
 			delsql.append("DROP TABLE IF EXISTS `").append(tablename).append("`;");// 如果表存在将干掉它
 			targetStatement.execute(delsql.toString());
 			String createTableSql = null;
-			while (ctResultSet.next()) {
-				createTableSql = ctResultSet.getString(2);
-			}
+			ctResultSet.next();
+			createTableSql = ctResultSet.getString(2);
 			JDBCUtil.closeResultSet(ctResultSet);
 			logger.debug("建表语句：" + createTableSql.toString());
 			if (!StringUtil.nullOrBlank(createTableSql)) {
@@ -135,12 +136,9 @@ public class TableManageServiceImpl implements ITableManageService {
 				targetPstmt = targetConnection.prepareStatement(pstsqlstring);
 				int batchCounter = 0; // 累加的批处理数量
 				while (resultSet.next()) {
-					//StringBuilder builder = new StringBuilder();
 					for (int i = 1; i <= columnCount; i++) {
-						//builder.append(resultsetmetaDate.getColumnName(i)+":"+resultSet.getString(i)).append(";");
 						targetPstmt.setObject(i, resultSet.getObject(i));
 					}
-					//logger.debug(builder.toString());
 					targetPstmt.addBatch();
 					batchCounter++;
 					if (batchCounter % 1000 == 0) { // 1000条数据一提交

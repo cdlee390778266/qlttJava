@@ -17,7 +17,7 @@
 			<input id="sch-fiMaxdelay"  class="easyui-textbox" style="width: 200px" data-options="label:'最大延迟指数：',labelWidth:100,labelAlign:'right'">
 			<a id="zb-query" onclick="javascript:handleZbQuery()" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'">查询</a>
 		</div>
-		<table class="easyui-datagrid" id="tb-zb" style="min-height:300px;"
+		<table class="easyui-datagrid" id="tb-zb" style="height:300px;"
 			data-options="rownumbers:true,singleSelect:true,autoRowHeight:true,fitColumns:true">
 			<thead>
 				<tr>
@@ -43,7 +43,7 @@
 		</div>
 		<div class="easyui-panel" style="padding: 5px;"
 			data-options="border:false">
-			<table class="easyui-datagrid" id="tb-zbcs" style="min-height:300px;"
+			<table class="easyui-datagrid" id="tb-zbcs" style="height:300px;"
 				data-options="rownumbers:true,singleSelect:true,autoRowHeight:true,fitColumns:true">
 				<thead>
 					<tr>

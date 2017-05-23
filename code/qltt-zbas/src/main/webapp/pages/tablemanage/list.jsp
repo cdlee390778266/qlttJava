@@ -82,7 +82,7 @@
 				</div>
 				
 				<div data-options="region:'center',border:false">
-					<table class="easyui-datagrid" id="tb-target" style="min-height:400px;"
+					<table class="easyui-datagrid" id="tb-target" style="height:400px;"
 						data-options="singleSelect:false,autoRowHeight:true,fitColumns:true,rownumbers:true,idField:'tableName',title:'目标数据库'">
 						<thead>
 							<tr>

@@ -6,9 +6,10 @@
 		pageList : [ 10, 20, 30,40],
 		emptyMsg : '没有数据！',
 		loadFilter:function(data){
-			if(data.result="ok"){
+			//console.log(data);
+			if(data.result == "ok"){
 				return data.data;
-			}else if(data.result="error"){
+			}else if(data.result == "error"){
 				$.messager.alert("表格加载数据错误",data.message);
 			}else{
 				$.messager.alert("表格加载数据错误","加载表格数据异常");

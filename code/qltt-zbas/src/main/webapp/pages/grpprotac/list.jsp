@@ -16,7 +16,7 @@
 			<a id="grp-cancel"  onclick="javascript:deleteTaggrp()" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-cancel',disabled:true">删除</a>
 			<a id="grp-un-select"  onclick="javascript:unselectTaggrp()" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-reload'">取消选中</a>
 		</div>
-		 <table class="easyui-treegrid" style="min-height:300px;width:100%;padding:5px;" id="grp-tb"
+		 <table class="easyui-treegrid" style="height:300px;width:100%;padding:5px;" id="grp-tb"
             data-options="fitColumns:true,method: 'get',idField:'fsTacgroup',treeField:'fsName',rownumbers:true">
 	        <thead>
 	            <tr>
@@ -74,7 +74,7 @@
 					</tr>
 					<tr>
 						<td colspan="4">
-							<table class="easyui-datagrid" id="mem-tb" title="原生指标组指标成员" style="width:90%;min-height:300px;"  
+							<table class="easyui-datagrid" id="mem-tb" title="原生指标组指标成员" style="width:90%;height:300px;"  
 								data-options="singleSelect:true,autoRowHeight:true,fitColumns:true">  
 								 <thead>
 							        <tr>
