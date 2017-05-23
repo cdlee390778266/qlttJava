@@ -5,6 +5,8 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import org.jeecgframework.core.util.ResourceUtil;
+
 import com.qlcd.qltt.body.pvt.T03001001;
 import com.qlcd.qltt.body.pvt.T03001001._evacctpush;
 import com.qlcd.qltt.body.pvt.T03001001._eventpush;
@@ -15,8 +17,6 @@ import weixin.guanjia.message.model.SendMessageTep;
 import weixin.util.StringTypeUtil;
 
 public class MyBusProcess implements IBusProcess {
-	
-	private ResourceBundle getData = java.util.ResourceBundle.getBundle("sysConfig");
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -42,7 +42,7 @@ public class MyBusProcess implements IBusProcess {
 					tep.setKeyword2(eventpush.getTacname());//keyword2
 					String remark = eventpush.getEvdetail()+"\n"+epush.getSummary()+"(查看更多请点击详情,内容当日有效)";//remark
 					//TODO:详情url
-					String url =getData.getString("wechat.infourl")
+					String url = ResourceUtil.getConfigByName("domain")
 							+"webapp/getMessage/query1001.do?eventdate="+data1.format(data.parse(content.getEp().getOcctime()))
 							+"&eventno="+content.getEp().getEventno()
 							+"&ttacct="+epush.getTtacct()+"&svcchnl="+epush.getSvcchnlValue();
@@ -81,7 +81,7 @@ public class MyBusProcess implements IBusProcess {
 					String remark = _eventpush.getEvdetail()+"\n"+_eventpush.getSummary()+"(查看更多请点击详情,内容当日有效)";//remark
 					
 					//TODO:详情url
-					String url =getData.getString("wechat.infourl")
+					String url =ResourceUtil.getConfigByName("domain")
 							+"webapp/getMessage/query1002.do?eventdate="+data1.format(data.parse(_eventpush.getOcctime()))
 							+"&eventno="+_eventpush.getEventno()
 							+"&ttacct="+_eventpush.getTtacct()+"&svcchnl="+_eventpush.getSvcchnlValue();

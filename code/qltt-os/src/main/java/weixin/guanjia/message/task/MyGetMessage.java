@@ -25,13 +25,13 @@ public class MyGetMessage implements Runnable {
 
 	private static final Logger logger = LoggerFactory.getLogger(MyGetMessage.class);
 
-	private CommonService commonService;
+	private CommonService commonService;	
 
 	private WeixinAccountServiceI weixinAccountService;
 	
 	private MessageTemplateService messageTemplateService;
 
-	private ResourceBundle getData = java.util.ResourceBundle.getBundle("sysConfig");
+	private ResourceBundle zmqconfigResBundle = java.util.ResourceBundle.getBundle("zmqconfig");
 	private static SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
 	public MyGetMessage(CommonService commonService, WeixinAccountServiceI weixinAccountService,MessageTemplateService messageTemplateService) {
@@ -100,10 +100,10 @@ public class MyGetMessage implements Runnable {
 	
 			String msg;
 		
-			String token = weixinAccountService.getAccessToken(getData.getString("wechat.accountId"));
+			String token = weixinAccountService.getAccessToken(zmqconfigResBundle.getString("zmq.push.wechataccountid"));
 			msg = MessageTemplateApiUtil.sendTemplateMsg(token, result);
 			// 发送消息保存
-			if (getData.getString("is_save_message").equals("0")) {
+			if (zmqconfigResBundle.getString("zmq.push.save").equals("0")) {
 				if (!msg.equals("")) {
 					JSONObject mb = JSONObject.fromObject(msg);
 					String msgid = mb.getString("msgid");
