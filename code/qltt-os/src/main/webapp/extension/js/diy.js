@@ -120,6 +120,12 @@ $(function() {
 					$parent.data("start", parseInt(start) + stocks.length);
 				}
 				$parent.append(html);
+				var totalnum = data.pgrsp.totalnum;
+				$('.srceen-txt .red').text(totalnum);
+				if($parent.find(".screen-item").length < totalnum )
+					displayLoadMore($(".load-more"),"show");
+				else
+					displayLoadMore($(".load-more"),"hide");
 				$('.load-more i').removeClass('active');
 				loadFlag = true;
 			},
@@ -129,6 +135,14 @@ $(function() {
 		});
 	}
 
+	//显示或隐藏更多
+	var displayLoadMore = function($div,display){
+		if(display=="hide")
+			$div.hide();
+		else
+			$div.show();
+	}
+	
 	var showDialog = function($dialogEle, callBack) {
 		$dialogEle.removeClass('fadeOut').css('display', 'block').addClass('fadeIn');
 		if (typeof callBack == 'function')

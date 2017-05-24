@@ -40,13 +40,7 @@ public class AcctSetPrmServiceImpl extends CommServiceImpl implements IAcctSetPr
 		scope.setFsTtacct(req.getTtacct());
 		scope.setFiScopeprm(req.getScopeprm());
 		scope.setFiPushscope(req.getPushscope());
-		//查看这条数据存不存在
-		TUsGSetPushScope scopeFromDb = tUsGSetPushScopeMapper.selectByPrimaryKey(scope);
-		if(scopeFromDb == null){
-			tUsGSetPushScopeMapper.insert(scope);//不存在，就新增
-		}else{
-			tUsGSetPushScopeMapper.updateByPrimaryKey(scope);//存在，就更新
-		}
+		tUsGSetPushScopeMapper.updateByPrimaryKey(scope);//存在，就更新
 		return new CommRsp();
 	}
 
@@ -73,13 +67,7 @@ public class AcctSetPrmServiceImpl extends CommServiceImpl implements IAcctSetPr
 		TUsGSetPushNum tUsGSetPushNum = new TUsGSetPushNum();
 		tUsGSetPushNum.setFsTtacct(req.getTtacct());
 		tUsGSetPushNum.setFiPushnum(req.getPushnum());
-		
-		TUsGSetPushNum pushNumFromDB = tUsGSetPushNumMapper.selectByPrimaryKey(tUsGSetPushNum);
-		if(pushNumFromDB == null){
-			tUsGSetPushNumMapper.insert(tUsGSetPushNum);
-		}else{
-			tUsGSetPushNumMapper.updateByPrimaryKey(tUsGSetPushNum);
-		}
+		tUsGSetPushNumMapper.updateByPrimaryKey(tUsGSetPushNum);
 		return new CommRsp();
 	}
 
@@ -102,13 +90,8 @@ public class AcctSetPrmServiceImpl extends CommServiceImpl implements IAcctSetPr
 	public CommRsp setprm005(SetPrmPushFreq req) {
 		TUsGSetPushFreq pushFreq = new TUsGSetPushFreq();
 		pushFreq.setFsTtacct(req.getTtacct());
-		pushFreq.setFiPushfreq(req.getPushfreq());
-		TUsGSetPushFreq pfFromDb = tUsGSetPushFreqMapper.selectByPrimaryKey(pushFreq);
-		if(pfFromDb == null){
-			tUsGSetPushFreqMapper.insert(pushFreq);
-		}else{
-			tUsGSetPushFreqMapper.updateByPrimaryKey(pushFreq);
-		}
+		pushFreq.setFiPushfreq(req.getPushfreq());	
+		tUsGSetPushFreqMapper.updateByPrimaryKey(pushFreq);
 		return new CommRsp();
 	}
 

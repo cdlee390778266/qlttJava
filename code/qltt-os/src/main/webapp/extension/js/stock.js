@@ -44,13 +44,15 @@ $(document).ready(function() {
 							+ '<a href="javascript:void(0);" class="choose"></a>'
 							+ '</div>' + '</div>';
 					}
-					$('.srceen-txt .red').text(data.pgrsp.totalnum);
 				}
 				$parent.append(html);
 				var totalnum = data.pgrsp.totalnum;
-				if($parent.find(".screen-item").length == totalnum ){
+				$('.srceen-txt .red').text(totalnum);
+				if($parent.find(".screen-item").length < totalnum )
+					displayLoadMore($(".load-more"),"show");
+				else
 					displayLoadMore($(".load-more"),"hide");
-				}
+				
 				$('.load-more i').removeClass('active');
 				refreshFlag = true;
 				$parent.data('start', parseInt(start) + size);
@@ -63,11 +65,10 @@ $(document).ready(function() {
 	
 	//显示或隐藏更多
 	var displayLoadMore = function($div,display){
-		if(display=="hide"){
+		if(display=="hide")
 			$div.hide();
-		}else{
+		else
 			$div.show();
-		}
 	}
 	var showDialog = function($dialogEle, callBack) {
 		$dialogEle.removeClass('fadeOut').css('display', 'block').addClass('fadeIn');
@@ -152,7 +153,6 @@ $(document).ready(function() {
 	$('#recommend .dialog-btn-confirm').tap(function() {
 		hideDialog($('#recommend'), function() {
 			console.log('提交');
-			
 		});
 	});
 

@@ -13,6 +13,8 @@ import com.qianlong.qltt.us.domain.TUSAcctCNRegExample;
 import com.qianlong.qltt.us.domain.TUSBindRel;
 import com.qianlong.qltt.us.domain.TUSChnlDevInfo;
 import com.qianlong.qltt.us.domain.TUsAcctCnRegPKKey;
+import com.qianlong.qltt.us.domain.TUsGSetPushFreq;
+import com.qianlong.qltt.us.domain.TUsGSetPushScope;
 import com.qianlong.qltt.us.exception.ErrorCodeMaster;
 import com.qianlong.qltt.us.exception.QlttUSBusinessException;
 import com.qianlong.qltt.us.mapper.TUSAcctBaseInfoMapper;
@@ -20,6 +22,8 @@ import com.qianlong.qltt.us.mapper.TUSAcctCNRegMapper;
 import com.qianlong.qltt.us.mapper.TUSBindRelMapper;
 import com.qianlong.qltt.us.mapper.TUSChnlDevInfoMapper;
 import com.qianlong.qltt.us.mapper.TUsAcctCnRegPKMapper;
+import com.qianlong.qltt.us.mapper.TUsGSetPushFreqMapper;
+import com.qianlong.qltt.us.mapper.TUsGSetPushScopeMapper;
 import com.qianlong.qltt.us.protocol.acctopen.AcctBindInfo;
 import com.qianlong.qltt.us.protocol.acctopen.AcctOpen001Req;
 import com.qianlong.qltt.us.protocol.acctopen.AcctOpen001Rsp;
@@ -42,6 +46,12 @@ public class AcctOpenServiceImpl extends CommServiceImpl implements IAcctOpenSer
 	
 	@Autowired
 	private TUsAcctCnRegPKMapper tUsAcctCnRegPKMapper;
+	
+	@Autowired
+	private TUsGSetPushFreqMapper tUsGSetPushFreqMapper;
+	
+	@Autowired
+	private TUsGSetPushScopeMapper tUsGSetPushScopeMapper;
 
 	@Override
 	@Transactional
@@ -96,7 +106,19 @@ public class AcctOpenServiceImpl extends CommServiceImpl implements IAcctOpenSer
 			}
 			tUSChnlDevInfoMapper.insert(tusChnlDevInfo);
 		}
-
+		
+		//设定推送频率和推送范围
+		TUsGSetPushScope tUsGSetPushScope = new TUsGSetPushScope();
+		tUsGSetPushScope.setFsTtacct(acctno);
+		tUsGSetPushScope.setFiPushscope(0);
+		tUsGSetPushScope.setFiScopeprm(0);
+		tUsGSetPushScopeMapper.insert(tUsGSetPushScope);
+		
+		TUsGSetPushFreq tUsGSetPushFreq = new TUsGSetPushFreq();
+		tUsGSetPushFreq.setFsTtacct(acctno);
+		tUsGSetPushFreq.setFiPushfreq(0);
+		tUsGSetPushFreqMapper.insert(tUsGSetPushFreq);
+		
 		AcctOpen001Rsp rsp = new AcctOpen001Rsp();
 		rsp.setCn(cn);
 		rsp.setTtacct(acctno);
