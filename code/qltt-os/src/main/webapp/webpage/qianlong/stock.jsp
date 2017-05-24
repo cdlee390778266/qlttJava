@@ -56,7 +56,7 @@
 		<div class="srceen-txt">
 			<span>该指标共计筛选出</span><span class="red"></span><span>支股票</span>
 		</div>
-		<div class="screen-main" data-start="1" data-size="10"></div>
+		<div class="screen-main" data-start="1" data-size="5"></div>
 		<div class="load-more">
 			<i></i><span>加载更多</span>
 		</div>

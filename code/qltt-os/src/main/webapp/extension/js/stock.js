@@ -44,13 +44,15 @@ $(document).ready(function() {
 							+ '<a href="javascript:void(0);" class="choose"></a>'
 							+ '</div>' + '</div>';
 					}
-					$('.srceen-txt .red').text(data.pgrsp.rspnum);
+					$('.srceen-txt .red').text(data.pgrsp.totalnum);
 				}
-
 				$parent.append(html);
+				var totalnum = data.pgrsp.totalnum;
+				if($parent.find(".screen-item").length == totalnum ){
+					displayLoadMore($(".load-more"),"hide");
+				}
 				$('.load-more i').removeClass('active');
 				refreshFlag = true;
-
 				$parent.data('start', parseInt(start) + size);
 			},
 			error : function(xhr, type) {
@@ -58,7 +60,15 @@ $(document).ready(function() {
 			}
 		});
 	}
-
+	
+	//显示或隐藏更多
+	var displayLoadMore = function($div,display){
+		if(display=="hide"){
+			$div.hide();
+		}else{
+			$div.show();
+		}
+	}
 	var showDialog = function($dialogEle, callBack) {
 		$dialogEle.removeClass('fadeOut').css('display', 'block').addClass('fadeIn');
 		if (typeof callBack == 'function')

@@ -22,7 +22,7 @@
 		<c:forEach items="${followingList}" var="following" varStatus="status">
 			<div class="search-item animated">
 				<div class="search-head" data-id="${following.tacTic}" data-name="${following.tacName}"><span>${following.tacName}</span><i></i></div>
-				<!-- <div class="search-body"><a href="javascript:void(0);">${following.tacName}[${following.tacTic}]</a></div> -->
+				<div class="search-body"><a href="javascript:void(0);">${following.tacDetail}</a></div>
 				<div class="search-foot">
 					<span class="active">关注</span>
 				</div>

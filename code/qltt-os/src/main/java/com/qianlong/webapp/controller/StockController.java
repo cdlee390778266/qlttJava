@@ -76,7 +76,7 @@ private Logger logger = Logger.getLogger(StockController.class);
 		
 		Object result = null;
 		try {
-			String json = JsonFormat.printer().print(rsp);
+			String json = JsonFormat.printer().includingDefaultValueFields().print(rsp);
 			logger.debug(String.format("T02003001 交易 - 转换后的JSON字符串: [%s]", json));
 			JsonFormat.printer().print(rsp);
 			result = JSONObject.parse(json);

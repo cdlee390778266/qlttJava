@@ -18,6 +18,8 @@ public class AttnTacTic{
 	private String tacname;//指标名称
 	
 	private String tacprmname;//指标参数名称
+	
+	private String tacdetail;//指标详细信息
 
 	public String getTactic() {
 		return tactic;
@@ -49,5 +51,13 @@ public class AttnTacTic{
 
 	public void setTacprmname(String tacprmname) {
 		this.tacprmname = tacprmname;
+	}
+
+	public String getTacdetail() {
+		return tacdetail;
+	}
+
+	public void setTacdetail(String tacdetail) {
+		this.tacdetail = tacdetail;
 	}
 }
