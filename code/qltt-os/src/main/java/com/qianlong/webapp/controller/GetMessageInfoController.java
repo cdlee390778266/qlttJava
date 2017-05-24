@@ -72,11 +72,17 @@ public class GetMessageInfoController {
 			for (int j = 1; j < con.length; j++) {
 				contentLastS.add(con[j]);
 			}
-			String[] contitle = con[0].split(",");
-			mapcontent1.put("name", contitle[0].trim());
-			mapcontent1.put("code", contitle[1].trim());
-			contentFirst.add(mapcontent1);
-			contentLast.add(contentLastS);
+			if(con[0].contains(",")){
+				String[] contitle = con[0].split(",");
+				mapcontent1.put("name", contitle[0].trim());
+				mapcontent1.put("code", contitle[1].trim());
+				contentFirst.add(mapcontent1);
+			}else{
+				mapcontent1.put("name", con[0].trim());
+				mapcontent1.put("code", "");
+				contentFirst.add(mapcontent1);
+			}
+			contentLast.add(contentLastS);		
 		}
 		String[] title = content1[0].split("\\|");
 		List<Map<String,String>> titleLast = new ArrayList<>();
