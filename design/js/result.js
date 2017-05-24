@@ -1,7 +1,7 @@
 /* 
 * @Author: lee
 * @Date:   2017-04-11 16:23:54
-* @Last Modified time: 2017-04-12 18:19:49
+* @Last Modified time: 2017-05-24 18:39:30
 */
 
 $(document).ready(function(){
@@ -9,11 +9,19 @@ $(document).ready(function(){
     var url = '../data/result.json';
     var refreshFlag = true;
 
+    // var refreshHeight = function (){
+    //     $('.result-main').height($('.img-responsive').height());
+    //     $('.result-tags-box').height($('.result-tags').height());
+    //     $('.result-tags-box').width($('.result-tags').width());
+    // }
+    
     var refreshHeight = function (){
-        $('.result-main').height($('.img-responsive').height());
-        $('.result-tags-box').height($('.result-tags').height());
-        $('.result-tags-box').width($('.result-tags').width());
+        $('.result-tags-head span').css('top',($('.result-tags-head').height()-$('.result-tags-head span').height())/2);
     }
+
+    $(window).resize(function(event) {
+        refreshHeight();
+    });
 
     var refreshData = function(url,$parent){
         $.ajax({
