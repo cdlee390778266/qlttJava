@@ -36,6 +36,8 @@ public class MessageTemplate {
 	private Clob exContent;
 	@Column(name="status")
 	private Integer status;
+	@Column(name="accountid")
+	private String accountid;
 	public String getTemplateId() {
 		return templateId;
 	}
@@ -101,5 +103,11 @@ public class MessageTemplate {
 	}
 	public void setStatus(Integer status) {
 		this.status = status;
+	}
+	public String getAccountid() {
+		return accountid;
+	}
+	public void setAccountid(String accountid) {
+		this.accountid = accountid;
 	}
 }

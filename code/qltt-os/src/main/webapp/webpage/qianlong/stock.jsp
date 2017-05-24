@@ -35,25 +35,41 @@
 			<span class="result-btn-care<c:if test="${isFollow}"> active</c:if>">关注</span>
 		</div>
 	</div>
+	
+	<div class="result-middle">
+		<c:if test="${members!=null && !empty members}">
+			<c:forEach items="${members}" var="mem">
+				<div class="result-middle-item">
+					<div class="search-head">${mem.srctacname}[${mem.srctactic}]</div>
+					<!--
+					<div class="search-body">
+						<a href="#"></a>
+					</div>
+					  -->
+				</div>
+			</c:forEach>
+		</c:if>	
+	</div>	
 
 	<!-- 详细内容 -->
 	<div class="srceen">
 		<div class="srceen-txt">
 			<span>该指标共计筛选出</span><span class="red"></span><span>支股票</span>
 		</div>
-		<div class="screen-main" data-start="1" data-size="10"></div>
+		<div class="screen-main" data-start="1" data-size="5"></div>
 		<div class="load-more">
 			<i></i><span>加载更多</span>
 		</div>
 	</div>
+	
+	<input type="hidden" id="code" name="code" />
+	<input type="hidden" id="name" name="name" />
 
 	<div class="dialog animated" id="recommend">
 		<div class="dialog-mask"></div>
 		<div class="dialog-box">
 			<div class="dialog-head">推荐到我的荐股</div>
 			<div class="dialog-body">
-				<input type="hidden" id="code" name="code" />
-				<input type="hidden" id="name" name="name" />
 				<input type="text" id="reason" name="reason" placeholder="推荐理由" />
 			</div>
 			<div class="dialog-foot">

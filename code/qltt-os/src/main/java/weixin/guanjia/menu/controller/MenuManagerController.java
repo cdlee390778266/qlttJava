@@ -36,7 +36,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import weixin.guanjia.account.entity.WeixinAccountEntity;
 import weixin.guanjia.account.service.WeixinAccountServiceI;
-import weixin.guanjia.base.service.WeixinExpandconfigServiceI;
 import weixin.guanjia.core.entity.common.Button;
 import weixin.guanjia.core.entity.common.CommonButton;
 import weixin.guanjia.core.entity.common.ComplexButton;
@@ -62,8 +61,6 @@ public class MenuManagerController {
 	private WeixinAccountServiceI weixinAccountService;
 	@Autowired
 	private WeixinMenuServiceI weixinMenuService;
-	@Autowired
-	private WeixinExpandconfigServiceI weixinExpandconfigService;
 	private String message;
 
 	@RequestMapping(params = "list")

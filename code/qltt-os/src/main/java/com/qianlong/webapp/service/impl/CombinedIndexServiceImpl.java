@@ -7,12 +7,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
+import com.qianlong.webapp.domain.FilterBody;
 import com.qianlong.webapp.domain.SourceIndex;
 import com.qianlong.webapp.domain.SrcIndexReqBody;
 import com.qianlong.webapp.exception.BusinessException;
 import com.qianlong.webapp.service.ICombinedIndexService;
+import com.qlcd.qltt.body.BppBiz;
 import com.qlcd.qltt.body.pvt.T02002001;
 import com.qlcd.qltt.body.pvt.T02002002;
+import com.qlcd.qltt.body.pvt.T02002003;
+import com.qlcd.qltt.body.pvt.T02005002;
 import com.qlcd.util.ZMQProxyClient;
 
 @Service
@@ -41,7 +45,42 @@ public class CombinedIndexServiceImpl implements ICombinedIndexService {
 
 	@Override
 	public T02002002._rsp queryComIndex(SrcIndexReqBody req) {
-		return null;
+		logger.debug("组合指标清单查询");
+		T02002002._req.Builder builder = T02002002._req.newBuilder();
+		BppBiz._page_req.Builder pageBuilder = BppBiz._page_req.newBuilder();
+		pageBuilder.setReqstart(req.getStart());
+		pageBuilder.setReqnum(req.getSize());
+		builder.setPgreq(pageBuilder.build());
+		T02002002._rsp rsp = zmqProxyClient.outBound("2002002", builder.build());
+		return rsp;
 	}
+	
+	@Override
+	public T02002003._rsp querycCombTacticMebs(String tacTic) {
+		logger.debug("组合指标构成查询");
+		T02002003._req.Builder builder = T02002003._req.newBuilder();
+		builder.setTactic(tacTic);
+		T02002003._rsp rsp = zmqProxyClient.outBound("2002003", builder.build());
+		return rsp;
+	}
+
+	@Override
+	public T02005002._rsp filtration(FilterBody filter) {
+		logger.debug("指标组合查询[分页]");
+		T02005002._req.Builder builder = T02005002._req.newBuilder();
+		BppBiz._page_req.Builder pageBuilder = BppBiz._page_req.newBuilder();
+		pageBuilder.setReqstart(filter.getStart());
+		pageBuilder.setReqnum(filter.getSize());
+		if (CollectionUtils.isEmpty(filter.getIndices()))
+			throw new BusinessException("请指定指标查询！");
+		for (SourceIndex index : filter.getIndices()) {
+			builder.addTclist(T02005002._taccomb.newBuilder().setTactic(index.getSrcTactic()).setTacprm(index.getSrcTacticPrm()));
+		}
+		
+		builder.setPgreq(pageBuilder);
+		T02005002._rsp rsp = zmqProxyClient.outBound("2005002", builder.build());
+		return rsp;
+	}
+
 
 }

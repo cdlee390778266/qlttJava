@@ -15,6 +15,10 @@ public class BaseIndex {
 	
 	@JSONField(name = "tacprmname")
 	private String tacPrmName;
+	
+	@JSONField(name = "tacdetail")
+	private String tacDetail;
+	
 
 	public String getTacTic() {
 		return tacTic;
@@ -46,6 +50,14 @@ public class BaseIndex {
 
 	public void setTacPrmName(String tacPrmName) {
 		this.tacPrmName = tacPrmName;
+	}
+
+	public String getTacDetail() {
+		return tacDetail;
+	}
+
+	public void setTacDetail(String tacDetail) {
+		this.tacDetail = tacDetail;
 	}
 
 	@Override

@@ -6,12 +6,15 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.qianlong.qltt.us.domain.TUsAttnTacTic;
 import com.qianlong.qltt.us.domain.TUsAttnTacTicExample;
 import com.qianlong.qltt.us.domain.comm.CommRsp;
+import com.qianlong.qltt.us.exception.ErrorCodeMaster;
+import com.qianlong.qltt.us.exception.QlttUSBusinessException;
 import com.qianlong.qltt.us.mapper.TUsAttnTacTicMapper;
 import com.qianlong.qltt.us.protocol.acctattntac.AcctAttnTac001Req;
 import com.qianlong.qltt.us.protocol.acctattntac.AcctAttnTac002Req;
@@ -36,7 +39,11 @@ public class AcctAttnTacServiceImpl extends CommServiceImpl implements IAcctAttn
 	@Transactional
 	public CommRsp attntac001(AcctAttnTac001Req req) {
 		TUsAttnTacTic tUsAttnTacTic =  createTUsAttnTacTics(req.getTtacct(),req.getAttntactic());
-		tUsAttnTacTicMapper.insert(tUsAttnTacTic);
+		try {
+			tUsAttnTacTicMapper.insert(tUsAttnTacTic);
+		} catch (DuplicateKeyException e) {
+			throw new QlttUSBusinessException(ErrorCodeMaster.TACTIC_WAS_ATTENTION);
+		}
 		return new CommRsp();
 	}
 
@@ -106,6 +113,7 @@ public class AcctAttnTacServiceImpl extends CommServiceImpl implements IAcctAttn
 	}
 
 	@Override
+	@Transactional(readOnly=true)
 	public AcctAttnTac005Rsp attntac005(AcctAttnTac005Req req) {
 		TUsAttnTacTicExample example = new TUsAttnTacTicExample();
 		TUsAttnTacTicExample.Criteria criteria = example.createCriteria();

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html >
+<!DOCTYPE html>
 <html lang="zh-CN" ng-app="qlttApp">
 <head>
 <meta charset="utf-8">
@@ -31,15 +31,9 @@
 	<div id="header">
 		<div id="scroller">
 			<ul>
+				<li data-group="combination" class="active">组合指标</li>
 				<c:forEach items="${idxGroups}" var="idxGroup" varStatus="status">
-					<c:choose>
-						<c:when test="${status.index == 0}">
-							<li data-group="${idxGroup.tacgroup}" class="active">${idxGroup.grpname}</li>
-						</c:when>
-						<c:otherwise>
-							<li data-group="${idxGroup.tacgroup}">${idxGroup.grpname}</li>
-						</c:otherwise>
-					</c:choose>
+					<li data-group="${idxGroup.tacgroup}">${idxGroup.grpname}</li>
 				</c:forEach>
 			</ul>
 		</div>
@@ -58,7 +52,7 @@
 	<!-- 页脚菜单 -->
 	<div class="pool-footer">
 		<div class="pFooter-btn">
-			<a href="javascript:void(0);"><span><i>+</i>组合指标设置</span></a>
+			<a href="<c:url value='/webapp/combined/home.do' />"><span><i>+</i>组合指标设置</span></a>
 		</div>
 		<div class="footer">
 			<a href="<c:url value='/webapp/search/home.do' />" class="active"><i class="icon icon-searchd"></i><br><span>指标查询</span></a>

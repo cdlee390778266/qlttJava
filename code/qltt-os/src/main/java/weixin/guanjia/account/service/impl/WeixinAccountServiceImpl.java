@@ -5,8 +5,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-import net.sf.json.JSONObject;
-
 import org.jeecgframework.core.common.model.json.AjaxJson;
 import org.jeecgframework.core.common.model.json.LogAnnotation;
 import org.jeecgframework.core.common.service.impl.CommonServiceImpl;
@@ -18,6 +16,7 @@ import org.jeewx.api.core.exception.WexinReqException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import net.sf.json.JSONObject;
 import weixin.guanjia.account.entity.WeixinAccountEntity;
 import weixin.guanjia.account.service.WeixinAccountServiceI;
 import weixin.guanjia.core.util.WeixinUtil;
@@ -220,6 +219,13 @@ public class WeixinAccountServiceImpl extends CommonServiceImpl implements
 		}
 	}
 
+	@Override
+	public List<WeixinAccountEntity> findByAccountAppID(String accountAppID) {
+		List<WeixinAccountEntity> acclst = this.findByProperty(
+				WeixinAccountEntity.class, "accountappid", accountAppID);
+		return acclst;
+	}
+	
 	@Override
 	public List<WeixinAccountEntity> findByUsername(String username) {
 		List<WeixinAccountEntity> acclst = this.findByProperty(

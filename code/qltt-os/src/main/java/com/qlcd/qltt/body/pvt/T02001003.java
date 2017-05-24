@@ -537,21 +537,26 @@ public final class T02001003 {
         getTacticBytes();
 
     /**
-     * <code>string tacname = 3;</code>
+     * <code>int32 tactype = 3;</code>
+     */
+    int getTactype();
+
+    /**
+     * <code>string tacname = 4;</code>
      */
     java.lang.String getTacname();
     /**
-     * <code>string tacname = 3;</code>
+     * <code>string tacname = 4;</code>
      */
     com.google.protobuf.ByteString
         getTacnameBytes();
 
     /**
-     * <code>string tacdetail = 4;</code>
+     * <code>string tacdetail = 5;</code>
      */
     java.lang.String getTacdetail();
     /**
-     * <code>string tacdetail = 4;</code>
+     * <code>string tacdetail = 5;</code>
      */
     com.google.protobuf.ByteString
         getTacdetailBytes();
@@ -570,6 +575,7 @@ public final class T02001003 {
     private _protacgrpmem() {
       index_ = 0;
       tactic_ = "";
+      tactype_ = 0;
       tacname_ = "";
       tacdetail_ = "";
     }
@@ -610,13 +616,18 @@ public final class T02001003 {
               tactic_ = s;
               break;
             }
-            case 26: {
+            case 24: {
+
+              tactype_ = input.readInt32();
+              break;
+            }
+            case 34: {
               java.lang.String s = input.readStringRequireUtf8();
 
               tacname_ = s;
               break;
             }
-            case 34: {
+            case 42: {
               java.lang.String s = input.readStringRequireUtf8();
 
               tacdetail_ = s;
@@ -688,10 +699,19 @@ public final class T02001003 {
       }
     }
 
-    public static final int TACNAME_FIELD_NUMBER = 3;
+    public static final int TACTYPE_FIELD_NUMBER = 3;
+    private int tactype_;
+    /**
+     * <code>int32 tactype = 3;</code>
+     */
+    public int getTactype() {
+      return tactype_;
+    }
+
+    public static final int TACNAME_FIELD_NUMBER = 4;
     private volatile java.lang.Object tacname_;
     /**
-     * <code>string tacname = 3;</code>
+     * <code>string tacname = 4;</code>
      */
     public java.lang.String getTacname() {
       java.lang.Object ref = tacname_;
@@ -706,7 +726,7 @@ public final class T02001003 {
       }
     }
     /**
-     * <code>string tacname = 3;</code>
+     * <code>string tacname = 4;</code>
      */
     public com.google.protobuf.ByteString
         getTacnameBytes() {
@@ -722,10 +742,10 @@ public final class T02001003 {
       }
     }
 
-    public static final int TACDETAIL_FIELD_NUMBER = 4;
+    public static final int TACDETAIL_FIELD_NUMBER = 5;
     private volatile java.lang.Object tacdetail_;
     /**
-     * <code>string tacdetail = 4;</code>
+     * <code>string tacdetail = 5;</code>
      */
     public java.lang.String getTacdetail() {
       java.lang.Object ref = tacdetail_;
@@ -740,7 +760,7 @@ public final class T02001003 {
       }
     }
     /**
-     * <code>string tacdetail = 4;</code>
+     * <code>string tacdetail = 5;</code>
      */
     public com.google.protobuf.ByteString
         getTacdetailBytes() {
@@ -774,11 +794,14 @@ public final class T02001003 {
       if (!getTacticBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, tactic_);
       }
+      if (tactype_ != 0) {
+        output.writeInt32(3, tactype_);
+      }
       if (!getTacnameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, tacname_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, tacname_);
       }
       if (!getTacdetailBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, tacdetail_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, tacdetail_);
       }
     }
 
@@ -794,11 +817,15 @@ public final class T02001003 {
       if (!getTacticBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, tactic_);
       }
+      if (tactype_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, tactype_);
+      }
       if (!getTacnameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, tacname_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, tacname_);
       }
       if (!getTacdetailBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, tacdetail_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, tacdetail_);
       }
       memoizedSize = size;
       return size;
@@ -820,6 +847,8 @@ public final class T02001003 {
           == other.getIndex());
       result = result && getTactic()
           .equals(other.getTactic());
+      result = result && (getTactype()
+          == other.getTactype());
       result = result && getTacname()
           .equals(other.getTacname());
       result = result && getTacdetail()
@@ -838,6 +867,8 @@ public final class T02001003 {
       hash = (53 * hash) + getIndex();
       hash = (37 * hash) + TACTIC_FIELD_NUMBER;
       hash = (53 * hash) + getTactic().hashCode();
+      hash = (37 * hash) + TACTYPE_FIELD_NUMBER;
+      hash = (53 * hash) + getTactype();
       hash = (37 * hash) + TACNAME_FIELD_NUMBER;
       hash = (53 * hash) + getTacname().hashCode();
       hash = (37 * hash) + TACDETAIL_FIELD_NUMBER;
@@ -964,6 +995,8 @@ public final class T02001003 {
 
         tactic_ = "";
 
+        tactype_ = 0;
+
         tacname_ = "";
 
         tacdetail_ = "";
@@ -992,6 +1025,7 @@ public final class T02001003 {
         com.qlcd.qltt.body.pvt.T02001003._protacgrpmem result = new com.qlcd.qltt.body.pvt.T02001003._protacgrpmem(this);
         result.index_ = index_;
         result.tactic_ = tactic_;
+        result.tactype_ = tactype_;
         result.tacname_ = tacname_;
         result.tacdetail_ = tacdetail_;
         onBuilt();
@@ -1041,6 +1075,9 @@ public final class T02001003 {
         if (!other.getTactic().isEmpty()) {
           tactic_ = other.tactic_;
           onChanged();
+        }
+        if (other.getTactype() != 0) {
+          setTactype(other.getTactype());
         }
         if (!other.getTacname().isEmpty()) {
           tacname_ = other.tacname_;
@@ -1171,9 +1208,35 @@ public final class T02001003 {
         return this;
       }
 
+      private int tactype_ ;
+      /**
+       * <code>int32 tactype = 3;</code>
+       */
+      public int getTactype() {
+        return tactype_;
+      }
+      /**
+       * <code>int32 tactype = 3;</code>
+       */
+      public Builder setTactype(int value) {
+        
+        tactype_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 tactype = 3;</code>
+       */
+      public Builder clearTactype() {
+        
+        tactype_ = 0;
+        onChanged();
+        return this;
+      }
+
       private java.lang.Object tacname_ = "";
       /**
-       * <code>string tacname = 3;</code>
+       * <code>string tacname = 4;</code>
        */
       public java.lang.String getTacname() {
         java.lang.Object ref = tacname_;
@@ -1188,7 +1251,7 @@ public final class T02001003 {
         }
       }
       /**
-       * <code>string tacname = 3;</code>
+       * <code>string tacname = 4;</code>
        */
       public com.google.protobuf.ByteString
           getTacnameBytes() {
@@ -1204,7 +1267,7 @@ public final class T02001003 {
         }
       }
       /**
-       * <code>string tacname = 3;</code>
+       * <code>string tacname = 4;</code>
        */
       public Builder setTacname(
           java.lang.String value) {
@@ -1217,7 +1280,7 @@ public final class T02001003 {
         return this;
       }
       /**
-       * <code>string tacname = 3;</code>
+       * <code>string tacname = 4;</code>
        */
       public Builder clearTacname() {
         
@@ -1226,7 +1289,7 @@ public final class T02001003 {
         return this;
       }
       /**
-       * <code>string tacname = 3;</code>
+       * <code>string tacname = 4;</code>
        */
       public Builder setTacnameBytes(
           com.google.protobuf.ByteString value) {
@@ -1242,7 +1305,7 @@ public final class T02001003 {
 
       private java.lang.Object tacdetail_ = "";
       /**
-       * <code>string tacdetail = 4;</code>
+       * <code>string tacdetail = 5;</code>
        */
       public java.lang.String getTacdetail() {
         java.lang.Object ref = tacdetail_;
@@ -1257,7 +1320,7 @@ public final class T02001003 {
         }
       }
       /**
-       * <code>string tacdetail = 4;</code>
+       * <code>string tacdetail = 5;</code>
        */
       public com.google.protobuf.ByteString
           getTacdetailBytes() {
@@ -1273,7 +1336,7 @@ public final class T02001003 {
         }
       }
       /**
-       * <code>string tacdetail = 4;</code>
+       * <code>string tacdetail = 5;</code>
        */
       public Builder setTacdetail(
           java.lang.String value) {
@@ -1286,7 +1349,7 @@ public final class T02001003 {
         return this;
       }
       /**
-       * <code>string tacdetail = 4;</code>
+       * <code>string tacdetail = 5;</code>
        */
       public Builder clearTacdetail() {
         
@@ -1295,7 +1358,7 @@ public final class T02001003 {
         return this;
       }
       /**
-       * <code>string tacdetail = 4;</code>
+       * <code>string tacdetail = 5;</code>
        */
       public Builder setTacdetailBytes(
           com.google.protobuf.ByteString value) {
@@ -2378,14 +2441,14 @@ public final class T02001003 {
     java.lang.String[] descriptorData = {
       "\n\030body/pvt/T02001003.proto\022 com.qlcd.qlt" +
       "t.body.pvt.T02001003\032\021body/BppSys.proto\"" +
-      "\030\n\004_req\022\020\n\010tacgroup\030\001 \001(\t\"R\n\r_protacgrpm" +
+      "\030\n\004_req\022\020\n\010tacgroup\030\001 \001(\t\"c\n\r_protacgrpm" +
       "em\022\r\n\005index\030\001 \001(\005\022\016\n\006tactic\030\002 \001(\t\022\017\n\007tac" +
-      "name\030\003 \001(\t\022\021\n\ttacdetail\030\004 \001(\t\"\223\001\n\004_rsp\0225" +
-      "\n\003rsh\030\001 \001(\0132(.com.qlcd.qltt.body.BppSys." +
-      "_rsp_succhead\022\021\n\tgrpmemcnt\030\002 \001(\005\022A\n\010ptgm" +
-      "list\030\003 \003(\0132/.com.qlcd.qltt.body.pvt.T020" +
-      "01003._protacgrpmemB\030\n\026com.qlcd.qltt.bod" +
-      "y.pvtb\006proto3"
+      "type\030\003 \001(\005\022\017\n\007tacname\030\004 \001(\t\022\021\n\ttacdetail" +
+      "\030\005 \001(\t\"\223\001\n\004_rsp\0225\n\003rsh\030\001 \001(\0132(.com.qlcd." +
+      "qltt.body.BppSys._rsp_succhead\022\021\n\tgrpmem" +
+      "cnt\030\002 \001(\005\022A\n\010ptgmlist\030\003 \003(\0132/.com.qlcd.q" +
+      "ltt.body.pvt.T02001003._protacgrpmemB\030\n\026" +
+      "com.qlcd.qltt.body.pvtb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -2411,7 +2474,7 @@ public final class T02001003 {
     internal_static_com_qlcd_qltt_body_pvt_T02001003__protacgrpmem_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_qlcd_qltt_body_pvt_T02001003__protacgrpmem_descriptor,
-        new java.lang.String[] { "Index", "Tactic", "Tacname", "Tacdetail", });
+        new java.lang.String[] { "Index", "Tactic", "Tactype", "Tacname", "Tacdetail", });
     internal_static_com_qlcd_qltt_body_pvt_T02001003__rsp_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_com_qlcd_qltt_body_pvt_T02001003__rsp_fieldAccessorTable = new

@@ -51,6 +51,14 @@ public class MyAttentionController {
 		return new JSONEntity(1, null, null);
 	}
 	
+	@RequestMapping("isfollowed")
+	@ResponseBody
+	public JSONEntity isFollowed(HttpServletRequest request, BaseIndex index) {
+		AuthResultEntity user = (AuthResultEntity)request.getSession().getAttribute(Constants.LOGIN_USER_ACCOUNT);
+		return new JSONEntity(1, null, myAttentionService.isFollow(index, user.getTtacct()));
+	}
+	
+	
 	@RequestMapping("unfollow")
 	@ResponseBody
 	public JSONEntity unfollow(HttpServletRequest request, BaseIndex index) {

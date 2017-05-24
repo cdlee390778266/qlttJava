@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qianlong.qltt.zbas.mapper.TtadefprotacprmMapper" >
+  <resultMap id="BaseResultMap" type="com.qianlong.qltt.zbas.domain.Ttadefprotacprm" >
+    <id column="Fs_tactic" property="fsTactic" jdbcType="VARCHAR" />
+    <id column="Fi_tacticprm" property="fiTacticprm" jdbcType="INTEGER" />
+    <result column="Fi_maxdelay" property="fiMaxdelay" jdbcType="INTEGER" />
+    <result column="Fs_detail" property="fsDetail" jdbcType="VARCHAR" />
+    <result column="Fs_tacprmname" property="fsTacprmname" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    Fs_tactic, Fi_tacticprm, Fi_maxdelay, Fs_detail, Fs_tacprmname
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.qianlong.qltt.zbas.domain.TtadefprotacprmExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ttadefprotacprm
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="limitStart != null and limitStart>=0" >
+      limit #{limitStart} , #{limitEnd}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.qianlong.qltt.zbas.domain.TtadefprotacprmKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from ttadefprotacprm
+    where Fs_tactic = #{fsTactic,jdbcType=VARCHAR}
+      and Fi_tacticprm = #{fiTacticprm,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.qianlong.qltt.zbas.domain.TtadefprotacprmKey" >
+    delete from ttadefprotacprm
+    where Fs_tactic = #{fsTactic,jdbcType=VARCHAR}
+      and Fi_tacticprm = #{fiTacticprm,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.qianlong.qltt.zbas.domain.TtadefprotacprmExample" >
+    delete from ttadefprotacprm
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.qianlong.qltt.zbas.domain.Ttadefprotacprm" >
+    insert into ttadefprotacprm (Fs_tactic, Fi_tacticprm, Fi_maxdelay, 
+      Fs_detail, Fs_tacprmname)
+    values (#{fsTactic,jdbcType=VARCHAR}, #{fiTacticprm,jdbcType=INTEGER}, #{fiMaxdelay,jdbcType=INTEGER}, 
+      #{fsDetail,jdbcType=VARCHAR}, #{fsTacprmname,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qianlong.qltt.zbas.domain.Ttadefprotacprm" >
+    insert into ttadefprotacprm
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="fsTactic != null" >
+        Fs_tactic,
+      </if>
+      <if test="fiTacticprm != null" >
+        Fi_tacticprm,
+      </if>
+      <if test="fiMaxdelay != null" >
+        Fi_maxdelay,
+      </if>
+      <if test="fsDetail != null" >
+        Fs_detail,
+      </if>
+      <if test="fsTacprmname != null" >
+        Fs_tacprmname,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="fsTactic != null" >
+        #{fsTactic,jdbcType=VARCHAR},
+      </if>
+      <if test="fiTacticprm != null" >
+        #{fiTacticprm,jdbcType=INTEGER},
+      </if>
+      <if test="fiMaxdelay != null" >
+        #{fiMaxdelay,jdbcType=INTEGER},
+      </if>
+      <if test="fsDetail != null" >
+        #{fsDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="fsTacprmname != null" >
+        #{fsTacprmname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.qianlong.qltt.zbas.domain.TtadefprotacprmExample" resultType="java.lang.Integer" >
+    select count(*) from ttadefprotacprm
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update ttadefprotacprm
+    <set >
+      <if test="record.fsTactic != null" >
+        Fs_tactic = #{record.fsTactic,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fiTacticprm != null" >
+        Fi_tacticprm = #{record.fiTacticprm,jdbcType=INTEGER},
+      </if>
+      <if test="record.fiMaxdelay != null" >
+        Fi_maxdelay = #{record.fiMaxdelay,jdbcType=INTEGER},
+      </if>
+      <if test="record.fsDetail != null" >
+        Fs_detail = #{record.fsDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fsTacprmname != null" >
+        Fs_tacprmname = #{record.fsTacprmname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update ttadefprotacprm
+    set Fs_tactic = #{record.fsTactic,jdbcType=VARCHAR},
+      Fi_tacticprm = #{record.fiTacticprm,jdbcType=INTEGER},
+      Fi_maxdelay = #{record.fiMaxdelay,jdbcType=INTEGER},
+      Fs_detail = #{record.fsDetail,jdbcType=VARCHAR},
+      Fs_tacprmname = #{record.fsTacprmname,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qianlong.qltt.zbas.domain.Ttadefprotacprm" >
+    update ttadefprotacprm
+    <set >
+      <if test="fiMaxdelay != null" >
+        Fi_maxdelay = #{fiMaxdelay,jdbcType=INTEGER},
+      </if>
+      <if test="fsDetail != null" >
+        Fs_detail = #{fsDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="fsTacprmname != null" >
+        Fs_tacprmname = #{fsTacprmname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Fs_tactic = #{fsTactic,jdbcType=VARCHAR}
+      and Fi_tacticprm = #{fiTacticprm,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qianlong.qltt.zbas.domain.Ttadefprotacprm" >
+    update ttadefprotacprm
+    set Fi_maxdelay = #{fiMaxdelay,jdbcType=INTEGER},
+      Fs_detail = #{fsDetail,jdbcType=VARCHAR},
+      Fs_tacprmname = #{fsTacprmname,jdbcType=VARCHAR}
+    where Fs_tactic = #{fsTactic,jdbcType=VARCHAR}
+      and Fi_tacticprm = #{fiTacticprm,jdbcType=INTEGER}
+  </update>
+</mapper>

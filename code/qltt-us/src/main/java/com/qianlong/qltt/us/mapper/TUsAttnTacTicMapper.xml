@@ -12,6 +12,7 @@
     <result column="Fs_name" property="tacname" jdbcType="VARCHAR" />
     <result column="Fi_tacticprm" property="tacprm" jdbcType="INTEGER" />
     <result column="Fs_tacprmname" property="tacprmname" jdbcType="VARCHAR" />
+    <result column="Fs_detail" property="tacdetail" jdbcType="VARCHAR" />
   </resultMap>
   
   <sql id="Example_Where_Clause" >
@@ -194,14 +195,28 @@
     </foreach>
   </insert>
   
-  <select id="selectByTTAcct" resultMap="AttnTacTicResultMap" parameterType="string" >
-    select 
-        t.Fs_tactic as Fs_tactic,
-        t.Fi_tacticprm as Fi_tacticprm ,
-        n.Fs_name as Fs_name,
-        p.Fs_tacprmname as Fs_tacprmname 
-    from (select * from tusattntactic where Fs_ttacct =#{ttacct,jdbcType=VARCHAR}) t 
-        left join ttadefprotactic n on t.Fs_tactic = n.Fs_tactic 
-        left join ttadefprotacprm p on (t.Fs_tactic = p.Fs_tactic and t.Fi_tacticprm = p.Fi_tacticprm)
+  <select id="selectByTTAcct" resultMap="AttnTacTicResultMap" parameterType="string">   
+    (
+      select 
+          t.Fs_tactic as Fs_tactic,
+          t.Fi_tacticprm as Fi_tacticprm ,
+          n.Fs_name as Fs_name,
+          n.Fs_detail as Fs_detail,
+          p.Fs_tacprmname as Fs_tacprmname
+      from tusattntactic t 
+      inner join ttadefprotactic n on (t.Fs_ttacct=#{ttacct,jdbcType=VARCHAR} and t.Fs_tactic = n.Fs_tactic )
+      left join ttadefprotacprm p on (t.Fs_tactic = p.Fs_tactic and t.Fi_tacticprm = p.Fi_tacticprm)
+    )
+    union
+    (
+      select 
+          t.Fs_tactic as Fs_tactic,
+          t.Fi_tacticprm as Fi_tacticprm ,
+          n.Fs_name as Fs_name,
+          n.Fs_detail as Fs_detail,
+          null
+      from tusattntactic t 
+      inner join tuscombtacmenu n on (t.Fs_ttacct=#{ttacct,jdbcType=VARCHAR} and t.Fs_tactic = n.Fs_tactic and t.Fs_ttacct = n.Fs_ttacct)
+    )
   </select>
 </mapper>

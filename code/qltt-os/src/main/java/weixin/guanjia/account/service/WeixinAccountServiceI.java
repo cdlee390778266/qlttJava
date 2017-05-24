@@ -49,6 +49,12 @@ public interface WeixinAccountServiceI extends CommonService{
  	 * @return
  	 */
  	public WeixinAccountEntity findByToUsername(String toUserName);
+ 	
+ 	/**
+ 	 * 通过微信的Appid获取对象
+ 	 */
+ 	public List<WeixinAccountEntity> findByAccountAppID(String accountAppID);
+ 	
  	/**
 	 * 通过微信原始ID，获取系统微信公众账号配置信息
 	 * @param weixinId

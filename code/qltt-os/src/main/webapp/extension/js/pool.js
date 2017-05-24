@@ -252,7 +252,7 @@ $(document).ready(function(){
 	});
 
 	$('#choose .dialog-btn-confirm').tap(function() {
-		hideDialog($('#choose'),function() {
+		hideDialog($('#choose'), function() {
 			console.log('提交');
 			var stockPool = [];
 			$.each($("#choosePool").val(), function(idx, e){
@@ -349,7 +349,7 @@ $(document).ready(function(){
 	$('body').delegate('.menu-btns-add', 'tap', function(event) {
 		if(!editFlag){
 			if(!$('#poolName').val()){
-				showMessage('输入名称为空！',2000);
+				showMessage('输入名称为空！', 2000);
 			}else{
 				var dataHrefArr = $('.menu-body>div:last-child').attr('data-href').split('-');
 				var addDataHref = dataHrefArr[0] + '-' + dataHrefArr[1] + '-' + menuNums;

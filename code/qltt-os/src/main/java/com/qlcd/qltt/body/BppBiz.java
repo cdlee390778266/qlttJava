@@ -514,6 +514,11 @@ public final class BppBiz {
      * <code>int32 rspnum = 1;</code>
      */
     int getRspnum();
+
+    /**
+     * <code>int32 totalnum = 2;</code>
+     */
+    int getTotalnum();
   }
   /**
    * Protobuf type {@code com.qlcd.qltt.body.BppBiz._page_rsp}
@@ -528,6 +533,7 @@ public final class BppBiz {
     }
     private _page_rsp() {
       rspnum_ = 0;
+      totalnum_ = 0;
     }
 
     @java.lang.Override
@@ -558,6 +564,11 @@ public final class BppBiz {
             case 8: {
 
               rspnum_ = input.readInt32();
+              break;
+            }
+            case 16: {
+
+              totalnum_ = input.readInt32();
               break;
             }
           }
@@ -592,6 +603,15 @@ public final class BppBiz {
       return rspnum_;
     }
 
+    public static final int TOTALNUM_FIELD_NUMBER = 2;
+    private int totalnum_;
+    /**
+     * <code>int32 totalnum = 2;</code>
+     */
+    public int getTotalnum() {
+      return totalnum_;
+    }
+
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -607,6 +627,9 @@ public final class BppBiz {
       if (rspnum_ != 0) {
         output.writeInt32(1, rspnum_);
       }
+      if (totalnum_ != 0) {
+        output.writeInt32(2, totalnum_);
+      }
     }
 
     public int getSerializedSize() {
@@ -617,6 +640,10 @@ public final class BppBiz {
       if (rspnum_ != 0) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(1, rspnum_);
+      }
+      if (totalnum_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, totalnum_);
       }
       memoizedSize = size;
       return size;
@@ -636,6 +663,8 @@ public final class BppBiz {
       boolean result = true;
       result = result && (getRspnum()
           == other.getRspnum());
+      result = result && (getTotalnum()
+          == other.getTotalnum());
       return result;
     }
 
@@ -648,6 +677,8 @@ public final class BppBiz {
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + RSPNUM_FIELD_NUMBER;
       hash = (53 * hash) + getRspnum();
+      hash = (37 * hash) + TOTALNUM_FIELD_NUMBER;
+      hash = (53 * hash) + getTotalnum();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -768,6 +799,8 @@ public final class BppBiz {
         super.clear();
         rspnum_ = 0;
 
+        totalnum_ = 0;
+
         return this;
       }
 
@@ -791,6 +824,7 @@ public final class BppBiz {
       public com.qlcd.qltt.body.BppBiz._page_rsp buildPartial() {
         com.qlcd.qltt.body.BppBiz._page_rsp result = new com.qlcd.qltt.body.BppBiz._page_rsp(this);
         result.rspnum_ = rspnum_;
+        result.totalnum_ = totalnum_;
         onBuilt();
         return result;
       }
@@ -834,6 +868,9 @@ public final class BppBiz {
         if (other == com.qlcd.qltt.body.BppBiz._page_rsp.getDefaultInstance()) return this;
         if (other.getRspnum() != 0) {
           setRspnum(other.getRspnum());
+        }
+        if (other.getTotalnum() != 0) {
+          setTotalnum(other.getTotalnum());
         }
         onChanged();
         return this;
@@ -883,6 +920,32 @@ public final class BppBiz {
       public Builder clearRspnum() {
         
         rspnum_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int totalnum_ ;
+      /**
+       * <code>int32 totalnum = 2;</code>
+       */
+      public int getTotalnum() {
+        return totalnum_;
+      }
+      /**
+       * <code>int32 totalnum = 2;</code>
+       */
+      public Builder setTotalnum(int value) {
+        
+        totalnum_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 totalnum = 2;</code>
+       */
+      public Builder clearTotalnum() {
+        
+        totalnum_ = 0;
         onChanged();
         return this;
       }
@@ -956,8 +1019,9 @@ public final class BppBiz {
     java.lang.String[] descriptorData = {
       "\n\021body/BppBiz.proto\022\031com.qlcd.qltt.body." +
       "BppBiz\"-\n\t_page_req\022\020\n\010reqstart\030\001 \001(\005\022\016\n" +
-      "\006reqnum\030\002 \001(\005\"\033\n\t_page_rsp\022\016\n\006rspnum\030\001 \001" +
-      "(\005B\024\n\022com.qlcd.qltt.bodyb\006proto3"
+      "\006reqnum\030\002 \001(\005\"-\n\t_page_rsp\022\016\n\006rspnum\030\001 \001" +
+      "(\005\022\020\n\010totalnum\030\002 \001(\005B\024\n\022com.qlcd.qltt.bo" +
+      "dyb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -982,7 +1046,7 @@ public final class BppBiz {
     internal_static_com_qlcd_qltt_body_BppBiz__page_rsp_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_qlcd_qltt_body_BppBiz__page_rsp_descriptor,
-        new java.lang.String[] { "Rspnum", });
+        new java.lang.String[] { "Rspnum", "Totalnum", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

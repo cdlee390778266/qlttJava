@@ -8,8 +8,8 @@ $(function() {
 		if(event.target.tagName == 'I') {
 			if (window.confirm('你确定删除此关注吗？')) {
 				//取消关注
-				var parent = $(this).parent();
-				var tacTic = parent.data("id");
+				var $this =$(this);
+				var tacTic =  $this.find(".search-head").data("id");
 				console.log("取消关注的指标代码为:" + tacTic);
 				$.ajax({
 					url: 'unfollow.do',
@@ -22,15 +22,17 @@ $(function() {
 						alert("取消关注失败！");
 					},
 					success: function(data, textStatus, jqXHR) {
-						if (data.status == 1)
-							parent.parent().remove();
+						if (data.status == 1){
+							$this.remove();
+							displayEmpty();
+						}
 						else
 							alert(data.message);
 					}
 				});
 			}
 		} else {
-			var href = encodeURI("../stock/home.do?tactic=" + $(this).find(".search-head").data("id") + "&tacname=" + $(this).find(".search-body").text());
+			var href = encodeURI("../stock/home.do?tactic=" + $(this).find(".search-head").data("id") + "&tacname=" + $(this).find(".search-head").data("name"));
 			window.location.href = href;
 		}
 	});
