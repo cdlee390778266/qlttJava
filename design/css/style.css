@@ -440,6 +440,9 @@ a {
 .footer a .icon.icon-rmd {
   background-position: -41px -145px;
 }
+.footer a .icon.icon-set {
+  background-position: -38px -181px;
+}
 .footer a.active {
   color: #f7b703;
 }
@@ -454,6 +457,9 @@ a {
 }
 .footer a.active .icon.icon-rmd {
   background-position: -77px -145px;
+}
+.footer a.active .icon.icon-set {
+  background-position: -74px -180px;
 }
 
 /******   login   ******/
