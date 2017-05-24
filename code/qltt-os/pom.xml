@@ -963,8 +963,8 @@
 				<zmq.allow.push>ON</zmq.allow.push>
 				<zmq.valid.crc>false</zmq.valid.crc>
 				<zmq.ip>192.168.16.22</zmq.ip>
-				<zmq.push.port>9143</zmq.push.port>
-				<zmq.req.port>9141</zmq.req.port>
+				<zmq.push.port>9141</zmq.push.port>
+				<zmq.req.port>9143</zmq.req.port>
 				<zmq.push.wechataccountid>gh_aced603f391c</zmq.push.wechataccountid>
 				<zmq.push.save>0</zmq.push.save>					
 			</properties>	
@@ -977,8 +977,8 @@
 				<zmq.allow.push>ON</zmq.allow.push>
 				<zmq.valid.crc>false</zmq.valid.crc>
 				<zmq.ip>127.0.0.1</zmq.ip>
-				<zmq.push.port>9143</zmq.push.port>
-				<zmq.req.port>9141</zmq.req.port>
+				<zmq.push.port>9141</zmq.push.port>
+				<zmq.req.port>9143</zmq.req.port>
 				<zmq.push.wechataccountid>gh_15926e22e247</zmq.push.wechataccountid>
 				<zmq.push.save>0</zmq.push.save>					
 			</properties>	

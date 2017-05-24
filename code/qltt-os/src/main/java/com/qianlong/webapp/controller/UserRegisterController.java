@@ -1,5 +1,6 @@
 package com.qianlong.webapp.controller;
 
+
 import java.util.Calendar;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,6 +22,7 @@ import com.qianlong.webapp.exception.HttpRequestException;
 import com.qianlong.webapp.service.IUserServCoreService;
 import com.qianlong.webapp.utils.AuthCodeGenerator;
 import com.qianlong.webapp.utils.Constants;
+import com.qianlong.webapp.utils.SMSSend;
 
 @Controller
 @RequestMapping("webapp/register")
@@ -104,14 +106,14 @@ public class UserRegisterController {
 		session.setAttribute("sendTime", Calendar.getInstance().getTimeInMillis());
 
 		try {
-			//SMSSend.sendMessage("cdqianlong", "乾隆推推短信验证码", String.format("验证码是：%s", authCode), phone, 1);
+			SMSSend.sendMessage("cdqianlong", "乾隆推推短信验证码", String.format("验证码是：%s", authCode), phone, 1);
 			logger.debug(authCode);
 		} catch (Exception e) {
 			logger.debug(e.getMessage(), e);
 			return "发生错误，请重新获取验证码！";
 		}
 		
-		String message = String.format("请注意查收短信！[%s]", authCode);
+		String message = String.format("乾隆推推短信验证码, 请注意查收短信");
 		return message;
 	}
 }

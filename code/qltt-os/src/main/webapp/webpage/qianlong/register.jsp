@@ -23,12 +23,12 @@
 	<form action="<c:url value='/webapp/register/register.do' />" class="container login" method="POST">
 		<div class="login-input-box">
 			<div class="login-input borb">
-				<input type="text" class="icon icon-phone" maxlength="11" placeholder="请输入您的手机号码" name="phone" id="phone" />
+				<input type="tel" class="icon icon-phone" maxlength="11" placeholder="请输入您的手机号码" name="phone" id="phone" />
 			</div>
 		</div>
 		<div class="login-input-box">
 			<div class="login-input borb">
-				<input type="text" class="icon icon-code mt15" placeholder="手机验证码" maxlength="6" name="code" id="code" />
+				<input type="number" class="icon icon-code mt15" placeholder="手机验证码" maxlength="6" name="code" id="code" />
 			</div>
 			<div class="btn-code">
 				<span>获取验证码</span>
