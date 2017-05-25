@@ -107,7 +107,7 @@ public class MyGetMessage implements Runnable {
 				if (!msg.equals("")) {
 					JSONObject mb = JSONObject.fromObject(msg);
 					String msgid = mb.getString("msgid");
-					saveSendMessage(tep,msgid, templateId);
+					saveSendMessage(tep,msgid, templateId,zmqconfigResBundle.getString("zmq.push.wechataccountid"));
 				}
 			}
 		} catch (Exception e) {
@@ -118,7 +118,7 @@ public class MyGetMessage implements Runnable {
 		}
 	}
 	
-	private void saveSendMessage(SendMessageTep tep,String msgid,String templateId){
+	private void saveSendMessage(SendMessageTep tep,String msgid,String templateId,String accountid){
 		SendMessage message = new SendMessage();
 		message.setContent(tep.getContent());
 		message.setSvcchnl(tep.getSvcchnl());
@@ -128,6 +128,7 @@ public class MyGetMessage implements Runnable {
 		message.setOpenId(tep.getOpenId());
 		message.setTemplateId(templateId);
 		message.setMsgid(msgid);
+		message.setAccountid(accountid);
 		messageTemplateService.handle(message);
 	}
 }

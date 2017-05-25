@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import weixin.guanjia.account.entity.WeixinAccountEntity;
 import weixin.guanjia.account.service.WeixinAccountServiceI;
 import weixin.guanjia.message.entity.SendMessage;
 import weixin.guanjia.message.service.MessageTemplateService;
@@ -54,11 +55,14 @@ public class SendMessageController {
 	public void datagrid(SendMessage messageTemplate,
 			HttpServletRequest request, HttpServletResponse response,
 			DataGrid dataGrid) {
+		//获取当前登陆的用户
+		WeixinAccountEntity entity = weixinAccountService.findLoginWeixinAccount();
 		CriteriaQuery cq = new CriteriaQuery(SendMessage.class,
 				dataGrid);
 		// 查询条件组装器
 		org.jeecgframework.core.extend.hqlsearch.HqlGenerateUtil.installHql(cq,
 				messageTemplate, request.getParameterMap());
+		cq.eq("accountid", entity.getWeixin_accountid());
 		cq.add();
 		this.messageTemplateService.getDataGridReturn(cq, true);
 		TagUtil.datagrid(response, dataGrid);
