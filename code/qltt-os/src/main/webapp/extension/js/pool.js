@@ -237,7 +237,7 @@ $(document).ready(function(){
 
 	$('#recommend .dialog-btn-confirm').tap(function() {
 		hideDialog($('#recommend'),function(){
-			console.log('提交');
+			
 		});
 	})
 
@@ -284,14 +284,14 @@ $(document).ready(function(){
 	});
          
 	$('#choose .dialog-btn-close,#choose .dialog-mask').tap(function() {
-		console.log('关闭窗口');
+		
 		hideDialog($('#choose'));
 	});
 	
 
 	$('#choose .dialog-btn-confirm').tap(function() {
 		hideDialog($('#choose'), function() {
-			console.log('提交');
+			
 			var stockPool = [];
 			$.each($("#choosePool").val(), function(idx, e){
 				stockPool.push({"poolIndex": e});

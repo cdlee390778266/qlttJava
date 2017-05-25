@@ -10,7 +10,6 @@ $(function() {
 				//取消关注
 				var $this =$(this);
 				var tacTic =  $this.find(".search-head").data("id");
-				console.log("取消关注的指标代码为:" + tacTic);
 				$.ajax({
 					url: 'unfollow.do',
 					data: {

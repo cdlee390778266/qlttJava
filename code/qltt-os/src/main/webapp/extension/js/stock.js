@@ -155,7 +155,7 @@ $(document).ready(function() {
 	//加入选股池提交
 	$('#recommend .dialog-btn-confirm').tap(function() {
 		hideDialog($('#recommend'), function() {
-			console.log('提交');
+		
 		});
 	});
 
@@ -195,7 +195,7 @@ $(document).ready(function() {
 
 	$('#choose .dialog-btn-confirm').tap(function() {
 		hideDialog($('#choose'), function() {
-			console.log('提交');
+			
 			var stockPool = [];
 			$.each($("#choosePool").val(), function(idx, e){
 				stockPool.push({"poolIndex": e});

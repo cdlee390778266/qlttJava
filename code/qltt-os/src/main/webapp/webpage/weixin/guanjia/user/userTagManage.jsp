@@ -26,7 +26,6 @@
  	//加载该标签下的用户
 	function onLoadSuccess(rows){
 		var url="weixinUserTagController.do?getTagUsers&tagid=${tagid}";
-		//console.log(url);
 		$.ajax({
 			url:url,
 			type:'GET',
@@ -38,7 +37,6 @@
 					var data = d.obj;
 					if(data!=null && data.length>0){
 						$(data).each(function(idx,usertag){
-							//console.log(usertag.openid);
 							$('#weixinUserList').datagrid('selectRecord',usertag.openid);
 						});
 					}
@@ -67,7 +65,6 @@
 			 }
 			 postData.openids = openids;
 		 }
-		 //console.log(postData);
 		 var $mask = masking(null);
 		 $.ajax({
 			url : url,

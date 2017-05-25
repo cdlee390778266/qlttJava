@@ -94,7 +94,7 @@ $(function () {
             progress + '%'
         );
     }).on('fileuploaddone', function (e, data) {
-        console.info(data);
+        
         var  file = data.files[0];
         //var delUrl = "<a class=\"js_removeCover\" onclick=\"return false;\" href=\"javascript:void(0);\">删除</a>";
         $("#imgName").text("").append(file.name);
@@ -103,7 +103,7 @@ $(function () {
 		if (d.success) {
 			var link = $('<a>').attr('target', '_blank').prop('href', d.attributes.viewhref);
         	$(data.context.children()[0]).wrap(link);
-        	console.info(d.attributes.viewhref);
+        	
         	$("#imagePath").val(d.attributes.url);
 		}else{
 			var error = $('<span class="text-danger"/>').text(d.msg);

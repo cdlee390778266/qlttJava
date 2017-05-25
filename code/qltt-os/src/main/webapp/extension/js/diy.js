@@ -29,7 +29,6 @@ $(function() {
 			type : 'post',
 			success : function(data) {
 				data = $.parseJSON(data);
-				console.dir(data);
 				
 				var members = data;   //数据
 				var total = data.length;   //数据总量
@@ -250,7 +249,7 @@ $(function() {
 
 	$('#recommend .dialog-btn-confirm').tap(function() {
 		hideDialog($('#recommend'), function() {
-			console.log('提交');
+	
 		});
 	})
 
@@ -269,7 +268,6 @@ $(function() {
 
 	$('#choose .dialog-btn-confirm').tap(function() {
 		hideDialog($('#choose'), function() {
-			console.log('提交');
 			var stockPool = [];
 			$.each($("#choosePool").val(), function(idx, e){
 				stockPool.push({"poolIndex": e});

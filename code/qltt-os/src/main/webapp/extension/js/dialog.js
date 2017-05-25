@@ -59,7 +59,6 @@
             createHtml();
 
             $('body').delegate($self, 'tap', function(){
-                console.log($self)
                 showDialog();
             });
          

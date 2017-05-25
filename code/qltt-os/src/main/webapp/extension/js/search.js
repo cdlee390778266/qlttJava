@@ -173,7 +173,7 @@ $(document).ready(function() {
             if(window.confirm('您确定要从收藏中删除该组合指标吗？')){
             	var tactic = $searchitem.find(".search-head").attr("data-tacTic");
             	var data = {"tacTic" : tactic,"tacPrm":0};
-            	console.log(data);
+            	
             	$.ajax({
         			url : '../myattention/isfollowed.do',
         			data : data,
