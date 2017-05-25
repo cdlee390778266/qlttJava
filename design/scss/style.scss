@@ -978,9 +978,15 @@ a{
                     top:8px;
                     &:first-child{
                         background-position:-147px -182px;
+                        &.active{
+                            background-position:-172px -182px;
+                        }
                     }
                     &:last-child{
                         background-position:-147px -218px;
+                        &.active{
+                            background-position:-172px -218px;
+                        }
                     }
                 }
             }
