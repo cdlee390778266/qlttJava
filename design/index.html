@@ -15,8 +15,6 @@
 
   <title>手机验证</title>
 
-
-
   </head>
   <body>
     <div class="login-bg"><img src="images/login_bg.png" class="img-responsive" /></div>
@@ -45,7 +43,7 @@
     <script>
 
         (function ($) {
-            var flag = true;
+      
             $.fn.alert = function(message){
                 if(!$('body').find('.alert').length){
                     var html = '';
@@ -59,26 +57,18 @@
                         e.stopPropagation();
                     })
                 }
-
                 $('.alert span').text(message);
-
                 var textAlign = 'center';
                 if($('.alert span').width() > 166){
                     textAlign = 'left';
                 }
+                $('.alert').removeClass('fadeOut').css('display','block').addClass('fadeIn');
             
                 $('.alert span').css({
-                    'left' : '50%',
-                    'top' : '50%',
-                    'marginLeft' : -($('.alert span').width()/2),
-                    'marginTop' : -($('.alert span').height()/2),
+                    'left' : ($(window).width()-$('.alert span').width())/2,
+                    'top' : ($(window).height()-$('.alert span').height())/2,
                     'textAlign' : textAlign
                 });
-
-                if($('.alert').css('display') == 'none'){
-                    $('.alert').removeClass('fadeOut').css('display','block').addClass('fadeIn');
-                }
-                
             }
 
             $.fn.confirm = function(options,fn){
@@ -94,7 +84,6 @@
                          +          '</div>'
                          +      '</div>'
                          +  '</div>'
-
                     $('body').append(html);
 
                     //取消
@@ -112,29 +101,18 @@
                         e.stopPropagation();
                     })
                 }
-                console.log(1);
-
                 var text = typeof options == 'string' ? options : options.text;
                 var width = options.width || 300;
                 var height = $('.confirm-main').height();
-
                 $('.confirm-body').text(text);
+                 $('.confirm').removeClass('fadeOut').css('display','block').addClass('fadeIn');
                 $('.confirm-main').css({
                     'width' : width,
-                    'left' : '50%',
-                    'top' : '50%',
-                    'marginLeft' : -(width/2),
-                    'marginTop' : -($('.confirm-main').height()/2)
-                });
-                $('.confirm').removeClass('fadeOut').css('display','block').addClass('fadeIn');
+                    'left' : ($(window).width()-width)/2,
+                    'top' : ($(window).height()-$('.confirm-main').height())/2
+                }); 
             }
-
         })(window.Zepto);
-
-        $('.login-bg').click(function(event) {
-            alert();
-            $().alert('poig');
-        });
 
     </script>
   </body>
