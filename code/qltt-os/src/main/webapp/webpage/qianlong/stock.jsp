@@ -29,14 +29,15 @@
                         <span>${tacName}</span>
                     </div>
 					<c:if test="${members!=null && !empty members}">
-						  <div class="result-tags-body">
-						  	<span>原始指标组成</span>
-						  	<span>
-							<c:forEach items="${members}" var="mem">
-							    <strong>${mem.srctacname}</strong><i>#</i>
-							</c:forEach>
-							</span>
-						  </div>
+					  <div class="result-tags-body">
+					  	<span>原始指标:</span>
+					  	<span>
+						<c:forEach items="${members}" var="mem" varStatus="status">
+						    <strong>${mem.srctacname}</strong>
+						    <c:if test="${! status.last}"><i>#</i></c:if>
+						</c:forEach>
+						</span>
+					  </div>
 					</c:if>	
 				</div>
 			</div>
@@ -55,7 +56,7 @@
 		<div class="srceen-txt">
 			<span>该指标共计筛选出</span><span class="red"></span><span>支股票</span>
 		</div>
-		<div class="screen-main" data-start="1" data-size="5"></div>
+		<div class="screen-main" data-start="1" data-size="15"></div>
 		<div class="load-more">
 			<i></i><span>加载更多</span>
 		</div>

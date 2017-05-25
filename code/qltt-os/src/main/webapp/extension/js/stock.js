@@ -34,9 +34,8 @@ $(document).ready(function() {
 				var stocks = data.dprtlist;
 				if (stocks != null) {
 					for ( var i in stocks) {
-						//TODO 选中和没选中图标的变化
 						var isInPool = stocks[i].isSelected?"active":"";
-						html += '<div class="screen-item">'
+						html += '<div class="screen-item" id="screen-item-'+stocks[i].detail.stockcode+'">'
 							+ '<div class="item-col-1">'
 							+ '<span class="item-col-name">' + stocks[i].detail.stockname + '</span>'
 							+ '<span class="blue item-col-code">' + stocks[i].detail.stockcode + '</span>'
@@ -45,7 +44,7 @@ $(document).ready(function() {
 							+ '<div class="item-col-3">' + stocks[i].detail.remarks + '</div>'
 							+ '<div class="item-col-4">'
 							+ '<a href="javascript:void(0);" class="recommend"></a>'
-							+ '<a href="javascript:void(0);" class="choose'+isInPool+'"></a>'
+							+ '<a href="javascript:void(0);" class="choose  '+isInPool+'"></a>'
 							+ '</div>' + '</div>';
 					}
 				}
@@ -165,6 +164,7 @@ $(document).ready(function() {
 		var stockcode = $(this).parent().parent().find('.item-col-code').text();
 		$("#code").val(stockcode);
 		$("#name").val($(this).parent().parent().find('.item-col-name').text());
+		$("#choosePool").html('<option value="1">选股池A</option><option value="2">选股池B</option><option value="3">选股池C</option>');
 		//ajax加载该股票已选股票池
 		$.ajax({
 			url : 'poolindexs.do',
@@ -177,12 +177,9 @@ $(document).ready(function() {
 			},
 			success : function(data, textStatus, jqXHR){
 				//多选下拉框置于所有未选中的状态
-				$.each($("#choosePool option"),function(){
-					$(this).attr("selected",false);
-				});
 				if (data && data.length >= 0){
 					for ( var i in data){
-						$("#choosePool option[value="+data[i].poolIndex+"]").attr("selected",true);
+						$("#choosePool option[value='"+data[i].poolIndex+"']").attr("selected",true);
 					}
 				}
 				showDialog($('#choose'));	
@@ -215,13 +212,19 @@ $(document).ready(function() {
 				type: 'post',
 				contentType: 'application/json;charset=UTF-8',
 				success: function(data) {
-					if (data.status == 1)
-						alert("成功加入选股池！");
-					else
+					if (data.status == 1){
+						var selecttor = "#screen-item-"+$("#code").val()+" a.choose";
+						if(!stockPool.length)
+							$(selecttor).removeClass("active");
+						else
+							$(selecttor).addClass("active");
+						
+						alert("操作成功！");
+					}else
 						alert(data.message);
 				},
 				error: function(jqXHR, textStatus, errorThrown) {
-					alert("加入选股池失败！");
+					alert("操作失败！");
 				}
 			});
 		});

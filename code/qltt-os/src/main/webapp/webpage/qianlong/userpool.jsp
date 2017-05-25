@@ -51,9 +51,11 @@
 		
 		<!-- 页脚菜单 -->
 		<div class="pool-footer">
+			<!-- 
 			<div class="pFooter-btn">
 				<span><i>+</i>自选股票</span>
 			</div>
+			 -->
 			<div class="footer">
 				<a href="<c:url value='/webapp/search/home.do' />"><i class="icon icon-searchd"></i><br><span>指标查询</span></a>
 				<a href="<c:url value='/webapp/myattention/home.do' />"><i class="icon icon-care"></i><br><span>我的关注</span></a>
@@ -109,7 +111,7 @@
 	</div>
 	
 	<div class="pool-add-menu animated">
-		<div class="pam-icon"><i>+</i></div>
+		<!-- <div class="pam-icon"><i>+</i></div> -->
 		<div class="menu-box">
 			<div class="menu-head">
 				<div class="menu-head-left">我的选股池</div>
