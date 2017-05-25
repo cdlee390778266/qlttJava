@@ -25,9 +25,19 @@
 			<img src="<c:url value='/extension/images/result_bg.png' />" alt="" class="img-responsive" />
 			<div class="result-main">
 				<div class="result-tags">
-					<div class="result-tags-box">
-						<span>${tacName}</span>
-					</div>
+					<div class="result-tags-head">
+                        <span>${tacName}</span>
+                    </div>
+					<c:if test="${members!=null && !empty members}">
+						  <div class="result-tags-body">
+						  	<span>原始指标组成</span>
+						  	<span>
+							<c:forEach items="${members}" var="mem">
+							    <strong>${mem.srctacname}</strong><i>#</i>
+							</c:forEach>
+							</span>
+						  </div>
+					</c:if>	
 				</div>
 			</div>
 		</div>
@@ -37,18 +47,7 @@
 	</div>
 	
 	<div class="result-middle">
-		<c:if test="${members!=null && !empty members}">
-			<c:forEach items="${members}" var="mem">
-				<div class="result-middle-item">
-					<div class="search-head">${mem.srctacname}[${mem.srctactic}]</div>
-					<!--
-					<div class="search-body">
-						<a href="#"></a>
-					</div>
-					  -->
-				</div>
-			</c:forEach>
-		</c:if>	
+		
 	</div>	
 
 	<!-- 详细内容 -->

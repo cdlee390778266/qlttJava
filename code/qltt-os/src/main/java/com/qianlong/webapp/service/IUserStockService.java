@@ -3,6 +3,7 @@ package com.qianlong.webapp.service;
 import java.util.List;
 
 import com.qianlong.webapp.domain.QueryFollowStockRspEntity;
+import com.qianlong.webapp.domain.QueryStockPoolIndexsRspEntity;
 import com.qianlong.webapp.domain.UserServPageBean;
 import com.qianlong.webapp.domain.UserStockContent;
 import com.qianlong.webapp.domain.UserStockPool;
@@ -42,4 +43,13 @@ public interface IUserStockService {
 	 * @return 选股池分页数据
 	 */
 	public QueryFollowStockRspEntity followingList(UserServPageBean page, Integer poolIndex,String ttacct);
+	
+	/**
+	 * 账户关注个股查询
+	 *
+	 * @param ttacct 推推账号
+	 * @param stockcode 股票代码
+	 * @return 当前推推账号下当前股票所属选股池
+	 */
+	public QueryStockPoolIndexsRspEntity  queryStockPoolIndexs(String stockcode, String ttacct);
 }

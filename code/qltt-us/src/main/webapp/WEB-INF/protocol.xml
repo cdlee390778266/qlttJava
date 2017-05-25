@@ -9,7 +9,7 @@
       <protocol-num>1000001</protocol-num>
       <protocol-mode>请求-应答</protocol-mode>
       <req-url>/app/createApp</req-url>
-      <req-call-max>1000</req-call-max>
+      <req-call-max>1000000</req-call-max>
     </protocol>
     
     <protocol>
@@ -20,7 +20,7 @@
       <protocol-num>1000002</protocol-num>
       <protocol-mode>请求-应答</protocol-mode>
       <req-url>/app/resetAppToken</req-url>
-      <req-call-max>1000</req-call-max>
+      <req-call-max>1000000</req-call-max>
     </protocol>
     
     <protocol>
@@ -31,7 +31,7 @@
       <protocol-num>1000003</protocol-num>
       <protocol-mode>请求-应答</protocol-mode>
       <req-url>/token/getAccessToken</req-url>
-      <req-call-max>1000</req-call-max>
+      <req-call-max>1000000</req-call-max>
     </protocol>
     
     <!-- 渠道开户管理 start -->
@@ -43,7 +43,7 @@
       <protocol-num>1001001</protocol-num>
       <protocol-mode>请求-应答</protocol-mode>
       <req-url>/acctopen/open001</req-url>
-      <req-call-max>1000</req-call-max>
+      <req-call-max>1000000</req-call-max>
     </protocol>
     <!-- 渠道开户管理 end -->
     
@@ -56,7 +56,7 @@
       <protocol-num>1002001</protocol-num>
       <protocol-mode>请求-应答</protocol-mode>
       <req-url>/acctlogin/login001</req-url>
-      <req-call-max>1000</req-call-max>
+      <req-call-max>1000000</req-call-max>
     </protocol>
     
     <protocol>
@@ -67,7 +67,7 @@
       <protocol-num>1002002</protocol-num>
       <protocol-mode>请求-应答</protocol-mode>
       <req-url>/acctlogin/login002</req-url>
-      <req-call-max>1000</req-call-max>
+      <req-call-max>1000000</req-call-max>
     </protocol>
     <!-- 登陆管理 end -->
     
@@ -81,7 +81,7 @@
       <protocol-num>1003001</protocol-num>
       <protocol-mode>请求-应答</protocol-mode>
       <req-url>/acctinfo/info001</req-url>
-      <req-call-max>1000</req-call-max>
+      <req-call-max>1000000</req-call-max>
     </protocol>
     
     <protocol>
@@ -92,7 +92,7 @@
       <protocol-num>1003002</protocol-num>
       <protocol-mode>请求-应答</protocol-mode>
       <req-url>/acctinfo/info002</req-url>
-      <req-call-max>1000</req-call-max>
+      <req-call-max>1000000</req-call-max>
     </protocol>
     <!-- 信息维护管理  end -->
     
@@ -106,7 +106,7 @@
       <protocol-num>1004001</protocol-num>
       <protocol-mode>请求-应答</protocol-mode>
       <req-url>/acctattntac/attntac001</req-url>
-      <req-call-max>1000</req-call-max>
+      <req-call-max>1000000</req-call-max>
     </protocol>
     
     <protocol>
@@ -117,7 +117,7 @@
       <protocol-num>1004002</protocol-num>
       <protocol-mode>请求-应答</protocol-mode>
       <req-url>/acctattntac/attntac002</req-url>
-      <req-call-max>1000</req-call-max>
+      <req-call-max>1000000</req-call-max>
     </protocol>
     
     <protocol>
@@ -128,7 +128,7 @@
       <protocol-num>1004003</protocol-num>
       <protocol-mode>请求-应答</protocol-mode>
       <req-url>/acctattntac/attntac003</req-url>
-      <req-call-max>1000</req-call-max>
+      <req-call-max>1000000</req-call-max>
     </protocol>
     
     <protocol>
@@ -139,7 +139,7 @@
       <protocol-num>1004004</protocol-num>
       <protocol-mode>请求-应答</protocol-mode>
       <req-url>/acctattntac/attntac004</req-url>
-      <req-call-max>1000</req-call-max>
+      <req-call-max>1000000</req-call-max>
     </protocol>
     
      <protocol>
@@ -150,7 +150,7 @@
       <protocol-num>1004005</protocol-num>
       <protocol-mode>请求-应答</protocol-mode>
       <req-url>/acctattntac/attntac005</req-url>
-      <req-call-max>1000</req-call-max>
+      <req-call-max>1000000</req-call-max>
     </protocol>
     <!-- 关注指标  end -->
     
@@ -163,7 +163,7 @@
       <protocol-num>1005001</protocol-num>
       <protocol-mode>请求-应答</protocol-mode>
       <req-url>/acctattnstock/attnstock001</req-url>
-      <req-call-max>1000</req-call-max>
+      <req-call-max>1000000</req-call-max>
     </protocol>
     
     <protocol>
@@ -174,7 +174,7 @@
       <protocol-num>1005002</protocol-num>
       <protocol-mode>请求-应答</protocol-mode>
       <req-url>/acctattnstock/attnstock002</req-url>
-      <req-call-max>1000</req-call-max>
+      <req-call-max>1000000</req-call-max>
     </protocol>
     
     <protocol>
@@ -185,7 +185,7 @@
       <protocol-num>1005003</protocol-num>
       <protocol-mode>请求-应答</protocol-mode>
       <req-url>/acctattnstock/attnstock003</req-url>
-      <req-call-max>1000</req-call-max>
+      <req-call-max>1000000</req-call-max>
     </protocol>
     
     <protocol>
@@ -196,7 +196,18 @@
       <protocol-num>1005004</protocol-num>
       <protocol-mode>请求-应答</protocol-mode>
       <req-url>/acctattnstock/attnstock004</req-url>
-      <req-call-max>1000</req-call-max>
+      <req-call-max>1000000</req-call-max>
+    </protocol>
+    
+    <protocol>
+      <interface-num>IFC_UserAcctAttnStock005</interface-num>
+      <interface-name>账户关注个股查询</interface-name>
+      <interface-des></interface-des>
+      <interface-remark></interface-remark>
+      <protocol-num>1005005</protocol-num>
+      <protocol-mode>请求-应答</protocol-mode>
+      <req-url>/acctattnstock/attnstock005</req-url>
+      <req-call-max>1000000</req-call-max>
     </protocol>
     <!-- 选股池  end -->
     
@@ -209,7 +220,7 @@
       <protocol-num>1006001</protocol-num>
       <protocol-mode>请求-应答</protocol-mode>
       <req-url>/acctsetprm/setprm001</req-url>
-      <req-call-max>1000</req-call-max>
+      <req-call-max>1000000</req-call-max>
     </protocol>
     <protocol>
       <interface-num>IFC_UserAcctSetPrm002</interface-num>
@@ -219,7 +230,7 @@
       <protocol-num>1006002</protocol-num>
       <protocol-mode>请求-应答</protocol-mode>
       <req-url>/acctsetprm/setprm002</req-url>
-      <req-call-max>1000</req-call-max>
+      <req-call-max>1000000</req-call-max>
     </protocol>
     <protocol>
       <interface-num>IFC_UserAcctSetPrm003</interface-num>
@@ -229,7 +240,7 @@
       <protocol-num>1006003</protocol-num>
       <protocol-mode>请求-应答</protocol-mode>
       <req-url>/acctsetprm/setprm003</req-url>
-      <req-call-max>1000</req-call-max>
+      <req-call-max>1000000</req-call-max>
     </protocol>
     <protocol>
       <interface-num>IFC_UserAcctSetPrm004</interface-num>
@@ -239,7 +250,7 @@
       <protocol-num>1006004</protocol-num>
       <protocol-mode>请求-应答</protocol-mode>
       <req-url>/acctsetprm/setprm004</req-url>
-      <req-call-max>1000</req-call-max>
+      <req-call-max>1000000</req-call-max>
     </protocol>
     <protocol>
       <interface-num>IFC_UserAcctSetPrm005</interface-num>
@@ -249,7 +260,7 @@
       <protocol-num>1006005</protocol-num>
       <protocol-mode>请求-应答</protocol-mode>
       <req-url>/acctsetprm/setprm005</req-url>
-      <req-call-max>1000</req-call-max>
+      <req-call-max>1000000</req-call-max>
     </protocol>
     <protocol>
       <interface-num>IFC_UserAcctSetPrm006</interface-num>
@@ -259,7 +270,7 @@
       <protocol-num>1006006</protocol-num>
       <protocol-mode>请求-应答</protocol-mode>
       <req-url>/acctsetprm/setprm006</req-url>
-      <req-call-max>1000</req-call-max>
+      <req-call-max>1000000</req-call-max>
     </protocol>
     <!--参数设置  end -->
     
@@ -272,7 +283,7 @@
       <protocol-num>1007001</protocol-num>
       <protocol-mode>请求-应答</protocol-mode>
       <req-url>/accttacmenu/tacmenu001</req-url>
-      <req-call-max>1000</req-call-max>
+      <req-call-max>1000000</req-call-max>
     </protocol>
     <protocol>
       <interface-num>IFC_UserAcctTacMenu002</interface-num>
@@ -282,7 +293,7 @@
       <protocol-num>1007002</protocol-num>
       <protocol-mode>请求-应答</protocol-mode>
       <req-url>/accttacmenu/tacmenu002</req-url>
-      <req-call-max>1000</req-call-max>
+      <req-call-max>1000000</req-call-max>
     </protocol>
     <protocol>
       <interface-num>IFC_UserAcctTacMenu003</interface-num>
@@ -292,7 +303,7 @@
       <protocol-num>1007003</protocol-num>
       <protocol-mode>请求-应答</protocol-mode>
       <req-url>/accttacmenu/tacmenu003</req-url>
-      <req-call-max>1000</req-call-max>
+      <req-call-max>1000000</req-call-max>
     </protocol>
     <protocol>
       <interface-num>IFC_UserAcctTacMenu004</interface-num>
@@ -302,7 +313,7 @@
       <protocol-num>1007004</protocol-num>
       <protocol-mode>请求-应答</protocol-mode>
       <req-url>/accttacmenu/tacmenu004</req-url>
-      <req-call-max>1000</req-call-max>
+      <req-call-max>1000000</req-call-max>
     </protocol>
     <!--指标菜单  end -->
   </protocols>

@@ -6,12 +6,14 @@
 $(document).ready(function() {
 	var url = 'pool.do';
 	var refreshFlag = true;
+	
+	var refreshHeight = function (){
+        $('.result-tags-head span').css('top',($('.result-tags-head').height()-$('.result-tags-head span').height())/2);
+    }
 
-	var refreshHeight = function() {
-		$('.result-main').height($('.img-responsive').height());
-		$('.result-tags-box').height($('.result-tags').height());
-		$('.result-tags-box').width($('.result-tags').width());
-	}
+	$(window).resize(function(event) {
+        refreshHeight();
+    });
 
 	var refreshData = function(url, $parent) {
 		var start = $parent.data('start');
@@ -32,16 +34,18 @@ $(document).ready(function() {
 				var stocks = data.dprtlist;
 				if (stocks != null) {
 					for ( var i in stocks) {
+						//TODO 选中和没选中图标的变化
+						var isInPool = stocks[i].isSelected?"active":"";
 						html += '<div class="screen-item">'
 							+ '<div class="item-col-1">'
-							+ '<span class="item-col-name">' + stocks[i].stockname + '</span>'
-							+ '<span class="blue item-col-code">' + stocks[i].stockcode + '</span>'
+							+ '<span class="item-col-name">' + stocks[i].detail.stockname + '</span>'
+							+ '<span class="blue item-col-code">' + stocks[i].detail.stockcode + '</span>'
 							+ '</div>'
-							+ '<div class="item-col-2">' + stocks[i].efftime + '</div>'
-							+ '<div class="item-col-3">' + stocks[i].remarks + '</div>'
+							+ '<div class="item-col-2">' + stocks[i].detail.efftime + '</div>'
+							+ '<div class="item-col-3">' + stocks[i].detail.remarks + '</div>'
 							+ '<div class="item-col-4">'
 							+ '<a href="javascript:void(0);" class="recommend"></a>'
-							+ '<a href="javascript:void(0);" class="choose"></a>'
+							+ '<a href="javascript:void(0);" class="choose'+isInPool+'"></a>'
 							+ '</div>' + '</div>';
 					}
 				}
@@ -158,9 +162,32 @@ $(document).ready(function() {
 
 	// 选股池弹窗
 	$('body').delegate('.choose', 'tap', function() {
-		$("#code").val($(this).parent().parent().find('.item-col-code').text());
+		var stockcode = $(this).parent().parent().find('.item-col-code').text();
+		$("#code").val(stockcode);
 		$("#name").val($(this).parent().parent().find('.item-col-name').text());
-		showDialog($('#choose'));
+		//ajax加载该股票已选股票池
+		$.ajax({
+			url : 'poolindexs.do',
+			data : {
+				"stockcode" : stockcode
+			},
+			dataType : "json",
+			error : function(jqXHR, textStatus, errorThrown) {
+				alert("加载数据失败！");
+			},
+			success : function(data, textStatus, jqXHR){
+				//多选下拉框置于所有未选中的状态
+				$.each($("#choosePool option"),function(){
+					$(this).attr("selected",false);
+				});
+				if (data && data.length >= 0){
+					for ( var i in data){
+						$("#choosePool option[value="+data[i].poolIndex+"]").attr("selected",true);
+					}
+				}
+				showDialog($('#choose'));	
+			}
+		});
 	});
 
 	$('#choose .dialog-btn-close,#choose .dialog-mask').tap(function() {

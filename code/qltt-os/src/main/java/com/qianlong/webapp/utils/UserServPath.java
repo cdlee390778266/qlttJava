@@ -65,6 +65,11 @@ public class UserServPath {
 	public static final String USER_SERV_STOCK_ATTN_QUERY = ResourceUtil.getConfigByName("user.serv.context") + "acctattnstock/attnstock004";
 	
 	/**
+	 * 账户关注个股查询
+	 */
+	public static final String USER_SERV_STOCK_ONE_ATTN_QUERY = ResourceUtil.getConfigByName("user.serv.context") + "acctattnstock/attnstock005";
+	
+	/**
 	 * 全局推送范围设置
 	 */
 	public static final String USER_SERV_PUSH_SCOPE_SET = ResourceUtil.getConfigByName("user.serv.context") + "acctsetprm/setprm001";

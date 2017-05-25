@@ -209,9 +209,32 @@ $(document).ready(function(){
 
 	//选股池弹窗
 	$('body').delegate('.poolItem-icon-cancle', 'tap', function() {
-		$("#code").val($(this).parent().parent().find('.item-col-code').text());
+		var stockcode = $(this).parent().parent().find('.item-col-code').text();
+		$("#code").val(stockcode);
 		$("#name").val($(this).parent().parent().find('.item-col-name').text());
-		showDialog($('#choose'));
+		//ajax加载该股票已选股票池
+		$.ajax({
+			url : '../stock/poolindexs.do',
+			data : {
+				"stockcode" : stockcode
+			},
+			dataType : "json",
+			error : function(jqXHR, textStatus, errorThrown) {
+				alert("加载数据失败！");
+			},
+			success : function(data, textStatus, jqXHR){
+				//多选下拉框置于所有未选中的状态
+				$.each($("#choosePool option"),function(){
+					$(this).attr("selected",false);
+				});
+				if (data && data.length >= 0){
+					for ( var i in data){
+						$("#choosePool option[value="+data[i].poolIndex+"]").attr("selected",true);
+					}
+				}
+				showDialog($('#choose'));	
+			}
+		});
 	});
          
 	$('#choose .dialog-btn-close,#choose .dialog-mask').tap(function() {
