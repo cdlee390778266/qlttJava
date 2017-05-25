@@ -3,9 +3,11 @@ package com.qianlong.qltt.us.service;
 import com.qianlong.qltt.us.domain.comm.CommRsp;
 import com.qianlong.qltt.us.protocol.acctstock.AcctAttnStock001Req;
 import com.qianlong.qltt.us.protocol.acctstock.AcctAttnStock002Req;
+import com.qianlong.qltt.us.protocol.acctstock.AcctAttnStock003Req;
 import com.qianlong.qltt.us.protocol.acctstock.AcctAttnStock004Req;
 import com.qianlong.qltt.us.protocol.acctstock.AcctAttnStock004Rsp;
-import com.qianlong.qltt.us.protocol.acctstock.AcctAttnStock003Req;
+import com.qianlong.qltt.us.protocol.acctstock.AcctAttnStock005Req;
+import com.qianlong.qltt.us.protocol.acctstock.AcctAttnStock005Rsp;
 
 public interface IAcctAttnStockService {
 
@@ -16,5 +18,7 @@ public interface IAcctAttnStockService {
 	CommRsp attnstock003(AcctAttnStock003Req req);
 
 	AcctAttnStock004Rsp attntac004(AcctAttnStock004Req req);
+
+	AcctAttnStock005Rsp attntac005(AcctAttnStock005Req req);
 
 }

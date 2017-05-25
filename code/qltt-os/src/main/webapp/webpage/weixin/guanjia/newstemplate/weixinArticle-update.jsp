@@ -103,7 +103,7 @@ $(function () {
             progress + '%'
         );
     }).on('fileuploaddone', function (e, data) {
-        console.info(data);
+       
         var  file = data.files[0];
         //var delUrl = "<a class=\"js_removeCover\" onclick=\"return false;\" href=\"javascript:void(0);\">删除</a>";
         $("#imgName").text("").append(file.name);

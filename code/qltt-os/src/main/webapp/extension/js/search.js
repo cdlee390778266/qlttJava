@@ -22,7 +22,7 @@ $(document).ready(function() {
 		$parent.append(html);
 	};
 
-	var createHtml = function($parent) {
+	var createHtml = function($parent,init) {
 		var html = '';
 		var group = $parent.data("group");
 		$.ajax({
@@ -34,9 +34,16 @@ $(document).ready(function() {
 				if (data != null) {
 					if (group == "combination") {
 						var members = data.content.tacMenu;
+						if(!members.length){
+							if(init=='init'){
+								createHtml($('.search-box ').eq(1));
+								searchSwiper.slideTo(1);
+								return;
+							}
+						}
 						for ( var i in members) {
 							var href = encodeURI("../stock/home.do?tactic=" + members[i].tacTic + "&tacname=" + members[i].tacName+"&isCombRequest=true");
-							html += '<div class="search-item ani" swiper-animate-effect="fadeIn" swiper-animate-duration="1s" swiper-animate-delay="0s" >'
+							html += '<div class="search-item anisearch-item-time" swiper-animate-effect="fadeIn" swiper-animate-duration="1s" swiper-animate-delay="0s" >'
 								+ '<div class="search-head search-head-del" data-tacTic="'+members[i].tacTic+'">'
 								+ members[i].tacName
 								+ '<i></i>'
@@ -50,7 +57,7 @@ $(document).ready(function() {
 							var members = data.member.ptgmlist;
 							for ( var i in members) {
 								var href = encodeURI("../stock/home.do?tactic=" + members[i].tactic + "&tacname=" + members[i].tacname);
-								html += '<div class="search-item ani" swiper-animate-effect="fadeIn" swiper-animate-duration="1s" swiper-animate-delay="0s" >'
+								html += '<div class="search-item ani search-item-time" swiper-animate-effect="fadeIn" swiper-animate-duration="1s" swiper-animate-delay="0s" >'
 									+ '<div class="search-head">'
 									+ members[i].tacname
 									+ '</div>'
@@ -61,30 +68,28 @@ $(document).ready(function() {
 						}else{
 							var resData = data.children;
 							 for(var i in resData){
-			                        html += '<div class="search-slide">'
-			                             +      '<div class="search-slide-head">' + resData[i]['info']['grpname'] + '<span></span></div>'
-			                             +      '<div class="search-slide-body animated" >'
+		                        html += '<div class="search-slide">'
+		                             +      '<div class="search-slide-head">' + resData[i]['info']['grpname'] + '<span></span></div>'
+		                             +      '<div class="search-slide-body animated" >'
 
-			                        for(var j in resData[i]['member'].ptgmlist){
-			                        	var ptgm = resData[i]['member'].ptgmlist[j];
-			                        	var href = encodeURI("../stock/home.do?tactic=" +ptgm.tactic + "&tacname=" +ptgm.tacname);
-			                            html += '<div class="search-item ani" swiper-animate-effect="fadeIn" swiper-animate-duration="1s" swiper-animate-delay="0s" >'
-			                                 +      '<div class="search-head">' + ptgm.tacname + '</div>'
-			                                 +      '<div class="search-body"><a href="'+href+'">' + ptgm.tacdetail + '</a></div>'
-			                                 +   '</div>'
-			                        }
+		                        for(var j in resData[i]['member'].ptgmlist){
+		                        	var ptgm = resData[i]['member'].ptgmlist[j];
+		                        	var href = encodeURI("../stock/home.do?tactic=" +ptgm.tactic + "&tacname=" +ptgm.tacname);
+		                            html += '<div class="search-item ani" swiper-animate-effect="fadeIn" swiper-animate-duration="1s" swiper-animate-delay="0s" >'
+		                                 +      '<div class="search-head">' + ptgm.tacname + '</div>'
+		                                 +      '<div class="search-body"><a href="'+href+'">' + ptgm.tacdetail + '</a></div>'
+		                                 +   '</div>'
+		                        }
 
-			                        html +=     '</div>';
-			                        html += '</div>';
-			                    }
-			                    $parent.find('.search-slide').eq(0).addClass('active');
-			                    $parent.find('.search-slide').eq(0).find('.search-slide-body');
+		                        html +=     '</div>';
+		                        html += '</div>';
+		                    }
+		                   
 						}
-						
 					}
 				}
-				
-				$parent.append(html);
+				$parent.html(html);
+				$parent.find('.search-slide').eq(0).addClass('active');
 				loadingHide($('.qltt-toast'));
 			},
 			error : function(jqXHR, textStatus, errorThrown) {
@@ -97,7 +102,7 @@ $(document).ready(function() {
 	var init = function() {
 		loadingShow($('.qltt-toast'));
 		createSearchBox($('.swiper-wrapper'));
-		createHtml($('.search-box ').first());
+		createHtml($('.search-box ').first(),'init');
 		searchSwiper = new Swiper(
 			'.swiper-container',
 			{
@@ -168,7 +173,7 @@ $(document).ready(function() {
             if(window.confirm('您确定要从收藏中删除该组合指标吗？')){
             	var tactic = $searchitem.find(".search-head").attr("data-tacTic");
             	var data = {"tacTic" : tactic,"tacPrm":0};
-            	console.log(data);
+            	
             	$.ajax({
         			url : '../myattention/isfollowed.do',
         			data : data,

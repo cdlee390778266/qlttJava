@@ -27,7 +27,7 @@
 //将微信和本地数据库的信息同步
  function doSameUser(title,url,gname){
 	var $mask = masking(null);
-	//console.log("gname:"+gname)
+
 	$.ajax({
 		url : url,
 		type : 'post',
@@ -105,7 +105,6 @@ function modifyRemark(title,addurl,gname,width,height){
 				var data ={};
 				data.openids = openids;
 				data.black = 1;
-				//console.log(data);
 				var $mask = masking(null);
 				$.ajax({
 					url : url,

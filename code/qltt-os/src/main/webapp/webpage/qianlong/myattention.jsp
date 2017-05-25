@@ -24,7 +24,7 @@
 				<div class="search-head" data-id="${following.tacTic}" data-name="${following.tacName}"><span>${following.tacName}</span><i></i></div>
 				<div class="search-body"><a href="javascript:void(0);">${following.tacDetail}</a></div>
 				<div class="search-foot">
-					<span class="active">关注</span>
+					<span>已关注</span>
 				</div>
 			</div>
 		</c:forEach>
@@ -41,6 +41,7 @@
 		<a href="<c:url value='/webapp/myattention/home.do' />" class="active"><i class="icon icon-care"></i><br><span>我的关注</span></a>
 		<a href="<c:url value='/webapp/userpool/home.do' />"><i class="icon icon-pool"></i><br><span>选股池</span></a>
 		<a href="javascript:void(0);"><i class="icon icon-rmd"></i><br><span>荐股池</span></a>
+		<a href="<c:url value='/webapp/setting/home.do' />"><i class="icon icon-set"></i><br><span>设置</span></a>
 	</div>
 	<script type="text/javascript">
 		$(document).ready(function(){

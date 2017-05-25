@@ -19,17 +19,39 @@ $(document).ready(function(){
 		$('#scrollerPool li').each(function(index, val) {
 			var searchBoxId = $(this).attr('data-href');
 			var pool = $(this).data('pool');
-			html += '<div class="pool-main animated" id="' + searchBoxId + '" data-pool="' + pool + '"></div>';
+			html+=	'<div class="pool-main animated" id="' + searchBoxId + '" data-pool="' + pool + '" data-start="0" data-size="15">'+
+						'<div class="pool-items"></div>'+
+						'<div class="pool-items-count srceen" style="display:none">'+
+							'<div class="srceen-txt">'+
+								'<span>该选股池共计</span>'+
+								'<span class="red"></span>'+
+								'<span>支股票</span>'+
+							'</div>'+
+							'<div class="load-more">'+
+								'<i></i><span>加载更多</span>'+
+							'</div>'+
+						'</div>'+
+					'</div>';
 			scrollTopArr[searchBoxId] = 0;
 		});
 		$parent.append(html);
 		menuNums = $('#scrollerPool li').length ;
+		$('.pool-main').removeClass('fadeIn').addClass('fadeOut').css('display','none');
+		$('.pool-main').eq(0).removeClass('fadeOut').css('display','block').addClass('fadeIn');
 	}
-
+    var handleRecordsEmpty = function ($parent){
+    	var html = '<div class="pool-empty">' + '<img src="../../extension/images/pool.png" /><br />该选股池还没有数据' + '</div>';
+		$parent.find(".pool-items").html(html);
+		$parent.find('.pool-items-count').hide();
+		$parent.find(".srceen-txt span.red").text(0);
+        loadingHide($('.qltt-toast'));
+    }
 	var createHtml = function(parentId){
 		var html = '';
 		var $parent = $('#' + parentId);
 		var pool = $parent.data('pool');
+		var reqNum =  $parent.data('size');
+		var reqreqStart =  $parent.data('start'); 
 		var wrapperId = parentId + '-wrapper';
 		var paginationId = parentId + '-page';
         
@@ -38,34 +60,53 @@ $(document).ready(function(){
 			type: 'post',
 			data: {
 				'poolIndex': pool,
-				'reqNum': 10,
-				'reqStart': 0
+				'reqNum': reqNum,
+				'reqStart': parseInt(reqreqStart)
 			},
 			dataType: 'json',
 			success: function(data){
-				if (data && data.content && data.content.attnStock && data.content.attnStock.length > 0) {
-					var attnStock = data.content.attnStock;
-					for(var i in attnStock){
-						html += '<div class="pool-item">'
-							+ '<div class="poolItem-td item-col-name">' + attnStock[i].stockName + '</div>'
-							+ '<div class="poolItem-td red item-col-code">' + attnStock[i].stockCode + '</div>'
-							+ '<div class="poolItem-td">'
-							+ '<span class="poolItem-icon-cmd"></span>'
-							+ '<span class="poolItem-icon-cancle"></span>'
-							+ '</div>'
-							+ '</div>';
+				$('.load-more i').removeClass('active');
+				loadFlag = true;
+				if(data.status==1){
+					var html='';
+					var rspnum = data.content.pageRsp.rspNum;
+					var totalnum = data.content.pageRsp.totalNum;
+					$parent.find(".srceen-txt span.red").text(totalnum);
+					if(!totalnum){
+						handleRecordsEmpty($parent);
+					}else{
+						$parent.find(".pool-items .pool-empty").remove();
+						if(rspnum){
+							var attnStock = data.content.attnStock;
+							for(var i in attnStock){
+								html += '<div class="pool-item">'
+									+ '<div class="poolItem-td item-col-name">' + attnStock[i].stockName + '</div>'
+									+ '<div class="poolItem-td red item-col-code">' + attnStock[i].stockCode + '</div>'
+									+ '<div class="poolItem-td">'
+									+ '<span class="poolItem-icon-cmd"></span>'
+									+ '<span class="poolItem-icon-cancle"></span>'
+									+ '</div>'
+									+ '</div>';
+							}
+							$parent.find(".pool-items").append(html);
+							loadingHide($('.qltt-toast'));
+							$parent.data('start', parseInt(reqreqStart)+parseInt(reqNum));
+						}
+						$parent.find('.pool-items-count').show();
+						if($parent.find('.pool-items .pool-item').length >= totalnum){
+							 $parent.find('.load-more').hide();
+						}else{
+							 $parent.find('.load-more').show();
+						}	
 					}
-					$parent.html(html);
-					loadingHide($('.qltt-toast'));
-				} else {
-					html += '<div class="pool-empty">' + '<img src="../../extension/images/pool.png" /><br />该选股池还没有数据' + '</div>';
-	                $parent.html(html);
-	                loadingHide($('.qltt-toast'));
+				}else{
+					if(data.message){
+						alert(data.message);
+					}
 				}
             },
             error: function(jqXHR, textStatus, errorThrown){
-            	html += '<div class="pool-empty">' + '<img src="../../extension/images/pool.png" /><br />该选股池还没有数据' + '</div>';
-                $parent.html(html);
+            	alert("加载数据失败");
                 loadingHide($('.qltt-toast'));
             }
 		});
@@ -79,22 +120,6 @@ $(document).ready(function(){
 			html += '<div data-href="' + $(this).attr('data-href') + '" ><span><strong>' + $(this).find('span').text() + '</strong> <i></i></span></div>';
 		});
 		$parent.append(html);
-	}
-
-	var loadMore = function(url,$parent){
-		$.ajax({
-			url: url,
-			type: 'post',
-			success: function(resData){
-				var html = '';
-				$parent.append(html);
-					$('.load-more i').removeClass('active');
-					loadFlag = true; 
-			},
-			error: function(xhr, type){
-				alert('获取数据失败!');
-			}
-		});
 	}
 
 	var showDialog = function($dialogEle, callBack){
@@ -145,7 +170,15 @@ $(document).ready(function(){
         	$('#scrollerPool li[data-href="'+ dataHref +'"]').find('span').text(text);
         }else if(type=='add'){
         	$('#scrollerPool ul').append('<li class="" data-href="' + dataHref + '" ><span>' + text + '</span></li>');
-        	$('#pool-wrapper').append('<div class="pool-main animated" id="' + dataHref + '" ></div>');
+        	var html  = '<div class="pool-main animated" id="' + dataHref + '"  data-start="0" data-size="10">'+
+							'<div class="srceen-txt">'+
+								'<span>该选股池共计</span><span class="red"></span><span>支股票</span>'+
+							'</div>'+
+							'<div class="load-more">'+
+								'<i></i><span>加载更多</span>'+
+							'</div>'+
+				        +'</div>';
+        	$('#pool-wrapper').append(html);
         	scrollTopArr[dataHref] = 0;
         	refreshIScroll();
         }
@@ -183,12 +216,13 @@ $(document).ready(function(){
 	});
 
 	var loadFlag = true;
+	
 	//加载更多
 	$('body').delegate('.load-more', 'tap', function(event){
 		if(loadFlag){
 			loadFlag = false;
 			$(this).find('i').addClass('active');
-			loadMore('../data/result.json',$(this).prev());
+			createHtml($(this).parent().parent().attr("id"));
 		}
 	});
 
@@ -203,57 +237,61 @@ $(document).ready(function(){
 
 	$('#recommend .dialog-btn-confirm').tap(function() {
 		hideDialog($('#recommend'),function(){
-			console.log('提交');
+			
 		});
 	})
 
 	//选股池弹窗
 	$('body').delegate('.poolItem-icon-cancle', 'tap', function() {
-		$("#code").val($(this).parent().parent().find('.item-col-code').text());
-		$("#name").val($(this).parent().parent().find('.item-col-name').text());
-		showDialog($('#choose'));
+		var $this = $(this);
+		var $poolmain = $(this).parents(".pool-main");
+		if (window.confirm('您确定从该选股池中删除该股票吗？')){
+			var data = {
+					"stockCode": $(this).parent().parent().find('.item-col-code').text(),
+					"stockName": $(this).parent().parent().find('.item-col-name').text(),
+					"stockPool": [{"poolIndex": $('#headerPool li.active').data('pool')}]
+				};
+				$.ajax({
+					url: '../userpool/unfollow.do',
+					data: JSON.stringify(data),
+					dataType: 'json',
+					type: 'post',
+					contentType: 'application/json;charset=UTF-8',
+					success: function(data) {
+						if (data.status == 1){
+							var start = parseInt($poolmain.data("start"))-1;
+							$poolmain.data("start",start<0?0:start);
+							$this.parent().parent().remove();
+							var totalNum = parseInt($poolmain.find('span.red').text())-1;
+							if(!totalNum){
+								handleRecordsEmpty($poolmain);
+							}
+							$poolmain.find('span.red').text(totalNum<0?0:totalNum);
+							alert("成功移出选股池！");
+						}else
+							alert(data.message);
+					},
+					error: function(jqXHR, textStatus, errorThrown) {
+						alert("移出选股池失败！");
+					}/*,
+					complete: function() {
+						hideDialog($('#choose'), function(){
+							createHtml($('#scrollerPool li.active').attr('data-href'));
+						});
+					}*/
+			});
+		}
 	});
          
 	$('#choose .dialog-btn-close,#choose .dialog-mask').tap(function() {
-		console.log('关闭窗口');
+		
 		hideDialog($('#choose'));
 	});
 	
-	//直接删除
-	$('#choose .dialog-btn-delete').tap(function() {
-		console.log('删除');
-		var stockPool = [{"poolIndex": $('#headerPool li.active').data('pool')}];
-		var data = {
-			"stockCode": $("#code").val(),
-			"stockName": $("#name").val(),
-			"stockPool": stockPool
-		};
-		$.ajax({
-			url: '../userpool/unfollow.do',
-			data: JSON.stringify(data),
-			dataType: 'json',
-			type: 'post',
-			contentType: 'application/json;charset=UTF-8',
-			success: function(data) {
-				if (data.status == 1)
-					alert("成功移出选股池！");
-				else
-					alert(data.message);
-			},
-			error: function(jqXHR, textStatus, errorThrown) {
-				alert("移出选股池失败！");
-			},
-			complete: function() {
-				hideDialog($('#choose'), function(){
-					createHtml($('#scrollerPool li.active').attr('data-href'));
-				});
-			}
-		});
-	});
 
 	$('#choose .dialog-btn-confirm').tap(function() {
 		hideDialog($('#choose'), function() {
-			console.log('提交');
+			
 			var stockPool = [];
 			$.each($("#choosePool").val(), function(idx, e){
 				stockPool.push({"poolIndex": e});

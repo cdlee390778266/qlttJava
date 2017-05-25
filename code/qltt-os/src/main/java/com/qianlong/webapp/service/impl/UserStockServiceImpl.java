@@ -18,6 +18,8 @@ import com.qianlong.webapp.domain.FollowStockEntity;
 import com.qianlong.webapp.domain.HttpContent;
 import com.qianlong.webapp.domain.QueryFollowStockEntity;
 import com.qianlong.webapp.domain.QueryFollowStockRspEntity;
+import com.qianlong.webapp.domain.QueryStockPoolIndexsEntity;
+import com.qianlong.webapp.domain.QueryStockPoolIndexsRspEntity;
 import com.qianlong.webapp.domain.UnfollowStockEntity;
 import com.qianlong.webapp.domain.UserServAccessToken;
 import com.qianlong.webapp.domain.UserServMessage;
@@ -143,5 +145,33 @@ public class UserStockServiceImpl implements IUserStockService {
 					content.getMessage().getErrorCode());
 		return content.getContent();
 	}
+	
+	
+	@Override
+	public QueryStockPoolIndexsRspEntity  queryStockPoolIndexs(String stockcode, String ttacct) {
+		UserServAccessToken accessToken = userServCoreService.getCurrentAccessToken();
+		List<NameValuePair> nvps = new ArrayList<>();
+		nvps.add(new BasicNameValuePair("access_token", accessToken.getAccessToken()));
+		
+		QueryStockPoolIndexsEntity entity = new QueryStockPoolIndexsEntity();
+		entity.setTtacct(ttacct);
+		entity.setStockCode(stockcode);
+		
+		HttpContent<QueryStockPoolIndexsRspEntity, UserServMessage> content = null;
+		try {
+			content = httpService.httpPost(Constants.SCHEME_HTTP, ResourceUtil.getConfigByName("user.serv.host"),
+					Integer.valueOf(ResourceUtil.getConfigByName("user.serv.port")), UserServPath.USER_SERV_STOCK_ONE_ATTN_QUERY,
+					nvps, (JSONObject)JSONObject.toJSON(entity), QueryStockPoolIndexsRspEntity.class, UserServMessage.class);
+		} catch (URISyntaxException | IOException e) {
+			logger.error("账户关注个股查询由于网络原因导致失败", e);
+		}
+		
+		if (content.getMessage() != null && !Constants.USER_SERV_CODE_OK.equals(content.getMessage().getErrorCode()))
+			throw new UserServBusinessException(
+					String.format("账户关注个股查询发生错误 - 错误信息: %s", content.getMessage().getErrorMsg()),
+					content.getMessage().getErrorCode());
+		return content.getContent();
+	}
+
 
 }

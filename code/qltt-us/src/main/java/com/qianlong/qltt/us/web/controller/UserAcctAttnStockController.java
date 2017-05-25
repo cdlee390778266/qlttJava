@@ -16,6 +16,8 @@ import com.qianlong.qltt.us.protocol.acctstock.AcctAttnStock002Req;
 import com.qianlong.qltt.us.protocol.acctstock.AcctAttnStock003Req;
 import com.qianlong.qltt.us.protocol.acctstock.AcctAttnStock004Req;
 import com.qianlong.qltt.us.protocol.acctstock.AcctAttnStock004Rsp;
+import com.qianlong.qltt.us.protocol.acctstock.AcctAttnStock005Req;
+import com.qianlong.qltt.us.protocol.acctstock.AcctAttnStock005Rsp;
 import com.qianlong.qltt.us.service.IAcctAttnStockService;
 import com.qianlong.qltt.us.util.JSONUtil;
 /**
@@ -215,6 +217,47 @@ public class UserAcctAttnStockController extends BaseController {
 		logger.debug("协议号：1005004");
 		logger.debug("协议传入参数："+JSONUtil.objToJson(req));
 		AcctAttnStock004Rsp rsp = acctAttnStockService.attntac004(req);
+		logger.debug("协议返回参数："+JSONUtil.objToJson(rsp));
+		return rsp;
+	}
+	
+	/**
+	 * 接口编号：IFC_UserAcctAttnStock005
+	 * 交易码：1005005
+	 * 接口名称：账户关注个股查询
+	 * 接口描述：
+	 * 备注说明：
+	 * 接口请求URL：SERVER-NAME/acctattnstock/attnstock005?access_token=ACCESSTOKEN
+	 * 接口请求方式：POST
+	 * 接口请求Json数据格式:
+	 * 		{
+	 * 			"ttacct":"tt000001",
+	 * 			"stockcode":"61000"
+	 * 		}
+	 * 接口响应JSon数据格式：
+	 * 	  正确的响应格式：
+	 * 		{
+	 * 			"existpool":
+	 * 				[{
+	 * 					"poolindex":1
+	 * 				},
+	 * 				{
+	 * 					"poolindex":2
+	 * 				}]
+	 * 		}
+	 * 	错误的响应格式：
+	 * 		{
+	 * 			"errorCode":"00010001",
+	 * 			"errorMsg":"请求参数格式不正确"
+	 * 		}
+	 **/
+	@RequestMapping(value="attnstock005")
+	@ResponseBody
+	public Object attnstock005(@Valid @RequestBody AcctAttnStock005Req req,BindingResult result){
+		handleReqParamerValid(result);
+		logger.debug("协议号：1005005");
+		logger.debug("协议传入参数："+JSONUtil.objToJson(req));
+		AcctAttnStock005Rsp rsp = acctAttnStockService.attntac005(req);
 		logger.debug("协议返回参数："+JSONUtil.objToJson(rsp));
 		return rsp;
 	}

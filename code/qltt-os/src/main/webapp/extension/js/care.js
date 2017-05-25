@@ -10,7 +10,6 @@ $(function() {
 				//取消关注
 				var $this =$(this);
 				var tacTic =  $this.find(".search-head").data("id");
-				console.log("取消关注的指标代码为:" + tacTic);
 				$.ajax({
 					url: 'unfollow.do',
 					data: {
@@ -32,7 +31,11 @@ $(function() {
 				});
 			}
 		} else {
-			var href = encodeURI("../stock/home.do?tactic=" + $(this).find(".search-head").data("id") + "&tacname=" + $(this).find(".search-head").data("name"));
+			var tactic = $(this).find(".search-head").data("id");
+			var url ="../stock/home.do?tactic=" + tactic + "&tacname=" + $(this).find(".search-head").data("name");
+			if(new String(tactic).indexOf("11")==0)
+				url += "&isCombRequest=true";
+			var href = encodeURI(url);
 			window.location.href = href;
 		}
 	});

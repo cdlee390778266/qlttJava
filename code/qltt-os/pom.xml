@@ -189,6 +189,7 @@
 			<artifactId>codegenerate</artifactId>
 			<version>${codegenerate.version}</version>
 		</dependency>
+		
 		<dependency>
 			<groupId>com.qianlong</groupId>
 			<artifactId>minidao-pe</artifactId>
@@ -391,11 +392,6 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>${mysql.version}</version>
 			<scope>runtime</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.jeewx</groupId>
-			<artifactId>p3-extend</artifactId>
-			<version>1.0-SNAPSHOT</version>
 		</dependency>
 		<!-- 数据库相关依赖包 _end -->
 
@@ -780,7 +776,7 @@
 			<version>${commons-codec.version}</version>
 		</dependency>
 		<!-- jeewx-api -->
-		<dependency>
+ 		<dependency>
 			<groupId>org.jeewx</groupId>
 			<artifactId>jeewx-api</artifactId>
 			<version>${jeewx-api.version}</version>

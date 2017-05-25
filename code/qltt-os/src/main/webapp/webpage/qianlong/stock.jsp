@@ -25,9 +25,20 @@
 			<img src="<c:url value='/extension/images/result_bg.png' />" alt="" class="img-responsive" />
 			<div class="result-main">
 				<div class="result-tags">
-					<div class="result-tags-box">
-						<span>${tacName}</span>
-					</div>
+					<div class="result-tags-head">
+                        <span>${tacName}</span>
+                    </div>
+					<c:if test="${members!=null && !empty members}">
+					  <div class="result-tags-body">
+					  	<span>原始指标:</span>
+					  	<span>
+						<c:forEach items="${members}" var="mem" varStatus="status">
+						    <strong>${mem.srctacname}</strong>
+						    <c:if test="${! status.last}"><i>#</i></c:if>
+						</c:forEach>
+						</span>
+					  </div>
+					</c:if>	
 				</div>
 			</div>
 		</div>
@@ -37,18 +48,7 @@
 	</div>
 	
 	<div class="result-middle">
-		<c:if test="${members!=null && !empty members}">
-			<c:forEach items="${members}" var="mem">
-				<div class="result-middle-item">
-					<div class="search-head">${mem.srctacname}[${mem.srctactic}]</div>
-					<!--
-					<div class="search-body">
-						<a href="#"></a>
-					</div>
-					  -->
-				</div>
-			</c:forEach>
-		</c:if>	
+		
 	</div>	
 
 	<!-- 详细内容 -->
@@ -56,7 +56,7 @@
 		<div class="srceen-txt">
 			<span>该指标共计筛选出</span><span class="red"></span><span>支股票</span>
 		</div>
-		<div class="screen-main" data-start="1" data-size="5"></div>
+		<div class="screen-main" data-start="1" data-size="15"></div>
 		<div class="load-more">
 			<i></i><span>加载更多</span>
 		</div>

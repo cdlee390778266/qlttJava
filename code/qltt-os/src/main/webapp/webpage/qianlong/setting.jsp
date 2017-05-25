@@ -87,7 +87,6 @@
 	//推送范围设置
 	$('body').delegate('input[type="checkbox"]', 'change', function(event) {
 		var checked = $(this).is(':checked');
-		console.log(checked);
 		if (checked) {
 			$('#scopePrm').attr('disabled', 'disabled');
 			$.ajax({

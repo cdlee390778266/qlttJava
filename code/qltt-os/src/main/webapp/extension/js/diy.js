@@ -29,7 +29,6 @@ $(function() {
 			type : 'post',
 			success : function(data) {
 				data = $.parseJSON(data);
-				console.dir(data);
 				
 				var members = data;   //数据
 				var total = data.length;   //数据总量
@@ -120,6 +119,12 @@ $(function() {
 					$parent.data("start", parseInt(start) + stocks.length);
 				}
 				$parent.append(html);
+				var totalnum = data.pgrsp.totalnum;
+				$('.srceen-txt .red').text(totalnum);
+				if($parent.find(".screen-item").length < totalnum )
+					displayLoadMore($(".load-more"),"show");
+				else
+					displayLoadMore($(".load-more"),"hide");
 				$('.load-more i').removeClass('active');
 				loadFlag = true;
 			},
@@ -129,6 +134,14 @@ $(function() {
 		});
 	}
 
+	//显示或隐藏更多
+	var displayLoadMore = function($div,display){
+		if(display=="hide")
+			$div.hide();
+		else
+			$div.show();
+	}
+	
 	var showDialog = function($dialogEle, callBack) {
 		$dialogEle.removeClass('fadeOut').css('display', 'block').addClass('fadeIn');
 		if (typeof callBack == 'function')
@@ -236,7 +249,7 @@ $(function() {
 
 	$('#recommend .dialog-btn-confirm').tap(function() {
 		hideDialog($('#recommend'), function() {
-			console.log('提交');
+	
 		});
 	})
 
@@ -255,7 +268,6 @@ $(function() {
 
 	$('#choose .dialog-btn-confirm').tap(function() {
 		hideDialog($('#choose'), function() {
-			console.log('提交');
 			var stockPool = [];
 			$.each($("#choosePool").val(), function(idx, e){
 				stockPool.push({"poolIndex": e});

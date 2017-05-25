@@ -4,15 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.CollectionUtils;
 
 import com.qianlong.qltt.us.domain.TUsAttnStock;
 import com.qianlong.qltt.us.domain.TUsAttnStockExample;
 import com.qianlong.qltt.us.domain.comm.CommRsp;
-import com.qianlong.qltt.us.exception.ErrorCodeMaster;
-import com.qianlong.qltt.us.exception.QlttUSBusinessException;
 import com.qianlong.qltt.us.mapper.TUsAttnStockMapper;
 import com.qianlong.qltt.us.protocol.PageRspParameter;
 import com.qianlong.qltt.us.protocol.acctstock.AcctAttnStock001Req;
@@ -20,6 +18,8 @@ import com.qianlong.qltt.us.protocol.acctstock.AcctAttnStock002Req;
 import com.qianlong.qltt.us.protocol.acctstock.AcctAttnStock003Req;
 import com.qianlong.qltt.us.protocol.acctstock.AcctAttnStock004Req;
 import com.qianlong.qltt.us.protocol.acctstock.AcctAttnStock004Rsp;
+import com.qianlong.qltt.us.protocol.acctstock.AcctAttnStock005Req;
+import com.qianlong.qltt.us.protocol.acctstock.AcctAttnStock005Rsp;
 import com.qianlong.qltt.us.protocol.acctstock.AttnStock001;
 import com.qianlong.qltt.us.protocol.acctstock.AttnStock003;
 import com.qianlong.qltt.us.protocol.acctstock.AttnStockComm;
@@ -38,21 +38,25 @@ public class AcctAttnStockServiceImpl extends CommServiceImpl implements IAcctAt
 	public CommRsp attnstock001(AcctAttnStock001Req req){
 		String  ttacct = req.getTtacct();
 		AttnStock001 attnStock = req.getAttnstock();
+		
+		TUsAttnStockExample example = new TUsAttnStockExample();
+		TUsAttnStockExample.Criteria criteria = example.createCriteria();
+		criteria.andFsStockcodeEqualTo(attnStock.getStockcode());
+		criteria.andFsTtacctLike(ttacct);
+		tUsAttnStockMapper.deleteByExample(example);
+		
 		List<StockPoolIndex> stockpool = attnStock.getStockpool();
 		if(stockpool != null && !stockpool.isEmpty()){
+			TUsAttnStock tUsAttnStock = null;
 			for(StockPoolIndex sp:stockpool){
-				TUsAttnStock tUsAttnStock = new TUsAttnStock();
+				tUsAttnStock = new TUsAttnStock();
 				tUsAttnStock.setFsTtacct(ttacct);
 				tUsAttnStock.setFiPoolindex(sp.getPoolindex());
 				Integer stockorder = getStockOrder(ttacct,sp.getPoolindex());
 				tUsAttnStock.setFiStockorder(stockorder);
 				tUsAttnStock.setFsStockcode(attnStock.getStockcode());
 				tUsAttnStock.setFsStockname(attnStock.getStockname());
-				try {
-					tUsAttnStockMapper.insert(tUsAttnStock);
-				} catch (DuplicateKeyException e) {
-					throw new QlttUSBusinessException(ErrorCodeMaster.STOCK_IS_EXIST);
-				}
+				tUsAttnStockMapper.insert(tUsAttnStock);
 			}
 		}
 		return new CommRsp();
@@ -177,5 +181,28 @@ public class AcctAttnStockServiceImpl extends CommServiceImpl implements IAcctAt
 			}
 		}
 		return rsp;
+	}
+
+
+	@Override
+	public AcctAttnStock005Rsp attntac005(AcctAttnStock005Req req) {
+		TUsAttnStockExample example = new TUsAttnStockExample();
+		TUsAttnStockExample.Criteria criteria = example.createCriteria();
+		criteria.andFsStockcodeEqualTo(req.getStockcode());
+		criteria.andFsTtacctLike(req.getTtacct());
+		List<TUsAttnStock> tUsAttnStocks =tUsAttnStockMapper.selectByExample(example);
+		
+		AcctAttnStock005Rsp acctAttnStock005Rsp = new AcctAttnStock005Rsp();
+		List<StockPoolIndex>  stockPoolIndexs = new ArrayList<StockPoolIndex>();
+		acctAttnStock005Rsp.setExistpool(stockPoolIndexs);
+		if(!CollectionUtils.isEmpty(tUsAttnStocks)){
+			StockPoolIndex poolIndex = null;
+			for(TUsAttnStock tUsAttnStock:tUsAttnStocks){
+				poolIndex = new StockPoolIndex();
+				poolIndex.setPoolindex(tUsAttnStock.getFiPoolindex());
+				stockPoolIndexs.add(poolIndex);
+			}
+		}
+		return acctAttnStock005Rsp;
 	}
 }

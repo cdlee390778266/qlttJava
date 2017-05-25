@@ -6,12 +6,14 @@
 $(document).ready(function() {
 	var url = 'pool.do';
 	var refreshFlag = true;
+	
+	var refreshHeight = function (){
+        $('.result-tags-head span').css('top',($('.result-tags-head').height()-$('.result-tags-head span').height())/2);
+    }
 
-	var refreshHeight = function() {
-		$('.result-main').height($('.img-responsive').height());
-		$('.result-tags-box').height($('.result-tags').height());
-		$('.result-tags-box').width($('.result-tags').width());
-	}
+	$(window).resize(function(event) {
+        refreshHeight();
+    });
 
 	var refreshData = function(url, $parent) {
 		var start = $parent.data('start');
@@ -32,25 +34,28 @@ $(document).ready(function() {
 				var stocks = data.dprtlist;
 				if (stocks != null) {
 					for ( var i in stocks) {
-						html += '<div class="screen-item">'
+						var isInPool = stocks[i].isSelected?"active":"";
+						html += '<div class="screen-item" id="screen-item-'+stocks[i].detail.stockcode+'">'
 							+ '<div class="item-col-1">'
-							+ '<span class="item-col-name">' + stocks[i].stockname + '</span>'
-							+ '<span class="blue item-col-code">' + stocks[i].stockcode + '</span>'
+							+ '<span class="item-col-name">' + stocks[i].detail.stockname + '</span>'
+							+ '<span class="blue item-col-code">' + stocks[i].detail.stockcode + '</span>'
 							+ '</div>'
-							+ '<div class="item-col-2">' + stocks[i].efftime + '</div>'
-							+ '<div class="item-col-3">' + stocks[i].remarks + '</div>'
+							+ '<div class="item-col-2">' + stocks[i].detail.efftime + '</div>'
+							+ '<div class="item-col-3">' + stocks[i].detail.remarks + '</div>'
 							+ '<div class="item-col-4">'
 							+ '<a href="javascript:void(0);" class="recommend"></a>'
-							+ '<a href="javascript:void(0);" class="choose"></a>'
+							+ '<a href="javascript:void(0);" class="choose  '+isInPool+'"></a>'
 							+ '</div>' + '</div>';
 					}
-					$('.srceen-txt .red').text(data.pgrsp.totalnum);
 				}
 				$parent.append(html);
 				var totalnum = data.pgrsp.totalnum;
-				if($parent.find(".screen-item").length == totalnum ){
+				$('.srceen-txt .red').text(totalnum);
+				if($parent.find(".screen-item").length < totalnum )
+					displayLoadMore($(".load-more"),"show");
+				else
 					displayLoadMore($(".load-more"),"hide");
-				}
+				
 				$('.load-more i').removeClass('active');
 				refreshFlag = true;
 				$parent.data('start', parseInt(start) + size);
@@ -63,11 +68,10 @@ $(document).ready(function() {
 	
 	//显示或隐藏更多
 	var displayLoadMore = function($div,display){
-		if(display=="hide"){
+		if(display=="hide")
 			$div.hide();
-		}else{
+		else
 			$div.show();
-		}
 	}
 	var showDialog = function($dialogEle, callBack) {
 		$dialogEle.removeClass('fadeOut').css('display', 'block').addClass('fadeIn');
@@ -151,16 +155,36 @@ $(document).ready(function() {
 	//加入选股池提交
 	$('#recommend .dialog-btn-confirm').tap(function() {
 		hideDialog($('#recommend'), function() {
-			console.log('提交');
-			
+		
 		});
 	});
 
 	// 选股池弹窗
 	$('body').delegate('.choose', 'tap', function() {
-		$("#code").val($(this).parent().parent().find('.item-col-code').text());
+		var stockcode = $(this).parent().parent().find('.item-col-code').text();
+		$("#code").val(stockcode);
 		$("#name").val($(this).parent().parent().find('.item-col-name').text());
-		showDialog($('#choose'));
+		$("#choosePool").html('<option value="1">选股池A</option><option value="2">选股池B</option><option value="3">选股池C</option>');
+		//ajax加载该股票已选股票池
+		$.ajax({
+			url : 'poolindexs.do',
+			data : {
+				"stockcode" : stockcode
+			},
+			dataType : "json",
+			error : function(jqXHR, textStatus, errorThrown) {
+				alert("加载数据失败！");
+			},
+			success : function(data, textStatus, jqXHR){
+				//多选下拉框置于所有未选中的状态
+				if (data && data.length >= 0){
+					for ( var i in data){
+						$("#choosePool option[value='"+data[i].poolIndex+"']").attr("selected",true);
+					}
+				}
+				showDialog($('#choose'));	
+			}
+		});
 	});
 
 	$('#choose .dialog-btn-close,#choose .dialog-mask').tap(function() {
@@ -171,7 +195,7 @@ $(document).ready(function() {
 
 	$('#choose .dialog-btn-confirm').tap(function() {
 		hideDialog($('#choose'), function() {
-			console.log('提交');
+			
 			var stockPool = [];
 			$.each($("#choosePool").val(), function(idx, e){
 				stockPool.push({"poolIndex": e});
@@ -188,13 +212,19 @@ $(document).ready(function() {
 				type: 'post',
 				contentType: 'application/json;charset=UTF-8',
 				success: function(data) {
-					if (data.status == 1)
-						alert("成功加入选股池！");
-					else
+					if (data.status == 1){
+						var selecttor = "#screen-item-"+$("#code").val()+" a.choose";
+						if(!stockPool.length)
+							$(selecttor).removeClass("active");
+						else
+							$(selecttor).addClass("active");
+						
+						alert("操作成功！");
+					}else
 						alert(data.message);
 				},
 				error: function(jqXHR, textStatus, errorThrown) {
-					alert("加入选股池失败！");
+					alert("操作失败！");
 				}
 			});
 		});
