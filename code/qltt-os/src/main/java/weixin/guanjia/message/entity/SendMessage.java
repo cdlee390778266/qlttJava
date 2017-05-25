@@ -32,6 +32,8 @@ public class SendMessage {
 	private Timestamp createtime;
 	@Column(name="send_status")
 	private String sendStatus;
+	@Column(name="accountid")
+	private String accountid;
 	
 	public String getTemplateId() {
 		return templateId;
@@ -87,5 +89,10 @@ public class SendMessage {
 	public void setMsgid(String msgid) {
 		this.msgid = msgid;
 	}
-	
+	public String getAccountid() {
+		return accountid;
+	}
+	public void setAccountid(String accountid) {
+		this.accountid = accountid;
+	}
 }
