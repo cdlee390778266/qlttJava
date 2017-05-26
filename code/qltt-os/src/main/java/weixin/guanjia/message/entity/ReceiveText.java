@@ -36,6 +36,8 @@ public class ReceiveText extends IdEntity {
     private String nickName;
     //微信账号Id
     private String accountId;
+    @Column(name="sex")
+	private Integer sex;
     
     @Column(name="tousername")
 	public String getToUserName() {
@@ -110,5 +112,10 @@ public class ReceiveText extends IdEntity {
 	public void setAccountId(String accountId) {
 		this.accountId = accountId;
 	}
-	
+	public Integer getSex() {
+		return sex;
+	}
+	public void setSex(Integer sex) {
+		this.sex = sex;
+	}
 }
