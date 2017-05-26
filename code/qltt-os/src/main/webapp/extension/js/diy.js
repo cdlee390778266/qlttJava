@@ -226,7 +226,7 @@ $(function() {
 			success : function(data) {
 				if (data != null && data.status == 1) {
 					hideDialog($('#zdyzh'), function() {
-						$().alert('收藏成功，请返回组合指标查看');
+						history.go(-1);
 					});
 				} else {
 					$().alert(data.message);

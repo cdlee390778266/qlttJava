@@ -59,6 +59,17 @@
 				<option value="3" <c:if test="${pushScope == 1 && scopePrm == 3}">selected="selected"</c:if>>选股池C</option>
 			</select>
 		</div>
+		
+		<!-- 页脚菜单 -->
+		<div class="pool-footer">
+			<div class="footer">
+				<a href="<c:url value='/webapp/search/home.do' />"><i class="icon icon-searchd"></i><br><span>指标查询</span></a>
+				<a href="<c:url value='/webapp/myattention/home.do' />"><i class="icon icon-care"></i><br><span>我的关注</span></a>
+				<a href="<c:url value='/webapp/userpool/home.do' />"><i class="icon icon-pool"></i><br><span>选股池</span></a>
+				<a href="javascript:void(0);"><i class="icon icon-rmd"></i><br><span>荐股池</span></a>
+				<a href="<c:url value='/webapp/setting/home.do' />"  class="active"><i class="icon icon-set"></i><br><span>设置</span></a>
+			</div>
+		</div>
 	</div>
 	<script type="text/javascript">
 	//推送频率设置

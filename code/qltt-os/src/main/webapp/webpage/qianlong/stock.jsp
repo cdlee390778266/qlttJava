@@ -16,7 +16,7 @@
 <script type="text/javascript" src="<c:url value='/extension/js/zepto.touch.js' />"></script>
 <script type="text/javascript" src="<c:url value='/extension/js/messager.js' />"></script>
 <script type="text/javascript" src="<c:url value='/extension/js/stock.js' />"></script>
-<title>我的选股结果</title>
+<title>${tacName}</title>
 </head>
 <body>
 	<!-- 详细内容 -->
