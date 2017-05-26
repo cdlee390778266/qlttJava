@@ -1015,8 +1015,14 @@ a {
 .srceen .screen-main .screen-item .item-col-4 a:first-child {
   background-position: -147px -182px;
 }
+.srceen .screen-main .screen-item .item-col-4 a:first-child.active {
+  background-position: -172px -182px;
+}
 .srceen .screen-main .screen-item .item-col-4 a:last-child {
   background-position: -147px -218px;
+}
+.srceen .screen-main .screen-item .item-col-4 a:last-child.active {
+  background-position: -172px -218px;
 }
 .srceen .load-more {
   margin-top: 5px;
