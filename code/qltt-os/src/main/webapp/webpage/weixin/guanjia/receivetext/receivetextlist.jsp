@@ -7,6 +7,8 @@
 	<t:dgCol title="昵称" field="nickName" query="true" width="100"></t:dgCol>
 	 --%>
 	<t:dgCol title="openid" field="FromUserName" query="true" width="100"></t:dgCol>
+	<t:dgCol title="昵称" field="nickName" width="100"></t:dgCol>
+	<t:dgCol title="性别" field="sex" replace="男_1,女_2,未知_0" width="100"></t:dgCol>
 	<t:dgCol title="类型" field="MsgType" query="true" width="100"></t:dgCol>
 	<t:dgCol title="时间" field="CreateTime" formatter=""  width="100"></t:dgCol>
 	<t:dgCol title="内容" field="Content" width="100"></t:dgCol>

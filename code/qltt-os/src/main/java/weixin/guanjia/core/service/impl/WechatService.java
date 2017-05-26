@@ -9,6 +9,7 @@ import java.util.ResourceBundle;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.jeecgframework.core.common.hibernate.qbc.CriteriaQuery;
 import org.jeecgframework.core.common.service.CommonService;
 import org.jeecgframework.core.util.LogUtil;
 import org.jeecgframework.core.util.oConvertUtils;
@@ -28,6 +29,7 @@ import weixin.guanjia.core.util.MessageUtil;
 import weixin.guanjia.menu.entity.MenuEntity;
 import weixin.guanjia.message.dao.TextTemplateDao;
 import weixin.guanjia.message.entity.AutoResponse;
+import weixin.guanjia.message.entity.MessageTemplate;
 import weixin.guanjia.message.entity.NewsItem;
 import weixin.guanjia.message.entity.NewsTemplate;
 import weixin.guanjia.message.entity.ReceiveText;
@@ -39,6 +41,7 @@ import weixin.guanjia.message.service.NewsItemServiceI;
 import weixin.guanjia.message.service.NewsTemplateServiceI;
 import weixin.guanjia.message.service.ReceiveTextServiceI;
 import weixin.guanjia.message.service.TextTemplateServiceI;
+import weixin.guanjia.user.entity.WeixinUser;
 import weixin.guanjia.user.service.IUserService;
 import weixin.util.DateUtils;
 
@@ -225,11 +228,23 @@ public class WechatService {
 	String doTextResponse(String content,String toUserName,TextMessageResp textMessage,ResourceBundle bundler,
 			String sys_accountId,String respMessage,String fromUserName,HttpServletRequest request,String msgId,String msgType) throws Exception{
 		//=================================================================================================================
+		//根据fromUserName以及weixin_account表中accountid查询 用户昵称以及性别
+		//1.根据accountid查询weixin_account中的id
+		
+		WeixinAccountEntity weixinAccountEntity = weixinAccountService.getWeixinAccountByWeixinOldId(toUserName);
+		//2.根据fromUserName以及weixinAccountEntity的ID查询用户昵称以及性别
+		CriteriaQuery cq = new CriteriaQuery(WeixinUser.class);
+		cq.eq("accountid", weixinAccountEntity.getId());
+		cq.eq("openid", fromUserName);
+		cq.add();
+		List<WeixinUser> weixinuser = weixinAccountService.getListByCriteriaQuery(cq,true);
 		// 保存接收到的信息
 		ReceiveText receiveText = new ReceiveText();
 		receiveText.setContent(content);
 		Timestamp temp = Timestamp.valueOf(DateUtils
 				.getDate("yyyy-MM-dd HH:mm:ss"));
+		receiveText.setNickName(weixinuser.get(0).getNickname());
+		receiveText.setSex(weixinuser.get(0).getSex());
 		receiveText.setCreateTime(temp);
 		receiveText.setFromUserName(fromUserName);
 		receiveText.setToUserName(toUserName);
