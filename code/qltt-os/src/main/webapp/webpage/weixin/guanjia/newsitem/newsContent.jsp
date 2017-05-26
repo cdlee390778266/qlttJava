@@ -48,7 +48,7 @@
                             <fmt:formatDate value='${newsItem.createDate}' type="date" pattern="yyyy-MM-dd"/>
                         </span>
                         <span class="activity-meta">
-                            jeecg社区
+                            成都乾隆科技
                         </span>
                         <a href="javascript:viewProfile();" id="post-user" class="activity-meta">
                             <span class="text-ellipsis">
@@ -69,8 +69,8 @@
                         ${newsItem.content}
                     </div>
                     <p class="page-toolbar" id="js_toobar">
-                        <a href="http://www.jeewx.com" class="page-imform">
-                         	 捷微团队
+                        <a href="http://www.cdqianlong.com" class="page-imform">
+                         	 成都乾隆创新部
                         </a>
                     </p>
                 </div>
