@@ -17,7 +17,8 @@
 <script type="text/javascript" src="<c:url value='/extension/js/swiper.animate1.0.2.min.js' />"></script>
 <script type="text/javascript" src="<c:url value='/extension/js/common.js' />"></script>
 <script type="text/javascript" src="<c:url value='/extension/js/pool.js' />"></script>
-<title>指标查询</title>
+<script type="text/javascript" src="<c:url value='/extension/js/messager.js' />"></script>
+<title>我的选股池</title>
 </head>
 <body>
 	<div class="pool animated">

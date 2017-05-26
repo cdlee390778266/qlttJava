@@ -5,11 +5,11 @@
  */
 $(function() {
 	$('body').delegate('.search-item', 'tap', function(event) {
-		if(event.target.tagName == 'I') {
-			if (window.confirm('你确定删除此关注吗？')) {
+		var $this = $(this);
+		var tacTic =  $this.find(".search-head").data("id");
+		if(event.target.tagName == 'I'){
+			$().confirm('你确定删除此关注吗？',function(){
 				//取消关注
-				var $this =$(this);
-				var tacTic =  $this.find(".search-head").data("id");
 				$.ajax({
 					url: 'unfollow.do',
 					data: {
@@ -18,21 +18,20 @@ $(function() {
 					},
 					dataType: "json",
 					error: function(jqXHR, textStatus, errorThrown) {
-						alert("取消关注失败！");
+						$().alert("取消关注失败！");
 					},
 					success: function(data, textStatus, jqXHR) {
 						if (data.status == 1){
 							$this.remove();
 							displayEmpty();
-						}
-						else
-							alert(data.message);
+							$().alert("取消关注成功");
+						}else
+							$().alert(data.message);
 					}
 				});
-			}
+			})
 		} else {
-			var tactic = $(this).find(".search-head").data("id");
-			var url ="../stock/home.do?tactic=" + tactic + "&tacname=" + $(this).find(".search-head").data("name");
+			var url ="../stock/home.do?tactic=" + tactic + "&tacname=" + $this.find(".search-head").data("name");
 			if(new String(tactic).indexOf("11")==0)
 				url += "&isCombRequest=true";
 			var href = encodeURI(url);

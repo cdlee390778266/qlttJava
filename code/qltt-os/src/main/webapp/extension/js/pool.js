@@ -101,12 +101,12 @@ $(document).ready(function(){
 					}
 				}else{
 					if(data.message){
-						alert(data.message);
+						$().alert(data.message);
 					}
 				}
             },
             error: function(jqXHR, textStatus, errorThrown){
-            	alert("加载数据失败");
+            	$().alert("加载数据失败");
                 loadingHide($('.qltt-toast'));
             }
 		});
@@ -245,10 +245,10 @@ $(document).ready(function(){
 	$('body').delegate('.poolItem-icon-cancle', 'tap', function() {
 		var $this = $(this);
 		var $poolmain = $(this).parents(".pool-main");
-		if (window.confirm('您确定从该选股池中删除该股票吗？')){
+		$().confirm('您确定从该选股池中删除该股票吗？',function(){
 			var data = {
-					"stockCode": $(this).parent().parent().find('.item-col-code').text(),
-					"stockName": $(this).parent().parent().find('.item-col-name').text(),
+					"stockCode": $this.parent().parent().find('.item-col-code').text(),
+					"stockName": $this.parent().parent().find('.item-col-name').text(),
 					"stockPool": [{"poolIndex": $('#headerPool li.active').data('pool')}]
 				};
 				$.ajax({
@@ -267,12 +267,12 @@ $(document).ready(function(){
 								handleRecordsEmpty($poolmain);
 							}
 							$poolmain.find('span.red').text(totalNum<0?0:totalNum);
-							alert("成功移出选股池！");
+							$().alert("成功移出选股池！");
 						}else
-							alert(data.message);
+							$().alert(data.message);
 					},
 					error: function(jqXHR, textStatus, errorThrown) {
-						alert("移出选股池失败！");
+						$().alert("移出选股池失败！");
 					}/*,
 					complete: function() {
 						hideDialog($('#choose'), function(){
@@ -280,11 +280,10 @@ $(document).ready(function(){
 						});
 					}*/
 			});
-		}
+		})
 	});
          
 	$('#choose .dialog-btn-close,#choose .dialog-mask').tap(function() {
-		
 		hideDialog($('#choose'));
 	});
 	
@@ -309,12 +308,12 @@ $(document).ready(function(){
 				contentType: 'application/json;charset=UTF-8',
 				success: function(data) {
 					if (data.status == 1)
-						alert("成功加入选股池！");
+						$().alert("成功加入选股池！");
 					else
-						alert(data.message);
+						$().alert(data.message);
 				},
 				error: function(jqXHR, textStatus, errorThrown) {
-					alert("加入选股池失败！");
+					$().alert("加入选股池失败！");
 				}
 			});
 		});

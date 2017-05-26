@@ -19,6 +19,7 @@
 <script type="text/javascript" src="<c:url value='/extension/js/swiper.animate1.0.2.min.js' />"></script>
 <script type="text/javascript" src="<c:url value='/extension/js/common.js' />"></script>
 <script type="text/javascript" src="<c:url value='/extension/js/diy.js' />"></script>
+<script type="text/javascript" src="<c:url value='/extension/js/messager.js' />"></script>
 <title>自定义组合指标</title>
 </head>
 <body>

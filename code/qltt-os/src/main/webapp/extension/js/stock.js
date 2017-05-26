@@ -6,10 +6,6 @@
 $(document).ready(function() {
 	var url = 'pool.do';
 	var refreshFlag = true;
-	
-	var refreshHeight = function (){
-        $('.result-tags-head span').css('top',($('.result-tags-head').height()-$('.result-tags-head span').height())/2);
-    }
 
 	$(window).resize(function(event) {
         refreshHeight();
@@ -61,7 +57,7 @@ $(document).ready(function() {
 				$parent.data('start', parseInt(start) + size);
 			},
 			error : function(xhr, type) {
-				alert('获取数据失败！');
+				$().alert('获取数据失败！');
 			}
 		});
 	}
@@ -86,9 +82,7 @@ $(document).ready(function() {
 	}
 
 	var init = function() {
-		refreshHeight();
 		refreshData(url, $('.screen-main'));
-
 	}
 
 	//关注和取消关注
@@ -104,13 +98,13 @@ $(document).ready(function() {
 				},
 				dataType : "json",
 				error : function(jqXHR, textStatus, errorThrown) {
-					alert(textStatus);
+					$().alert(textStatus);
 				},
 				success : function(data, textStatus, jqXHR) {
 					if (data.status == 1)
 						follow.removeClass('active');
 					else
-						alert(data.message);
+						$().alert(data.message);
 				}
 			});
 		} else {
@@ -123,13 +117,13 @@ $(document).ready(function() {
 				},
 				dataType : "json",
 				error : function(jqXHR, textStatus, errorThrown) {
-					alert("服务器异常！");
+					$().alert("关注失败，请稍后重试！");
 				},
 				success : function(data, textStatus, jqXHR) {
 					if (data.status == 1)
 						follow.addClass('active');
 					else
-						alert(data.message);
+						$().alert(data.message);
 				}
 			});
 		}
@@ -173,7 +167,7 @@ $(document).ready(function() {
 			},
 			dataType : "json",
 			error : function(jqXHR, textStatus, errorThrown) {
-				alert("加载数据失败！");
+				$().alert("加载数据失败！");
 			},
 			success : function(data, textStatus, jqXHR){
 				//多选下拉框置于所有未选中的状态
@@ -219,12 +213,12 @@ $(document).ready(function() {
 						else
 							$(selecttor).addClass("active");
 						
-						alert("操作成功！");
+						$().alert("操作成功！");
 					}else
-						alert(data.message);
+						$().alert(data.message);
 				},
 				error: function(jqXHR, textStatus, errorThrown) {
-					alert("操作失败！");
+					$().alert("操作失败！");
 				}
 			});
 		});
@@ -236,3 +230,11 @@ $(document).ready(function() {
 
 	init();
 });
+window.onload = function(){
+	(function (){
+        $('.result-tags-head span').css('top',($('.result-tags-head').height()-$('.result-tags-head span').height())/2);
+        $('.srceen-absolute').css('top',$('.result-fixed').height());
+        
+    })();
+}
+

@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.qianlong.qltt.us.exception.ErrorCodeMaster;
 import com.qianlong.qltt.us.exception.QlttUSBusinessException;
 import com.qianlong.qltt.us.service.IInterfaceCallInfoService;
+import com.qianlong.qltt.us.util.NetUtil;
 import com.qianlong.qltt.us.util.StringUtil;
 /**
  * @ClassName:     InterfaceCallInfoInterceptor.java 
@@ -32,8 +33,9 @@ public class InterfaceCallInfoInterceptor extends BaseInterceptor{
 	public boolean preHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler) throws Exception{
 		String uri = request.getRequestURI();
+		logger.debug("当前拦截器：接口拦截器");
 		logger.debug("当前请求URL："+ uri);
-		logger.debug("当前拦截器：接口拦截器"+ uri);
+		logger.debug("当前请求者Ip地址："+ NetUtil.getIpAddr(request));
 		if(!StringUtil.contains(excludeMapping,uri)){
 			//获取完整URI
 			uri = uri.substring(request.getContextPath().length(),uri.indexOf("?") != -1?uri.indexOf("?"):uri.length());

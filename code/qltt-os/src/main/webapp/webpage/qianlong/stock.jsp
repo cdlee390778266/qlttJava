@@ -14,12 +14,13 @@
 <script type="text/javascript" src="<c:url value='/extension/js/zepto.min.js' />"></script>
 <script type="text/javascript" src="<c:url value='/extension/js/swiper.min.js' />"></script>
 <script type="text/javascript" src="<c:url value='/extension/js/zepto.touch.js' />"></script>
+<script type="text/javascript" src="<c:url value='/extension/js/messager.js' />"></script>
 <script type="text/javascript" src="<c:url value='/extension/js/stock.js' />"></script>
 <title>我的选股结果</title>
 </head>
 <body>
 	<!-- 详细内容 -->
-	<div class="result">
+	<div class="result result-fixed">
 		<input type="hidden" id="tacTic" hidden="tacTic" value="${tacTic}">
 		<div class="result-box">
 			<img src="<c:url value='/extension/images/result_bg.png' />" alt="" class="img-responsive" />
@@ -45,6 +46,9 @@
 		<div class="result-btns">
 			<span class="result-btn-care<c:if test="${isFollow}"> active</c:if>">关注</span>
 		</div>
+		<div class="srceen-txt result-srceen-fixed">
+			<span>该指标共计筛选出</span><span class="red"></span><span>支股票</span>
+		</div>
 	</div>
 	
 	<div class="result-middle">
@@ -52,10 +56,7 @@
 	</div>	
 
 	<!-- 详细内容 -->
-	<div class="srceen">
-		<div class="srceen-txt">
-			<span>该指标共计筛选出</span><span class="red"></span><span>支股票</span>
-		</div>
+	<div class="srceen srceen-absolute">
 		<div class="screen-main" data-start="1" data-size="15"></div>
 		<div class="load-more">
 			<i></i><span>加载更多</span>

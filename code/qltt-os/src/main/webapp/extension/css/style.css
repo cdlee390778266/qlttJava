@@ -1029,7 +1029,7 @@ a {
   color: #999999;
 }
 .srceen .load-more i {
-  display: inline-block;
+  display: none;
   width: 18px;
   height: 18px;
   background: url(../images/loading.png) no-repeat;
@@ -1041,6 +1041,13 @@ a {
 }
 .srceen .load-more i.active {
   animation: loading 1s linear infinite;
+  display: inline-block;
+}
+.srceen-absolute{
+    position: absolute;
+    top: 28rem;
+    left: 0;
+    right: 0;
 }
 
 @-webkit-keyframes loading {
@@ -1222,6 +1229,25 @@ a {
   left: 50%;
   transition: all .4s;
   cursor: pointer;
+}
+
+.result-fixed{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 8;
+    background-color: #fff;
+}
+.result-srceen-fixed{
+    padding: 0 15px;
+    margin-bottom: 1rem;
+    margin-top: 1.5rem;
+    color : #333;
+    padding-bottom: 1rem;
+    position:relative;
+    @include borderb;
+    text-align: center;
 }
 
 @media screen and (max-width: 340px) {
@@ -1709,6 +1735,7 @@ a {
 /******   care  ******/
 .care {
   position: static;
+  min-height: 100%;
 }
 
 /******   retrieval  ******/

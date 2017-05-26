@@ -52,10 +52,10 @@ $(document).ready(function() {
 				url : "code.do",
 				data : {"phone" : phone},
 				error : function(jqXHR, textStatus, errorThrown) {
-					//
+					$().alert("生成验证码失败");
 				},
 				success : function(data, textStatus, jqXHR) {
-					alert(data);
+					$().alert(data);
 				}
 			});
 			

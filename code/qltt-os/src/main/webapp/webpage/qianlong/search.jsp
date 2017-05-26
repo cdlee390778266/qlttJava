@@ -20,6 +20,7 @@
 <script type="text/javascript" src="<c:url value='/extension/js/footer.js' />"></script>
 <script type="text/javascript" src="<c:url value='/extension/js/common.js' />"></script>
 <script type="text/javascript" src="<c:url value='/extension/js/pool.js' />"></script>
+<script type="text/javascript" src="<c:url value='/extension/js/messager.js' />"></script>
 <script type="text/javascript">
 	var contextPath = '${pageContext.request.contextPath}';
 </script>

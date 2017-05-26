@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.qianlong.qltt.us.exception.ErrorCodeMaster;
 import com.qianlong.qltt.us.exception.QlttUSBusinessException;
 import com.qianlong.qltt.us.service.IAccessTokenService;
+import com.qianlong.qltt.us.util.NetUtil;
 import com.qianlong.qltt.us.util.StringUtil;
 /**
  * @ClassName:     AccessTokeninterceptor.java 
@@ -33,8 +34,10 @@ public class AccessTokenInterceptor extends BaseInterceptor{
 			HttpServletResponse response, Object handler) throws Exception{
 		
 		String uri = request.getRequestURI();
-		logger.debug("当前请求URL："+ uri);
 		logger.debug("当前拦截器：访问令牌拦截器");
+		logger.debug("当前请求URL："+ uri);
+		logger.debug("当前请求者Ip地址："+ NetUtil.getIpAddr(request));
+		
 		if(!StringUtil.contains(excludeMapping,uri)){
 			//获取完整URI
 			uri = uri.substring(request.getContextPath().length()+1,uri.indexOf("?") != -1?uri.indexOf("?"):uri.length());

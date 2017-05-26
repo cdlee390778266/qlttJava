@@ -93,7 +93,7 @@ $(document).ready(function() {
 				loadingHide($('.qltt-toast'));
 			},
 			error : function(jqXHR, textStatus, errorThrown) {
-				alert('获取数据失败！');
+				$().alert('获取数据失败！');
 			}
 		});
 
@@ -108,6 +108,7 @@ $(document).ready(function() {
 			{
 				spaceBetween : 30,
 				observer : true,
+				autoHeight: true, //高度随内容变化
 				onInit : function(swiper) {
 					swiperAnimateCache(swiper); // 隐藏动画元素
 					swiperAnimate(swiper); // 初始化完成开始动画
@@ -130,6 +131,7 @@ $(document).ready(function() {
 					$('#header li').removeClass('active');
 					$('#header li').eq(searchSwiper.activeIndex).addClass('active');
 					swiperAnimate(swiper);   // 每个slide切换结束时也运行当前slide动画
+					searchSwiper.update();
 				}
 			}
 		);
@@ -156,13 +158,13 @@ $(document).ready(function() {
 				data = $.parseJSON(data);
 				if(data.status==1){
 					$searchitem.remove();
-					alert("该组合指标已成功删除");
+					$().alert("该组合指标已成功删除");
 				}else{
-					alert(data.message);
+					$().alert(data.message);
 				}
 			},
 			error : function(jqXHR, textStatus, errorThrown) {
-				alert('系统错误，请稍后重试或联系管理员');
+				$().alert('系统错误，请稍后重试或联系管理员');
 			}
 		});
 	}
@@ -170,8 +172,8 @@ $(document).ready(function() {
 	$('body').delegate('.search-item', 'tap', function(event) {
 		var $searchitem = $(this);
         if(event.target.tagName=='I'){
-            if(window.confirm('您确定要从收藏中删除该组合指标吗？')){
-            	var tactic = $searchitem.find(".search-head").attr("data-tacTic");
+        	$().confirm("您确定要从收藏中删除该组合指标吗？",function(){
+        		var tactic = $searchitem.find(".search-head").attr("data-tacTic");
             	var data = {"tacTic" : tactic,"tacPrm":0};
             	
             	$.ajax({
@@ -181,16 +183,16 @@ $(document).ready(function() {
         			success : function(data) {
         				data = $.parseJSON(data);
         				if(data.content){//如果已经被关注
-        					alert("该指标已经被关注，请先取消关注再删除");
+        					$().alert("该指标已经被关注，请先取消关注再删除");
         				}else{
         					deleteTacMenu($searchitem,tactic);
         				}
         			},
         			error : function(jqXHR, textStatus, errorThrown) {
-        				alert('系统错误，请稍后重试或联系管理员');
+        				$().alert('系统错误，请稍后重试或联系管理员');
         			}
         		});
-            }
+        	})
         }else{
             location.href = $(this).find('a').attr('href');
         }

@@ -14,6 +14,7 @@
 <script type="text/javascript" src="<c:url value='/extension/js/zepto.touch.js' />"></script>
 <script type="text/javascript" src="<c:url value='/extension/js/footer.js' />"></script>
 <script type="text/javascript" src="<c:url value='/extension/js/login.js' />"></script>
+<script type="text/javascript" src="<c:url value='/extension/js/messager.js' />"></script>
 <title>手机验证</title>
 </head>
 <body>

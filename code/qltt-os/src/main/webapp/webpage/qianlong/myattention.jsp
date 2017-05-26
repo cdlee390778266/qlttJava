@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="<c:url value='/extension/css/style.css' />" />
 <script type="text/javascript" src="<c:url value='/extension/js/zepto.min.js' />"></script>
 <script type="text/javascript" src="<c:url value='/extension/js/zepto.touch.js' />"></script>
+<script type="text/javascript" src="<c:url value='/extension/js/messager.js' />"></script>
 <script type="text/javascript">
 	var contextPath = '${pageContext.request.contextPath}';
 </script>

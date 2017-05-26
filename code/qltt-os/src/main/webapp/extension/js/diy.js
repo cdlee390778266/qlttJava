@@ -76,7 +76,7 @@ $(function() {
 				});
 			},
 			error : function(jqXHR, textStatus, errorThrown) {
-				//
+				$().alert("获取数据失败")
 			}
 		});
 	}
@@ -129,7 +129,7 @@ $(function() {
 				loadFlag = true;
 			},
 			error : function(xhr, type) {
-				alert('获取数据失败！');
+				$().alert('获取数据失败！');
 			}
 		});
 	}
@@ -226,14 +226,14 @@ $(function() {
 			success : function(data) {
 				if (data != null && data.status == 1) {
 					hideDialog($('#zdyzh'), function() {
-						alert('收藏成功，请到我的关注查看。');
+						$().alert('收藏成功，请返回组合指标查看');
 					});
 				} else {
-					alert(data.message);
+					$().alert(data.message);
 				}
 			},
 			error : function(jqXHR, textStatus, errorThrown) {
-				alert('收藏失败。');
+				$().alert('收藏失败');
 			}
 		});
 	})
@@ -285,12 +285,12 @@ $(function() {
 				contentType: 'application/json;charset=UTF-8',
 				success: function(data) {
 					if (data.status == 1)
-						alert("成功加入选股池！");
+						$().alert("成功加入选股池！");
 					else
-						alert(data.message);
+						$().alert(data.message);
 				},
 				error: function(jqXHR, textStatus, errorThrown) {
-					alert("加入选股池失败！");
+					$().alert("加入选股池失败");
 				}
 			});
 		});
