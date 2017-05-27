@@ -23,7 +23,7 @@
 	<div class="result result-fixed">
 		<input type="hidden" id="tacTic" hidden="tacTic" value="${tacTic}">
 		<div class="result-box">
-			<img src="<c:url value='/extension/images/result_bg.png' />" alt="" class="img-responsive" />
+			<img src="<c:url value='/extension/images/result_bg.gif' />" alt="" class="img-responsive" />
 			<div class="result-main">
 				<div class="result-tags">
 					<div class="result-tags-head">

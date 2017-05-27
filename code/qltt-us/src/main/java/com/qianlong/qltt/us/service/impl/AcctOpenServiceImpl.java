@@ -128,8 +128,8 @@ public class AcctOpenServiceImpl extends CommServiceImpl implements IAcctOpenSer
 	private String generateAcct() {
 		TUsAcctCnRegPKKey pkKey = new TUsAcctCnRegPKKey();
 		tUsAcctCnRegPKMapper.insert(pkKey);
-		int num = pkKey.getFiTtacct();
-		tUsAcctCnRegPKMapper.deleteByPrimaryKey(pkKey);
-		return String.valueOf(num);
+		//int num = pkKey.getFiTtacct();
+		//tUsAcctCnRegPKMapper.deleteByPrimaryKey(pkKey);不能删除，因为数据库重启后，auto_increment字段会归1
+		return String.valueOf(pkKey.getFiTtacct());
 	}
 }

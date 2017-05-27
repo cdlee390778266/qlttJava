@@ -6,14 +6,14 @@
 $(function() {
 	$('body').delegate('.search-item', 'tap', function(event) {
 		var $this = $(this);
-		var tacTic =  $this.find(".search-head").data("id");
+		var tactic =  $this.find(".search-head").data("id");
 		if(event.target.tagName == 'I'){
 			$().confirm('你确定删除此关注吗？',function(){
 				//取消关注
 				$.ajax({
 					url: 'unfollow.do',
 					data: {
-						"tacTic": tacTic,
+						"tacTic": tactic,
 						"tacPrm": 0
 					},
 					dataType: "json",
