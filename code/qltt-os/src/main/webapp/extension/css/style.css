@@ -1285,7 +1285,7 @@ a {
   z-index: 9999;
 }
 .dialog .dialog-box.dialog-box-bg {
-  background: url(../images/dialog_bg.png) center bottom no-repeat #fff;
+  background: url(../images/dialog_bg.gif) center bottom no-repeat #fff;
   background-size: 312px 98px;
 }
 .dialog .dialog-box .dialog-head {
