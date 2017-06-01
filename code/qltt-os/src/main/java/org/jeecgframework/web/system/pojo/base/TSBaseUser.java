@@ -23,10 +23,8 @@ public class TSBaseUser extends IdEntity implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
 	private String userName;// 用户名
 	private String realName;// 真实姓名
-	private String browser;// 用户使用浏览器类型
 	private String userKey;// 用户验证唯一标示
 	private String password;//用户密码
-	private Short activitiSync;//是否同步工作流引擎
 	private Short status;// 状态1：在线,2：离线,0：禁用
 	private byte[] signature;// 签名文件
 	private TSDepart TSDepart = new TSDepart();// 部门
@@ -37,15 +35,6 @@ public class TSBaseUser extends IdEntity implements java.io.Serializable {
 	}
 	public void setSignature(byte[] signature) {
 		this.signature = signature;
-	}
-
-	@Column(name = "browser", length = 20)
-	public String getBrowser() {
-		return browser;
-	}
-
-	public void setBrowser(String browser) {
-		this.browser = browser;
 	}
 
 	@Column(name = "userkey", length = 200)
@@ -65,14 +54,6 @@ public class TSBaseUser extends IdEntity implements java.io.Serializable {
 	public void setStatus(Short status) {
 		this.status = status;
 	}
-	public Short getActivitiSync() {
-		return activitiSync;
-	}
-	@Column(name = "activitisync")
-	public void setActivitiSync(Short activitiSync) {
-		this.activitiSync = activitiSync;
-	}
-	
 	
 	@Column(name = "password", length = 100)
 	public String getPassword() {

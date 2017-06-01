@@ -27,7 +27,7 @@ public class TSUser extends TSBaseUser implements java.io.Serializable {
 	private String type; //用户类型  1：普通用户，2：商家用户，3:系统管理员
 	
 
-	private WeixinAccountEntity account;//商铺ID 
+	//private WeixinAccountEntity account;//商铺ID 
 	
 	
 	
@@ -69,7 +69,7 @@ public class TSUser extends TSBaseUser implements java.io.Serializable {
 	}
 	
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+/*	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "accountid")
 	public WeixinAccountEntity getAccount() {
 		return account;
@@ -77,7 +77,7 @@ public class TSUser extends TSBaseUser implements java.io.Serializable {
 
 	public void setAccount(WeixinAccountEntity account) {
 		this.account = account;
-	}
+	}*/
 	
 	@Column(name = "type", length = 2)
 	public String getType() {

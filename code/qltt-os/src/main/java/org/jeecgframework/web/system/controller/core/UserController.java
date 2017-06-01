@@ -240,7 +240,6 @@ public class UserController {
 			org.jeecgframework.core.util.LogUtil.info(users.getUserName());
 			users.setPassword(PasswordUtil.encrypt(users.getUserName(), password, PasswordUtil.getStaticSalt()));
 			users.setStatus(Globals.User_Normal);
-			users.setActivitiSync(users.getActivitiSync());
 			systemService.updateEntitie(users);	
 			message = "用户: " + users.getUserName() + "密码重置成功";
 			systemService.addLog(message, Globals.Log_Type_UPDATE, Globals.Log_Leavel_INFO);
@@ -443,7 +442,6 @@ public class UserController {
 			users.setTSDepart(user.getTSDepart());
 			users.setRealName(user.getRealName());
 			users.setStatus(Globals.User_Normal);
-			users.setActivitiSync(user.getActivitiSync());
 			systemService.updateEntitie(users);
 			List<TSRoleUser> ru = systemService.findByProperty(TSRoleUser.class, "TSUser.id", user.getId());
 			systemService.deleteAllEntitie(ru);
