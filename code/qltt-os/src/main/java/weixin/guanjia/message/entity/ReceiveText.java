@@ -5,6 +5,7 @@ import java.sql.Timestamp;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.jeecgframework.core.common.entity.IdEntity;
 
@@ -34,11 +35,32 @@ public class ReceiveText extends IdEntity {
     private String rescontent;
     //用户昵称
     private String nickName;
+    
+    private byte[] nicknamebytes;
     //微信账号Id
     private String accountId;
     @Column(name="sex")
 	private Integer sex;
     
+    @Transient
+	public String getNickName() {
+		return nickName;
+	}
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
+		this.nicknamebytes = (nickName == null?null:nickName.getBytes());
+	}
+	
+	@Column(name ="NICKNAME",nullable=false)
+	public byte[] getNicknamebytes() {
+		return nicknamebytes;
+	}
+
+	public void setNicknamebytes(byte[] nicknamebytes) {
+		this.nicknamebytes = nicknamebytes;
+		this.nickName = (nicknamebytes == null?null:new String(nicknamebytes));
+	}
+	
     @Column(name="tousername")
 	public String getToUserName() {
 		return toUserName;
@@ -98,13 +120,7 @@ public class ReceiveText extends IdEntity {
 	public void setCreateTime(Timestamp createTime) {
 		this.createTime = createTime;
 	}
-	@Column(name="nickname")
-	public String getNickName() {
-		return nickName;
-	}
-	public void setNickName(String nickName) {
-		this.nickName = nickName;
-	}
+	
 	@Column(name="accountid")
 	public String getAccountId() {
 		return accountId;
