@@ -1,4 +1,7 @@
 package weixin.guanjia.message.controller;
+import java.io.File;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -17,9 +20,15 @@ import org.jeecgframework.core.common.model.common.UploadFile;
 import org.jeecgframework.core.common.model.json.AjaxJson;
 import org.jeecgframework.core.common.model.json.DataGrid;
 import org.jeecgframework.core.constant.Globals;
+import org.jeecgframework.core.extend.swftools.SwfToolsUtil;
+import org.jeecgframework.core.util.DataUtils;
+import org.jeecgframework.core.util.FileUtils;
 import org.jeecgframework.core.util.MyBeanUtils;
 import org.jeecgframework.core.util.MyClassLoader;
+import org.jeecgframework.core.util.PinyinUtil;
+import org.jeecgframework.core.util.ReflectHelper;
 import org.jeecgframework.core.util.ResourceUtil;
+import org.jeecgframework.core.util.StreamUtils;
 import org.jeecgframework.core.util.StringUtil;
 import org.jeecgframework.core.util.oConvertUtils;
 import org.jeecgframework.tag.core.easyui.TagUtil;
@@ -29,9 +38,11 @@ import org.jeecgframework.web.system.pojo.base.TSTypegroup;
 import org.jeecgframework.web.system.service.SystemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -275,6 +286,7 @@ public class WeixinArticleController extends BaseController {
     public  AjaxJson upload(MultipartHttpServletRequest request, HttpServletResponse response) {
     	AjaxJson j = new AjaxJson();
 		Map<String, Object> attributes = new HashMap<String, Object>();
+		/*
 		TSTypegroup tsTypegroup=systemService.getTypeGroup("fieltype","文档分类");
 		TSType tsType = systemService.getType("files","附件", tsTypegroup);
 		String fileKey = oConvertUtils.getString(request.getParameter("fileKey"));// 文件ID
@@ -293,12 +305,77 @@ public class WeixinArticleController extends BaseController {
 		uploadFile.setCusPath("files");
 		uploadFile.setSwfpath("swfpath");
 		document = systemService.uploadFile(uploadFile);
+	
+		
 		attributes.put("url", document.getRealpath());
 		attributes.put("fileKey", document.getId());
 		attributes.put("name", document.getAttachmenttitle());
 		attributes.put("viewhref", "commonController.do?openViewFile&fileid=" + document.getId());
 		attributes.put("delurl", "commonController.do?delObjFile&fileKey=" + document.getId());
+		
 		j.setMsg("文件添加成功");
+		j.setAttributes(attributes);
+		
+		*/
+		
+		try {
+			String originalFileName = "";
+			request.setCharacterEncoding("UTF-8");
+			
+			String uploadbasepath = ResourceUtil.getConfigByName("uploadpath");// 文件上传根目录
+			if (uploadbasepath == null) {
+				uploadbasepath = "upload";
+			}
+			Map<String, MultipartFile> fileMap = request.getFileMap();
+			// 文件数据库保存路径
+			String path = uploadbasepath + "/files/";// 文件保存在硬盘的相对路径
+			String appContextPath = request.getSession().getServletContext().getRealPath("/") + "/" + path;// 文件的硬盘真实路径
+
+			File file = new File(appContextPath);
+			if (!file.exists()) {
+				file.mkdirs();// 创建根目录
+			}
+
+			appContextPath += DataUtils.getDataString(DataUtils.yyyyMMdd) + "/";
+			path += DataUtils.getDataString(DataUtils.yyyyMMdd) + "/";
+			file = new File(appContextPath);
+			if (!file.exists()) {
+				file.mkdir();// 创建文件时间子目录
+			}
+
+			for (Map.Entry<String, MultipartFile> entity : fileMap.entrySet()) {
+				MultipartFile mf = entity.getValue();// 获取上传文件对象
+				originalFileName = mf.getOriginalFilename();// 获取文件名			
+				String extFileName = FileUtils.getExtend(originalFileName);// 获取文件扩展名
+				String myRandomFileName="";
+				String mySaveFileName="";
+				   
+				myRandomFileName=DataUtils.getDataString(DataUtils.yyyymmddhhmmss)+StringUtil.random(8);//自定义文件名称
+				mySaveFileName=myRandomFileName+"."+extFileName;//自定义文件名称
+
+				String myFullFileName = appContextPath + mySaveFileName;// 文件保存全路径
+				path+=mySaveFileName;
+				File savefile = new File(myFullFileName);
+				// 文件拷贝到指定硬盘目录
+
+				FileCopyUtils.copy(mf.getBytes(), savefile);
+				
+				break;
+		
+			}
+			attributes.put("url", path);
+			attributes.put("fileKey", "");
+			attributes.put("name", originalFileName);
+			attributes.put("viewhref", path);
+			attributes.put("delurl", path);
+			
+			j.setMsg("文件添加成功");
+		} catch (UnsupportedEncodingException e1) {
+			j.setMsg(e1.getMessage());
+		} catch (IOException e) {
+			j.setMsg(e.getMessage());
+		}
+		
 		j.setAttributes(attributes);
 
 		return j;
