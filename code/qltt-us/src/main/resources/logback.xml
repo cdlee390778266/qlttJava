@@ -2,7 +2,7 @@
 <!-- 使用说明: debug="true" 启动时输出配置加载信息 scan="true" 默认每分钟自动扫描 scanPeriod="30 seconds" 设置每30秒自动扫描, 若没有指定具体单位则以milliseconds为标准(单位:milliseconds, seconds, minutes or hours) -->
 <configuration scan="true" scanPeriod="20 seconds">
   <contextName>qltt_us</contextName>
-  <property name="LOGHOME" value="/home/sunc/logs/" />
+  <property name="LOGHOME" value="/home/tomcat/logs/" />
   <property name="PROJECT" value="qltt-us" />
 
   <!--appender 模块 -->
