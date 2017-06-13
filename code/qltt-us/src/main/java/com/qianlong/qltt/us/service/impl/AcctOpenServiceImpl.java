@@ -110,7 +110,9 @@ public class AcctOpenServiceImpl extends CommServiceImpl implements IAcctOpenSer
 		//设定推送频率和推送范围
 		TUsGSetPushScope tUsGSetPushScope = new TUsGSetPushScope();
 		tUsGSetPushScope.setFsTtacct(acctno);
-		tUsGSetPushScope.setFiPushscope(0);
+		//自选股
+		tUsGSetPushScope.setFiPushscope(1);
+		//所有选股池
 		tUsGSetPushScope.setFiScopeprm(0);
 		tUsGSetPushScopeMapper.insert(tUsGSetPushScope);
 		
