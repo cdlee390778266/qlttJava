@@ -884,7 +884,7 @@
 			<properties>
 				<hibernate.dialect>org.hibernate.dialect.MySQLDialect</hibernate.dialect>
 				<validationQuery.sqlserver>SELECT 1</validationQuery.sqlserver>
-				<jdbc.url><![CDATA[ jdbc:mysql://192.168.16.22:9100/ttwechat?useUnicode=true&amp;characterEncoding=UTF-8 ]]></jdbc.url>
+				<jdbc.url><![CDATA[ jdbc:mysql://192.168.1.22:9100/ttwechat?useUnicode=true&amp;characterEncoding=UTF-8 ]]></jdbc.url>
 				<jdbc.username>qltt</jdbc.username>
 				<jdbc.password>12345678</jdbc.password>
 				<jdbc.dbType>mysql</jdbc.dbType>
@@ -932,7 +932,7 @@
 			<properties>
 				<zmq.allow.push>OFF</zmq.allow.push>
 				<zmq.valid.crc>false</zmq.valid.crc>
-				<zmq.ip>192.168.16.22</zmq.ip>
+				<zmq.ip>192.168.1.22</zmq.ip>
 				<zmq.push.port>7701</zmq.push.port>
 				<zmq.req.port>7703</zmq.req.port>
 				<zmq.push.wechataccountid>gh_44648d03377b</zmq.push.wechataccountid>
@@ -945,7 +945,7 @@
 			<properties>
 				<zmq.allow.push>ON</zmq.allow.push>
 				<zmq.valid.crc>false</zmq.valid.crc>
-				<zmq.ip>192.168.16.22</zmq.ip>
+				<zmq.ip>192.168.1.22</zmq.ip>
 				<zmq.push.port>7701</zmq.push.port>
 				<zmq.req.port>7703</zmq.req.port>
 				<zmq.push.wechataccountid>gh_014b62e05567</zmq.push.wechataccountid>	
@@ -958,7 +958,7 @@
 			<properties>
 				<zmq.allow.push>ON</zmq.allow.push>
 				<zmq.valid.crc>false</zmq.valid.crc>
-				<zmq.ip>192.168.16.22</zmq.ip>
+				<zmq.ip>192.168.1.22</zmq.ip>
 				<zmq.push.port>9141</zmq.push.port>
 				<zmq.req.port>9143</zmq.req.port>
 				<zmq.push.wechataccountid>gh_aced603f391c</zmq.push.wechataccountid>
@@ -997,7 +997,7 @@
 		<profile>
 			<id>user-test</id>
 			<properties>
-				<user.serv.host>192.168.16.22</user.serv.host>
+				<user.serv.host>192.168.1.22</user.serv.host>
 				<user.serv.port>9120</user.serv.port>
 				<user.serv.context>/qltt-us/</user.serv.context>
 				<user.serv.appid>app1495505521500</user.serv.appid>

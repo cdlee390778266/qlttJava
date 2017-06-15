@@ -2,6 +2,7 @@ package com.qianlong.webapp.service.impl;
 
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,12 +11,14 @@ import org.springframework.util.CollectionUtils;
 import com.qianlong.webapp.domain.FilterBody;
 import com.qianlong.webapp.domain.SourceIndex;
 import com.qianlong.webapp.domain.SrcIndexReqBody;
+import com.qianlong.webapp.domain.TacPoolReqBody;
 import com.qianlong.webapp.exception.BusinessException;
 import com.qianlong.webapp.service.ICombinedIndexService;
 import com.qlcd.qltt.body.BppBiz;
 import com.qlcd.qltt.body.pvt.T02002001;
 import com.qlcd.qltt.body.pvt.T02002002;
 import com.qlcd.qltt.body.pvt.T02002003;
+import com.qlcd.qltt.body.pvt.T02005001;
 import com.qlcd.qltt.body.pvt.T02005002;
 import com.qlcd.util.ZMQProxyClient;
 
@@ -63,6 +66,23 @@ public class CombinedIndexServiceImpl implements ICombinedIndexService {
 		T02002003._rsp rsp = zmqProxyClient.outBound("2002003", builder.build());
 		return rsp;
 	}
+	
+	@Override
+	public T02005001._rsp queryCombPool(TacPoolReqBody body) {
+		logger.debug("指标组合查询[分页]");
+		T02005001._req.Builder builder = T02005001._req.newBuilder();
+		BppBiz._page_req.Builder pageBuilder = BppBiz._page_req.newBuilder();
+		pageBuilder.setReqstart(body.getStart());
+		pageBuilder.setReqnum(body.getSize());
+		
+		if (StringUtils.isEmpty(body.getTacTic()))
+			throw new BusinessException("请指定指标查询！");
+		builder.setTactic(body.getTacTic());
+		builder.setPgreq(pageBuilder);
+		T02005001._rsp rsp = zmqProxyClient.outBound("2005001", builder.build());
+		return rsp;
+	}
+
 
 	@Override
 	public T02005002._rsp filtration(FilterBody filter) {
@@ -81,6 +101,5 @@ public class CombinedIndexServiceImpl implements ICombinedIndexService {
 		T02005002._rsp rsp = zmqProxyClient.outBound("2005002", builder.build());
 		return rsp;
 	}
-
 
 }

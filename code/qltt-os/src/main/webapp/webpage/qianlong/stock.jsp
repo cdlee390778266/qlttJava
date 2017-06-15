@@ -15,6 +15,9 @@
 <script type="text/javascript" src="<c:url value='/extension/js/swiper.min.js' />"></script>
 <script type="text/javascript" src="<c:url value='/extension/js/zepto.touch.js' />"></script>
 <script type="text/javascript" src="<c:url value='/extension/js/messager.js' />"></script>
+<script type="text/javascript">
+	var isCombRequest = ${isCombRequest};//是否组合指标
+</script>
 <script type="text/javascript" src="<c:url value='/extension/js/stock.js' />"></script>
 <title>${tacName}</title>
 </head>

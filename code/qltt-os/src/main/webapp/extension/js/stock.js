@@ -5,6 +5,9 @@
  */
 $(document).ready(function() {
 	var url = 'pool.do';
+	if(isCombRequest){
+		url ="combpool.do";
+	}
 	var refreshFlag = true;
 
 	$(window).resize(function(event) {
@@ -36,8 +39,8 @@ $(document).ready(function() {
 							+ '<span class="item-col-name">' + stocks[i].detail.stockname + '</span>'
 							+ '<span class="blue item-col-code">' + stocks[i].detail.stockcode + '</span>'
 							+ '</div>'
-							+ '<div class="item-col-2">' + stocks[i].detail.efftime + '</div>'
-							+ '<div class="item-col-3">' + stocks[i].detail.remarks + '</div>'
+							+ '<div class="item-col-2">' + (stocks[i].detail.efftime ? stocks[i].detail.efftime : "") + '</div>'
+							+ '<div class="item-col-3">' + (stocks[i].detail.remarks ? stocks[i].detail.remarks : "")+ '</div>'
 							+ '<div class="item-col-4">'
 							+ '<a href="javascript:void(0);" class="recommend"></a>'
 							+ '<a href="javascript:void(0);" class="choose  '+isInPool+'"></a>'

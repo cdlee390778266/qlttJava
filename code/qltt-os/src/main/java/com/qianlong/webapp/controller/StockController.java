@@ -31,6 +31,8 @@ import com.qianlong.webapp.utils.Constants;
 import com.qlcd.qltt.body.pvt.T02002003;
 import com.qlcd.qltt.body.pvt.T02003001;
 import com.qlcd.qltt.body.pvt.T02003001._dprealtime;
+import com.qlcd.qltt.body.pvt.T02005001;
+import com.qlcd.qltt.body.pvt.T02005001._dpcomb;
 
 /**
  * 股票查询
@@ -72,6 +74,7 @@ public class StockController {
 			T02002003._rsp rsp = combinedIndexService.querycCombTacticMebs(tacTic);
 			model.put("members", rsp.getCbelistList());
 		}
+		model.put("isCombRequest", isCombRequest != null && isCombRequest);//是否为
 		model.put("tacTic", tacTic);
 		model.put("tacName", tacName);
 		model.put("isFollow", isFollow);
@@ -100,6 +103,41 @@ public class StockController {
 					poolindexs = userStockService.queryStockPoolIndexs(stockcode, user.getTtacct());
 					dprealtimeMap.put("detail",
 							JSONObject.parse(JsonFormat.printer().includingDefaultValueFields().print(dprealtime)));
+					dprealtimeMap.put("isSelected", !CollectionUtils.isEmpty(poolindexs.getExistpools()));
+					dprtlist.add(dprealtimeMap);
+				}
+			}
+		} catch (InvalidProtocolBufferException e) {
+			logger.error(e.getMessage(), e);
+		}
+		return map;
+	}
+	
+	/**
+	 * 组合指标池查询
+	 */
+	@RequestMapping("combpool")
+	@ResponseBody
+	public Object combPool(HttpServletRequest request, TacPoolReqBody body) {
+		logger.debug("组合指标数据池查询[分页]");
+		AuthResultEntity user = (AuthResultEntity) request.getSession().getAttribute(Constants.LOGIN_USER_ACCOUNT);
+		T02005001._rsp rsp = combinedIndexService.queryCombPool(body);
+		Map<String, Object> map = new HashMap<String, Object>();
+		try {
+			map.put("pgrsp",
+					JSONObject.parse(JsonFormat.printer().includingDefaultValueFields().print(rsp.getPgrsp())));
+			List<Object> dprtlist = new ArrayList<Object>();
+			map.put("dprtlist", dprtlist);
+			List<_dpcomb> _dpcombs = rsp.getDpcblistList();
+			if (!CollectionUtils.isEmpty(_dpcombs)) {
+				QueryStockPoolIndexsRspEntity poolindexs = null;
+				Map<String, Object> dprealtimeMap = null;
+				for (_dpcomb dpcomb : _dpcombs) {
+					dprealtimeMap = new HashMap<String, Object>();
+					String stockcode = dpcomb.getStockcode();
+					poolindexs = userStockService.queryStockPoolIndexs(stockcode, user.getTtacct());
+					dprealtimeMap.put("detail",
+							JSONObject.parse(JsonFormat.printer().includingDefaultValueFields().print(dpcomb)));
 					dprealtimeMap.put("isSelected", !CollectionUtils.isEmpty(poolindexs.getExistpools()));
 					dprtlist.add(dprealtimeMap);
 				}

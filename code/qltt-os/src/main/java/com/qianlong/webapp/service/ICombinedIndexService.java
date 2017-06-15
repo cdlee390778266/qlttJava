@@ -5,8 +5,10 @@ import java.util.List;
 import com.qianlong.webapp.domain.FilterBody;
 import com.qianlong.webapp.domain.SourceIndex;
 import com.qianlong.webapp.domain.SrcIndexReqBody;
+import com.qianlong.webapp.domain.TacPoolReqBody;
 import com.qlcd.qltt.body.pvt.T02002002;
 import com.qlcd.qltt.body.pvt.T02002003;
+import com.qlcd.qltt.body.pvt.T02005001;
 import com.qlcd.qltt.body.pvt.T02005002;
 
 /**
@@ -40,6 +42,15 @@ public interface ICombinedIndexService {
 	 * @return 组合指标成员
 	 */
 	public T02002003._rsp querycCombTacticMebs(String tacTic);
+	
+	/**
+	 * <p>接口编号：IFC_TacDataPoolComb001
+	 * <p>交易码：2005001
+	 * <p>接口名称：组合指标数据池查询[分页]
+	 * 
+	 * @return 股票列表
+	 */
+	public T02005001._rsp queryCombPool(TacPoolReqBody body);
 	
 	/**
 	 * <p>接口编号：IFC_TacDataPoolComb002
