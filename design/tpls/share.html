@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html >
+<html lang="zh-CN" ng-app="qlttApp">
+    <head>
+        <meta charset="utf-8">
+        <meta name="referrer" content="always">
+        <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+        <meta http-equiv="x-dns-prefetch-control" content="on">
+
+        <link rel="stylesheet" href="../css/animate.min.css" />
+        <link href="../css/style.css" rel="stylesheet">
+
+        <title>专家分享</title>
+    </head>
+    <body>
+        
+        <!-- 搜索 -->
+        <div class="history-header share-search">
+            <form action="" id="share-search">
+                <input type="text" placeholder="输入关键词搜索" id="share-text" />
+            </form>
+        </div>
+
+        <!-- 头部 -->
+        <div class="share-header">
+            <div class="share-header-title"><span>最新分享</span><i></i></div>
+            <ul class="share-header-tip">
+                <li class="active" sort="1">最新分享</li>
+                <li sort="2">最热分享 </li>
+                <li sort="3">我的收藏</li>
+            </ul>
+        </div>
+        
+        <!-- 页面主体 -->
+        <div class="share-body share-body-wrapper index-rmd">
+            <div class="history-wrapper" id="share"></div>
+            <!-- 没有数据 -->
+            <div class="pool-empty" style="display:none;" id="empty">
+                <img src="../images/pool.png" /><br />没有查询到任何数据！
+            </div>
+            <!-- 加载中 -->
+            <div class="qltt-toast share-loading" >
+                <i class="qltt-loading qltt-icon_toast"></i>
+            </div>
+        </div>
+        
+        <!-- 页脚菜单 -->
+        <div class="footer">
+            <a href="search.html" class="active">
+                <i class="icon icon-searchd "></i><br>
+                <span >指标查询</span>
+            </a>
+            <a href="care.html">
+                <i class="icon icon-care"></i><br>
+                <span  >我的关注</span>
+            </a>
+            <a href="pool.html">
+                <i class="icon icon-pool"></i><br>
+                <span  >选股池</span>
+            </a>
+            <a href="history.html">
+                <i class="icon icon-rmd"></i><br>
+                <span  >荐股池</span>
+            </a>
+            <a href="history.html">
+                <i class="icon icon-set"></i><br>
+                <span  >设置</span>
+            </a>
+        </div>
+
+        <script src="../js/zepto.min.js"></script>
+        <script src="../js/zepto.touch.js"></script>
+        <script src="../js/dialog.js"></script>
+        <script src="../js/share.js"></script>
+
+    </body>
+</html>

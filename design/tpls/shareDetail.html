@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html >
+<html lang="zh-CN" ng-app="qlttApp">
+    <head>
+        <meta charset="utf-8">
+        <meta name="referrer" content="always">
+        <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+        <meta http-equiv="x-dns-prefetch-control" content="on">
+
+        <link rel="stylesheet" href="../css/animate.min.css" />
+        <link href="../css/style.css" rel="stylesheet">
+
+        <title>专家分享</title>
+    </head>
+    <body>
+        
+        <!-- 页面主体 -->
+        <div class="share-body-wrapper">
+            <div class="history-wrapper">
+                <div class="history-item">
+                <div class="hisItem-head">
+                    <div class="hisItem-headL"><img src="../images/face.png" alt=""></div>
+                    <div class="hisItem-headM"><span>May</span>2分钟前</div>
+                </div>
+                <div class="hisItem-body">
+                    <div class="index-rmd-item"><span>分享股票：</span>上海电影 323870</div>
+                    <div class="index-rmd-item"><span>预判方向：</span>上涨</div>
+                    <div class="index-rmd-item"><span>有效天数：</span>3天</div>
+                    <div class="index-rmd-item">
+                    <span>分享理由：</span>据我们调研部信息，该营业部与6月1日花2.3亿买进一只个股这两天目前没有上涨。现在该股股价在27块钱左右，现在处于短线缩量回踩30天均线 现在正是建仓布局的最佳时间 。预计短线收益12-15% 。据我们调研部信息 ，该营业部与6月1日
+                    </div>
+                </div>
+                <div class="share-apt"><span>预判中...</span></div>
+                <div class="hisItem-foot">
+                    <div class="hisItem-footL"><i class="animated"></i><span>666</span></div>
+                    <div class="hisItem-footR"><i class="animated"></i><span>999</span></div></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 页脚菜单 -->
+        <div class="footer">
+            <a href="search.html" class="active">
+                <i class="icon icon-searchd "></i><br>
+                <span >指标查询</span>
+            </a>
+            <a href="care.html">
+                <i class="icon icon-care"></i><br>
+                <span  >我的关注</span>
+            </a>
+            <a href="pool.html">
+                <i class="icon icon-pool"></i><br>
+                <span  >选股池</span>
+            </a>
+            <a href="history.html">
+                <i class="icon icon-rmd"></i><br>
+                <span  >荐股池</span>
+            </a>
+            <a href="history.html">
+                <i class="icon icon-set"></i><br>
+                <span  >设置</span>
+            </a>
+        </div>
+
+        <script src="../js/zepto.min.js"></script>
+        <script src="../js/zepto.touch.js"></script>
+        <script>
+        $(function() {
+            //点赞
+            $('body').delegate('.hisItem-foot>div', 'tap', function(event) {
+                $(this).parent().find('div').each(function(index, val) {
+                    if($(this).find('i').hasClass('active')){
+                        $(this).find('span').text(parseInt($(this).find('span').text())-1).removeClass('active');
+                        $(this).find('i').removeClass('active');
+                    }
+                });
+                if($(this).find('i').hasClass('active')){
+                    $(this).find('i').removeClass('active');
+                    $(this).find('span').text(parseInt($(this).find('span').text())-1).removeClass('active');
+                }else{
+                    $(this).find('i').addClass('active');
+                    $(this).find('span').text(parseInt($(this).find('span').text())+1).addClass('active');
+                }
+                $(this).find('i').toggleClass('bounceIn');
+                
+            });
+        })
+
+
+        </script>
+    </body>
+</html>

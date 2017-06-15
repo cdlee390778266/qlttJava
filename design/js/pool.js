@@ -1,7 +1,7 @@
 /* 
 * @Author: lee
 * @Date:   2017-04-07 14:31:52
-* @Last Modified time: 2017-04-21 14:05:30
+* @Last Modified time: 2017-06-15 16:13:44
 */
 
 $(document).ready(function(){
@@ -328,5 +328,102 @@ $(document).ready(function(){
         }
     });
 
+    //弹窗添加股票
+    
+    //弹窗显示
+    $('.pFooter-btn span').tap(function(event) {
+        $('.dialog-add').removeClass('fadeOut').css('display','block').addClass('fadeIn');
+    })
+
+    //弹窗关闭
+    $('.dialog-add-mask, .dialog-add-foot').tap(function(event) {
+        $('.dialog-add').removeClass('fadeIn').addClass('fadeOut');
+        setTimeout(function(){
+            $('.dialog-add').css('display','none');
+        }, 300);
+        event.stopPropagation();
+        event.preventDefault();
+    })
+
+    //搜索框检索股票
+    var sharesSVal = '';  //输入框上一次值
+
+    $('#shares input').keyup(function(event) {
+        //只能输入字母与数字
+        $(this).val($(this).val().replace(/[^\w\.\/]/ig,''));
+    });
+
+    $('#shares').submit(function(event) {
+
+        var $input = $(this).find('input');
+
+        //输入字符长度大于2并且数据有变化才获取数据
+        if($input.val().length >=2 && $input.val() != sharesSVal) {
+            sharesSVal = $input.val();
+
+            $('.qltt-toast').css({
+                'display' : 'block',
+                'opacity' : 1
+            });
+            
+            $.ajax({
+                url: '../data/shares.json',
+                type: 'post',
+                data: {
+                    key: $input.val()
+                },
+                success : function(data) {
+                    var html = '';
+                    var handle = '';
+                    // 模拟数据
+                    if(data.length){
+                        for( var i in data) {
+                            handle = '<span class="' + data[i].handle[0] + '">' + data[i].handle[1] + '</span>';
+
+                            html += '<div class="dialog-ab-tr">'
+                                 +      '<div class="dialog-ab-td">' + data[i].nums +'</div>'
+                                 +      '<div class="dialog-ab-td">' + data[i].name +'</div>'
+                                 +      '<div class="dialog-ab-td">' + data[i].type +'</div>'
+                                 +      '<div class="dialog-ab-td">' + handle +'</div>'
+                                 +  '</div>'
+
+                            $('#empty').hide();
+                            $('#add-body').html(html).show();
+                        }
+                    }else {
+                        $('#add-body').html('').hide();
+                        $('#empty').show();
+                    } 
+
+                    $('.qltt-toast').css({
+                        'display' : 'none',
+                        'opacity' : 0
+                    });
+                    
+                },
+                error: function() {
+                    $('.qltt-toast').css({
+                        'display' : 'none',
+                        'opacity' : 0
+                    });
+                    showMessage('查询失败！',2000);
+                }
+            })
+        }
+
+        $input.get(0).blur();
+        return false;
+    });
+
+    //添加与删除股票
+    $('body').delegate('.dialog-ab-tr .dialog-ab-td:last-child', 'tap', function(event) {
+        if($(this).find('span').hasClass('active')) {
+            showMessage('取消加入选股池！',1000);
+            $(this).find('span').removeClass('active').text('+');
+        }else {
+            showMessage('成功加入选股池！',1000);
+            $(this).find('span').addClass('active').text('-');
+        }
+    });
     
 });

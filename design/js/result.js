@@ -1,7 +1,7 @@
 /* 
 * @Author: lee
 * @Date:   2017-04-11 16:23:54
-* @Last Modified time: 2017-05-24 18:39:30
+* @Last Modified time: 2017-05-26 09:30:13
 */
 
 $(document).ready(function(){
@@ -17,6 +17,7 @@ $(document).ready(function(){
     
     var refreshHeight = function (){
         $('.result-tags-head span').css('top',($('.result-tags-head').height()-$('.result-tags-head span').height())/2);
+        $('.srceen-absolute').css('top',$('.result-fixed').height()); 
     }
 
     $(window).resize(function(event) {
