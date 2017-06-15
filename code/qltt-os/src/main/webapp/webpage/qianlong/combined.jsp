@@ -80,7 +80,7 @@
 			<div class="srceen-txt">
 				<span>根据您的指标组合共计筛选出</span><span class="red stock-num">0</span><span>支股票</span>
 			</div>
-			<div class="screen-main" data-start="1" data-size="3">
+			<div class="screen-main" data-start="1" data-size="20">
 			</div>
 			<div class="load-more">
 				<i></i><span>点击加载更多</span>
