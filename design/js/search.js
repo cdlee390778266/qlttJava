@@ -1,7 +1,7 @@
 /* 
 * @Author: lee
 * @Date:   2017-04-07 17:02:56
-* @Last Modified time: 2017-05-15 16:55:52
+* @Last Modified time: 2017-05-26 13:23:43
 */
 
 
@@ -73,6 +73,7 @@ $(document).ready(function(){
         searchSwiper = new Swiper('.swiper-container',{
             spaceBetween: 30,
             observer:true,
+            autoHeight: true, //高度随内容变化
             onInit: function(swiper){ 
                 swiperAnimateCache(swiper); //隐藏动画元素 
                 swiperAnimate(swiper); //初始化完成开始动画
@@ -91,12 +92,12 @@ $(document).ready(function(){
                 }
 
                 headIScroll.scrollToElement($('#header li').get(searchSwiper.activeIndex),30);
-
             },
             onSlideChangeEnd: function(swiper){
                 $('#header li').removeClass('active');
                 $('#header li').eq(searchSwiper.activeIndex).addClass('active');
                 swiperAnimate(swiper); //每个slide切换结束时也运行当前slide动画
+                searchSwiper.update();
             }
         });
 

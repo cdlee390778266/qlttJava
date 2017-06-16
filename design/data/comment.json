@@ -1,0 +1,23 @@
+[
+    {
+        "face" : "../images/face1.png",
+        "name" : "亚瑟",
+        "content" : "拯救地球",
+        "time" : "60分钟前",
+        "fabulous" : "88"
+    },
+    {
+        "face" : "../images/face1.png",
+        "name" : "亚瑟",
+        "content" : "拯救地球",
+        "time" : "60分钟前",
+        "fabulous" : "88"
+    },
+    {
+        "face" : "../images/face1.png",
+        "name" : "亚瑟",
+        "content" : "拯救地球",
+        "time" : "60分钟前",
+        "fabulous" : "88"
+    }
+]
