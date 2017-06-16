@@ -19,6 +19,7 @@ import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.entity.ContentType;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -90,11 +91,19 @@ public class HttpServiceImpl implements IHttpService {
 		requestBase.setURI(uri);
 		CloseableHttpResponse response = client.execute(requestBase);
 		HttpEntity entity = response.getEntity();
+		String rspcontent = EntityUtils.toString(entity).trim();
+		
+		/*
 		ByteArrayOutputStream bi = new ByteArrayOutputStream();
 		entity.writeTo(bi);
 		
 		JSONObject result = JSON.parseObject(bi.toString());
 		bi.close();
+		*/
+		
+		logger.debug(rspcontent);
+		
+		JSONObject result = JSON.parseObject(rspcontent);
 		
 		HttpContent<T, E> httpContent = new HttpContent<>();
 		if (result.containsKey(Constants.USER_SERV_IDENTIFICATION_CODE) || result.containsKey(Constants.WECHAT_IDENTIFICATION_CODE)) {
