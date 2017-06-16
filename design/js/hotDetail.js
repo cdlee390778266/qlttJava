@@ -37,7 +37,7 @@ $(document).ready(function(){
                              +      '<div class="item-col-1"><span>'+ data[i].name + '</span><span class="blue">' + data[i].nums + '</span></div>'
                              +      '<div class="item-col-2">' + data[i].date + '</div>'
                              +      '<div class="item-col-3">' + data[i].type + '</div>'
-                             +      '<div class="item-col-4"><a href="javascript:void(0);" class="choose"></a></div>'
+                            /* +      '<div class="item-col-4"><a href="javascript:void(0);" class="choose"></a></div>'*/
                              +  '</div>'
 
                         $('.screen-main').html(html);
@@ -97,7 +97,7 @@ $(document).ready(function(){
         if(commentFlag && $(document).height() <= $(window).scrollTop() + $(window).height() + 10) {
             commentFlag = false;
             $('.load-more i').addClass('active');
-            $('.load-more span').text('加载中...');
+            $('.load-more span').text('正在加载中...');
 
             $.ajax({
                 url: '../data/comment.json',
@@ -124,7 +124,7 @@ $(document).ready(function(){
                         $('.hot-cmt-body').append(html);
 
                         $('.load-more i').removeClass('active');
-                        $('.load-more span').text('点击加载更多');
+                        $('.load-more span').text('下拉加载更多');
 
                         commentFlag = true;
 
@@ -136,7 +136,7 @@ $(document).ready(function(){
                 error: function() {
                     $().alert('获取数据失败！');
                     $('.load-more i').removeClass('active');
-                    $('.load-more span').text('点击加载更多');
+                    $('.load-more span').text('下拉加载更多');
 
                     commentFlag = true;
                 }

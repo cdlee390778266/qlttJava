@@ -220,14 +220,15 @@ a {
   height: 4.4rem;
   line-height: 4.4rem;
   z-index: 99;
-  background: rgba(245, 245, 245, 0.9);
+  background: rgba(245, 245, 245, 0.95);
   text-align: center;
 }
 .pool-add-menu .pam-icon i {
   display: inline-block;
   font-style: normal;
-  font-size: 20px;
+  font-size: 30px;
   float: right;
+  color: #7e7e7e;
   margin-right: 15px;
   transition: all .4s;
 }
@@ -2438,7 +2439,6 @@ a {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  background-color: #fafafa;
 }
 .index-hot .index-hot-foot span {
   -webkit-box-flex: 1;
@@ -2447,6 +2447,13 @@ a {
   flex: 1;
   text-align: center;
   color: #d4423f;
+  margin-right: 1rem;
+  background-color: #fafafa;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+}
+.index-hot .index-hot-foot span:active {
+  background-color: #ddd;
 }
 
 .index-rmd {
@@ -2504,11 +2511,11 @@ a {
   display: inline-block;
   width: 70px;
   height: 28px;
-  line-height: 24px;
+  line-height: 28px;
   text-align: center;
   background-color: #d04642;
   color: #fff;
-  border-radius: 4px;
+  border-radius: 2px;
 }
 .index-rmd .history-wrapper {
   padding: 0;
@@ -2556,8 +2563,8 @@ a {
 }
 .hot .hot-item a strong {
   display: block;
-  font-size: 1.3rem;
-  color: #000;
+  font-size: 1.5rem;
+  color: #333;
 }
 .hot .hot-item a span {
   color: #737373;
@@ -2567,11 +2574,15 @@ a {
   height: 2.8rem;
   line-height: 2.8rem;
   padding: 0 5px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
   color: #dc3c38;
-  margin-right: 5px;
   margin-top: 10px;
+  margin-right: 1rem;
+  background-color: #fafafa;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+}
+.hot .hot-item .hot-tags span:active {
+  background-color: #ddd;
 }
 
 /******   热门主题-详情  ******/
@@ -2586,12 +2597,14 @@ a {
   margin-bottom: 5px;
 }
 .hot-detail .hot-detail-head .hd-title {
-  display: block;
-  font-size: 1.3rem;
-  color: #000;
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+.hot-detail .hot-detail-head span {
+  display: inline-block;
 }
 .hot-detail .hot-detail-head .hd-date {
-  display: block;
   color: #b3b3b3;
   font-size: 1.2rem;
   font-style: Arial;
@@ -2609,7 +2622,8 @@ a {
   line-height: 28px;
   padding: 0 5px;
   border: 1px solid #ddd;
-  border-radius: 4px;
+  background-color: #fcfcfc;
+  border-radius: 2px;
   margin-right: 5px;
   margin-bottom: 5px;
   padding-bottom: 4px;
@@ -2651,6 +2665,11 @@ a {
 .hot-detail .hd-tags-result .srceen {
   padding-bottom: 1rem;
 }
+.hot-detail .hd-tags-result .item-col-2, .hot-detail .hd-tags-result .item-col-3 {
+  font-size: 14px;
+  font-weight: bold;
+  color: #dc3c38;
+}
 .hot-detail .result-loading {
   position: absolute;
   top: 40px;
@@ -2658,10 +2677,12 @@ a {
 }
 .hot-detail .hot-cmt {
   color: #333;
-  margin-top: 20px;
 }
 .hot-detail .hot-cmt .hot-cmt-title {
+  font-size: 1.5rem;
   text-align: center;
+  padding-top: 1.5rem;
+  border-bottom: 1px solid #ddd;
 }
 .hot-detail .hot-cmt .hot-cmt-edit {
   text-align: right;
@@ -2701,7 +2722,7 @@ a {
 }
 .hot-detail .hot-cmt .hot-cmt-item .hot-cmt-face img {
   width: 40px;
-  border-radius: 4px;
+  border-radius: 100%;
   margin-top: 5px;
 }
 .hot-detail .hot-cmt .hot-cmt-item .hot-cmt-mes {
@@ -2991,9 +3012,9 @@ a {
 
 .hl-header {
   background-color: #dc3c38;
-  color: #fff;
+  color: #fcfcfc;
   padding: 20px 15px 15px 15px;
-  box-shadow: 0 0 0 15px #facfd2;
+  box-shadow: -2px -9px 22px 7px #ff5f69;
 }
 .hl-header .hl-header-top {
   display: -webkit-box;
@@ -3040,12 +3061,14 @@ a {
 }
 
 .hli {
-  padding: 0px 15px 7rem 15px;
   margin-top: 20px;
 }
 .hli .hli-item {
   padding-top: 20px;
   line-height: 2.2rem;
+  padding: 1rem;
+  margin: 0.8rem;
+  box-shadow: 1px 2px 17px 5px #f5f5f5;
 }
 .hli .hli-item:last-child {
   border: none;
@@ -3068,11 +3091,11 @@ a {
   display: block;
   width: 70px;
   height: 28px;
-  line-height: 24px;
+  line-height: 28px;
   text-align: center;
   background-color: #d04642;
-  color: #fff;
-  border-radius: 4px;
+  color: #fcfcfc;
+  border-radius: 2px;
   float: right;
 }
 .hli .hli-item-text p {
@@ -3097,7 +3120,7 @@ a {
 
 /******   弹窗添加股票  ******/
 .dialog-add {
-  display: block;
+  display: none;
   position: fixed;
   top: 0;
   right: 0;
@@ -3127,9 +3150,12 @@ a {
   width: 100%;
   padding: 15px 10px;
   background-color: #fff;
-  border: 1px solid #dc3c38;
+  border: 1px solid #ddd;
   border-radius: 4px;
   color: #333;
+}
+.dialog-add .dialog-add-main .dialog-add-head input:focus {
+  border: 1px solid #dc3c38;
 }
 .dialog-add .dialog-add-main .dialog-add-body {
   position: absolute;
@@ -3155,10 +3181,11 @@ a {
 }
 .dialog-add .dialog-add-main .dialog-ab-tr .dialog-ab-td:last-child span {
   display: inline-block;
-  width: 14px;
-  height: 14px;
+  width: 18px;
+  height: 18px;
   text-align: center;
-  line-height: 12px;
+  line-height: 18px;
+  text-indent: 2px;
   background-color: #dc3c38;
   color: #fff;
   border-radius: 100%;
@@ -3167,23 +3194,24 @@ a {
 .dialog-add .dialog-add-main .dialog-ab-tr .dialog-ab-td:last-child span.active {
   background-color: #fff;
   color: #f7b703;
+  line-height: 14px;
   border: 1px solid #f7b703;
 }
 .dialog-add .dialog-add-main .dialog-add-foot {
   position: absolute;
-  bottom: -40px;
+  bottom: -60px;
   left: 0;
   right: 0;
   text-align: center;
 }
 .dialog-add .dialog-add-main .dialog-add-foot span {
   display: inline-block;
-  width: 30px;
-  height: 30px;
-  line-height: 30px;
+  width: 40px;
+  height: 40px;
+  line-height: 32px;
   text-align: center;
   font-size: 20px;
-  border: 1px solid #fff;
+  border: 2px solid #fff;
   border-radius: 100%;
   color: #fff;
   transform: rotate(45deg);
