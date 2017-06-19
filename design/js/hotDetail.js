@@ -1,7 +1,7 @@
 /* 
 * @Author: lee
 * @Date:   2017-04-07 15:15:54
-* @Last Modified time: 2017-06-14 15:34:17
+* @Last Modified time: 2017-06-16 14:47:19
 */
 
 $(document).ready(function(){
@@ -71,24 +71,43 @@ $(document).ready(function(){
             $('.hd-tags-items i').hide();
         }
 
-        $('.hd-result-bar span').text($('.hd-tags-items span.active').text());
         $('.qltt-toast').css({
             'display' : 'block',
             'opacity' : 1
         });
-        getResult($('.hd-tags-items span.active').text());
+
+        var tags = '';
+        $('.hd-tags-items span').each(function(index, val) {
+             tags += $(this).text() + ' ';
+        });
+
+        $('.hd-result-bar span').text(tags);
+
+        getResult(tags);
     }
 
     //筛选股票
     $('.hd-tags-items').delegate('span', 'tap', function(event) {
-        $('.hd-tags-items span').removeClass('active');
-        $(this).addClass('active');
-        $('.hd-result-bar span').text($(this).text());
+        var tags = '';
+        if($(this).hasClass('active')) {
+            $(this).removeClass('active');
+            $('.hd-tags-items span').each(function(index, val) {
+                 tags += $(this).text() + ' ';
+            });
+        }else {
+            $('.hd-tags-items span').removeClass('active');
+            $(this).addClass('active');
+            tags = $(this).text();
+        }
+        
+        $('.hd-result-bar span').text(tags);
+
         $('.qltt-toast').css({
             'display' : 'block',
             'opacity' : 1
         });
-        getResult($(this).text());
+
+        getResult(tags);
     });
 
     //加载更多评论
