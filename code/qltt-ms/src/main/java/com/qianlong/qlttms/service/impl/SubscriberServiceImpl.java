@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,9 +11,9 @@ import org.springframework.stereotype.Service;
 
 import com.qianlong.qlttms.dao.ICommonDao;
 import com.qianlong.qlttms.domain.AuthResultEntity;
-import com.qianlong.qlttms.domain.MsDockConfig;
 import com.qianlong.qlttms.domain.OAuthCallbackEntity;
 import com.qianlong.qlttms.domain.TrenchInfoEnity;
+import com.qianlong.qlttms.domain.db.WeixinAccount;
 import com.qianlong.qlttms.exception.BusinessException;
 import com.qianlong.qlttms.exception.HttpRequestException;
 import com.qianlong.qlttms.exception.UserServBusinessException;
@@ -45,15 +44,18 @@ public class SubscriberServiceImpl implements ISubscriberService {
 		
 		//微信端访问
 		
-		MsDockConfig dockConfig =  commonDao.findUniqueByProperty(MsDockConfig.class,  "weixinAppid", state);
+		List<WeixinAccount> weixinAccounts =  commonDao.findByProperty(WeixinAccount.class,  "accountappid", state);
 		
-		if(dockConfig == null){
+		WeixinAccount currentWeixin = null;
+		if(weixinAccounts == null && weixinAccounts.size() == 0){
 			throw new BusinessException("参数错误，无法登陆");
+		}else{		
+			currentWeixin = weixinAccounts.get(0);
 		}
 		
 		OAuthCallbackEntity oauthCallbackEntity = null;
 		try {
-			oauthCallbackEntity = wechatCoreService.getOpenidByOAuth(dockConfig, code, state);
+			oauthCallbackEntity = wechatCoreService.getOpenidByOAuth(currentWeixin, code, state);
 		} catch (HttpRequestException e) {
 			logger.error(e.getMessage(), e);
 			throw new BusinessException("网络异常，无法登录！");
@@ -66,7 +68,7 @@ public class SubscriberServiceImpl implements ISubscriberService {
 			trenchInfo.setSvcchnl("1");
 			trenchInfo.setBindacct(oauthCallbackEntity.getOpenId());
 			try {
-				authResult = userServCoreService.tdPartAuthLogin(dockConfig.getWeixinAccountid(),trenchInfo);
+				authResult = userServCoreService.tdPartAuthLogin(currentWeixin.getWeixin_accountid().trim(),trenchInfo);
 			} catch (UserServBusinessException e) {
 				logger.error(e.getMessage(), e);
 				if ("20000002".equals(e.getErrorCode()))
@@ -80,10 +82,10 @@ public class SubscriberServiceImpl implements ISubscriberService {
 			//未找到注册信息
 			if (authResult == null || StringUtils.isEmpty(authResult.getCn())) {
 				session.setAttribute("user.openid", oauthCallbackEntity.getOpenId());
-				session.setAttribute("user.weixinAccountId", dockConfig.getWeixinAccountid());
+				session.setAttribute("user.weixinAccountId", currentWeixin.getWeixin_accountid().trim());
 			}else{
 				authResult.setWeixinAccountAppid(state);
-				authResult.setWeixinAccountId(dockConfig.getWeixinAccountid());
+				authResult.setWeixinAccountId(currentWeixin.getWeixin_accountid().trim());
 			}
 		}
 		return authResult;

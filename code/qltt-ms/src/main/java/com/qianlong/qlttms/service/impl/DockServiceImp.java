@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
-
 import org.apache.commons.lang.StringUtils;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -20,13 +19,13 @@ import com.alibaba.fastjson.JSONObject;
 import com.qianlong.qlttms.dao.ICommonDao;
 import com.qianlong.qlttms.http.IHttpClient;
 import com.qianlong.qlttms.domain.HttpContent;
-import com.qianlong.qlttms.domain.MsDockConfig;
 import com.qianlong.qlttms.domain.UserServAccessToken;
 import com.qianlong.qlttms.domain.UserServAccessTokenReqBody;
 import com.qianlong.qlttms.domain.UserServMessage;
+import com.qianlong.qlttms.domain.db.MsDockHttp;
+import com.qianlong.qlttms.domain.db.MsDockZmq;
 import com.qianlong.qlttms.exception.HttpRequestException;
 import com.qianlong.qlttms.exception.UserServBusinessException;
-import com.qianlong.qlttms.service.ICommonDBService;
 import com.qianlong.qlttms.service.IDockService;
 import com.qianlong.qlttms.utils.Constants;
 import com.qianlong.qlttms.utils.UserServPath;
@@ -39,9 +38,9 @@ public class DockServiceImp implements IDockService {
 
 	private Logger logger = Logger.getLogger(DockServiceImp.class);
 
-	private final static Map<String, ZMQProxyClient> indexSvcMap = new Hashtable<String, ZMQProxyClient>();
+	private final static Map<String, ZMQProxyClient> zmqSvcMap = new Hashtable<String, ZMQProxyClient>();
 
-	private static final Map<String, MsDockConfig> dockConfigMap = new Hashtable<String, MsDockConfig>();
+	private static final Map<String, MsDockHttp> httpSvcMap = new Hashtable<String, MsDockHttp>();
 
 	@Autowired
 	public ICommonDao commonDao;
@@ -55,26 +54,30 @@ public class DockServiceImp implements IDockService {
 			Object requestBody) {
 		//从映射表中取代理客户端，如果没有则从数据库中查参数生成代理客户端并执行交易，如果出现通讯异常则从映射表中去掉，下次登录重新创建代理客户端
 		//完成参数的活更新,无需要重启应用
-		ZMQProxyClient zmqProxyClient = indexSvcMap.get(weixinAccountid);
+		//根据交易码前1位区分逻辑服务器
+		String buskey = trdCode.substring(0, 1);
+		String dockkey = buskey+"_"+weixinAccountid;
+		ZMQProxyClient zmqProxyClient = zmqSvcMap.get(dockkey);
 		
 		try{			
 			if(zmqProxyClient == null){
-				MsDockConfig dockConfig =  commonDao.findUniqueByProperty(MsDockConfig.class,  "weixinAccountid", weixinAccountid);
-				if(dockConfig == null)
+					
+				MsDockZmq zmqDock =  commonDao.singleResult("from MsDockZmq where weixinAccountid = '"+weixinAccountid+"' AND zmqsvcBusKey = '"+buskey+"'");
+				if(zmqDock == null)
 					throw new UserServBusinessException("无法路由对映的指标服务器");
 				
 				zmqProxyClient = new ZMQProxyClient();
-				zmqProxyClient.setProxyIp(dockConfig.getIndexsvcIp());
-				zmqProxyClient.setProxyPort(dockConfig.getIndexsvcPort());
-				zmqProxyClient.setSndTimeOut(dockConfig.getIndexsvcSndTimeout());
-				zmqProxyClient.setRcvTimeOut(dockConfig.getIndexsvcRcvTimeout());
+				zmqProxyClient.setProxyIp(zmqDock.getZmqsvcHost());
+				zmqProxyClient.setProxyPort(zmqDock.getZmqsvcPort());
+				zmqProxyClient.setSndTimeOut(zmqDock.getZmqsvcSndTimeout());
+				zmqProxyClient.setRcvTimeOut(zmqDock.getZmqsvcRcvTimeout());
 				zmqProxyClient.setValidCRC(false);
-				indexSvcMap.put(dockConfig.getWeixinAccountid(), zmqProxyClient);	
+				zmqSvcMap.put(dockkey, zmqProxyClient);	
 			}
 			return zmqProxyClient.outBound(trdCode, requestBody);
 			
 		}catch(ZMQCommException e){
-			indexSvcMap.remove(weixinAccountid);
+			zmqSvcMap.remove(dockkey);
 			throw new UserServBusinessException("连接指标服务器通讯错误");
 		}
 	}
@@ -83,58 +86,70 @@ public class DockServiceImp implements IDockService {
 	@Override
 	public void loadDockConfig() {
 
-		logger.debug("对用户服务器相关信息进行缓存");
-		String hql = "from  MsDockConfig";
-		List<MsDockConfig> list = commonDao.findHql(hql);
+		logger.debug("对ZMQ服务器相关信息进行缓存");
+		String hql = "from MsDockZmq";
+		List<MsDockZmq> zmqlist = commonDao.findHql(hql);
 		ZMQProxyClient zmqProxyClient = null;
-		if (!CollectionUtils.isEmpty(list)) {
-			for (MsDockConfig msDock : list) {
+		if (!CollectionUtils.isEmpty(zmqlist)) {
+			for (MsDockZmq zmqDock : zmqlist) {
 
 				zmqProxyClient = new ZMQProxyClient();
-				zmqProxyClient.setProxyIp(msDock.getIndexsvcIp());
-				zmqProxyClient.setProxyPort(msDock.getIndexsvcPort());
-				zmqProxyClient.setSndTimeOut(msDock.getIndexsvcSndTimeout());
-				zmqProxyClient.setRcvTimeOut(msDock.getIndexsvcRcvTimeout());
-				zmqProxyClient.setValidCRC(false);
-				indexSvcMap.put(msDock.getWeixinAccountid(), zmqProxyClient);
-
+				zmqProxyClient.setProxyIp(zmqDock.getZmqsvcHost());
+				zmqProxyClient.setProxyPort(zmqDock.getZmqsvcPort());
+				zmqProxyClient.setSndTimeOut(zmqDock.getZmqsvcSndTimeout());
+				zmqProxyClient.setRcvTimeOut(zmqDock.getZmqsvcRcvTimeout());
+				zmqProxyClient.setValidCRC(false);	
+				String dockkey = zmqDock.getZmqsvcBusKey().trim()+"_"+zmqDock.getWeixinAccountid().trim();		
+				logger.debug("加入ZMQ服务的BUSKEY"+dockkey);
+				zmqSvcMap.put(dockkey, zmqProxyClient);
+			}
+		}
+		
+		logger.debug("对HTTP服务器相关信息进行缓存");
+		hql = "from MsDockHttp";
+		List<MsDockHttp> httplist = commonDao.findHql(hql);
+		
+		if (!CollectionUtils.isEmpty(httplist)) {
+			for (MsDockHttp httpDock : httplist) {
 				try {
-					MsDockConfig msAccessToken = obtainAccessToken(msDock);
-					msAccessToken.setTokenEffect(true);
-					
+					MsDockHttp msAccessToken = obtainAccessToken(httpDock);
+					msAccessToken.setTokenEffect(true);					
 					logger.debug("add AccessToken:"+msAccessToken.getWeixinAccountid());
-					dockConfigMap.put(msAccessToken.getWeixinAccountid(), msAccessToken);
+					String	dockkey = msAccessToken.getHttpsvcBusKey().trim()+"_"+msAccessToken.getWeixinAccountid();	
+					logger.debug("加入HTTP服务的BUSKEY"+dockkey);
+					httpSvcMap.put(dockkey, msAccessToken);
 					
 				} catch (HttpRequestException e) {
-					logger.error("更新用户服务器的AccessToken失败," + msDock);
+					logger.error("更新用户服务器的AccessToken失败," + httpDock);
 					logger.error(e.getMessage(), e);
 				}catch (UserServBusinessException be){
 					logger.error("用户服务业务异常：" + be.getMessage());
 				}
 			}
-		}
+		}		
+		
 	}
 	
 	
-	private  MsDockConfig obtainAccessToken(MsDockConfig usersvc) throws HttpRequestException {
+	private  MsDockHttp obtainAccessToken(MsDockHttp httpDock) throws HttpRequestException {
         List<NameValuePair> nvps = new ArrayList<>();
-        nvps.add(new BasicNameValuePair("appid", usersvc.getUsersvcAppid()));
+        nvps.add(new BasicNameValuePair("appid", httpDock.getHttpsvcAppid()));
 
-        logger.debug("公众号ID:"+usersvc.getWeixinAccountid()+" Host:"+usersvc.getUsersvcIp()+":"+usersvc.getUsersvcPort());
+        logger.debug("公众号ID:"+httpDock.getWeixinAccountid()+"Bus Key="+httpDock.getHttpsvcBusKey()+" Host:"+httpDock.getHttpsvcHost()+":"+httpDock.getHttpsvcPort());
         
         UserServAccessTokenReqBody reqBody = new UserServAccessTokenReqBody();
-        reqBody.setAppid(usersvc.getUsersvcAppid());
-        reqBody.setPlaintext(usersvc.getUsersvcPlaintext());
-        reqBody.setSecret(usersvc.getUsersvcSecret());
+        reqBody.setAppid(httpDock.getHttpsvcAppid());
+        reqBody.setPlaintext(httpDock.getHttpsvcPlaintext());
+        reqBody.setSecret(httpDock.getHttpsvcSecret());
         
-        HttpContent<MsDockConfig, UserServMessage> content = null;
+        HttpContent<MsDockHttp, UserServMessage> content = null;
         try {
-            content = httpClient.httpPost(Constants.SCHEME_HTTP, usersvc.getUsersvcIp(), usersvc.getUsersvcPort(), 
-            		UserServPath.USER_SERV_OBTAINACCESSTOKEN_PATH.replace(UserServPath.USER_SERV_CONTEXT, usersvc.getUsersvcContextApp()), 
+            content = httpClient.httpPost(Constants.SCHEME_HTTP, httpDock.getHttpsvcHost(), httpDock.getHttpsvcPort(), 
+            		UserServPath.USER_SERV_OBTAINACCESSTOKEN_PATH.replace(UserServPath.USER_SERV_CONTEXT, httpDock.getHttpsvcContextApp()), 
                         nvps, (JSONObject) JSONObject.toJSON(reqBody),
-                        MsDockConfig.class, UserServMessage.class);
+                        MsDockHttp.class, UserServMessage.class);
 
-            if (content.getContent() == null || StringUtils.isEmpty(content.getContent().getUsersvcAccessToken())) {
+            if (content.getContent() == null || StringUtils.isEmpty(content.getContent().getHttpsvcAccessToken())) {
                 throw new UserServBusinessException(String.format("获取用户服务器ACCESS_TOKEN错误 - 错误信息: %s",
                         content.getMessage() == null ? "用户服务器未知错误" : content.getMessage().getErrorMsg()));
             }
@@ -149,11 +164,11 @@ public class DockServiceImp implements IDockService {
                     content.getMessage().getErrorCode());
         }
 
-        MsDockConfig resAccessToken =  content.getContent();
-        usersvc.setUsersvcAccessToken(resAccessToken.getUsersvcAccessToken());
-        usersvc.setUsersvcProducttime(resAccessToken.getUsersvcProducttime());
-        usersvc.setUsersvcTokenExpires(resAccessToken.getUsersvcTokenExpires());
-        return usersvc;
+        MsDockHttp resAccessToken =  content.getContent();
+        httpDock.setHttpsvcAccessToken(resAccessToken.getHttpsvcAccessToken());
+        httpDock.setHttpsvcProducttime(resAccessToken.getHttpsvcProducttime());
+        httpDock.setHttpsvcTokenExpires(resAccessToken.getHttpsvcTokenExpires());
+        return httpDock;
     }
 
 
@@ -162,24 +177,34 @@ public class DockServiceImp implements IDockService {
 	private final static String TOKEN_RESET_FLAG = "TOKEN_RESET";
 
 	@Override
-	public UserServAccessToken getCurrentAccessToken(String weixinAccountid) {
+	public UserServAccessToken getCurrentAccessToken(String dockKey) {
 		
-		logger.debug("get AccessToken:"+weixinAccountid);
+		logger.debug("get AccessToken:["+dockKey+"]");
+		
+		
+		String weixinAccountid = dockKey.substring(1);
+		String buskey = dockKey.substring(0,1);
+		if(!StringUtils.isNumeric(buskey)){
+			buskey = "0";
+			weixinAccountid = dockKey;
+			dockKey = buskey+"_"+weixinAccountid;
+		}
+		
 		UserServAccessToken token = null;
-		MsDockConfig dockConfig = dockConfigMap.get(weixinAccountid);
-		if(dockConfig == null){
+		MsDockHttp dockHttp = httpSvcMap.get(dockKey);
+		if(dockHttp == null){
 			logger.debug("Access Token is not exist!!");
-			MsDockConfig usersvcEntity =  commonDao.findUniqueByProperty(MsDockConfig.class,  "weixinAccountid", weixinAccountid);			
-			if(usersvcEntity == null){
+			MsDockHttp httpsvcEntity =  commonDao.singleResult("from MsDockHttp where weixinAccountid = '"+weixinAccountid+"' AND httpsvcBusKey = '"+buskey+"'");			
+			if(httpsvcEntity == null){
 				throw new UserServBusinessException("无法取得用户服务器参数");
 			}
 			synchronized(TOKEN_SYNC_FLAG){				
-				dockConfig = dockConfigMap.get(weixinAccountid);
-				if(dockConfig == null){
+				dockHttp = httpSvcMap.get(dockKey);
+				if(dockHttp == null){
 					try {
-						MsDockConfig msAccessToken = obtainAccessToken(usersvcEntity);
-						msAccessToken.setTokenEffect(true);
-						dockConfigMap.put(msAccessToken.getWeixinAccountid(), msAccessToken);
+						dockHttp = obtainAccessToken(httpsvcEntity);
+						dockHttp.setTokenEffect(true);
+						httpSvcMap.put(dockKey, dockHttp);
 						
 					} catch (HttpRequestException e) {
 						logger.error("更新用户服务器的AccessToken失败"+e.getMessage());
@@ -190,17 +215,17 @@ public class DockServiceImp implements IDockService {
 				}
             }
 		}else{	
-			logger.debug("Access Token is exist:"+dockConfig);
+			logger.debug("Access Token is exist:"+dockHttp);
 			
-			if(isReset(Long.parseLong(dockConfig.getUsersvcProducttime()), Long.parseLong(dockConfig.getUsersvcTokenExpires())) || dockConfig.isTokenEffect() == false){				
+			if(isReset(Long.parseLong(dockHttp.getHttpsvcProducttime()), Long.parseLong(dockHttp.getHttpsvcTokenExpires())) || dockHttp.isTokenEffect() == false){				
 				synchronized(TOKEN_RESET_FLAG){
-					dockConfig = dockConfigMap.get(weixinAccountid);
-					if(isReset(Long.parseLong(dockConfig.getUsersvcProducttime()), Long.parseLong(dockConfig.getUsersvcTokenExpires())) || dockConfig.isTokenEffect() == false){
+					dockHttp = httpSvcMap.get(dockKey);
+					if(isReset(Long.parseLong(dockHttp.getHttpsvcProducttime()), Long.parseLong(dockHttp.getHttpsvcTokenExpires())) || dockHttp.isTokenEffect() == false){
 						try {
-							MsDockConfig msAccessToken = obtainAccessToken(dockConfig);
-							msAccessToken.setTokenEffect(true);
-							dockConfigMap.remove(msAccessToken.getWeixinAccountid());
-							dockConfigMap.put(msAccessToken.getWeixinAccountid(), msAccessToken);
+							dockHttp = obtainAccessToken(dockHttp);
+							dockHttp.setTokenEffect(true);
+							httpSvcMap.remove(dockKey);
+							httpSvcMap.put(dockKey, dockHttp);
 							
 						} catch (HttpRequestException e) {
 							logger.error("更新用户服务器的AccessToken失败"+e.getMessage());
@@ -213,10 +238,10 @@ public class DockServiceImp implements IDockService {
 			}
 		}
 		token = new UserServAccessToken();
-		token.setAccessToken(dockConfig.getUsersvcAccessToken());
-		token.setUserServContext(dockConfig.getUsersvcContextApp());
-		token.setUserServHost(dockConfig.getUsersvcIp());
-		token.setUserServPort(String.format("%s", dockConfig.getUsersvcPort() != 0?dockConfig.getUsersvcPort():80));
+		token.setAccessToken(dockHttp.getHttpsvcAccessToken());
+		token.setUserServContext(dockHttp.getHttpsvcContextApp());
+		token.setUserServHost(dockHttp.getHttpsvcHost());
+		token.setUserServPort(String.format("%s", dockHttp.getHttpsvcPort() != 0?dockHttp.getHttpsvcPort():80));
 		return token;
 	}
 	
@@ -229,13 +254,13 @@ public class DockServiceImp implements IDockService {
 		}
 	}
 	
-	public  synchronized void resetAccessTokenByAccountid(String weixinAccountid, long errorCode){		
+	public  synchronized void resetAccessTokenByAccountid(String buskey, long errorCode){		
 		if(errorCode == 1){
-			logger.debug("Executer reset accesstoken by"+weixinAccountid);
-			MsDockConfig dockConfig = dockConfigMap.get(weixinAccountid);
-			dockConfig.setTokenEffect(false);
-			dockConfigMap.remove(weixinAccountid);
-			dockConfigMap.put(weixinAccountid, dockConfig);
+			logger.debug("Executer reset accesstoken by"+buskey);
+			MsDockHttp dockHttp = httpSvcMap.get(buskey);
+			dockHttp.setTokenEffect(false);
+			httpSvcMap.remove(buskey);
+			httpSvcMap.put(buskey, dockHttp);
 		}
 	}
 

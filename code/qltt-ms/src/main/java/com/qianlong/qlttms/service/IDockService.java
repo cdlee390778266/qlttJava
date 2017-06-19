@@ -10,7 +10,7 @@ public interface IDockService {
 	public void loadDockConfig();
 	
 	
-	public UserServAccessToken getCurrentAccessToken(String weixinAppid); 
+	public UserServAccessToken getCurrentAccessToken(String dockKey); 
 	
 	
 	public void resetAccessTokenByAccountid(String weixinAccountid, long errorCode);

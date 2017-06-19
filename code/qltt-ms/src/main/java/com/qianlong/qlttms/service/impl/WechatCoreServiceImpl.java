@@ -13,10 +13,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.qianlong.qlttms.http.IHttpClient;
-import com.qianlong.qlttms.domain.MsDockConfig;
 import com.qianlong.qlttms.domain.OAuthCallbackEntity;
 import com.qianlong.qlttms.domain.HttpContent;
 import com.qianlong.qlttms.domain.WechatMessage;
+import com.qianlong.qlttms.domain.db.WeixinAccount;
 import com.qianlong.qlttms.exception.HttpRequestException;
 import com.qianlong.qlttms.service.IWechatCoreService;
 import com.qianlong.qlttms.utils.Constants;
@@ -30,11 +30,12 @@ public class WechatCoreServiceImpl implements IWechatCoreService {
 	@Autowired
 	IHttpClient httpClient;
 
+	
 	@Override
-	public OAuthCallbackEntity getOpenidByOAuth(MsDockConfig dockConfig, String code, String state) throws HttpRequestException {
+	public OAuthCallbackEntity getOpenidByOAuth(WeixinAccount weixinAccount, String code, String state) throws HttpRequestException {
 		List<NameValuePair> nvps = new ArrayList<>();
-		nvps.add(new BasicNameValuePair("appid", dockConfig.getWeixinAppid()));
-		nvps.add(new BasicNameValuePair("secret", dockConfig.getWeixinAppsecret()));
+		nvps.add(new BasicNameValuePair("appid", weixinAccount.getAccountappid()));
+		nvps.add(new BasicNameValuePair("secret", weixinAccount.getAccountappsecret()));
 		nvps.add(new BasicNameValuePair("code", code));
 		nvps.add(new BasicNameValuePair("grant_type", "authorization_code"));
 		
