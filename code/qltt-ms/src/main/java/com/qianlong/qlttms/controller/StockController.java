@@ -28,9 +28,12 @@ import com.qianlong.qlttms.service.IIndexSystemService;
 import com.qianlong.qlttms.service.IMyAttentionService;
 import com.qianlong.qlttms.service.IUserStockService;
 import com.qianlong.qlttms.utils.Constants;
+import com.qlcd.qltt.body.pvt.T02001004;
 import com.qlcd.qltt.body.pvt.T02002003;
 import com.qlcd.qltt.body.pvt.T02003001;
 import com.qlcd.qltt.body.pvt.T02003001._dprealtime;
+import com.qlcd.qltt.body.pvt.T02005001;
+import com.qlcd.qltt.body.pvt.T02005001._dpcomb;
 
 /**
  * 股票查询
@@ -75,11 +78,51 @@ public class StockController {
 					.querycCombTacticMebs(user.getWeixinAccountId(), tacTic);
 			model.put("members", rsp.getCbelistList());
 		}
+		model.put("isCombRequest", isCombRequest != null && isCombRequest);//是否为
 		model.put("tacTic", tacTic);
 		model.put("tacName", tacName);
 		model.put("isFollow", isFollow);
 		return new ModelAndView("qianlong/stock", model);
 	}
+	
+	
+	@RequestMapping("indexinfo")
+	@ResponseBody
+	public Object indexinfo(HttpServletRequest request, 
+			@RequestParam(value = "tactic") String tactic,
+			@RequestParam(value = "isCombRequest", required = false) Boolean isCombRequest) {
+		
+		AuthResultEntity user = (AuthResultEntity) request.getSession()
+				.getAttribute(Constants.LOGIN_USER_ACCOUNT);
+		
+		Map<String, Object> model = new HashMap<>();
+		
+		BaseIndex index = new BaseIndex();
+		index.setTacTic(tactic);
+		index.setTacPrm(0);
+		boolean isFollow = myAttentionService
+				.isFollow(user.getWeixinAccountId(), index, user.getTtacct());
+		model.put("isFollow", isFollow);
+		
+		T02001004._rsp rsp1004 = indexSystemService.queryIdxDefine(user.getWeixinAccountId(),  tactic);
+		model.put("tacName", rsp1004.getTacname());
+		model.put("tacDetail", rsp1004.getTacdetail());
+		
+		if (isCombRequest != null && isCombRequest) {
+			T02002003._rsp rsp2003 = combinedIndexService
+					.querycCombTacticMebs(user.getWeixinAccountId(), tactic);
+			try {
+				model.put("members",   JSONObject.parse(JsonFormat.printer().includingDefaultValueFields().print(rsp2003)));
+			} catch (InvalidProtocolBufferException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return model;
+		
+	}
+	
+	
 
 	@RequestMapping("pool")
 	@ResponseBody
@@ -118,7 +161,42 @@ public class StockController {
 		}
 		return map;
 	}
-
+	
+	/**
+	 * 组合指标池查询
+	 */
+	@RequestMapping("combpool")
+	@ResponseBody
+	public Object combPool(HttpServletRequest request, TacPoolReqBody body) {
+		logger.debug("组合指标数据池查询[分页]");
+		AuthResultEntity user = (AuthResultEntity) request.getSession().getAttribute(Constants.LOGIN_USER_ACCOUNT);
+		T02005001._rsp rsp = combinedIndexService.queryCombPool(user.getWeixinAccountId(), body);
+		Map<String, Object> map = new HashMap<String, Object>();
+		try {
+			map.put("pgrsp",
+					JSONObject.parse(JsonFormat.printer().includingDefaultValueFields().print(rsp.getPgrsp())));
+			List<Object> dprtlist = new ArrayList<Object>();
+			map.put("dprtlist", dprtlist);
+			List<_dpcomb> _dpcombs = rsp.getDpcblistList();
+			if (!CollectionUtils.isEmpty(_dpcombs)) {
+				QueryStockPoolIndexsRspEntity poolindexs = null;
+				Map<String, Object> dprealtimeMap = null;
+				for (_dpcomb dpcomb : _dpcombs) {
+					dprealtimeMap = new HashMap<String, Object>();
+					String stockcode = dpcomb.getStockcode();
+					poolindexs = userStockService.queryStockPoolIndexs(user.getWeixinAccountId(), stockcode, user.getTtacct());
+					dprealtimeMap.put("detail",
+							JSONObject.parse(JsonFormat.printer().includingDefaultValueFields().print(dpcomb)));
+					dprealtimeMap.put("isSelected", !CollectionUtils.isEmpty(poolindexs.getExistpools()));
+					dprtlist.add(dprealtimeMap);
+				}
+			}
+		} catch (InvalidProtocolBufferException e) {
+			logger.error(e.getMessage(), e);
+		}
+		return map;
+	}
+	
 	@RequestMapping("poolindexs")
 	@ResponseBody
 	public Object getPoolIndexs(HttpServletRequest request, String stockcode) {

@@ -55,6 +55,7 @@ public class ExceptionHandler implements HandlerExceptionResolver {
 		} else {
 			try {
 				JSONEntity rspEntity = new JSONEntity(0, ex.getMessage(), null);
+				response.setContentType("application/json;charset=utf-8");
 				PrintWriter out = response.getWriter();
 				out.print(JSONObject.toJSONString(rspEntity));
 				out.flush();

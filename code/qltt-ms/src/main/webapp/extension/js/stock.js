@@ -4,7 +4,71 @@
  * @Last Modified time: 2017-04-12 18:19:49
  */
 $(document).ready(function() {
+	
+	var findPagePara = function(p){
+		var reg = new RegExp("(^|&)" + p + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+        var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+        if (r != null) return unescape(r[2]); return null; //返回参数值
+	}
+
+	var isCombIndex = findPagePara('isCombRequest');
+	
+	var tactic =findPagePara('tactic');
+	
+	
+	var loadIndexInfo = function(combFlag, tactic){		
+		var url = contextPath+'/webapp/stock/indexinfo.do';		
+		$.ajax({
+			url : url,
+			type : 'post',
+			dataType: 'json',
+			data : {
+				'tactic' : tactic,
+				'isCombRequest' : (combFlag==null?false:combFlag),
+			},
+			success : function(data) {
+
+				if(data != null){					
+					$('.result-tags-head').append($('<span/>').text(data.tacName));
+					
+					 $(document).attr("title", data.tacName);
+					 
+					 $('#tacTic').val(tactic);
+					
+					if(data.isFollow == false)
+						$('.result-btns span').removeClass('active');
+					else
+						$('.result-btns span').addClass('active');					
+				}	
+				if(combFlag){
+					$('.result-tags-body span').text('原始指标:');
+					var srcspan = $('<span/>');
+					data.members.cbelist.forEach(function(srcindex){
+						$(srcspan).append($('<strong/>').text(srcindex.srctacname)).append('<i>+</i>');
+					});
+					$('.result-tags-body').append($(srcspan));
+				}else{
+					$('.result-tags-body').append($('<span/>').text(data.tacDetail)); 
+				}
+				$('.result-tags-head span').css('top',($('.result-tags-head').height()-$('.result-tags-head span').height())/2);
+		        $('.srceen-absolute').css('top',$('.result-fixed').height());
+			},
+			error : function(jqXHR, textStatus, errorThrown) {
+				$().alert('获取数据失败！');
+			}
+		});
+	};
+	
+	
+	loadIndexInfo(isCombIndex, tactic);
+	
+
+	
+	
 	var url = 'pool.do';
+	if(isCombRequest){
+		url ="combpool.do";
+	}
 	var refreshFlag = true;
 
 	$(window).resize(function(event) {
@@ -36,8 +100,8 @@ $(document).ready(function() {
 							+ '<span class="item-col-name">' + stocks[i].detail.stockname + '</span>'
 							+ '<span class="blue item-col-code">' + stocks[i].detail.stockcode + '</span>'
 							+ '</div>'
-							+ '<div class="item-col-2">' + stocks[i].detail.efftime + '</div>'
-							+ '<div class="item-col-3">' + stocks[i].detail.remarks + '</div>'
+							+ '<div class="item-col-2">' + (stocks[i].detail.efftime ? stocks[i].detail.efftime : "") + '</div>'
+							+ '<div class="item-col-3">' + (stocks[i].detail.remarks ? stocks[i].detail.remarks : "")+ '</div>'
 							+ '<div class="item-col-4">'
 							+ '<a href="javascript:void(0);" class="recommend"></a>'
 							+ '<a href="javascript:void(0);" class="choose  '+isInPool+'"></a>'
@@ -45,7 +109,9 @@ $(document).ready(function() {
 					}
 				}
 				$parent.append(html);
-				var totalnum = data.pgrsp.totalnum;
+				var totalnum = 0;
+				if( data.pgrsp != null &&  data.pgrsp.totalnum != undefined)
+				    totalnum = data.pgrsp.totalnum;
 				$('.srceen-txt .red').text(totalnum);
 				if($parent.find(".screen-item").length < totalnum )
 					displayLoadMore($(".load-more"),"show");
@@ -230,6 +296,8 @@ $(document).ready(function() {
 
 	init();
 });
+
+/*
 window.onload = function(){
 	(function (){
         $('.result-tags-head span').css('top',($('.result-tags-head').height()-$('.result-tags-head span').height())/2);
@@ -237,4 +305,6 @@ window.onload = function(){
         
     })();
 }
+
+*/
 

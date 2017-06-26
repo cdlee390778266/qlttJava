@@ -43,6 +43,15 @@ public class MyAttentionController {
 		return new ModelAndView("qianlong/myattention", model);
 	}
 	
+	
+	@RequestMapping("followlist")
+	@ResponseBody
+	public Object followlist(HttpServletRequest request, BaseIndex index) {
+		AuthResultEntity user = (AuthResultEntity)request.getSession().getAttribute(Constants.LOGIN_USER_ACCOUNT);
+		List<BaseIndex> followingList = myAttentionService.followingList(user.getWeixinAccountId(), user.getTtacct());
+		return followingList;
+	}
+	
 	@RequestMapping("follow")
 	@ResponseBody
 	public JSONEntity follow(HttpServletRequest request, BaseIndex index) {

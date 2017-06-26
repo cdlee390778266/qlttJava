@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+
 import org.hibernate.criterion.DetachedCriteria;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -255,6 +256,17 @@ public class CommonDBServiceImpl implements ICommonDBService {
 	public <T> List<T> findHql(String hql, Object... param) {
 		return this.commonDao.findHql(hql, param);
 	}
+	
+	/**
+	 * 通过hql 查询语句查找对象
+	 * 
+	 * @param <T>
+	 * @param query
+	 * @return
+	 */
+	public <T> List<T> findMaxResultHql(String hql, int maxResults, Object... param) {
+		return this.commonDao.findHql(hql, maxResults, param);
+	}
 
 	public <T> List<T> pageList(DetachedCriteria dc, int firstResult,
 			int maxResult) {
@@ -264,5 +276,6 @@ public class CommonDBServiceImpl implements ICommonDBService {
 	public <T> List<T> findByDetached(DetachedCriteria dc) {
 		return this.commonDao.findByDetached(dc);
 	}
+
 
 }

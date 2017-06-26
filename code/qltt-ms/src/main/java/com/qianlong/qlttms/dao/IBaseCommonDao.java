@@ -152,6 +152,8 @@ public interface IBaseCommonDao {
 	 * @return
 	 */
 	public <T> List<T> findListbySql(String query);
+	
+	
 
 	/**
 	 * 通过属性称获取实体带排序
@@ -249,6 +251,16 @@ public interface IBaseCommonDao {
 	 * @return
 	 */
 	public <T> List<T> findHql(String hql, Object... param);
+	
+	
+	/**
+	 * 通过hql 查询语句查找对象
+	 * 
+	 * @param <T>
+	 * @param query
+	 * @return
+	 */
+	public <T> List<T> findHql(String hql, int maxResults,  Object... param);
 
 	/**
 	 * 执行HQL语句操作更新

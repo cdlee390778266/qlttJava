@@ -175,12 +175,23 @@ public class DockServiceImp implements IDockService {
 	private final static String TOKEN_SYNC_FLAG = "TOKEN";
 	
 	private final static String TOKEN_RESET_FLAG = "TOKEN_RESET";
+	
+	
+	private String checkDockKey(String dockKey){
+		String weixinAccountid = dockKey.substring(1);
+		String buskey = dockKey.substring(0,1);
+		if(!StringUtils.isNumeric(buskey)){
+			buskey = "0";
+			weixinAccountid = dockKey;
+			dockKey = buskey+"_"+weixinAccountid;
+		}
+		return dockKey;
+	}
 
 	@Override
 	public UserServAccessToken getCurrentAccessToken(String dockKey) {
 		
 		logger.debug("get AccessToken:["+dockKey+"]");
-		
 		
 		String weixinAccountid = dockKey.substring(1);
 		String buskey = dockKey.substring(0,1);
@@ -257,6 +268,8 @@ public class DockServiceImp implements IDockService {
 	public  synchronized void resetAccessTokenByAccountid(String buskey, long errorCode){		
 		if(errorCode == 1){
 			logger.debug("Executer reset accesstoken by"+buskey);
+			buskey = checkDockKey(buskey);
+			
 			MsDockHttp dockHttp = httpSvcMap.get(buskey);
 			dockHttp.setTokenEffect(false);
 			httpSvcMap.remove(buskey);

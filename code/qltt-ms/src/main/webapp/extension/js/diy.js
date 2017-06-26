@@ -166,8 +166,41 @@ $(function() {
 
 		$errorEle.find('span').html('最多只能选中' + tagNums + '个指标！');
 	}
+	
+	var loadGroups = function(){
+		var url = contextPath+'/webapp/search/findgroups.do';
+		
+		$.ajax({
+			url : url,
+			type : 'post',
+			dataType: 'json',
+			success : function(data) {
+				if (data != null) {					
+					if(data.ptgcnt > 0){						
+						data.ptglist.forEach(function(idxGroup){
+							if(idxGroup.grplevel == 1)
+								$('#scroller ul').append('<li data-group="'+idxGroup.tacgroup+'">'+idxGroup.grpname+'</li>');
+						});						
+						$('#scroller ul li:first-child').addClass('active');
+					}
+				}
+				$('#scroller').css('width',$('#scroller li').length*90+20);
+		        headIScroll = new IScroll('#header', { 
+		        eventPassthrough: true, 
+		        scrollX: true, 
+		        scrollY: false, 
+		        preventDefault: false 
+		        });
+		        init();
+			},
+			error : function(){
+				
+			}
+		});
+	};
+	
 
-	init();
+	loadGroups();
 
 	$('#header').delegate('li', 'tap', function(event) {
 		if ($(this).hasClass('active'))

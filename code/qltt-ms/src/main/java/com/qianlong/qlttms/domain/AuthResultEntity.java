@@ -25,6 +25,20 @@ public class AuthResultEntity {
 	 * 当前用户所登陆的微信公众号的appid
 	 */
 	private String weixinAccountAppid;
+	
+	/*
+	 * 
+	 * 
+	 */
+	private String keyid;
+	
+	/*
+	 * 
+	 * 
+	 */
+	private String openid;
+	
+	
 
 	public String getCn() {
 		return cn;
@@ -59,10 +73,34 @@ public class AuthResultEntity {
 		this.weixinAccountAppid = weixinAccountAppid;
 	}
 
+
+	public String getKeyid() {
+		return keyid;
+	}
+
+	public void setKeyid(String keyid) {
+		this.keyid = keyid;
+	}
+
+	
+	public String getOpenid() {
+		return openid;
+	}
+
+	public void setOpenid(String openid) {
+		this.openid = openid;
+	}
+
 	@Override
 	public String toString() {
 		return "AuthResultEntity [cn=" + cn + ", ttacct=" + ttacct
 				+ ", weixinAccountId=" + weixinAccountId
-				+ ", weixinAccountAppid=" + weixinAccountAppid + "]";
+				+ ", weixinAccountAppid=" + weixinAccountAppid + ", keyid="
+				+ keyid + ", openid=" + openid + "]";
 	}
+
+
+	
+	
+	
 }

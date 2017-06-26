@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+
 import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
@@ -17,9 +18,7 @@ import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Example;
 import org.hibernate.criterion.Order;
-
 import org.hibernate.criterion.Restrictions;
-
 import org.hibernate.metadata.ClassMetadata;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -28,7 +27,6 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.dao.support.DataAccessUtils;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
-
 import org.springframework.util.Assert;
 
 import com.qianlong.qlttms.dao.IBaseCommonDao;
@@ -356,7 +354,7 @@ public abstract class BaseCommonDao<T, PK extends Serializable> implements
 		Query querys = getSession().createSQLQuery(sql);
 		return querys.list();
 	}
-
+	
 	/**
 	 * 创建Criteria对象，有排序功能。
 	 * 
@@ -667,6 +665,25 @@ public abstract class BaseCommonDao<T, PK extends Serializable> implements
 				q.setParameter(i, param[i]);
 			}
 		}
+		return q.list();
+	}
+	
+	
+	/**
+	 * 通过hql 查询语句查找对象
+	 * 
+	 * @param <T>
+	 * @param query
+	 * @return
+	 */
+	public <T> List<T> findHql(String hql, int maxResults, Object... param) {
+		Query q = getSession().createQuery(hql);
+		if (param != null && param.length > 0) {
+			for (int i = 0; i < param.length; i++) {
+				q.setParameter(i, param[i]);
+			}
+		}
+		q.setMaxResults(maxResults);
 		return q.list();
 	}
 

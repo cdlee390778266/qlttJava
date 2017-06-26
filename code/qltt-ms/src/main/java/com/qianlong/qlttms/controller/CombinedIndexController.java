@@ -60,23 +60,7 @@ public class CombinedIndexController {
 	@RequestMapping("home")
 	public ModelAndView home(HttpServletRequest request) {
 		logger.debug("进入组合指标页面");
-/*		T02001002._rsp rsp = indexSystemService.queryIdxGroup();
-		List<T02001002._protacgroup> idxGroups = rsp.getPtglistList();
-		Map<String, Object> model = new HashMap<>();
-		model.put("idxGroups", idxGroups);*/
-		AuthResultEntity user = (AuthResultEntity)request.getSession().getAttribute(Constants.LOGIN_USER_ACCOUNT);
-		T02001002._rsp rsp = indexSystemService.queryIdxGroup(user.getWeixinAccountId());
-		
-		List<T02001002._protacgroup> idxGroups = rsp.getPtglistList();
-		Map<String, Object> model = new HashMap<>();
-		List<T02001002._protacgroup> _1level = new ArrayList<T02001002._protacgroup>();
-		for (T02001002._protacgroup protacgroup :idxGroups) {
-			if(protacgroup.getGrplevel() == 1){	
-				_1level.add(protacgroup);
-			}
-		}
-		model.put("idxGroups", _1level);
-		return new ModelAndView("qianlong/combined", model);
+		return new ModelAndView("qianlong/combined");
 	}
 	
 	private List<Object> getTacsByGroupid(HttpServletRequest request, String tacGroup) {

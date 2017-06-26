@@ -153,7 +153,7 @@ public class ZMQProxyClient {
 
 		// 头部验证
 		if (rspHead.getTrdcode() != reqHead.getTrdcode()) {
-			throw new ZMQMsgException("请求交易码与响应交易码不一致");
+			throw new ZMQMsgException("请求交易码与响应交易码不一致, 请求交易码:["+reqHead.getTrdcode()+"] 响应交易码:["+rspHead.getTrdcode()+"]");
 		}
 
 		if (rspHead.getReqno() != reqHead.getReqno()) {

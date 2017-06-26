@@ -11,6 +11,8 @@ import com.qlcd.qltt.body.BppBiz;
 import com.qlcd.qltt.body.pvt.T02001001;
 import com.qlcd.qltt.body.pvt.T02001002;
 import com.qlcd.qltt.body.pvt.T02001003;
+import com.qlcd.qltt.body.pvt.T02001004;
+import com.qlcd.qltt.body.pvt.T02001004._rsp;
 import com.qlcd.qltt.body.pvt.T02003001;
 
 @Service
@@ -57,6 +59,16 @@ public class IndexSystemServiceImpl implements IIndexSystemService {
 		pageBuilder.setReqnum(body.getSize());
 		builder.setPgreq(pageBuilder.build());
 		T02003001._rsp rsp = dockService.request(weixinAccountId, "2003001", builder.build());
+		return rsp;
+	}
+
+	@Override
+	public _rsp queryIdxDefine(String weixinAccountId, String tactic) {
+		
+		logger.debug("指定原生指标查询[单个]");
+		T02001004._req.Builder builder = T02001004._req.newBuilder();
+		builder.setTactic(tactic);
+		T02001004._rsp rsp = dockService.request(weixinAccountId, "2001004", builder.build());
 		return rsp;
 	}
 }

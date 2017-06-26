@@ -4,6 +4,7 @@ import com.qianlong.qlttms.domain.TacPoolReqBody;
 import com.qlcd.qltt.body.pvt.T02001001;
 import com.qlcd.qltt.body.pvt.T02001002;
 import com.qlcd.qltt.body.pvt.T02001003;
+import com.qlcd.qltt.body.pvt.T02001004;
 import com.qlcd.qltt.body.pvt.T02003001;
 
 public interface IIndexSystemService {
@@ -38,6 +39,15 @@ public interface IIndexSystemService {
 	public T02001001._rsp queryAllIdx(String weixinAccountId);
 	
 	/**
+	 * <p>接口编号：IFC_TacProTacticDefine004
+	 * <p>交易码：2003001
+	 * <p>接口名称：最新实时行情指标数据池查询[分页]
+	 * 
+	 * @return 最新实时行情指标数据
+	 */
+	public T02001004._rsp queryIdxDefine(String weixinAccountId, String  tactic);
+	
+	/**
 	 * <p>接口编号：IFC_TacDataPoolRealTime001
 	 * <p>交易码：2003001
 	 * <p>接口名称：最新实时行情指标数据池查询[分页]
@@ -45,4 +55,6 @@ public interface IIndexSystemService {
 	 * @return 最新实时行情指标数据
 	 */
 	public T02003001._rsp queryTacDataPool(String weixinAccountId, TacPoolReqBody body);
+	
+	
 }

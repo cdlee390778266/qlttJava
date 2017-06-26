@@ -16,10 +16,8 @@
 <script type="text/javascript" src="<c:url value='/extension/js/iscroll.js' />"></script>
 <script type="text/javascript" src="<c:url value='/extension/js/swiper.min.js' />"></script>
 <script type="text/javascript" src="<c:url value='/extension/js/swiper.animate1.0.2.min.js' />"></script>
-<script type="text/javascript" src="<c:url value='/extension/js/headerISroll.js' />"></script>
 <script type="text/javascript" src="<c:url value='/extension/js/footer.js' />"></script>
 <script type="text/javascript" src="<c:url value='/extension/js/common.js' />"></script>
-<script type="text/javascript" src="<c:url value='/extension/js/pool.js' />"></script>
 <script type="text/javascript" src="<c:url value='/extension/js/messager.js' />"></script>
 <script type="text/javascript">
 	var contextPath = '${pageContext.request.contextPath}';
@@ -33,9 +31,6 @@
 		<div id="scroller">
 			<ul>
 				<li data-group="combination" class="active">组合指标</li>
-				<c:forEach items="${idxGroups}" var="idxGroup" varStatus="status">
-					<li data-group="${idxGroup.tacgroup}">${idxGroup.grpname}</li>
-				</c:forEach>
 			</ul>
 		</div>
 	</div>
@@ -59,7 +54,7 @@
 			<a href="<c:url value='/webapp/search/home.do' />" class="active"><i class="icon icon-searchd"></i><br><span>指标查询</span></a>
 			<a href="<c:url value='/webapp/myattention/home.do' />"><i class="icon icon-care"></i><br><span>我的关注</span></a>
 			<a href="<c:url value='/webapp/userpool/home.do' />"><i class="icon icon-pool"></i><br><span>选股池</span></a>
-			<a href="javascript:void(0);"><i class="icon icon-rmd"></i><br><span>荐股池</span></a>
+			<a href="<c:url value='/webapp/hottopic/home.do' />"><i class="icon icon-rmd"></i><br><span>荐股池</span></a>
 			<a href="<c:url value='/webapp/setting/home.do' />"><i class="icon icon-set"></i><br><span>设置</span></a>
 		</div>
 	</div>

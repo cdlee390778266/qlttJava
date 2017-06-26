@@ -4,6 +4,7 @@
  * @Last Modified time: 2017-04-13 11:00:30
  */
 $(document).ready(function() {
+	
 	var searchSwiper;
 	var scrollTopArr = {};
 
@@ -21,12 +22,43 @@ $(document).ready(function() {
 		});
 		$parent.append(html);
 	};
+	
+	var loadGroups = function(){
+		var url = contextPath+'/webapp/search/findgroups.do';
+		
+		$.ajax({
+			url : url,
+			type : 'post',
+			dataType: 'json',
+			success : function(data) {
+				if (data != null) {					
+					if(data.ptgcnt > 0){						
+						data.ptglist.forEach(function(idxGroup){
+							if(idxGroup.grplevel == 1)
+								$('#scroller ul').append('<li data-group="'+idxGroup.tacgroup+'">'+idxGroup.grpname+'</li>');
+						});
+					}
+				}
+				$('#scroller').css('width',$('#scroller li').length*90+20);
+		        headIScroll = new IScroll('#header', { 
+		        eventPassthrough: true, 
+		        scrollX: true, 
+		        scrollY: false, 
+		        preventDefault: false 
+		        });
+		        init();
+			},
+			error : function(){
+				
+			}
+		});
+	};
 
 	var createHtml = function($parent,init) {
 		var html = '';
 		var group = $parent.data("group");
 		$.ajax({
-			url : 'child.do',
+			url : contextPath+'/webapp/search/child.do',
 			data : {"tacgroup" : group},
 			type : 'post',
 			success : function(data) {
@@ -36,13 +68,12 @@ $(document).ready(function() {
 						var members = data.content.tacMenu;
 						if(!members.length){
 							if(init=='init'){
-								createHtml($('.search-box ').eq(1));
 								searchSwiper.slideTo(1);
 								return;
 							}
 						}
 						for ( var i in members) {
-							var href = encodeURI("../stock/home.do?tactic=" + members[i].tacTic + "&tacname=" + members[i].tacName+"&isCombRequest=true");
+							var href = encodeURI(contextPath+"/webapp/stock/home.do?tactic=" + members[i].tacTic + "&tacname=" + members[i].tacName+"&isCombRequest=true");
 							html += '<div class="search-item anisearch-item-time" swiper-animate-effect="fadeIn" swiper-animate-duration="1s" swiper-animate-delay="0s" >'
 								+ '<div class="search-head search-head-del" data-tacTic="'+members[i].tacTic+'">'
 								+ members[i].tacName
@@ -50,20 +81,28 @@ $(document).ready(function() {
 								+ '</div>'
 								+ '<div class="search-body"><a href="' + href + '">'
 								+ members[i].tacDetail
-								+ '</a></div>' + '</div>';
+								+ '</a></div>' 
+								+ '<div class="search-foot" data-tacTic="'+members[i].tacTic+'">'
+                                + '<span class="">未关注</span>'
+                                + '</div>'
+								+ '</div>';
 						}
 					} else {
 						if(data.children.length==0){
 							var members = data.member.ptgmlist;
 							for ( var i in members) {
-								var href = encodeURI("../stock/home.do?tactic=" + members[i].tactic + "&tacname=" + members[i].tacname);
+								var href = encodeURI(contextPath+"/webapp/stock/home.do?tactic=" + members[i].tactic + "&tacname=" + members[i].tacname);
 								html += '<div class="search-item ani search-item-time" swiper-animate-effect="fadeIn" swiper-animate-duration="1s" swiper-animate-delay="0s" >'
-									+ '<div class="search-head">'
+									+ '<div class="search-head" data-ticTic="'+members[i].tactic+'" >'
 									+ members[i].tacname
 									+ '</div>'
 									+ '<div class="search-body"><a href="' + href + '">'
 									+ members[i].tacdetail
-									+ '</a></div>' + '</div>';
+									+ '</a></div>' 
+									+ '<div class="search-foot" data-tacTic="'+members[i].tactic+'">'
+	                                + '<span class="">未关注</span>'
+	                                + '</div>'
+									+ '</div>';
 							}
 						}else{
 							var resData = data.children;
@@ -74,10 +113,13 @@ $(document).ready(function() {
 
 		                        for(var j in resData[i]['member'].ptgmlist){
 		                        	var ptgm = resData[i]['member'].ptgmlist[j];
-		                        	var href = encodeURI("../stock/home.do?tactic=" +ptgm.tactic + "&tacname=" +ptgm.tacname);
+		                        	var href = encodeURI(contextPath+"/webapp/stock/home.do?tactic=" +ptgm.tactic + "&tacname=" +ptgm.tacname);
 		                            html += '<div class="search-item ani" swiper-animate-effect="fadeIn" swiper-animate-duration="1s" swiper-animate-delay="0s" >'
-		                                 +      '<div class="search-head">' + ptgm.tacname + '</div>'
+		                                 +      '<div class="search-head" data-ticTic="'+ptgm.tactic+'">' + ptgm.tacname + '</div>'
 		                                 +      '<div class="search-body"><a href="'+href+'">' + ptgm.tacdetail + '</a></div>'
+		 								 + '<div class="search-foot" data-tacTic="'+ptgm.tactic+'">'
+		                                 + '<span class="">未关注</span>'
+		                                 + '</div>'
 		                                 +   '</div>'
 		                        }
 
@@ -91,15 +133,56 @@ $(document).ready(function() {
 				$parent.html(html);
 				$parent.find('.search-slide').eq(0).addClass('active');
 				loadingHide($('.qltt-toast'));
+				
+				updateFollow();
 			},
 			error : function(jqXHR, textStatus, errorThrown) {
 				$().alert('获取数据失败！');
 			}
 		});
-
 	};
 
+	loadGroups();
+	
+	var updateFollow = function(){
+		var url = contextPath+'/webapp/myattention/followlist.do';
+		
+		$.ajax({
+			url : url,
+			type : 'post',
+			dataType: 'json',
+			success : function(data) {				
+				if(data != null && data.length > 0){					
+					var follow = [];					
+					for(var i in data){
+						follow.push(data[i].tacTic);
+					}
+					
+					$('.swiper-slide-active .search-foot').each(function(){
+						var tactic = String($(this).data('tactic'));
+						if($.inArray(tactic, follow) != -1){
+							if(!$(this).find('span').hasClass('active')){								
+								$(this).find('span').addClass('active');
+								$(this).find('span').text('已关注')
+							}
+						}else{
+							if($(this).find('span').hasClass('active')){								
+								$(this).find('span').removeClass('active');
+								$(this).find('span').text('未关注')
+							}
+						}
+					});
+				}
+			},
+			error : function(){
+				
+			}
+		});
+		
+	};
+	
 	var init = function() {
+		
 		loadingShow($('.qltt-toast'));
 		createSearchBox($('.swiper-wrapper'));
 		createHtml($('.search-box ').first(),'init');
@@ -151,7 +234,7 @@ $(document).ready(function() {
 	
 	var deleteTacMenu = function($searchitem,tactic){
 		$.ajax({
-			url : '../combined/delcombined.do',
+			url : contextPath+'/webapp/combined/delcombined.do',
 			data : {"tactic":tactic},
 			type : 'post',
 			success : function(data) {
@@ -177,7 +260,7 @@ $(document).ready(function() {
             	var data = {"tacTic" : tactic,"tacPrm":0};
             	
             	$.ajax({
-        			url : '../myattention/isfollowed.do',
+        			url : contextPath+'/webapp/myattention/isfollowed.do',
         			data : data,
         			type : 'post',
         			success : function(data) {
@@ -198,5 +281,4 @@ $(document).ready(function() {
         }
         
     });
-	init();
 });

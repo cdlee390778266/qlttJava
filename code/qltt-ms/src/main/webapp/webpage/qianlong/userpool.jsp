@@ -51,12 +51,10 @@
 		</div>
 		
 		<!-- 页脚菜单 -->
-		<div class="pool-footer">
-			<!-- 
+		<div class="pool-footer"> 
 			<div class="pFooter-btn">
 				<span><i>+</i>自选股票</span>
 			</div>
-			 -->
 			<div class="footer">
 				<a href="<c:url value='/webapp/search/home.do' />"><i class="icon icon-searchd"></i><br><span>指标查询</span></a>
 				<a href="<c:url value='/webapp/myattention/home.do' />"><i class="icon icon-care"></i><br><span>我的关注</span></a>
@@ -132,5 +130,32 @@
 	</div>
 	
 	<div id="error" class="animated"><span></span></div>
+	
+	
+	 <!-- 弹窗添加股票 -->
+    <div class="dialog-add animated">
+        <div class="dialog-add-mask"></div>
+        <div class="dialog-add-main">
+            <div class="dialog-add-head">
+                <form action="">
+                    <input type="text" maxlength="6" placeholder="输入股票代码查询相关股票" name="keywordbox" id="keywordbox" />
+                </form>
+            </div>
+            <div class="dialog-add-body">
+                <div id="add-body">                                                 
+                </div>
+                <!-- 没有数据 -->
+                <div class="pool-empty" style="display:none;" id="empty">
+                    <img src="<c:url value='/extension/images/pool.png' />"/><br />没有查询到任何数据！
+                </div>
+                <!-- 加载中 -->
+                <div class="qltt-toast" >
+                    <i class="qltt-loading qltt-icon_toast"></i>
+                </div>
+            </div>
+            <div class="dialog-add-foot"><span>+</span></div>
+        </div>
+    </div>
+	
 </body>
 </html>

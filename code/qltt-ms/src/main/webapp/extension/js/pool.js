@@ -397,4 +397,191 @@ $(document).ready(function(){
 			}
 		}
 	});
+	
+	
+	//弹窗添加股票
+    //弹窗显示
+	var stockPool = null;
+	
+    $('.pFooter-btn span').tap(function(event) {
+        $('.dialog-add').removeClass('fadeOut').css('display','block').addClass('fadeIn');
+        
+        $('#keywordbox').focus();
+        $('#keywordbox').val('');
+        
+        var stockPoolID = $('#headerPool ul .active').data('pool');   
+        
+        $.ajax({
+			url: '../userpool/pool.do',
+			type: 'post',
+			data: {
+				'poolIndex': stockPoolID,
+				'reqNum': 9999,
+				'reqStart': 1
+			},
+			dataType: 'json',
+			success: function(data){
+				stockPool = [];
+				if(data.status==1 && data.content.pageRsp.rspNum > 0){    					
+					var attnStock = data.content.attnStock;
+					for(var i in attnStock){    								
+						stockPool.push(attnStock[i].stockCode);
+					}
+				}   				
+			},
+			error: function(jqXHR, textStatus, errorThrown){
+            	$().alert("加载数据失败");
+                loadingHide($('.qltt-toast'));
+            }
+        });
+        
+       
+    })
+
+    //弹窗关闭
+    $('.dialog-add-mask, .dialog-add-foot').tap(function(event) {
+        $('.dialog-add').removeClass('fadeIn').addClass('fadeOut');
+        setTimeout(function(){
+            $('.dialog-add').css('display','none');
+        }, 300);
+        
+        $('#keywordbox').val('');
+        $('#add-body').html('');
+        lastkeyword = '';
+        stockPool = [];
+        
+        var activeid = $('#scrollerPool li.active').data('href');
+        
+        createHtml(activeid);
+        
+        event.stopPropagation();
+        event.preventDefault();
+    });
+
+    //搜索框检索股票
+    var lastkeyword = '';  //输入框上一次值
+
+    $('#keywordbox').keyup(function(event) {
+        //只能输入字母与数字
+        $(this).val($(this).val().replace(/[^\w\.\/]/ig,''));
+       
+        if($(this).val().length >2 && $(this).val() != lastkeyword) {
+        	lastkeyword = $(this).val();                  
+            var keyword = $(this).val();
+                  
+            $('.qltt-toast').css({
+                'display' : 'block',
+                'opacity' : 1
+            });
+       	  
+       	 	$.ajax({
+                url: '../nametable/search.do',
+                type: 'post',
+            	dataType: 'json',
+                data: {
+                    key: keyword
+                },
+                success : function(data) {
+                    var html = '';
+                    if(data.length > 0){                   	                    	           
+                        for( var i in data) {                      	                       	
+                        	var isExist = $.inArray(data[i].fsCode, stockPool);                       	
+                        	var activehtml = '';
+                        	if(isExist == -1){                       		
+                        		activehtml = '<span class="active">+</span>';
+                        	}else{
+                        		activehtml =  '<span>+</span>';
+                        	}                      	
+                        	var stock ='<div class="dialog-ab-tr">'
+                        	 	+'<div class="dialog-ab-td">' + (data[i].fsMarketID==='0'?'上海':'深圳') +'</div>'
+                        	 	+'<div class="dialog-ab-td">' + data[i].fsCode +'</div>'
+                        	 	+'<div class="dialog-ab-td">' + data[i].fsName +'</div>'
+                        	 	+'<div class="dialog-ab-td">' + activehtml  +'</div>'
+                        	 	+'</div>';                        	
+                        	html+=stock;                                
+                        }
+                        $('#empty').hide();
+                        $('#add-body').html(html).show();
+                                             
+                    }else {
+                        $('#add-body').html('').hide();
+                        $('#empty').show();
+                    } 
+
+                    $('.qltt-toast').css({
+                        'display' : 'none',
+                        'opacity' : 0
+                    });                    
+                },
+                error: function() {
+                    $('.qltt-toast').css({
+                        'display' : 'none',
+                        'opacity' : 0
+                    });
+                    showMessage('查询失败！',2000);
+                }
+            });
+       	 
+        }
+    });
+
+
+    //添加与删除股票
+    $('body').delegate('.dialog-ab-tr .dialog-ab-td:last-child', 'tap', function(event) {
+    	
+    	var stockPool = [];			
+		stockPool.push({"poolIndex": $('#headerPool ul .active').data('pool')});
+		
+		var stockCode = $($(this).parent().children().get(1)).html();
+		var stockName = $($(this).parent().children().get(2)).html();
+	
+		var data = {
+			"stockCode": stockCode,
+			"stockName": stockName,
+			"stockPool": stockPool
+		};
+		var that = $(this).find('span');
+		
+        if($(this).find('span').hasClass('active')) {
+			$.ajax({
+				url: '../userpool/follow.do',
+				data: JSON.stringify(data),
+				dataType: 'json',
+				type: 'post',
+				contentType: 'application/json;charset=UTF-8',
+				success: function(data) {
+					if (data.status == 1){
+						 showMessage('成功加入选股池！',1000);
+						 $(that).removeClass('active').text('+');
+					}else{
+						showMessage(data.message,1000);
+					}
+				},
+				error: function(jqXHR, textStatus, errorThrown) {
+					showMessage("操作失败！",1000);
+				}
+			});
+        }else {
+        	$.ajax({
+				url: '../userpool/unfollow.do',
+				data: JSON.stringify(data),
+				dataType: 'json',
+				type: 'post',
+				contentType: 'application/json;charset=UTF-8',
+				success: function(data) {
+					if (data.status == 1){
+						 showMessage('取消加入选股池！',1000);
+						 $(that).addClass('active').text('-');
+					}else{
+						showMessage(data.message,1000);
+					}
+				},
+				error: function(jqXHR, textStatus, errorThrown) {
+					showMessage("操作失败！",1000);
+				}
+			});
+        }
+    });
+	
+	
 });

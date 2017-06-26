@@ -48,21 +48,32 @@ public class IndexSearchController {
 	@RequestMapping("home")
 	public ModelAndView home(HttpServletRequest request) {
 		logger.debug("进入搜索查询页面");
+		return new ModelAndView("qianlong/search");
+	}
+	
+	
+	@RequestMapping("findgroups")
+	@ResponseBody
+	public Object findgroups(HttpServletRequest request) {
+		
 		AuthResultEntity user = (AuthResultEntity) request.getSession()
 				.getAttribute(Constants.LOGIN_USER_ACCOUNT);
 		T02001002._rsp rsp = indexSystemService
 				.queryIdxGroup(user.getWeixinAccountId());
 		List<T02001002._protacgroup> idxGroups = rsp.getPtglistList();
-		Map<String, Object> model = new HashMap<>();
-		List<T02001002._protacgroup> _1level = new ArrayList<T02001002._protacgroup>();
-		for (T02001002._protacgroup protacgroup : idxGroups) {
-			if (protacgroup.getGrplevel() == 1) {
-				_1level.add(protacgroup);
-			}
+		Object result = null;
+		try {
+			String json = JsonFormat.printer().print(rsp);
+			logger.debug(
+					String.format("T02001003 交易 - 转换后的JSON字符串: [%s]", json));
+			result = JSONObject.parse(json);
+		} catch (InvalidProtocolBufferException e) {
+			logger.error(e.getMessage(), e);
 		}
-		model.put("idxGroups", _1level);
-		return new ModelAndView("qianlong/search", model);
+		return result;
+		
 	}
+	
 
 	@RequestMapping("child")
 	@ResponseBody

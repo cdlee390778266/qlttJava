@@ -18,9 +18,6 @@ import com.alibaba.fastjson.annotation.JSONField;
 @Table(name = "t_ext_msdockhttp")
 public class MsDockHttp implements Serializable {
 
-	/** 主键 */
-	private int id;
-
 	private String weixinAccountid;
 
 	private String httpsvcBusKey;
@@ -36,18 +33,6 @@ public class MsDockHttp implements Serializable {
 	private String httpsvcPlaintext;
 
 	private String httpsvcSecret;
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ID")
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
 	
 	@JSONField(name = "access_token")
 	private String httpsvcAccessToken;
@@ -60,6 +45,7 @@ public class MsDockHttp implements Serializable {
 
 	private boolean tokenEffect = false;
 
+	@Id
 	@Column(name = "weixin_accountid")
 	public String getWeixinAccountid() {
 		return weixinAccountid;
@@ -69,6 +55,7 @@ public class MsDockHttp implements Serializable {
 		this.weixinAccountid = weixinAccountid;
 	}
 
+	@Id
 	@Column(name = "httpsvc_buskey")
 	public String getHttpsvcBusKey() {
 		return httpsvcBusKey;

@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.hibernate.Session;
 import org.hibernate.criterion.DetachedCriteria;
-
 import org.springframework.dao.DataAccessException;
 
 public interface ICommonDBService {
@@ -206,6 +205,16 @@ public interface ICommonDBService {
 	 * @return
 	 */
 	public <T> List<T> findHql(String hql, Object... param);
+	
+	/**
+	 * 通过hql 查询语句查找对象
+	 * 
+	 * @param <T>
+	 * @param query
+	 * @return
+	 */
+	public <T> List<T> findMaxResultHql(String hql, int maxResults, Object... param);
+	
 
 	public <T> List<T> pageList(DetachedCriteria dc, int firstResult,
 			int maxResult);

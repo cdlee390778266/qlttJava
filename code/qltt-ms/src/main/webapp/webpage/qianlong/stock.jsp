@@ -15,11 +15,18 @@
 <script type="text/javascript" src="<c:url value='/extension/js/swiper.min.js' />"></script>
 <script type="text/javascript" src="<c:url value='/extension/js/zepto.touch.js' />"></script>
 <script type="text/javascript" src="<c:url value='/extension/js/messager.js' />"></script>
+
+<script type="text/javascript">
+	var isCombRequest = ${isCombRequest};//是否组合指标
+</script>
+<script type="text/javascript">
+	var contextPath = '${pageContext.request.contextPath}';
+</script>
 <script type="text/javascript" src="<c:url value='/extension/js/stock.js' />"></script>
-<title>${tacName}</title>
+<title>指标信息</title>
 </head>
 <body>
-	<!-- 详细内容 -->
+	<!-- 详细内容 --
 	<div class="result result-fixed">
 		<input type="hidden" id="tacTic" hidden="tacTic" value="${tacTic}">
 		<div class="result-box">
@@ -45,6 +52,30 @@
 		</div>
 		<div class="result-btns">
 			<span class="result-btn-care<c:if test="${isFollow}"> active</c:if>">关注</span>
+		</div>
+		<div class="srceen-txt result-srceen-fixed">
+			<span>该指标共计筛选出</span><span class="red"></span><span>支股票</span>
+		</div>
+	</div>
+	-->
+	
+	<div class="result result-fixed">
+		<input type="hidden" id="tacTic" hidden="tacTic" value="" >
+		<div class="result-box">
+			<img src="<c:url value='/extension/images/result_bg.png' />" alt="" class="img-responsive" />
+			<div class="result-main">
+				<div class="result-tags">
+					<div class="result-tags-head">
+                       
+                    </div>					
+					  <div class="result-tags-body">
+					  	<span>指标简介:</span>
+					  </div>						
+				</div>
+			</div>
+		</div>
+		<div class="result-btns">
+			<span class="result-btn-care">关注</span>
 		</div>
 		<div class="srceen-txt result-srceen-fixed">
 			<span>该指标共计筛选出</span><span class="red"></span><span>支股票</span>

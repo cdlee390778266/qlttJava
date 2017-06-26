@@ -86,6 +86,8 @@ public class SubscriberServiceImpl implements ISubscriberService {
 			}else{
 				authResult.setWeixinAccountAppid(state);
 				authResult.setWeixinAccountId(currentWeixin.getWeixin_accountid().trim());
+				authResult.setKeyid(currentWeixin.getId());
+				authResult.setOpenid(oauthCallbackEntity.getOpenId());
 			}
 		}
 		return authResult;

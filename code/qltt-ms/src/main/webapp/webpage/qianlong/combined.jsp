@@ -15,11 +15,13 @@
 <script type="text/javascript" src="<c:url value='/extension/js/swiper.min.js' />"></script>
 <script type="text/javascript" src="<c:url value='/extension/js/zepto.touch.js' />"></script>
 <script type="text/javascript" src="<c:url value='/extension/js/iscroll.js' />"></script>
-<script type="text/javascript" src="<c:url value='/extension/js/headerISroll.js' />"></script>
 <script type="text/javascript" src="<c:url value='/extension/js/swiper.animate1.0.2.min.js' />"></script>
 <script type="text/javascript" src="<c:url value='/extension/js/common.js' />"></script>
-<script type="text/javascript" src="<c:url value='/extension/js/diy.js' />"></script>
 <script type="text/javascript" src="<c:url value='/extension/js/messager.js' />"></script>
+<script type="text/javascript">
+	var contextPath = '${pageContext.request.contextPath}';
+</script>
+
 <title>自定义组合指标</title>
 </head>
 <body>
@@ -27,16 +29,6 @@
 	<div id="header" class="zbset">
 		<div id="scroller">
 			<ul>
-				<c:forEach items="${idxGroups}" var="idxGroup" varStatus="status">
-					<c:choose>
-						<c:when test="${status.index == 0}">
-							<li data-group="${idxGroup.tacgroup}" class="active">${idxGroup.grpname}</li>
-						</c:when>
-						<c:otherwise>
-							<li data-group="${idxGroup.tacgroup}">${idxGroup.grpname}</li>
-						</c:otherwise>
-					</c:choose>
-				</c:forEach>
 			</ul>
 		</div>
 	</div>
@@ -80,7 +72,7 @@
 			<div class="srceen-txt">
 				<span>根据您的指标组合共计筛选出</span><span class="red stock-num">0</span><span>支股票</span>
 			</div>
-			<div class="screen-main" data-start="1" data-size="3">
+			<div class="screen-main" data-start="1" data-size="20">
 			</div>
 			<div class="load-more">
 				<i></i><span>点击加载更多</span>
@@ -139,5 +131,6 @@
 			</div>
 		</div>
 	</div>
+	<script type="text/javascript" src="<c:url value='/extension/js/diy.js' />"></script>
 </body>
 </html>

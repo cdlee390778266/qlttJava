@@ -4,21 +4,13 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Transient;
 
-
-import com.alibaba.fastjson.annotation.JSONField;
 
 @Entity
 @Table(name = "t_ext_msdockzmq")
 public class MsDockZmq implements Serializable {
-	
-	/**主键*/
-	private int id;
 	
 	private String weixinAccountid;
 	
@@ -33,16 +25,6 @@ public class MsDockZmq implements Serializable {
 	private int zmqsvcRcvTimeout;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name ="ID")
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-	
 	@Column(name = "weixin_accountid")
 	public String getWeixinAccountid() {
 		return weixinAccountid;
@@ -52,6 +34,7 @@ public class MsDockZmq implements Serializable {
 		this.weixinAccountid = weixinAccountid;
 	}
 	
+	@Id
 	@Column(name = "zmqsvc_buskey")
 	public String getZmqsvcBusKey() {
 		return zmqsvcBusKey;
