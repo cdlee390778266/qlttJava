@@ -1,7 +1,7 @@
 /* 
 * @Author: lee
 * @Date:   2017-04-07 15:15:54
-* @Last Modified time: 2017-06-16 14:47:19
+* @Last Modified time: 2017-06-26 11:31:23
 */
 
 $(document).ready(function(){
@@ -176,6 +176,60 @@ $(document).ready(function(){
         $(this).find('i').toggleClass('bounceIn');
         
     });
+
+    // 评论框聚焦
+    $('#comment-txt').focus(function(event) {
+        $('#comment').addClass('active');
+        event.stopPropagation();
+    });
+
+    $('#comment').tap(function(event) {
+        event.stopPropagation();
+        event.preventDefault();
+    })
+
+    $('#comment-submit').tap(function(event) {
+        event.stopPropagation();
+    })
+
+    $(document).tap(function(event) {
+        $('#comment').removeClass('active');
+        $('#comment-txt').blur();
+        event.stopPropagation();
+        event.preventDefault();
+    });
+
+
+    // 写评论
+    $('#comment').submit(function() {
+
+        $('#comment').removeClass('active');
+
+        if(!$('#comment-txt').val()) {
+            $().alert('评论不能为空！');
+            return false;
+        }
+
+        $.ajax({
+                url: '../data/comment.json',
+                type: 'post',
+                data: {
+                   comment : $('#comment-txt').val()
+                },
+                success : function(data) {
+                    if(data) {
+                        $().alert('评论成功');
+                        $('#comment-txt').val('');
+                    }else {
+                        $().alert('发表评论失败！');
+                    }
+                },
+                error: function() {
+                    $().alert('发表评论失败！');
+                }
+            })
+        return false;
+    })
 
     init();
 
