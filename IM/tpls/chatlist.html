@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html >
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="referrer" content="always">
+        <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+        <meta http-equiv="x-dns-prefetch-control" content="on">
+
+        <link rel="stylesheet" href="../css/animate.min.css" />
+        <link href="../css/style.css" rel="stylesheet">
+
+        <title>我的消息</title>
+    </head>
+    <body>
+        
+        <!-- 头部 -->
+        <div class="head">
+            <a href="javascript:history.back();" class="back" >返回</a>
+            <span>我的消息</span>
+            <a class="share" href="sharelist.html"><img src="../images/share.png" width="11" alt="" />我的分享</a>
+        </div>
+        
+        <!-- 消息列表 -->
+        <div class="chat-list">
+            <div class="clist-item" dataurl="chat.html">
+                <div class="clist-item-left"><img src="../images/face.png"  alt="" /><i>1</i></div>
+                <div class="clist-item-right">
+                    <p>坑坑</p>
+                    <p>你好呀</p>
+                </div>
+            </div>
+            <div class="clist-item" dataurl="chat.html">
+                <div class="clist-item-left"><img src="../images/face.png"  alt="" /><i>99+</i></div>
+                <div class="clist-item-right">
+                        <p>坑坑</p>
+                    <p>你好呀你好呀你好呀你好呀你好呀你好呀你好呀你好呀你好呀你好呀你好呀你好呀你好呀你好呀</p>
+                </div>
+            </div>
+            <div class="clist-item" dataurl="chat.html">
+                <div class="clist-item-left"><img src="../images/face.png"  alt="" /></div>
+                <div class="clist-item-right">
+                    <p>坑坑</p>
+                    <p>你好呀</p>
+                </div>
+            </div>
+        </div>
+       
+        <script src="../js/zepto.min.js"></script>
+        <script src="../js/zepto.touch.js"></script>
+        <script>
+            $('.clist-item').tap(function() {
+                location.href = $(this).attr('dataurl');
+            })
+        </script>
+    
+    </body>
+</html>

@@ -1,0 +1,150 @@
+﻿<!DOCTYPE html >
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="referrer" content="always">
+        <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+        <meta http-equiv="x-dns-prefetch-control" content="on">
+
+        <link rel="stylesheet" href="../css/animate.min.css" />
+        <link href="../css/style.css" rel="stylesheet">
+
+        <title>我的消息</title>
+    </head>
+    <body>
+        
+        <!-- 头部 -->
+        <div class="head">
+            <a href="javascript:history.back();" class="back" >返回</a>
+            <span>我的消息</span>
+        </div>
+
+        <!-- 聊天内容 -->
+        <div class="chat">
+            <div class="chat-head">
+                <span>与上帝对话中......</span>
+            </div>
+            <div class="chat-body" id="chat-body">
+                <div class="chat-item">
+                    <div class="chat-time"><span>2017-6-6 6:66:55</span></div>
+                    <div class="chat-main">
+                        <div class="chat-face"><img src="../images/face.png"  alt="" /></div>
+                        <div class="chat-content">
+                            <span>你好上帝你好上帝你好上帝你好上帝你好上帝你好上帝你好上帝你好上帝你好上帝你好上帝你好上帝你好上帝你好上帝你好上帝你好上帝你好上帝你好上帝你好上帝你好上帝</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-item">
+                    <div class="chat-time"><span>2017-6-6 6:66:55</span></div>
+                    <div class="chat-main">
+                        <div class="chat-content chat-content-right">
+                            <span>你好上帝</span>
+                        </div>
+                        <div class="chat-face"><img src="../images/face1.png"  alt="" /></div>
+                    </div>
+                </div>
+                <div class="chat-item">
+                    <div class="chat-time"><span>2017-6-6 6:66:55</span></div>
+                    <div class="chat-main">
+                        <div class="chat-face"><img src="../images/face.png"  alt="" /></div>
+                        <div class="chat-content">
+                            <span>你好上帝</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-item">
+                    <div class="chat-time"><span>2017-6-6 6:66:55</span></div>
+                    <div class="chat-main">
+                        <div class="chat-face"><img src="../images/face.png"  alt="" /></div>
+                        <div class="chat-content">
+                            <span class="content-red">你好上帝你好上帝你好上帝你好上帝你好上帝你好上帝你好上帝你好上帝你好上帝你好上帝你好上帝你好上帝你好上帝你好上帝你好上帝你好上帝你好上帝你好上帝你好上帝</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-item">
+                    <div class="chat-time"><span>2017-6-6 6:66:55</span></div>
+                    <div class="chat-main">
+                        <div class="chat-content chat-content-right">
+                            <span class="content-red">你好上帝</span>
+                        </div>
+                        <div class="chat-face"><img src="../images/face1.png"  alt="" /></div>
+                    </div>
+                </div>
+                <div class="chat-item">
+                    <div class="chat-time"><span>2017-6-6 6:66:55</span></div>
+                    <div class="chat-main">
+                        <div class="chat-content chat-content-right">
+                            <span class="content-img" ><img src="../images/message.png"  alt="" class="big" /></span>
+                        </div>
+                        <div class="chat-face"><img src="../images/face1.png"  alt="" /></div>
+                    </div>
+                </div>
+                <div class="chat-item">
+                    <div class="chat-time"><span>2017-6-6 6:66:55</span></div>
+                    <div class="chat-main">
+                        <div class="chat-content chat-content-right">
+                            <span class="content-img" ><img src="../images/face1.png"  alt="" class="big" /></span>
+                        </div>
+                        <div class="chat-face"><img src="../images/face1.png"  alt="" /></div>
+                    </div>
+                </div>
+                <div class="chat-item">
+                    <div class="chat-time"><span>2017-6-6 6:66:55</span></div>
+                    <div class="chat-main">
+                        <div class="chat-face"><img src="../images/face.png"  alt="" /></div>
+                        <div class="chat-content">
+                            <span class="content-img" ><img src="../images/face.png"  alt="" class="big" /></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 聊天输入框 -->
+        <div class="chat-form">
+            <form action="" id="chat" enctype="multipart/form-data">
+                <div class="chat-form-left">
+                    <input type="text" id="chat-txt"  name="chat-txt" />
+                </div>
+                <div class="chat-form-right">
+                    <span id="chat-btn">+</span>
+                    <input type="file" id="chat-img" name="chat-img" />
+                </div>
+            </form>
+        </div>
+
+        <div class="lightBox">
+            <div id="container-large" class="animated fadeIn">
+                <img src="" alt="" id="largeImg" data-id='0' />
+
+                <div class="loading">
+                    <div class="loading-container container1">
+                        <div class="circle1"></div>
+                        <div class="circle2"></div>
+                        <div class="circle3"></div>
+                        <div class="circle4"></div>
+                    </div>
+                    <div class="loading-container container2">
+                        <div class="circle1"></div>
+                        <div class="circle2"></div>
+                        <div class="circle3"></div>
+                        <div class="circle4"></div>
+                    </div>
+                    <div class="loading-container container3">
+                        <div class="circle1"></div>
+                        <div class="circle2"></div>
+                        <div class="circle3"></div>
+                        <div class="circle4"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    
+        <script src="../js/zepto.min.js"></script>
+        <script src="../js/zepto.touch.js"></script>
+        <script src="../js/dialog.js"></script>
+        <script src="../js/chat.js"></script>
+
+    </body>
+</html>
