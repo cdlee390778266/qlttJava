@@ -2532,6 +2532,7 @@ a {
   background-size: 250px 700px;
   background-image: url(../images/icon.png);
   background-position: -215px -81px;
+  z-index: 88;
 }
 .goBack a {
   display: block;
@@ -2583,6 +2584,52 @@ a {
 }
 .hot .hot-item .hot-tags span:active {
   background-color: #ddd;
+}
+
+.hot-wrapper {
+  position: absolute;
+  z-index: 1;
+  top: 50px;
+  bottom: 0px;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+.hot-scroller {
+  position: absolute;
+  z-index: 1;
+  -webkit-tap-highlight-color: transparent;
+  width: 100%;
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-text-size-adjust: none;
+  -moz-text-size-adjust: none;
+  -ms-text-size-adjust: none;
+  -o-text-size-adjust: none;
+  text-size-adjust: none;
+  padding-bottom: 33px;
+}
+
+#pullDown, #pullUp, .pulldown-tips {
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+}
+
+.pulldown-tips {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  width: 100%;
 }
 
 /******   热门主题-详情  ******/
